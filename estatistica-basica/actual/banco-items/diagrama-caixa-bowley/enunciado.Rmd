@@ -1,0 +1,116 @@
+```{r dpg, include=F, echo=F, message=F}
+library(exams)
+library(magrittr)
+library(readxl)
+library(writexl)
+library(knitr)
+library(patchwork)
+library(ggthemes)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+tam <- 1000
+
+amostra_a <- (rbeta(tam, shape1 = 0.5, shape2 = 10) * 100) |> round(2)
+amostra_b <- (rbeta(tam, shape1 = 10, shape2 = 0.5) * 100)  |> round(2)
+amostra_c <- (rbeta(tam, shape1 = 5, shape2 = 5) * 100) |> round(2)
+
+bowley <- \(x) {
+    q1 <- quantile(x, 0.25) |> unname()
+    q2 <- quantile(x, 0.5) |> unname()
+    q3 <- quantile(x, 0.75) |> unname()
+
+    ((q3 - 2 * q2 + q1) / (q3 - q1)) |> round(2)
+}
+
+dq <- \(x) {
+    q1 <- quantile(x, 0.25) |> unname()
+    q3 <- quantile(x, 0.75) |> unname()
+
+    (q3 - q1) |> round(2)
+}
+
+
+dq_a <- dq(amostra_a)
+dq_b <- dq(amostra_b)
+dq_c <- dq(amostra_c)
+bowley_a <- bowley(amostra_a)
+bowley_b <- bowley(amostra_b)
+bowley_c <- bowley(amostra_c)
+
+```
+
+Question
+========
+
+Considere os diagramas de caixa para três variáveis quantitativas contínuas de uma amostra representadas nas figuras A, B e C. Com base nessas figuras, responda (com duas casas decimais):
+
+```{r, echo=F, fig.width=10, fig.cap=" "}
+diagrama <- \(x) {
+    q1 <- quantile(x, 0.25) |> unname()
+    q2 <- quantile(x, 0.5) |> unname()
+    q3 <- quantile(x, 0.75) |> unname()
+
+    ls <- (q3 + 1.5 * (q3 - q1))
+    li <- (q1 - 1.5 * (q3 - q1))
+
+    tibble(li, q1, q2, q3, ls)
+}
+df_a <- diagrama(amostra_a)
+g1 <- ggplot(data = df_a) +
+    geom_boxplot(aes(x = "", ymin = li, lower = q1, middle = q2, upper = q3,
+                    ymax = ls),
+                stat = "identity", outlier.shape = NA) +
+    scale_y_continuous(breaks = c(df_a$li, df_a$q1, df_a$q2, df_a$q3, df_a$ls)) +
+    theme_calc() +
+    labs(y = "Variável X", title = "Figura A.", x = "")
+
+df_b <- diagrama(amostra_b)
+g2 <- ggplot(data = df_b) +
+    geom_boxplot(aes(x = "", ymin = li, lower = q1, middle = q2, upper = q3,
+                    ymax = ls),
+                stat = "identity", outlier.shape = NA) +
+    scale_y_continuous(breaks = c(df_b$li, df_b$q1, df_b$q2, df_b$q3, df_b$ls)) +
+    theme_calc() +
+    labs(y = "Variável Y", title = "Figura B.", x = "")
+
+df_c <- diagrama(amostra_c)
+g3 <- ggplot(data = df_c) +
+    geom_boxplot(aes(x = "", ymin = li, lower = q1, middle = q2, upper = q3,
+                    ymax = ls),
+                stat = "identity", outlier.shape = NA) +
+    scale_y_continuous(breaks = c(df_c$li, df_c$q1, df_c$q2, df_c$q3, df_c$ls)) +
+    theme_calc() +
+    labs(y = "Variável Z", title = "Figura C.", x = "")
+
+g1 + g2 + g3
+```
+
+Questionlist
+------------
+
+* O intervalo interquartílico para a variável X é: 
+* O coeficiente de bowley para a variável X é: 
+* O intervalo interquartílico para a variável Y é: 
+* O coeficiente de bowley para a variável Y é: 
+* O intervalo interquartílico para a variável Z é: 
+* O coeficiente de bowley para a variável Z é: 
+
+Solution
+========
+Solutionlist
+------------
+* O intervalo interquartílico para a variável X é: `r dq_a`
+* O coeficiente de bowley para a variável X é: `r bowley_a`
+* O intervalo interquartílico para a variável Y é: `r dq_b`
+* O coeficiente de bowley para a variável Y é: `r bowley_b`
+* O intervalo interquartílico para a variável Z é: `r dq_c`
+* O coeficiente de bowley para a variável Z é: `r bowley_c`
+
+Meta-information
+================
+exname: diagramaCaixaBowley
+extype: cloze
+exclozetype: num|num|num|num|num|num
+exsolution: `r dq_a`|`r bowley_a`|`r dq_b`|`r bowley_b`|`r dq_c`|`r bowley_c`
+extol: 0.02

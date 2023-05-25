@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+      <text>$course$/top/Atividades assíncronas./Teorema de Bayes.</text>
+    </category>
+    <info format="html">
+      <text><![CDATA[<p>Duas questões de teoremas de Bayes.</p>]]></text>
+    </info>
+    <idnumber></idnumber>
+  </question>
+
+<!-- question: 6982745  -->
+  <question type="multichoice">
+    <name>
+      <text>Teorema de Bayes</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Suponha que uma urna tem 5 bolas brancas e 7 bolas rosas. Sacam-se sem reposição e sucessivamente duas bolas desta urna. Qual a probabilidade da primeira bola retirada ser branca, sabendo que a segunda bola retirada é rosa?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está correta.</p>]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está parcialmente correta.</p>]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está incorreta.</p>]]></text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Cfrac%7B6%7D%7B11%7D" alt="\frac{6}{11}" /></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Cfrac%7B4%7D%7B11%7D" alt="\frac{4}{11}" /></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Cfrac%7B7%7D%7B11%7D" alt="\frac{7}{11}" /></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Cfrac%7B5%7D%7B11%7D" alt="\frac{5}{11}" /></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 10763817  -->
+  <question type="multichoice">
+    <name>
+      <text>Teorema de Bayes - estudantes</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Em uma sala de 32 alunos de uma turma de <em>Estatística, </em> as estudantes são distribuídas segunda a tabela abaixo:</p>
+<table border="1" align="center">
+<tbody>
+<tr>
+<td> </td>
+<td>Aprovado</td>
+<td>Reprovado</td>
+<td>total</td>
+</tr>
+<tr>
+<td>Masculino</td>
+<td>8</td>
+<td>4</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Feminino</td>
+<td>14</td>
+<td>6</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>22</td>
+<td>10</td>
+<td>32</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<p>Se uma pessoa desta turma te contar que foi aprovada, qual a probabilidade dela se identificar com gênero Feminino?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está correta.</p>]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está parcialmente correta.</p>]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está incorreta.</p>]]></text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Cfrac%7B14%7D%7B22%7D" alt="\frac{14}{22}" /></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Cfrac%7B14%7D%7B20%7D" alt="\frac{14}{20}" /></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Cfrac%7B20%7D%7B32%7D" alt="\frac{20}{32}" /></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Cfrac%7B22%7D%7B32%7D" alt="\frac{22}{32}" /></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+</quiz>

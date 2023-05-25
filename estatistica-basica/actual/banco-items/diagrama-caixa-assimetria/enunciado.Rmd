@@ -1,0 +1,102 @@
+```{r dpg, include=F, echo=F, message=F}
+library(exams)
+library(magrittr)
+library(readxl)
+library(writexl)
+library(knitr)
+library(patchwork)
+library(ggthemes)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+tam <- 1000
+
+amostra_a <- (rbeta(tam, shape1 = 0.5, shape2 = 10) * 100) |> round(2)
+amostra_b <- (rbeta(tam, shape1 = 10, shape2 = 0.5) * 100)  |> round(2)
+amostra_c <- (rbeta(tam, shape1 = 5, shape2 = 5) * 100) |> round(2)
+
+answer_m_choice <- c(
+    T, F, F,
+    F, T, F,
+    F, F, T
+)
+```
+
+Question
+========
+
+Considere os diagramas de caixa para três variáveis quantitativas contínuas de uma amostra representadas nas figuras A, B e C. Com base nessas figuras, marque apenas as alternativas correta (uma alternativa errada cancela a alternativa correta):
+
+```{r, echo=F, fig.width=10, fig.cap=" "}
+diagrama <- \(x) {
+    q1 <- quantile(x, 0.25) |> unname()
+    q2 <- quantile(x, 0.5) |> unname()
+    q3 <- quantile(x, 0.75) |> unname()
+
+    ls <- q3 + 1.5 * (q3 - q1)
+    li <- q1 - 1.5 * (q3 - q1)
+
+    tibble(li, q1, q2, q3, ls)
+}
+df_a <- diagrama(amostra_a)
+g1 <- ggplot(data = df_a) +
+    geom_boxplot(aes(x = "", ymin = li, lower = q1, middle = q2, upper = q3,
+                    ymax = ls),
+                stat = "identity", outlier.shape = NA) +
+    scale_y_continuous(breaks = c(df_a$li, df_a$q1, df_a$q2, df_a$q3, df_a$ls)) +
+    theme_calc() +
+    labs(y = "Variável X", title = "Figura A.", x = "")
+
+df_b <- diagrama(amostra_b)
+g2 <- ggplot(data = df_b) +
+    geom_boxplot(aes(x = "", ymin = li, lower = q1, middle = q2, upper = q3,
+                    ymax = ls),
+                stat = "identity", outlier.shape = NA) +
+    scale_y_continuous(breaks = c(df_b$li, df_b$q1, df_b$q2, df_b$q3, df_b$ls)) +
+    theme_calc() +
+    labs(y = "Variável Y", title = "Figura B.", x = "")
+
+df_c <- diagrama(amostra_c)
+g3 <- ggplot(data = df_c) +
+    geom_boxplot(aes(x = "", ymin = li, lower = q1, middle = q2, upper = q3,
+                    ymax = ls),
+                stat = "identity", outlier.shape = NA) +
+    scale_y_continuous(breaks = c(df_c$li, df_c$q1, df_c$q2, df_c$q3, df_c$ls)) +
+    theme_calc() +
+    labs(y = "Variável Z", title = "Figura C.", x = "")
+
+g1 + g2 + g3
+```
+
+Answerlist
+----------
+* A variável quantitativa contínua X tem assimetria à direita ou positiva.
+* A variável quantitativa contínua X tem assimetria à esquerda ou negativa.
+* A variável quantitativa contínua X tem simetria.
+* A variável quantitativa contínua Y tem assimetria à direita ou positiva.
+* A variável quantitativa contínua Y tem assimetria à esquerda ou negativa.
+* A variável quantitativa contínua Y tem simetria.
+* A variável quantitativa contínua Z tem assimetria à direita ou positiva.
+* A variável quantitativa contínua Z tem assimetria à esquerda ou negativa.
+* A variável quantitativa contínua Z tem simetria.
+
+Solution
+========
+Answerlist
+----------
+* **Verdadeiro**. A variável quantitativa contínua X tem assimetria à direita ou positiva.
+* **Falso**. A variável quantitativa contínua X **não** tem assimetria à esquerda ou negativa.
+* **Falso**. A variável quantitativa contínua X **não** tem simetria.
+* **Falso**. A variável quantitativa contínua Y **não** tem assimetria à direita ou positiva.
+* **Verdadeiro**. A variável quantitativa contínua Y tem assimetria à esquerda ou negativa.
+* **Falso**. A variável quantitativa contínua Y **não** tem simetria.
+* **Falso**. A variável quantitativa contínua Z **não** tem assimetria à direita ou positiva.
+* **Falso**. A variável quantitativa contínua Z **não** tem assimetria à esquerda ou negativa.
+* **Verdadeiro**. A variável quantitativa contínua Z tem simetria.
+
+Meta-information
+================
+exname: diagramaCaixaAssimetria
+extype: mchoice
+exsolution: `r mchoice2string(answer_m_choice)`
+

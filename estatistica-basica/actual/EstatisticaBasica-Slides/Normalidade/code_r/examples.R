@@ -1,0 +1,117 @@
+# examples: day 9
+
+# used packages
+library(xtable)
+library(nortest)
+library(tidyverse)
+
+# example pra normality
+x <- c( 60.8 , 61.5 , 60.5 , 60.9 , 59.9 , 60.2 , 63.9, 59.5 , 59.7 , 62.5,
+        59.9 , 60.5 , 60.7 , 55.6 , 57.8 , 58.0 , 57.8 , 61.6 , 59.3 , 62.6)
+k <- 1 + length(x) %>% log2() %>% ceiling()
+media <- mean(x)
+dp <- (x - media)^2 %>%  mean() %>%  sqrt()
+dados <- tibble(x = seq(from = min(x), to = max(x), length.out = 1e+4),
+                y = dnorm(x, mean = media, sd = dp))
+tibble(conteudo = x) %>% 
+  ggplot()+
+  geom_histogram(aes(x = conteudo, y = ..density..), 
+                 bins = k, fill = 'blue', alpha = 0.75) +
+  geom_line(data = dados, aes(x, y), color = 'red', size = 2) +
+  theme_minimal()+
+  labs(x = 'Conteúdo', y = 'Densidade de frequência') +
+  theme(axis.title = element_text(size = 25),
+        axis.text = element_text(size = 20))
+ggsave('conteudo.png')
+
+y <- (sort(x) - media) / dp
+z <- qnorm( (seq_along(x) - 0.5) / length(x))
+tibble(y, z) %>% 
+  ggplot(aes(y, z)) +
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0,
+              size = 2, color = 'blue', alpha = 0.75)+
+  theme_minimal()+
+  labs(x = 'Quantis amostrais', y = 'Quantis teóricos')+
+  theme(axis.title = element_text(size = 25),
+        axis.text = element_text(size = 20))
+ggsave('qqnorm.png')
+
+
+
+# example Q-Q plot
+A <- c(1.58 , 1.60 , 1.60 , 1.62 , 1.64,
+       1.64 , 1.65 , 1.66 , 1.69 , 1.70,
+       1.72 , 1.76 , 1.78 , 1.85 , 1.85) %>% sort()
+B <- c(1.62, 1.62 , 1.57 , 1.65 , 1.61,
+       1.71 , 1.65 , 1.67 , 1.73 , 1.60,
+       1.70 , 1.85 , 1.70 , 1.83 , 1.70) %>% sort()
+
+# set.seed(123458)
+# A <- rnorm(15, mean = 160, sd = 10) %>% round(1) %>% sort()
+# B<- rnorm(15, mean = 160, sd = 10) %>% round(1) %>% sort()
+
+tibble(A, B) %>% 
+  ggplot(aes(A, B))+
+  geom_point()+
+  geom_abline(slope = 1, intercept = 0, 
+              color = 'blue', size = 2, alpha = 0.75) +
+  theme_minimal() +
+  labs(x = "Altura para a escola A",
+       y = "Altura para a escola B")+
+  theme(axis.title = element_text(size = 25),
+        axis.text = element_text(size = 20))
+ggsave('qqplot.png')
+
+# 
+# rbind(A[1:5], A[6:10], A[11:15]) %>% 
+#   xtable(digits = 1) %>% 
+#   print(include.rownames = F, include.colnames = F,
+#         format.args = list(decimal.mark = ","))
+# 
+# rbind(B[1:5], B[6:10], B[11:15]) %>% 
+#   xtable(digits = 1) %>% 
+#   print(include.rownames = F, include.colnames = F,
+#         format.args = list(decimal.mark = ","))
+
+# Kolmogorov-Smirnov
+set.seed(123458)
+media  <-  8000
+rate <- 1 / media
+amostra <- rexp(15, rate = rate) %>% 
+  round(2) %>% sort()
+rbind(amostra[1:5],
+      amostra[6:10],
+      amostra[11:15]) %>% 
+  xtable(caption = "Tempo de vida de um equipamento.") %>% 
+  print(include.rownames = F, include.colnames= F, 
+        format.args = list(decimal.mark=","), booktabs = T)
+
+dados <- tibble(id = seq_along(amostra) ,x = amostra, FDA = pexp(amostra, rate = 1 / media),
+                Fe = seq_along(amostra) / length(amostra))
+dados <- dados %>%  mutate(D = abs(FDA - Fe))
+
+dados %>% 
+  xtable(caption = "Calculando o valor de D", 
+         digits = 4,
+         label = "tab:D_exp") %>% 
+  print.xtable(include.rownames = F,
+               format.args = list(decimal.mark = ','),
+               booktabs = T)
+
+y <- c(60.8 , 61.5 , 60.5 , 60.9 , 59.9 , 60.2 , 63.9, 59.5 , 59.7 , 62.5,
+       59.9 , 60.5 , 60.7 , 55.6 , 57.8 , 58.0 , 57.8 , 61.6 , 59.3 , 62.6) %>% 
+  sort()
+dp <- (y - mean(y))^2 %>%  mean() %>%  sqrt()
+media <- mean(y)
+z <- (y - media) / dp
+dados <- tibble(id = seq_along(z), x = y,
+                z = z,
+                FDA = pnorm(z), Fe = seq_along(z) / length(z),
+                D = abs(FDA - Fe))
+dados %>% 
+  xtable(caption = "Normalidade dos dados.",
+         label = "tab:normalidade", digits = 4,
+         align = rep('c', ncol(dados) + 1)) %>% 
+  print.xtable(include.rownames = F,
+               booktabs = T, format.args = list(decimal.mark = ','))

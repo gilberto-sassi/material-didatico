@@ -1,0 +1,50 @@
+```{r dgp, include = FALSE}
+library(exams)
+library(magrittr)
+library(readxl)
+library(writexl)
+library(knitr)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation 
+
+# tamanho da amostra
+tam <- 15
+
+# amostra aleatória simples
+m <- 10:20 |> sample(1)
+s <- runif(1, min = 1.5, max = 2)
+amostra <- rnorm(tam, mean = m, sd = s) |> round(2)
+
+amostra_sorted <- sort(amostra)
+
+# solucao
+q1 <- amostra_sorted[(tam + 1) * 0.25]
+q2 <- amostra_sorted[(tam + 1) * 0.5]
+q3 <- amostra_sorted[(tam + 1) * 0.75]
+```
+
+Question
+========
+Considere os valores observados de uma variável quantitativa contínua X dados por: `r paste0(amostra_sorted, collapse="; ") |> str_replace_all("\\.", ",")`. Calcule (usando os algoritmos que ensinei na sala de aula):
+
+Questionlist
+------------
+* O primeiro quartil
+* O segundo quartil
+* O terceiro quartil
+
+Solution
+========
+Solutionlist
+------------
+* O primeiro quartil é `r q1`.
+* O segundo quartil é `r q2`.
+* O terceiro quartil é `r q3`.
+
+Meta-information
+================
+exname: quartis
+extype: cloze
+exclozetype: num|num|num
+exsolution: `r q1`|`r q2`|`r q3`
+extol: 0.02

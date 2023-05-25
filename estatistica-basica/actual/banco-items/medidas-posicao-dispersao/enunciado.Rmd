@@ -1,0 +1,58 @@
+```{r dgp, include = FALSE}
+library(exams)
+library(magrittr)
+library(readxl)
+library(writexl)
+library(knitr)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation 
+
+# tamanho da amostra
+tam <- 1000
+
+# amostra aleatória simples
+m <- 10:20 |> sample(1)
+s <- runif(1, min = 1.5, max = 2)
+amostra <- rnorm(1000, mean = m, sd = s) |> round(2)
+
+amostra_sorted <- sort(amostra)
+
+df <- tibble(X = amostra)
+
+# disponibilizando o arquivo
+write_xlsx(df, "conjunto-dados.xlsx")
+
+# solucao
+media <- mean(amostra)
+mediana <- (amostra_sorted[floor(tam / 2)] + amostra_sorted[floor(tam / 2) + 1]) / 2
+variancia <- mean((amostra - mean(amostra))^2)
+dp <- sqrt(variancia)
+```
+
+Question
+========
+Considere os valores observados de uma variável quantitativa contínua X  disponíveis no arquivo [conjunto-dados.xlsx](conjunto-dados.xlsx). Calcule (usando os algoritmos que ensinei na sala de aula):
+
+Questionlist
+------------
+* A média (com duas casas decimais)
+* A mediana (com duas casas decimais)
+* A variância (com duas casas decimais)
+* O desvio padrão (com duas casas decimais)
+
+Solution
+========
+Solutionlist
+------------
+* A média é `r media |> round(2)`.
+* A mediana é `r mediana |> round(2)`.
+* A variância é `r variancia |> round(2)`.
+* O desvio-padrão é `r dp |> round(2)`.
+
+Meta-information
+================
+exname: medidasResumo
+extype: cloze
+exclozetype: num|num|num|num
+exsolution: `r media |> round(2)`|`r mediana |> round(2)`|`r variancia |> round(2)`|`r dp |> round(2)`
+extol: 0.02

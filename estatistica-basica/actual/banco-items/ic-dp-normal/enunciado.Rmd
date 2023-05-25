@@ -1,0 +1,64 @@
+```{r dgp, include = FALSE}
+library(exams)
+library(writexl)
+library(knitr)
+library(statBasics)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+
+# tamanho da amostra
+tam <- sample(50:1500, 1)
+
+# Média da população
+media <- runif(1, 10, 20)
+# desvio padrão da população
+dp <- runif(1, 3, 4)
+
+# coeficiente de confiança
+g <- runif(1, 0.9, 0.99) |> round(2)
+
+# amostra da distribuição normal
+amostra <- rnorm(tam, media, dp)
+write_xlsx(tibble(x = amostra), "dados.xlsx")
+
+ic <- ci_1pop_norm(amostra, conf_level = g, parameter = "variance")
+
+sol <- c(
+    ic$lower_ci,
+    ic$upper_ci
+) |> round(2)
+
+f <- function(x) format(x, decimal.mark = ",")
+```
+
+Question
+========
+
+Seja X uma variável aleatória contínua com distribuição normal e uma amostra com `r tam` observações está salva no arquivo [dados.xlsx](dados.xlsx). Construa um intervalo de confiança para &sigma;^2^. Use &#120574;=`r format(100 * g, decimal.mark = ",")`%.
+
+**Resposta:** IC(&sigma;^2^, `r format(100 * g, decimal.mark = ",")`%) = (\#\#ANSWER1\#\#; \#\#ANSWER2\#\#).
+
+Questionlist
+------------
+* 
+* 
+
+Solution
+========
+
+**Resposta:** IC(&sigma;^2^, `r format(100 * g, decimal.mark = ",")`%) = (`r f(sol[1])`; `r f(sol[2])`).
+
+Solutionlist
+------------
+
+*
+*
+
+Meta-information
+================
+exname: proporcao_0_1
+extype: cloze
+exclozetype: num|num
+exsolution: `r sol[1]`|`r sol[2]`
+extol: 0.05

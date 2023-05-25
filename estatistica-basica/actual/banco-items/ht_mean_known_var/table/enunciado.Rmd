@@ -1,0 +1,126 @@
+```{r, label="Simulação de dados", include=F}
+library(exams)
+library(glue)
+library(magrittr)
+library(readxl)
+library(writexl)
+library(knitr)
+library(truncnorm)
+library(statBasics)
+library(gt)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+# set.seed(123456)
+
+# tamanho da amostra
+tam <- sample(100:500, 1)
+# desvio padrão da população
+dp_pop <- runif(1, 2, 5) |> round(2)
+# m_0
+m_0 <- runif(1, 10, 15) |> round(2)
+# m_1
+media_pop <- runif(1, 10, 15)
+# amostra
+amostra <- rnorm(tam, media_pop, dp_pop)
+# nível de significância
+g <- runif(1, 0.01, 0.1) |> round(2)
+
+# ajuste
+fit_correto <- ht_1pop_mean(amostra, mu = m_0, sd_pop = dp_pop, sig_level = g)
+fit_less <- ht_1pop_mean(amostra, mu = m_0, sd_pop = dp_pop, sig_level = g, alternative = "less")
+fit_greater <- ht_1pop_mean(amostra, mu = m_0, sd_pop = dp_pop, sig_level = g, alternative = "greater")
+
+sol <- c(
+    fit_correto$statistic,
+    fit_correto$p_value
+) |> round(2)
+
+decisao <- ifelse(
+    fit_correto$p_value < g,
+    "rejeitamos a hipótese nula.",
+    "não rejeitamos a hipótese nula."
+)
+
+f <- \(x) format(x, decimal.mark = ",")
+```
+
+Question
+========
+
+Suponha que um pesquisador precisa decidir entre as hipóteses H~0~: &mu; = `r f(m_0)` contra H~1~: &mu; &#8800; `r f(m_0)`. Algumas informações sobre este teste de hipóteses está na tabela abaixo. Complete e assinale corretamente as informações.
+
+```{r, label="tabela hipóteses", echo=F}
+tab <- tibble(
+    sig = g,
+    tam = tam,
+    media_sample = mean(amostra) |> round(6),
+    dp_pop = dp_pop,
+    estatistica = "?",
+    valor_p = "?",
+    regiao_critica = "?",
+    decisao = "?"
+)
+gt(tab) |>
+    tab_header(title = "Algumas informações sobre teste de hipóteses.") |>
+    fmt_number(
+        columns = media_sample,
+        sep_mark = ".",
+        dec_mark = ",",
+        decimals = 6
+    ) |>
+    fmt_number(
+        columns = sig,
+        decimals = 2,
+        sep_mark = ".",
+        dec_mark = ","
+    ) |>
+    cols_label(
+        sig = "Nível de significância",
+        tam = "Tamanho da amostra",
+        dp_pop = "Desvio padrão da população",
+        media_sample = "Média da amostra",
+        estatistica = "Estatística de teste",
+        valor_p = "Valor-p",
+        regiao_critica = "Região crítica",
+        decisao = "Decisão"
+    ) |>
+    fmt_number(
+        columns = dp_pop,
+        decimals = 2,
+        sep_mark = ".",
+        dec_mark = ","
+    )
+```
+
+Questionlist
+------------
+
+* A estatística de teste (z~0~) é:
+* O valor-p é:
+* A região crítica é dada por: `r fit_correto$critical_region`.
+* A região crítica é dada por: `r fit_less$critical_region`.
+* A região crítica é dada por: `r fit_greater$critical_region`.
+* Ao nível de significância &alpha; = `r g`, não rejeitamos a hipótese nula.
+* Ao nível de significância &alpha; = `r g`, rejeitamos a hipótese nula.
+
+Solution
+========
+Solutionlist
+------------
+
+* A estatística de teste (z~0~) é: `r sol[1]`.
+* O valor-p é: `r sol[2]`.
+* A região crítica é dada por: `r fit_correto$critical_region`.
+* 
+* 
+* `r ifelse(fit_correto$p_value < g, glue("Falso, pois ao nível de significância &gamma; = {g}, rejeitamos a hipótese nula."), "Verdadeiro.")`
+* `r ifelse(fit_correto$p_value < g, "Verdadeiro.", glue("Falso, pois ao nível de significância &gamma; = {g}, rejeitamos a hipótese nula."))` 
+
+Meta-information
+================
+exname: testeZ
+extype: cloze
+exsolution: `r sol[1]`|`r sol[2]`|100|`r ifelse(fit_correto$p_value < g, "01", "10")`
+exclozetype: num|num|schoice|mchoice
+extol: 0.02

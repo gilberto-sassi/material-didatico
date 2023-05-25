@@ -1,0 +1,22 @@
+---
+title: "ANOVA"
+output: bookdown::html_notebook2
+editor_options: 
+  chunk_output_type: console
+---
+
+## used packages
+
+```{r}
+library(openxlsx)
+library(readxl)
+library(writexl)
+library(latex2exp)
+library(xtable)
+library(measurements)
+library(tidyverse)
+
+```
+
+
+

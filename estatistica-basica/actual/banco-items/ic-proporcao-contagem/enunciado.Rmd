@@ -1,0 +1,52 @@
+```{r dgp, include = FALSE}
+library(exams)
+library(magrittr)
+library(readxl)
+library(writexl)
+library(knitr)
+library(statBasics)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+# tamanho da amostra
+tam <- 2500:3500 |> sample(1)
+
+# proporção de sucesso
+p <- runif(1, min = 0.25, 0.75) |> round(2)
+
+# coeficiente de confiança
+g <- runif(1, 0.9, 0.99) |> round(2)
+
+# amostra da distribuição normal
+contagem <- rbinom(1, tam, p)
+
+ic <- ci_1pop_bern(contagem, tam, conf_level = g) |>
+    round(2)
+```
+
+Question
+========
+
+Um instituto de pesquisa entrevistou `r tam` eleitores e `r contagem` eleitores afirmaram que votariam no candidato A. Construa intervalo de confiança para a proporção de pessoas que votam no candidato A. Use &#120574;=`r format(100 * g, decimal.mark = ",")`%.
+
+**Resposta:** IC(&#956;, `r format(100 * g, decimal.mark = ",")`\%) = (\#\#ANSWER1\#\#; \#\#ANSWER2\#\#).
+
+Questionlist
+------------
+* 
+* 
+
+Solution
+========
+Solutionlist
+------------
+* O limite inferior do intervalo de confiança com coeficiente de confiança `r format(100 * g, decimal.mark = ",")`% é `r format(ic$lower_ci, decimal.mark = ",")`.
+* O limite superior do intervalo de confiança com coeficiente de confiança `r format(100 * g, decimal.mark = ",")`% é `r format(ic$upper_ci, decimal.mark = ",")`.
+
+Meta-information
+================
+exname: icNormalDP_conhecido
+extype: cloze
+exclozetype: num|num
+exsolution: `r ic$lower_ci`|`r ic$upper_ci`
+extol: 0.05

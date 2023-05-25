@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(tidyverse)\n\ndados <- tibble(x = c('Ensino fundamental',\n                      'Ensino médio',\n                      'Ensino superior'),\n                y = c(12,18,6))\n\n\nggplot(data = dados)+\n  geom_bar(mapping = aes(x=x, y = y), stat = 'identity') +\n  xlab('Escolaridade') +\n  ylab('Frequência')\nggsave('escolaridade.png')\n\n\n\nbp<- ggplot(dados, aes(x=\"\", y=y, fill=x))+\n  geom_bar(width = 1, stat = \"identity\")+\n  coord_polar(\"y\", start=0) +\n  xlab('') + ylab('') +\n  scale_fill_manual(values=c(\"#999999\", \"#E69F00\", \"#56B4E9\"), \n                    name=\"Escolaridade\")\nggsave('setores_escolaridade.png')\n\ntibble(x = 0:5,\n       y = c(20,5,7,3,0,1)) %>%\n  ggplot()+\n  geom_bar(mapping = aes(x=x, y=y), stat = 'identity')+\n  xlab('Número de filhos')+\n  ylab('Frequência')\nggsave('numero_filhos.png')\n\ntibble(x = c(6,10,14,18,22), y = c(10,12,8,5,1)) %>%\n  ggplot()+\n  geom_bar(mapping = aes(x=x, y = y), stat = 'identity')+\n  xlab('Salário')+\n  ylab('Frequência')\nggsave('salario_bar.png')\n\nread_delim('tabela21.csv',delim = ';') %>%\n  ggplot() +\n  geom_histogram(mapping = aes(x = salario, y = ..density..), breaks=c(4,8,12,16,20,24))+\n  xlab('Salário') +\n  ylab('Densidade de frequência')\nggsave('histograma.png')\n",
+    "created" : 1523320549823.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "755312368",
+    "id" : "489245D5",
+    "lastKnownWriteTime" : 1523322523,
+    "last_content_update" : 1523322523538,
+    "path" : "~/Dropbox/1sem_2018/MATD03T01/slides/aula_1/graficos_aula_1/graficos.R",
+    "project_path" : "graficos.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

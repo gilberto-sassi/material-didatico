@@ -1,0 +1,56 @@
+```{r, label="Simulação de dados", include=F}
+library(exams)
+library(magrittr)
+library(readxl)
+library(writexl)
+library(knitr)
+library(truncnorm)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+# proporção de sucesso
+p <- runif(1, min = 0.25, max = 0.75) |> round(2)
+# número de casos
+casos <- sample(5:10, 1, replace = F)
+# n0
+n0 <- sample(0:5, 1)
+# n1
+n1 <- sample(5:7, 1)
+
+sol <- c(
+    pbinom(n0, casos, p),
+    1 - pbinom(n1, casos, p),
+    casos * p,
+    casos * p * (1 - p)
+) |> round(2)
+```
+
+Question
+========
+
+Seja X uma variável aleatória discreta com distribuição binomial com `r casos` casos e probabilidade de sucesso `r p`. Responda cada uma das perguntas abaixo:
+
+
+Questionlist
+------------
+* P(X &#10877; `r n0`): 
+* P(X > `r n1`): 
+* A média (da população) é: 
+* A variância (da população) é:
+
+Solution
+========
+Solutionlist
+------------
+* P(X &#10877; `r n0`): `r sol[1]`
+* P(X > `r n1`): `r sol[2]` 
+* A média (da população) é: `r sol[3]` 
+* A variância (da população) é: `r sol[4]`
+
+Meta-information
+================
+exname: binom
+extype: cloze
+exclozetype: num|num|num|num
+exsolution: `r paste0(sol, collapse = "|")`
+extol: 0.02

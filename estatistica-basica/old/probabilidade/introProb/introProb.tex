@@ -1,0 +1,682 @@
+\documentclass[9pt]{beamer}
+
+%%pacotes referentes ao Beamer
+%\useoutertheme{split}
+%\setbeamertemplate{navigation symbols}{}
+
+%\usetheme{beamertheme}
+%\usebeamercolor{beamer-color name}
+
+%\usetheme{Boadilla}
+%\usecolortheme{dove}
+
+\usetheme{CambridgeUS}
+\usecolortheme{beaver}
+
+% \usetheme{pittsburgh}
+% \usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{seahorse}
+
+%\usetheme{Montpellier}
+
+%number in figures an tables -- beamer
+\setbeamertemplate{caption}[numbered]
+
+%Colocar no description
+%[leftmargin=!,labelwidth=\widthof{Turma A}]
+	
+%pacotes usuais do latex
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage[round]{natbib}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{natbib}
+\usepackage{times}
+\usepackage{calc} %computes the length of a string
+\usepackage{dsfont} %pacote para o 1 estilisado para indicadora
+\usepackage{enumerate} %permite fazer uns enumerates diferentes
+\usepackage[font=small,labelfont=bf]{caption} %permite colocar um segundo caption
+\usepackage{booktabs} % comando \toprule, \midrule e \bottomrule
+\usepackage{times} %times new roman font
+\usepackage{multirow} %comando \multirow
+\usepackage{setspace}
+\usepackage{xcolor} %texto colorido
+\usepackage{booktabs} %costumized tabs
+\usepackage{color}
+
+
+%código para alinhar a esquerda os itens no description
+\defbeamertemplate{description item}{align left}{\insertdescriptionitem\hfill}
+\defbeamertemplate{enumerate item}{align left}{\insertdescriptionitem\hfill}
+
+
+
+%AMS packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+%Não quebre linhas
+\binoppenalty=\maxdimen
+\relpenalty=\maxdimen
+
+%Comandos criados por mim
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+
+\DeclareMathOperator{\espe}{E}
+
+\DeclareMathOperator{\spann}{span}
+
+\DeclareMathOperator{\cov}{Cov}
+
+\DeclareMathOperator{\vari}{Var}
+
+%Informações para o primeiro slide
+\date{}
+\title[Probabilidade]{Conceitos iniciais de probabilidade}
+\author[Gilberto Sassi]{Gilberto Pereira Sassi}
+\institute[IME -- UFBA]{Universidade Federal da Bahia \\ Instituto de Matem\'{a}tica e Estat\'{i}stica\\ Departamento de Estat\'{i}stica }
+
+\begin{document}
+	
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex]
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+minimum height=2em]
+	
+\begin{frame}{}
+	\maketitle
+\end{frame}
+
+\section{Introdução: fenômeno aleatório, espaço amostral e evento.}
+%Slide 1
+\begin{frame}{}
+ \begin{block}{Objetivo}
+  Apresentar a teoria matemática para avaliar/estimar/decidir usando as Informações disponíveis.
+ \end{block}
+
+ \begin{block}{Definição}
+  \begin{enumerate}
+   \item \textbf{Fenômeno aleatório}: situações ou acontecimentos que não podem ser previstos com certeza. Por exemplo: condições climáticas em dois dias;
+   \item \textbf{Espaço amostral}: conjunto de todos os resultados possíveis de um fenômeno aleatório. 
+   
+   Por exemplo: $\Omega = \{\mbox{cara}, \mbox{coroa}\}$ no lançamento de uma moeda;
+   \item Os elementos de $\Omega$ são denominados de \textbf{pontos amostrais} e usamos a letra grega $\omega$ para representá-lo;
+   \item \textbf{Eventos}: subconjuntos de $\Omega$. Representamos eventos por letras do alfabeto latino em maiúsculas.
+   
+   Por exemplo: Em um lançamento de dado, o espaço amostral é $\Omega = \{1,2,3,4,5,6\}$ e podemos considerar o evento $A = \{\mbox{A face é par}\}$.
+  \end{enumerate}
+ \end{block}
+
+\end{frame}
+
+%Slide 2
+\begin{frame}{Eventos}
+% \begin{block}{Definição}
+% 	\textbf{Evento}: Subconjunto do espaço amostral $\Omega$. Representamos eventos por letras do alfabeto latino em maiúsculas.
+% \end{block}
+
+\begin{block}{Operação com eventos}
+	\begin{enumerate}[i.]
+		\item \textbf{União}: $A \cup B = \{\omega \in \Omega \mid \omega \in A \mbox{ ou } \omega \in B \}$;
+		\item \textbf{Intersecção:} $A \cap B = \{ \omega \in \Omega \mid \omega \in A \mbox{ e } \omega \in B \}$;
+		\item \textbf{Complementação:} $A^c =\{ \omega \in \Omega \mid \omega \not\in A \}$;
+		\item Se $A \cap B = \emptyset$, então $A$ e $B$ são disjuntos;
+		\item Se $A \cap B = \emptyset$ e $A \cup B = \Omega$, então $A$ e $B$ são complementares.
+	\end{enumerate}
+\end{block}
+
+\begin{block}{Probabilidade de eventos}
+	O objetivo  da teoria de probabilidade é atribuir um valor entre 0 e 1 que corresponde a chance do evento $A$ ocorrer. Este valor é chamado de probabilidade e é denotado por $P(A)$.
+\end{block}
+\end{frame}
+
+%Slide 3
+\begin{frame}{Probabilidade}
+
+	{
+	\begin{block}{Definição}
+		Uma função $P(\cdot)$ é denominada de probabilidade se satisfaz as seguintes condições:
+		\begin{enumerate}[i.]
+			\item $0 \leq P(A) \leq 1$ para todos os eventos $A \subset \Omega$;
+			\item $P(\Omega)=1$ e $P(\emptyset)=0$;
+			\item $P\left(A_1 \cup A_2 \cup \dots \cup A_n \right) = P(A_1) + P(A_2) + \dots + P(A_n)$ se $A_i$ e $A_j$ são disjuntos. 
+		\end{enumerate}
+		\textbf{Observação: } Note que $n$ em {\color{blue} iii.} pode ser infinito.
+	\end{block}
+	
+	\begin{block}{Observação}
+	 Note que $A\cup A^c = \Omega$ e $A \cap A^c =\emptyset $, então, usando o item {\color{blue} iii.}  da definição de probabilidade, temos que
+		\begin{align*}
+		P(\Omega) &= 1 = P(A \cup A^c) = P(A) + P(A^c)
+		\end{align*}
+		e, consequentemente, $P(A^c) = 1 - P(A)$.
+	\end{block}
+
+	}
+\end{frame}
+
+%slide 4
+\section{Maneira de construir probabilidade}
+\subsection{Princípio da equiprobabilidade}
+\begin{frame}{Princípio da equiprobabilidade}
+	\begin{block}{Princípio da equiprobabilidade}
+		Quando as características de um fenômeno aleatório sugerem $N$ resultados possíveis, todos com igual probabilidade de ocorrer, a probabilidade de um evento $A$, com $n$ pontos amostrais, é dada por
+		\begin{align*}
+		P(A) = \dfrac{n}{N}.
+		\end{align*}
+	\end{block}
+	\begin{block}{Exemplo}
+		\textbf{Fenômeno aleatório}: Lançamento de dados junto. Então
+		\begin{itemize}
+			\item \textbf{espaço amostral}: $\Omega = \{ 1, 2, 3, 4, 5, 6 \}$;
+			\item \textbf{Evento}: $A = \{\mbox{face par}\} = \{2, 4, 6\}$;
+			\item Usando o princípio da equiprobabilidade, temos que $P(A) = \dfrac{3}{6} = 0,5$.
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+%slide 5
+\subsection{Probabilidade frequentista}
+\begin{frame}{Probabilidade frequentista}
+
+{\scriptsize
+	\begin{block}{Probabilidade frequentista}
+		Considere um evento $A$ de um fenômeno aleatório e assuma que podemos realizar várias vezes esse fenômeno. Sejam
+		\begin{description}
+		 \item[$N$] Número de repetições do fenômenos aleatório;
+		 \item[$n$] Número de vezes que o evento $A$ foi resultado do fenômeno aleatório.
+		\end{description}
+		Então, a probabilidade do evento $A$ é $P(A)=\dfrac{n}{N}$.
+
+	\end{block}
+	\begin{block}{Exemplo}
+		\begin{enumerate}[i.]
+			\item \textbf{Fenômeno aleatório:} lançamento de um dado;
+			\item Suponha que um indivíduo repetiu esse fenômeno aleatório 100.000 vezes 
+			\scriptsize{
+			\begin{table}[ht]
+				\centering
+				\begin{tabular}{l|c|c|c}
+					\toprule[0.05cm]
+					Face & Frequência & Proporção & Porcentagem \\ 
+					\midrule[0.05cm]
+					1 & 16665 & 0,1666 & 16,66\% \\ 
+					2 & 16622 & 0,1662 & 16,62\% \\ 
+					3 & 16835 & 0,1683 & 16,83\% \\ 
+					4 & 16545 & 0,1655 & 16,54\% \\ 
+					5 & 16631 & 0,1663 & 16,63\% \\ 
+					6 & 16702 & 0,1670 & 16,70\% \\ 
+					\midrule[0.05cm]
+					Total & 100.000 & 1,0000 & 100,00\% \\
+					\bottomrule[0.05cm]
+				\end{tabular}
+			\end{table}
+			}
+		\item $P(A) = \dfrac{16.622+16.545+16.702}{100.000} = \dfrac{49.869}{100.000} = 0,4987$, em que $A=\{\mbox{face par}\}=\{2,4,6\}$.
+		\end{enumerate}
+		
+	\end{block}
+}
+\end{frame}
+
+%slide 6
+\subsection{Probabilidade subjetiva}
+\begin{frame}{Probabilidade subjetiva}
+	\begin{block}{Probabilidade subjetiva}
+		O pesquisador utiliza sua experiência, seu conhecimento e sua cognição para determinar a probabilidade de um evento ocorrer.
+	\end{block}
+	\begin{block}{Exemplo}
+		Um especialista em conflitos armados pode atribuir um valor entre 0 e 1 para a tensão entre a Irã e os Estados Unidos se escalar até a guerra total.
+	\end{block}
+	\begin{block}{Exemplo}
+		Um médico pode atribuir uma medida entre 0 e 1 para a plausibilidade de um paciente se recuperar completamente.
+	\end{block}
+\end{frame}
+
+%slide 7
+\subsection{Suposição teórica}
+\begin{frame}{Suposição teórica}
+
+	\huge{
+	\begin{block}{Suposição teórica}
+		Supomos um modelo matemático para a probabilidade dos eventos de um fenômeno aleatório com notação matemática $P_\theta(\cdot)$, em que $\theta$ é um valor real inferido usando a amostra, como veremos nas próximas aulas.
+	\end{block}
+	}
+\end{frame}
+
+%slide 8
+\section{Propriedades de probabilidade}
+\subsection{Regra da adição de probabilidades}
+\begin{frame}{}
+\begin{block}{Regra da adição de probabilidades}
+	$P(A \cup B) = P(A) + P(B) - P(A \cap B) $
+\end{block}
+\begin{block}{Exemplo}
+	Considere os calouros de engenharia divididos em duas turmas:
+	{\scriptsize
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{l|cc|c}
+			\toprule[0.05cm]
+			\multirow{2}{*}{Sexo} & \multicolumn{2}{|c|}{Turma} & \multirow{2}{*}{Total} \\ \cmidrule{2-3}
+			 & A & B &  \\ 
+			\midrule[0.05cm]
+			F & 21 & 16 & 37 \\ 
+			M & 5 & 8 & 13 \\ \midrule[0.05cm] 
+			Total & 26 & 24 & 50 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+	\end{table}
+	}
+
+
+	\begin{enumerate}[i.]
+		\item \textbf{Fenômeno aleatório}: Selecione ao acaso um calouro;
+		\item \textbf{Eventos}: $F=\{\mbox{Calouro do sexo feminino}\}$ e $\{\mbox{Calouro da turma B}\}$
+		\item Usando princípio da equiprobabilidade: $P(F)=\dfrac{37}{50}$, $P(B)=\dfrac{24}{50}$ e $P(F \cap B) = \dfrac{16}{50}$;
+		\item Usando a regra da adição: $P(F \cup B) = P(B) + P(F)  - P(B \cap F) = \dfrac{37+24-16}{50}= 0,9$.
+	\end{enumerate}
+\end{block}
+\end{frame}
+
+%slide 9
+\section{Probabilidade condicional e independência}
+\begin{frame}{Probabilidade condicional e independência}
+
+{\small
+\begin{block}{Ideia}
+	Alguns fenômenos aleatórios podem acontecer ou ser estudados em etapas. A informação do que ocorreu em um determinada etapa pode influenciar nas probabilidades de ocorrência das etapas sucessivas.
+\end{block}
+
+\begin{block}{Definição}
+	
+	\begin{itemize}
+		\item Se $P(B)>0$, então $P(A \mid B) = \dfrac{P(A \cap B)}{P(B)}$;
+		\item Se $P(B)=0$, então $P(A \mid B) = P(A)$.
+	\end{itemize}
+\end{block}
+
+\begin{block}{Observação}
+
+Pela definição de probabilidade condicional, temos que 
+		$P(A \cap B) = P(A \mid B) P(B) = P(B \mid A) P(A)$.
+
+\end{block}
+}
+\end{frame}
+
+%slide 10
+\begin{frame}{Exemplo - continuação}
+	Sabendo que o calouro de engenharia é do sexo feminino, qual a probabilidade dele ser da turma $A$?
+	\vfill
+	
+	\textbf{Resposta:} 
+	\begin{itemize}
+		\item \textbf{Eventos}: $F = \{\mbox{Calouro do sexo feminino}\}$ e $A=\{\mbox{Calouro da turma A}\}$.
+		\item Usando o princípio da equiprobabilidade, temos que $P(A \cap F) = \dfrac{21}{50}$ e $P(F) = \dfrac{37}{50}$.
+		\item Usando probabilidade condicional, temos que 
+		\begin{align*}
+		P(A \mid F) = \dfrac{P(A \cap F)}{P(F)} = \dfrac{\frac{21}{50}}{\frac{37}{50}} = \dfrac{21}{37} = 0,57.
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+%slide 11
+\begin{frame}{Exemplo}
+
+
+Um restaurante oferece apenas três opções de pratos: salada Caesar,
+prato executivo com carne e prato executivo com peixe. O proprietário sabe que 25\% dos clientes preferem salada Caesar, 40\% dos clientes preferem o prato executivo com carne e 60\% dos 
+clientes são homens. Qual a probabilidade de um cliente escolher um prato executivo com peixe? Sabendo que entre os clientes que preferem o prato executivo com peixe 56\% são mulheres, 
+qual a probabilidade de um homem escolher o prato executivo com peixe?
+
+\end{frame}
+
+%slide 12
+\begin{frame}{Exemplo - Resposta}
+\begin{itemize}
+	\item \textbf{Eventos:} $S = \{\mbox{Cliente prefere salada Caesar}\}$, $C = \{\mbox{Cliente prefere executivo com carne}\}$, $P=\{\mbox{Cliente prefere prato executivo com peixe}\}$, \\
+	$F = \{\mbox{Cliente do sexo feminino}\}$,\\
+	$M=\{\mbox{Cliente do sexo masculino}\}$;
+	\vfill 
+	
+	\item Usando a propriedade iii. da definição de probabilidade, temos que
+	\begin{align*}
+	P(\Omega)= 1 = P(S) + P(C) + P(P) = 0,25 + 0,4 + P(P)
+	\end{align*}
+	e, então, $P(P) = 1 - 0,65 = 0,35$.
+	\vfill
+	
+	\item Usando probabilidade condicional, temos que
+	\begin{align*}
+	P(P \mid M) = \dfrac{P(P \cap M)}{P(M)} = \dfrac{P(M \mid P)P(P)}{P(M)} = \dfrac{0,44 \cdot 0,35}{0,6} = 0,25.
+	\end{align*}
+\end{itemize}
+\end{frame}
+
+%slide 13
+\subsection{Independência de eventos}
+\begin{frame}{Independência de eventos}
+\begin{block}{Ideia}
+	As vezes, a acorrência (ou não) do evento $B$ de um fenômeno aleatório não afeta a ocorrência (ou não) de evento $A$ de um fenômeno aleatório seguinte.
+% 	Pode ocorrer que o resultado anterior de um fenômeno aleatório não altere a probabilidade de um resultado de um fenômeno seguinte.
+	Quando isso ocorre, dizemos que os eventos são independentes.
+\end{block}
+	
+\begin{block}{Definição}
+	Dois eventos são independentes se a informação da ocorrência (ou não) do evento $B$ não altera a probabilidade de $A$, ou seja,
+	\begin{align*}
+	P(A \mid B) = P(A).
+	\end{align*}
+\end{block}
+
+\begin{block}{Observação}
+	Se $A$ e $B$ são independentes, então
+	\begin{align*}
+	P(A \mid B) P(B) = \textcolor{red}{P(A) P(B) = P(A \cap B)} 
+	\end{align*} 
+	e 
+	\begin{align*}
+	\textcolor{red}{P(B \mid A)} = \dfrac{P(A \cap B)}{P(A)} = \dfrac{P(A) P(B)}{P(A)} = \textcolor{red}{P(B)}.
+	\end{align*}
+\end{block}
+
+\end{frame}
+
+%slide 14
+\begin{frame}{Exemplo}
+
+
+Uma empresa produz peças em duas máquinas ($I$ e $II$) que podem apresentar desajustes com probabilidade $0,05$ e $0,10$, respectivamente. 
+No início do dia de operação, um teste é realizado e, caso a máquina esteja desajustada, ela ficará sem operar nesse dia passando por revisão técnica. 
+Suponha que as duas não sofrem interferência uma da outra. Qual a probabilidade de pelo menos uma máquina funcionar? Qual a probabilidade das duas máquinas precisarem de ajuste no mesmo dia?
+
+\end{frame}
+
+%slide 15
+\begin{frame}{Exemplo - solução}
+	\begin{itemize}
+		\item \textbf{Eventos}: $O_1=\{\mbox{Máquina I está desajustada}\}$ e $O_2=\{\mbox{Máquina II está desajustada}\}$;
+		\item \textbf{Probabilidade}: $P(O_1) = 0,05$ e $P(O_2) = 0,1$;
+		\item O evento pelo menos uma máquina funciona é descrito por $O_1^c \cup O_2^c$, isto é,
+		\begin{align*}
+		P[O_1^c \cup O_2^c)] &= P(O_1^c ) + P (O_2^c) + P (O_1^2 \cap O_2^c) \\
+		&= (1-P(O_1))  + (1-P( O_2)) + P(O_1^c) P(O_2^c) \\
+		&=(1-0,05)  + (1-0,1) + (1-0,05) \cdot (1-0,1) = 0,995.
+		\end{align*}
+		\item Note que
+		\begin{align*}
+		P(\Omega) &= 1 =  P\left(\left( O_1^c \cup O_2^c \right)\bigcup \left(O_1^c \cup O_2^c\right)^c\right)\\
+		&= P\left(\left( O_1^c \cup O_2^c \right)\right) + P\left(\left( O_1 \cap O_2 \right)\right)\\
+		\end{align*}
+		e, então, $P(O_1 \cap O_2) = 1 - 0,995 = 0,005$.
+	\end{itemize}	
+\end{frame}
+
+%slide 16
+\subsection{Teorema da probabilidade total}
+
+\begin{frame}{Partição}
+
+
+		Os eventos $C_1, \dots, C_k$ formam uma partição do espaço amostral $\Omega$ se 
+		\begin{enumerate}[i.]
+			\item $C_i \cap C_j= \emptyset$ se $i \neq j$, ou seja, $C_i$ e $C_j$ são disjuntos;
+			\item $C_1 \cup C_1 \cup \dots \cup C_k  =  \Omega$.
+		\end{enumerate}
+		
+	 \begin{figure}[htbp]
+	 \caption{Ilustração de uma partição.}
+	  \begin{tikzpicture}
+	   \draw [thick] (0,0) rectangle (4,4);
+	   \draw (0,2) -- (2, 4);
+	   \draw (0, 2) -- (2, 0);
+	   \draw (2,4) -- (4, 0);
+	   \node [above] at (1,3) {{\scriptsize $C_1$}};
+	   \node [below] at (1,1) {{\scriptsize $C_2$}};
+	   \node [below] at (2,2) {{\scriptsize $C_3$}};
+	   \node [right, above] at (3.5, 3) {{\scriptsize $C_4$}};
+	   \node [left, above] at (3.8,4.2) { $\Omega$};
+	  \end{tikzpicture}
+	 \end{figure}
+\end{frame}
+
+
+\begin{frame}{Teorema da probabilidade total}
+
+	Considere $C_1, C_2, \dots, C_k$ uma partição de $\Omega$ e o eventos $A \subset \Omega$, então
+		\begin{align*}
+		P(A) = P(A \mid C_1) P(C_1) + P(A \mid C_2) P(C_2) + \cdots + P(A \mid C_k) P(C_k).
+		\end{align*}
+
+
+		\begin{figure}[htbp]
+		\caption{Ilustração -- Teorema de probabilidade total.}
+	  \begin{tikzpicture}
+	   \draw [thick] (0,0) rectangle (4,4);
+	   \draw[fill=cyan] (2,2) circle [radius=2];
+	   \node [thick, above, left] at (2,3) {{\huge \color{blue} $A$}};
+	   \draw (0,2) -- (2, 4);
+	   \draw (0, 2) -- (2, 0);
+	   \draw (2,4) -- (4, 0);
+	   \node [above] at (1,3) {{\scriptsize $C_1$}};
+	   \node [below] at (1,1) {{\scriptsize $C_2$}};
+	   \node [below] at (2,2) {{\scriptsize $C_3$}};
+	   \node [right, above] at (3.5, 3) {{\scriptsize $C_4$}};
+	   \node [left, above] at (3.8,4.2) { $\Omega$};
+	  \end{tikzpicture}
+	 \end{figure}
+
+\end{frame}
+
+
+%slide 17
+\begin{frame}{Exemplo}
+
+
+Suponha que um fabricante de sorvetes recebe 20\% de todo o leite que utiliza fazenda $F_1$, 30\% da fazenda $F_2$ e 50\% da fazenda $F_3$. 
+A ANVISA inspecionou as fazendas de surpresa e observou que 20\% do leite produzido por $F_1$ estava adulterado com água, enquanto que $F_2$ e $F_3$ essa era de 5\% e 2\%, respectivamente. 
+Na planta industrial da fabricante de sorvetes, os galões de leite são armazenados sem identificação de origem. Para um galão escolhido ao acaso, qual a probabilidade do leite estar adulterado?
+
+\end{frame}
+
+%slide 18
+\begin{frame}{Exemplo - solução}
+	\begin{itemize}
+		\item \textbf{Eventos}: $A=\{\mbox{Galão adulterado}\}$, $F_1 =\{\mbox{Galão da fazenda }F_1\}$, $F_2 =\{\mbox{Galão da fazenda }F_2\}$ e $F_3 =\{\mbox{Galão da fazenda }F_3\}$;
+		\item \textbf{Probabilidades}:
+		\begin{table}[ht]
+			\begin{tabular}{l|l}
+				\toprule[0.05cm]
+				$P(A \mid F_1) = 0,2$ & $P(F_1) = 0,2$  \\
+				$P(A \mid F_2) = 0,05$ & $P(F_1) = 0,3$  \\
+				$P(A \mid F_3) = 0,02$ & $P(F_3) = 0,5$  \\
+				\bottomrule[0.05cm]
+			\end{tabular}
+		\end{table}
+	\item Usando o teorema da probabilidade total, temos que
+	\begin{align*}
+	P(A) &= P(A \mid F_1) P(F_1) + P(A \mid F_2) P(F_2) + P(A \mid F_2) P(F_3)\\
+	&= 0,2 \cdot 0,2 + 0,05 \cdot  0,3 + 0,02 \cdot 0,5\\
+	&= 0,065.
+	\end{align*}
+	\end{itemize}
+\end{frame}
+
+%slide 19
+\subsection{Teorema de Bayes}
+\begin{frame}{Teorema de Bayes}
+
+{\tiny
+	\begin{block}{Ideia}
+		Conhecendo as probabilidades $P(A \mid B)$, $P(A)$ e $P(B)$, desejamos calcular a probabilidade $P(B \mid A)$. \textbf{Interpretação}: se $A$ é um sintoma e $B$ é um doença, um médico deseja calcular a probabilidade do paciente ter a doença $B$ se o paciente tem o sintoma $A$, isto é, $P(B \mid A)$.
+	\end{block}
+
+	\begin{block}{Teorema de Bayes}
+		Considere $C_1, C_2, \dots, C_k$ uma partição do espaço amostral $\Omega$ e seja $A \subset \Omega$ um evento. Assuma que conhecemos as probabilidades $P(A \mid C_1), P(A \mid C_2), \dots, P(A \mid C_k), P(C_1), P(C_2), \dots, P(C_k)$. Então,
+		\begin{align*}
+		P(C_j \mid A) = \dfrac{P(A \mid C_j)P(C_j)}{P(A \mid C_1)P(C_1)+P(A \mid C_2)P(C_2) + \cdots + P(A \mid C_k)P(C_k)}.
+		\end{align*}
+		 em que $j =1, \dots, k$.
+	\end{block}
+	
+	\begin{block}{Interpretação}
+	 Suponha que $C_1, \dots, C_k$ são defeitos ou falhas que apresentam o mal funcionamento $A$ de um determinado equipamento. 
+	 Assuma que  conhecemos as probabilidades do equipamento com o defeito $C_i$ ter o mal funcionamento $A$:$P(A \mid C_1), \dots, P(A \mid C_k)$ 
+	 e a probabilidade do equipamento ter o defeito $C_i$: $P(C_1), \dots, P(C_k)$. Então, se o equipamento tem o mal funcionamento $A$, ele tem o defeito $C_i$ com probabilidade
+	 \begin{align*}
+	  P(C_i \mid A) = \dfrac{P(A \mid C_i)P(C_i)}{P(A \mid C_1)P(C_1)+P(A \mid C_2)P(C_2) + \cdots + P(A \mid C_k)P(C_k)},
+	 \end{align*}
+	 para $i=1, \dots, k$.
+	\end{block}
+}
+\end{frame}
+
+\begin{frame}{Exemplo}
+
+{\scriptsize
+Suponha que um fabricante de sorvetes recebe 20\% de todo o leite que utiliza fazenda $F_1$, 30\% da fazenda $F_2$ e 50\% da fazenda $F_3$. A ANVISA inspecionou as fazendas de surpresa e observou que 20\% do leite produzido por $F_1$ estava adulterado com água, enquanto que $F_2$ e $F_3$ essa porcentagem era de 5\% e 2\%, respectivamente. Na planta industrial da fabricante de sorvetes, os galões de leite são armazenados sem identificação de origem. A equipe do controle de qualidade testou um galão e verificou que ele está adulterado, qual a probabilidade dele ser proveniente da fazenda $F_1$?
+\vfill
+
+\textbf{Solução:}
+	\begin{itemize}
+	\item \textbf{Eventos}: $A=\{\mbox{Galão adulterado}\}$, $F_1 =\{\mbox{Galão da fazenda }F_1\}$, $F_2 =\{\mbox{Galão da fazenda }F_2\}$ e $F_3 =\{\mbox{Galão da fazenda }F_3\}$;
+	\item \textbf{Probabilidades}:
+	\begin{table}[ht]
+		\begin{tabular}{l|l}
+			\toprule[0.05cm]
+			$P(A \mid F_1) = 0,2$ & $P(F_1) = 0,2$  \\
+			$P(A \mid F_2) = 0,05$ & $P(F_1) = 0,3$  \\
+			$P(A \mid F_3) = 0,02$ & $P(F_3) = 0,5$  \\
+			\bottomrule[0.05cm]
+		\end{tabular}
+	\end{table}
+	\item Usando o Teorema de Bayes, temos que
+	\begin{align*}
+	P(F_1 \mid A) &= \dfrac{ P(A \mid F_1) P(F_1) } {P(A \mid F_1) P(F_1) + P(A \mid F_2) P(F_2)+ P(A \mid F_3) P(F_3)}\\
+	&= \dfrac{0,2 \cdot 0,2}{0,2 \cdot 0,2 + 0,05 \cdot 0,3 + 0,02 \cdot 0,5} = 0,62.
+	\end{align*}
+	\end{itemize}
+}
+\end{frame}
+
+% \section{Aplicações do Teorema de Bayes à Saúde}
+% 
+% 
+% \begin{frame}{Alguns Conceitos Básicos}
+% 
+% {\small
+% Um importante problema na área de saúde concerne o resultado de testes de diagnóstico e a probabilidade do paciente estar doente. Considere os eventos $D=\{\mbox{Paciente está doente}\}$ e $P=\{\mbox{O exameu deu positivo para doença.}\}$. Note que o exame pode errar e temos os seguintes conceitos:
+% \begin{itemize}
+% 	\item \textbf{Valor Preditivo Positivo:} Probabilidade do paciente ter a enfermidade dado que o exame deu positivo -- $P(D \mid P)$;
+% 	\item \textbf{Valor Preditivo Negativo:} Probabilidade do paciente não ter a doença dado que o exame deu negativo -- $P(D^c \mid P^c)$;
+% 	\item {\bf Sensibilidade: } Probabilidade do exame dar positivo dado que o paciente está doente -- $P(P \mid D)$;
+% 	\item {\bf Especificidade: } Probabilidade do exame dar negativo dado que o paciente não está doente -- $P(P^c \mid D^c) $;
+% 	\item {\bf Falso Positivo: } O exame deu positivo, mas a pessoa não tem a doença -- $P(P \mid D^c)$;
+% 	\item {\bf Falso Negativo: } O exame deu negativo, mas a pessoa está doente -- $P(P^c \mid D)$;
+% \end{itemize}
+% 
+% }
+% \end{frame}
+% 
+% \begin{frame}{Alguns conceitos básicos -- continuação}
+% \begin{block}{Observação}
+% 	\begin{itemize}
+% 		\item A sensibilidade e a especificidade devem ser altos para um exame ser efetivamente preditivo da doença;
+% 		\item Podemos substituir a palavra ``exame'' por ``sintoma'';
+% 		\item Note que
+% 		\begin{align*}
+% 		&\mbox{Sensibilidade} + \mbox{Falso negativo} = 1,\\
+% 		&\mbox{Especificidade} + \mbox{Falso positivo} = 1;
+% 		\end{align*}
+% % 		$1-P(\{\mbox{Falso Negativo}\}) = \mbox{Sensibilidade}$, e $1-P(\{\mbox{Falso Positivo}\}) = \mbox{Especificidade}$.
+% 	\end{itemize}
+% \end{block}
+% 
+% \begin{block}{Sensibilidade, Especificidade, Falso Positivo e Falso Negativo}
+% \begin{figure}[htbp]
+%  \centering
+%  \begin{tikzpicture}[scale = 0.25]
+%   \draw (0,0) -- (3,2); 
+%   \draw (0,0) -- (3,-2);
+%   \node[right] at (3,2) {$D$};
+%   \node[right] at (3,-2) {$D^c$};
+%   \draw (5,2) -- (9,3.5);
+%   \draw (5,2) -- (9,0.9);
+%   \node[right] at (9,3.5) {$P$ -- Sensibilidade};
+%   \node[right] at (9,0.9) {$P^c$ -- Falso Negativo};
+%   \draw (5,-2) -- (9,-0.9);
+%   \draw (5,-2) -- (9,-3.5);
+%   \node[right] at (9,-0.9) {$P$ -- Falso Positivo};
+%   \node[right] at (9,-3.5) {$P^c$ -- Especificidade};
+%  \end{tikzpicture}
+% \end{figure}
+% 
+%  
+% \end{block}
+% 
+%  
+% \end{frame}
+% 
+% 
+% %slide 20
+% \begin{frame}{Exemplo}
+% 
+% {\small 
+% A prevalência do vírus HIV no Brasil é estimada em  1\% da sua população. Suponha que o governo federal desenvolveu um novo exame que tem probabilidade 1\% de \textit{Falso Negativo} e probabilidade 2\% de \textit{Falso Positivo} para ser usado no SUS. Calcule a especificidade, sensibilidade, valor preditivo negativo e o valor preditivo positivo.
+% \vfill
+% 
+% \textbf{Solução:} Do enunciado, sabemos que $P(D)=0,01$, $P(P \mid D^c) = 0,02$ e $P(P^c \mid D) = 0,01$, em que $D=\{\mbox{Paciente está infectado com HIV}\}$ e $P=\{\mbox{O exame deu positivo para HIV}\}$.
+% \begin{itemize}
+%  \item \textbf{Especificidade}: $P(P^c \mid D^c) = 1 - P(P \mid D^c) = 1-0,02=0,98$;
+%  \item \textbf{Sensibilidade}: $P(P \mid D) = 1 - P(P^c \mid D) = 1-0,01=0,99$;
+%  \item \textbf{Valor Preditivo Negativo: } Desejamos calcular $P(D^c \mid P^c)$. Usando o teorema de Bayes, temos que
+%  \begin{align*}
+%   P(D^c \mid P^c) &= \dfrac{P(P^c \mid D^c)P(D^c)}{P(P^c \mid D^c)P(D^c) +P(P^c \mid D)P(D)}\\
+%   &= \dfrac{0,98 \cdot (1-0,0,1)}{0,98 \cdot (1-0,01) + 0,01 \cdot 0,01} = 0,98
+%  \end{align*} 
+%  \item \textbf{Valor Preditivo Positivo: } Desejamos calcular $P(D \mid P)$. Usando o teorema de Bayes, temos que
+%  \begin{align*}
+%   P(D \mid P) &= \dfrac{P(P \mid D)P(D)}{P(P \mid D)P(D)+ P(P \mid D^c)P(D^c)}\\
+%   &= \dfrac{0,99 \cdot 0,01}{0,99 \cdot 0,01 + 0,02 \cdot (1-0,01)} = 0,33
+%  \end{align*}
+% 
+% \end{itemize} 
+% 
+% }
+% \end{frame}
+% % 
+% % \section{Exercícios em sala de aula}
+% % %slide 21
+% % \begin{frame}{Exercícios}
+% % 	\begin{enumerate}[1)]
+% % 	\item Das pacientes de uma Clínica de Ginecologia com idade acima de 40 anos, $60\%$ são ou foram casadas e $40\%$ são solteiras. Sendo solteira, a probabilidade de ter distúrbio hormonal no último ano é de $10\%$, enquanto que para as demais essa probabilidade aumenta para $30\%$. Pergunta-se:
+% % 	\begin{enumerate}[a)]
+% % 	 \item Qual a probabilidade de uma paciente escolhida ao acaso ter tido um distúrbio hormonal?
+% % 	 \item Se a paciente sorteada tiver distúrbio hormonal, qual a probabilidade de ser solteira?
+% % 	 \item Se escolhermos duas pacientes ao acaso e com reposição, qual é a probabilidade de pelo menos uma ter o distúrbio?
+% % 	\end{enumerate}
+% % 	\item Numa certa população, a probabilidade de gostar de teatro é $\frac{1}{3}$, enquanto que a de gostar de cinema é $\frac{1}{2}$. Determine a probabilidade de gostar de teatro e não de cinema, nos seguintes casos:
+% % 	\begin{enumerate}[a)]
+% % 	 \item Gostar de teatro e de cinema são eventos disjuntos;
+% % 	 \item Gostar de teatro e de cinema são eventos independentes;
+% % 	 \item Todos que gostam de teatro gostam de cinema;
+% % 	 \item A probabilidade de gostar de teatro e cinema é $\frac{1}{8}$.
+% % 	\end{enumerate}	
+% % 	\item Um médico desconfia que um paciente tem tumor no abdômen, pois isto ocorreu em $70\%$ dos casos similares que tratou. Se o paciente de fato tiver o tumor, o exame ultra-som detectará com probabilidade de 0,9. Entretanto, se ele não tiver o tumor, o exame pode, erroneamente, indicar que tem com probabilidade 0,1. Se o exame detectou um tumor, qual é a probabilidade do paciente tê-lo de fato?
+% % 
+% % 	\end{enumerate}
+% % \end{frame}
+\end{document}

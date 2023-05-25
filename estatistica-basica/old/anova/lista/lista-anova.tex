@@ -1,0 +1,336 @@
+\documentclass[11pt, a4paper]{article}
+
+%encoding
+%--------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%--------------------------------------
+
+%Portuguese-specific commands
+%--------------------------------------
+\usepackage[portuguese]{babel}
+%--------------------------------------
+
+
+%hyphenation
+\input{../../hyphen/hyphen.tex}
+
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{graphicx}
+
+\usepackage{geometry}
+\geometry{margin=0.25in, bottom = 0.45in, top = 0.25in}
+
+
+\begin{document}
+
+\begin{center}
+Universiadade Federal da Bahia\\
+Instituto de Matemática e Estatística\\
+Prof. Dr. Gilberto Pereira Sassi\\
+\vspace{1cm}
+Lista de exercícios -- ANOVA.
+\vspace{1cm}
+\end{center}
+
+\begin{enumerate}
+	\item[] Em alguns casos desta lista de exercícios, você vai precisar alguma ferramenta computacional como o \texttt{R}, \texttt{Python} e afins.
+	
+	\item Considere as informações de um estudo completamente aleatório e balanceado com um fator da Tabela~\ref{tab:anova-ex1}.
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|c|c|c|c}
+			\toprule[0.05cm]
+			Fonte de variação & Graus de liberdade & Soma de quadrados & Quadrados médios & $F_0$\\ \midrule[0.025cm]
+			Tratamentos & & $117,4$ & $39,1$ & \\ \midrule[0.025cm]
+			Erro & $16$ & $396,8$ & &  $-$\\ \midrule[0.025cm]
+			Total & $19$ & $514,2$ & $-$ & $-$ \\
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Tabela ANOVA}
+		\label{tab:anova-ex1}
+	\end{table}
+	\begin{enumerate}
+		\item Quantos tratamentos foram usados neste experimento?
+		\item Quantas replicações em cada tratamento?
+		\item Complete as informações na Tabela~\ref{tab:anova-ex1}. 
+		\item Os efeitos nos tratamentos são diferentes? Use $\alpha=5\%$. 
+		\item Calcule uma estimativa para $\sigma^2$.
+		\item Calcule um intervalo de confiança para cada tratamento com coeficiente de confiança $\gamma=95\%$.
+		\item Calcule um intervalo de confiança para cada diferença das médias de tratamento com coeficiente de confiança com coeficiente de confiança $\gamma=99\%$.
+	\end{enumerate}
+
+	\item Considere algumas informações de um experimento completamente aleatório e balanceado com um fator da Tabela~\ref{tab:anova-ex2}.
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|c|c|c|c}
+			\toprule[0.05cm]
+			Fonte de variação & Graus de liberdade & Soma de quadrados & Quadrados médio & $F_0$ \\ \midrule[0.025cm]
+			Tratamentos & $3$  & & $330,4716$ & $4,42$ \\
+			\midrule[0.025cm]
+			Erro & & &  & $-$\\ \midrule[0.025cm]
+			Total & $31$ &  & $-$ & $-$\\
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Tabela ANOVA.}
+		\label{tab:anova-ex2}
+	\end{table}
+	\begin{enumerate}
+		\item Quantos tratamentos foram usados neste experimento?
+		\item Quantas replicações em cada tratamento?
+		\item Complete as informações na Tabela~\ref{tab:anova-ex2}. 
+		\item Os efeitos nos tratamentos são diferentes? Use $\alpha=5\%$. 
+		\item Calcule uma estimativa para $\sigma^2$.
+		\item Calcule um intervalo de confiança para cada tratamento com coeficiente de confiança $\gamma=95\%$.
+		\item Calcule um intervalo de confiança para cada diferença das médias de tratamento com coeficiente de confiança com coeficiente de confiança $\gamma=99\%$.
+	\end{enumerate}
+
+	\item Considere algumas informações de um experimento completamente aleatório e balanceado com um fator da Tabela~\ref{tab:anova-exe3}.
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|c|c|c|c}
+			\toprule[0.05cm]
+			Fonte de variação & Graus de liberdade & Soma de quadrados & Quadrados médios & $F_0$ \\ \midrule[0.025cm]
+			Tratamentos & 5 & && \\ \midrule[0.025cm]
+			Erro & & $27,38$ && $-$ \\ \midrule[0.025cm]
+			Total & $29$ & $66,34$ & $-$ & $-$\\
+			\bottomrule[0.05cm]			
+		\end{tabular}
+		\caption{Tabela ANOVA.}
+		\label{tab:anova-exe3}
+	\end{table}
+	\begin{enumerate}
+		\item Este experimento usou quantas replicações?
+		\item Complete as informações na Tabela~\ref{tab:anova-exe3}.
+		\item Os efeitos de cada tratamento são iguais?
+		\item Calcule uma estimativa para $\sigma^2$.
+		\item Calcule um intervalo de confiança para cada média com coeficiente de confiança $\gamma=95\%$.
+		\item Calcule um intervalo de confiança para a diferença as médias dos tratamentos com coeficiente de confiança $\gamma=95\%$.
+	\end{enumerate}
+
+	\item Um pesquisador realizou um experimento para determinar o efeito da taxa do fluxo de Hexafluoroetano $(C_2F_6)$ na uniformidade da cauterização de pastilhas de silício usadas na produção de circuitos integrados. Três taxas de fluxos de $C_2F_6$ foram usados no experimento, e a uniformidade resultante (em porcentagem) para seis replicações foram anotadas. Os dados estão na Tabela~\ref{tab:hexafluoroetano}.
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|cccccc}
+			\toprule[0.05cm]
+			 & \multicolumn{6}{|c}{Observações} \\ \cmidrule[0.025cm]{2-7}
+			 Fluxo de $C_2F_6\ (SCCM)$	& 1 & 2 & 3 & 4 & 5 & 6\\ \midrule[0.025cm]
+			 $125$ & 2,7 & 4,6 & 2,6 & 3 & 3,2 & 3,8\\
+			 $160$ & 4,9 & 4,6 & 5 & 4,2 & 3,6 & 4,2\\
+			 $200$ & 4,6 & 3,4 & 2,9 & 3,5 & 4,1 & 5,1\\ \bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Taxa de fluxo de Hexafluoroetano e uniformidade das pastilhas de silício.}
+		\label{tab:hexafluoroetano}
+	\end{table}
+	\begin{enumerate}
+		\item A taxa de fluxo de Hexafluoroetano $(C_2F_6)$ afeta a uniformidade de cauterização? Construa um diagrama de caixa para tratamentos para visualizar se as variâncias em cada tratamento são iguais. Use $\alpha = 5\%$. Calcule o valor-p.
+		\item Faça uma análise de resíduos para checar se as suposições da análise de variância.
+	\end{enumerate}
+
+	\item A resistência à compressão do concreto está em análise, e quatro técnicas de mistura diferentes estão sendo investigadas. Os dados estão na Tabela~\ref{tab:resistencia-concreto}.
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|cccc}
+			\toprule[0.05cm]
+			Técnicas de mistura & \multicolumn{4}{|c}{Resistência à compressão (psi)} \\ \midrule[0.025cm]
+			$1$ & 3129 & 3000 & 2865 & 2890\\
+			$2$ & 3200 & 3300 & 2975 & 3150\\
+			$3$ & 2800 & 2900 & 2985 & 3050\\
+			$4$ & 2600 & 2700 & 2600 & 2765\\ \bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Resistência à compressão do concreto.}
+		\label{tab:resistencia-concreto}
+	\end{table}
+	\begin{enumerate}
+		\item Teste a hipótese que a técnica de mistura afeta a força do concreto. Use $\alpha=5\%$. Calcule o valor-p.
+		\item Faça uma análise o resíduo para checar se as suposições da anova de variância estão satisfeitas.
+	\end{enumerate}
+
+	\item O tempo de resposta em milissegundos foi calculado para três tipos diferentes de circuitos usados em calculadoras eletrônicas. Os dados estão na Tabela~\ref{tab:resposta-circuito}.
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|ccccc}
+			\toprule[0.05cm]
+			Tipo de circuito & \multicolumn{5}{|c}{Resposta (em milissegundos)} \\
+			\midrule[0.025cm]
+			$1$ & 19 & 22 & 20 & 18 & 25\\
+			$2$ & 20 & 21 & 33 & 27 & 40\\
+			$3$ & 16 & 15 & 18 & 26 & 17\\
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Tempo de resposta em milissegundos.}
+		\label{tab:resposta-circuito}
+	\end{table} 
+	\begin{enumerate}
+		\item O tempo médio de resposta para cada tipo de circuito é diferente? Use $\alpha = 1\%$. Calcule o valor-p.
+		\item Analise os resíduos neste experimento.
+		\item Encontre o intervalo de confiança no tempo de resposta médio para o circuito de tipo 3 com coeficiente de confiança $\gamma=95\%$.
+		\item Estime $\sigma$.
+		\item Encontra o intervalo de confiança na diferença do tempo médio de resposta entre os circuitos do tipo 1 e 2 com coeficiente de confiança $\gamma=99\%$.
+	\end{enumerate}
+
+	\item Um engenheiro eletrônico está interessado no efeito na condutividade de tubos em cinco tipos diferentes de revestimento para tubos de raios catódicos em um dispositivo de exibição de um sistema de telecomunicações. Os dados estão na Tabela~\ref{tab:condutividade-telecomunicacoes}.
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|cccc}
+			\toprule[0.05cm]
+			Tipo de revestimento & \multicolumn{4}{|c}{Condutividade} \\ \midrule[0.025cm]
+			$1$ & 143 & 141 & 150 & 146 \\
+			$2$ & 152 & 149 & 137 & 143\\
+			$3$ & 134 & 133 & 132 & 127\\
+			$4$ & 129 & 127 & 132 & 129\\
+			$5$ & 147 & 148 & 144 & 142\\
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Condutividade dos tubos de raios catódicos para cinco tipos de revestimento.}
+		\label{tab:condutividade-telecomunicacoes}
+	\end{table}
+	\begin{enumerate}
+		\item Existe evidência estatística que a condutividade é diferente devido ao tipo de revestimento? Use $\alpha=5\%$. Calcule o valor-p.
+		\item Analise os resíduos deste experimento e comente a qualidade do ajuste.
+		\item Construa um intervalo de confiança para a condutividade para o tipo de revestimento 1 com coeficiente de confiança $\gamma=95\%$.
+		\item Construa um intervalo de confiança para a diferença da condutividade média entre os tipos de revestimento 1 e 4 com coeficiente de confiança $\gamma=99\%$. Interprete o resultado.
+	\end{enumerate}
+
+	\item Um estudo deseja avaliar quatro métodos diferentes de preparar um composto supercondutor $(PbMo_6S_8)$. Os pesquisadores acreditam que a presença de oxigênio durante o processo de preparação afeta a temperatura de transição supercondutora do material. Os métodos de preparação 1 e 2 usam técnicas que são projetados para eliminar a presença do oxigênio, e os métodos 3 e 4 permitem a presença o oxigênio. Cinco observações na temperatura de transição $(T_c)$ em $^\circ C$  foram realizadas para cada método, e os resultados estão na Tabela~\ref{tab:temperatura-transicao}.
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|ccccc}
+			\toprule[0.05cm]
+			Método de preparação & \multicolumn{5}{|c}{Temperatura de transição} \\ \midrule[0.025cm]
+			$1$ & -258,35 & -258,35 & -258,45 & -258,35 & -258,25\\
+			$2$ & -258,55 & -258,15 & -258,25 & -258,35 & -258,45\\
+			$3$ & -260,45 & -261,55 & -260,75 & -260,45 & -261,05\\
+			$4$ & -258,95 & -258,75 & -258,75 & -260,95 & -261,45\\
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Temperatura de transição em $^\circ C$.}
+		\label{tab:temperatura-transicao}
+	\end{table}
+	\begin{enumerate}
+		\item Existe evidência estatística que suporte a afirmação que a presença de oxigênio afeta a temperatura média de transição? Use $\alpha=5\%$. Calcule o valor-p.
+		\item Análise o resíduo deste experimento.
+		\item Encontre o intervalo de confiança para a temperatura média de transição quando o método 1 de preparação é usado. Use $\gamma=99\%$.
+	\end{enumerate}
+
+	\item Um estudo deseja determinar o efeito da porosidade na porcentagem da resistência retida do asfalto. Para este propósito, a porosidade foi controlada em três níveis: baixa (2-4\%), média (4-6\%), e alta (6-8\%). Os dados estão na Tabela~\ref{tab:resistencia-retida}.
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|cccccccc}
+			\toprule[0.05cm]
+			Porosidade & \multicolumn{8}{|c}{Resistência retida (\%)}\\ \midrule[0.025cm]
+			Baixa & 106 & 90 & 103 & 90 & 79 & 88 & 92 & 95\\
+			Média & 80 & 69 & 94 & 91 & 70 & 83 & 87 & 83\\
+			Alta & 78 & 80 & 62 & 69 & 76 & 85 & 69 & 85\\
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Porcentagem da resistência retida do asfalto.}
+		\label{tab:resistencia-retida}
+	\end{table}
+	\begin{enumerate}
+		\item A porosidade afeta a resistência retida do asfalto? Use $\alpha = 5\%$. Calcule o valor-p.
+		\item Faça uma análise de resíduos para checar as suposições do modelo.
+		\item Construa um intervalo de confiança para a resistência média retida para cada nível de porosidade com coeficiente de confiança $\gamma=9\%$.
+		\item Construa um intervalo de confiança para diferença da resistência média retida entre baixa e alta porosidade com coeficiente de confiança $\gamma=95\%$.
+	\end{enumerate}
+
+	\item Um experimento tem o objetivo de analisar os efeitos de três dietas no conteúdo de proteína em leite de vaca. Os dados estão na Tabela~\ref{tab:cow-milk} mostram a quantidade de proteína depois de uma semana.
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{l|cccccccccccccc}
+			\toprule[0.05cm]
+			Dieta & \multicolumn{14}{|c}{Quantidade de proteína no leite de vaca} \\
+			\midrule[0.025cm]
+			Barley & 6,43 & 5,74 & 7,05 & 6,48 & 7,69 & 7,73 & 7,39 & 7,8 & 6,02 & 6,64 & 7,44 & 7,12 & 7,12 & 6,91 \\
+			Barley+lupins & 5,99 & 6,73 & 7,39 & 8,13 & 7,21 & 7,65 & 6,31 & 6,5 & 7,35 & 6,22 & 7,44 & 7,3 & 6,24 & 7,23 \\
+			Lupins &  6,54 & 7,44 & 5,86 & 5,55 & 6,61 & 7,65 & 5,39 & 6,8 & 7,05 & 7,41 & 7,44 & 7,26 & 5,76 & 5,92   \\ \midrule[0.025cm]
+			Barley & 6,75 & 6,41 & 6,48 & 7,87 & 7,49 & 6,77 & 6,25 & 7,92 & 6,96 & 5,79 & 5,85 &   &   &    \\
+			Barley+lupins & 7,12 & 5,63 & 7,28 & 5,79 & 5,79 & 7,03 & 5,86 & 7,3 & 6,95 & 6,7 & 7,09 & 7,74 & 6,72 &   \\
+			Lupins & 6,2 & 7,32 & 5,69 & 6,91 & 6,2 & 7,26 & 4,77 & 7,62 & 7,19 & 6,87 & 7,09 & 6,5 & 7,57 &    \\
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Quantidade de proteína no leite de vaca $(grama/litro)$.}
+		\label{tab:cow-milk}
+	\end{table}
+	\begin{enumerate}
+		\item A dieta afeta na quantidade de proteína no leite de vaca? Use $\alpha=5\%$. Calcule o valor-p.
+		\item Estime $\sigma$.
+		\item Construa um intervalo de confiança para a quantidade média de proteína para cada dieta com coeficiente de confiança $\gamma=95\%$.
+		\item Analise os resíduos e comente a qualidade do ajuste do modelo.
+	\end{enumerate}
+
+	\item Um experimento foi realizado para determinar se quatro tipos de temperatura de queima afetam a densidade de certo tipo de tijolo. Os dados estão na Tabela~\ref{tab:densidade-tijolo}.
+	\begin{table}[hbtp]
+		\centering
+		\begin{tabular}{c|ccccccc}
+			\toprule[0.05cm]
+			Temperatura ($^\circ C$) & \multicolumn{7}{|c}{Densidade} \\
+			\midrule[0.025cm]
+			$37,78$ & 349,2 & 350,8 & 347,6 & 346 & 347,6 & 344,4 & 349,2\\
+			$51,67$ & 347,6 & 342,8 & 344,4 & 344,4 &   &   &  \\
+			$65,56$ & 350,8 & 349,2 & 349,2 & 346 & 344,4 &   &  \\
+			$79,44$ & 350,8 & 347,6 & 349,2 & 347,6 & 346 & 349,2 &  \\ \bottomrule[0.05cm]
+		\end{tabular}
+		\caption{A densidade do tijolo.}
+		\label{tab:densidade-tijolo}
+	\end{table}
+	\begin{enumerate}
+		\item A temperatura de queima afeta a densidade do tijolo? Use $\alpha=5\%$. Calcule o valor-p.
+		\item Analise o resíduo do experimento.
+	\end{enumerate}
+
+	\item Um projeto de pesquisa descreveu uma séries de experimentos para ajustar parâmetros em redes neurais. Um experimento considerou a relação da qualidade do ajuste (RMSE: raiz quadrada do erro quadrático médio) e a complexidade do modelo que tiveram o número de nós em duas camadas intermediárias controlado. Os dados na Tabela~\ref{tab:rede-neural} contêm três configurações para redes neurais: RN1 tem 33 nós na primeira camada intermediária e 30 nós para a segunda camada intermediária; RN2 tem 49 nós para a primeira camada intermediária e 45 nós para a segunda camada intermediária; e RN3 tem 17 nós na primeira camada intermediária e 15 nós na segunda camada intermediária. 
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{l|cccccccc}
+			\toprule[0.05cm]
+			Configuração da Rede Neural & \multicolumn{8}{|c}{RMSE}\\
+			\midrule[0.025cm]
+			RN1 & 0,0121 & 0,0132 & 0,0011 & 0,0023 & 0,0391 & 0,0054 & 0,0003 & 0,0014\\
+			RN2 & 0,0031 & 0,0006 & 0 & 0 & 0,022 & 0,0019 & 0,0007 & 0\\
+			RN3 & 0,1562 & 0,2227 & 0,0953 & 0,8911 & 1,3892 & 0,0154 & 1,7916 & 0,1992\\
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Raiz quadrada do erro quadrático médio para três configurações de Rede Neural.}
+		\label{tab:rede-neural}
+	\end{table}
+	\begin{enumerate}
+		\item Construa o diagrama de caixa para cada configuração das redes neurais. Interprete.
+		\item Realize a análise de variância com $\alpha=5\%$, e calcule o valor-p.
+		\item Calcule o intervalo de confiança para RMSE para cada configuração de rede neutral com coeficiente de confiança $\gamma=95\%$.
+		\item Analise os resíduos e comente a qualidade do ajuste.
+	\end{enumerate}
+
+	\item Um pesquisador deseja investigar o efeito do hidróxido de potássio na síntese de biodiesel. Mais precisamente, suspeita-se que o hidróxido de potássio (PH) está relacionado a ésteres metílicos de ácidos gordos (FAME) que é um elemento chave na produção de biodiesel. Três níveis de concentração PH foram usadas, e seis replicações foram realizadas em ordem aleatória. Os dados estão na Tabela~\ref{tab:fame-ph}.
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|cccccc}
+			\toprule[0.05cm]
+			Concentração de PH (wt. \%) & \multicolumn{6}{|c}{Concentração FAME (wt. \%)} \\
+			\midrule[0.025cm]
+			$0,6$ & 84,3 & 84,5 & 86,5 & 86,7 & 86,9 & 86,9\\
+			$0,9$ & 89,3 & 89,4 & 88,5 & 88,7 & 89,2 & 89,3\\
+			$1,2$ & 90,2 & 90,3 & 88,9 & 89,2 & 90,7 & 90,9\\ \bottomrule[0.05cm] 
+		\end{tabular}
+		\caption{Concentração FAME.}
+		\label{tab:fame-ph}
+	\end{table}
+	\begin{enumerate}
+		\item Construa um diagrama de caixa para os níveis de concentração de PH.
+		\item Realize a análise de variância com $\alpha=5\%$. Calcule o valor-p.
+		\item Analise o resíduo do experimento.
+		\item Construa um intervalo de confiança para a concentração de  FAME para cada nível de concentração de PH com coeficiente de confiança $\gamma=95\%$.
+	\end{enumerate}
+
+	\item Suponha que temos quatro populações com distribuição normal com variância $\sigma^2=25$ e médias $\mu_1=50$, $\mu_2=60$, $\mu_3=50$ e $\mu_4=60$. Quantas replicações precisamos coletar em cada tratamento para ter um poder de teste de, no mínimo, $1-\beta=90\%$? Use $\alpha=5\%$.
+	
+	\item Suponha que temos cinco populações com distribuição normal com variância $\sigma^2=100$ e médias $\mu_1=175$, $\mu_2=190$, $\mu_3=160$, $\mu_4=200$ e $\mu_5=215$. Quantas replicações precisam coletar em cada tratamento para ter um poder de teste de, no mínimo, $1-\beta=95\%$? Use $\alpha=5\%$.
+
+\end{enumerate}
+\end{document}

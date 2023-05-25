@@ -1,0 +1,20 @@
+---
+title: ""
+output: 
+  bookdown::pdf_document2:
+    toc: false
+    number_sections: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Tabela: qui-quadrado
+
+Tabela para as probabilidades $P(\chi^2 \leq \chi^2_{\alpha; k}) = \int_0^{\chi^2_{\alpha; k}} f(x) dx = \alpha$, em que $\chi^2$ é uma variável contína com distribuição qui-quadrado com $k>0$ graus de liberdade.
+
+```{r, echo = F, out.width="110%"}
+knitr::include_graphics("tb_chi_square.pdf")
+```
+

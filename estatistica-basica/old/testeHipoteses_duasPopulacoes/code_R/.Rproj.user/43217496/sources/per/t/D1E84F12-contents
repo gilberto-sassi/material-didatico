@@ -1,0 +1,1734 @@
+---
+title: "Figuras e simulaçã  o"
+output: bookdown::html_notebook2
+editor_options: 
+  chunk_output_type: console
+---
+
+# Inference for two populations
+
+Inference for two populations
+
+## Used packages
+
+```{r}
+library(readxl)
+library(readr)
+library(openxlsx)
+library(latex2exp)
+library(xtable)
+library(tidyverse)
+```
+
+## Normal distribution with normal distribution and known variances
+
+We want to compare the means of two normal populations $N(\mu_1, \sigma_1^2)$ e $N(\mu_2, \sigma_2^2)$. Here, we illustrate the ideas of decision, the critical regions and the critical values.
+
+### Bilateral 
+
+```{r}
+z <- seq(from = -4, to= 4, by = 0.001)
+f <- dnorm(z)
+dados <- tibble(z=z, f=f)
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$Z_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: \\mu_{1} - \\mu_{2} = \\Delta_{0}$ se $z_0 < z_{\\frac{\\alpha}{2}}$ ou $z_0 > z_{1-\\frac{\\alpha}{2}}$"),
+       subtitle = bquote("RC = {" ~ z[0] ~ " | " ~ z[0] < z[frac(alpha, 2)] ~ " ou " ~ z[0] > z[1-frac(alpha, 2)] ~ "}")) +
+  scale_x_continuous(breaks = c(-2, 0, 2), 
+                     labels = c(TeX("$z_{\\frac{\\alpha}{2}}$"), "0",
+                                TeX("$z_{1- \\frac{\\alpha}{2}}$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z < -2),
+              aes(x = z, y = f, ymin = 0, ymax = f), 
+              fill = "gray") +
+  geom_ribbon(data = dplyr::filter(dados, z > 2),
+              aes(x = z, y = f, ymin = 0, ymax = f), 
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 22.5),
+        axis.text = element_text(size = 22.5),
+        title = element_text(size = 22.5)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = -4, xend = -2, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = 2, xend = 4, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = -2, xend = 2, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = -2, xend = -2, y = 0, yend = 0.15, 
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_segment(x = 2, xend = 2, y = 0, yend = 0.15, 
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(-2, 2), y = c(0.15, 0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = -3, y = 0.175, label = "H[1]", 
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 3, y = 0.175, label = "H[1]", 
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]", 
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = -3, y = 0.05, label = "frac(alpha, 2)", parse = T,
+           color = "gray", size = 10) +
+  annotate("text", x = 3, y = 0.05, label = "frac(alpha, 2)", parse = T,
+           color = "gray", size = 10) 
+ggsave("../figures/2-pop-normal-s2-known-bilateral.png")
+ggsave("../figures/2-pop-normal-s2-known-bilateral.pdf")
+```
+
+We will simulate an example. Simulated example.
+
+```{r}
+set.seed(1235813)
+amostra1 <- rnorm(10, mean = 600, sd = 0.6) %>% round(2)
+amostra2 <- rnorm(10, mean = 600, sd = 0.75) %>% round(2)
+
+dados <- rbind(amostra1, amostra2)
+
+dados %>% xtable(caption = "Amostras para as máquinas 1 e 2.",
+                 label = "tab:volume-maquinas",
+                 align = rep("c", ncol(dados) + 1),
+                 digits = 2) %>% 
+  print.xtable(booktabs = T,
+               format.args = list(decimal.mark = ','),
+               include.colnames =  F)
+
+rowMeans(dados)
+```
+
+
+
+## Unilateral ($H_1$ lower) 
+
+```{r}
+z <- seq(from = -4, to= 4, by = 0.001)
+f <- dnorm(z)
+dados <- tibble(z=z, f=f)
+
+ggplot(dados) +
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$Z_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: \\mu_{1} - \\mu_{2} \\geq \\Delta_0$ se $z_0 < z_{\\alpha}$"),
+       subtitle = bquote("RC = {" ~ z[0] ~ " | " ~ z[0] < z[alpha] ~ "}")) +
+  scale_x_continuous(breaks = c(-2, 0), 
+                     labels = c(TeX("$z_{\\alpha}$"), "0")) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z < -2),
+              aes(x = z, y = f, ymin = 0, ymax = f), 
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25),
+        title = element_text(size = 27)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = -4, xend = -2, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = -2, xend = 4, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = -2, xend = -2, y = 0, yend = 0.15, 
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(-2), y = c(0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = -3, y = 0.175, label = "H[1]", 
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]", 
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = -3, y = 0.05, label = "alpha", parse = T,
+           color = "gray", size = 10) 
+ggsave("../figures/2-pop-normal-s2-known-h1-lower.png")
+ggsave("../figures/2-pop-normal-s2-known-h1-lower.pdf")
+
+```
+
+Simulated example.
+
+```{r}
+set.seed(1235813)
+amostra1 <- rnorm(10, mean = 50, sd = 8)
+amostra2 <- rnorm(20, mean = 35, sd = 8)
+
+mean(amostra1) %>% round(2)
+mean(amostra2) %>% round(2)
+
+
+```
+
+## Unilateral ($H_1$ upper)
+
+```{r}
+z <- seq(from = -4, to= 4, by = 0.001)
+f <- dnorm(z)
+dados <- tibble(z=z, f=f)
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$Z_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: \\mu_1 - \\mu_2 \\leq \\Delta_0$ se $z_0 > z_{1 - \\alpha}$"),
+       subtitle = bquote("RC = {" ~ z[0] ~ " | " ~ z[0] > z[1-alpha] ~ "}")) +
+  scale_x_continuous(breaks = c(0, 2), 
+                     labels = c("0", TeX("$z_{1- \\alpha}$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z > 2),
+              aes(x = z, y = f, ymin = 0, ymax = f), 
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25),
+        title = element_text(size = 27)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = 2, xend = 4, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = -4, xend = 2, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = 2, xend = 2, y = 0, yend = 0.15, 
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_segment(x = 2, xend = 2, y = 0, yend = 0.15, 
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(2), y = c(0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = 3, y = 0.175, label = "H[1]", 
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]", 
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = 3, y = 0.05, label = "1-alpha", parse = T,
+           color = "gray", size = 10)
+ggsave("../figures/2-pop-normal-s2-known-h1-upper.png")
+ggsave("../figures/2-pop-normal-s2-known-h1-upper.pdf")
+
+```
+
+## test on variance for two normal populations
+
+First we introduce the idea of F-Snedecor distribution. Should I create a table for my perspective? Yes, I did it. 
+
+Below we create graphs to illustrate the idea of decision.
+
+## bilateral test on variance.
+
+```{r}
+v1 <- 5
+v2 <- 10
+xmax <- 10
+z <- seq(from = 0, to= xmax, by = 0.001)
+f <- df(z, df1 = v1, df2 = v2)
+dados <- tibble(z=z, f=f)
+a <- 0.1
+lower <- qf(a / 2, df1 = v1, df2 = v2)
+upper <- qf(1 - a / 2, df1 = v1, df2 = v2)
+
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$F_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: \\frac{\\sigma_1^2}{\\sigma_2^2} = 1$ se $f_0 < f_{\\frac{\\alpha}{2};v_1, v_2}$ ou $f_0 > f_{\\frac{\\alpha}{2}; v_1, v_2}$"),
+       subtitle = bquote("RC = {" ~ f[0] ~ " | " ~ f[0] < f[frac(alpha, 2)~';'~v[1]~','~v[2]] ~' ou '~f[0] > f[1-frac(alpha, 2)~';'~v[1]~','~v[2]]~ "}")) +
+  scale_x_continuous(breaks = c(lower, upper),
+                     labels = c(TeX("$f_{\\frac{\\alpha}{2};v_1, v_2}$"), TeX("$f_{1-\\frac{\\alpha}{2};v_1, v_2}$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z > upper),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray")+
+  geom_ribbon(data = dplyr::filter(dados, z < lower),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25),
+        title = element_text(size = 27)) +
+  geom_segment(x = 0, xend = lower, y = 0.6, yend =0.6, size = 1, color = "red") +
+  geom_segment(x = upper, xend = xmax, y = 0.6, yend =0.6, size = 1, color = "red") +
+  geom_segment(x = lower, xend = upper, y = 0.6, yend =0.6, size = 1, color = "blue") +
+  geom_segment(x = lower, xend = lower, y = 0, yend = 0.6,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_segment(x = upper, xend = upper, y = 0, yend = 0.6,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(lower, upper), y = c(0.6, 0.6)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = -0.1, y = 0.65, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 2, y = 0.65, label = "H[0]",
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = upper+1, y = 0.65, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = -0.1, y = 0.30, label = "frac(alpha, 2)", parse = T,
+           color = "gray", size = 10) +
+  annotate("text", x = upper + 1, y = 0.10, label = "1-frac(alpha, 2)", parse = T,
+           color = "gray", size = 10)
+ggsave("../figures/test-variance-bilateral.png")
+ggsave("../figures/test-variance-bilateral.pdf")
+
+```
+
+Below we explain the p-value: 
+
+```{r}
+v1 <- 5
+v2 <- 10
+xmax <- 10
+z <- seq(from = 0, to= xmax, by = 0.001)
+f <- df(z, df1 = v1, df2 = v2)
+dados <- tibble(z=z, f=f)
+a <- 0.1
+lower <- qf(a / 2, df1 = v1, df2 = v2)
+upper <- qf(1 - a / 2, df1 = v1, df2 = v2)
+
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$F_0$"), y = "F-Snedecor", 
+       title = "Valor-p",
+       subtitle = TeX("$F_0$ pequeno: $p=P(F_{v_1, v_2} \\leq f_0) < 0,5$")) +
+  scale_x_continuous(breaks = c(lower),
+                     labels = c(TeX("$F_0$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z > upper),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  geom_ribbon(data = dplyr::filter(dados, z < lower),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25),
+        title = element_text(size = 27)) +
+  annotate("text", x = -0.1, y = 0.30, label = "frac(p,2)", parse = T,
+           color = "gray", size = 10) +
+  annotate("text", x = upper + 1, y = 0.10, label = "frac(p,2)", parse = T,
+           color = "gray", size = 10)
+ggsave("../figures/test-variance-valor-p-1.png")
+ggsave("../figures/test-variance-valor-p-1.pdf")
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$F_0$"), y = "F-Snedecor", 
+       title = "Valor-p",
+       subtitle = TeX("$F_0$ pequeno: $p=P(F_{v_1, v_2} \\geq f_0) < 0,5$")) +
+  scale_x_continuous(breaks = c(upper),
+                     labels = c(TeX("$F_0$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z > upper),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  geom_ribbon(data = dplyr::filter(dados, z < lower),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25),
+        title = element_text(size = 27)) +
+  annotate("text", x = -0.1, y = 0.30, label = "frac(p,2)", parse = T,
+           color = "gray", size = 10) +
+  annotate("text", x = upper + 1, y = 0.10, label = "frac(p,2)", parse = T,
+           color = "gray", size = 10)
+ggsave("../figures/test-variance-valor-p-2.png")
+ggsave("../figures/test-variance-valor-p-2.pdf")
+
+```
+
+Below we implement the size of sample given the power of test. I have not found in `MATLAB` and in the `R`. In this approach, we assume $n=n_1=n_2$.
+
+```{r}
+samp_size_var_test <- function(sigma1, sigma2, alpha = 0.05, power = 0.95){
+  aux <- function(k){
+    k %>% 
+      map_dbl(~ (1  - 
+                   pf(qf(1 - alpha / 2, df1 = .x, df2 = .x) * sigma2^2 / sigma1^2, df1 = .x, df2 = .x) +
+                   pf(qf(alpha / 2, df1 = .x, df2 = .x) * sigma2^2 / sigma1^2, df1 = .x, df2 = .x) -
+                   power)^2)
+  }
+  
+  (nlminb(1, aux, lower = 1e-8, upper = Inf)$par + 1) %>% ceiling()
+}
+
+samp_size_var_test(sigma1 = 15, sigma2 = 25, alpha = 0.05, power = 0.99)
+```
+
+
+## unilateral test on variance ($H_1$ upper).
+
+```{r}
+v1 <- 5
+v2 <- 10
+xmax <- 10
+z <- seq(from = 0, to= xmax, by = 0.001)
+f <- df(z, df1 = v1, df2 = v2)
+dados <- tibble(z=z, f=f)
+a <- 0.05
+upper <- qf(1 - a, df1 = v1, df2 = v2)
+
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$F_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: \\frac{\\sigma_1^2}{\\sigma_2^2} \\leq 1$ se $f_0 > f_{1-\\alpha;v_1, v_2}$"),
+       subtitle = bquote("RC = {" ~ f[0] ~ " | " ~ f[0] > f[1-alpha~';'~v[1]~','~v[2]]~"}")) +
+  scale_x_continuous(breaks = c(upper),
+                     labels = c(TeX("$f_{1-\\alpha;v_1, v_2}$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z > upper),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray")+
+  theme_classic() +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25),
+        title = element_text(size = 27)) +
+  geom_segment(x = upper, xend = xmax, y = 0.6, yend =0.6, size = 1, color = "red") +
+  geom_segment(x = 0, xend = upper, y = 0.6, yend =0.6, size = 1, color = "blue") +
+  geom_segment(x = upper, xend = upper, y = 0, yend = 0.6,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(upper), y = c(0.6)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = 2, y = 0.65, label = "H[0]",
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = upper + 1, y = 0.65, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = upper + 1, y = 0.10, label = "1-alpha", parse = T,
+           color = "gray", size = 10)
+ggsave("../figures/test-variance-unilateral-h1-upper.png")
+ggsave("../figures/test-variance-unilateral-h1-upper.pdf")
+
+```
+
+In this point, we compute the sample size for altertive hipothesis $H_1: \frac{\sigma_1^2}{\sigma_2^2} > 1$.
+```{r}
+samp_size_var_test <- function(sigma1, sigma2, alpha = 0.05, power = 0.95){
+  aux <- function(k){
+    k %>% 
+      map_dbl(~ (1  - 
+                   pf(qf(1 - alpha, df1 = .x, df2 = .x) * sigma2^2 / sigma1^2, df1 = .x, df2 = .x) -
+                   power)^2)
+  }
+  
+  (nlminb(1, aux, lower = 1e-8, upper = Inf)$par + 1) %>% ceiling()
+}
+
+samp_size_var_test(sigma1 = 10, sigma2 = 5, alpha = 0.05, power = 0.95)
+```
+
+
+## unilateral test on variance ($H_1$ lower).
+
+```{r}
+v1 <- 5
+v2 <- 10
+xmax <- 10
+z <- seq(from = 0, to= xmax, by = 0.001)
+f <- df(z, df1 = v1, df2 = v2)
+dados <- tibble(z=z, f=f)
+a <- 0.05
+lower <- qf(a, df1 = v1, df2 = v2)
+
+
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$F_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: \\frac{\\sigma_1^2}{\\sigma_2^2} \\geq 1$ se $f_0 < f_{\\alpha;v_1, v_2}$"),
+       subtitle = bquote("RC = {" ~ f[0] ~ " | " ~ f[0] < f[alpha~';'~v[1]~','~v[2]]~"}")) +
+  scale_x_continuous(breaks = c(lower),
+                     labels = c(TeX("$f_{\\alpha;v_1, v_2}$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z < lower),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray")+
+  theme_classic() +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25),
+        title = element_text(size = 27)) +
+  geom_segment(x = 0, xend = lower, y = 0.6, yend =0.6, size = 1, color = "red") +
+  geom_segment(x = lower, xend = xmax, y = 0.6, yend =0.6, size = 1, color = "blue") +
+  geom_segment(x = lower, xend = lower, y = 0, yend = 0.6,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(lower), y = c(0.6)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = -0.1, y = 0.65, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 2, y = 0.65, label = "H[0]",
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = -0.1, y = 0.30, label = "alpha", parse = T,
+           color = "gray", size = 10)
+ggsave("../figures/test-variance-unilateral-h1-lower.png")
+ggsave("../figures/test-variance-unilateral-h1-lower.pdf")
+
+```
+
+Below we simulate an example.
+
+```{r}
+set.seed(1235813)
+n1 <- 26
+n2 <- 21
+s1 <- 5
+s2 <- 10
+
+amostra1 <- rnorm(n1, sd = 5)
+amostra2 <- rnorm(n2, sd = 10)
+
+sd(amostra1) %>% round(2)
+sd(amostra2) %>% round(2)
+```
+
+
+In this point, we estimate the sample size using the folling equation:
+```{r}
+samp_size_var_test <- function(sigma1, sigma2, alpha = 0.05, power = 0.95){
+  aux <- function(k){
+    k %>% 
+      map_dbl(~ ( pf(qf(alpha, df1 = .x, df2 = .x) * sigma2^2 / sigma1^2, df1 = .x, df2 = .x) -
+                    power)^2)
+  }
+  
+  (nlminb(1, aux, lower = 1e-8, upper = Inf)$par + 1) %>% ceiling()
+}
+
+samp_size_var_test(sigma1 = 5, sigma2 = 10, alpha = 0.05, power = 0.99)
+
+```
+
+## Normal distribution with normal distribution and unknown variances
+
+We want to compare the means of two normal populations $N(\mu_1, \sigma_1^2)$ e $N(\mu_2, \sigma_2^2)$, where $\sigma_1^2$ and $\sigma_2^2$ are equal and unknown. Here, we illustrate the ideas of decision, the critical regions and the critical values.
+
+### Bilateral 
+
+```{r}
+gl <- 10
+xmin <- -4
+xmax <- 4
+z <- seq(from = xmin, to= xmax, by = 0.001)
+f <- dt(z, df = gl)
+dados <- tibble(z=z, f=f)
+a <- 0.05
+lower <- qt(a / 2, df = gl) 
+upper <- qt(1 - a / 2, df = gl) 
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$T_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: \\mu_{1} - \\mu_{2} = \\Delta_{0}$ se $t_0 < t_{\\frac{\\alpha}{2};n_1 + n_2 -2}$ ou $t_0 > t_{1-\\frac{\\alpha}{2};n_1 + n_2 -2}$"),
+       subtitle = bquote("RC = {" ~ t[0] ~ " | " ~ t[0] < t[frac(alpha, 2)~';'~n[1]+n[2]-2] ~ " ou " ~ t[0] > t[1-frac(alpha, 2)~';'~n[1]+n[2]-2] ~ "}")) +
+  scale_x_continuous(breaks = c(lower, 0, upper),
+                     labels = c(TeX("$t_{\\frac{\\alpha}{2};n_1+n_2-2}$"), "0",
+                                TeX("$t_{1- \\frac{\\alpha}{2}; n_1+n_2-2}$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z < lower),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  geom_ribbon(data = dplyr::filter(dados, z > upper),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 22.5),
+        axis.text = element_text(size = 22.5),
+        title = element_text(size = 22.5)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = xmin, xend = lower, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = upper, xend = xmax, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = lower, xend = upper, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = lower, xend = lower, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_segment(x = upper, xend = upper, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(lower, upper), y = c(0.15, 0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = -3, y = 0.175, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 3, y = 0.175, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]",
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = -3, y = 0.05, label = "frac(alpha, 2)", parse = T,
+           color = "gray", size = 10) +
+  annotate("text", x = 3, y = 0.05, label = "frac(alpha, 2)", parse = T,
+           color = "gray", size = 10)
+ggsave("../figures/2-pop-normal-s2-unknown-equal-bilateral.png")
+ggsave("../figures/2-pop-normal-s2-unknown-equal-bilateral.pdf")
+
+```
+
+Bilateral example from montgomery book for engineers.
+
+```{r}
+x <- c(
+  91.50,
+  94.18,
+  92.18,
+  95.39,
+  91.79,
+  89.07,
+  94.72,
+  89.21
+)
+y <- c(
+  89.19,
+  90.95,
+  90.46,
+  93.21,
+  97.19,
+  97.04,
+  91.07,
+  92.75
+)
+
+dados <- tibble(`Número de observações` = seq_along(x),
+                `Catalisador 1` = x, `Catalisador 2` = y)
+
+dados %>% 
+  xtable(caption = "Rendimento para os catalisadores 1 e 2.",
+         label = "tab:catalisadores",
+         digits = 1, align = rep("c", ncol(dados) + 1)) %>% 
+  print.xtable(booktabs = T,
+               include.rownames = F,
+               format.args = list(decimal.mark = ","))
+
+
+tab <- dados %>% 
+  summarise(n = n(),
+            delta0 = 0,
+            media1 = mean(`Catalisador 1`) %>% round(2),
+            media2 = mean(`Catalisador 2`) %>% round(2),
+            sd1 = sd(`Catalisador 1`) %>% round(2),
+            sd2 = sd(`Catalisador 2`) %>% round(2), 
+            sd_d = (((n - 1) * var(`Catalisador 1`) + (n - 1) * var(`Catalisador 2`)) /
+              (2 * n - 2)) %>% sqrt() %>% round(2),
+            t0 = ((media1 - media2 - delta0) / (sd_d * sqrt(2 / n))) %>%  round(2))
+
+```
+
+Below we compute the power.
+
+```{r}
+m1  <-  92
+m2 <- 93
+s <- 3
+n1 <- n2 <- 8
+gl <- n1 + n2 - 2
+d <- (m1 - m2) / s
+
+pwr::pwr.t2n.test(n1 = n1, n2 = n2, d = d, sig.level = 0.05, 
+                  power = NULL, alternative = 'two.sided')
+
+
+```
+
+Below we compute the sample size
+```{r}
+samp_size_t2_equal_var <- function(m1, m2, s, delta0 = 0, alpha = 0.05, power = 0.95){
+  aux <- function(k){
+    k %>% 
+      map_dbl(~ (1 -
+                   pt(pt(1 - alpha / 2, df = 2 * .x - 2), df = 2 * .x - 2, 
+                      ncp = (m1 - m2 - delta0) / (s * sqrt(2 / .x))) +
+                   pt(pt(alpha / 2, df = 2 * .x - 2), df = 2 * .x - 2, 
+                      ncp = (m1 - m2 - delta0) / (s * sqrt(2 / .x)))-
+                   power)^2)
+  }
+  
+  nlminb(4, aux, lower = 3, upper = Inf)$par %>% ceiling()
+}
+
+samp_size_t2_equal_var(92, 93, 3, delta0 = 0, alpha = 0.05, power = 0.99)
+
+```
+
+
+
+
+### unilateral ($H_1$ lower) 
+
+```{r}
+gl <- 10
+xmin <- -4
+xmax <- 4
+z <- seq(from = xmin, to= xmax, by = 0.001)
+f <- dt(z, df = gl)
+dados <- tibble(z=z, f=f)
+a <- 0.05
+lower <- qt(a / 2, df = gl) 
+upper <- qt(1 - a / 2, df = gl) 
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$T_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: \\mu_{1} - \\mu_{2} \\geq \\Delta_{0}$ se $t_0 < t_{\\alpha;n_1 + n_2 -2}$"),
+       subtitle = bquote("RC = {" ~ t[0] ~ " | " ~ t[0] < t[alpha~';'~n[1]+n[2]-2] ~ "}")) +
+  scale_x_continuous(breaks = c(lower, 0),
+                     labels = c(TeX("$t_{\\alpha;n_1+n_2-2}$"), "0")) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z < lower),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 22.5),
+        axis.text = element_text(size = 22.5),
+        title = element_text(size = 22.5)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = xmin, xend = lower, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = lower, xend = xmax, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = lower, xend = lower, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(lower), y = c(0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = -3, y = 0.175, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]",
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = -3, y = 0.05, label = "alpha", parse = T,
+           color = "gray", size = 10)
+ggsave("../figures/2-pop-normal-s2-unknown-equal-h1-lower.png")
+ggsave("../figures/2-pop-normal-s2-unknown-equal-h1-lower.pdf")
+
+```
+
+We will use the example from book. Below, we will create a table.
+
+```{r}
+set.seed(1234)
+n <- 12
+low <- rnorm(n, mean = 260, sd = 30) %>% round(0)
+high <- rnorm(n, mean = 350, sd = 30) %>% round(0)
+dados <- tibble(`Vibração baixa` = low,
+                `Vibração alta` = high)
+
+dados %>% 
+  xtable(caption = "Força de moagem para níveis baixos e altos de vibração",
+         label = "tab:moagem",
+         align = rep("c", ncol(dados) + 1),
+         digits = 0) %>% 
+  print.xtable(booktabs = T,
+               format.args = list(decimal.mark = ","),
+               include.rownames = F)
+
+tab <- dados %>% 
+  summarise(n = n(),
+            delta0 = 0,
+            mediaBaixa = mean(`Vibração baixa`) %>% round(2),
+            mediaAlta = mean(`Vibração alta`) %>% round(2),
+            sdBaixa = sd(`Vibração baixa`) %>% round(2),
+            sdAlta = sd(`Vibração alta`) %>% round(2),
+            sd_d = (((n-1) * var(`Vibração baixa`) + (n-1) * var(`Vibração alta`)) / (2 * n - 2)) %>% sqrt() %>% round(2),
+            t0 = ((mediaBaixa - mediaAlta - delta0) / (sd_d * sqrt(2 / n))) %>% round(2))
+
+
+```
+
+
+### unilateral ($H_1$ upper) 
+
+```{r}
+gl <- 10
+xmin <- -4
+xmax <- 4
+z <- seq(from = xmin, to= xmax, by = 0.001)
+f <- dt(z, df = gl)
+dados <- tibble(z=z, f=f)
+a <- 0.05
+lower <- qt(a / 2, df = gl) 
+upper <- qt(1 - a / 2, df = gl) 
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$T_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: \\mu_{1} - \\mu_{2} \\leq \\Delta_{0}$ se $t_0 > t_{1-\\alpha;n_1 + n_2 -2}$"),
+       subtitle = bquote("RC = {" ~ t[0] ~ " | " ~ t[0] > t[1-alpha~';'~n[1]+n[2]-2] ~ "}")) +
+  scale_x_continuous(breaks = c(0, upper),
+                     labels = c(0, TeX("$t_{1-\\alpha;n_1+n_2-2}$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z > upper),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 22.5),
+        axis.text = element_text(size = 22.5),
+        title = element_text(size = 22.5)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = xmin, xend = upper, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = upper, xend = xmax, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = upper, xend = upper, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(upper), y = c(0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = 3, y = 0.175, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]",
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = 3, y = 0.05, label = "alpha", parse = T,
+           color = "gray", size = 10)
+ggsave("../figures/2-pop-normal-s2-unknown-equal-h1-upper.png")
+ggsave("../figures/2-pop-normal-s2-unknown-equal-h1-upper.pdf")
+
+```
+
+Below, we simulate um conjunto de dados para ilustrar $H_1: \mu_1 - \mu_2 > \Delta_0$.
+
+```{r}
+set.seed(1235813)
+n1 <- 15
+n2 <- 25
+s1 <- 3
+s2 <- 10
+m1 <- 30
+m2 <- 50
+x1 <- rnorm(n1, mean = m1, sd = s1)
+x2 <- rnorm(n2, mean = m2, sd = s2)
+
+tibble(x1) %>% summarise(n1 = n(), media1 = mean(x1), dp1 = sd(x1))
+tibble(x2) %>% summarise(n1 = n(), media1 = mean(x2), dp1 = sd(x2))
+
+```
+
+
+## Normal distribution with normal distribution and unknown variances
+
+We want to compare the means of two normal populations $N(\mu_1, \sigma_1^2)$ e $N(\mu_2, \sigma_2^2)$, where  $\sigma_1^2$ and $\sigma_2^2$ are unknown and $\sigma_1^2 \neq \sigma_2^2$. Here, we illustrate the ideas of decision, the critical regions and the critical values.
+
+### Bilateral 
+
+```{r}
+gl <- 10
+xmin <- -4
+xmax <- 4
+z <- seq(from = xmin, to= xmax, by = 0.001)
+f <- dt(z, df = gl)
+dados <- tibble(z=z, f=f)
+a <- 0.05
+lower <- qt(a / 2, df = gl) 
+upper <- qt(1 - a / 2, df = gl) 
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$T_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: \\mu_{1} - \\mu_{2} = \\Delta_{0}$ se $t_0 < t_{\\frac{\\alpha}{2};\\nu}$ ou $t_0 > t_{1-\\frac{\\alpha}{2};\\nu}$"),
+       subtitle = bquote("RC = {" ~ t[0] ~ " | " ~ t[0] < t[frac(alpha, 2)~';'~nu] ~ " ou " ~ t[0] > t[1-frac(alpha, 2)~';'~nu] ~ "}"),
+       caption = bquote(nu == frac((frac(s[1]^2, n[1]) + frac(s[2]^2, n[2]))^2,
+                                    frac((frac(s[1], n[1]))^2, n[1]-1) + frac((frac(s[2]^2, n[2]))^2, n[2]-1) ))) +
+  scale_x_continuous(breaks = c(lower, 0, upper),
+                     labels = c(TeX("$t_{\\frac{\\alpha}{2};\\nu}$"), "0",
+                                TeX("$t_{1- \\frac{\\alpha}{2}; \\nu}$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z < lower),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  geom_ribbon(data = dplyr::filter(dados, z > upper),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 22),
+        axis.text = element_text(size = 22),
+        title = element_text(size = 22)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = xmin, xend = lower, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = upper, xend = xmax, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = lower, xend = upper, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = lower, xend = lower, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_segment(x = upper, xend = upper, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(lower, upper), y = c(0.15, 0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = -3, y = 0.175, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 3, y = 0.175, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]",
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = -3, y = 0.05, label = "frac(alpha, 2)", parse = T,
+           color = "gray", size = 10) +
+  annotate("text", x = 3, y = 0.05, label = "frac(alpha, 2)", parse = T,
+           color = "gray", size = 10)
+ggsave("../figures/2-pop-normal-s2-unknown-different-bilateral.png")
+ggsave("../figures/2-pop-normal-s2-unknown-different-bilateral.pdf")
+
+```
+
+Below we have a example from Montgomery.
+```{r}
+x <- c("Phoenix, 3",
+       "Chandler, 7",
+       "Gilbert, 25",
+       "Glendale, 10",
+       "Mesa, 15",
+       "Paradise Valley, 6",
+       "Peoria, 12",
+       "Scottsdale, 25",
+       "Tempe, 15",
+       "Sun City, 7"
+)
+
+y <- c( "Rimrock, 48",
+        "Goodyear, 44",
+        "New River, 40",
+        "Apache Junction, 38",
+        "Buckeye, 33",
+        "Nogales, 21",
+        "Black Canyon City, 20",
+        "Sedona, 12",
+        "Payson, 1",
+        "Casa Grande, 18"
+)
+
+cbind(x, y) %>% 
+  xtable(align = rep("c", 3)) %>% 
+  print.xtable(include.rownames = F)
+
+
+```
+
+
+### Unilateral ($H_1$ lower) 
+
+```{r}
+gl <- 10
+xmin <- -4
+xmax <- 4
+z <- seq(from = xmin, to= xmax, by = 0.001)
+f <- dt(z, df = gl)
+dados <- tibble(z=z, f=f)
+a <- 0.05
+lower <- qt(a / 2, df = gl) 
+upper <- qt(1 - a / 2, df = gl) 
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$T_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: \\mu_{1} - \\mu_{2} \\geq \\Delta_{0}$ se $t_0 < t_{\\alpha;\\nu}$"),
+       subtitle = bquote("RC = {" ~ t[0] ~ " | " ~ t[0] < t[alpha~';'~nu] ~ "}"),
+       caption = bquote(nu == frac((frac(s[1]^2, n[1]) + frac(s[2]^2, n[2]))^2,
+                                    frac((frac(s[1], n[1]))^2, n[1]-1) + frac((frac(s[2]^2, n[2]))^2, n[2]-1) ))) +
+  scale_x_continuous(breaks = c(lower, 0),
+                     labels = c(TeX("$t_{\\alpha;\\nu}$"), "0")) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z < lower),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 27.5),
+        axis.text = element_text(size = 27.5),
+        title = element_text(size = 27.5)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = xmin, xend = lower, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = lower, xend = xmax, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = lower, xend = lower, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(lower), y = c(0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = -3, y = 0.2, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.2, label = "H[0]",
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = -3, y = 0.05, label = "alpha", parse = T,
+           color = "gray", size = 10) #+
+ggsave("../figures/2-pop-normal-s2-unknown-different-h1-lower.png")
+ggsave("../figures/2-pop-normal-s2-unknown-different-h1-lower.pdf")
+
+```
+
+### Unilateral ($H_1$ upper) 
+
+```{r}
+gl <- 10
+xmin <- -4
+xmax <- 4
+z <- seq(from = xmin, to= xmax, by = 0.001)
+f <- dt(z, df = gl)
+dados <- tibble(z=z, f=f)
+a <- 0.05
+lower <- qt(a / 2, df = gl) 
+upper <- qt(1 - a / 2, df = gl) 
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$T_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: \\mu_{1} - \\mu_{2} \\leq \\Delta_{0}$ se $t_0 > t_{1-\\alpha;\\nu}$"),
+       subtitle = bquote("RC = {" ~ t[0] ~ " | " ~ t[0] > t[1-alpha~';'~nu] ~ "}"),
+       caption = bquote(nu == frac((frac(s[1]^2, n[1]) + frac(s[2]^2, n[2]))^2,
+                                    frac((frac(s[1], n[1]))^2, n[1]-1) + frac((frac(s[2]^2, n[2]))^2, n[2]-1) ))) +
+  scale_x_continuous(breaks = c(0, upper),
+                     labels = c("0", TeX("$t_{1-\\alpha;\\nu}$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z > upper),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 27.5),
+        axis.text = element_text(size = 27.5),
+        title = element_text(size = 27.5)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = xmin, xend = upper, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = upper, xend = xmax, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = upper, xend = upper, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(upper), y = c(0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = 3, y = 0.2, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.2, label = "H[0]",
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = 3, y = 0.05, label = "alpha", parse = T,
+           color = "gray", size = 10) #+
+ggsave("../figures/2-pop-normal-s2-unknown-different-h1-upper.png")
+ggsave("../figures/2-pop-normal-s2-unknown-different-h1-upper.pdf")
+
+```
+
+
+## Paired t-test
+
+### Graph for bilateral test
+
+```{r}
+gl <- 10
+xmin <- -4
+xmax <- 4
+z <- seq(from = xmin, to= xmax, by = 0.001)
+f <- dt(z, df = gl)
+dados <- tibble(z=z, f=f)
+a <- 0.05
+lower <- qt(a / 2, df = gl) 
+upper <- qt(1 - a / 2, df = gl) 
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$T_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: \\mu_{D} = \\Delta_{0}$ se $t_0 < t_{\\frac{\\alpha}{2};n-1}$ ou $t_0 > t_{1-\\frac{\\alpha}{2};n-1}$"),
+       subtitle = bquote("RC = {" ~ t[0] ~ " | " ~ t[0] < t[frac(alpha, 2)~';'~n-1] ~ " ou " ~ t[0] > t[1-frac(alpha, 2)~';'~n-1] ~ "}")) +
+  scale_x_continuous(breaks = c(lower, 0, upper),
+                     labels = c(TeX("$t_{\\frac{\\alpha}{2};n-1}$"), "0",
+                                TeX("$t_{1- \\frac{\\alpha}{2}; n-1}$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z < lower),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  geom_ribbon(data = dplyr::filter(dados, z > upper),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 22.5),
+        axis.text = element_text(size = 22.5),
+        title = element_text(size = 22.5)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = xmin, xend = lower, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = upper, xend = xmax, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = lower, xend = upper, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = lower, xend = lower, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_segment(x = upper, xend = upper, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(lower, upper), y = c(0.15, 0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = -3, y = 0.175, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 3, y = 0.175, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]",
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = -3, y = 0.05, label = "frac(alpha, 2)", parse = T,
+           color = "gray", size = 10) +
+  annotate("text", x = 3, y = 0.05, label = "frac(alpha, 2)", parse = T,
+           color = "gray", size = 10)
+ggsave("../figures/paired-t-test-bilateral.png")
+ggsave("../figures/paired-t-test-bilateral.pdf")
+
+```
+
+Example from Montgomery fot paired t-test.
+
+```{r}
+x1 <- c( 1.186,
+  1.151,
+  1.322,
+  1.339,
+  1.200,
+  1.402,
+  1.365,
+  1.537,
+  1.559
+ )
+x2 <- c( 1.061,
+  0.992,
+  1.063,
+  1.062,
+  1.065,
+  1.178,
+  1.037,
+  1.086,
+  1.052
+ )
+
+dados <- tibble(Vigas = str_c('Vigas ', seq_along(x1)),
+                `Karlsruhe Method` = x1,
+                `Lehigh Method` = x2, `Diferença d` = x1 - x2)
+
+dados %>% xtable(caption = "Previsões de resistência para nove vigas de chapa de aço",
+                 label = "tab:paired-t-test-bilateral",
+                 digits = 2,
+                 align = rep("c", ncol(dados) + 1)) %>% 
+  print.xtable(booktabs = T,
+               include.rownames = F,
+               format.args = list(decimal.mark = ","))
+tab <- dados %>% 
+  summarise(d_bar = mean(`Karlsruhe Method`) - mean(`Lehigh Method`),
+            s_D = sd(`Diferença d`),
+            t0 = ((d_bar - 0) * sqrt(n())) / s_D)
+
+```
+
+Computing the sample size for paired t-test.
+```{r}
+samp_size_paired_t_test <- function(m_D, s_D, delta0 = 0, alpha = 0.05, power = 0.95){
+  aux <- function(k){
+    k %>% 
+      map_dbl(~ (1 -
+                   pt(qt(1 - alpha / 2, df = .x - 1), df = .x - 1, 
+                      ncp = (m_D - delta0) * sqrt(.x) / s_D) +
+                   pt(qt(alpha / 2, df = .x - 1), df = .x - 1, 
+                      ncp = (m_D - delta0) * sqrt(.x) / s_D)-
+                   power)^2)
+  }
+  
+  nlminb(4, aux, lower = 3, upper = Inf)$par %>% ceiling()
+}
+
+samp_size_paired_t_test(m_D = 0.3, s_D = 0.5, delta0 = 0, alpha = 0.05, power = 0.99)
+
+```
+
+
+### Graph for unilateral test ($H_1$ greater)
+
+```{r}
+gl <- 10
+xmin <- -4
+xmax <- 4
+z <- seq(from = xmin, to= xmax, by = 0.001)
+f <- dt(z, df = gl)
+dados <- tibble(z=z, f=f)
+a <- 0.05
+lower <- qt(a / 2, df = gl) 
+upper <- qt(1 - a / 2, df = gl) 
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$T_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: \\mu_{D} \\leq \\Delta_{0}$ se $t_0 > t_{1-\\alpha;n-1}$"),
+       subtitle = bquote("RC = {" ~ t[0] ~ " | " ~ t[0] > t[1-alpha~';'~n-1] ~ "}")) +
+  scale_x_continuous(breaks = c(0, upper),
+                     labels = c(0,TeX("$t_{1- \\alpha; n-1}$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z > upper),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 30),
+        title = element_text(size = 30)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = xmin, xend = upper, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = upper, xend = xmax, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = upper, xend = upper, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(upper), y = c(0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = 3, y = 0.175, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]",
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = 3, y = 0.05, label = "alpha", parse = T,
+           color = "gray", size = 10)
+ggsave("../figures/paired-t-test-h1-upper.png")
+ggsave("../figures/paired-t-test-h1-upper.pdf")
+
+```
+
+Exemplo do livro.
+```{r}
+antes <- c( 265,
+  240,
+  258,
+  295,
+  251,
+  245,
+  287,
+  314,
+  260,
+  279,
+  283,
+  240,
+  238,
+  225,
+  247
+ )
+depois <- c( 229,
+ 231,
+ 227,
+ 240,
+ 238,
+ 241,
+ 234,
+ 256,
+ 247,
+ 239,
+ 246,
+ 218,
+ 219,
+ 226,
+ 233
+)
+dados <- tibble(Sujeito = str_c("Sujeito ", seq_along(antes)),
+                Antes = antes, Depois = depois)
+
+dados %>% 
+  xtable(caption = "Nível de colesterol.",
+         label = "tab:col", digits = 0, 
+         align = rep("c", ncol(dados) + 1)) %>% 
+  print.xtable(include.rownames = F, booktabs = T,
+               format.args = list(decimal.mark = ","))
+
+tab <- dados %>% 
+  summarise(d_bar = mean(Antes) - mean(Depois),
+            s_D = sd(Antes - Depois),
+            t0 = (d_bar - 0) * sqrt(n()) / s_D)
+```
+
+Sample size.
+```{r}
+samp_size_paired_t_test <- function(m_D, s_D, delta0 = 0, alpha = 0.05, power = 0.95){
+  aux <- function(k){
+    k %>% 
+      map_dbl(~ (1 -
+                   pt(qt(1 - alpha, df = .x - 1), df = .x - 1, 
+                      ncp = (m_D - delta0) * sqrt(.x) / s_D) -
+                   power)^2)
+  }
+  
+  nlminb(4, aux, lower = 3, upper = Inf)$par %>% ceiling()
+}
+samp_size_paired_t_test(m_D = 25, s_D = 15, delta0 = 0, alpha = 0.05, power = 0.99)
+
+```
+
+
+### Graph for unilateral test ($H_1$ lower)
+
+```{r}
+gl <- 10
+xmin <- -4
+xmax <- 4
+z <- seq(from = xmin, to= xmax, by = 0.001)
+f <- dt(z, df = gl)
+dados <- tibble(z=z, f=f)
+a <- 0.05
+lower <- qt(a / 2, df = gl) 
+upper <- qt(1 - a / 2, df = gl) 
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$T_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: \\mu_{D} \\geq \\Delta_{0}$ se $t_0 < t_{\\alpha;n-1}$"),
+       subtitle = bquote("RC = {" ~ t[0] ~ " | " ~ t[0] < t[alpha~';'~n-1] ~ "}")) +
+  scale_x_continuous(breaks = c(lower, 0),
+                     labels = c(TeX("$t_{\\alpha; n-1}$"), 0)) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z < lower),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 30),
+        title = element_text(size = 30)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = xmin, xend = lower, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = lower, xend = xmax, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = lower, xend = lower, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(lower), y = c(0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = -3, y = 0.175, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]",
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = -3, y = 0.05, label = "alpha", parse = T,
+           color = "gray", size = 10)
+ggsave("../figures/paired-t-test-h1-lower.png")
+ggsave("../figures/paired-t-test-h1-lower.pdf")
+
+```
+
+Simulated example.
+```{r}
+set.seed(1235813)
+rho <- 0.95
+s2_D <- 10
+mu_1 <- 15
+mu_2 <- 20
+s2 <- s2_D / (2 * (1 + rho))
+covi <- s2 * rho
+n <- 20
+
+matriz <- mvtnorm::rmvnorm(n, mean = c(mu_1, mu_2),
+                           sigma = cbind(c(s2, covi), c(covi, s2))) 
+dados <- tibble(x1 = matriz[,1], x2 = matriz[,2])
+
+tab <- dados %>% 
+  summarise(m1 = mean(x1), m2 = mean(x2), s_D = sd(x1 - x2))
+
+
+```
+
+Sample size.
+```{r}
+samp_size_paired_t_test <- function(m_D, s_D, delta0 = 0, alpha = 0.05, power = 0.95){
+  aux <- function(k){
+    k %>% 
+      map_dbl(~ (pt(qt(alpha, df = .x - 1), df = .x - 1, 
+                      ncp = (m_D - delta0) * sqrt(.x) / s_D) -
+                   power)^2)
+  }
+  
+  nlminb(4, aux, lower = 3, upper = Inf)$par %>% ceiling()
+}
+samp_size_paired_t_test(m_D = -5, s_D = 20, delta0 = 0, alpha = 0.05, power = 0.99)
+
+```
+
+## Comparison of two proportions
+
+### Bilateral 
+
+```{r}
+xmin <- -4
+xmax <- 4
+z <- seq(from = xmin, to= xmax, by = 0.001)
+f <- dnorm(z)
+dados <- tibble(z=z, f=f)
+a <- 0.05
+lower <- qnorm(a / 2) 
+upper <- qnorm(1 - a / 2) 
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$Z_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: p_1 - p_2 = \\Delta_{0}$ se $z_0 < z_{\\frac{\\alpha}{2}}$ ou $z_0 > z_{1-\\frac{\\alpha}{2}}$"),
+       subtitle = bquote("RC = {" ~ z[0] ~ " | " ~ z[0] < z[frac(alpha, 2)] ~ " ou " ~ z[0] > z[1-frac(alpha, 2)] ~ "}")) +
+  scale_x_continuous(breaks = c(lower, 0, upper),
+                     labels = c(TeX("$z_{\\frac{\\alpha}{2}}$"), "0",
+                                TeX("$z_{1- \\frac{\\alpha}{2}}$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z < lower),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  geom_ribbon(data = dplyr::filter(dados, z > upper),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 22.5),
+        axis.text = element_text(size = 22.5),
+        title = element_text(size = 22.5)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = xmin, xend = lower, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = upper, xend = xmax, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = lower, xend = upper, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = lower, xend = lower, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_segment(x = upper, xend = upper, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(lower, upper), y = c(0.15, 0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = -3, y = 0.175, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 3, y = 0.175, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]",
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = -3, y = 0.05, label = "frac(alpha, 2)", parse = T,
+           color = "gray", size = 10) +
+  annotate("text", x = 3, y = 0.05, label = "frac(alpha, 2)", parse = T,
+           color = "gray", size = 10)
+ggsave("../figures/two-proportion-bilateral.png")
+ggsave("../figures/two-proportion-bilateral.pdf")
+
+```
+
+### Unilateral ($H_1$ greater)
+
+```{r}
+xmin <- -4
+xmax <- 4
+z <- seq(from = xmin, to= xmax, by = 0.001)
+f <- dnorm(z)
+dados <- tibble(z=z, f=f)
+a <- 0.05
+lower <- qnorm(a / 2) 
+upper <- qnorm(1 - a / 2) 
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$Z_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: p_1 - p_2 \\leq \\Delta_{0}$ se $z_0 > z_{1-\\alpha}$"),
+       subtitle = bquote("RC = {" ~ z[0] ~ " | " ~ z[0] > z[1-alpha] ~ "}")) +
+  scale_x_continuous(breaks = c(0, upper),
+                     labels = c(0,TeX("$z_{1- \\alpha}$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z > upper),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 27.5),
+        axis.text = element_text(size = 27.5),
+        title = element_text(size = 27.5)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = xmin, xend = upper, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = upper, xend = xmax, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = upper, xend = upper, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(upper), y = c(0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = 3, y = 0.175, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]",
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = 3, y = 0.05, label = "alpha", parse = T,
+           color = "gray", size = 10)
+ggsave("../figures/two-proportion-h1-upper.png")
+ggsave("../figures/two-proportion-h1-upper.pdf")
+
+```
+
+### Unilateral ($H_1$ less)
+
+```{r}
+xmin <- -4
+xmax <- 4
+z <- seq(from = xmin, to= xmax, by = 0.001)
+f <- dnorm(z)
+dados <- tibble(z=z, f=f)
+a <- 0.05
+lower <- qnorm(a / 2) 
+upper <- qnorm(1 - a / 2) 
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$Z_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: p_1 - p_2 \\geq \\Delta_{0}$ se $z_0 < z_{\\alpha}$"),
+       subtitle = bquote("RC = {" ~ z[0] ~ " | " ~ z[0] < z[alpha] ~ "}")) +
+  scale_x_continuous(breaks = c(lower, 0),
+                     labels = c(TeX("$z_{\\alpha}$"), 0)) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z < lower),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 27.5),
+        axis.text = element_text(size = 27.5),
+        title = element_text(size = 27.5)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = xmin, xend = lower, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = lower, xend = xmax, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = lower, xend = lower, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(lower), y = c(0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = -3, y = 0.175, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]",
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = -3, y = 0.05, label = "alpha", parse = T,
+           color = "gray", size = 10)
+ggsave("../figures/two-proportion-h1-lower.png")
+ggsave("../figures/two-proportion-h1-lower.pdf")
+
+```
+
+Simulated example.
+
+```{r}
+set.seed(1235813)
+p1 <- 0.5
+p2 <- 0.2
+n1 <- 250
+n2 <- 300
+x1 <- rbinom(n1, 1, p1)
+x2 <- rbinom(n2, 1, p2)
+
+sum(x1)
+sum(x2)
+
+```
+
+# Association test 
+
+## contingency tables
+
+### Ilustrative example for independent qualitative variables
+
+There is association between two variables.
+
+```{r}
+tab <- tibble(tabagismo = c("Não-Fumante","Fumante"),
+              `Não` = c(200,0),
+              Sim = c(0,100)) %>%
+  gather(`Não`,Sim, key = "Câncer", value = "Freq") %>%
+  group_by(`Câncer`) %>%
+  mutate(freq_rel = 100*Freq / sum(Freq))
+
+
+ggplot(tab) +
+  geom_bar(aes(x = tabagismo,y=freq_rel,fill=`Câncer`),
+           stat = "identity", position = "fill")+
+  xlab("Tabagismo")+
+  ylab("Porcentagem")+
+  ggtitle("Associação entre Câncer e Tabagismo.")+
+  scale_y_continuous(breaks = c(0,.25,.50,.75,1),
+                     labels = str_c(c(0,25,50,75,100), "%"))  +
+  theme_classic() +
+  theme(axis.text = element_text(size = 25),
+        axis.title = element_text(size = 25),
+        plot.title = element_text(size = 25),
+        legend.title = element_text(size = 20),
+        legend.text = element_text(size = 20))
+ggsave('../figures/associacao.png')
+ggsave('../figures/associacao.pdf')
+```
+
+There is no association between two variables.
+
+```{r}
+tab <- tibble(`Gênero` = c("Masculino","Feminino"),
+              `Não-Fumante` = c(80,40),
+              Fumante = c(120,60)) %>%
+  gather(`Não-Fumante`, Fumante, key = "tabagismo", value = "Freq") %>%
+  group_by(tabagismo) %>%
+  mutate(freq_rel = 100*Freq / sum(Freq))
+
+ggplot(tab) +
+  geom_bar(aes(x = tabagismo,y=freq_rel,fill=`Gênero`),
+           stat = "identity", position = "fill")+
+  xlab("Tabagismo")+
+  ylab("Porcentagem")+
+  ggtitle("Associação entre Gênero e Tabagismo.")+
+  scale_y_continuous(breaks = c(0,.25,.50, 0.6667,1),
+                     labels = str_c(c(0,25,50,"66,67",100), "%"))  +
+  theme_classic() +
+  theme(axis.text = element_text(size = 25),
+        axis.title = element_text(size = 25),
+        plot.title = element_text(size = 25),
+        legend.title = element_text(size = 20),
+        legend.text = element_text(size = 20))
+ggsave('../figures/nao_associacao.png')
+ggsave('../figures/nao_associacao.pdf')
+
+```
+
+Real example.
+
+```{r}
+tab <- tibble(`Recuperação funcional`  = c("Nenhuma","Parcial", "Completa"),
+              `A+B+C+D` = c(47, 120, 118),
+              E = c(43, 29, 10)) %>%
+  gather(`A+B+C+D`, E, key = "hospital", value = "Freq") %>%
+  group_by(hospital) %>%
+  mutate(freq_rel = 100*Freq / sum(Freq))
+
+ggplot(tab) +
+  geom_bar(aes(x = hospital,y=freq_rel,fill=`Recuperação funcional`),
+           stat = "identity", position = "fill")+
+  xlab("Hospital")+
+  ylab("Porcentagem")+
+  # ggtitle("Associação entre Hospital e Recuperação funcional.")+  
+  scale_y_continuous(breaks = c(0,.25,.50,.75,1),
+                     labels = str_c(c(0,25,50,75,100), "%"))  +
+  theme_classic() +
+  theme(axis.text = element_text(size = 30),
+        axis.title = element_text(size = 30),
+        plot.title = element_text(size = 20),
+        legend.title = element_text(size = 10),
+        legend.text = element_text(size = 10))
+ggsave('../figures/associacao_moderada.png')
+ggsave('../figures/associacao_moderada.pdf')
+
+m <- rbind(c(47, 120, 118),
+           c(43, 29, 10))
+colnames(m) <- c("Nenhuma","Parcial", "Completa")
+rownames(m) <- c("A+B+C+D", "E")
+m_prop <- m / sum(m)
+pwr::ES.w2(m_prop)
+
+
+```
+
+## test on Pearson's correlation
+
+### Bilateral testing
+
+```{r}
+xmin <- -4
+xmax <- 4
+z <- seq(from = xmin, to= xmax, by = 0.001)
+f <- dnorm(z)
+dados <- tibble(z=z, f=f)
+a <- 0.05
+lower <- qnorm(a / 2) 
+upper <- qnorm(1 - a / 2) 
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$Z_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: \\rho = \\rho_{0}$ se $z_0 < z_{\\frac{\\alpha}{2}}$ ou $z_0 > z_{1-\\frac{\\alpha}{2}}$"),
+       subtitle = bquote("RC = {" ~ z[0] ~ " | " ~ z[0] < z[frac(alpha, 2)] ~ " ou " ~ z[0] > z[1-frac(alpha, 2)] ~ "}")) +
+  scale_x_continuous(breaks = c(lower, 0, upper),
+                     labels = c(TeX("$z_{\\frac{\\alpha}{2}}$"), "0",
+                                TeX("$z_{1- \\frac{\\alpha}{2}}$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z < lower),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  geom_ribbon(data = dplyr::filter(dados, z > upper),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 22.5),
+        axis.text = element_text(size = 22.5),
+        title = element_text(size = 22.5)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = xmin, xend = lower, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = upper, xend = xmax, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = lower, xend = upper, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = lower, xend = lower, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_segment(x = upper, xend = upper, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(lower, upper), y = c(0.15, 0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = -3, y = 0.175, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 3, y = 0.175, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]",
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = -3, y = 0.05, label = "frac(alpha, 2)", parse = T,
+           color = "gray", size = 10) +
+  annotate("text", x = 3, y = 0.05, label = "frac(alpha, 2)", parse = T,
+           color = "gray", size = 10)
+ggsave("../figures/z-fisher-cor-bilateral.png")
+ggsave("../figures/z-fisher-cor-bilateral.pdf")
+
+```
+
+### Unilateral ($H_1$ greater)
+
+```{r}
+xmin <- -4
+xmax <- 4
+z <- seq(from = xmin, to= xmax, by = 0.001)
+f <- dnorm(z)
+dados <- tibble(z=z, f=f)
+a <- 0.05
+lower <- qnorm(a / 2) 
+upper <- qnorm(1 - a / 2) 
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$Z_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: \\rho \\leq \\rho_{0}$ se $z_0 > z_{1-\\alpha}$"),
+       subtitle = bquote("RC = {" ~ z[0] ~ " | " ~ z[0] > z[1-alpha] ~ "}")) +
+  scale_x_continuous(breaks = c(0, upper),
+                     labels = c(0,TeX("$z_{1- \\alpha}$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z > upper),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 27.5),
+        axis.text = element_text(size = 27.5),
+        title = element_text(size = 27.5)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = xmin, xend = upper, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = upper, xend = xmax, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = upper, xend = upper, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(upper), y = c(0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = 3, y = 0.175, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]",
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = 3, y = 0.05, label = "alpha", parse = T,
+           color = "gray", size = 10)
+ggsave("../figures/z-fisher-cor-h1-upper.png")
+ggsave("../figures/z-fisher-cor-h1-upper.pdf")
+
+```
+
+### Unilateral ($H_1$ less)
+
+```{r}
+xmin <- -4
+xmax <- 4
+z <- seq(from = xmin, to= xmax, by = 0.001)
+f <- dnorm(z)
+dados <- tibble(z=z, f=f)
+a <- 0.05
+lower <- qnorm(a / 2) 
+upper <- qnorm(1 - a / 2) 
+
+ggplot(dados)+
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$Z_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: \\rho \\geq \\rho_{0}$ se $z_0 < z_{\\alpha}$"),
+       subtitle = bquote("RC = {" ~ z[0] ~ " | " ~ z[0] < z[alpha] ~ "}")) +
+  scale_x_continuous(breaks = c(lower, 0),
+                     labels = c(TeX("$z_{\\alpha}$"), 0)) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z < lower),
+              aes(x = z, y = f, ymin = 0, ymax = f),
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 27.5),
+        axis.text = element_text(size = 27.5),
+        title = element_text(size = 27.5)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = xmin, xend = lower, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = lower, xend = xmax, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = lower, xend = lower, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(lower), y = c(0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = -3, y = 0.175, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]",
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = -3, y = 0.05, label = "alpha", parse = T,
+           color = "gray", size = 10)
+ggsave("../figures/z-fisher-cor-h1-lower.png")
+ggsave("../figures/z-fisher-cor-h1-lower.pdf")
+
+```
+
+Below we simulate a normal example.
+
+```{r}
+set.seed(1235813)
+n <- 1000
+m <- mvtnorm::rmvnorm(n, mean = c(0, 2), sigma = rbind(c(1, -0.99), c(-0.99, 1))) %>% 
+  round(2)
+
+tab <- tibble(x = m[,1], y=m[,2]) %>% 
+  summarise(
+    s_x = sum(x),
+    s_y = sum(y),
+    s_x2 = sum(x^2),
+    s_y2 = sum(y^2),
+    s_xy = sum(x * y),
+    n = n(),
+    alpha = 0.05,
+    `Decisão` = NA,
+    `valor-p` = NA,
+    `Z_0` = NA
+  )
+
+tab %>% xtable(caption = "Algumas informações do experimento",
+               label = "tab:experimento-test-rho",
+               align = rep("c", ncol(tab)+1),
+               digits = 2) %>% 
+  print.xtable(
+    booktabs = T,
+    include.rownames = F,
+    format.args = list(decimal.mark = ",")
+  )
+
+```
+

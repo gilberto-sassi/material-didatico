@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+      <text>$course$/top/Atividades assíncronas./Variável aleatória discreta</text>
+    </category>
+    <info format="html">
+      <text><![CDATA[<p>Questões sobre variável aleatória discreta: definição (exemplo a partir do zero), função de distribuição acumulada e poison.</p>]]></text>
+    </info>
+    <idnumber></idnumber>
+  </question>
+
+<!-- question: 6646872  -->
+  <question type="multichoice">
+    <name>
+      <text>Função de Distribuição Acumulada.</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Considere <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=X" alt="X" /> uma variável aleatória com Função de Distribuição Acumulada dada por:</p>
+<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Cbegin%7Bcases%7D%0A0%2C%20%26%20x%20%3C%200%5C%5C%0A0%2C1%2C%20%26%200%20%5Cleq%20x%20%3C%207%2C%5C%5C%0A0%2C3%2C%20%26%207%20%5Cleq%20x%20%3C%209%2C%5C%5C%0A0%2C4%2C%20%26%209%20%5Cleq%20x%20%3C%2010%2C%5C%5C%0A0%2C5%2C%20%26%2010%20%5Cleq%20x%20%3C%2011%2C%5C%5C%0A0%2C75%2C%20%26%2011%20%5Cleq%20x%20%3C%2013%2C%5C%5C%0A1%2C%20%26%20x%20%5Cgeq%2013%2C%0A%5Cend%7Bcases%7D" alt="\begin{cases}
+0, &amp; x &lt; 0\\
+0,1, &amp; 0 \leq x &lt; 7,\\
+0,3, &amp; 7 \leq x &lt; 9,\\
+0,4, &amp; 9 \leq x &lt; 10,\\
+0,5, &amp; 10 \leq x &lt; 11,\\
+0,75, &amp; 11 \leq x &lt; 13,\\
+1, &amp; x \geq 13,
+\end{cases}" /></p>
+<p>Calcule <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=P(2%2C5%20%3C%20X%20%3C%2010)" alt="P(2,5 &lt; X &lt; 10)" />.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está correta.</p>]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está parcialmente correta.</p>]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está incorreta.</p>]]></text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=0%2C3" alt="0,3" /></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=0%2C4" alt="0,4" /></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=0%2C5" alt="0,5" /></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=0%2C25" alt="0,25" /></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 6995144  -->
+  <question type="multichoice">
+    <name>
+      <text>Variável aleatória - definição</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Considere o fenômeno aleatório que consiste no lançamento independente de duas moedas simples cujo espaço amostral é <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5COmega%20%3D%20%5C%7B(c%2C%20c)%2C%20(c%2C%20k).%20(k%2C%20c)%2C%20(k%2Ck)%5C%7D" alt="\Omega = \{(c, c), (c, k). (k, c), (k,k)\}" />, em que <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=c" alt="c" /> representa a cara da moeda e <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=k" alt="k" /> representa a coroa da moeda. Além disso, suponha que temos a variável aleatória <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=X%3A%20%5COmega%20%5Crightarrow%20%5Cmathbb%7BR%7D" alt="X: \Omega \rightarrow \mathbb{R}" /> onde <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=X(%5Comega)%20%3D%20" alt="X(\omega) = " /> número de caras em <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Comega" alt="\omega" />. Qual é o suporte e a função de probabilidade de <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=X" alt="X" />? </p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está correta.</p>]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está parcialmente correta.</p>]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está incorreta.</p>]]></text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<table border="1px">
+<thead>
+<tr>
+<td>X</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>f(x)</td>
+<td>0,25</td>
+<td>0,5</td>
+<td>0,25</td>
+</tr>
+</tbody>
+</table>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<table border="1px">
+<thead>
+<tr>
+<td>X</td>
+<td>1</td>
+<td>2</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>f(x)</td>
+<td>0,5</td>
+<td>0,25</td>
+</tr>
+</tbody>
+</table>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<table border="1px">
+<thead>
+<tr>
+<td>X</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>f(x)</td>
+<td>0,25</td>
+<td>0,5</td>
+<td>0,25</td>
+</tr>
+</tbody>
+</table>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Impossível encontrar o suporte e a função de probabilidade com as informações fornecidas.</p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 10763832  -->
+  <question type="multichoice">
+    <name>
+      <text>Variável aleatória discreta Poisson.</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>A aplicação de fundo anticorrosivo em chapas de aço de <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=1m%5E2" alt="1m^2" /> é feita mecanicamente e pode produzir defeitos (pequenas bolhas na pintura), de acordo com uma variável aleatória Poisson de parâmetro <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Clambda%20%3D%201" alt="\lambda = 1" /> por <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=m%5E2" alt="m^2" />. Uma chapa é sorteada ao acaso para ser inspecionada, qual a probabilidade de encontrar pelo menos dois defeitos.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está correta.</p>]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está parcialmente correta.</p>]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está incorreta.</p>]]></text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Aproximadamente <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=0%2C26" alt="0,26" />.</p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Aproximadamente <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=0%2C92" alt="0,92" />.</p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Aproximadamente <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=0%2C08" alt="0,08" />.</p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Aproximadamente 0,18.</p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+</quiz>

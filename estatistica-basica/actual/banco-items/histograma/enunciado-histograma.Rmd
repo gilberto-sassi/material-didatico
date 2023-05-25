@@ -1,0 +1,71 @@
+```{r dados, include=FALSE, message=FALSE} 
+library(exams)
+library(knitr)
+options(scipen = 999) # prevent scientific notation
+library(ggthemes)
+library(tidyverse)
+
+# tamanho da amostra
+tam <- 1000
+
+# random sample of integer values
+amostra <- rnorm(tam, mean = 500, sd = 100)
+while (abs(mean(400 <= amostra & amostra < 500) - mean(500 <= amostra & amostra < 600)) < 0.05) {
+    amostra <- rnorm(tam, mean = 500, sd = 100)
+}
+
+# breaks
+limites <- seq(from = -200, to = 1200, by = 100)
+
+# solução
+proporcao <- (mean(400 <= amostra & amostra < 600)) |> round(2) # correct
+```
+
+Question
+========
+Considere X uma variável quantitativa contínua cujo histograma está apresentado na figura abaixo. Qual a proporção de elementos da amostra com valor de X entre 400 e 600, ou seja, a frequência relativa do intervalo [400, 600)? Responda com duas casas decimais.
+
+```{r grafico, echo=FALSE, fig.cap=" "}
+df <- tibble(X = amostra)
+df <- df |>
+    mutate(intervalos = cut(X, breaks = limites, include.lowest = T, right = F))
+
+df_freq <- df |>
+    group_by(intervalos) |>
+    summarise(freq = n())
+
+intervalos <- vector("character")
+for (k in 1:(length(limites) - 1)) {
+    intervalos[k] <- str_interp("[${limites[k]},${limites[k + 1]})")
+}
+intervalos[k] <- str_interp("[${limites[k]},${limites[k + 1]}]")
+
+eixo_y <- seq_along(intervalos) |>
+    map_dbl(\(i) {
+        valor <- 0
+        if (intervalos[i] %in% df_freq$intervalos) {
+            j <- which(intervalos[i] == df_freq$intervalos)
+            valor <- df_freq$freq[j] / tam
+        }
+        return(valor / 100)
+    }) |> unique() |> sort()
+
+ggplot(df, aes(x = X)) +
+    geom_histogram(aes(y = ..density..), fill = "blue", breaks = limites, closed = "left") +
+    scale_y_continuous(breaks = eixo_y, limits = c(0, max(eixo_y) + 0.0001)) +
+    scale_x_continuous(breaks = limites) +
+    theme_calc() +
+    labs(title = "Histograma para a variável quantitativa contínua X.", x = "X", y = "Densidade de Frequência")
+```
+
+
+Solution
+========
+A frequência relativa de X para o intervalo [400, 600) é  `r proporcao`. 
+
+Meta-information
+================
+exname: histograma
+extype: num
+exsolution: `r proporcao`
+extol: 0.02

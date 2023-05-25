@@ -1,0 +1,67 @@
+```{r, label="Simulação de dados", include=F}
+library(exams)
+library(glue)
+library(writexl)
+library(statBasics)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+# tamanho da amostra
+tam <- sample(100:1500, 1)
+# desvio padrão da população 1
+dp_pop_1 <- runif(1, 10, 15) |> round(2)
+# desvio padrão da população 2
+dp_pop_2 <- runif(1, 20, 25) |> round(2)
+# média da população 1
+media_pop_1 <- runif(1, 10, 20) |> round(2)
+# média da população 2
+media_pop_2 <- runif(1, 10, 20) |> round(2)
+
+amostra1 <- rnorm(tam, media_pop_1, dp_pop_1)
+amostra2 <- rnorm(tam, media_pop_2, dp_pop_2)
+
+g <- runif(1, 0.01, 0.1) |> round(2)
+
+df <- tibble(`amostra da população 1` = amostra1,
+            `amostra da população 2` = amostra2)
+write_xlsx(df, "dados.xlsx")
+
+f <- \(x) format(x, decimal.mark = ",")
+
+ajuste <- ht_2pop_mean(amostra1, amostra2, var_equal = F, sig_level = g)
+sol <- c(
+    ajuste$statistic,
+    ajuste$p_value
+) |> round(2)
+```
+
+Question
+========
+
+Suponha que uma pesquisadora precisa decidir entre as hipóteses H~0~: &mu;~1~ - &mu;~2~ = 0  contra H~1~: &mu;~1~ - &mu;~2~ &#8800; 0, e para isso ela coletou uma amostra que está armazenada no arquivo [dados.xlsx](dados.xlsx). Assuma que as variâncias das duas populações são diferentes.  Ao nível de significância &alpha; = `r f(g)`, temos que:
+
+Questionlist
+------------
+
+* A estatística de teste é: 
+* O valor-p: 
+* Ao nível de significância &alpha; = `r f(g)`, rejeitamos a hipótese nula.
+* Ao nível de significância &alpha; = `r f(g)`, não rejeitamos a hipótese nula.
+
+Solution
+========
+Solutionlist
+------------
+
+* A estatística de teste é: `r f(sol[1])`.
+* O valor-p: `r f(sol[2])`.
+* `r ifelse(sol[2] < g, glue("Ao nível de significância &alpha; = {f(g)}, rejeitamos a hipótese nula. "), glue("Ao nível de significância &alpha; = {f(g)}, **NÃO** rejeitamos a hipótese nula. "))` 
+*  
+
+Meta-information
+================
+exname: testeZ_2pop
+extype: cloze
+exsolution: `r sol[1]`|`r sol[2]`|`r ifelse(sol[2] < g, "10", "01")`
+exclozetype: num|num|schoice
+extol: 1

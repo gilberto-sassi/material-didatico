@@ -1,0 +1,87 @@
+```{r, label="Simulação de dados", include=F}
+library(exams)
+library(glue)
+library(magrittr)
+library(readxl)
+library(writexl)
+library(knitr)
+library(truncnorm)
+library(statBasics)
+library(gt)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+# tamanho da amostra
+tam <- sample(100:500, 1)
+
+# desvio padrão da população 1
+dp_pop_1 <- runif(1, 10, 15) |> round(2)
+# média da população 1
+media_pop_1 <- runif(1, 10, 15) |> round(2)
+# desvio padrão da população 1
+dp_pop_2 <- runif(1, 10, 15) |> round(2)
+# média da população 1
+media_pop_2 <- runif(1, 10, 15) |> round(2)
+# amostra da população 1
+amostra1 <- rnorm(tam, media_pop_1, dp_pop_1) |>
+    round(2)
+# amostra da população 2
+amostra2 <- rnorm(tam, media_pop_2, dp_pop_2) |>
+    round(2)
+
+df <- tibble(`amostra da população 1` = amostra1,
+            `amostra da população 2` = amostra2)
+
+write_xlsx(df, "dados.xlsx")
+
+# nível de significância
+g <- runif(1, 0.90, 0.99) |> round(2)
+
+# ajuste
+ic <- ci_2pop_norm(
+    amostra1,
+    amostra2,
+    sd_pop_1 = dp_pop_1,
+    sd_pop_2 = dp_pop_2,
+    conf_level = g
+)
+
+sol <- c(
+    ic$lower_ci,
+    ic$upper_ci
+) |> round(2)
+
+f <- \(x) format(x, decimal.mark = ",")
+```
+
+Question
+========
+
+Suponha que um pesquisador precisa comparar as médias de duas populações e para isso coletou uma amostra que está salva em [dados.xlsx](dados.xlsx). O desvio padrão da população 1 é &sigma;~1~ = `r f(dp_pop_1)` e o desvio padrão da população 2 é &sigma;~2~ = `r f(dp_pop_2)`. Construa um intervalo de confiança para &mu;~1~ - &mu;~2~ com coeficiente de confiança &gamma;=`r f(g)`.
+
+IC(&mu;~1~ - &mu;~2~; `r g*100`%) = (\#\#ANSWER1\#\#; \#\#ANSWER2\#\#).
+
+Questionlist
+------------
+
+*
+*
+
+Solution
+========
+
+IC(&mu;~1~ - &mu;~2~; `r g*100`%) = (`r f(sol[1])`; `r f(sol[2])`).
+
+Solutionlist
+------------
+
+*
+*
+
+Meta-information
+================
+exname: ic_2pop_mean_dp_conhecido
+extype: cloze
+exsolution: `r sol[1]`|`r sol[2]`
+exclozetype: num|num
+extol: 0.02

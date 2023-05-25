@@ -1,0 +1,57 @@
+```{r dgp, include = FALSE}
+library(exams)
+library(magrittr)
+library(readxl)
+library(writexl)
+library(knitr)
+library(statBasics)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+# tamanho da amostra
+tam <- 1500:3000 |> sample(1)
+
+# proporção de sucesso
+p <- runif(1, min = 0.25, 0.75) |> round(2)
+
+# coeficiente de confiança
+g <- runif(1, 0.9, 0.99) |> round(2)
+
+# amostra da distribuição normal
+amostra <- rbinom(tam, 1, p)
+write_xlsx(tibble(x = amostra), "conjunto-dados.xlsx")
+
+ic <- ci_1pop_bern(amostra, conf_level = g) |>
+    round(2)
+```
+
+Question
+========
+
+Seja X uma variável aleatória discreta com distribuição Bernoulli e uma amostra com `r tam` observações está salva no arquivo [conjunto-dados.xlsx](conjunto-dados.xlsx). Construa um intervalo de confiança para p. Use &#120574;=`r format(100 * g, decimal.mark = ",")`%.
+
+**Resposta:** IC(p, `r format(100 * g, decimal.mark = ",")`%) = (\#\#ANSWER1\#\#; \#\#ANSWER2\#\#).
+
+Questionlist
+------------
+* 
+* 
+
+Solution
+========
+
+**Resposta:** IC(p, `r format(100 * g, decimal.mark = ",")`%) = (`r format(ic$lower_ci, decimal.mark = ",")`; `r format(ic$upper_ci, decimal.mark = ",")`).
+
+Solutionlist
+------------
+
+*
+*
+
+Meta-information
+================
+exname: proporcao_0_1
+extype: cloze
+exclozetype: num|num
+exsolution: `r ic$lower_ci`|`r ic$upper_ci`
+extol: 0.05

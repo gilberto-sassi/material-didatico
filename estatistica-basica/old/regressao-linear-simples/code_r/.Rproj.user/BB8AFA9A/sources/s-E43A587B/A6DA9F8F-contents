@@ -1,0 +1,234 @@
+---
+title: "Aula: Regressão linear simples"
+output: html_notebook
+---
+
+```{r}
+library(xtable)
+library(broom)
+library(tidyverse)
+```
+
+
+# Aula: Regressão linear simples
+
+```{r}
+set.seed(112358)
+n <- 50
+X <-  rnorm(n, mean = 0, sd = 1)
+Y <-  X + rnorm(length(X), mean = 0, sd = 0.4)
+dados <- data.frame(Y,X)
+
+dados %>% 
+  ggplot(aes(X, Y)) +
+  geom_point(size = 4) +
+  geom_line(stat = "smooth", method = "lm", size = 2, alpha  = 0.65, color = "blue")+
+  labs(x = "Variável dependente (x)", y = "Variável independente (y)") +
+  geom_segment(aes(x = -0.2, y = -0.2, xend = -0.2, yend = -1.3), size = 1, color = "red", alpha = 0.1)+
+  geom_point(data = tibble(x = -0.2, y = -1.3), aes(x, y), 
+             color = "red", size = 6, alpha = 0.75)+
+  annotate("text", x = 0.4, y = -1,  label = "(y[i]- a - b*x[i])", 
+           parse = T, size = 7, color = "red", alpha = 0.75) +
+  annotate("text", x = 2.6, y = 2.0, label = "y==a+bx", parse= T, size = 7,
+           color = "blue", alpha = 0.75) +
+  scale_x_continuous(breaks = NULL) +
+  scale_y_continuous(breaks = NULL)+
+  theme_minimal() +
+  theme(axis.title = element_text(size = 25),
+        axis.text = element_text(size = 20))
+ggsave("motivacao_regressao.png")
+```
+
+Primeiro exemplo de motivação presente no livro do Montgomery "Applied Statistics and probability for engineers."
+
+```{r}
+dados <- tribble(~forca, ~idade,
+                 2158.70, 15.50,
+                 1678.15, 23.75,
+                 2316.00, 8.00,
+                 2061.30, 17.00,
+                 2207.50, 5.00,
+                 1708.30, 19.00,
+                 1784.70, 24.00,
+                 2575.00, 2.50,
+                 2357.90, 7.50,
+                 2277.70, 11.00,
+                 2165.20, 13.00,
+                 2399.55, 3.75,
+                 1779.80, 25.00,
+                 2336.75, 9.75,
+                 1765.30, 22.00,
+                 2053.50, 18.00,
+                 2414.40, 6.00,
+                 2200.50, 12.50,
+                 2654.20, 2.00,
+                 1753.70, 21.50)
+
+dados %>% 
+  xtable(caption = "Dados sobre propelentes de foguetes.",
+         label = "tab:propelente", digits = 2,
+         align = rep("c", 3)) %>% 
+  print.xtable(include.rownames = F, booktabs = T,
+               format.args = list(decimal.mark = ","))
+
+dados %>% ggplot(aes(forca, idade)) +
+  geom_point(size = 4)+
+  geom_line(stat = "smooth", method = "lm", size = 4, alpha = 0.35, color = "blue") +
+  labs(x = "Força (psi)", y = "Idade (semanas)") +
+  theme_minimal() +
+  theme(axis.title = element_text(size = 25),
+        axis.text = element_text(size = 20))
+ggsave("dispersao.png")
+
+dados %>% 
+  summarise(s_x = sum(idade), s_y = sum(forca), s_x2 = sum(idade^2),
+            s_y2 = sum(forca^2), s_xy = sum(forca * idade),
+            s_xx = sum( (idade - mean(idade))^2), 
+            s_xxy = sum( (forca - mean(forca)) * (idade - mean(idade)) ),
+            media_x = mean(idade), media_y = mean(forca))
+
+r <- with(dados, cor(forca, idade))
+
+xi <- 0.5 * log((1 + r) / (1 - r))
+
+lower <- (exp(2 * (-1.96 / sqrt(17) + xi)) - 1) / (exp(2 * (-1.96 / sqrt(17) + xi)) + 1)
+upper <- (exp(2 * (1.96 / sqrt(17) + xi)) - 1) / (exp(2 * (1.96 / sqrt(17) + xi)) + 1)
+
+ajuste <- lm(forca ~ 1 + idade, dados) 
+
+d_ajuste <- augment(ajuste)
+
+s2 <- with(d_ajuste, sum((forca - .fitted)^2 / (nrow(dados) - 2)))
+s2_b <- with(dados,  s2 * ( sum(idade^2) / (nrow(dados) * sum((idade - mean(idade))^2)) )) %>% 
+  sqrt() %>% round(2)
+s <- sqrt(s2)
+
+d_ajuste <- d_ajuste %>% 
+  mutate(e = (forca - .fitted) / s)
+d_ajuste %>% ggplot(aes(x = idade, y = e)) +
+  geom_point(size = 3, color = "blue") +
+  geom_abline(intercept = 0, slope = 0) +
+  labs(x = "Idade", y = expression(hat(e))) +
+  theme_minimal()+
+  theme(axis.title = element_text(size = 25),
+        axis.text = element_text(size = 20))
+ggsave('graficos_residuos.png', width = 15)
+
+n <- nrow(d_ajuste)
+d_q <- d_ajuste %>% 
+  transmute(q_r = ((r - mean(r)) / sd(r)) %>% sort(),
+            q_t = qnorm((1:n - 0.5) / n))
+
+d_q %>% ggplot(aes(x = q_r, y = q_t)) +
+  geom_point(size = 4) +
+  geom_abline(intercept =  0, slope = 1, color = "blue", size = 4, alpha= 0.45) +
+  labs(x = "Quantis dos resíduos", y = "Quantis da distribuição\n normal") +
+  theme_minimal()+
+  theme(axis.title = element_text(size = 25),
+        axis.text = element_text(size = 20))
+ggsave("grafico_quantis.png", width = 15)
+
+
+ks <- d_ajuste %>% 
+  transmute(i = 1:n,
+            z = ((e - mean(e)) / sd(e)) %>%  sort(),
+            N = pnorm(z),
+            razao = (1:n) / n,
+            diff = abs(N - razao))
+
+```
+
+
+
+Vamos fazer um novo exemplo, pois esse exemplo que usei não está legal. Eu vou simular para dar certinho.
+
+```{r}
+y <- ajuste$coefficients[1] + ajuste$coefficients[2] * dados$idade + rnorm(n, sd = s)
+d1 <- tibble(idade = dados$idade, forca = round(y, 2))
+
+d1 %>% 
+  xtable(caption = "Dados sobre propelentes de foguetes.",
+         label = "tab:propelente", digits = 2,
+         align = rep("c", 3)) %>% 
+  print.xtable(include.rownames = F, booktabs = T,
+               format.args = list(decimal.mark = ","))
+
+d1 %>% ggplot(aes(forca, idade)) +
+  geom_point(size = 4)+
+  geom_line(stat = "smooth", method = "lm", size = 4, alpha = 0.35, color = "blue") +
+  labs(x = "Força (psi)", y = "Idade (semanas)") +
+  theme_minimal() +
+  theme(axis.title = element_text(size = 25),
+        axis.text = element_text(size = 20))
+ggsave("dispersao.png")
+
+d1 %>% 
+  summarise(s_x = sum(idade), s_y = sum(forca), s_x2 = sum(idade^2),
+            s_y2 = sum(forca^2), s_xy = sum(forca * idade),
+            s_xx = sum( (idade - mean(idade))^2), 
+            s_xxy = sum( (forca - mean(forca)) * (idade - mean(idade)) ),
+            media_x = mean(idade), media_y = mean(forca))
+
+r <- with(d1, cor(idade, forca))
+
+xi <- 0.5 * log((1 + r) / (1 - r))
+
+lower <- (exp(2 * (-1.96 / sqrt(17) + xi)) - 1) / (exp(2 * (-1.96 / sqrt(17) + xi)) + 1)
+upper <- (exp(2 * (1.96 / sqrt(17) + xi)) - 1) / (exp(2 * (1.96 / sqrt(17) + xi)) + 1)
+
+ajuste <- lm(forca ~ 1 + idade, d1) 
+
+d_ajuste <- augment(ajuste)
+
+s2 <- with(d_ajuste, sum((forca - .fitted)^2 / (nrow(dados) - 2)))
+s2_b <- with(d1,  ( s2 / (nrow(dados) * sum((idade - mean(idade))^2)) )) %>% 
+  sqrt() %>% round(2)
+s <- sqrt(s2)
+
+d_ajuste <- d_ajuste %>% 
+  mutate(e = (forca - .fitted) / s)
+d_ajuste %>% ggplot(aes(x = idade, y = e)) +
+  geom_point(size = 3, color = "blue") +
+  geom_abline(intercept = 0, slope = 0) +
+  labs(x = "Idade", y = expression(hat(e))) +
+  theme_minimal()+
+  ylim(c(-2,2)) +
+  theme(axis.title = element_text(size = 25),
+        axis.text = element_text(size = 20))
+ggsave('graficos_residuos.png', width = 15)
+
+
+n <- nrow(d_ajuste)
+d_q <- d_ajuste %>% 
+  transmute(q_r = ((e - mean(e)) / sd(e)) %>% sort(),
+            q_t = qnorm((1:n - 0.5) / n))
+
+d_q %>% ggplot(aes(x = q_r, y = q_t)) +
+  geom_point(size = 4) +
+  geom_abline(intercept =  0, slope = 1, color = "blue", size = 4, alpha= 0.45) +
+  labs(x = "Quantis dos resíduos", y = "Quantis da distribuição\n normal") +
+  theme_minimal()+
+  theme(axis.title = element_text(size = 25),
+        axis.text = element_text(size = 20))
+ggsave("grafico_quantis.png", width = 15)
+
+
+ks <- d_ajuste %>% 
+  transmute(i = 1:n,
+            z = ((e - mean(e)) / sd(e)) %>%  sort(),
+            N = pnorm(z),
+            razao = (1:n) / n,
+            diff = abs(N - razao))
+
+
+k <- (nrow(d_ajuste) %>% log2() + 1) %>% ceiling()
+d_ajuste %>% 
+  ggplot(aes(x = e)) +
+  geom_histogram(aes(y = ..density..), fill = "blue", bins = k)+
+  labs(x = "Resíduo", y = "Função de densidade\n de frequência")+
+  theme_minimal() +
+  theme(axis.text = element_text(size = 20),
+        axis.title = element_text(size = 25))
+ggsave("normalidade.png")
+```
+

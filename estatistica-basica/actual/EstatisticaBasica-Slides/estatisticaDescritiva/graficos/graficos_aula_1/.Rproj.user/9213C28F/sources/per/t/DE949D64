@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1583230244302.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2783703479",
+    "id" : "DE949D64",
+    "lastKnownWriteTime" : 1583257325,
+    "last_content_update" : 1583257325,
+    "path" : "C:/Users/gilberto.sassi/Dropbox/atividade_didatica/1sem2020/mat236/slides/aula_1/graficos_aula_1/graficos.R",
+    "project_path" : "graficos.R",
+    "properties" : {
+        "cursorPosition" : "75,0",
+        "scrollLine" : "64"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

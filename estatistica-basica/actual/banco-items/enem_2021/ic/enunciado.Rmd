@@ -1,0 +1,94 @@
+```{r, label="Simulação de dados", include=F}
+library(exams)
+library(glue)
+library(writexl)
+library(readxl)
+library(statBasics)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+# tamanho da amostra
+tam <- sample(100:1000, 1)
+
+# média da população
+media_pop <- runif(1, 400, 800) |> round(2)
+
+#------------------------------------------------------------------------------
+# amostra
+amostra <- data.frame(nu_nota_mt = rnorm(tam, media_pop, 100) |> round(2))
+
+# nível de significância
+g <- runif(1, 0.90, 0.99) |> round(2)
+
+# Salvando os dados
+write_xlsx(amostra, "dados.xlsx")
+
+# ajuste
+ajuste <- ci_1pop_norm(amostra$nu_nota_mt, conf_level = g)
+
+sol <- c(
+    ajuste$lower_ci,
+    ajuste$upper_ci,
+    mean(amostra$nu_nota_mt),
+    sd(amostra$nu_nota_mt),
+    ajuste$upper_ci - mean(amostra$nu_nota_mt)
+) |> round(3)
+
+decisao <- ifelse(sol[1] > 600, 1, 0)
+
+f <- \(x) format(x, decimal.mark = ",")
+```
+
+Question
+========
+
+Em anexo a esta questão, inclui uma amostra com informações de `r tam` candidatos na prova do ENEM na edição de 2021 que está no arquivo [dados.xlsx](dados.xlsx). Construa o intervalo de confiança para a média (populacional) da nota em matemática (`nu_nota_mt`) com coeficiente de confiança &gamma; = `r f(g)`. 
+
+**Use três casas decimais nas respostas abaixo.**
+
+_PS: os dados deste exercícios foram simulados._
+
+**Solução:** 
+
+Com coeficiente de confiança `r  f(100 *g)`\%, a nota média em matemática na edição do 2021 está entre \#\#ANSWER1\#\# e \#\#ANSWER2\#\#. 
+
+A nota média é \#\#ANSWER3\#\#,  o desvio padrão é \#\#ANSWER4\#\# e a margem de erro é \#\#ANSWER5\#\#.
+
+<hr>
+
+**Interpretação de Intervalo de confiança**
+
+Escolha a alternativa correta:
+
+\#\#ANSWER6\#\#
+
+```{r, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+* Usando este intervalo, podemos afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600 ao nível de significância &alpha; = `r f(1-g)`.
+* Usando este intervalo, **NÃO** temos evidência para afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600 ao nível de significância &alpha; = `r f(1-g)`.
+
+
+Solution
+========
+
+**Solução:** 
+
+Com coeficiente de confiança `r  f(100 *g)`\%, a nota média em matemática na edição do 2021 está entre `r f(sol[1])` e `r f(sol[2])`. 
+
+A nota média é `r f(sol[3])`,  o desvio padrão é `r f(sol[4])` e a margem de erro é `r f(sol[5])`.
+
+
+```{r, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+* `r ifelse(decisao, glue("Ao nível de significância &alpha; = {f(1-g)}, podemos afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600. "), glue("Ao nível de significância &alpha; = {f(1-g)},  **NÃO** temos evidência para afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600. "))` 
+*  
+
+Meta-information
+================
+exname: enem_2021_IC
+extype: cloze
+exsolution: `r sol[1]`|`r sol[2]`|`r sol[3]`|`r sol[4]`|`r sol[5]`|`r ifelse(decisao, "10", "01")`
+exclozetype: num|num|num|num|num|schoice
+extol: 0.05

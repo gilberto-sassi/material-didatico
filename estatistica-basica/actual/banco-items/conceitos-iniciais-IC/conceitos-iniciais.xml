@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+      <text>$course$/top/Atividades assíncronas./Conceitos iniciais de IC.</text>
+    </category>
+    <info format="html">
+      <text><![CDATA[<p style="text-align: left;">Conceitos iniciais sobre intervalo de confiança.</p>]]></text>
+    </info>
+    <idnumber></idnumber>
+  </question>
+
+<!-- question: 6646884  -->
+  <question type="multichoice">
+    <name>
+      <text>Interpretação de Intervalo de Confiança</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<div>Imagine que um pesquisador construiu um intervalo de confiança para média de uma variável aleatória contínua usando amostra de tamanho 50 obtendo IC(<img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Cmu" alt="\mu" />, 95%) = (14,8; 15,35). Qual das seguintes opções abaixo é uma interpretação correta para este intervalo de confiança?</div>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está correta.</p>]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está parcialmente correta.</p>]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está incorreta.</p>]]></text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<div>Intervalos de confiança não têm interpretação.</div>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<div>A média da população está entre 14,8 e 15,35 com probabilidade 95%.</div>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<div>A média da população está entre 14,8 e 15,35 para todas as amostras de tamanho 50 coletadas dessa população.</div>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<div>Em 95% das amostras de tamanho 50 coletadas desta população a média da população está dentro do intervalo confiança, ou seja, temos <em>confiança</em> de 95% que coletamos uma amostra que produziu um intervalo de confiança correto com média da população dentro de IC(<img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Cmu" alt="\mu" />, 95%) = (14,8; 15,35).</div>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+</quiz>

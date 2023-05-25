@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+      <text>$course$/top/Atividades assíncronas./Conceitos iniciais de probabilidade</text>
+    </category>
+    <info format="html">
+      <text><![CDATA[<p>Definição e conceitos iniciais de probabilidade.</p>]]></text>
+    </info>
+    <idnumber></idnumber>
+  </question>
+
+<!-- question: 6982439  -->
+  <question type="matching">
+    <name>
+      <text>Conceitos iniciais - probabilidade</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Associe corretamente a descrição de um conceito de probabilidade com o seu respectivo nome.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está correta.</p>]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está parcialmente correta.</p>]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está incorreta.</p>]]></text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <subquestion format="html">
+      <text><![CDATA[<p>Acontecimento ou experimento que não conseguimos antecipar o resultado antes de sua realização.</p>]]></text>
+      <answer>
+        <text>Fenômeno aleatório</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p>Conjunto de todos os resultados possíveis de um fenômeno aleatório.</p>]]></text>
+      <answer>
+        <text>Espaço amostral</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p>Subconjunto do espaço amostral.</p>]]></text>
+      <answer>
+        <text>Evento</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p>Número entre zero e um que indica a <em>plausabilidade</em> ou <em>crença</em> que um ponto do evento <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=A" alt="A" /> seja resultado do fenômeno aleatório.</p>]]></text>
+      <answer>
+        <text>Probabilidade de A : P(A)</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text></text>
+      <answer>
+        <text>Fora Bolsonaro</text>
+      </answer>
+    </subquestion>
+  </question>
+
+<!-- question: 10763802  -->
+  <question type="multichoice">
+    <name>
+      <text>Questão de equiprobabilidade.</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Suponha que uma urna tem 5 bolas brancas e 7 bolas vermelhas. Se retirarmos uma bola aleatoriamente desta urna, qual a probabilidade desta bola ser branca?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está correta.</p>]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está parcialmente correta.</p>]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está incorreta.</p>]]></text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Cfrac%7B5%7D%7B12%7D" alt="\frac{5}{12}" /></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Cfrac%7B7%7D%7B12%7D" alt="\frac{7}{12}" /></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Cfrac%7B1%7D%7B2%7D" alt="\frac{1}{2}" /></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>É impossível calcular esta probabilidade.</p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+</quiz>

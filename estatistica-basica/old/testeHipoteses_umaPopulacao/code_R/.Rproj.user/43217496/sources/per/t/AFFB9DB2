@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1591733183295.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2750169557",
+    "id" : "AFFB9DB2",
+    "lastKnownWriteTime" : 1590078243,
+    "last_content_update" : 1591735871047,
+    "path" : "~/Dropbox/atividade_didatica/EstatisticaBasica-Slides/testeHipoteses_umaPopulacao/code_R/ilustracao.Rmd",
+    "project_path" : "ilustracao.Rmd",
+    "properties" : {
+        "chunk_output_type" : "console",
+        "cursorPosition" : "1004,0",
+        "scrollLine" : "988"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

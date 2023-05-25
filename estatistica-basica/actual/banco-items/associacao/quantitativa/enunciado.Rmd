@@ -1,0 +1,94 @@
+```{r, label="Simulação de dados", include=F}
+library(exams)
+library(glue)
+library(writexl)
+library(statBasics)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+# tamanho da amostra
+tam <- sample(100:1000, 1)
+
+#------------------------------------------------------------------------------
+# parâmetros
+# matrix de correlação
+variancia <- runif(1, min = 10, max = 20)
+matriz_cov <- rbind(
+    c(1, 0.95) * variancia,
+    c(0.95, 1) * variancia
+) |> round(2)
+# média
+vetor_medias <- c(
+    runif(1, min = 10, max = 20),
+    runif(1, min = 10, max = 20)
+) |> round(2)
+
+#------------------------------------------------------------------------------
+# amostra
+amostra <- MASS::mvrnorm(
+    n = tam,
+    mu = vetor_medias,
+    Sigma = matriz_cov
+)
+colnames(amostra) <- c("X", "Y")
+amostra <- as_tibble(amostra)
+
+# nível de significância
+g <- runif(1, 0.01, 0.1) |> round(2)
+
+# Salvando os dados
+write_xlsx(amostra, "dados.xlsx")
+
+# ajuste
+rho_0 <- runif(1, min = 0.75, max = 0.92) |> round(2)
+coef_cor <- cor(amostra$X, amostra$Y)
+f <- \(r) 0.5 * log((1 + r) / (1 - r)) # transformação z-Fisher
+estatistica <- (f(coef_cor) - f(rho_0)) * sqrt(tam - 3)
+valor_p <- 1 - pnorm(estatistica)
+
+sol <- c(
+    estatistica,
+    valor_p
+) |> round(2)
+
+decisao <- ifelse(
+    sol[2] < g,
+    "rejeitamos a hipótese nula.",
+    "não rejeitamos a hipótese nula."
+)
+
+f <- \(x) format(x, decimal.mark = ",")
+```
+
+Question
+========
+
+Nesta questão, decida usando o valor-p.
+
+Suponha que um pesquisador precisa decidir entre as hipóteses H~0~: &rho; &#10877; `r f(rho_0)` contra H~1~: &rho; > `r f(rho_0)`, e para isso ela coletou uma amostra que está armazenada no arquivo [dados.xlsx](dados.xlsx). Ao nível de significância &alpha; = `r f(g)`, temos que:
+
+Questionlist
+------------
+
+* A estatística de teste é: 
+* O valor-p: 
+* Ao nível de significância &alpha; = `r f(g)`, rejeitamos a hipótese nula.
+* Ao nível de significância &alpha; = `r f(g)`, não rejeitamos a hipótese nula.
+
+Solution
+========
+Solutionlist
+------------
+
+* A estatística de teste é: `r f(sol[1])`.
+* O valor-p: `r f(sol[2])`.
+* `r ifelse(sol[2] < g, glue("Ao nível de significância &alpha; = {f(g)}, rejeitamos a hipótese nula. "), glue("Ao nível de significância &alpha; = {f(g)}, **NÃO** rejeitamos a hipótese nula. "))` 
+*  
+
+Meta-information
+================
+exname: associacao_correlacao
+extype: cloze
+exsolution: `r sol[1]`|`r sol[2]`|`r ifelse(sol[2] < g, "10", "01")`
+exclozetype: num|num|schoice
+extol: 0.05

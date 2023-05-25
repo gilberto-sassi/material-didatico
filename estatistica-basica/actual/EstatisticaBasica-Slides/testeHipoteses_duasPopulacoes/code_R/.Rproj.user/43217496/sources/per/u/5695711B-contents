@@ -1,0 +1,57 @@
+dados <- tribble(~sujeito, ~catalisador1, ~catalisador2,
+  1 , 91.5 , 89.2 , 
+2 , 94.2 , 91.0 , 
+3 , 92.2 , 90.5 , 
+4 , 95.4 , 93.2 , 
+5 , 91.8 , 97.2 , 
+6 , 89.1 , 97.0 , 
+7 , 94.7 , 91.1 , 
+8 , 89.2 , 92.8)
+
+dados %>% summarise(f_0 = sd(catalisador1)^2 / sd(catalisador2)^2,
+                    s1 = sd(catalisador1), s2 = sd(catalisador2))
+
+qf(0.025, df1 = 7, df2 = 7)
+
+qf(0.975, df1 = 7, df2 = 7)
+
+dados <- tribble(~baixa, ~alta,
+  224 , 327 , 
+  268 , 352 , 
+  293 , 379 , 
+  190 , 347 , 
+  273 , 335 , 
+  275 , 323 , 
+  243 , 325 , 
+  244 , 422 , 
+  243 , 354 , 
+  233 , 335 , 
+  246 , 337 , 
+  230 , 364 , 
+)
+
+tab <- dados %>% 
+  summarise(s1 = sd(baixa), s2 = sd(alta), f0 = s1^2 / s2^2, n = n(),
+            media1 = mean(baixa), media2 = mean(alta),
+            sd = (((n - 1) * s1^2 + (n - 1) * s2^2) / (2 * n - 2)) %>% sqrt(),
+            t0 = (media1 - media2) / (sd * sqrt(2 / n)))
+
+
+dados <- tibble(x= c( 206, 188, 205, 187, 194, 193, 207, 185, 189, 213, 192,
+                      210, 194, 178, 205),
+                y = c( 177, 197, 206, 201, 180, 176, 185, 200, 197, 192, 198,
+                       188, 189, 203, 192
+                ))
+
+dados %>% 
+  summarise(s1 = sd(x), s2 = sd(y), f0 = (s1 / s2)^2)
+
+qf(0.975, df1 = 11, df2 = 11)
+
+qf(0.025, df1 = 11, df2 = 11)
+
+
+n <- 25
+qf(0.975, df1 = 11, df2 = n-1)
+
+qf(0.025, df1 = 11, df2 = n-1)

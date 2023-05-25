@@ -1,0 +1,831 @@
+\documentclass[9pt]{beamer}
+
+%%pacotes referentes ao Beamer
+%\useoutertheme{split}
+%\setbeamertemplate{navigation symbols}{}
+
+%\usetheme{beamertheme}
+%\usebeamercolor{beamer-color name}
+
+%\usetheme{Boadilla}
+%\usecolortheme{dove}
+
+\usetheme{CambridgeUS}
+\usecolortheme{beaver}
+
+% \usetheme{pittsburgh}
+% \usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{seahorse}
+
+%\usetheme{Montpellier}
+
+%number in figures an tables -- beamer
+\setbeamertemplate{caption}[numbered]
+
+%Colocar no description
+%[leftmargin=!,labelwidth=\widthof{Turma A}]
+	
+%pacotes usuais do latex
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage[round]{natbib}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{natbib}
+\usepackage{times}
+\usepackage{calc} %computes the length of a string
+\usepackage{dsfont} %pacote para o 1 estilisado para indicadora
+\usepackage{enumerate} %permite fazer uns enumerates diferentes
+\usepackage[font=small,labelfont=bf]{caption} %permite colocar um segundo caption
+\usepackage{booktabs} % comando \toprule, \midrule e \bottomrule
+\usepackage{times} %times new roman font
+\usepackage{multirow} %comando \multirow
+\usepackage{setspace}
+\usepackage{xcolor} %texto colorido
+\usepackage{booktabs} %costumized tabs
+\usepackage{units} %nice fractions
+
+
+%código para alinhar a esquerda os itens no description
+\defbeamertemplate{description item}{align left}{\insertdescriptionitem\hfill}
+\defbeamertemplate{enumerate item}{align left}{\insertdescriptionitem\hfill}
+
+
+
+%AMS packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+%Não quebre linhas
+\binoppenalty=\maxdimen
+\relpenalty=\maxdimen
+
+%Comandos criados por mim
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+
+\DeclareMathOperator{\espe}{E}
+
+\DeclareMathOperator{\spann}{span}
+
+\DeclareMathOperator{\cov}{Cov}
+
+\DeclareMathOperator{\vari}{Var}
+
+%Informações para o primeiro slide
+\date{}
+\title[Probabilidade]{Variável aleatória discreta}
+\author[Gilberto Sassi]{Gilberto Pereira Sassi}
+\institute[IME -- UFBA]{Universidade Federal da Bahia \\ Instituto de Matem\'{a}tica e Estat\'{i}stica\\ Departamento de Estat\'{i}stica }
+
+\begin{document}
+	
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex]
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+minimum height=2em]
+	
+\begin{frame}{}
+	\maketitle
+\end{frame}
+
+\section{Motivação}
+
+%Slide 1
+\begin{frame}{Da amostra para a população: variável quantitativa discreta}
+
+\begin{block}{Objetivo}
+	Atribuir probabilidades para valores de uma variável quantitativa discreta usando a teoria de probabilidades.
+\end{block}
+
+Seja $X$ uma variável quantitiva discreta em amostra de tamanho $n$ com tabela de distribuição dada por
+
+{\small
+\begin{table}
+ \centering
+ \caption{Tabela de distribuição de frequência para uma variável quantitativa discreta}
+ \begin{tabular}{lccc}
+  \toprule[0.05cm]
+  $X$ & frequência & frequência relativa & porcentagem \\
+  \midrule[0.05cm]
+  $x_1$ & $n_1$ & $f_1=\nicefrac{n_1}{n}$ & $100 \cdot f_1 \%$\\
+  $x_2$ & $n_2$ & $f_2=\nicefrac{n_2}{n}$ & $100 \cdot f_2 \%$\\
+  $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+  $x_k$ & $n_k$ & $f_k=\nicefrac{n_k}{n}$ & $100 \cdot f_k \%$\\
+  \midrule[0.05cm]
+  Total & $n$ & $1$ & $100$ \\ \bottomrule[0.05cm]
+ \end{tabular}
+\end{table}
+}
+
+As afirmações usando $f_1, \dots, f_k$ são válidas apenas para a amostra e, no máximo, são aproximações para a população. Então, a ideia é substituir a frequência relativa $f_i$ 
+pela probabilidade $f(x_i)$ de $X$ ser igual a $x_i$ na população.
+\end{frame}
+
+\section{Definção}
+
+\begin{frame}{Variável aleatória discreta e função de probabilidade}
+\begin{block}{Definição}
+	\begin{itemize}
+		\item Considere um fenômeno aleatório com espaço amostral $\Omega$ e  probabilidade $P(\cdot)$;
+		\item $X: \Omega \rightarrow \mathbb{Z}$ é chamada de variável aleatória discreta;
+		\item Suponha que os valores possível dessa variável é $\{x_1, x_2,x_3, x_4, x_5, \cdots\}$. A função dada por
+		\begin{align*}
+		f(x_i) &= P(X=x_i)\\
+		&= P\left\{ \omega \in \Omega \mid X(\omega) = x_i \right\},
+		\end{align*}
+		é chamada de função de probabilidade.
+	\end{itemize}
+\end{block}
+
+\begin{block}{Observações}
+ \begin{itemize}
+  \item O conjunto de todos os valores possíveis de uma variável aleatória discreta $X$ é chamada de suporte e usamos a notação $\chi=\{x_1, \dots, x_k, \dots\}.$
+  \item Em situações práticas, não nos preocupamos com o espaço amostral $\Omega$, e focamos  nossa atenção em estabelecer o suporte e a função de probabilidade da variável aleatória discreta.
+ \end{itemize}
+
+\end{block}
+
+
+\end{frame}
+
+%slide 2
+\begin{frame}{Propriedades da função de probabilidade}
+Note que 
+\vfill
+\begin{itemize}
+	\item $0 \leq f(x_i) \leq 1$;
+	\vfill
+	\item $f(x_1) + f(x_2) + f(x_3) + f(x_4) + \cdots  = 1$.
+	\vfill
+\end{itemize}
+
+Para caracterizar uma variável aleatória discreta, precisamos estabelecer:
+\begin{itemize}
+	\item valores possíveis da variável aleatória discreta $x_1, x_2, x_3, \dots$;
+	\vfill
+	\item A função de probabilidade para cada valor possível da variável aleatória discreta.
+	\vfill
+\end{itemize}
+Seja $B \subset \{x_1, x_2,x_3, \dots\}$, então
+	\begin{align*}
+	P(X \in B) = \sum_{x \in B} f(x)
+	\end{align*}
+\end{frame}
+
+%slide 3
+\begin{frame}{Função de distribuição acumulada}
+Uma outra abordagem para calcular probabilidades de uma variável aleatória é usar somas acumuladas.
+\begin{block}{Função de Distribuição Acumulada}
+	\begin{align*}
+	F(x) &= P(X \leq x)\\
+	&= P\left\{ \omega \in \Omega \mid X(\omega) \leq x \right\}\\
+	&= f(x_1) + f(x_2) + \cdots + f\left( \lfloor x \rfloor \right)
+	\end{align*}
+	em que $\lfloor x \rfloor$ é a função ``arrendonda $x$ para baixo''.
+\end{block}
+\begin{block}{ }
+	Para especificar completamente uma variável aleatória discreta precisamos estabelecer 
+	\begin{enumerate}[i.]
+	 \item o suporte da variável aleatória discreta;
+	 \item a função de probabilidade ou a função de distribuição acumulada.
+	\end{enumerate}
+  Note que podemos derivar a função de probabilidade usando a função de distribuição acumulada, e vice-versa.
+\end{block}
+\end{frame}
+
+%slide 4
+\begin{frame}{Exemplo}
+
+{\scriptsize
+Considere o fenômeno aleatório que consiste no lançamento de duas moedas ``justas'' ou ``normais''. Qual o espaço amostral? Usando o princípio da equiprobabilidade, qual seria a probabilidade de sair ao menos uma cara? Considere a variável aleatória discreta $X:\Omega \rightarrow \mathbb{R}$ em que 
+\begin{align*}
+X(\omega) = \mbox{Número de caras em } \omega.
+\end{align*}
+Encontre a função de probabilidade e a função de distribuição acumulada de X.
+\vfill
+
+\textbf{Solução:} Note que o espaço amostral desse fenômeno aleatório é $\Omega=\{cc,kc,ck,kk\}$, em que $c$ representa cara e $k$ representa coroa. Então, usando o princípio da equiprobabilidade, temos que
+\begin{table}
+ \centering
+ \begin{tabular}{ccc}
+  \toprule[0.05cm]
+    $\omega$ & $P(\{\omega\})$ & $X(\omega)$\\ \midrule[0.05cm]
+    $cc$ & $\nicefrac{1}{4} = 0,25$ & $2$\\
+    $kc$ & $\nicefrac{1}{4} = 0,25$ & $1$\\
+    $ck$ & $\nicefrac{1}{4} = 0,25$ & $1$\\
+    $kk$ & $\nicefrac{1}{4} = 0,25$ & $0$\\
+    \bottomrule[0.05cm]
+ \end{tabular}
+\end{table}
+Ou seja, 
+\begin{align*}
+ f(0) &= P(X=0) = P(\{kk\})=\nicefrac{1}{4} = 0,25,\\
+ f(1) &= P(X=1) = P(\{ck,kc\})=\nicefrac{2}{4} = 0,5,\\
+ f(2) &= P(X=2) = P(\{cc\})=\nicefrac{1}{4} = 0,25.
+\end{align*}
+Note que o suporte da variável aleatória $X$ é $\chi=\{0,1,2\}$.
+
+}
+
+\end{frame}
+
+\begin{frame}{Exemplo -- continuação}
+  \begin{itemize}
+   \item Para $x <0$, temos que 
+   \begin{align*}
+    F(x) = P(X \leq x) = P\left( \{\omega \in \Omega \mid X(\omega) \leq x <0 \} \right) = P(\emptyset) = 0; 
+   \end{align*}
+   \item Para $0 \leq x < 1$, temos que
+   \begin{align*}
+    F(x) = P(X \leq x) = f(0) = 0,25;
+   \end{align*}
+   \item Para $1 \leq x < 2$, temos que
+   \begin{align*}
+    F(x) = P(X \leq x) = f(0)+f(1) = 0,25+0,5 = 0,75;
+   \end{align*}
+   \item Para $x \geq 2$, temos que
+   \begin{align*}
+    F(x) = P(X \leq x) = f(0)+f(1)+f(2) = 1.
+   \end{align*}
+  \end{itemize}
+  
+  \begin{figure}
+   \centering
+   \begin{tikzpicture}[scale=0.8]
+    \draw[->] (-1.2,0) -- (4,0);
+    \node[right] at (4,0) {$x$};
+    \draw[->] (0,-1) -- (0,1.5);
+    \node[above] at (0,1.5) {$F(x)$};
+    \draw[blue] (-1.2,0) -- (0,0);
+    \draw[blue] (0,0) circle (0.06cm);
+    \filldraw[blue] (0,0.25) circle (0.06cm);
+    \draw[blue] (0,0.25) -- (1,0.25);
+    \draw[blue] (1,0.25) circle (0.06cm);
+    \filldraw[blue] (1,0.75) circle (0.06cm);
+    \draw[blue] (1,0.75) -- (2,0.75);
+    \draw[blue] (2,0.75) circle (0.06cm);
+    \filldraw[blue] (2,1) circle (0.06cm);
+    \draw[blue] (2,1) -- (4,1);
+    \filldraw[black] (-1,0) circle (0.025cm);
+    \node[below] at (-1,0) {-1};
+%     \filldraw[black] (0,0) circle (0.025cm);
+    \node[below right] at (0,0) {0};
+    \foreach \i in {1,2,3} \filldraw[black] (\i,0) circle (0.025cm);
+    \foreach \i in {1,2,3} \node[below] at (\i,0) {\i};
+    \node[left] at (0,0.25) {\tiny 0,25};
+    \node[left] at (0,0.75) {\tiny 0,75};
+    \node[left] at (0,1) {\tiny 1};
+    \filldraw[black] (0,0.75) circle (0.025cm);
+    \filldraw[black] (0,1) circle (0.025cm);
+   \end{tikzpicture}
+  \end{figure}
+
+\end{frame}
+
+
+%slide 5
+\begin{frame}{Exemplo}
+Uma população de 1000 crianças foram analisadas num estudo para determinar a efetividade de uma vacina contra um tipo de alergia. No estudo, as crianças recebiam uma dose de vacina e, após um mês, passavam por um novo teste. Caso ainda tivessem tido alguma reação alérgica, recebiam uma outra dose de vacina. Ao fim de 5 doses, todas as crianças foram consideradas imunizadas. Os resultados completos estão na tabela abaixo:
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Mon Jan 08 20:41:22 2018
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{l|c|c|c|c|c}
+		\toprule[0.05cm]
+		Doses & 1 & 2 & 3 & 4 & 5 \\ 
+		\midrule[0.05cm]
+		Frequência & 245 & 288 & 256 & 145 & 66 \\ 
+		\bottomrule[0.05cm]
+	\end{tabular}
+\end{table}
+Supondo que uma criança dessa população sorteada ao acaso, qual será a probabilidade dela receber no máximo duas doses? Considere a variável aleatória discreta $X$ descrita por
+\begin{align*}
+X(\omega) = \mbox{Número de doses que a criança } \omega \mbox{ recebeu.}
+\end{align*}
+Encontre a função de probabilidade e da função de distribuição acumulada.
+\end{frame}
+
+\begin{frame}{Exemplo -- solução}
+ Note que o espaço amostral é $\Omega = \{1,2,3,4,5\}$, e usando o princípio da equiprobabilidade, temos que
+ \begin{table}
+  \centering
+  \begin{tabular}{ccc}
+  \toprule[0.05cm]
+    $\omega$ & $P(\{\omega\})$ & $X(\omega)$\\ \midrule[0.05cm]
+    $1$ & $\nicefrac{245}{1000}=0,245$ & $1$\\
+    $2$ & $\nicefrac{288}{1000}=0,288$ & $2$\\
+    $3$ & $\nicefrac{256}{1000}=0,256$ & $3$\\
+    $4$ & $\nicefrac{145}{1000}=0,145$ & $4$\\
+    $5$ & $\nicefrac{66}{1000}=0,066$ & $5$\\ \bottomrule[0.05cm]
+  \end{tabular}
+ \end{table}
+Então, a função de probabilidade é dada por
+\begin{align*}
+ f(1) &= P(X=1) = P(\{1\}) = 0,245\\
+ f(2) &= P(X=2) = P(\{2\}) = 0,288\\
+ f(3) &= P(X=3) = P(\{3\}) = 0,256\\
+ f(4) &= P(X=4) = P(\{4\}) = 0,145\\
+ f(5) &= P(X=5) = P(\{5\}) = 0,066\\
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{Exemplo -- continuação}
+Para encontrar a função de distribuição acumulada, precisamos dividir em casos:
+
+{\scriptsize
+  \begin{itemize}
+   \item Para $x <1$, temos que 
+   \begin{align*}
+    F(x) = P(X \leq x) = P\left( \{\omega \in \Omega \mid X(\omega) \leq x <1 \} \right) = P(\emptyset) = 0; 
+   \end{align*}
+   \item Para $1 \leq x < 2$, temos que
+   \begin{align*}
+    F(x) = P(X \leq x) = f(1) = 0,245;
+   \end{align*}
+   \item Para $2 \leq x < 3$, temos que
+   \begin{align*}
+    F(x) = P(X \leq x) = f(1)+f(2) = 0,245+0,288 = 0,533;
+   \end{align*}
+   \item Para $3 \leq x < 4$, temos que
+   \begin{align*}
+    F(x) = P(X \leq x) = f(1)+f(2)+f(3) = 0,245+0,288+0,256 = 0,789;
+   \end{align*}
+   \item Para $4 \leq x < 5$, temos que
+   \begin{align*}
+    F(x) = P(X \leq x) = f(1)+f(2)+f(3)+f(4) = 0,245+0,288+0,256+0,145 = 0,934;
+   \end{align*}
+   \item Para $x \geq 5$, temos que
+   \begin{align*}
+    F(x) = P(X \leq x) = f(1)+f(2)+f(3)+f(4)+f(5) = 1.
+   \end{align*}
+  \end{itemize}
+} 
+
+\def \array{{0.245, 0.533, 0.789, 0.934,1}}
+  \begin{figure}
+   \centering
+   \begin{tikzpicture}[scale=0.8]
+    \draw[->] (-1.2,0) -- (7,0);
+    \node[right] at (7,0) {$x$};
+    \draw[->] (0,-0.5) -- (0,1.5);
+    \node[above] at (0,1.5) {$F(x)$};
+    \foreach \i in {1,2,3,4,5,6} \node[below] at (\i,0) {\tiny \i};
+    \foreach \i in {2,3,4,5,6} \filldraw[black] (\i, 0) circle (0.025cm);
+    \draw[blue] (-1.2,0) -- (1,0);
+    \node[below right] at (0,0) {\tiny 0};
+    \draw[blue] (1,0) circle (0.04cm);
+    \draw[blue] (5,1) -- (7,1);
+    \filldraw[blue] (5,1) circle (0.04cm);
+    \foreach \i in {1,2,3,4} \filldraw[blue] (\i,\array[\i-1]) circle (0.04cm);
+    \foreach \i in {1,2,3,4} \draw[blue] (\i+1,\array[\i-1]) circle (0.04cm);
+    \foreach \i in {1,2,3,4} \draw[blue] (\i,\array[\i-1]) -- (\i+1,\array[\i-1]);
+    \foreach \i in {1,2,3,4,5} \node[left] at (0,\array[\i-1]) {\scalebox{0.3}{ \pgfmathparse{\array[\i-1]}\pgfmathresult}};
+    \foreach \i in {1,2,3,4,5} \filldraw[black] (0,\array[\i-1]) circle (0.025cm);
+   \end{tikzpicture}
+  \end{figure}
+
+\end{frame}
+
+
+\section{Modelos discretos}
+
+%slide 6
+\begin{frame}{Modelos uniforme discreto}
+\begin{block}{Motivação}
+	Algumas variáveis e quantidades aparecem com frequência e a literatura estatística já estabeleceu funções de probabilidade e funções de distribuição acumulada.
+\end{block}
+
+\begin{block}{Modelo uniforme discreto}
+	Seja $X$ uma variável aleatória discreta assumindo valores $j, \dots, k$. Dizemos que $X$ segue o modelo uniforme discreto se cada um dos valores $j, \dots, k$ tem função de probabilidade $\dfrac{1}{k-j+1}$. Ou seja, a função de probabilidade de $X$ é dada por
+	\begin{align*}
+	f(i) = \dfrac{1}{k - j + 1}, \quad i=j, \dots, k.
+	\end{align*}
+\end{block}
+
+\textbf{Notação:} $X \sim U_D[j,k]$.
+\end{frame}
+
+%slide 7
+\begin{frame}{Exemplo}
+Uma rifa tem 100 bilhetes numerados de 1 a 100. Tenho 5 bilhetes consecutivos numerados de 21 a 25 e meu colega tem outros 5 bilhetes com os números 1, 11, 29, 68 e 93. Quem tem mais chance de ganhar?
+\vfill
+
+\textbf{Solução:} Seja $X$ a variável aleatória discreta que é um número sorteado. Então, $X \sim U_D[1,100]$, e temos as seguintes probabilidades
+\begin{itemize}
+ \item Probabilidade de ter comprado um bilhete premiado:
+ \begin{align*}
+  P(X \in \{21,22,23,24,25\}) &= f(21)+f(22) + f(23) +f(24)+f(25)\\
+  &= \dfrac{1}{100} +\dfrac{1}{100} +\dfrac{1}{100} +\dfrac{1}{100} +\dfrac{1}{100} = \dfrac{5}{100}\\
+  &= \dfrac{1}{20}=0,05.
+ \end{align*}
+ \item Probabilidade do meu amigo ter comprado um bilhete premiado:
+ \begin{align*}
+  P(X \in \{1,11,29,69,93\}) &= f(1)+f(11) + f(29) +f(69)+f(93)\\
+  &= \dfrac{1}{100} +\dfrac{1}{100} +\dfrac{1}{100} +\dfrac{1}{100} +\dfrac{1}{100} = \dfrac{5}{100}\\
+  &= \dfrac{1}{20}=0,05.
+ \end{align*}
+
+\end{itemize}
+
+\end{frame}
+
+%slide 8
+\begin{frame}{Modelo Bernoulli}
+Ensaios de Bernoulli são fenômenos aleatórios com 2 resultados possíveis, chamados de sucesso e fracasso. A variável $X$ que atribui 1 ao sucesso e zero ao fracasso é chamado de modelo Bernoulli.
+Mais precisamente, seja $p$ a probabilidade de sucesso, então a função de probabilidade de $X$ é dada por
+\begin{align*}
+f(1) &= p;\\
+f(0) &= 1-p.
+\end{align*}
+\textbf{Notação:} $X \sim Bernoulli(p)$.
+\end{frame}
+
+%slide 9
+\begin{frame}{Exemplo}
+% Considere um dado em que a probabilidade de sair a face $i$ é $k \cdot i$ em que $k$ é uma constante. Considere o fenômeno aleatório de lançar um dado e observar se a face é par ou ímpar. Qual o modelo adequado para  este fenômeno aleatório e qual sua função de probabilidade e função de distribuição acumulada?
+Assuma que a prevalência de infecção pelo vírus HIV em país da África Subsariana seja 30\%. Considere o fenômeno aleatório que consiste de prever se um novo paciente está infectado. Qual o modelo probabilístico adequado neste 
+contexto? Qual a função de probabilidade? Qual a função de distribuição acumulada?
+\vfill
+
+\textbf{Solução:} Considere sucesso o paciente estar infectado com o vírus HIV. Então, temos um ensaio de Bernoulli com probabilidade de sucesso
+$0,3$, e a variável aleatória discreta associada é $X \sim Bernoulli(0,3)$. 
+
+O suporte para $X$ é $\chi=\{0,1\}$, e a função de probabilidade é $f(0)=1-0,3=0,7$ e $f(1)=0,3$. 
+
+A função de distribuição acumulada para
+\begin{itemize}
+ \item $x < 0$ é $F(x) = P(X \leq x < 0) = 0$
+ \item $0 \leq x < 1$ é $F(x) = P(X \leq x) = f(0) = 0,7$;
+ \item $x \geq 1$ é $F(x) =1$.
+\end{itemize}
+
+\begin{figure}
+ \centering
+ \begin{tikzpicture}[scale = 0.6]
+  \draw[->] (-1,0) -- (6,0);
+  \node[right] at (6,0) {\tiny x};
+  \draw [->] (0,-0.5) -- (0,2);
+  \node[above] at (0,2) {\tiny F(x)};
+  \draw[blue] (-1,0) -- (0,0);
+  \draw[blue] (0,0) circle (1.5pt);
+  \filldraw[blue] (0,0.7) circle (1.5pt);
+  \node[left] at (0,0.7) {\tiny 0,7};
+  \node[left] at (0,1) {\tiny 1};
+  \filldraw[black] (0,1) circle (1pt);
+  \draw[blue] (0,0.7) -- (1,0.7);
+  \draw[blue] (1,0.7) circle (1.5pt);
+  \draw[blue] (1,1) -- (6,1);
+  \filldraw[blue] (1,1) circle (1.5pt);
+  \node[below right] at (0,0) {\tiny 0};
+  \foreach \i in {1,2,3,4,5} \filldraw[black] (\i,0) circle (1pt);
+  \foreach \i in {1,2,3,4,5} \node[below] at (\i,0) {\tiny \i};
+ \end{tikzpicture}
+\end{figure}
+
+
+\end{frame}
+
+%slide 10
+\begin{frame}{Modelos binomial}
+Considere o fenômeno aleatório que consiste da repetição de $n$ ensaios de Bernoulli independentes e todos com a mesma probabilidade de sucesso $p$. A variável aleatória que conta o número total de sucessos é denominada de modelo binomial com parâmetros $n$ e $p$ e sua função de probabilidade é dada por
+\begin{align*}
+f(k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k=0,1,2, \dots, n,
+\end{align*}
+em que $\binom{n}{k}$ é chamado de coeficiente binomial e é dado por
+\begin{align*}
+\binom{n}{k} = \dfrac{n!}{k! (n-k)!},
+\end{align*}
+em que $n! = n \cdot (n-1) \cdot (n-2) \dots   1$.
+
+\textbf{Notação:} $X \sim b(n, p)$.
+\end{frame}
+
+%slide 11
+\begin{frame}{Exemplo}
+Sabe-se que a eficiência de uma vacina é de 80\%. Um grupo de três indivíduos é sorteado dentre a população vacinada e submetido a testes para averiguar se a imunização foi efetivada. 
+Qual o modelo adequado para este fenômeno aleatório? Encontre a função de probabilidade e a fução de distribuição acumulada.
+\vfill
+
+\textbf{Solução:} Considere sucesso a imunização do indivíduo, então temos três repetições de um ensaio de Bernoulli com probabilidade de sucesso $0,8$. Ou seja, a variável $X$, número de indivíduos imunizados, tem distribuição binomial com parâmetros $n=3$ e $p=0,8$. 
+
+O suporte de $X$ é $\chi=\{0,1,2,3\}$ e a função de probabilidade é dada por
+\begin{align*}
+ f(0) &= \binom{3}{0} 0,8^0 (1-0,8)^3 = 0,08\\
+ f(1) &= \binom{3}{1} 0,8^1 (1-0,8)^2 = 0,096\\
+ f(2) &= \binom{3}{2} 0,8^2 (0-0,8)^1 = 0,384\\
+ f(3) &= \binom{3}{3} 0,8^3 (0-0,8)^0 = 0,512\\
+\end{align*}
+\end{frame}
+
+% \end{frame}
+
+\begin{frame}{Exemplo -- continuação}
+Para encontrar a função de distribuição acumulada, precisamos dividir em casos:
+
+{\scriptsize
+  \begin{itemize}
+   \item Para $x <0$, temos que 
+   \begin{align*}
+    F(x) = P(X \leq x) = P\left( \{\omega \in \Omega \mid X(\omega) \leq x <0 \} \right) = P(\emptyset) = 0; 
+   \end{align*}
+   \item Para $0 \leq x < 1$, temos que
+   \begin{align*}
+    F(x) = P(X \leq x) = f(0) = 0,08;
+   \end{align*}
+   \item Para $1 \leq x < 2$, temos que
+   \begin{align*}
+    F(x) = P(X \leq x) = f(0)+f(1) = 0,08+0,096 = 0,104;
+   \end{align*}
+   \item Para $2 \leq x < 3$, temos que
+   \begin{align*}
+    F(x) = P(X \leq x) = f(0)+f(1)+f(2) = 0,08+0,096+0,384 = 0,488;
+   \end{align*}
+   \item Para $x \geq 3$, temos que
+   \begin{align*}
+    F(x) = P(X \leq x) = f(0)+f(1)+f(2)+f(3) = 0,08+0,096+0,384+0,512 = 1;
+   \end{align*}
+   
+  \end{itemize}
+} 
+
+\def \array{{0.008,0.104,0.488,1}}
+  \begin{figure}
+   \centering
+   \begin{tikzpicture}[scale=1.2]
+    \draw[->] (-1.2,0) -- (7,0);
+    \node[right] at (7,0) {\tiny $x$};
+    \draw[->] (0,-0.5) -- (0,1.5);
+    \node[above] at (0,1.5) {\tiny $F(x)$};
+    \foreach \i in {1,2,3,4,5,6} \node[below] at (\i,0) {\tiny \i};
+    \foreach \i in {1,2,3,4,5,6} \filldraw[black] (\i, 0) circle (1pt);
+    \draw[blue] (-1.2,0) -- (0,0);
+    \node[below right] at (0,0) {\tiny 0};
+    \draw[blue] (0,0) circle (0.5pt);
+    \draw[blue] (3,1) -- (7,1);
+    \filldraw[blue] (3,1) circle (1.5pt);
+    \foreach \i in {1,2,3} \filldraw[blue] (\i-1,\array[\i-1]) circle (1.5pt);
+    \foreach \i in {1,2,3} \draw[blue] (\i,\array[\i-1]) circle (1.5pt);
+    \foreach \i in {1,2,3} \draw[blue] (\i-1,\array[\i-1]) -- (\i,\array[\i-1]);
+    \foreach \i in {1,2,3,4} \node[left] at (0,\array[\i-1]) {\scalebox{0.3}{ \pgfmathparse{\array[\i-1]}\pgfmathresult}};
+    \foreach \i in {2,3,4} \filldraw[black] (0,\array[\i-1]) circle (0.025cm);
+   \end{tikzpicture}
+  \end{figure}
+
+\end{frame}
+
+
+% %slide 13
+% \begin{frame}{Modelo geométrico}
+% Usamos esse modelo para estudar fenômenos aleatórios que consistem de repetições de ensaios de Bernoulli até obtermos um sucesso. Dizemos que a variável aleatório discreta $X$, que conta o 
+% número de repetições até obter o primeiro sucesso, segue o modelo geométrico. Mais precisamente, dizemos que $X$ tem distribuição geométrica de parâmetro $p$ se sua função de probabilidade  é dada por
+% \begin{align*}
+% f(k) = p \cdot (1-p)^k, \quad k = 0, 1, 2,3, 4, \dots
+% \end{align*}
+% em que $p \in [0,1]$.
+% 
+% \textbf{Notação:} $X \sim G(p)$.
+% \end{frame}
+% 
+% %slide 14
+% \begin{frame}{Exemplo}
+% Imagine um hospital localizado na África Subsariana, onde a prevalência do vírus do HIV é $30\%$. Um pesquisador deseja fazer um estudo qualitativo com um paciente infectado. Encontre a função de probabilidade para a variável aleatória discreta $X$ - número de pacientes abordados até encontrar um paciente infectado. Qual a probabilidade do pesquisador precisar abordar no mínimo 4 indivíduos para encontrar um paciente infectado?
+% 
+% \vfill
+% 
+% \textbf{Solução:} Considere sucesso o paciente estar infectado com o vírus HIV, então $X$, número de pacientes abordados até encontrar um paciente infectado, tem distribuição geométrica com probabilidade de sucesso $0,3$. 
+% 
+% O suporte de $X$ é $\chi=\{0,1,2,3,\dots\}$ e a função de probabilidade é dada por
+% \begin{align*}
+%  f(0) = 0,3 \cdot 0,7^0;\quad f(1) = 0,3 \cdot 0,7^1;\quad f(2) = 0,3 \cdot 0,7^2; \cdots; f(k) = 0,3 \cdot 0,7^k; \cdots
+% \end{align*}
+% 
+% Então a probabilidade do pesquisador precisar abordar 4 indivíduos para encontrar um paciente infectado é
+% \begin{align*}
+%  P(X \geq 4) &= 1 - P(X < 4) = 1 - \left(f(0) + f(1) + f(2) + f(3)\right)\\
+%  &= 1- \left(0,3\cdot 0,7^0+0,3\cdot 0,7^1+0,3\cdot 0,7^2+0,3\cdot 0,7^3\right)\\
+%  &=0,2401
+% \end{align*}
+% 
+% \end{frame}
+
+%slide 15
+\begin{frame}{Modelo Poison}
+Modelo utilizado em fenômenos aleatórios que consistem contar o número de ocorrências de um evento em um intervalo de tempo. Neste modelo, $\lambda$ é a frequência média ou esperada de ocorrências do evento no  intervalo de tempo. A variável aleatória discreta $X$, número de ocorrências no intervalo de tempo, tem distribuição de Poison com parâmetro $\lambda > 0$, e sua função de probabilidade é dada por
+\begin{align*}
+f(k) = \dfrac{e^{-\lambda}\lambda^k}{k!}, \quad k =0,1,2,3, \dots
+\end{align*}
+\vfill
+
+\textbf{Notação:} $X \sim Poison(\lambda)$.
+\end{frame}
+
+\begin{frame}{Exemplo}
+Suponha que uma unidade básica de saúde de um bairro de classe média realiza em média 10 atendimentos em dias de segunda-feira. Qual a probabilidade desta UBS atender, na próxima segunda-feira, no máximo 5 cidadãos?
+\vfill
+
+\textbf{Solução:} Note que estamos contando o número de atendimentos (ocorrência=atendimento) em um dia de semana (intervalo de tempo = segunda-feira). Então, a variável aleatória discreta $X$, número de atendimentos em segunda-feira, tem distribuição Poison com média $\lambda = 10$. Então,
+\begin{align*}
+ P(X \leq 5) &= f(0) + f(1)+f(2)+f(3)+f(4)+f(5)\\
+ &= \dfrac{e^{-10}10^0}{0!}+\dfrac{e^{-10}10^1}{1!}+\dfrac{e^{-10}10^2}{2!}+\dfrac{e^{-10}10^3}{3!}+\dfrac{e^{-10}10^4}{4!}+\dfrac{e^{-10}10^5}{5!}\\
+ &= 0,07
+\end{align*}
+
+\end{frame}
+
+\section{Medidas de posição e de dispersão para variáveis aleatórias discretas}
+
+\begin{frame}{Definição}
+  Seja $X$ uma variável aleatória discreta com suporte $\chi=\{x_1, x_2, x_3, \dots\}$ e com função de probabilidade $f(x_1), f(x_2), f(x_3), \dots$ Então,
+  \begin{itemize}
+   \item A média ou valor esperado ou esperança matemática de $X$ é definida por
+   \begin{align*}
+    \espe(X) &= x_1\cdot f(x_1) + x_2\cdot f(x_2) + x_3 \cdot f(x_3) + \cdots\\
+    &= \mu;
+   \end{align*}
+   \item A variância de $X$ é definida por 
+   \begin{align*}
+    \vari(x) &= (x_1 - \mu)^2\cdot f(x_1) + (x_2 - \mu) ^2 \cdot f(x_2) + (x_3 - \mu)^3 \cdot f(x_3) + \cdots \\
+    &= \sigma^2;
+   \end{align*}
+   \item Para manter a mesma unidade da variável aleatória discreta, usamos o desvio padrão
+   \begin{align*}
+    \sigma = \sqrt{\vari(x)} = \sqrt{\sigma^2}
+   \end{align*}
+
+   \item A mediana de $X$ é um valor $Md$ tal que
+    \begin{align*}
+     P(X \geq Md) \geq 0,5 \mbox{ e } P(X \leq Md) \geq 0,5;
+    \end{align*}
+  \item A moda de $X$ é valor $x_i$ com maior valor de $f(x_i)$.
+
+  \end{itemize}
+
+
+\end{frame}
+ 
+\begin{frame}{Exemplo}
+ Uma pequena cirurgia dentária pode ser realizada por dois métodos diferentes cujos tempos de recuperação (em dias) são modeladas pelas variáveis aleatórias discretas $X_1$ e $X_2$. Admita que 
+ as funções de probabilidade são dadas por
+ \begin{table}[!htb]
+    \caption*{Funções de probabilidade.}
+    \begin{minipage}{.5\linewidth}
+      \centering
+      {\scriptsize
+	\begin{tabular}{l|c|c|c|c|c}
+	  \toprule[0.025cm]
+	$x$& 0 & 4 & 5 & 6 & 10 \\ 
+	  \midrule[0.025cm]
+	$f(x)$ & 0,2 & 0,2 & 0,2 & 0,2 & 0,2 \\ 
+	  \bottomrule[0.025cm]
+	\end{tabular}
+      }
+	\caption{Método 1.} 
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+      \centering
+      {\scriptsize
+      \begin{tabular}{l|c|c|c|c|c}
+	\toprule[0.025cm]
+      $x$& 1 & 2 & 3 & 4 & 5 \\ 
+	\midrule[0.025cm]
+      $f(x)$ & 0,4 & 0,15 & 0,15 & 0,15 & 0,15 \\ 
+	\bottomrule[0.025cm]
+      \end{tabular}
+      }
+      \caption{Método 2.} 
+    \end{minipage} 
+%     \begin{minipage}{.5\linewidth}
+%       \centering
+%       \begin{tabular}{l|c|c|c}
+% 	\toprule[0.025cm]
+%       $x$ & 4 & 5 & 6 \\ 
+% 	\midrule[0.025cm]
+%       $f(x)$ & 0.3 & 0.4 & 0.3 \\ 
+% 	\bottomrule[0.025cm]
+%       \end{tabular}
+%       \caption{Método 3.} 
+%     \end{minipage} 
+\end{table}
+Calcule a média, a variância, a mediana e a moda para cada uma das variáveis. Qual método você recomendaria para um paciente que precis fazer  esta cirurgia dentária?
+
+
+\end{frame}
+
+\begin{frame}{Exemplo -- solução}
+
+{\scriptsize
+ \textbf{Método 1}
+ \begin{itemize}
+  \item \textbf{Média} $\mu = 0\cdot 0,2 + 4\cdot 0,2 + 5 \cdot 0,2 + 6 \cdot 0,2 + 10 \cdot 0,2=5$
+
+  \item \textbf{Mediana} Note que $P(md \leq 5)=0,6 \geq 0,5$ e $P(md \geq 5) = 0,6 \geq 0,5$
+  
+  \item \textbf{Moda} $Mo = \{0,4,5,6,10\}$
+  \item \textbf{Variância} $\sigma^2 = (0-5)^2f(0) + (4-5)^2f(4)+(5-5)^2f(5)+(6-5)^2f(6)+(10-5)^2f(10)=10,4$
+  \item \textbf{Desvio Padrão} $\sigma = \sqrt{10,4}=3,22$
+ \end{itemize}
+ \vfill
+ 
+  \textbf{Método 2}
+ \begin{itemize}
+  \item \textbf{Média} $\mu = 1\cdot 0,4 + 2\cdot 0,15 + 3 \cdot 0,15 + 4 \cdot 0,15 + 5 \cdot 0,15=2,5$
+
+  \item \textbf{Mediana} Note que $P(md \leq 2)=0,55 \geq 0,5$ e $P(md \geq 2) = 0,6 \geq 0,5$
+  
+  \item \textbf{Moda} $Mo = 0$
+  \item \textbf{Variância} $\sigma^2 = (1-2,5)^2f(1) + (2-2,5)^2f(2)+(3-2,5)^2f(3)+(4-2,5)^2f(4)+(5-2,5)^2f(5)=2,25$
+  \item \textbf{Desvio Padrão} $\sigma = \sqrt{2,25}=1,5$
+ \end{itemize}  
+}
+
+Note que a média, a moda ou a mediana é menor para o método 2. Além disso, a variância e o desvio padrão para o segundo método também é menor, ou seja, a incerteza de quantos dias  o paciente estará recuperado é menor para o método 2. Logo, deveríamos indicar o segundo método para o paciente.
+\end{frame}
+% 
+% \section{Exercícios em sala}
+% 
+% %slide 12
+% \begin{frame}{Exercício em sala}
+% O escore em um teste internacional de proficiência na língua inglesa varia de 0 a 700 pontos, com mais pontos indicando um desempenho melhor. Informações coletadas durante vários anos permitem estabelecer o seguinte modelo para o desempenho do teste
+% {\footnotesize
+% \begin{table}[ht]
+% 	\centering
+% 	\begin{tabular}{l|c|c|c|c|c|c}
+% 		\toprule[0.05cm]
+% 		Pontos& [0,200) & [200, 300) & [300, 400) & [400, 500) & [500, 600) & [600, 700) \\ 
+% 		\midrule[0.05cm]
+% 		Porcentagem & 6\% & 15\% & 16\% & 25\% & 28\% & 10\% \\ 
+% 		\bottomrule[0.05cm]
+% 	\end{tabular}
+% \end{table}
+% }
+% 
+% Uma universidade da Public Ivy League exige um escore mínimo de 600 pontos para candidatos cuja língua materna não é o inglês. Dentre um grupo de 20 brasileiros, qual a probabilidade de ao menos 4 candidatos atingir o escore mínimo? Qual o número médio de alunos que vão conseguir o escore mínimo exigido por estas universidades?
+% \end{frame}
+% 
+% \begin{frame}{Exercício em sala}
+%  Uma variável aleatória discreta $X$ tem a seguinte função de distribuição acumulada
+%  \begin{align*}
+%   F(x)=\begin{cases}
+%         0 & \mbox{ se } x < -1,\\
+%         0,2 & \mbox{ se } -1 \leq x < 2,\\
+%         0,5 & \mbox{ se } 2 \leq x < 5,\\
+%         0,7 & \mbox{ se } 5 \leq x < 6,\\
+%         0,9 & \mbox{ se } 6 \leq x < 15,\\
+%         1 & \mbox{ se } x \geq 15.
+%        \end{cases}
+%  \end{align*}
+% 
+%  Determine:
+%  \begin{enumerate}[a.]
+%   \item O suporte de $X$;
+%   \item A função de probabilidade;
+%   \item $P(X \leq -2)$;
+%   \item $P(X < 2)$;
+%   \item $P(3 \leq X \leq 12)$;
+%   \item $P(X > 14)$;
+%   \item Calcule a média, a medianda, a moda, a variância, e o desvio padrão.
+%  \end{enumerate}
+% \end{frame}
+
+% \begin{frame}{Exercícios em sala de aula}
+%  \begin{enumerate}[1.]
+%   \item O vitória tem probabilidade $0,92$ de vitória sempre que joga. Se o time atuar 4 vezes, determine a probabilidade de que vença:
+%   \begin{enumerate}[a)]
+%    \item Todas as 4 partidas;
+%    \item Exatamente duas partidas;
+%    \item Pelo menos uma partida;
+%    \item No máximo três partidas;
+%    \item Calcule a média, a mediana, a moda, a variância e o desvio padrão.
+%   \end{enumerate}
+%   
+%   \item A CET afirma que, em média, ocorrem 10 mortes por acidente de trânsito na cidade de São Paulo. 
+%   \begin{enumerate}[a)]
+%    \item Qual a probabilidade de vítimas fatais no trânsito caia pela metade da média mensal em Maio?
+%    \item Qual a variância e o desvio padrão do número de mortes no trânsito?
+%   \end{enumerate}
+% 
+%   \item A duração em dias (em meses) de sobrevivência de um paciente terminal segue o modelo geométrico com probabilidade $0,7$. Determine a probabilidade do paciente:
+%   \begin{enumerate}[a)]
+%    \item Sobreviver menos de 5 meses;
+%    \item Sobreviver mais de 2 meses e menos de 4 meses;
+%    \item Sabendo-se que o paciente sobreviveu mais de 3 meses, sobreviver mais de 8 meses;
+%   \end{enumerate}
+% 
+%  \end{enumerate}
+% \end{frame}
+
+
+
+\end{document}

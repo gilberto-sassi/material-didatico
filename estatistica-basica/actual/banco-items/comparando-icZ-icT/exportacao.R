@@ -1,0 +1,15 @@
+library(readxl)
+library(readODS)
+library(writexl)
+library(ggthemes)
+library(glue)
+library(statBasics)
+library(exams)
+library(tidyverse)
+
+exams::exams2moodle("banco-items/comparando-icZ-icT/enunciado.Rmd",
+                    n = 1000,
+                    verbose = TRUE,
+                    dir = "banco-items/comparando-icZ-icT",
+                    name = "comparando-ic-Z-T",
+                    converter = NULL)

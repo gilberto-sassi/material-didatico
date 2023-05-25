@@ -1,0 +1,88 @@
+```{r, label="Simulação de dados", include=F}
+library(exams)
+library(magrittr)
+library(readxl)
+library(writexl)
+library(knitr)
+library(truncnorm)
+library(gt)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+# número de casos
+casos <- 5
+# tamanho da amostra
+tam <- sample(100:200, 1)
+# probabilidade
+ps <- runif(1, 0.25, 0.75)
+# suporte
+suporte <- sample(1:50, casos + 1, replace = F) |> sort()
+# função de probabilidade
+fp <- dbinom(0:casos, casos, ps) |> round(6)
+# média populacional
+media_pop <- sum(suporte * fp)
+# desvio padrão populacional
+dp_pop <- sum((media_pop - suporte)^2 * fp) |> sqrt()
+# desvio padrão das médias
+dp <- dp_pop / sqrt(tam)
+# probabilidade
+prob <- runif(1, 0.25, 0.75)  |> round(2)
+
+m <- media_pop |> round(2)
+s <- dp |> round(2)
+sol <- c(
+    pnorm(m + s, media_pop, dp) -
+        pnorm(m - 2 * s, media_pop, dp),
+    pnorm(m + s, media_pop, dp),
+    1 - pnorm(m - s, media_pop, dp),
+    qnorm(prob, media_pop, dp)
+) |> round(2)
+f <- \(x) format(x, decimal.mark = ",")
+```
+
+Question
+========
+
+Seja X uma variável aleatória discreta com suporte e função de probabilidade descritos na tabela abaixo. Imagine que um pesquisador coletou uma amostra de tamanho `r tam`. Responda cada uma das perguntas abaixo:
+
+```{r, echo=FALSE}
+tab <- tibble(suporte = suporte, fp = fp)
+gt(tab) |>
+    tab_header(
+        title = "Suporte e função de probabilidade de X."
+    ) |>
+    cols_label(
+        suporte = md("**Suporte**"),
+        fp = md("**Função de probabilidade**")
+    ) |>
+    fmt_number(
+        columns = fp,
+        decimals = 7,
+        dec_mark = ",",
+        sep_mark = "."
+    )
+```
+
+Questionlist
+------------
+* P(`r f(m - 2 * s)` < $\bar{X}$ < `r f(m + s)`): 
+* P($\bar{X}$  &#10877; `r f(m + s)`): 
+* P($\bar{X}$ > `r f(m - s)`): 
+* Quantil de ordem `r f(prob)`: 
+
+Solution
+========
+Solutionlist
+------------
+* P(`r f(m - 2 * s)` < $\bar{X}$ < `r f(m + s)`): `r sol[1]`.
+* P($\bar{X}$  &#10877; `r f(m + s)`): `r sol[2]`.
+* P($\bar{X}$ > `r f(m - s)`): `r sol[3]`.
+* Quantil de ordem `r f(prob)`: `r sol[4]`. 
+
+Meta-information
+================
+exname: tclDiscreta
+extype: cloze
+exclozetype: num|num|num|num
+exsolution: `r paste0(sol, collapse = "|")`
+extol: 0.02

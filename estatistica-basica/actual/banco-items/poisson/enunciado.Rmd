@@ -1,0 +1,52 @@
+```{r, label="Simulação de dados", include=F}
+library(exams)
+library(magrittr)
+library(readxl)
+library(writexl)
+library(knitr)
+library(truncnorm)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+# média populacional
+lambda <- sample(10:20, 1)
+# n2
+n2 <- sample(8:12, 1)
+
+sol <- c(
+    ppois(n2, lambda),
+    1 - ppois(n2, lambda),
+    lambda,
+    lambda
+) |> round(2)
+```
+
+Question
+========
+
+Seja X uma variável aleatória discreta com distribuição Poisson com média populacional igual a `r lambda`. Responda cada uma das perguntas abaixo:
+
+
+Questionlist
+------------
+* P(X &#10877; `r n2`): 
+* P(X > `r n2`): 
+* A média (da população) é: 
+* A variância (da população) é:
+
+Solution
+========
+Solutionlist
+------------
+* P(X &#10877; `r n2`): `r sol[1]` 
+* P(X > `r n2`): `r sol[2]` 
+* A média (da população) é: `r sol[3]` 
+* A variância (da população) é: `r sol[4]`
+
+Meta-information
+================
+exname: poisson
+extype: cloze
+exclozetype: num|num|num|num
+exsolution: `r paste0(sol, collapse = "|")`
+extol: 0.02

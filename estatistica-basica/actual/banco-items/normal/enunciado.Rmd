@@ -1,0 +1,55 @@
+```{r, label="Simulação de dados", include=F}
+library(exams)
+library(magrittr)
+library(readxl)
+library(writexl)
+library(knitr)
+library(truncnorm)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+# média populacional
+media_pop <- sample(10:20, 1)
+# n2
+dp_pop <- sample(8:12, 1)
+# probabilidade
+quantil <- runif(1, 0.25, 0.75)
+
+sol <- c(
+     pnorm(media_pop + dp_pop, media_pop, dp_pop) -
+        pnorm(media_pop - 2 * dp_pop, media_pop, dp_pop),
+    pnorm(media_pop + dp_pop, media_pop, dp_pop),
+    1 - pnorm(media_pop - 1.5 * dp_pop, media_pop, dp_pop),
+    qnorm(0.35, media_pop, dp_pop)
+) |> round(2)
+```
+
+Question
+========
+
+Seja X uma variável aleatória contínua com distribuição normal com média populacional igual a `r media_pop` e desvio padrão igual a `r dp_pop`. Responda cada uma das perguntas abaixo:
+
+
+Questionlist
+------------
+* P(`r media_pop - 2 * dp_pop` < X < `r media_pop + dp_pop`): 
+* P(X  &#10877; `r media_pop + dp_pop`): 
+* P(X > `r media_pop - 1.5 * dp_pop`): 
+* Quantil de ordem 0,35: 
+
+Solution
+========
+Solutionlist
+------------
+* P(`r media_pop - 2 * dp_pop` < X < `r media_pop + dp_pop`): `r sol[1]`.
+* P(X  &#10877; `r media_pop + dp_pop`): `r sol[2]`.
+* P(X > `r media_pop - 1.5 * dp_pop`): `r sol[3]`.
+* Quantil de ordem 0,35: `r sol[4]`.
+
+Meta-information
+================
+exname: normal
+extype: cloze
+exclozetype: num|num|num|num
+exsolution: `r paste0(sol, collapse = "|")`
+extol: 0.02

@@ -1,0 +1,45 @@
+Question
+========
+
+Assinale as afirmações CORRETAS nas seguintes declarações abaixo.
+
+Answerlist
+----------
+
+* O valor-p é igual para todas as amostras de mesmo tamanho da mesma população.
+* Para cada amostra, temos um valor-p diferente.
+* Se H~0~ é verdade na população, a proporção de valores-p menor que o nível de significância é aproximadamente igual a probabilidade do falso positivo.
+* Se H~0~ é verdade na população, a proporção de valor-p maior que o nível de significância é aproximadamente igual a probabilidade do falso negativo.
+* Cometemos o erro tipo I (falso positivo), quando rejeitamos H~0~ quando H~0~ é verdade.
+* Cometemos o erro tipo I (falso positivo), quando não rejeitamos H~0~ quando H~0~ é verdade.
+* Cometemos o erro tipo I (falso positivo), quando rejeitamos H~0~ quando H~1~ é verdade.
+* Cometemos o erro tipo I (falso positivo), quando não rejeitamos H~0~ quando H~1~ é verdade.
+* Cometemos o erro tipo II (falso negativo), quando rejeitamos H~0~ quando H~0~ é verdade.
+* Cometemos o erro tipo II (falso negativo), quando não rejeitamos H~0~ quando H~0~ é verdade.
+* Cometemos o erro tipo II (falso negativo), quando rejeitamos H~0~ quando H~1~ é verdade.
+* Cometemos o erro tipo II (falso negativo), quando não rejeitamos H~0~ quando H~1~ é verdade.
+
+Solution
+========
+Answerlist
+----------
+
+* Falso, pois Para cada amostra, temos um valor-p diferente.
+* Verdadeiro.
+* Verdadeiro.
+* Falso, pois se H~0~ é verdade na população, a proporção de valores-p **MENOR** que o nível de significância é aproximadamente igual a probabilidade do falso positivo.
+* Verdadeiro.
+* Falso, pois cometemos o erro tipo I (falso positivo), quando rejeitamos H~0~ quando H~0~ é verdade.
+* Falso, pois cometemos o erro tipo I (falso positivo), quando rejeitamos H~0~ quando H~0~ é verdade.
+* Falso, pois cometemos o erro tipo I (falso positivo), quando rejeitamos H~0~ quando H~0~ é verdade.
+* Falso, pois cometemos o erro tipo II (falso negativo), quando não rejeitamos H~0~ quando H~1~ é verdade.
+* Falso, pois cometemos o erro tipo II (falso negativo), quando não rejeitamos H~0~ quando H~1~ é verdade.
+* Falso, pois cometemos o erro tipo II (falso negativo), quando não rejeitamos H~0~ quando H~1~ é verdade.
+* Verdadeiro.
+
+Meta-information
+================
+exname: valorp
+extype: mchoice
+exsolution: 011010000001
+exshuffle: TRUE

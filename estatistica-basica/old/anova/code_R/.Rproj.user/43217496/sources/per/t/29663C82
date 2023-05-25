@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1591636782902.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "870522336",
+    "id" : "29663C82",
+    "lastKnownWriteTime" : 1591638644,
+    "last_content_update" : 1591638644895,
+    "path" : "~/Dropbox/atividade_didatica/EstatisticaBasica-Slides/anova/code_R/table-fig.Rmd",
+    "project_path" : "table-fig.Rmd",
+    "properties" : {
+        "chunk_output_type" : "console",
+        "cursorPosition" : "93,20",
+        "scrollLine" : "76",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#packages used\nlibrary(tidyverse)\nlibrary(xtable)\n\n#Point estimation -- exponential example\nset.seed(12345)\nlambda <- 1/180\nx <- rexp(10, lambda) %>% round()\ntibble(`Tempo até o óbito`=x,\n       paciente = str_c(\"p\",1:10)) %>% \n  spread(key = paciente, value = `Tempo até o óbito`) %>%\n  xtable(digits = 0, caption = \"Tempo (em dias) até óbito.\",\n         label = \"fig:exe_exp\",\n         align = rep(\"c\",11)) %>%\n  print(include.rownames = F, include.colnames = F)\n\n\nset.seed(12345)\nlambda <- 10\nx <- rpois(15, lambda) \ntibble(`Número de atendimentos`=x,\n       dia = str_c(\"d\",1:15)) %>% \n  spread(key = dia, value = `Número de atendimentos`) %>%\n  xtable(digits = 0, caption = \"Tempo (em dias) até óbito.\",\n         label = \"fig:ci_pois\",\n         align = rep(\"c\",16)) %>%\n  print(include.rownames = F, include.colnames = F)\nxb <- mean(x)\nn <- length(x)\nz <- 2.58\n(lower <- \n  (n*xb + (2*z^2+1)/6  - 0.5 - sqrt( z^2 *(n*xb -0.5 + (z^2+2)/18 ) ) )/n )\n(upper <- \n    (n*xb + (2*z^2+1)/6  + 0.5 + sqrt( z^2 *(n*xb +0.5 + (z^2+2)/18 ) ) )/n )\n",
+    "created" : 1530017985543.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2392691912",
+    "id" : "CAAB9781",
+    "lastKnownWriteTime" : 1530031796,
+    "last_content_update" : -2147483648,
+    "path" : "~/Dropbox/1sem_2018/MATD03T01/slides/aula_6/code_R/examples_sim.R",
+    "project_path" : "examples_sim.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

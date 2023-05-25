@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+      <text>$course$/top/Padrão para MAT236-040000-222</text>
+    </category>
+    <info format="moodle_auto_format">
+      <text>A categoria padrão para as questões compartilhadas no contexto 'MAT236-040000-222'.</text>
+    </info>
+    <idnumber></idnumber>
+  </question>
+
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+      <text>$course$/top/Padrão para MAT236-040000-222/Conceitual</text>
+    </category>
+    <info format="html">
+      <text><![CDATA[<p>Exercícios sobre definições básicas e importantes.</p>]]></text>
+    </info>
+    <idnumber></idnumber>
+  </question>
+
+<!-- question: 11353449  -->
+  <question type="matching">
+    <name>
+      <text>Conceitos iniciais</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Associe a <em>descrição de um conceito</em> e o seus respectivo <em>conceito</em>.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está correta.</p>]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está parcialmente correta.</p>]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está incorreta.</p>]]></text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <subquestion format="html">
+      <text><![CDATA[<p>Todas as pessoas ou elementos alvo do seu estudo.</p>]]></text>
+      <answer>
+        <text>População</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p>Parte ou subconjunto da população.</p>]]></text>
+      <answer>
+        <text>Amostra</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p>Característica da População.</p>]]></text>
+      <answer>
+        <text>Parâmetro</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p>Característica da amostra.</p>]]></text>
+      <answer>
+        <text>Estimativa</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p>Característica numérica, geralmente oriunda de contagem, de um elemento da população.</p>]]></text>
+      <answer>
+        <text>Variável quantitativa discreta</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p>Característica numérica que pode assumir valores com casas decimais de um elemento da população.</p>]]></text>
+      <answer>
+        <text>Variável quantitativa contínua</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p>Característica não-numérica onde os valores não tem hierarquia entre si.</p>]]></text>
+      <answer>
+        <text>Variável qualitativa nominal</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p>Característica não-numérica onde os valores tem ordem ou hierarquia entre si apesar de não serem números.</p>]]></text>
+      <answer>
+        <text>Variável qualitativa ordinal</text>
+      </answer>
+    </subquestion>
+  </question>
+
+</quiz>

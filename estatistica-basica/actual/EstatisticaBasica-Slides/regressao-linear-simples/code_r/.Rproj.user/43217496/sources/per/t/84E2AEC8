@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1591363647554.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2677794511",
+    "id" : "84E2AEC8",
+    "lastKnownWriteTime" : 1591624265,
+    "last_content_update" : 1591624265065,
+    "path" : "~/Dropbox/atividade_didatica/EstatisticaBasica-Slides/regressao-linear-simples/code_r/regressao.Rmd",
+    "project_path" : "regressao.Rmd",
+    "properties" : {
+        "chunk_output_type" : "console",
+        "cursorPosition" : "74,0",
+        "scrollLine" : "69"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

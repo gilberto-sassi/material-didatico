@@ -1,0 +1,72 @@
+```{r dgp, include = FALSE}
+library(exams)
+library(magrittr)
+library(readxl)
+library(writexl)
+library(knitr)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+# tamanho da amostra
+tam <- 30:40 |> sample(1)
+
+# parâmetros
+p1 <- runif(1, 0.40, 0.60) |> round(2)
+valor1 <- 0.5
+
+p2 <- runif(1, 0.40, 0.60) |> round(2)
+n_binom <- 100:200  |> sample(1)
+valor2 <- 60
+
+lambda <- 20:30 |> sample(1)
+valor3 <- round(lambda * 0.99, 2)
+
+media_exp <- runif(1, 2000, 3000) |> round(2)
+valor4 <- round(media_exp * 0.9, 2)
+
+media_norm <- 10:20 |> sample(1)
+dp_norm <- runif(1, 1, 2) |> round(2)
+valor5 <- (media_norm * 0.99) |> round(2)
+
+# solução
+sol_bernoulli <- round(1 - pnorm(valor1, p1, sqrt(p1 * (1 - p1) / tam)), 2)
+sol_binom <- round(pnorm(valor2, n_binom * p2,
+                        sqrt(n_binom * p2 * (1 - p2) / tam)), 2)
+sol_poison <- round(pnorm(valor3, lambda, sqrt(lambda / tam)), 2)
+sol_exp <- round(1 - pnorm(valor4, media_exp, sqrt(media_exp^2 / tam)), 2)
+sol_norm <- round(1 - pnorm(valor5, media_norm,
+                sqrt(dp_norm^2 / tam)), 2)
+```
+
+Question
+========
+
+Complete cada um das setenças abaixo. (Use duas casas decimais.)
+
+**Dica:** Use algum recurso computacional, como programas de planilha (`excel`, `google sheet`, `office 365`, `libre office`) ou alguma linguagem de programação (`R`, `python`, `julia`, `MATLAB` e outros).
+
+Questionlist
+------------
+* Se X é uma variável aleatória discreta com distribuição Bernoulli com probabilidade de sucess `r p1`, então, para uma amostra com `r tam` valores observados, a probabilidade da média amostral ser maior que `r valor1`  é 
+* Se X é uma variável aleatória discreta com distribuição Binomial com `r n_binom` casos e probabilidade de sucess `r p2`, então, para uma amostra com `r tam` valores observados, a probabilidade da média amostral ser menor que `r valor2`  é 
+* Se X é uma variável aleatória discreta com distribuição Poison com número médio de ocorrências `r lambda` , então, para uma amostra com `r tam` valores observados, a probabilidade da média amostral ser no máximo `r valor3` é 
+* Se X é uma variável aleatória contínua com distribuição exponencial com tempo médio de ocorrência `r media_exp` horas, então, para uma amostra com `r tam` valores observados, a probabilidade da média amostral ser pelo menos `r valor4` é
+* Se X é uma variável aleatória contínua com distribuição normal com média populacional `r media_norm` e desvio padrão populacional `r dp_norm`, então, para uma amostra com `r tam` valores observados, a probabilidade da média amostral ser pelo menos `r valor5`
+
+Solution
+========
+Solutionlist
+------------
+* Se X é uma variável aleatória discreta com distribuição Bernoulli com probabilidade de sucess `r p1`, então, para uma amostra com `r tam` valores observados, a probabilidade da média amostral ser maior que `r valor1`  é `r sol_bernoulli`.
+* Se X é uma variável aleatória discreta com distribuição Binomial com `r n_binom` casos e probabilidade de sucess `r p2`, então, para uma amostra com `r tam` valores observados, a probabilidade da média amostral ser menor que `r valor2`  é `r sol_binom`. 
+* Se X é uma variável aleatória discreta com distribuição Poison com número médio de ocorrências `r lambda` , então, para uma amostra com `r tam` valores observados, a probabilidade da média amostral ser no máximo `r valor3` é `r sol_poison`.
+* Se X é uma variável aleatória contínua com distribuição exponencial com tempo médio de ocorrência `r media_exp` horas, então, para uma amostra com `r tam` valores observados, a probabilidade da média amostral ser pelo menos `r valor4` é `r sol_exp`.
+* Se X é uma variável aleatória contínua com distribuição normal com média populacional `r media_norm` e desvio padrão populacional `r dp_norm`, então, para uma amostra com `r tam` valores observados, a probabilidade da média amostral ser pelo menos `r valor5` é `r sol_norm`.
+
+Meta-information
+================
+exname: distribuicaoAmostral
+extype: cloze
+exclozetype: num|num|num|num|num
+exsolution: `r sol_bernoulli`|`r sol_binom`|`r sol_poison`|`r sol_exp`|`r sol_norm`
+extol: 0.05

@@ -1,0 +1,501 @@
+---
+title: "Código para lista de exercícios"
+output: bookdown::html_notebook2
+editor_options: 
+  chunk_output_type: console
+---
+
+## Used packages
+
+```{r}
+library(openxlsx)
+library(readxl)
+library(writexl)
+library(latex2exp)
+library(xtable)
+library(measurements)
+library(tidyverse)
+```
+
+## Simulated exercise from 10-4 exercise (Montgomery)
+
+```{r}
+set.seed(1235813)
+n <- 10
+s1 <- 0.020
+s2 <- 0.25
+m1 <- 600
+m2 <- 620
+x1 <- rnorm(n, m1, s1) %>% round(2)
+x2 <- rnorm(n, m2, s2) %>% round(2)
+
+m <- rbind(x1, x2)
+rownames(m) <- c("Máquina 1", "Máquina 2")
+
+xtable(m, caption = "Volume de garrafas PET preenchidas por duas máquinas.",
+       label = "tab:volume-pet",
+       digits = 2,
+       align = rep("c", ncol(m) + 1)) %>% 
+  print.xtable(booktabs = T, format.args = list(decimal.mark = ","),
+               include.colnames = F)
+```
+
+## Data from exercise 10-8 (Montgomery)
+
+```{r}
+x <- c(
+  724, 718, 776, 760, 745, 759, 795, 756, 742, 740, 761,
+749, 739, 747, 742
+) %>% matrix(ncol = 5)
+
+xtable(x, caption = "Viscosidade em quinze lotes de um processo químico para produzir polímeros.",
+       label = "tab:polimero-viscosidade-1",
+       digits = 0,
+       align = rep("c", ncol(x) + 1)) %>% 
+  print.xtable(booktabs = T, format.args = list(decimal.mark = ","),
+               include.rownames = F, include.colnames = F)
+
+
+x <- c(
+  735, 775, 729, 755, 783, 760, 738, 780
+) %>% matrix(ncol = 4)
+
+xtable(x, caption = "Viscosidade em quinze lotes de um processo químico com o novo catalisador.",
+       label = "tab:polimero-viscosidade-2",
+       digits = 0,
+       align = rep("c", ncol(x) + 1)) %>% 
+  print.xtable(booktabs = T, format.args = list(decimal.mark = ","),
+               include.rownames = F, include.colnames = F)
+
+
+```
+
+## Data from exercise 10-9 (montgomery)
+
+```{r}
+x <- c(
+   57.9, 66.2, 65.4, 65.4, 65.2, 62.6, 67.6, 63.7,
+67.2, 71.0
+)
+y <- c(
+   66.4, 71.7, 70.3, 69.3, 64.8, 69.6, 68.6, 69.4,
+65.3, 68.8
+)
+m <- rbind(x, y)
+rownames(m) <- c("Catalisador 1", "Catalisador 2")
+
+xtable(m, caption = "Concentração de ingrediente ativo (grama por litro)",
+       label = "tab:concentracao-detergente",
+       digits = 1,
+       align = rep("c", ncol(m) + 1)) %>% 
+  print.xtable(booktabs = T, format.args = list(decimal.mark = ","),
+               include.colnames = F)
+```
+
+## Data from exercise 10-21 (montgomery)
+
+```{r}
+type1 <- c(
+   206, 188, 205, 187, 194, 193, 207, 185, 189, 213, 192,
+210, 194, 178, 205
+)
+type2 <- c(
+   177, 197, 206, 201, 180, 176, 185, 200, 197, 192, 198,
+188, 189, 203, 192
+)
+
+dados <- rbind(type1, type2) %>% conv_unit("F", "C")
+
+xtable(dados, caption = "Temperatura de deflexão para os dois tipos de tubos.",
+       label = "tab:deflection-temp",
+       digits = 2, align = rep("c", ncol(dados) + 1)) %>% 
+  print.xtable(booktabs = T, format.args = list(decimal.mark = ","),
+               include.colnames = F)
+```
+
+## data from exercise 10-32 (Montgomery)
+
+```{r}
+type1 <- c(
+ 3.481,
+ 3.448,
+ 3.485,
+ 3.475,
+ 3.472,
+3.477,
+ 3.472,
+ 3.464,
+ 3.472,
+ 3.470,
+3.470,
+ 3.470,
+ 3.477,
+ 3.473,
+ 3.474
+) 
+type2 <- c(
+   3.258,
+ 3.254,
+ 3.256,
+ 3.249,
+ 3.241,
+3.254,
+ 3.247,
+ 3.257,
+ 3.239,
+ 3.250,
+3.258,
+ 3.239,
+ 3.245,
+ 3.240,
+ 3.254
+)
+
+m <- rbind(type1, type2)
+rownames(m) <- c("Tipo de papel 1", "Tipo de papel 2")
+
+xtable(m, caption = "Peso de folhas de papel.",
+       label = "tab:sheets-paper",
+       digits = 3,
+       align = rep("c", ncol(m) + 1)) %>% 
+  print.xtable(booktabs = T, format.args = list(decimal.mark = ","),
+               include.colnames = F)
+
+```
+
+## Data from exercise 10-33 (Montgomery)
+
+```{r}
+x <- rbind(c(
+   275, 286, 287, 271, 283, 271, 279, 275, 263, 267
+),c(
+   258, 244, 260, 265, 273, 281, 271, 270, 263, 268
+)) %>% conv_unit('yard', 'm')
+rownames(x) <- c("Companhia 1", "Companhia 2")
+
+xtable(x, caption = "Distância viajada pela bola em metros.",
+       digits = 2, 
+       label = "tab:iron-byron",
+       align = rep("c", ncol(x) + 1)) %>% 
+  print.xtable(booktabs = T, format.args = list(decimal.mark = ","),
+               include.colnames = F)
+```
+
+## Data from exercise 10-36 (Montgomery)
+
+```{r}
+x <- rbind(c(
+ 23.3,
+ 23.8,
+ 33.6,
+ 41.5,
+ 56.0,
+ 78.8,
+ 17.8,
+  31.0,
+  23.4,
+  49.5,
+ 65.0,
+ 75.8,
+ 43.9,
+ 48.9,
+56.4
+), c(
+   18.4,
+  59.6,
+  35.8,
+  47.3,
+ 34.1,
+ 33.3,
+ 55.0,
+ 43.1,
+ 26.0,
+ 41.8,
+ 38.7,
+ 11.8,
+ 16.4, NA, NA
+))
+rownames(x) <- c("Rios de alto fluxo",
+                 "Rios de baixo fluxo")
+
+xtable(x, caption = "Quantidade alga nos rios em mg/L.",
+       label = "tab:alga",
+       digits = 1,
+       align = rep("c", ncol(x) + 1)) %>% 
+  print.xtable(booktabs = T, format.args = list(decimal.mark = ","),
+               include.colnames = F)
+
+```
+
+## Data from exercise 10-51 (Montgomery)
+
+```{r}
+carro <- 1:8
+marca1 <- c(
+  36925,
+45300,
+36240,
+32100,
+37210,
+48360,
+38200,
+33500
+)
+marca2 <- c(
+  34318,
+42280,
+35500,
+31950,
+38015,
+47800,
+37810,
+33215
+)
+
+dados <- tibble(Carro = carro, `Marca 1` =  marca1, `Marca 2` = marca2)
+
+xtable(dados, caption = "Tempo de vida dos pneus em km.",
+       label = "tab:tempo-vida-pneu",
+       digits = 0,
+       align = rep("c", 4)) %>% 
+  print.xtable(booktabs = T, format.args = list(big.mark = ".", decimal.mark = ","),
+               include.rownames = F)
+
+```
+
+## data from exercise 10-52 (Montgomery)
+
+```{r}
+Programador <- 1:12
+ling1 <- c(
+   17,
+  16,
+  21,
+  14,
+  18,
+  24,
+  16,
+  14,
+  21,
+  23,
+  13,
+  18
+)
+ling2 <- c(
+   18,
+ 14,
+ 19,
+ 11,
+ 23,
+ 21,
+ 10,
+ 13,
+ 19,
+ 24,
+ 15,
+ 20
+)
+
+dados <- tibble(Programador = Programador,
+                `Linguagem 1` = ling1,
+                `Linguagem 2` = ling2)
+
+xtable(dados, caption = "Tempo para programar em minutos.",
+       label = "tab:tempo-programacao",
+       digits = 0,
+       align = rep("c", 4)) %>% 
+  print.xtable(booktabs = T, format.args = list(big.mark = ".", decimal.mark = ","),
+               include.rownames = F)
+
+```
+
+## data from exercise 10-55 (Montgomery)
+
+```{r}
+dados <- tibble(Participantes = str_c("Indivíduo ", 1:10),
+                Antes = c(
+                   195,
+  213,
+  247,
+  201,
+  187,
+  210,
+  215,
+  246,
+  294,
+  310
+                ) %>% conv_unit("lbs", "kg"), 
+                Depois = c(
+                   187,
+ 195,
+ 221,
+ 190,
+ 175,
+ 197,
+ 199,
+ 221,
+ 278,
+ 285
+
+                ) %>% conv_unit("lbs", "kg"))
+
+dados %>% 
+  xtable(caption = "Peso dos participantes em kg.",
+         label = "tab:participante-kg",
+         digits = 2,
+         align = rep("c", 4)) %>% 
+  print.xtable(booktabs = T, format.args = list(big.mark = ".", decimal.mark = ","),
+               include.rownames = F)
+
+```
+
+
+## Data from exercise 10-56 (Montgomery)
+
+```{r}
+dados <- tibble(`Espécimes` = str_c("Barra ", 1:8),
+                `Teste 1` = c(
+                   1.2,
+  1.3,
+  1.5,
+  1.4,
+  1.7,
+  1.8,
+  1.4,
+  1.3
+ 
+                ), `Teste 2` = c(
+       1.4,
+ 1.7,
+ 1.5,
+ 1.3,
+ 2.0,
+ 2.1,
+ 1.7,
+ 1.6
+                ))
+
+dados %>% 
+  xtable(caption = "Nível de pureza das barras de aço.",
+         label = "tab:especimes",
+         digits = 1,
+         align = rep("c", 4)) %>% 
+  print.xtable(booktabs = T, format.args = list(big.mark = ".", decimal.mark = ","),
+               include.rownames = F)
+
+```
+
+## Data from exercise 10-58 (Montgomery)
+
+```{r}
+dados <- tibble(`Árvores` = LETTERS[1:5],
+                x1 = c(
+                   30,
+  33,
+  30,
+  32,
+  30
+ 
+                ), x2 = c(
+                   58,
+  69,
+  51,
+  62,
+  49
+ 
+                ), x3 = c(
+                   87,
+  111,
+  75,
+  112,
+  81
+ 
+                ), x4 = c(
+                   115,
+  156,
+  108,
+  167,
+  125
+ 
+                ), x5 = c(
+                   120,
+  172,
+  115,
+  179,
+  142
+ 
+                ), x6 = c(
+                   142,
+  203,
+  139,
+  209,
+  174
+ 
+                ), x7 = c(
+                   145,
+ 203,
+ 140,
+ 214,
+ 177
+
+                ))
+
+dados %>% 
+  xtable(caption = "Circunferências (em cm) das laranjeiras em sete momentos.",
+         label = "tab:laranjeiras-circ",
+         digits = 0,
+         align = rep("c", 9)) %>% 
+  print.xtable(booktabs = T, format.args = list(big.mark = ".", decimal.mark = ","),
+               include.rownames = F)
+```
+
+## Data from exercise 10-61 (Montgomery)
+
+```{r}
+dados <- tibble(`Confinamento solidário` = c(
+  9.6,
+10.4,
+9.7,
+10.3,
+9.2,
+9.3,
+9.9,
+9.5,
+9.0,
+10.9
+), `Confinamento regular` = c(
+  10.7,
+10.7,
+10.4,
+10.9,
+10.5,
+10.3,
+9.6,
+11.1,
+11.2,
+10.4
+))
+
+dados %>% 
+  xtable(caption = "Atividade cerebral dos prisioneiros",
+         label = "tab:confinamento",
+         digits = 1,
+         align = rep("c", ncol(dados) + 1)) %>% 
+  print.xtable(booktabs = T, format.args = list(big.mark = ".", decimal.mark = ","),
+               include.rownames = F)
+```
+
+## simulated example
+
+We want to decide between these hypothesis: $H_0: p_1 \leq p_2$ e $H_1: p_1 > p_2$.
+
+```{r}
+set.seed(1235813)
+x1 <- rbinom(300, 1, prob = 0.75)
+x2 <- rbinom(300, 1, prob = 0.25)
+
+sum(x1)
+sum(x2)
+
+```
+

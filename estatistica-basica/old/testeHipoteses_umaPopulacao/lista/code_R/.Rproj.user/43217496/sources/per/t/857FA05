@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1591733219868.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "54995548",
+    "id" : "857FA05",
+    "lastKnownWriteTime" : 1591796351,
+    "last_content_update" : 1591796351375,
+    "path" : "~/Dropbox/atividade_didatica/EstatisticaBasica-Slides/testeHipoteses_umaPopulacao/lista/code_R/codigo.Rmd",
+    "project_path" : "codigo.Rmd",
+    "properties" : {
+        "chunk_output_type" : "console",
+        "cursorPosition" : "10,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -1,0 +1,70 @@
+```{r data generation, echo = FALSE, results = "hide", message=F}
+library(readxl)
+library(readODS)
+library(writexl)
+library(ggthemes)
+library(glue)
+library(statBasics)
+library(tidyverse)
+
+# tamanho da amostra
+tam <- 500:100 |> sample(1)
+
+# desvio padrão da população
+s <- 20:30 |> sample(1)
+
+# média da população
+m <- 50:100 |> sample(1)
+
+amostra <- rnorm(tam, m, s)
+
+ic_media <- ci_1pop_norm(amostra, conf_level = 0.97)
+ic_dp <- ci_1pop_norm(amostra, conf_level = 0.97, parameter = "variance")
+
+sol <- c(
+    ic_media$lower_ci |> round(2),
+    ic_media$upper_ci |> round(2),
+    ic_dp$lower_ci |> round(2),
+    ic_dp$upper_ci |> round(2),
+    ic_dp$lower_ci |> sqrt() |> round(2),
+    ic_dp$upper_ci |> sqrt() |> round(2)
+)
+
+write_xlsx(tibble(X = amostra), "amostra.xlsx")
+```
+
+
+Question
+========
+
+Considere X uma variável aleatória contínua com distribuição normal, e suponha que um pesquisador coletou uma amostra com n=`r tam` observações salva em [amostra.xlsx](amostra.xlsx).
+
+* O intervalo de confiança para a média da população com coeficiente de confiança 97% é (\#\#ANSWER1\#\#, \#\#ANSWER2\#\#).
+* O intervalo de confiança para a variância da população com coeficiente de confiança 97% é (\#\#ANSWER3\#\#, \#\#ANSWER4\#\#).
+* O intervalo de confiança para o desvio padrão da população com coeficiente de confiança 97% é (\#\#ANSWER5\#\#, \#\#ANSWER6\#\#).
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+
+Solution
+========
+
+Answerlist
+----------
+* O intervalo de confiança para a média da população com coeficiente de confiança 97% é (`r format(sol[1], decimal.mark = ",")`; `r format(sol[2], decimal.mark = ",")`).
+* O intervalo de confiança para a variância da população com coeficiente de confiança 97% é (`r format(sol[3], decimal.mark = ",")`; `r format(sol[4], decimal.mark = ",")`).
+* O intervalo de confiança para o desvio padrão da população com coeficiente de confiança 97% é (`r format(sol[5], decimal.mark = ",")`; `r format(sol[6], decimal.mark = ",")`).
+* 
+*
+*
+
+
+Meta-information
+================
+extype: cloze
+exsolution: `r paste(sol, collapse = "|")`
+exclozetype: num|num|num|num|num|num
+exname: ic-media-ic-dp-normal
+extol: 0.05

@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1584446011591.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3199306730",
+    "id" : "9EA745FB",
+    "lastKnownWriteTime" : 1584451306,
+    "last_content_update" : 1584451306517,
+    "path" : "~/Dropbox/atividade_didatica/1sem2020/mat236/slides/aula_5/code_R/exemplos.Rmd",
+    "project_path" : "exemplos.Rmd",
+    "properties" : {
+        "chunk_output_type" : "console",
+        "cursorPosition" : "91,15",
+        "scrollLine" : "83"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

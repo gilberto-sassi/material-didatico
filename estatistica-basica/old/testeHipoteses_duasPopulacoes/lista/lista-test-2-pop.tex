@@ -1,0 +1,604 @@
+\documentclass[8pt, a4paper]{article}
+
+%encoding
+%--------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%--------------------------------------
+
+%Portuguese-specific commands
+%--------------------------------------
+\usepackage[portuguese]{babel}
+%--------------------------------------
+
+
+%hyphenation
+\input{../../hyphen/hyphen.tex}
+
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{graphicx}
+
+\usepackage{geometry}
+\geometry{margin=0.25in, bottom = 0.45in, top = 0.25in}
+
+
+\begin{document}
+
+\begin{center}
+Universiadade Federal da Bahia\\
+Instituto de Matemática e Estatística\\
+Prof. Dr. Gilberto Pereira Sassi\\
+\vspace{1cm}
+Lista de exercícios -- teste de hipóteses para duas populações ou variáveis.
+\vspace{1cm}
+% $1^\circ$  Lista
+\end{center}
+
+\begin{enumerate}
+	\item[] Em alguns casos desta lista de exercícios, você vai precisar alguma ferramente computacional como o \texttt{R}, \texttt{Python} e afins.
+	\item Assuma que $X_1 \sim N(\mu_1, 10^2)$ e $X_2 \sim N(\mu_1, 5^2)$. Imagine que um pesquisador deseja decidir entre as hipóteses: $H_0: \mu_1 = \mu_2$  e $H_1; \mu_1 \neq \mu_2$. Suponha que coletamos uma amostra de $X_1$ de tamanho $n_1=10$ com média $\bar{x}_1=4,7$ e uma amostra de $X_2$ de tamanho $n_2=15$ com média $\bar{x}_2=7,8$. Use $\alpha=5\%$.
+	\begin{enumerate}
+		\item Temos evidência para rejeitar $H_0$?
+		\item Calcule o valor-p. 
+		\item Se $\mu_1 - \mu_2 = 3$, qual o poder do teste?
+		\item Se $\mu_1 - \mu_2 = 3$ e $\beta = 0,05$, qual deve ser o tamanho da amostra $n=n_1=n_2$?
+	\end{enumerate}
+
+	\item Assuma que $X_1 \sim N(\mu_1, 10^2)$ e $X_2 \sim N(\mu_1, 5^2)$. Imagine que um pesquisador deseja decidir entre as hipóteses: $H_0: \mu_1 \leq \mu_2$  e $H_1; \mu_1 > \mu_2$. Suponha que coletamos uma amostra de $X_1$ de tamanho $n_1=10$ com média $\bar{x}_1=24,5$ e uma amostra de $X_2$ de tamanho $n_2=15$ com média $\bar{x}_2=21,3$. Use $\alpha=5\%$.
+	\begin{enumerate}
+		\item Temos evidência para rejeitar $H_0$?
+		\item Calcule o valor-p. 
+		\item Construa um intervalo de confiança para $\mu_1 - \mu_2$ com coeficiente de confiança $\gamma=95\%$. Deveríamos rejeitar $H_0$ usando este intervalo de confiança?
+		\item Se $\mu_1$ é quatro  unidades maior que $\mu_2$, qual o poder do teste?
+		\item Se $\mu_1$ é quatro unidades maior que $\mu_2$, qual deve ser o tamanho da amostra $n=n_1=n_2$ para termos um poder de teste de, pelo menos, $1-\beta = 95\%$?
+	\end{enumerate}
+
+	\item Assuma que $X_1 \sim N(\mu_1, 10^2)$ e $X_2 \sim N(\mu_1, 5^2)$. Imagine que um pesquisador deseja decidir entre as hipóteses: $H_0: \mu_1 \geq \mu_2$  e $H_1; \mu_1 < \mu_2$. Suponha que coletamos uma amostra de $X_1$ de tamanho $n_1=10$ com média $\bar{x}_1=14,2$ e uma amostra de $X_2$ de tamanho $n_2=15$ com média $\bar{x}_2=19,7$. Use $\alpha=5\%$.
+	\begin{enumerate}
+		\item Temos evidência para rejeitar $H_0$?
+		\item Calcule o valor-p. 
+		\item Construa um intervalo de confiança para $\mu_1 - \mu_2$ com coeficiente de confiança $\gamma=95\%$. Deveríamos rejeitar $H_0$ usando este intervalo de confiança?
+		\item Se $\mu_1$ é duas  unidades menor que $\mu_2$, qual o poder do teste?
+		\item Se $\mu_1$ é duas unidades menor que $\mu_2$, qual deve ser o tamanho da amostra $n=n_1=n_2$ para termos um poder de teste de, pelo menos, $1-\beta = 95\%$?
+	\end{enumerate}
+
+	\item Duas máquinas são usadas para encher garrafas PET com $600ml$ de refrigerante. Assumimos que o volume das garrafas PET tem distribuição normal com desvio padrão $\sigma_1 = 0,020ml$ para a primeira máquina e tem distribuição normal com desvio padrão $\sigma_2 = 0,025ml$ para a segunda máquina. A equipe de controle da qualidade suspeita que as garrafas PET não são preenchidas com o mesmo volume, em média, pelas duas máquinas. Uma amostra com $10$ garrafas PET é coletada para as duas máquinas. Os dados estão na Tabela~\ref{tab:volume-pet}. Use $\alpha = 5\%$.
+	\begin{enumerate}
+		\item As suspeitas da equipe estão corretas?
+		\item Calcule o valor-p.
+		\item Se a diferença dos volumes de preenchimento das duas máquina é, em média, $0,04 ml$, qual o poder do teste?
+		\item Se a diferença dos volumes de preenchimento das duas máquina é, em média, $0,04ml$, quantas garrafas precisamos em cada máquina para termos um poder de teste de, pelo menos, $1-\beta = 95\%$? Suponha que $n_1=n_2$.
+	\end{enumerate}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{c|cccccccccc}
+			\toprule[0.05cm]
+			Máquina 1 & 599,99 & 600,02 & 599,98 & 600,02 & 599,99 & 599,99 & 600,01 & 600,01 & 600,00 & 599,98 \\ \midrule[0.025cm]
+			Máquina 2 & 620,06 & 619,89 & 620,12 & 620,49 & 620,19 & 620,75 & 620,40 & 620,36 & 620,27 & 619,75 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Volume de garrafas PET preenchidas por duas máquinas.} 
+		\label{tab:volume-pet}
+	\end{table}
+
+	\item Dois tipos de plásticos são adequados para um fabricante de componentes eletrônicos. A força de ruptura deste plástico é importante, e sabemos que a força de ruptura dos dois plásticos tem distribuição normal com desvio padrão $\sigma_1=\sigma_2 = 1$ psi. Em uma amostra com $n_1=10$ espécimes do plástico do tipo 1 obtivemos uma média $\bar{x}_1=162,5$ psi e em uma amostra com $n_2=12$ espécimes do plástico do tipo 2 obtivemos uma média $\bar{x}_2=155,0$ psi. Esta companhia usará o plástico de tipo 1 se sua força de ruptura exceder, em média, a força de ruptura do plástico to tipo 2 em 10 psi. Use $\alpha=5\%$.
+	\begin{enumerate}
+		\item A companhia deveria usar o plástico de tipo 1?
+		\item Calcule o valor-p.
+		\item Calcule o intervalo de confiança para a diferença das forças de ruptura com coeficiente de confiança $\gamma=95\%$. Usando este intervalo, qual seria a decisão da companhia?
+		\item Suponha que a força de ruptura do plástico 1 excede em 12 psi a força de ruptura do plástico 2. Qual o poder do teste?
+		\item Suponha que a força de ruptura do plástico 1 excede em 12 psi a força de ruptura do plástico 2. Quantos espécimes precisamos coletar de cada tipo de plástico para termos um poder de teste de, pelo menos, $1-\beta = 99\%$? Assuma que $n_1 = n_2$.
+	\end{enumerate}
+
+	\item As taxas de queima de dois propulsores diferentes de combustível sólido usados em sistemas de fuga da tripulação aérea estão em análise. Sabemos que a taxa de queima dos dois propulsores tem distribuição normal com desvio padrão $\sigma_1=\sigma_2=3$ centímetros por segundo. Um engenheiro analisou $n_1=20$ espécimes com uma taxa média de queima $\bar{x}_1=18$ centímetros por segundo e $n_2=10$ espécimes com uma taxa média de queima $\bar{x}_2=24$ centímetros por segundo. Use $\alpha = 5\%$.
+	\begin{enumerate}
+		\item Os dois propulsores tem a mesma taxa de queima?
+		\item Calcule o valor-p.
+		\item Se $\mu_1 - \mu_2 = 2,5$ centímetros por segundo, qual o poder do teste?
+		\item Se $\mu_1 - \mu_2 = 14 cm/s$, quantos espécimes para cada tipo de propulsor precisamos analisar para termos um poder de teste de, pelo menos, $1-\beta = 95\%$? Assuma que $n_1 = n_2$.
+	\end{enumerate}
+
+	\item Duas formulações diferentes de um combustível oxigenado está em análise para estudar seu índice de octano. A variância  do índice de octano para a formulação 1 é $\sigma_1^2 = 1,5$, e para a formulação 2 é $\sigma_2^2 = 1,2$. Uma amostra aleatória com $n_1=15$ com espécimes da fórmula 1 tem média $\bar{x}_1 = 89,6$, e a amostra aleatória com $n_2=20$ com espécimes da fórmula 2 tem média $\bar{x}_2 = 92,5$. Assuma a normalidade dos dados. Use $\alpha=5\%$.
+	\begin{enumerate}
+		\item A formulação 2 tem um número maior de octanas? 
+		\item Calcule o valor-p.
+		\item Construa um intervalo de confiança para $\mu_1 - \mu_2$ com coeficiente de confiança $\gamma=94\%$. Qual a resposta para o item $(a)$ usando este intervalo de confiança?
+		\item Se $\mu_1 - \mu_2 = 1$, qual o número de espécimes que precisamos coletar para cada formulação para termos um poder de teste de, pelo menos, $1-\beta = 95\%$? 
+	\end{enumerate}
+
+	\item Um polímero é produzido por um processo químico em lotes. As viscosidade de cada lote tem distribuição normal com variância $\sigma = 20$. Quinze lotes tiveram a viscosidade mensurada e os dados estão na Tabela~\ref{tab:polimero-viscosidade-1}.
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{ccccc}
+			\toprule[0.05cm]
+			724 & 760 & 795 & 740 & 739 \\ 
+			718 & 745 & 756 & 761 & 747 \\ 
+			776 & 759 & 742 & 749 & 742 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Viscosidade em quinze lotes de um processo químico para produzir polímeros.} 
+		\label{tab:polimero-viscosidade-1}
+	\end{table} 
+	Uma mudança neste processo químico envolve a mudança do catalisador. Com este novo catalisador, medimos a viscosidade em oito lotes e os dados estão na Tabela~\ref{tab:polimero-viscosidade-2}. Assuma que a repetibilidade não é alterada pelo novo catalisador. Se a diferença entre as viscosidades médias é 10 ou menos, o engenheiro responsável deseja detectá-la com alta probabilidade. Use $\alpha=5\%$.
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{cccc}
+			\toprule[0.05cm]
+			735 & 729 & 783 & 738 \\ 
+			775 & 755 & 760 & 780 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Viscosidade em quinze lotes de um processo químico com o novo catalisador.} 
+		\label{tab:polimero-viscosidade-2}
+	\end{table}
+	\begin{enumerate}
+		\item Formule um teste de hipóteses apropriado. Qual a sua conclusão?
+		\item Calcule o valor-p.
+		\item Construa um intervalo de confiança a diferença das viscosidades médias com coeficiente de confiança $\gamma=95\%$. Qual a sua conclusão no item $(a)$ usando este intervalo de confiança?
+	\end{enumerate}
+
+	\item A concentração do ingrediente ativo em um detergente líquido para a lavagem de roupa pode ser afetado pelo tipo de catalisador usando no processo químico. O desvio padrão do ingrediente ativo é $\sigma = 3$ gramas por litro independente do catalisador utilizado. Dez observações com a concentração do ingrediente ativo é coletada para dois tipos de catalisador, e os dados estão na Tabela~\ref{tab:concentracao-detergente}. Assuma a normalidade dos dados.
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{c|cccccccccc}
+			\toprule[0.05cm]
+			Catalisador 1 & 57,9 & 66,2 & 65,4 & 65,4 & 65,2 & 62,6 & 67,6 & 63,7 & 67,2 & 71,0 \\  \midrule[0.025cm]
+			Catalisador 2 & 66,4 & 71,7 & 70,3 & 69,3 & 64,8 & 69,6 & 68,6 & 69,4 & 65,3 & 68,8 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Concentração de ingrediente ativo (grama por litro).} 
+		\label{tab:concentracao-detergente}
+	\end{table}
+	\begin{enumerate}
+		\item Construa um intervalo de confiança para a diferença na concentração média do ingrediente ativo para cada catalisador com coeficiente de confiança $\gamma = 95\%$. Interprete esse intervalo de confiança.
+		\item Existe evidência estatística que a concentração do ingrediente ativo depende do tipo de catalisador usado? Use $\alpha = 5\%$.
+		\item Calcule o valor-p.
+		\item Se a diferença de 5 gramas por litro (ou mais) é importante, quantas observações precisamos coletar de cada catalisador para termos um poder de teste de, pelo menos, $1-\beta=99\%$?
+	\end{enumerate}
+
+	\item Imagine que um pesquisador tem duas variáveis aleatórias independentes, $X_1 \sim N(\mu_1, \sigma^2_1)$ e $X_2 \sim N(\mu_2, \sigma_2^2)$, estão sob análise.  Algumas informações deste experimento estão na Tabela~\ref{tab:m1-m2-dif-bilateral}. Use $\alpha=5\%$.
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|c|c|c}
+			\toprule[0.05cm]
+			Variáveis & Tamanho da amostra & Média & Desvio padrão (amostral) \\ \midrule[0.025cm]
+			$X_1$ & $12$ & $19,94$ & $1,26$ \\ \midrule[0.025cm]
+			$X_2$ & $16$ & $12,15$ & $1,99$ \\ \bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Algumas informações do experimento.}
+		\label{tab:m1-m2-dif-bilateral}
+	\end{table}
+	\begin{enumerate}
+		\item As variâncias das duas variáveis são iguais? 
+		\item Construa um intervalo de confiança para a diferenças das médias $\mu_1 - \mu_2$ com coeficiente de confiança $\gamma=95\%$.
+		\item Existe evidência de que as médias são diferentes?
+		\item Calcule o valor-p.
+	\end{enumerate}
+
+	\item Imagine que um pesquisador tem duas variáveis aleatórias independentes, $X_1 \sim N(\mu_1, \sigma^2_1)$ e $X_2 \sim N(\mu_2, \sigma_2^2)$, que estão sob análise.  Algumas informações deste experimento estão na Tabela~\ref{tab:m1-m2-dif-unilateral-h1-lower}. Use $\alpha=5\%$.
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|c|c|c}
+			\toprule[0.05cm]
+			Variáveis & Tamanho da amostra & Média & Desvio padrão \\ \midrule[0.025cm]
+			$X_1$ & $12$ & $19,94$ & $1,26$ \\ \midrule[0.025cm]
+			$X_2$ & $16$ & $12,15$ & $1,99$ \\ \bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Algumas informações do experimento.}
+		\label{tab:m1-m2-dif-unilateral-h1-lower}
+	\end{table}
+	\begin{enumerate}
+		\item As variâncias das duas variáveis são iguais? 
+		\item Construa um intervalo de confiança para a diferenças das médias $\mu_1 - \mu_2$ com coeficiente de confiança $\gamma=95\%$.
+		\item Existe evidência de que a média da variável $X_2$ é menor que a média da variável $X_1$?
+		\item Calcule o valor-p.
+	\end{enumerate}	
+
+	\item Considere as hipóteses: $H_0: \mu_1 = \mu_2$ e $H_1: \mu_1 \neq \mu_2$. Suponha que $n_1=n_2=15$, $\bar{x}_1 = 4,7$, $\bar{x}_2=7,8$, $s_1^2=4$ e $s_2^2=6,25$. Assuma que $\sigma_1 = \sigma_2$ e assuma a distribuição normal dos dados. Use $\alpha = 5\%$.
+	\begin{enumerate}
+		\item Qual a sua decisão?
+		\item Calcule o valor-p.
+		\item Se $\mu_1 - \mu_2 = 3$, qual o poder do teste?
+		\item Se $\mu_1 - \mu_2 = -2$, qual o tamanho da amostra para termos um poder de teste de, pelo menos, $1-\beta = 95\%$?
+	\end{enumerate}
+
+	\item Considere as hipóteses: $H_0:\mu_1 = \mu_2$ e $H_1: \mu_1 \neq \mu_2$. Suponha que $n_1=n_2=15$, $\bar{x}_1=6,2$, $\bar{x}_2 = 7,8$, $s_1^2 = 4$ e $s_2^2 = 6,25$. Assuma que $\sigma_1 = \sigma_2$ e assuma a normalidade dos dados. Use $\alpha = 5\%$.
+	\begin{enumerate}
+		\item Qual a sua decisão?
+		\item Calcule o valor-p.
+		\item Se $\mu_1$ é três unidades menor que $\mu_2$, qual o poder do teste?
+		\item Se $\mu_1$ é $2,5$ unidades menor que $\mu_2$, qual o tamanho da amostra para termos um poder de teste de, pelo menos, $1-\beta=95\%$?
+	\end{enumerate}
+
+	\item Considere as hipóteses: $H_0: \mu_1 = \mu_2$ e $H_1: \mu_1 \neq \mu_2$. Suponha que $n_1=n_2=10$, $\bar{x}_1=7,8$, $\bar{x}_2=5,6$, $s_1^2 = 4$ e $s_2^2 = 9$. Assuma que $\sigma_1 = \sigma_2$ e assuma a normalidade dos dados. Use $\alpha=5\%$.
+	\begin{enumerate}
+		\item Qual a sua decisão?
+		\item Calcule o valor-p.
+		\item Construa o intervalo de confiança para $\mu_1 - \mu_2$ para coeficiente de confiança $\gamma=95\%$. Qual a sua decisão $(a)$ usando este intervalo de confiança?
+		\item Se $\mu_1$ é três unidades maior que $\mu_2$, qual o poder do teste?
+		\item Se $\mu_1$ é três unidades maior que $\mu_2$, qual o tamanho da amostra para termos um poder do teste de, pelo menos, $1-\beta = 95\%$?
+	\end{enumerate}
+
+	\item O diâmetro de varas de aço fabricadas por duas máquinas de extrusão diferentes está em análise. Uma amostra com $n_1 = 15$ varas da máquina 1 com desvio padrão $s_1^2 = 0,35$ e média $\bar{x}_1 = 8,73$, e uma amostra com $n_2=17$ varas da máquina 2 com desvio  padrão $s_2^2 = 0,40$ e média $\bar{x}_2=8,68$. Assuma que $\sigma_1=\sigma_2$ e assuma a normalidade dos dados. 
+	\begin{enumerate}
+		\item Existe evidência de que as duas máquinas produzem varas com diâmetros diferentes? Use $\alpha=5\%$.
+		\item Construa um intervalo de confiança para a diferente dos diâmetros meios com coeficiente de confiança $\gamma =5\%$. Qual a sua conclusão para o item $(a)$ usando este intervalo de confiança?
+	\end{enumerate}
+
+	\item Dois catalisadores podem ser usados em um lote de processo químico. Doze lotes foram preparados usando o catalisador 1 resultando em um rendimento médio de 86 e desvio padrão 3. Quinze lotes foram preparados usando o catalisador 2 resultando em um rendimento médio 89 com desvio padrão 2. Assuma que o rendimento dos dois catalisadores tem distribuição normal com o mesmo desvio padrão. 
+	\begin{enumerate}
+		\item Existe uma evidência estatística de que o rendimento do catalisador 2 é maior que o rendimento do catalisador 1? Use $\alpha = 5\%$.
+		\item Construa um intervalo de confiança para a diferença dos rendimentos médios dos dois catalisadores com coeficiente de confiança $\gamma = 95\%$. Qual a sua decisão no item $(a)$ usando este intervalo de confiança?
+	\end{enumerate}
+
+	\item A temperatura de deflexão térmica para dois tipos diferentes de tubos está em análise. Duas amostras com $15$ espécimes foram testados, e suas temperaturas de deflexões estão na Tabela~\ref{tab:deflection-temp}.
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{c|ccccccccccccccc}
+			\toprule[0.05cm]
+			Tipo 1 & 96,67 & 86,67 & 96,11 & 86,11 & 90,00 & 89,44 & 97,22 & 85,00 & 87,22 & 100,56 & 88,89 & 98,89 & 90,00 & 81,11 & 96,11 \\ \midrule[0.025cm]
+			Tipo 2 & 80,56 & 91,67 & 96,67 & 93,89 & 82,22 & 80,00 & 85,00 & 93,33 & 91,67 & 88,89 & 92,22 & 86,67 & 87,22 & 95,00 & 88,89 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Temperatura de deflexão para os dois tipos de tubos.} 
+		\label{tab:deflection-temp}
+	\end{table}
+	\begin{enumerate}
+		\item Desenhe o diagrama de caixa para temperatura para os dois tipos de tubos. Usando o diagrama de caixa, você acha que as variâncias são iguais?
+		\item Existe evidência que as variâncias das temperaturas são diferentes para os dois tipos de tubos? Use $\alpha=5\%$.
+		\item Existe evidência de que a temperatura de deflexão para os tubos do tipo 1 excede a temperatura de deflexão para os tubos de tipo 2? Use $\alpha=5\%$. Calcule o valor-p.
+		\item Se a temperatura de deflexão dos tubos de tipo 1 excede a temperatura de deflexão dos tubos de tipo 2 em cinco graus, quantos tubos precisam ser testados de cada tipo para termos um poder de teste de, pelo menos, $1-\beta = 99\%$? Use $\alpha = 5\%$.
+	\end{enumerate}
+
+	\item O ponto de fusão de dois tipos diferentes de materiais usados em soldas estão em análise e $21$ espécimes de cada tipo foram  coletadas e medimos o ponto de fusão. O primeiro tipo de material teve temperatura média de fusão $\bar{x}_1=215,56^\circ C$ com desvio padrão $s=4^\circ C$, e o segundo tipo de material teve temperatura média de fusão $\bar{x}_2=218,89$ com desvio padrão $s=3^\circ C$. 
+	\begin{enumerate}
+		\item Existe evidência que as variâncias são diferentes? Use $\alpha = 5\%$.
+		\item Os dois tipos de material tem o mesmo ponto de fusão? Use $\alpha = 5\%$. Calcule o valor-p.
+		\item Assuma que o ponto de fusão para o primeiro material é três graus maior que o ponto de fusão do segundo material, quantas barras de cada tipo de material precisamos testar para termos um poder de teste de, no mínimo, $1-\beta = 95\%$?
+	\end{enumerate}
+	
+	\item Uma fita fotocondutora é produzido com grossura nominal de 25 milímetros. O engenheiro deseja aumentar a velocidade média e acredita que diminuir a grossura da fita para 20 milímetros aumentará a velocidade média. Oito fitas de cada grossura (20 e 25 milímetros) foram testadas e a velocidade (em microjoules por polegadas$^2$) é medida. Para as fitas com grossura de $25$ milímetros obtivemos $\bar{x}_1=1,15$ e $s_1 = 0,11$, e para a s fitas com grossura de $20$ milímetros obtivemos $\bar{x}_2=1,06$ e $s_2=0,09$. Assuma a normalidade dos dados e suponha que as fitas com as duas grossuras tem a mesma variância.
+	\begin{enumerate}
+		\item Os dados suportam a afirmação de que diminuir a grossura da fita aumenta a velocidade? Use $\alpha = 5\%$.
+		\item Construa um intervalo de confiança para diferença de velocidades médias com coeficiente de confiança $\gamma=95\%$. Qual seria a sua decisão no item $(a)$ usando o intervalo de confiança?
+	\end{enumerate}
+
+	\item Duas companhias produzem materiais de borracha usados para aplicações automotivas. Este material de borracha sofre degaste abrasivo e o engenheiro decide testar os materiais de borracha das duas companhias. O engenheiro coletou $25$ espécimes de cada companhia, e o observou o desgaste em 1000 ciclos. Para a companhia 1, o desgaste médio foi $\bar{x}_1=20$ miligramas/1000 ciclos e $s_1=2$ miligramas/1000 ciclos, e para a companhia 2, obtemos um desgaste médio de $\bar{x}_2=15$ miligramas/1000 ciclos e desvio padrão $s_2 = 8$ miligramas/1000 ciclos. Assuma que o desgaste tem distribuição normal, mas as variâncias do desgaste para cada companhia são diferentes. Use $\alpha=5\%$.
+	\begin{enumerate}
+		\item Os dados suportam a afirmação que as duas companhias produzem materiais de borracha com desgastes diferentes?
+		\item Os dados suportam a afirmação que o desgaste do material de borracha da companhia 1 é maior?
+		\item Construa um intervalo de confiança para diferença das médias de desgaste para os materiais de borracha das duas companhias. Use $\gamma=95\%$. Qual sua conclusão para o item $(a)$ e $(b)$ usando este intervalo de confiança?
+	\end{enumerate}
+
+	\item Acredita-se que a grossura de uma fita plástica (em milímetros) em um material de substrato  influencia a temperatura na qual o revestimento é aplicado. Em um estudo completamente aleatorizado, 11 subtratos foram revestidos em $51,67^\circ C$ resultando em média $\bar{x}_1=103,5$ milímetros e desvio padrão $s_1=10,2$ milímetros. Outros 13 subtratos foram revestidos em $65,56^\circ C$ resultando em média $\bar{x}_2=99,7$ milímetros e $s_2 = 20,1$ milímetros. Um engenheiro suspeita que aumentar a temperatura diminui a grossura da fita. Use $\alpha=1\%$.
+	\begin{enumerate}
+		\item Os dados confirmam a suspeita do engenheiro? Calcule o valor-p.
+		\item Responda o item $(a)$ usando intervalo de confiança. Use $\gamma=99\%$.
+	\end{enumerate}
+
+	\item Em engenheiro quantificou a absorção de energia eletromagnética e efeito termal de telefones celulares. O experimento foi realizado em laboratório com ratos. A pressão sanguínea arterial (mmHg) do grupo de controle (nove ratos) teve média $\bar{x}_1=90$ com desvio padrão $s_1=5$ e o grupo de teste (nove ratos) obtemos $\bar{x}_2=115$ com desvio padrão $s_2=10$. Assuma que a pressão sanguínea arterial tem distribuição normal, mas as variâncias nos dois grupos não são iguais.	
+	\begin{enumerate}
+		\item Existe evidência estatística que o grupo de teste tem pressão sanguínea arterial maior? Use $\alpha=5\%$. Calcule o valor-p.
+		\item Construa um intervalo de confiança para diferença de pressão média sanguínea arterial com coeficiente de confiança $\gamma=99\%$. Qual a sua decisão no item $(a)$ usando este intervalo de confiança?
+		\item Os dados suportam a afirmação que o grupo de teste tem pressão média sanguínea arterial é 15 mmHg maior que o grupo de teste? Use $\alpha=1\%$. Calcule o valor-p.
+	\end{enumerate}
+
+	\item Um engenheiro está analisando a capacidade de uma balança medir o peso de dois tipos de folhas de papel. Os dados estão na Tabela~\ref{tab:sheets-paper}. Assuma a normalidade dos dados, e a variância do peso dos dois tipos de papel.
+	\begin{table}[ht]
+		\centering
+		\scalebox{0.90}{
+		\begin{tabular}{c|ccccccccccccccc}
+			\toprule[0.05cm]
+			Tipo de papel 1 & 3,481 & 3,448 & 3,485 & 3,475 & 3,472 & 3,477 & 3,472 & 3,464 & 3,472 & 3,470 & 3,470 & 3,470 & 3,477 & 3,473 & 3,474 \\ \midrule[0.025cm]
+			Tipo de papel 2 & 3,258 & 3,254 & 3,256 & 3,249 & 3,241 & 3,254 & 3,247 & 3,257 & 3,239 & 3,250 & 3,258 & 3,239 & 3,245 & 3,240 & 3,254 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		}
+		\caption{Peso de folhas de papel em gramas.} 
+		\label{tab:sheets-paper}
+	\end{table}
+	\begin{enumerate}
+		\item As médias de peso dos tipos de folhas são diferentes? Use $\alpha = 5\%$. Calcule o valor-p.
+		\item Repita o item $(a)$ com $\alpha = 10\%$.
+	\end{enumerate}
+	
+	\item A distância viajada por uma bola de golfe batida com o Iron Byron, um robô jogador de golfe que emula o campeão lendário Byron Nelson, está em análise. Duas companhias produzem o Iron Byron, e um pesquisador lançou $10$ bolas para cada companhia e mediu a distância alcançadas. Os dados estão na Tabela~\ref{tab:iron-byron}. Assuma a normalidade dos dados.
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{c|cccccccccc}
+			\toprule[0.05cm]
+			Companhia 1 & 251,46 & 261,52 & 262,43 & 247,80 & 258,78 & 247,80 & 255,12 & 251,46 & 240,49 & 244,14 \\ \midrule[0.025cm]
+			Companhia 2 & 235,92 & 223,11 & 237,74 & 242,32 & 249,63 & 256,95 & 247,80 & 246,89 & 240,49 & 245,06 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Distância viajada pela bola em metros.} 
+		\label{tab:iron-byron}
+	\end{table}
+	\begin{enumerate}
+		\item As variâncias das distâncias viajadas pelas bolas lançadas pelo Iron Byron das duas companhias são iguais?
+		\item As distâncias viajadas pelas bolas são diferentes pelos Iron Byron das duas companhias? Use $\alpha=5\%$. Calcule o valor-p.
+		\item Construa um intervalo de confiança para diferença das distâncias viajadas com coeficiente de confiança $\gamma=95\%$. Usando este intervalo de confiança, qual seria a sua decisão no item $(b)$?
+		\item Se a distância média da bola lançada pelo Iron Byron da companhia 1 é 3 metros maior, quantos lançamentos precisamos analisar de cada companhia para termos um poder de teste de, pelo menos, $1-\beta = 95\%$?
+	\end{enumerate}
+
+	\item Cientistas europeus analisaram a composição química e o crescimento de algas em alguns rios da Europa. Na Tabela~\ref{tab:alga}, mostramos a quantidade de alga $(mg/L)$ para 15 rios de alto fluxo e  13 rios de baixo fluxo. Assuma a normalidade dos dados.
+	\begin{table}[ht]
+		\centering
+		\scalebox{1}{
+		\begin{tabular}{c|ccccccccccccccc}
+			\toprule[0.05cm]
+			Rios de alto fluxo & 23,3 & 23,8 & 33,6 & 41,5 & 56,0 & 78,8 & 17,8 & 31,0 & 23,4 & 49,5 & 65,0 & 75,8 & 43,9 & 48,9 & 56,4 \\ \midrule[0.025cm]
+			Rios de baixo fluxo & 18,4 & 59,6 & 35,8 & 47,3 & 34,1 & 33,3 & 55,0 & 43,1 & 26,0 & 41,8 & 38,7 & 11,8 & 16,4 &  &  \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		}
+		\caption{Quantidade alga nos rios em mg/L.} 
+		\label{tab:alga}
+	\end{table}
+	\begin{enumerate}
+		\item As variâncias da quantidade de alga são iguais para rios de alto e baixo fluxo? Use $\alpha=5\%$.
+		\item A quantidade média de algas para rios de baixo e alto fluxo são  iguais? Use $\alpha = 5\%$. Calcule o valor-p.
+		\item Construa um intervalo de confiança para diferença das médias de algas para rios de baixo e alto fluxo com coeficiente de confiança $\gamma = 95\%$. Usando este intervalo de confiança, qual a sua decisão para o item $(b)$?
+	\end{enumerate}
+
+	\item Um gerente de uma frota de automóveis está analisando duas marcas de pneus radiais, ele escolheu oito carros e colocou os pneus das duas marcas em uso até eles ficarem carecas e anotou quantos quilômetros rodaram até o degaste total. Os dados estão na Tabela~\ref{tab:tempo-vida-pneu}. Construa um intervalo de confiança para a diferença do tempo médio de vida dos pneus com coeficiente de confiança $\gamma=95\%$. Qual marca o gerente deveria escolher?
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{c|cc}
+			\toprule[0.05cm]
+			Carro & Marca 1 & Marca 2 \\ 
+			\midrule[0.025cm]
+			1 & 36.925 & 34.318 \\ 
+			2 & 45.300 & 42.280 \\ 
+			3 & 36.240 & 35.500 \\ 
+			4 & 32.100 & 31.950 \\ 
+			5 & 37.210 & 38.015 \\ 
+			6 & 48.360 & 47.800 \\ 
+			7 & 38.200 & 37.810 \\ 
+			8 & 33.500 & 33.215 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Tempo de vida dos pneus em km.} 
+		\label{tab:tempo-vida-pneu}
+	\end{table}
+
+	\item Um cientista da computação está analisando a utilidade de duas linguagens diferentes em melhorar as tarefas de programação. Doze programadores, que são familiares com ambas as linguagens, foram solicitados a codificar uma função padrão usando as duas linguagens e o tempo até a finalização foi gravado em minutos. Os dados estão na Tabela~\ref{tab:tempo-programacao}. Assuma a normalidade dos dados. Encontre o intervalo de confiança para a diferença no tempo médio de codificação com coeficiente de confiança $\gamma = 95\%$. Alguma linguagem é mais competitiva?
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{c|cc}
+			\toprule[0.05cm]
+			 & \multicolumn{2}{|c}{Tempo para programar a função}\\ \cmidrule[0.025cm]{2-3}
+			Programador & Linguagem 1 & Linguagem 2 \\ 
+			\midrule[0.025cm]
+			1 & 17 & 18 \\ 
+			2 & 16 & 14 \\ 
+			3 & 21 & 19 \\ 
+			4 & 14 & 11 \\ 
+			5 & 18 & 23 \\ 
+			6 & 24 & 21 \\ 
+			7 & 16 & 10 \\ 
+			8 & 14 & 13 \\ 
+			9 & 21 & 19 \\ 
+			10 & 23 & 24 \\ 
+			11 & 13 & 15 \\ 
+			12 & 18 & 20 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Tempo para programar em minutos.} 
+		\label{tab:tempo-programacao}
+	\end{table}
+
+	\item Dez indivíduos participaram de um programa de educação alimentar para perda de peso. O peso foi mensurado antes e depois da participação do programa de educação alimentar. Os dados estão na Tabela~\ref{tab:participante-kg}.
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{c|cc}
+			\toprule[0.05cm]
+			Participantes & Antes & Depois \\ 
+			\midrule[0.025cm]
+			Indivíduo 1 & 88,45 & 84,82 \\ 
+			Indivíduo 2 & 96,62 & 88,45 \\ 
+			Indivíduo 3 & 112,04 & 100,24 \\ 
+			Indivíduo 4 & 91,17 & 86,18 \\ 
+			Indivíduo 5 & 84,82 & 79,38 \\ 
+			Indivíduo 6 & 95,25 & 89,36 \\ 
+			Indivíduo 7 & 97,52 & 90,26 \\ 
+			Indivíduo 8 & 111,58 & 100,24 \\ 
+			Indivíduo 9 & 133,36 & 126,10 \\ 
+			Indivíduo 10 & 140,61 & 129,27 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Peso dos participantes em kg.} 
+		\label{tab:participante-kg}
+	\end{table}
+	\begin{enumerate}
+		\item Existe evidência estatística de que o programa de educação alimentar reduz o peso dos participantes? Use $\alpha = 5\%$. Calcule o valor-p. 
+		\item Existe evidência estatística de que o programa de educação alimentar reduz o peso dos participantes em pelo menos 10 quilogramas? Use $\alpha = 5\%$. Calcule o valor-p. 
+		\item Suponha que o programa de educação alimentar diminui o peso alimentar em pelo menos 10 quilogramas, quantos participantes precisam acompanhar para termos um poder de teste de, pelo menos, $1-\beta = 90\%$? 
+	\end{enumerate}
+
+	\item Dois testes analíticos diferentes podem ser usados para determinar o nível de impuridade em ligas de aço. Oito espécimes foram testados usando ambos procedimentos, e os resultados estão na Tabela~\ref{tab:especimes}.
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{c|cc}
+			\toprule[0.05cm]
+			Espécimes & Teste 1 & Teste 2 \\ 
+			\midrule[0.025cm]
+			Barra 1 & 1,2 & 1,4 \\ 
+			Barra 2 & 1,3 & 1,7 \\ 
+			Barra 3 & 1,5 & 1,5 \\ 
+			Barra 4 & 1,4 & 1,3 \\ 
+			Barra 5 & 1,7 & 2,0 \\ 
+			Barra 6 & 1,8 & 2,1 \\ 
+			Barra 7 & 1,4 & 1,7 \\ 
+			Barra 8 & 1,3 & 1,6 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Nível de pureza das barras de aço.} 
+		\label{tab:especimes}
+	\end{table} 
+	\begin{enumerate}
+		\item Existência evidência estatística que os testes diferem na indicação no nível de puridade das ligas de aço? Use $\alpha = 5\%$. Calcule o valor-p. 
+		\item Existe evidência estatística para a afirmação de que o teste 1 produz um nível de pureza média é $0,1$ unidades menor? Use $\alpha = 5\%$. Calcule o valor-p. 
+		\item Se o teste 1 produz, em média, um nível de pureza 0,1 unidades menor do que o teste 2, quantas barras precisamos analisar para termos um poder de teste de, pelo menos, $1-\beta = 90\%$? 
+	\end{enumerate}
+
+	\item Um engenheiro agrônomo analisou a circunferência (em cm) de cinco laranjeiras foram mensurada em sete momentos. Os dados estão na Tabela~\ref{tab:laranjeiras-circ}. Assuma a normalidade dos dados.
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{c|ccccccc}
+			\toprule[0.05cm]
+			Árvores & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ & $x_6$ & $x_7$ \\ 
+			\midrule[0.025cm]
+			A & 30 & 58 & 87 & 115 & 120 & 142 & 145 \\ 
+			B & 33 & 69 & 111 & 156 & 172 & 203 & 203 \\ 
+			C & 30 & 51 & 75 & 108 & 115 & 139 & 140 \\ 
+			D & 32 & 62 & 112 & 167 & 179 & 209 & 214 \\ 
+			E & 30 & 49 & 81 & 125 & 142 & 174 & 177 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Circunferências (em cm) das laranjeiras em sete momentos.} 
+		\label{tab:laranjeiras-circ}
+	\end{table}
+	\begin{enumerate}
+		\item Compare o crescimento médio nas circunferências nos períodos de 1  a 2 e o crescimento nas circunferências nos períodos de 2 a 3. Este aumento é diferente nos dois períodos? Use $\alpha = 10\%$. Calcule o valor-p. 
+		\item Existe evidência estatística que o crescimento do período 1 ao 2 é maior que o crescimento do período 6 ao 7? Use $\alpha = 5\%$. Calcule o valor-p. 
+	\end{enumerate}
+
+	\item Neurocientistas realizaram uma pesquisa no Canadá para verificar se o confinamento solitário afetam a atividade das ondas cerebrais. Eles estudaram 20 presos que foram divididos aleatoriamente em dois grupos: metade ficou em confinamento solitário e a outra metade ficou em confinamento tradicional. Os dados estão na Tabela~\ref{tab:confinamento}.
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{cc}
+			\toprule[0.05cm]
+			Confinamento solidário & Confinamento regular \\ 
+			\midrule[0.025cm]
+			9,6 & 10,7 \\ 
+			10,4 & 10,7 \\ 
+			9,7 & 10,4 \\ 
+			10,3 & 10,9 \\ 
+			9,2 & 10,5 \\ 
+			9,3 & 10,3 \\ 
+			9,9 & 9,6 \\ 
+			9,5 & 11,1 \\ 
+			9,0 & 11,2 \\ 
+			10,9 & 10,4 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Atividade cerebral dos prisioneiros} 
+		\label{tab:confinamento}
+	\end{table}
+	\begin{enumerate}
+		\item As duas variáveis estão associadas? Use $\alpha = 5\%$. Calcule o valor-p.
+		\item Existe evidência estatística de que a atividade das ondas cerebrais são diferentes entre presos em confinamento solidário e regular? Use $\alpha = 5\%$. Calcule o valor-p. 
+	\end{enumerate}
+	
+	\item Um pesquisador deseja verificar a eficácia de Ginkgo Biloba, uma árvore de origem chinesa, no tratamento de perda de memória. Voluntários foram medicados por seis semanas, e foram submetidos a testes de memória antes e depois do estudo. Para $99$ pacientes voluntários, o aumento médio na fluência do teste (número de palavras geradas em um minuto) foi $1,07$ palavras com desvio padrão $3,195$. O número de palavras lembradas aumentou depois do uso do mendicamento à base de Ginkgo Biloba? Use $\alpha = 5\%$. Calcule o valor-p.
+	
+	\item Imagine que um pesquisador tem duas variáveis $X_1 \sim N(\mu_1, \sigma_1^2)$ e $X_2 \sim N(\mu_2, \sigma_2^2)$. Considere as hipóteses $H_0: \sigma_1^2 \geq \sigma_2^2$ e $H_1: \sigma_1^2 < \sigma_2^2$. Coletamos $n_1=5$ observações de $X_1$ com variância $s_1^2 = 23,2$, e $n_2=10$ observações de $X_2$ com variância $s_2^2 = 28,8$. 
+	\begin{enumerate}
+		\item Qual a sua decisão? Use $\alpha$. Calcule o valor-p. 
+		\item Construa um intervalo de confiança $\frac{\sigma_1}{\sigma_2}$ com coeficiente de confiança $\gamma=95\%$. Usando este intervalo de confiança, qual seria a sua decisão no item $(a)$?
+	\end{enumerate}
+	
+	\item Imagine que um pesquisador tem duas variáveis $X_1 \sim N(\mu_1, \sigma_1^2)$ e $X_2 \sim N(\mu_2, \sigma_2^2)$. Considere as hipóteses $H_0: \sigma_1^2 \leq \sigma_2^2$ e $H_1: \sigma_1^2 > \sigma_2^2$. Coletamos $n_1=20$ observações de $X_1$ com variância $s_1^2 = 4,5$, e $n_2=8$ observações de $X_2$ com variância $s_2^2 = 2,3$. 
+	\begin{enumerate}
+		\item Qual a sua decisão? Use $\alpha$. Calcule o valor-p. 
+		\item Construa um intervalo de confiança $\frac{\sigma_1}{\sigma_2}$ com coeficiente de confiança $\gamma=95\%$. Usando este intervalo de confiança, qual seria a sua decisão no item $(a)$?
+	\end{enumerate}
+
+	\item Imagine que um pesquisador tem duas variáveis $X_1 \sim N(\mu_1, \sigma_1^2)$ e $X_2 \sim N(\mu_2, \sigma_2^2)$. Considere as hipóteses $H_0: \sigma_1^2 = \sigma_2^2$ e $H_1: \sigma_1^2 \neq \sigma_2^2$. Coletamos $n_1=20$ observações de $X_1$ com variância $s_1^2 = 2,3$, e $n_2=8$ observações de $X_2$ com variância $s_2^2 = 1,9$. 
+	\begin{enumerate}
+		\item Qual a sua decisão? Use $\alpha$. Calcule o valor-p. 
+		\item Construa um intervalo de confiança $\frac{\sigma_1}{\sigma_2}$ com coeficiente de confiança $\gamma=95\%$. Usando este intervalo de confiança, qual seria a sua decisão no item $(a)$?
+	\end{enumerate}
+
+	\item Duas companhias fornecem um certo tipo de material bruto. A concentração de um elemento particular neste material é importante para uma linha de produção. A concentração média deste elemento é igual para as duas companhias (devido à especificações técnicas do órgão regulador), mas o engenheiro responsável suspeita que a variabilidade (ou repetibilidade) da concentração deste elemento nos lotes são diferentes nas duas companhias. Para confirmar sua suspeita, este engenheiro analisou $n_1=10$ lotes da companhia 1 e obteve um desvio padrão de $s_1=4,7$ gramas por litro, e $n_2=16$ lotes da companhia 2 e obteve um desvio padrão $s_2 = 5,8$ gramas por litro. Os dados suportam as suspeitas do engenheiro? Use $\alpha=5\%$. Calcule o valor-p.
+	
+	\item Imagine que um pesquisador está analisando duas variáveis aleatórias: $X_1 \sim Bernoulli(p_1)$ e $X_2 \sim Bernoulli(p_2)$. Imagine que este pesquisador precisa decidir entre duas hipóteses: $H_0: p_1 = p_2$ e $H_1: p_1 \neq p_2$.  Algumas informações na Tabela~\ref{tab:2-pop-prop-bilateral}.
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|cc}
+			\toprule[0.05cm]
+			Variáveis & Tamanho da amostra & Número de sucessos \\ \midrule[0.025cm]
+			$X_1$ & $250$ & $54$\\
+			$X_2$ & $290$ & $60$\\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Algumas informações do experimento.}
+		\label{tab:2-pop-prop-bilateral}
+	\end{table}
+	\begin{enumerate}
+		\item Qual a sua decisão? Use $\alpha = 5\%$. Calcule o valor-p.
+		\item Construa um intervalo de confiança para $p_1 - p_2$ com coeficiente de confiança $\gamma=99\%$. Qual a sua decisão no item $(a)$ usando este intervalo de confiança?
+	\end{enumerate}
+
+	\item Imagine que um pesquisador está analisando duas variáveis aleatórias: $X_1 \sim Bernoulli(p_1)$ e $X_2 \sim Bernoulli(p_2)$. Imagine que este pesquisador precisa decidir entre duas hipóteses: $H_0: p_1 \geq p_2$ e $H_1: p_1 < p_2$.  Algumas informações na Tabela~\ref{tab:2-pop-prop-unilateral-h1-upper}.
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|cc}
+			\toprule[0.05cm]
+			Variáveis & Tamanho da amostra & Número de sucessos \\ \midrule[0.025cm]
+			$X_1$ & $250$ & $188$\\
+			$X_2$ & $350$ & $245$\\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Algumas informações do experimento.}
+		\label{tab:2-pop-prop-unilateral-h1-upper}
+	\end{table}
+	\begin{enumerate}
+		\item Qual a sua decisão? Use $\alpha = 5\%$. Calcule o valor-p.
+		\item Construa um intervalo de confiança para $p_1 - p_2$ com coeficiente de confiança $\gamma=99\%$. Qual a sua decisão no item $(a)$ usando este intervalo de confiança?
+	\end{enumerate}
+
+	\item Imagine que um pesquisador está analisando duas variáveis aleatórias: $X_1 \sim Bernoulli(p_1)$ e $X_2 \sim Bernoulli(p_2)$. Imagine que este pesquisador precisa decidir entre duas hipóteses: $H_0: p_1 \leq p_2$ e $H_1: p_1 > p_2$.  Algumas informações na Tabela~\ref{tab:2-pop-prop-unilateral-h1-lower}.
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|cc}
+			\toprule[0.05cm]
+			Variáveis & Tamanho da amostra & Número de sucessos \\ \midrule[0.025cm]
+			$X_1$ & $300$ & $209$\\
+			$X_2$ & $300$ & $65$\\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Algumas informações do experimento.}
+		\label{tab:2-pop-prop-unilateral-h1-lower}
+	\end{table}
+	\begin{enumerate}
+		\item Qual a sua decisão? Use $\alpha = 5\%$. Calcule o valor-p.
+		\item Construa um intervalo de confiança para $p_1 - p_2$ com coeficiente de confiança $\gamma=99\%$. Qual a sua decisão no item $(a)$ usando este intervalo de confiança?
+	\end{enumerate}
+	
+	\item Dois tipos diferentes de máquinas de moldagem por injeção são usadas para formar peças de plástico. Uma peça é considerada defeituosa se a contração é excessiva. Uma amostra com $n_1=300$ peças do primeiro tipo de máquina tem $15$ peças defeituosas e $n_2=300$ peças do segundo tipo de máquina tem $8$ pelas defeituosas.
+	\begin{enumerate}
+		\item Existe evidência estatística que as proporções de peças defeituosas são diferentes para os dois tipos de máquina de moldagem por injeção? Use $\alpha=5\%$. Calcule o valor-p.
+		\item Seja $p_1$ a proporção de peças defeituosas para o primeiro tipo de máquinas e $p_2$ a proporção de peças defeituosas para o segundo tipo de máquinas, construa um intervalo de confiança para $p_1 - p_2$ com coeficiente de confiança $\gamma=95\%$. Qual a sua decisão para o item $(a)$, usando este intervalo de confiança?
+		\item Suponha que $p_1=0,05$ e $p_2 = 0,01$, qual o poder do teste?
+		\item  Suponha que $p_1=0,05$ e $p_2 = 0,01$, quantas peças precisamos analisar para cada tipo de máquina para termos um poder de teste de, pelo menos, $1-\beta=99\%$?
+		\item Suponha que $p_1=0,05$ e $p_2 = 0,02$, qual o poder do teste?
+		\item  Suponha que $p_1=0,05$ e $p_2 = 0,02$, quantas peças precisamos analisar para cada tipo de máquina para termos um poder de teste de, pelo menos, $1-\beta=95\%$?
+	\end{enumerate}
+
+	\item Dois tipo de solução de polimento estão em análise para possível uso no polimento na produção de lentes  interoculares usadas em olhos humanos depois de cirurgias de catarata. Trezentas lentes foi polidas com a primeiro solução e $253$ foram adequadamente polidas, e outras trezentas lentes foram polidas usando a segunda solução e $196$ tiveram polimento satisfatório.
+	\begin{enumerate}
+		\item Existe evidência estatística de diferença na proporção de lentes com polimento adequado entre as soluções? Use $\alpha = 5\%$. Calcule o valor-p.
+		\item Seja $p_1$ a proporção de lentes adequadas usando a primeira solução e $p_2$ a proporção de lentes com polimento satisfatório sando a segunda solução, construa um intervalo de confiança para $p_1 - p_2$ com coeficiente de confiança $\gamma=99\%$. Qual a sua decisão usando este intervalo de confiança?
+	\end{enumerate}
+
+	\item Uma amostra aleatória com 500 cidadãos da cidade A indicou que 385 são favoráveis ao aumento do limite de velocidade de uma rodovia local para $120 km/hr$, e outra amostra com 400 cidadãos da cidade B indicou que 267 são favoráveis ao aumento do limite de velocidade.
+	\begin{enumerate}
+		\item Os dados suportam a afirmação que a proporção de cidadão favoráveis ao aumento de velocidade é diferente nas duas cidades? Use $\alpha=5\%$. Calcule o valor-p.
+		\item Construa um intervalo de confiança para a diferença destas proporções com coeficiente de confiança $\gamma=95\%$. Qual a sua decisão no item $(a)$ usando este intervalo de confiança.
+	\end{enumerate}
+
+	\item Acredita-se que a poluição de ar está relacionado com o nascimento de bebês com peso baixo. Um pesquisador examinou a proporção de bebês com peso baixo expostos a altas doses de fuligem e cinzas durante o ataque às torres gêmeas de onze de setembro de 2001. Entre 182 bebês expostos a fuligem e cinzas, 15 foram classificando com bebês com peso baixo. Em um outro hospital foram do alcance da fuligem e cinzas do ataque, entre 2300 bebês nascidos, 92 foram classificando como bebês com peso baixo. Existe evidência estatística que as mães exposta a poluição de ar tem maior incidência de bebês com peso baixo? Use $\alpha=5\%$. Calcule o valor-p.
+	
+	\item Um pesquisador deseja verificar a eficácia da cirurgia em homens diagnosticados com câncer de próstata. Entre 695 homens diagnosticados com câncer de próstata, 397 fizeram a cirurgia e 18 deles morreram, e 348 não fizeram a cirurgia e 31 morreram. Existe evidência estatística que a cirurgia diminui a taxa de mortalidade do câncer de próstata? Use $\alpha=5\%$. Calcule o valor-p.
+\end{enumerate}
+
+
+\end{document}

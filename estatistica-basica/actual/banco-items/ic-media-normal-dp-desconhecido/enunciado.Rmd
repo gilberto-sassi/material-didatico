@@ -1,0 +1,67 @@
+```{r dgp, include = FALSE}
+library(exams)
+library(magrittr)
+library(readxl)
+library(writexl)
+library(knitr)
+library(statBasics)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+# tamanho da amostra
+tam <- 50:100 |> sample(1)
+
+# desvio padrão da população
+s <- 10:20 |> sample(1)
+
+# média da população
+m <- 30:40 |> sample(1)
+
+# coeficiente de confiança
+g <- runif(1, 0.9, 0.99) |> round(2)
+
+# amostra da distribuição normal
+amostra <- rnorm(tam, m, s)
+write_xlsx(tibble(amostra), "conjunto-dados.xlsx")
+
+ic <- ci_1pop_norm(amostra, conf_level = g) |> round(2)
+
+sol <- c(
+    ic$lower_ci,
+    ic$upper_ci
+) |> round(2)
+
+f <- \(x) format(x, decimal.mark = ",")
+```
+
+Question
+========
+
+Considere X uma variável aleatória contínua e assuma que [conjunto-dados](conjunto-dados.xlsx) é uma amostra aleatória de X. Qual o intervalo de confiança para a média da população com coeficiente de confiança `r f(g * 100)`%?
+
+**Resposta:** IC(&mu;, `r f(g * 100)`%) = (\#\#ANSWER1\#\#; \#\#ANSWER2\#\#).
+
+Questionlist
+------------
+
+* 
+* 
+
+Solution
+========
+
+IC(&mu;, `r f(g * 100)`%) = (`r f(sol[1])`; `r f(sol[2])`).
+
+Solutionlist
+------------
+
+*
+*
+
+Meta-information
+================
+exname: ic_t
+extype: cloze
+exclozetype: num|num
+exsolution: `r sol[1]`|`r sol[2]`
+extol: 0.02

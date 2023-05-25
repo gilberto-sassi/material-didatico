@@ -1,0 +1,543 @@
+---
+title: "Untitled"
+output: pdf_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Packages
+
+```{r}
+library(readxl)
+library(readr)
+library(openxlsx)
+library(latex2exp)
+library(xtable)
+library(agricolae)
+library(forcats)
+library(tidyverse)
+```
+
+## Simulation examples and some tests
+
+simulations test.
+
+```{r}
+set.seed(12345)
+
+m1 <- m2 <- 2
+m3 <- 10
+n1 <- n2 <- 100
+n3 <- 200
+dados <- tibble(y = c(rnorm(n1, m1), rnorm(n2, m2), rnorm(n3, m3)),
+                x = c(rep("m1", n1), rep("m2", n2), rep("m3", n3)))
+dados <- dados %>% 
+  mutate(x = as_factor(x))
+
+ajuste <- aov(y ~ x, data = dados)
+
+tt <- LSD.test(ajuste, "x", console = T)
+
+tt
+  
+ggplot(dados) + 
+  geom_boxplot(aes(y = y, x = x))
+```
+
+## Graphs illustrating the t-test and z-test
+
+Duas populações.
+
+```{r}
+z <- seq(from = -3, to = 3, by = 0.0001)
+m1 <- 5
+m2 <- 15
+x1 <- z + m1
+y1 <- dnorm(x1, mean = m1)
+x2 <- z + m2
+y2 <- dnorm(x2, mean = m2)
+dados <- tibble(x1, x2, media1 = y1, media2 = y2)
+
+ggplot(dados) +
+  geom_line(aes(x = x1, y = media1), size = 2, color = "blue") +
+  geom_line(aes(x = x2, y = media2), size = 2, color = "blue") +
+  geom_vline(xintercept = m1, size = 1) +
+  geom_vline(xintercept = m2, size = 1) +
+  geom_segment(x = min(c(x1, x2)), y = 0, xend = max(c(x1, x2)), yend = 0) +
+  labs(x = "", y = "") +
+  annotate("text", x = min(x1) * 1.5, y = dnorm(m1, mean = m1), label = "Tratamento 1", size = 5)+
+  annotate("text", x = min(x2) * 1.05, y = dnorm(m2, mean = m2), label = "Tratamento 2", size = 5)+
+  theme_minimal() +
+  scale_x_continuous(breaks = c(m1, m2),
+                     labels = c(expression(mu[1]), expression(mu[2])))+
+  scale_y_continuous(breaks = NULL) +
+  labs(title = bquote("Distribuição normal"),
+       subtitle = bquote("Variância: " ~ sigma^2)) +
+  theme(axis.text = element_text(size = 25), 
+        title = element_text(size = 25))
+ggsave("../figure/pop-2.png")
+ggsave("../figure/pop-2.pdf")
+
+
+```
+
+Let's illustrate the boxplots with a simulated example.
+```{r}
+set.seed(1235813)
+m1 <- 5
+m2 <- 15
+n <- 1e+3
+
+dados <- tibble(
+  x = c(rep("Tratamento 1", n), rep("Tratamento 2", n)),
+  y = c(rnorm(n, mean = m1), rnorm(n, mean = m2))
+)
+ggplot(dados) +
+  geom_boxplot(aes(x = x, y = y), outlier.shape = NA) +
+  labs(x = "", y = "", title = "Diagrama de caixa") +
+  scale_y_continuous(breaks = c(m1, m2),
+                     labels = c(
+                       expression(mu[1]),
+                       expression(mu[2])
+                     ))+
+  theme_classic() +
+  theme(axis.text = element_text(size = 25),
+        title = element_text(size = 30))
+ggsave("../figure/boxplot-pop-2.png")
+ggsave("../figure/boxplot-pop-2.pdf")
+
+
+```
+
+
+Três populações.
+
+```{r}
+z <- seq(from = -3, to = 3, by = 0.0001)
+m1 <- 5
+m2 <- 15
+m3 <- 25
+x1 <- z + m1
+y1 <- dnorm(x1, mean = m1)
+x2 <- z + m2
+y2 <- dnorm(x2, mean = m2)
+x3 <- z + m3
+y3 <- dnorm(x3, mean = m3)
+dados <- tibble(x1, x2, x3, media1 = y1, media2 = y2, media3 = y3)
+
+ggplot(dados) +
+  geom_line(aes(x = x1, y = media1), size = 2, color = "blue") +
+  geom_line(aes(x = x2, y = media2), size = 2, color = "blue") +
+  geom_line(aes(x = x3, y = media3), size = 2, color = "blue") +
+  geom_vline(xintercept = m1, size = 1) +
+  geom_vline(xintercept = m2, size = 1) +
+  geom_vline(xintercept = m3, size = 1) +
+  geom_segment(x = min(c(x1, x2, x3)), y = 0, xend = max(c(x1, x2, x3)), yend = 0) +
+  labs(x = "", y = "") +
+  annotate("text", x = min(x1) * 1.3, y = dnorm(m1, mean = m1), label = "Tratamento 1", size = 4.5)+
+  annotate("text", x = min(x2) * 1.0, y = dnorm(m2, mean = m2), label = "Tratamento 2", size = 4.5)+
+  annotate("text", x = min(x3) * 1.0, y = dnorm(m3, mean = m3), label = "Tratamento 3", size = 4.5)+
+  theme_minimal() +
+  scale_x_continuous(breaks = c(m1, m2, m3),
+                     labels = c(expression(mu[1]), 
+                                expression(mu[2]),
+                                expression(mu[3])))+
+  scale_y_continuous(breaks = NULL) +
+  labs(title = bquote("Distribuição normal"),
+       subtitle = bquote("Variância: " ~ sigma^2)) +
+  theme(axis.text = element_text(size = 25), 
+        title = element_text(size = 25))
+ggsave("../figure/pop-3.png")
+ggsave("../figure/pop-3.pdf")
+
+```
+
+Let's illustrate the boxplots with a simulated example.
+```{r}
+set.seed(1235813)
+m1 <- 5
+m2 <- 15
+m3 <- 25
+n <- 1e+3
+
+dados <- tibble(
+  x = c(rep("Tratamento 1", n), rep("Tratamento 2", n), rep("Tratamento 3", n)),
+  y = c(rnorm(n, mean = m1), rnorm(n, mean = m2), rnorm(n, mean = m3))
+)
+ggplot(dados) +
+  geom_boxplot(aes(x = x, y = y),outlier.shape = NA) +
+  labs(x = "", y = "", title = "Diagrama de caixa") +
+  scale_y_continuous(breaks = c(m1, m2, m3),
+                     labels = c(
+                       expression(mu[1]),
+                       expression(mu[2]),
+                       expression(mu[3])
+                     ))+
+  theme_classic() +
+  theme(axis.text = element_text(size = 25),
+        title = element_text(size = 30))
+ggsave("../figure/boxplot-pop-3.png")
+ggsave("../figure/boxplot-pop-3.pdf")
+
+
+```
+
+## Graph with decision idea
+
+```{r}
+df1 = 4
+df2 = 20
+xmax <- 8
+z <- seq(from = 0, to = xmax, by = 0.0001)
+y <- df(z, df1 = df1, df2 = df2)
+dados <- tibble(z = z, y = y)
+a <- 0.05
+q <- qf(1 - a, df1 = df1, df2 = df2)
+
+ggplot(dados) +
+  geom_line(aes(x = z, y = y), color = "black", size = 1) +
+  labs(x = TeX("$F_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: \\tau_{1} = \\tau_{2} = \\cdots = \\tau_{a} = 0$ se $f_0 > f_{1-\\alpha; a-1, N-a}$"),
+       subtitle = bquote("RC = {" ~ f[0] ~ " | " ~ f[0] > f[1-alpha~";"~a-1~","~N-a] ~ "}"),
+       caption = bquote(f[0] == frac(QM[Tratamentos], QM[E]) ~"e"~N == n %.% a)) +
+  scale_x_continuous(breaks = c(q),
+                     labels = c(TeX("$f_{1-\\alpha; a-1, N-a}$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z > q),
+              aes(x = z, y = y, ymin = 0, ymax = y),
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25),
+        title = element_text(size = 20)) +
+  geom_segment(x = -0.5, xend = q, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = q, xend = xmax, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = q, xend = q, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(q), y = c(0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = 1, y = 0.2, label = "H[0]",
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = 3.5, y = 0.2, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 3.5, y = 0.075, label = "alpha", parse = T,
+           color = "gray", size = 10)
+ggsave("../figure/anova-test.png")
+ggsave("../figure/anova-test.pdf")
+
+```
+
+
+## Example
+
+```{r}
+set.seed(1235813)
+
+dados <- tribble(~`Algodão`, ~o1, ~o2, ~o3, ~o4, ~o5, ~Total, ~`Variância`,
+                  "15",  7L, 7L, 15L, 11L, 9L, NA , NA,
+                  "20", 12L, 17L,  12L, 18L, 18L, NA , NA,
+                 "25",  14L, 18L, 18L, 19L, 19L, NA, NA,
+                 "30",  19L, 25L, 22L, 19L, 23L, NA, NA,
+                 "35",  7L, 10L, 11L, 15L, 11L, NA, NA
+)
+
+dados <- dados %>% group_by(`Algodão`) %>% 
+  mutate(Total = sum(c(o1, o2, o3, o4, o5)),
+         `Variância` = var(c(o1, o2, o3, o4, o5)),
+         `Média` = mean(c(o1, o2, o3, o4, o5)))
+
+dados %>% 
+  xtable(caption = "Resistência à tração", 
+         label = "tab:resistencia",
+         digits = 2,
+         align = rep("c", ncol(dados) + 1)) %>% 
+  print.xtable(booktabs = T,
+               include.rownames = F,
+               format.args = list(decimal.mark = ","))
+
+dados1 <- dados %>% select(-Total,-`Variância`) %>% 
+  tidyr::gather(key = "ordem", value = "obs", str_c("o", 1:5)) %>% 
+  select(-ordem) %>% ungroup() %>% 
+  mutate(`Algodão` = forcats::as_factor(`Algodão`))
+
+dados1 %>% 
+  summarise(media = mean(obs), variancia = var(obs)) %>% 
+  xtable(digits = 2,
+         caption = "Média e variância de todas observações de todos os tratamentos.",
+         label = "tab:media-variancia-pop") %>% 
+  print.xtable(booktabs = T,
+               format.args = list(decimal.mark = ","),
+               include.rownames = F)
+
+dados1 %>% group_by(`Algodão`) %>% 
+  summarise(`Médias populacionais` = mean(obs) %>% round()) %>% 
+  xtable(caption = "Médias populacionais.",
+         digits = 0,
+         label = "tab:medias-tratamentos") %>% 
+  print.xtable(booktabs = T,
+               format.args = list(decimal.mark = ","),
+               include.rownames = F)
+
+
+aov(obs ~ `Algodão`, data = dados1) %>%
+  summary() %>%
+  xtable(digits = 2, caption = "Tabela ANOVA.", label="tab:anova-table-ex1") %>%
+  print.xtable(booktabs = T, format.args = list(decimal.mark = ","))
+
+# análise de resíduos 
+ajuste <- aov(obs ~ `Algodão`, data = dados1)
+analise_residuos <- broom::augment(ajuste) 
+analise_residuos <- analise_residuos %>% 
+  select(obs, `Algodão`, .fitted, .resid)
+
+analise_residuos %>% 
+  filter(`Algodão` %in% 35) %>% 
+  select(.resid) %>% 
+  round(4) %>% 
+  unlist() %>% 
+  paste(collapse = " & ") %>% 
+  str_replace_all("\\.", ",")
+
+m <- analise_residuos %>% 
+  group_by(Algodão) %>% 
+  summarise(media = mean(obs)) %>% select(media) %>% ungroup() %>% 
+  unlist()
+
+with(analise_residuos, qqnorm((.resid - mean(.resid)) / sd(.resid), plot.it = F)) %>% 
+  as_tibble() %>% 
+  ggplot()+
+  geom_point(aes(x, y), color = "blue", size = 3)+
+  labs(x = "Quantis teóricos", y = "Quantis amostrais") +
+  xlim(c(-3, 3)) +
+  ylim(c(-3, 3)) +
+  geom_abline(slope = 1, intercept = 0, size = 2, alpha = 0.75)+
+  theme_minimal() +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25))
+ggsave("../figure/qqnorm-balanced-ex1.pdf")
+ggsave("../figure/qqnorm-balanced-ex1.png")
+
+analise_residuos %>% 
+  ggplot() +
+  geom_point(aes(x = seq_along(.resid), y = .resid), size = 3, color = "blue") +
+  labs(x = "Tempo", y = "Resíduos") +
+  theme_minimal()+
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25))
+ggsave("../figure/independence-balanced-ex1.pdf")
+ggsave("../figure/independence-balanced-ex1.png")
+
+analise_residuos %>% 
+  ggplot() +
+  geom_point(aes(x = .fitted, y = .resid), size = 3, color = "blue") +
+  labs(x = "Valor ajustado", y = "Resíduos") +
+  scale_x_continuous(breaks = unique(analise_residuos$.fitted) %>% round(2)) +
+  theme_minimal()+
+  theme(axis.title = element_text(size = 30),
+        axis.text.x = element_text(size = 15, angle = 60),
+        axis.text.y = element_text(size = 15))
+ggsave("../figure/variance-balanced-ex1.pdf")
+ggsave("../figure/variance-balanced-ex1.png")
+
+# boxplot de cada tratamento
+dados1 %>% 
+  group_by(`Algodão`) %>% 
+  summarise(lower = quantile(obs, probs = 0.25),
+            middle = quantile(obs, probs = 0.5),
+            upper = quantile(obs, probs = 0.75),
+            min = min(obs), max = max(obs), 
+            li = lower - 1.5 * (upper - lower),
+            ls = upper + 1.5 * (upper - lower)) %>%
+  ggplot() +
+  geom_boxplot(aes(x = `Algodão`,
+                   lower = lower, 
+                   middle = middle, 
+                   upper = upper,
+                   ymin = li, 
+                   ymax = ls), stat = "identity")+
+  labs(x = "Porcentagem de fibra de algodão",
+       y = "Resistência à tração do tecido") +
+  theme_classic()+
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25))
+
+ggsave("../figure/boxplot-ex1.pdf")
+ggsave("../figure/boxplot-ex1.png")
+```
+
+Below, we compute the power and sample size.
+```{r}
+samp_size_anova <- function(a, es, alpha = 0.05, power = 0.95){
+  
+  f <- function(n){
+    n %>%
+      map_dbl(~ (
+      1 - pf(qf(1 - alpha, df1 = a - 1, df2 = .x * a - a),
+             df1 = a  - 1,
+             df2 = .x * a - a,
+             ncp = .x * es^2)-
+        power)^2)
+  }
+  
+  nlminb(2, f)$par %>% ceiling()
+}
+a <- 5
+tau <- c(0, 5, 10, 15, 20)
+s2 = 27
+es <- (sum(tau^2) / (a * s2)) %>% sqrt()
+samp_size_anova(a = 5, es = es, alpha = 0.05, power = 0.99)
+
+```
+
+
+## Graph with decision idea (unbalaced)
+
+```{r}
+df1 = 4
+df2 = 20
+xmax <- 8
+z <- seq(from = 0, to = xmax, by = 0.0001)
+y <- df(z, df1 = df1, df2 = df2)
+dados <- tibble(z = z, y = y)
+a <- 0.05
+q <- qf(1 - a, df1 = df1, df2 = df2)
+
+ggplot(dados) +
+  geom_line(aes(x = z, y = y), color = "black", size = 1) +
+  labs(x = TeX("$F_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: \\tau_{1} = \\tau_{2} = \\cdots = \\tau_{a} = 0$ se $f_0 > f_{1-\\alpha; a-1, N-a}$"),
+       subtitle = bquote("RC = {" ~ f[0] ~ " | " ~ f[0] > f[1-alpha~";"~a-1~","~N-a] ~ "}"),
+       caption = bquote(f[0] == frac(QM[Tratamentos], QM[E])~"e"~ 
+                           N == n[1]+ cdots + n[a])) +
+  scale_x_continuous(breaks = c(q),
+                     labels = c(TeX("$f_{1-\\alpha; a-1, N-a}$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z > q),
+              aes(x = z, y = y, ymin = 0, ymax = y),
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25),
+        title = element_text(size = 20)) +
+  geom_segment(x = -0.5, xend = q, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = q, xend = xmax, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = q, xend = q, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(q), y = c(0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = 1, y = 0.2, label = "H[0]",
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = 3.5, y = 0.2, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 3.5, y = 0.075, label = "alpha", parse = T,
+           color = "gray", size = 10)
+ggsave("../figure/anova-test-unbalanced.png")
+ggsave("../figure/anova-test-unbalanced.pdf")
+
+```
+
+## Unbalanced experiments
+
+Below we present an example.
+```{r}
+temps <- c(100,
+ 125,
+ 150,
+ 175
+ )
+weathermetrics::fahrenheit.to.celsius(temps) %>% ceiling()
+
+dados <- tribble(
+  ~Densidade, ~Temperatura,
+ 21.8, 40,
+ 21.9, 40,
+ 21.7, 40,
+ 21.6, 40,
+ 21.7, 40,
+ 21.5, 40,
+ 21.8, 40,
+ 21.7, 50,
+ 21.4, 50,
+ 21.5, 50, 
+ 21.5, 50,
+ 21.9, 60,
+ 21.8, 60,
+ 21.8, 60,
+ 21.6, 60,
+ 21.5, 60, 
+  21.9, 70,
+ 21.7, 70,
+ 21.8, 70,
+ 21.7, 70, 
+ 21.6, 70,
+ 21.8, 70
+) %>% 
+  transmute(Densidade, `Temperatura C` = forcats::as_factor(Temperatura))
+
+aov(data = dados, Densidade ~ `Temperatura C`) %>% 
+  xtable(caption = "Tabela Anova",
+         digits = 3,
+         label = "tab:anova-unbalanced-test") %>% 
+  print.xtable(booktabs = T, format.args = list(decimal.mark = ","))
+
+dados %>% group_by(`Temperatura C`) %>% 
+  summarise(media = mean(Densidade), variancia = var(Densidade)) %>% 
+  xtable(digits = 4) %>% 
+  print.xtable(include.rownames = F, booktabs = T, format.args = list(decimal.mark = ","))
+
+ajuste <- aov(data = dados, Densidade ~ `Temperatura C`)
+analise_residuos <- broom::augment(ajuste) %>%
+  select(Densidade, Temperatura.C, .fitted, .resid)
+
+analise_residuos %>% 
+  filter(Temperatura.C %in% 70) %>%  
+  select(.resid) %>% 
+  unlist() %>% 
+  round(4) %>% 
+  paste(collapse = " & ") %>% 
+  str_replace_all("\\.", ",")
+
+# qqnorm plot (ggplot2 style)
+with(analise_residuos, qqnorm((.resid - mean(.resid)) / sd(.resid), plot.it = F)) %>% 
+  as_tibble() %>% 
+  ggplot()+
+  geom_point(aes(x, y), color = "blue", size = 3)+
+  labs(x = "Quantis teóricos", y = "Quantis amostrais") +
+  xlim(c(-3, 3)) +
+  ylim(c(-3, 3)) +
+  geom_abline(slope = 1, intercept = 0, size = 2, alpha = 0.75)+
+  theme_minimal() +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25))
+ggsave("../figure/qqnorm-unbalanced.pdf")
+ggsave("../figure/qqnorm-unbalanced.png")
+
+analise_residuos %>% 
+  ggplot() +
+  geom_point(aes(x = seq_along(.resid), y = .resid), size = 3, color = "blue") +
+  labs(x = "Tempo", y = "Resíduos") +
+  theme_minimal()+
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25))
+ggsave("../figure/independence-unbalanced.pdf")
+ggsave("../figure/independence-unbalanced.png")
+
+analise_residuos %>% 
+  ggplot() +
+  geom_point(aes(x = .fitted, y = .resid), size = 3, color = "blue") +
+  labs(x = "Valor ajustado", y = "Resíduos") +
+  scale_x_continuous(breaks = unique(analise_residuos$.fitted) %>% round(2)) +
+  theme_minimal()+
+  theme(axis.title = element_text(size = 30),
+        axis.text.x = element_text(size = 15, angle = 60),
+        axis.text.y = element_text(size = 15))
+ggsave("../figure/variance-unbalanced.pdf")
+ggsave("../figure/variance-unbalanced.png")
+
+
+```
+

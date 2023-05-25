@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1584991679976.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1258474468",
+    "id" : "7DD28F53",
+    "lastKnownWriteTime" : 1585144762,
+    "last_content_update" : 1585144762876,
+    "path" : "~/Dropbox/atividade_didatica/1sem2020/mat236/slides/aula_6/code_R/tab_chi_square.Rmd",
+    "project_path" : "tab_chi_square.Rmd",
+    "properties" : {
+        "cursorPosition" : "14,111",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

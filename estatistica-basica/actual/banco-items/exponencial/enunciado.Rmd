@@ -1,0 +1,53 @@
+```{r, label="Simulação de dados", include=F}
+library(exams)
+library(magrittr)
+library(readxl)
+library(writexl)
+library(knitr)
+library(truncnorm)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+# média populacional
+media_pop <- sample(5000:8000, 1)
+# probabilidade
+prob <- runif(1, 0.25, 0.75)  |> round(2)
+
+sol <- c(
+    pexp(media_pop, 1 / media_pop) - pexp(2000, 1 / media_pop),
+    pexp(media_pop, 1 / media_pop),
+    1 - pexp(media_pop, 1 / media_pop),
+    qexp(prob, rate = 1  / media_pop)
+) |> round(2)
+f <- \(x) format(x, decimal.mark = ",")
+```
+
+Question
+========
+
+Seja X uma variável aleatória contínua com distribuição expoencial com média populacional igual a `r media_pop`. Responda cada uma das perguntas abaixo:
+
+
+Questionlist
+------------
+* P(`r 2000` < X < `r media_pop`): 
+* P(X  &#10877; `r media_pop`): 
+* P(X > `r media_pop`): 
+* Quantil de ordem `r f(prob)`: 
+
+Solution
+========
+Solutionlist
+------------
+* P(`r 2000` < X < `r media_pop`): `r sol[1]`.
+* P(X  &#10877; `r media_pop`): `r sol[2]`.
+* P(X > `r media_pop`): `r sol[3]`.
+* Quantil de ordem `r f(prob)`: `r sol[4]`.
+
+Meta-information
+================
+exname: exponencial
+extype: cloze
+exclozetype: num|num|num|num
+exsolution: `r paste0(sol, collapse = "|")`
+extol: 0.02

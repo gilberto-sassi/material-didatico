@@ -1,0 +1,41 @@
+---
+title: "Exemplos"
+output: bookdown::html_notebook2
+editor_options: 
+  chunk_output_type: console
+---
+
+# pacotes usados
+
+```{r}
+library(readxl)
+library(xlsx)
+library(tidyverse)
+```
+
+
+# Teorema do limite central
+
+Considere a variável discreta dada por
+
+| $x$ | $x_1=0$ | $x_2=1$ | $x_3=2$ | $x_4=3$ | $x_5=4$ | $x_5=5$ |
+|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
+| $f(x)$ |$0,1$|$0,4$|$0,05$|$0,05$|$0,3$|$0,1$|
+
+```{r}
+amostras <- seq_len(10) %>% 
+  sapply(function(i){
+    sample(0:5, size = 5, replace = T,
+           prob = c(0.1, 0.4, 0.05, 0.05, 0.3, 0.1))
+  }) %>% t()
+amostras <- cbind(amostras, rowMeans(amostras))
+colnames(amostras) <- c(str_c("Valor amostrado ", 1:5), "Média")
+rownames(amostras) <- str_c("Amostra ", 1:10)
+
+xtable::xtable(amostras, align = rep("c", 7),
+               caption = "Dez amostras de uma variável quantitativa.") %>% 
+  print(booktabs = T, 
+        format.args = list(decimal.mark = ","))
+```
+
+

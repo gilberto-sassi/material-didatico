@@ -1,0 +1,535 @@
+---
+title: "Aula: Regressão linear simples"
+output: bookdown::html_notebook2
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(xtable)
+library(openxlsx)
+library(readr)
+library(readxl)
+library(latex2exp)
+library(tidyverse)
+```
+
+
+# Aula: Regressão linear simples
+
+```{r}
+set.seed(112358)
+n <- 50
+X <-  rnorm(n, mean = 0, sd = 1)
+Y <-  X + rnorm(length(X), mean = 0, sd = 0.4)
+dados <- data.frame(Y,X)
+
+dados %>% 
+  ggplot(aes(X, Y)) +
+  geom_point(size = 4) +
+  geom_line(stat = "smooth", method = "lm", size = 2, alpha  = 0.65, color = "blue")+
+  labs(x = "Variável dependente (x)", y = "Variável independente (y)") +
+  geom_segment(aes(x = -0.2, y = -0.2, xend = -0.2, yend = -1.3), size = 1, color = "red", alpha = 0.1)+
+  geom_point(data = tibble(x = -0.2, y = -1.3), aes(x, y), 
+             color = "red", size = 6, alpha = 0.75)+
+  annotate("text", x = 0.4, y = -1,  label = "(y[i]- a - b*x[i])", 
+           parse = T, size = 7, color = "red", alpha = 0.75) +
+  annotate("text", x = 2.6, y = 2.0, label = "y==a+bx", parse= T, size = 7,
+           color = "blue", alpha = 0.75) +
+  scale_x_continuous(breaks = NULL) +
+  scale_y_continuous(breaks = NULL)+
+  theme_minimal() +
+  theme(axis.title = element_text(size = 25),
+        axis.text = element_text(size = 20))
+ggsave("../figure/motivacao_regressao.png")
+ggsave("../figure/motivacao_regressao.pdf")
+
+```
+
+Primeiro exemplo de motivação presente no livro do Montgomery "Applied Statistics and probability for engineers."
+
+```{r}
+
+dados <- tribble(~forca, ~idade,
+                 2158.70, 15.50,
+                 1678.15, 23.75,
+                 2316.00, 8.00,
+                 2061.30, 17.00,
+                 2207.50, 5.00,
+                 1708.30, 19.00,
+                 1784.70, 24.00,
+                 2575.00, 2.50,
+                 2357.90, 7.50,
+                 2277.70, 11.00,
+                 2165.20, 13.00,
+                 2399.55, 3.75,
+                 1779.80, 25.00,
+                 2336.75, 9.75,
+                 1765.30, 22.00,
+                 2053.50, 18.00,
+                 2414.40, 6.00,
+                 2200.50, 12.50,
+                 2654.20, 2.00,
+                 1753.70, 21.50)
+
+dados %>% 
+  xtable(caption = "Dados sobre propelentes de foguetes.",
+         label = "tab:propelente", digits = 2,
+         align = rep("c", 3)) %>% 
+  print.xtable(include.rownames = F, booktabs = T,
+               format.args = list(decimal.mark = ","))
+
+dados %>% ggplot(aes(forca, idade)) +
+  geom_point(size = 4)+
+  # geom_line(stat = "smooth", method = "lm", size = 4, alpha = 0.35, color = "blue") +
+  labs(x = "Força (psi)", y = "Idade (semanas)") +
+  theme_minimal() +
+  theme(axis.title = element_text(size = 25),
+        axis.text = element_text(size = 20))
+ggsave("../figure/dispersao.png")
+ggsave("../figure/dispersao.pdf")
+
+dados %>% 
+  summarise(s_x = sum(idade), s_y = sum(forca), s_x2 = sum(idade^2),
+            s_y2 = sum(forca^2), s_xy = sum(forca * idade),
+            s_xx = sum( (idade - mean(idade))^2), 
+            s_xxy = sum( (forca - mean(forca)) * (idade - mean(idade)) ),
+            media_x = mean(idade), media_y = mean(forca))
+
+r <- with(dados, cor(forca, idade))
+
+xi <- 0.5 * log((1 + r) / (1 - r))
+
+lower <- (exp(2 * (-1.96 / sqrt(17) + xi)) - 1) / (exp(2 * (-1.96 / sqrt(17) + xi)) + 1)
+upper <- (exp(2 * (1.96 / sqrt(17) + xi)) - 1) / (exp(2 * (1.96 / sqrt(17) + xi)) + 1)
+
+ajuste <- lm(forca ~ 1 + idade, dados) 
+summary(ajuste)
+
+d_ajuste <- broom::augment(ajuste)
+
+fit <- aov(forca ~ idade, data = dados)
+summary(fit) %>% 
+  xtable(digits = 2,
+         caption = "Tabela ANOVA para regressão linear simples.",
+         label = "tab:anova-reg") %>% 
+  print.xtable(booktabs = T, 
+               format.args = list(decimal.mark = ","))
+
+
+s2 <- with(d_ajuste, sum(.resid^2 / (nrow(dados) - 2)))
+
+# linearidade
+d_ajuste %>% ggplot()+
+  geom_point(aes(x = idade, y = .resid), color = "blue", size = 2.5) +
+  labs(x = "Idade (x)", y = "Resíduos") +
+  theme_minimal() +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25))
+ggsave("../figure/exemplo-linearity.png")
+ggsave("../figure/exemplo-linearity.pdf")
+
+# independência
+d_ajuste %>% ggplot() +
+  geom_point(aes(x = idade, y = .std.resid), color = "blue", size = 2.5) +
+  scale_y_continuous(limits = c(min(-3, d_ajuste$.std.resid), max(3, d_ajuste$.std.resid)),
+                     breaks = -3:3) +
+  geom_abline(intercept = -3, slope = 0, linetype = "dashed", size = 1, color = "#808080") +
+  geom_abline(intercept = 3, slope = 0, linetype = "dashed", size = 1, color = "#808080") +
+  theme_minimal() +
+  labs(x = "Idade (x)", y = "Resíduos padronizados") +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25))
+ggsave("../figure/exemplo-independence-outlier.png")
+ggsave("../figure/exemplo-independence-outlier.pdf")
+
+# normal probability graph
+qqnorm(d_ajuste$.std.resid, plot.it = F) %>% as_tibble() %>% 
+  ggplot() +
+  geom_point(aes(x, y), color = "blue", size = 2.5) +
+  geom_abline(intercept = 0, slope = 1, size = 2, alpha = 0.6) +
+  theme_minimal() +
+  ylim(c(-3, 3)) + xlim(c(-3, 3)) +
+  labs(x = "Quantis teóricos", y = "Quantis amostrais") +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25))
+ggsave("../figure/exemplo-normality.png")
+ggsave("../figure/exemplo-normality.pdf")
+
+# homoscedasticity
+ggplot(d_ajuste) +
+  geom_point(aes(x = .resid, y = .fitted), color = "blue", size = 2.5) +
+  theme_minimal() +
+  labs(x = "Resíduos", y = "Valores ajustados") +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25))
+ggsave("../figure/exemplo-homo.png")
+ggsave("../figure/exemplo-homo.pdf")
+
+
+```
+
+anova decision illustration.
+```{r}
+df1 = 4
+df2 = 18
+xmax <- 8
+z <- seq(from = 0, to = xmax, by = 0.0001)
+y <- df(z, df1 = df1, df2 = df2)
+dados <- tibble(z = z, y = y)
+a <- 0.05
+q <- qf(1 - a, df1 = df1, df2 = df2)
+
+ggplot(dados) +
+  geom_line(aes(x = z, y = y), color = "black", size = 1) +
+  labs(x = TeX("$F_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: b = 0$ se $f_0 > f_{1-\\alpha; 1, N-2}$"),
+       subtitle = bquote("RC = {" ~ f[0] ~ " | " ~ f[0] > f[1-alpha~";"~1~","~N-2] ~ "}"),
+       caption = bquote(f[0] == frac(QM[R], QM[E]))) +
+  scale_x_continuous(breaks = c(q),
+                     labels = c(TeX("$f_{1-\\alpha; 1, N-2}$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z > q),
+              aes(x = z, y = y, ymin = 0, ymax = y),
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25),
+        title = element_text(size = 20)) +
+  geom_segment(x = -0.5, xend = q, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = q, xend = xmax, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = q, xend = q, y = 0, yend = 0.15,
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(q), y = c(0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = 1, y = 0.2, label = "H[0]",
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = 3.5, y = 0.2, label = "H[1]",
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 3.5, y = 0.075, label = "alpha", parse = T,
+           color = "gray", size = 10)
+ggsave("../figure/anova.png")
+ggsave("../figure/anova.pdf")
+
+```
+
+
+Let's illustrate the hypothesis for the slope in the simple linear regression.
+```{r}
+z <- seq(from = -4, to= 4, by = 0.001)
+f <- dnorm(z)
+dados <- tibble(z=z, f=f)
+
+ggplot(dados) +
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$T_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: b \\geq b_0$ se $t_0 < t_{\\alpha; n-2}$"),
+       subtitle = bquote("RC = {" ~ t[0] ~ " | " ~ t[0] < t[alpha~';'~n-2] ~ "}")) +
+  scale_x_continuous(breaks = c(-2, 0), 
+                     labels = c(TeX("$t_{\\alpha;n-2}$"), "0")) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z < -2),
+              aes(x = z, y = f, ymin = 0, ymax = f), 
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25),
+        title = element_text(size = 27)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = -4, xend = -2, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = -2, xend = 4, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = -2, xend = -2, y = 0, yend = 0.15, 
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(-2), y = c(0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = -3, y = 0.175, label = "H[1]", 
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]", 
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = -3, y = 0.05, label = "alpha", parse = T,
+           color = "gray", size = 10)
+ggsave("../figure/b-h1-lower.png")
+ggsave("../figure/b-h1-lower.pdf")
+
+ggplot(dados) +
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$T_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: b \\leq b_0$ se $t_0 > t_{1-\\alpha; n-2}$"),
+       subtitle = bquote("RC = {" ~ t[0] ~ " | " ~ t[0] > t[1-alpha~';'~n-2] ~ "}")) +
+  scale_x_continuous(breaks = c(2, 0), 
+                     labels = c(TeX("$t_{1-\\alpha;n-2}$"), "0")) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z > 2),
+              aes(x = z, y = f, ymin = 0, ymax = f), 
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25),
+        title = element_text(size = 27)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = -4, xend = 2, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = 2, xend = 4, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = 2, xend = 2, y = 0, yend = 0.15, 
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(2), y = c(0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = 3, y = 0.175, label = "H[1]", 
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]", 
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = 3, y = 0.05, label = "alpha", parse = T,
+           color = "gray", size = 10)
+ggsave("../figure/b-h1-upper.png")
+ggsave("../figure/b-h1-upper.pdf")
+
+ggplot(dados) +
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$T_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: b = b_0$ se $t_0  < t_{\\frac{\\alpha}{2}; n-2}$ ou $t_0  > t_{1-\\frac{\\alpha}{2}; n-2}$"),
+       subtitle = bquote("RC = {" ~ t[0] ~ " | " ~ t[0] < t[frac(alpha, 2)~';'~n-2] ~"ou"~ t[1-frac(alpha, 2)~';'~n-2] < t[0] ~ "}")) +
+  scale_x_continuous(breaks = c(-2, 0, 2), 
+                     labels = c(TeX("$t_{\\frac{\\alpha}{2};n-2}$"), "0", TeX("$t_{1-\\frac{\\alpha}{2};n-2}$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z > 2),
+              aes(x = z, y = f, ymin = 0, ymax = f), 
+              fill = "gray") +
+  geom_ribbon(data = dplyr::filter(dados, z < -2),
+              aes(x = z, y = f, ymin = 0, ymax = f), 
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25),
+        title = element_text(size = 22)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = -4, xend = -2, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = -2, xend = 2, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = 2, xend = 4, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = 2, xend = 2, y = 0, yend = 0.15, 
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_segment(x = -2, xend = -2, y = 0, yend = 0.15, 
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(-2, 2), y = c(0.15, 0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = 3, y = 0.175, label = "H[1]", 
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = -3, y = 0.175, label = "H[1]", 
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]", 
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = 3, y = 0.05, label = "frac(alpha, 2)", parse = T,
+           color = "gray", size = 10) + 
+  annotate("text", x = -3, y = 0.05, label = "frac(alpha, 2)", parse = T,
+           color = "gray", size = 10)
+ggsave("../figure/b-bilateral.png")
+ggsave("../figure/b-bilateral.pdf")
+
+
+
+```
+
+Let's illustrate the hypothesis for the intercept in the simple linear regression.
+```{r}
+z <- seq(from = -4, to= 4, by = 0.001)
+f <- dnorm(z)
+dados <- tibble(z=z, f=f)
+
+ggplot(dados) +
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$T_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: a \\geq a_0$ se $t_0 < t_{\\alpha; n-2}$"),
+       subtitle = bquote("RC = {" ~ t[0] ~ " | " ~ t[0] < t[alpha~';'~n-2] ~ "}")) +
+  scale_x_continuous(breaks = c(-2, 0), 
+                     labels = c(TeX("$t_{\\alpha;n-2}$"), "0")) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z < -2),
+              aes(x = z, y = f, ymin = 0, ymax = f), 
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25),
+        title = element_text(size = 27)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = -4, xend = -2, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = -2, xend = 4, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = -2, xend = -2, y = 0, yend = 0.15, 
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(-2), y = c(0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = -3, y = 0.175, label = "H[1]", 
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]", 
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = -3, y = 0.05, label = "alpha", parse = T,
+           color = "gray", size = 10)
+ggsave("../figure/a-h1-lower.png")
+ggsave("../figure/a-h1-lower.pdf")
+
+ggplot(dados) +
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$T_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: a \\leq a_0$ se $t_0 > t_{1-\\alpha; n-2}$"),
+       subtitle = bquote("RC = {" ~ t[0] ~ " | " ~ t[0] > t[1-alpha~';'~n-2] ~ "}")) +
+  scale_x_continuous(breaks = c(2, 0), 
+                     labels = c(TeX("$t_{1-\\alpha;n-2}$"), "0")) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z > 2),
+              aes(x = z, y = f, ymin = 0, ymax = f), 
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25),
+        title = element_text(size = 27)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = -4, xend = 2, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = 2, xend = 4, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = 2, xend = 2, y = 0, yend = 0.15, 
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(2), y = c(0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = 3, y = 0.175, label = "H[1]", 
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]", 
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = 3, y = 0.05, label = "alpha", parse = T,
+           color = "gray", size = 10)
+ggsave("../figure/a-h1-upper.png")
+ggsave("../figure/a-h1-upper.pdf")
+
+ggplot(dados) +
+  geom_line(aes(x = z, y = f), color = "black", size = 1) +
+  labs(x = TeX("$T_0$"), y = "Função densidade", 
+       title = TeX("Rejeitamos $H_0: a = a_0$ se $t_0  < t_{\\frac{\\alpha}{2}; n-2}$ ou $t_0  > t_{1-\\frac{\\alpha}{2}; n-2}$"),
+       subtitle = bquote("RC = {" ~ t[0] ~ " | " ~ t[0] < t[frac(alpha, 2)~';'~n-2] ~"ou"~ t[1-frac(alpha, 2)~';'~n-2] < t[0] ~ "}")) +
+  scale_x_continuous(breaks = c(-2, 0, 2), 
+                     labels = c(TeX("$t_{\\frac{\\alpha}{2};n-2}$"), "0", TeX("$t_{1-\\frac{\\alpha}{2};n-2}$"))) +
+  scale_y_continuous(breaks = NULL) +
+  geom_ribbon(data = dplyr::filter(dados, z > 2),
+              aes(x = z, y = f, ymin = 0, ymax = f), 
+              fill = "gray") +
+  geom_ribbon(data = dplyr::filter(dados, z < -2),
+              aes(x = z, y = f, ymin = 0, ymax = f), 
+              fill = "gray") +
+  theme_classic() +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25),
+        title = element_text(size = 22)) +
+  geom_vline(xintercept = 0, color = "black", size = 1) +
+  geom_segment(x = -4, xend = -2, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = -2, xend = 2, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = 2, xend = 4, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = 2, xend = 2, y = 0, yend = 0.15, 
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_segment(x = -2, xend = -2, y = 0, yend = 0.15, 
+               linetype = "dashed", color = "gray", size = 1) +
+  geom_point(data = tibble(x = c(-2, 2), y = c(0.15, 0.15)),
+             aes(x = x, y = y), size = 5,color  = "gray") +
+  annotate("text", x = 3, y = 0.175, label = "H[1]", 
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = -3, y = 0.175, label = "H[1]", 
+           size = 10, color = "red", parse = T) +
+  annotate("text", x = 0.5, y = 0.175, label = "H[0]", 
+           size = 10, color = "blue", parse = T) +
+  annotate("text", x = 3, y = 0.05, label = "frac(alpha, 2)", parse = T,
+           color = "gray", size = 10) + 
+  annotate("text", x = -3, y = 0.05, label = "frac(alpha, 2)", parse = T,
+           color = "gray", size = 10)
+ggsave("../figure/a-bilateral.png")
+ggsave("../figure/a-bilateral.pdf")
+
+
+
+```
+
+
+Vamos fazer um novo exemplo, pois esse exemplo que usei não está legal. Eu vou simular para dar certinho.
+
+```{r}
+y <- ajuste$coefficients[1] + ajuste$coefficients[2] * dados$idade + rnorm(n, sd = s)
+d1 <- tibble(idade = dados$idade, forca = round(y, 2))
+
+d1 %>% 
+  xtable(caption = "Dados sobre propelentes de foguetes.",
+         label = "tab:propelente", digits = 2,
+         align = rep("c", 3)) %>% 
+  print.xtable(include.rownames = F, booktabs = T,
+               format.args = list(decimal.mark = ","))
+
+d1 %>% ggplot(aes(forca, idade)) +
+  geom_point(size = 4)+
+  geom_line(stat = "smooth", method = "lm", size = 4, alpha = 0.35, color = "blue") +
+  labs(x = "Força (psi)", y = "Idade (semanas)") +
+  theme_minimal() +
+  theme(axis.title = element_text(size = 25),
+        axis.text = element_text(size = 20))
+ggsave("dispersao.png")
+
+d1 %>% 
+  summarise(s_x = sum(idade), s_y = sum(forca), s_x2 = sum(idade^2),
+            s_y2 = sum(forca^2), s_xy = sum(forca * idade),
+            s_xx = sum( (idade - mean(idade))^2), 
+            s_xxy = sum( (forca - mean(forca)) * (idade - mean(idade)) ),
+            media_x = mean(idade), media_y = mean(forca))
+
+r <- with(d1, cor(idade, forca))
+
+xi <- 0.5 * log((1 + r) / (1 - r))
+
+lower <- (exp(2 * (-1.96 / sqrt(17) + xi)) - 1) / (exp(2 * (-1.96 / sqrt(17) + xi)) + 1)
+upper <- (exp(2 * (1.96 / sqrt(17) + xi)) - 1) / (exp(2 * (1.96 / sqrt(17) + xi)) + 1)
+
+ajuste <- lm(forca ~ 1 + idade, d1) 
+
+d_ajuste <- augment(ajuste)
+
+s2 <- with(d_ajuste, sum((forca - .fitted)^2 / (nrow(dados) - 2)))
+s2_b <- with(d1,  ( s2 / (nrow(dados) * sum((idade - mean(idade))^2)) )) %>% 
+  sqrt() %>% round(2)
+s <- sqrt(s2)
+
+d_ajuste <- d_ajuste %>% 
+  mutate(e = (forca - .fitted) / s)
+d_ajuste %>% ggplot(aes(x = idade, y = e)) +
+  geom_point(size = 3, color = "blue") +
+  geom_abline(intercept = 0, slope = 0) +
+  labs(x = "Idade", y = expression(hat(e))) +
+  theme_minimal()+
+  ylim(c(-2,2)) +
+  theme(axis.title = element_text(size = 25),
+        axis.text = element_text(size = 20))
+ggsave('graficos_residuos.png', width = 15)
+
+
+n <- nrow(d_ajuste)
+d_q <- d_ajuste %>% 
+  transmute(q_r = ((e - mean(e)) / sd(e)) %>% sort(),
+            q_t = qnorm((1:n - 0.5) / n))
+
+d_q %>% ggplot(aes(x = q_r, y = q_t)) +
+  geom_point(size = 4) +
+  geom_abline(intercept =  0, slope = 1, color = "blue", size = 4, alpha= 0.45) +
+  labs(x = "Quantis dos resíduos", y = "Quantis da distribuição\n normal") +
+  theme_minimal()+
+  theme(axis.title = element_text(size = 25),
+        axis.text = element_text(size = 20))
+ggsave("grafico_quantis.png", width = 15)
+
+
+ks <- d_ajuste %>% 
+  transmute(i = 1:n,
+            z = ((e - mean(e)) / sd(e)) %>%  sort(),
+            N = pnorm(z),
+            razao = (1:n) / n,
+            diff = abs(N - razao))
+
+
+k <- (nrow(d_ajuste) %>% log2() + 1) %>% ceiling()
+d_ajuste %>% 
+  ggplot(aes(x = e)) +
+  geom_histogram(aes(y = ..density..), fill = "blue", bins = k)+
+  labs(x = "Resíduo", y = "Função de densidade\n de frequência")+
+  theme_minimal() +
+  theme(axis.text = element_text(size = 20),
+        axis.title = element_text(size = 25))
+ggsave("normalidade.png")
+```
+

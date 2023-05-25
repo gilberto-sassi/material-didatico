@@ -1,0 +1,289 @@
+\documentclass[12pt, a4paper]{article}
+
+%encoding
+%--------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%--------------------------------------
+
+%Portuguese-specific commands
+%--------------------------------------
+\usepackage[portuguese]{babel}
+%--------------------------------------
+
+
+%hyphenation
+\input{../../hyphen/hyphen.tex}
+
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{graphicx}
+
+\usepackage{geometry}
+\geometry{margin=0.5in, bottom = 1in, top = 0.5in}
+
+
+\begin{document}
+
+\begin{center}
+Universiadade Federal da Bahia\\
+Instituto de Matemática e Estatística\\
+Prof. Dr. Gilberto Pereira Sassi\\
+\vspace{1cm}
+Lista de exercícios -- teste de hipóteses para uma população ou variável.
+\vspace{1cm}
+% $1^\circ$  Lista
+\end{center}
+
+\begin{enumerate}
+	\item Considere que desejamos decidir entre as hipóteses $H_0:\mu = 7$ e $H_1: \mu \neq 7$. Assuma que a normalidade dos dados e que a variância é conhecida. Determine os valores críticos para os seguintes níveis de confiança:
+	\begin{enumerate}[(a)]
+		\item $\alpha=1\%$;
+		\item $\alpha=5\%$;
+		\item $\alpha=10\%$.
+	\end{enumerate}
+
+	\item Imagine que um pesquisador deseja analisar uma variável aleatória $X \sim N(\mu, 1,8^2)$. Algumas informações para decidir entre as hipóteses $H_0: \mu = 35$ e $H_1: \mu \neq 35$ estão na Tabela~\ref{tab:exe2}.
+	\begin{enumerate}[(a)]
+		\item Complete as informações da Tabela~\ref{tab:exe2};
+		\item Construa um intervalo de confiança para $\mu$. Use $\gamma = 99\%$;
+		\item Qual seria a sua decisão usando o intervalo de confiança do item $(b)$.
+	\end{enumerate}
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|c|c|c|c|c|c|c}
+			\toprule[0.05cm]
+			Tamanho da amostra & $\bar{x}$ & $\sigma$ & $Z_0$ & Decisão & valor-p & $H_0$ & $H_1$ \\ \midrule[0.025cm]
+			25 & 35,710 & 1,8 & & & & $\mu = 35$ & $\mu \neq 35$ \\
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Algumas informações do experimento.}
+		\label{tab:exe2}
+	\end{table}
+
+	\item Imagine que um pesquisador deseja analisar uma variável aleatória $X \sim N(\mu, 0,75^2)$. Algumas informações para decidir entre as hipóteses $H_0: \mu \leq 20$ e $H_1: \mu > 20$ estão na Tabela~\ref{tab:exe3}.
+	\begin{enumerate}[(a)]
+		\item Complete as informações da Tabela~\ref{tab:exe3};
+		\item Construa um intervalo de confiança para $\mu$. Use $\gamma = 99\%$;
+		\item Qual seria a sua decisão usando o intervalo de confiança do item $(b)$.
+	\end{enumerate}
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|c|c|c|c|c|c|c}
+			\toprule[0.05cm]
+			Tamanho da amostra & $\bar{x}$ & $\sigma$ & $Z_0$ & Decisão & valor-p & $H_0$ & $H_1$ \\ \midrule[0.025cm]
+			10 & 19,889 & 0,75 & & & & $\mu \leq 20$ & $\mu > 20$ \\
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Algumas informações do experimento.}
+		\label{tab:exe3}
+	\end{table}
+
+	\item A temperatura média da água de um
+	tubo de descarga na torre de resfriamento da usina não deve mais de 40 $^\circ C$. Medições anteriores indicam que o desvio padrão populacional da temperatura é $\sigma = 5 ^\circ C$. A temperatura da água no tubo foi mensurado em nove dias e obtivemos uma temperatura média de $38,5 ^\circ C$.
+	\begin{enumerate}[(a)]
+		\item Existe evidência de que a temperatura do tubo está aceitável? Use $\alpha=5\%$;
+		\item Qual o valor-p?
+		\item Calcule o poder do teste se $\mu=30 ^\circ C$. Use $\alpha=5\%$.
+	\end{enumerate}
+
+	\item Uma indústria fabrica virabrequins usados em motores automotivos e deseja estudar o desgaste do virabrequim depois de $160.000 km$, pois impacta nos pedidos de garantia. Uma amostra com $15$ virabrequins foi coletada e obtemos uma média de $\bar{x} = 2,78$. Assuma que o desgaste após $160.000 km$ tem distribuição normal e desvio padrão populacional $\sigma = 0,9$. 
+	\begin{enumerate}[(a)]
+		\item Decida entre $H_0: \mu = 3$ e $H_1: \mu \neq 3$. Use $\alpha = 5\%$;
+		\item Qual o poder do teste se $\mu=3,5$. Use $\alpha = 5\%$.
+		\item Qual o tamanho da amostra se $\mu=3,5$ e desejamos ter um poder de pelo menos $1-\beta = 0,90$?
+	\end{enumerate}
+	
+	\item Um teste de ponto de fusão foi realizado em  $n=10$ amostras de um material usado na fabricação de um propelente de foguetes obtendo uma média de $\bar{x} = 67,89^\circ C$. Assuma que o ponto de fusão deste material tem distribuição normal e desvio padrão populacional $\sigma = 1,5^\circ C$.
+	\begin{enumerate}[(a)]
+		\item Decida para entre as hipóteses: $H_0: \mu = 155$ e $H_1: \mu \neq 155$. Use $\alpha = 5\%$;
+		\item Qual o valor-p?
+		\item Qual o poder do teste para $\mu=150$? Use $\alpha=5\%$;
+		\item Qual o tamanho da amostra se $\mu=150$ e o poder do teste é pelo menos $1-\beta = 0,95$? Use $\alpha=5\%$.
+	\end{enumerate}
+
+	\item O tempo de vida de uma bateria tem distribuição normal com desvio padrão $\sigma=1,5$ horas. Uma amostra com dez baterias tem o tempo médio de duração $\bar{x} = 40,5$ horas. 
+	\begin{enumerate}[(a)]
+		\item Existe evidência de que o tempo de bateria dura mais de 40 horas? Use $\alpha=5\%$;
+		\item Qual o valor-p?
+		\item Qual o poder de teste se o tempo médio populacional é $\mu = 42$ horas e queremos ter um poder do teste é pelo menos $95\%$?
+	\end{enumerate}
+
+	\item Um engenheiro que está analisando resistência à tração de liga de aço usada em tacos de golf. A resistência à tração de liga de aço tem distribuição normal com desvio padrão populacional $\sigma = 60$ psi. Uma amostra de $n=12$ ligas de aço teve resistência média à tração $\bar{x} = 3450$ psi.
+	\begin{enumerate}[(a)]
+		\item Teste as hipóteses: $H_0: \mu = 3500$  e $H_1: \mu \neq 3500$. Use $\alpha = 1\%$;
+		\item Qual o valor-p?
+		\item Qual o poder do teste se a resistência média populacional é $\mu = 3470$ psi? Use $\alpha = 5\%$;
+		\item Qual o tamanho da amostra se a resistência média populacional é $\mu = 3470$ e desejamos ter o poder do teste de pelo menos $1-\beta=80\%$? Use $\alpha=5\%$.
+		\item Construa um intervalo de confiança para $\mu$ com coeficiente de confiança $\gamma=99\%$, e use este intervalo de confiança para decidir entre as hipóteses do item $(a)$.
+	\end{enumerate}
+
+	\item Pesquisadores médicos estão desenvolvendo um novo coração artificial com titânio e plástico. Este coração tem um longo tempo de vida, mas a bateria precisa ser recarregada a cada quatro horas. Uma amostra com $50$ baterias foram selecionadas e a duração da bateria foi mensurado. O tempo médio de duração da bateria dessas $50$ baterias foi $\bar{x} = 4,05$ horas. Assuma que o tempo de duração das baterias tem distribuição normal e desvio padrão populacional $\sigma=0,2$ horas. 
+	\begin{enumerate}[(a)]
+		\item Existe evidência estatística de que a duração da bateria é maior que quatro horas? Use $\alpha=5\%$.
+		\item Qual o valor-p?
+		\item Calcule o poder do teste se $\mu=4,5$ horas. Use $\alpha=5\%$;
+		\item Qual o tamanho da amostra se $\mu=4,5$ horas e se desejamos ter o poder do teste de pelo menos $1-\beta = 90\%$? Use $\alpha=5\%$.
+	\end{enumerate}
+
+	\item Imagine que um pesquisador deseja decidir entre as hipóteses: $H_0: \mu = 7$ e $H_1: \mu \neq 7$. Assuma a normalidade dos dados. Determine o valores críticos para cada um dos casos a seguir:
+	\begin{enumerate}[(a)]
+		\item $\alpha=1\%$ e $n=20$;
+		\item $\alpha=5\%$ e $n=12$;
+		\item $\alpha=10\%$ e $n=15$.
+	\end{enumerate}
+
+	\item Imagine que um pesquisador deseja analisar uma variável aleatória $X \sim N(\mu, \sigma^2)$. Algumas informações para decidir entre as hipóteses $H_0: \mu \leq 91$ e $H_1: \mu > 91$ estão na Tabela~\ref{tab:s2-unknown-table}. (Dica: o valor-p é calculado usando o \texttt{R}, \texttt{Python} e afins.)
+	\begin{enumerate}[(a)]
+		\item Complete as informações da Tabela~\ref{tab:s2-unknown-table}.
+		\item E se as hipóteses fossem $H_0:\mu = 90$ e $H_1: \mu \neq 90$, qual seria a sua decisão? Use $\alpha=99\%$.
+	\end{enumerate}
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|c|c|c|c|c|c|c}
+			\toprule[0.05cm]
+			Tamanho da amostra & $\bar{x}$ & $s$ & $T_0$ & Decisão & valor-p & $H_0$ & $H_1$\\ \midrule[0.025cm]
+			20 & $92,379$ & 0,717 & & & & $\mu = 91$ & $\mu \neq 91$\\
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Algumas informações do experimento.}
+		\label{tab:s2-unknown-table}
+	\end{table}
+
+	\item Um estudo analisa as propriedades de inércia térmica do concreto aerado autoclavado usado como material de construção. Cinco amostras deste material foram testadas, e as temperaturas (em graus Celsius) do interior das amostas foram:  23,01; 22,22: 22,04; 22,62 e 22,59. Assuma que a temperatura do interior do material tem distribuição normal.
+	\begin{enumerate}[(a)]
+		\item Decida entre as hipóteses: $H_0: \mu = 22,5$ e $H_1: \mu \neq 22,5$. Use $\alpha=5\%$;
+		\item Qual o valor-p? (Dica: precisa usar o \texttt{R}, \texttt{Python} e afins.)
+		\item Qual o poder do teste se a temperatura do interior dos materiais é $\mu = 22,75$? (Dica: precisa usar o \texttt{R}, \texttt{Python} ou afins).
+		\item Qual o tamanho da amostra se a temperatura média do interior é $\mu = 22,75$ e desejamos ter o poder do teste de, pelo menos, $1-\beta = 90\%$? (Dica: precisa usar o \texttt{R}, \texttt{Python} ou afins).
+	\end{enumerate}
+
+	\item A quantidade de sódio nas caixas com $300$ gramas de cereais matinais foi analisado. Os dados estão na Tabela~\ref{tab:cereal-matinal}.
+	\begin{enumerate}[(a)]
+		\item Os dados suportam a afirmação que quantidade média de sódio dos cereais matinais é diferente de $130$ miligramas? Use $\alpha=5\%$.
+		\item Qual o valor-p? (Dica: precisa usar o \texttt{R}, \texttt{Python} ou afins).
+		\item Qual o poder do teste se a quantidade média de sódio é $\mu = 130,5$ miligramas? Use $\alpha=5\%$. (Dica: precisa usar o \texttt{R}, \texttt{Python} ou afins).
+		\item Qual o tamanho da amostra se a quantidade média de sódio é $\mu=130,1$ miligramas e se desejamos ter um poder de teste, pelo menos, $1-\beta = 75\%$? (Dica: precisa usar o \texttt{R}, \texttt{Python} ou afins).
+	\end{enumerate}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{cccccccccc}
+			\toprule[0.05cm]
+			131,15 & 130,91 & 129,64 & 130,72 & 128,24 & 130,14 & 128,71 & 129,39 & 129,53 & 129,78 \\ 
+			130,69 & 129,54 & 128,77 & 128,33 & 129,65 & 129,29 & 129,00 & 130,42 & 130,12 & 130,92 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Quantidade de sódio nos cereais matinais em miligramas.} 
+		\label{tab:cereal-matinal}
+	\end{table}
+
+	\item Acredita-se a temperatura oral humana normal é aproximadamente $37,06^\circ C$, mas alguns estudos mais recentes indicam que a temperatura oral humana pode ser $36,78^\circ C$. Um pesquisador selecionou $52$ seres humanos adultos, e a temperatura média oral foi $\bar{x} = 36,825^\circ C$ e o desvio padrão tem $s = 0,625^\circ C$.
+	\begin{enumerate}[(a)]
+		\item Quais são as hipóteses deste estudo?
+		\item Temos evidência estatística para rejeitar $H_0$? Use $\alpha=5\%$.
+	\end{enumerate}
+
+	\item Considere o teste de hipóteses: $H_0: \sigma^2 = 7$ e $H_1: \sigma^2 \neq 7$. Assuma a normalidade dos dados. Encontre os valores críticos para os seguintes casos:
+	\begin{enumerate}[(a)]
+		\item $\alpha=1\%$ e $n=20$;
+		\item $\alpha=5\%$ e $n=12$;
+		\item $\alpha=10\%$ e $n=15$.
+	\end{enumerate}
+
+	\item Um teste de impacto Izod foi realizado para $51$ espécimes de canos de PVC. O desvio padrão foi $s=0,37$. Assuma a normalidade dos dados.
+	\begin{enumerate}[(a)]
+		\item Teste as hipóteses: $H_0: \sigma^2 = 0,25$ e $H_1: \sigma^2 \neq 0,25$. Use $\alpha=5\%$.
+		\item Encontre o valor-p. (Dica: Use o \texttt{R}, \texttt{Python} e afins.)
+		\item Explique o intervalo de confiança para $\sigma^2$ com coeficiente de confiança $\gamma=95\%$.
+	\end{enumerate}
+
+	\item Um engenheiro para fabricante de pneus está investigando a vida útil dos pneus para um novo composto de borracha e construiu $n=16$ pneus e mediu o tempo de vida em teste de estrada. O desvio padrão foi $s = 3645,94km$. Assuma a normalidade dos dados.
+	\begin{enumerate}[(a)]
+		\item O desvio padrão do tempo de vida dos pneus é menor que $4000km$? Use $\alpha=5\%$.
+		\item Encontre o valor-p. (Dica: Use o \texttt{R}, \texttt{Python} e afins.)
+		\item Construa o intervalo de confiança para $\sigma$ com coeficiente de confiança $\gamma=95\%$. Qual a sua decisão usando este intervalo de confiança?
+	\end{enumerate}
+
+	\item O teor de açucares da calda dos pêssegos enlatados tem distribuição normal. Acredita-se que a variância é $\sigma^2 = 18 (miligramas)^2$. Uma amostra com $n=10$ foi coletada e obtivemos um desvio padrão $s = 4,8$ miligramas.
+	\begin{enumerate}[(a)]
+		\item Decida entre as seguintes hipóteses: $H_0: \sigma^2  = 18$ e $H_1: \sigma^2 \neq 18$. Use $\alpha = 5\%$.
+		\item Encontre o valor-p. (Dica: Use o \texttt{R}, \texttt{Python} e afins.)
+		\item Suponha que o desvio padrão é o dobro do valor imaginado. Qual o poder do teste? Use $\alpha=5\%$. (Dica: Use o \texttt{R}, \texttt{Python} e afins.)
+		\item Suponha que $\sigma^2=40$. Quantas latas precisam ser analisadas para termos um poder de teste de, pelo menos, $1-\beta  = 90\%$? (Dica: Use o \texttt{R}, \texttt{Python} e afins.)
+	\end{enumerate} 
+
+	\item Imagine que um pesquisador deseja analisar uma variável aleatória $X \sim Bernoulli(p)$. Algumas informações para decidir entre as hipóteses $H_0: p = 0,4$ e $H_1: p \neq 0,4$ estão na Tabela~\ref{tab:bilateral-tab-prop}.
+	\begin{enumerate}[(a)]
+		\item Complete a Tabela~\ref{tab:bilateral-tab-prop}.
+		\item Construa o intervalo de confiança para $p$. Use $\gamma=99\%$.
+	\end{enumerate}
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|c|c|c|c|c|c|c}
+			\toprule[0.05cm]
+			Tamanho da amostra & $\hat{p}$ & $IC(p, 95\%)$ & $\alpha$ & $Z_0$ & valor-p & $H_0$ & $H_1$\\ \midrule[0.05cm]
+			& & $(0,350086; 0,463247)$ & & & & $p=0,4$ & $p \neq 0,4$ \\ \bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Algumas informações do experimento.}
+		\label{tab:bilateral-tab-prop}
+	\end{table}
+
+	\item Imagine que um pesquisador deseja analisar uma variável aleatória $X \sim Bernoulli(p)$. Algumas informações para decidir entre as hipóteses $H_0: p \geq 0,6$ e $H_1: p < 0,6$ estão na Tabela~\ref{tab:unilateral-tab-prop}.
+	\begin{enumerate}[(a)]
+		\item Complete a Tabela~\ref{tab:unilateral-tab-prop}.
+		\item Construa o intervalo de confiança para $p$. Use $\gamma=95\%$.
+	\end{enumerate}
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|c|c|c|c|c|c|c}
+			\toprule[0.05cm]
+			Tamanho da amostra & Número de sucessos & $\hat{p}$ & $\alpha$ & $Z_0$ & valor-p & $H_0$ & $H_1$\\ \midrule[0.05cm]
+			$500$ & $287$ & & & & & $p\geq 0,6$ & $p < 0,6$ \\ \bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Algumas informações do experimento.}
+		\label{tab:unilateral-tab-prop}
+	\end{table}
+
+	\item Suponha que $500$ peças foram testadas em uma linha de produção e $10$ foram rejeitadas por não cumprirem as especificações técnicas.
+	\begin{enumerate}[(a)]
+		\item Decida entre as hipóteses $H_0: p=0,03$ e $H_1: p \neq 0,03$, em que $p$ é a proporção de peças defeituosas desta linha de produção. Use $\alpha=5\%$.
+		\item Encontre o valor-p.
+		\item Construa um intervalo de confiança para $p$ com coeficiente de confiança $\gamma=95\%$. Qual a sua decisão no item $(a)$ usando este intervalo de confiança?
+	\end{enumerate}
+
+	\item Em uma amostra aleatória de $300$ circuitos, $13$ eram defeituosos.
+	\begin{enumerate}[(a)]
+		\item Decida entre as hipóteses $H_0: p = 0,05$ e $H_1: p \neq 0,05$, em que $p$ é a proporção de circuitos defeituosos. Use $\alpha = 5\%$.
+		\item Calcule o valor-p.
+		\item Construa um intervalo de confiança para $p$ com coeficiente de confiança $\gamma=99\%$. Qual a sua decisão no item $(a)$ usando este intervalo de confiança?
+	\end{enumerate}
+
+	\item Um anúncio publicitário afirma que a bateria para celular de uma certa companhia duram $48$ horas. Um órgão de defesa do consumidor coletou 5000 baterias e  15 baterias se esgotaram antes de $48$ horas. Existe evidência estatística de que a proporção das baterias que duram menos que $48$ é menor que $2\%$ para as baterias dessa companhia? Use $\alpha=1\%$. Encontre o valor-p.
+	
+	\item Uma amostra com $500$ eleitores em Phoenix foram questionados se são favoráveis ao uso de combustíveis oxigenados por um ano para reduzir a emissão de poluentes. Um legislador irá propor o uso  de combustíveis oxigenados se mais de $60\%$ dos eleitores apoiarem a iniciativa.
+	\begin{enumerate}
+		\item Se a proporção de eleitores favoráveis é $p=0,6$, qual o probabilidade do erro do tipo I?
+		\item Se a proporção de eleitores favoráveis é $p=0,75$, qual o probabilidade do erro do tipo II?
+	\end{enumerate}
+
+	\item Em uma amostra aleatória de $85$ rolamentos de virabrequim de automóvel, $10$ têm uma rugosidade de acabamento de superfície que excede as especificações.
+	\begin{enumerate}
+		\item Existe evidência que a proporção de rolamentos de virabrequins de automóvel com excesso de rugosidade é maior que $10\%$? Use $\alpha=5\%$.
+		\item Se $p=0,15$, qual o poder do teste? Use $\alpha=5\%$.
+		\item Se $p=0,15$, quantos rolamentos de virabrequins precisamos analisar para termos poder de teste de, pelo menos, $1-\beta = 95\%$?
+	\end{enumerate}
+	
+	\item Um fabricante de notebook envia os computadores completamente carregados para o uso imediato dos clientes. Devido a demora para entrega, alguns computadores podem chegar descarregados. De $105$ notebooks enviados, 96 chegaram ao destino completamente carregados. Existe evidência que pelo menos $85\%$ dos notebooks chegam ao destino completamente carregados? Use $\alpha=5\%$. Calcule o valor-p.
+	
+	\item Em uma amostra aleatória de $500$ CEP escritos à mão, $466$ foi lido corretamente por um sistema de reconhecimento óptico de caracteres (OCR) usado pelo Serviço Postal dos Estados Unidos (USPS). Este sistema tem uma taxa de acertos no CEP de pelo menos $90\%$? Use $\alpha=5\%$. Calcule o valor-p.
+	
+	
+\end{enumerate}
+
+
+\end{document}

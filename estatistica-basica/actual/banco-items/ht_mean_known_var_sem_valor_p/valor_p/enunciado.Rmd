@@ -1,0 +1,70 @@
+```{r, label="Simulação de dados", include=F}
+library(exams)
+library(glue)
+library(writexl)
+library(statBasics)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+# tamanho da amostra
+tam <- sample(100:500, 1)
+# desvio padrão da população
+dp_pop <- runif(1, 2, 5) |> round(2)
+# m_0
+m_0 <- runif(1, 10, 15) |> round(2)
+# m_1
+media_pop <- runif(1, 10, 15)
+# amostra
+amostra <- rnorm(tam, media_pop, dp_pop) |> round(2)
+# nível de significância
+g <- runif(1, 0.01, 0.1) |> round(2)
+
+# Salvando os dados
+write_xlsx(tibble(X = amostra), "dados.xlsx")
+
+# ajuste
+fit_correto <- ht_1pop_mean(amostra, mu = m_0, sd_pop = dp_pop, sig_level = g, alternative = "greater")
+fit_2sided <- ht_1pop_mean(amostra, mu = m_0, sd_pop = dp_pop, sig_level = g)
+fit_less <- ht_1pop_mean(amostra, mu = m_0, sd_pop = dp_pop, sig_level = g, alternative = "less")
+
+sol <- c(
+    fit_correto$statistic
+) |> round(2)
+
+decisao <- ifelse(
+    sol > fit_correto$critical_value,
+    "rejeitamos a hipótese nula.",
+    "não rejeitamos a hipótese nula."
+)
+
+f <- \(x) format(x, decimal.mark = ",")
+```
+
+Question
+========
+
+Suponha que um pesquisador precisa decidir entre as hipóteses H~0~: &mu; &#10877; `r f(m_0)` contra H~1~: &mu; > `r f(m_0)`, e para isso ela coletou uma amostra que está armazenada no arquivo [dados.xlsx](dados.xlsx). Além disso, suponha que X seja uma variável aleatória contínua com distribuição normal com desvio padrão &sigma; = `r f(dp_pop)`. Ao nível de significância &alpha; = `r f(g)`, temos que:
+
+Questionlist
+------------
+
+* A estatística de teste é: 
+* Ao nível de significância &alpha; = `r f(g)`, rejeitamos a hipótese nula.
+* Ao nível de significância &alpha; = `r f(g)`, não rejeitamos a hipótese nula.
+
+Solution
+========
+Solutionlist
+------------
+
+* A estatística de teste é: `r f(sol[1])`.
+* `r ifelse(sol > fit_correto$critical_value, glue("Ao nível de significância &alpha; = {f(g)}, rejeitamos a hipótese nula. "), glue("Ao nível de significância &alpha; = {f(g)}, **NÃO** rejeitamos a hipótese nula. "))` 
+*  
+
+Meta-information
+================
+exname: testeZsemValorPdados
+extype: cloze
+exsolution: `r sol[1]`|`r ifelse(sol > fit_correto$critical_value, "10", "01")`
+exclozetype: num|schoice
+extol: 1

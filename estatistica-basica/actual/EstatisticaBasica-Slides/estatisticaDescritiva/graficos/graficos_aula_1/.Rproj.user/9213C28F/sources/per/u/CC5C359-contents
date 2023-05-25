@@ -1,0 +1,6 @@
+dados <- read_delim('tabela21.csv',delim = ';')
+
+tab <- dados %>%
+  count(S = cut(salario, breaks = seq(from = 4, to = 24, by = 4), 
+                include.lowest = T, right = F)) %>% 
+  mutate(f = n / 36, df = f / 4)

@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1583407082576.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3480316738",
+    "id" : "5EF3F659",
+    "lastKnownWriteTime" : 1583432360,
+    "last_content_update" : 1583432360,
+    "path" : "~/Dropbox/atividade_didatica/1sem2020/mat236/slides/aula_5/code_R/codigo.R",
+    "project_path" : "codigo.R",
+    "properties" : {
+        "cursorPosition" : "88,6",
+        "scrollLine" : "75"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

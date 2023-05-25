@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/valor_p/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q1 : banco-items_conceitos_valor_p_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Assinale as afirmações CORRETAS nas seguintes declarações abaixo.</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> Falso, pois Para cada amostra, temos um valor-p diferente. </li>
+<li> Verdadeiro. </li>
+<li> Falso, pois cometemos o erro tipo II (falso negativo), quando não rejeitamos H<sub>0</sub> quando H<sub>1</sub> é verdade. </li>
+<li> Falso, pois cometemos o erro tipo I (falso positivo), quando rejeitamos H<sub>0</sub> quando H<sub>0</sub> é verdade. </li>
+<li> Falso, pois cometemos o erro tipo I (falso positivo), quando rejeitamos H<sub>0</sub> quando H<sub>0</sub> é verdade. </li>
+<li> Verdadeiro. </li>
+<li> Verdadeiro. </li>
+<li> Falso, pois se H<sub>0</sub> é verdade na população, a proporção de valores-p <strong>MENOR</strong> que o nível de significância é aproximadamente igual a probabilidade do falso positivo. </li>
+<li> Falso, pois cometemos o erro tipo I (falso positivo), quando rejeitamos H<sub>0</sub> quando H<sub>0</sub> é verdade. </li>
+<li> Falso, pois cometemos o erro tipo II (falso negativo), quando não rejeitamos H<sub>0</sub> quando H<sub>1</sub> é verdade. </li>
+<li> Verdadeiro. </li>
+<li> Falso, pois cometemos o erro tipo II (falso negativo), quando não rejeitamos H<sub>0</sub> quando H<sub>1</sub> é verdade. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>false</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="-12.5" format="html">
+<text><![CDATA[<p>
+O valor-p é igual para todas as amostras de mesmo tamanho da mesma população.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Falso, pois Para cada amostra, temos um valor-p diferente.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="25" format="html">
+<text><![CDATA[<p>
+Se H<sub>0</sub> é verdade na população, a proporção de valores-p menor que o nível de significância é aproximadamente igual a probabilidade do falso positivo.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Verdadeiro.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-12.5" format="html">
+<text><![CDATA[<p>
+Cometemos o erro tipo II (falso negativo), quando rejeitamos H<sub>0</sub> quando H<sub>0</sub> é verdade.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Falso, pois cometemos o erro tipo II (falso negativo), quando não rejeitamos H<sub>0</sub> quando H<sub>1</sub> é verdade.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-12.5" format="html">
+<text><![CDATA[<p>
+Cometemos o erro tipo I (falso positivo), quando não rejeitamos H<sub>0</sub> quando H<sub>0</sub> é verdade.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Falso, pois cometemos o erro tipo I (falso positivo), quando rejeitamos H<sub>0</sub> quando H<sub>0</sub> é verdade.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-12.5" format="html">
+<text><![CDATA[<p>
+Cometemos o erro tipo I (falso positivo), quando rejeitamos H<sub>0</sub> quando H<sub>1</sub> é verdade.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Falso, pois cometemos o erro tipo I (falso positivo), quando rejeitamos H<sub>0</sub> quando H<sub>0</sub> é verdade.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="25" format="html">
+<text><![CDATA[<p>
+Cometemos o erro tipo II (falso negativo), quando não rejeitamos H<sub>0</sub> quando H<sub>1</sub> é verdade.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Verdadeiro.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="25" format="html">
+<text><![CDATA[<p>
+Cometemos o erro tipo I (falso positivo), quando rejeitamos H<sub>0</sub> quando H<sub>0</sub> é verdade.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Verdadeiro.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-12.5" format="html">
+<text><![CDATA[<p>
+Se H<sub>0</sub> é verdade na população, a proporção de valor-p maior que o nível de significância é aproximadamente igual a probabilidade do falso negativo.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Falso, pois se H<sub>0</sub> é verdade na população, a proporção de valores-p <strong>MENOR</strong> que o nível de significância é aproximadamente igual a probabilidade do falso positivo.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-12.5" format="html">
+<text><![CDATA[<p>
+Cometemos o erro tipo I (falso positivo), quando não rejeitamos H<sub>0</sub> quando H<sub>1</sub> é verdade.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Falso, pois cometemos o erro tipo I (falso positivo), quando rejeitamos H<sub>0</sub> quando H<sub>0</sub> é verdade.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-12.5" format="html">
+<text><![CDATA[<p>
+Cometemos o erro tipo II (falso negativo), quando não rejeitamos H<sub>0</sub> quando H<sub>0</sub> é verdade.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Falso, pois cometemos o erro tipo II (falso negativo), quando não rejeitamos H<sub>0</sub> quando H<sub>1</sub> é verdade.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="25" format="html">
+<text><![CDATA[<p>
+Para cada amostra, temos um valor-p diferente.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Verdadeiro.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-12.5" format="html">
+<text><![CDATA[<p>
+Cometemos o erro tipo II (falso negativo), quando rejeitamos H<sub>0</sub> quando H<sub>1</sub> é verdade.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Falso, pois cometemos o erro tipo II (falso negativo), quando não rejeitamos H<sub>0</sub> quando H<sub>1</sub> é verdade.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+</quiz>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+      <text>$course$/top/Introdução teste de hipóteses</text>
+    </category>
+    <info format="html">
+      <text><![CDATA[<p>Introdução aos testes de hipóteses.</p>]]></text>
+    </info>
+    <idnumber></idnumber>
+  </question>
+
+<!-- question: 10763727  -->
+  <question type="matching">
+    <name>
+      <text>Introdução a teste de hipóteses</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<div>Associe os conceitos de teste de hipóteses com a sua descrição correta.</div>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está correta.</p>]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está parcialmente correta.</p>]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está incorreta.</p>]]></text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <subquestion format="html">
+      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Calpha" alt="\alpha" /></p>]]></text>
+      <answer>
+        <text>Probabilidade do falso positivo, que é o erro mais grave que podemos cometer, é denominada de nível de significância.</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=1-%5Cbeta" alt="1-\beta" /></p>]]></text>
+      <answer>
+        <text>Poder do teste é a probabilidade do verdadeiro positivo, e queremos tomar uma decisão que maximiza esta probabilidade a um nível de significância.</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Cbeta" alt="\beta" /></p>]]></text>
+      <answer>
+        <text>Probabilidade do falso negativo, que é o erro de decidir pela hipótese nula quando hipótese alternativa é verdadeira.</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=H_0" alt="H_0" /></p>]]></text>
+      <answer>
+        <text>Hipótese nula, que geralmente é composta por especificação ou valor padrão, e decidimos por ela na ausência de evidências pra refutá-la. Sempre começamos assumindo que a hipótese nula é verdade, e a abandonamos se encontrarmos evidências contra ela.</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=H_1" alt="H_1" /></p>]]></text>
+      <answer>
+        <text>Hipótese alternativa, que geralmente é composta pela pergunta ou hipótese do pesquisador, e decidimos por esta hipóteses se tivermos evidências irrefutáveis e extremamente fortes em favor desta hipótese.</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p>Erro tipo I ou falso positivo.</p>]]></text>
+      <answer>
+        <text>O erro mais grave que podemos cometer, e buscamos a decisão que controla a probabilidade de cometê-lo.</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p>Erro tipo II ou falso negativo.</p>]]></text>
+      <answer>
+        <text>O erro que cometemos ao decidir pela hipótese nula quando a hipótese alternativa é a verdade na população.</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text></text>
+      <answer>
+        <text>Fora Bolsonaro genocida!</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text></text>
+      <answer>
+        <text>Não a reforma administrativa que destrói o ensino público do Brasil.</text>
+      </answer>
+    </subquestion>
+  </question>
+
+<!-- question: 6646899  -->
+  <question type="multichoice">
+    <name>
+      <text>sobre falso positivo e falso negativo</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Imagine que você precisa decidir entre duas hipóteses complementares: a hipótese nula e a hipótese alternativa. Você, como estudante do curso <strong>Métodos Estatísticos</strong>, decidiu coletar uma amostra e decidir usando as <em>evidências</em> desta amostra. No procedimento de teste de hipóteses que vimos em sala de aula, qual das seguintes opções abaixo é verdadeira?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está correta.</p>]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está parcialmente correta.</p>]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está incorreta.</p>]]></text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Podemos cometer o erro do tipo I (ou o falso positivo), que é o erro de rejeitar a hipótese nula quando a hipótese nula é verdade na população.</p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>A probabilidade do falso positivo é chamada de poder do teste, e usamos a letra grega alpha (𝛼) para representar esta probabilidade.</p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>O erro mais grave que podemos cometer é o falso negativo, e por este erro ser o mais grave o controlamos e o denominamos de nível de significância.</p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>O objetivo do procedimento de teste de hipóteses é encontrar uma regra de decisão que minimiza, simultaneamente, a probabilidade do falso positivo e do falso negativo.</p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+</quiz>

@@ -1,0 +1,81 @@
+```{r, label="Simulação de dados", include=F}
+library(exams)
+library(magrittr)
+library(readxl)
+library(writexl)
+library(knitr)
+library(truncnorm)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation 
+
+# tamanho da amostra
+tam <- 1000
+
+media <- sample(10:20, 1)
+dp <- sample(20:30, 1)
+
+amostra <- rtruncnorm(tam, a = 0, b = 100, mean = media, sd = dp)
+pontos <- seq(from = 0, to = 100, by = 10)
+
+intervalos <- cut(amostra, breaks = pontos, include.lowest = T, right = F)
+df <- tibble(X = intervalos)
+
+tab <- df |>
+    group_by(X) |>
+    summarise(`Frequência Absoluta` = n()) |>
+    mutate(`Frequência Acumulada` = cumsum(`Frequência Absoluta`)) |>
+    mutate(pontos_medios = X |> as.character() |>
+        map_dbl(\(x) {
+            str_match_all(x, "\\[(\\d{1,3}),(\\d{1,3})")[[1]][2:3] |>
+                as.numeric() |> mean()
+        })) |>
+    arrange(pontos_medios)
+
+lower <- tab$pontos_medios[tab$`Frequência Acumulada` >= 500][1]
+upper <- tab$pontos_medios[tab$`Frequência Acumulada` >= 501][1]
+mediana <- (lower + upper) / 2
+
+lower <- tab$pontos_medios[tab$`Frequência Acumulada` >= 250][1]
+upper <- tab$pontos_medios[tab$`Frequência Acumulada` >= 251][1]
+q1 <- (lower + upper) / 2
+
+
+lower <- tab$pontos_medios[tab$`Frequência Acumulada` >= 750][1]
+upper <- tab$pontos_medios[tab$`Frequência Acumulada` >= 751][1]
+q3 <- (lower + upper) / 2
+```
+
+Question
+========
+Considere a seguinte tabela de distribuição de frequência para a variância X.
+
+```{r, echo=F}
+tab |>
+    select(X, `Frequência Absoluta`) |>
+    add_case(X = "Total", `Frequência Absoluta` = tam) |>
+    kable(format = "html", digits = 2, format.args = list(dec.mark = ","))
+```
+
+Calcule:
+
+Questionlist
+------------
+* O primeiro quartil (com duas casas decimais)
+* O segundo quartil ou mediana (com duas casas decimais)
+* O terceiro quartil (com duas casas decimais)
+
+Solution
+========
+Solutionlist
+------------
+* O primeiro quartil (com duas casas decimais) é `r q1 |> round(2)`.
+* O segundo quartil ou mediana (com duas casas decimais) é `r mediana |> round(2)`.
+* O terceiro quartil (com duas casas decimais) é `r q3  |> round(2)`.
+
+Meta-information
+================
+exname: quantisTabela
+extype: cloze
+exclozetype: num|num|num
+exsolution: `r q1 |> round(2)`|`r mediana |> round(2)`|`r q3 |> round(2)`
+extol: 0.02

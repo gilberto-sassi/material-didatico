@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "paste('x_{(',1:15,')}', sep = '') %>% paste(x, collapse = '\\\\leq ')\n\nteste <- matrix(sort(x)[1:15], nrow =1)\ncolnames(teste) <- str_c(paste('x_{(',1:15,')}', sep = ''))\n\nxtable(teste, align = rep('c', ncol(teste)+1)) %>% print(include.rownames = F)\n\nteste <- matrix(c(sort(x)[16:19],rep(-999,11)), nrow =1)\ncolnames(teste) <- (str_c(paste('x_{(',16:19,')}', sep = '')) %>% \n                      c(rep(' ', 11)) )\nxtable(teste, align = rep('c', ncol(teste)+1)) %>% print(include.rownames = F)\n",
+    "created" : 1524512798454.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "84666181",
+    "id" : "B447FBD4",
+    "lastKnownWriteTime" : 3419473789575321445,
+    "last_content_update" : 1524515911331,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

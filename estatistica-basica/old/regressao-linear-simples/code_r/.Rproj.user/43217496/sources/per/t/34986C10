@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1591372472276.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "34986C10",
+    "lastKnownWriteTime" : 4607183030172352095,
+    "last_content_update" : 1591372472276,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "6C46FE90",
+        "caption" : "d_ajuste",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=d_ajuste&cache_key=6C46FE90",
+        "displayedObservations" : "20",
+        "environment" : "",
+        "expression" : "d_ajuste",
+        "object" : "d_ajuste",
+        "preview" : "0",
+        "totalObservations" : "20",
+        "variables" : "9"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

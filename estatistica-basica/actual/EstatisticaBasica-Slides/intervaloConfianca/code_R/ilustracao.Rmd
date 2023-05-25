@@ -1,0 +1,237 @@
+---
+title: "Ilustração de intervalo"
+output: bookdown::html_notebook2
+editor_options: 
+  chunk_output_type: console
+---
+ 
+ # used packages
+ 
+```{r}
+library(readxl)
+library(xlsx)
+library(latex2exp)
+library(tidyverse)
+```
+ 
+ # simulation example with scores of 30 students
+ 
+ Example with notes from a class with 30 students: we show that confidence interval can and can not contain the value of a parameter. 
+ 
+```{r}
+set.seed(1235813)
+x <- c(7.29 , 7.19 , 7.15 , 5.54 , 5.93 , 5.53 , 6.44 , 6.27 , 8.16 , 5.72 , 
+       4.84 , 4.63 , 6.11 , 7.10 , 3.37 , 7.36 , 6.70 , 5.70 , 6.31 , 7.64 , 
+       5.89 , 8.82 , 7.77 , 7.93 , 5.24 , 6.08 , 5.77 , 6.57 , 6.00 , 6.14)
+
+
+g <- 0.95
+z <- qnorm((1 + g) / 2)
+mu <- mean(x)
+s_pop <- mean((x - mu)^2) %>% sqrt()
+
+matriz <- matrix(NA, nrow = 6, ncol = 7)
+
+# parameter outside of interval confidence
+for(i in seq_len(3)){
+  cont <- 0
+  while(TRUE){
+    cont <- cont + 1
+    sprintf("k = %d.\n", cont) %>% cat()
+    amostra <- sample(x, size = 5, replace = T)
+    lower <- mean(amostra) - z * s_pop / sqrt(5)
+    upper <- mean(amostra) + z * s_pop / sqrt(5)
+    if(!((lower < mu) & (mu < upper))) {
+      matriz[i, 1:5] <- amostra
+      matriz[i, 6] <- lower
+      matriz[i, 7] <- upper
+      break
+    }
+  }
+}
+
+# parameter inside of interval confidence
+for(i in seq_len(3)){
+  cont <- 0
+  while(TRUE){
+    cont <- cont + 1
+    sprintf("k = %d.\n", cont) %>% cat()
+    amostra <- sample(x, size = 5, replace = T)
+    lower <- mean(amostra) - z * s_pop / sqrt(5)
+    upper <- mean(amostra) + z * s_pop / sqrt(5)
+    if((lower < mu) & (mu < upper)) {
+      matriz[i + 3, 1:5] <- amostra
+      matriz[i + 3, 6] <- lower
+      matriz[i + 3, 7] <- upper
+      break
+    }
+  }
+}
+
+colnames(matriz) <- c(str_c("Aluno ", 1:5), "L", "U")
+rownames(matriz) <- str_c("Amostra ", 1:6)
+
+write.xlsx(matriz, "motivacao_ci.xlsx")
+```
+ 
+# simulation with continuous random variable
+
+```{r}
+set.seed(1235813)
+
+g <- 0.95
+z <- qnorm((1 + g) / 2)
+mu <- 1.75
+s_pop <- 0.1
+
+matriz <- matrix(NA, nrow = 6, ncol = 7)
+
+# parameter outside of interval confidence
+for(i in seq_len(3)){
+  cont <- 0
+  while(TRUE){
+    cont <- cont + 1
+    sprintf("k = %d.\n", cont) %>% cat()
+    amostra <- rnorm(5, mean = mu, sd = s_pop)
+    lower <- mean(amostra) - z * s_pop / sqrt(5)
+    upper <- mean(amostra) + z * s_pop / sqrt(5)
+    if(!((lower < mu) & (mu < upper))) {
+      matriz[i, 1:5] <- amostra
+      matriz[i, 6] <- lower
+      matriz[i, 7] <- upper
+      break
+    }
+  }
+}
+
+# parameter inside of interval confidence
+for(i in seq_len(3)){
+  cont <- 0
+  while(TRUE){
+    cont <- cont + 1
+    sprintf("k = %d.\n", cont) %>% cat()
+    amostra <- rnorm(5, mean = mu, sd = s_pop)
+    lower <- mean(amostra) - z * s_pop / sqrt(5)
+    upper <- mean(amostra) + z * s_pop / sqrt(5)
+    if((lower < mu) & (mu < upper)) {
+      matriz[i + 3, 1:5] <- amostra
+      matriz[i + 3, 6] <- lower
+      matriz[i + 3, 7] <- upper
+      break
+    }
+  }
+}
+
+colnames(matriz) <- c(str_c("Aluno ", 1:5), "L", "U")
+rownames(matriz) <- str_c("Amostra ", 1:6)
+
+write.xlsx(matriz, "motivacao_ci.xlsx")
+
+```
+
+# t-Student and normal distribution
+
+```{r}
+x <- seq(from = -6, to = 6, by = 0.001)
+
+dados <- tibble(x = x,
+                k1 = dt(x, df = 1),
+                k3 = dt(x, df = 3),
+                normal = dnorm(x))
+
+ggplot(dados)+
+  geom_line(aes(x = x, y = k1, color = "k1"), alpha = 0.5) +
+  annotate("text", x = 0.5, y = dt(0, df = 1) + 0.01, 
+           label = "k = 1", color = "red", size = 5)+
+  geom_line(aes(x = x, y = k3, color = "k3"), alpha = 0.5) +
+  annotate("text", x = 0.5, y = dt(0, df = 3) + 0.01, 
+           label = "k = 3", color = "blue", size = 5)+
+  geom_line(aes(x = x, y = normal, color = "normal"), alpha = 0.5)+
+  annotate("text", x = 0.5, y = dnorm(0) + 0.01, 
+           label = bquote("k ="~infinity),
+           color = "black", size = 5)+
+  scale_color_manual("Graus de liberdade",
+                     labels = c(bquote("k = 1"), bquote("k = 3"), 
+                                bquote("k ="~infinity~"ou distribuição normal")),
+                     values = c("k1" = "red","k3" = "blue", "k10" = "blue", "normal" = "black")) +
+  theme_minimal() +
+  labs(y = "Função densidade") +
+  theme(axis.title = element_text(size = 25),
+        axis.text = element_text(size = 20),
+        legend.text = element_text(size = 15),
+        legend.title = element_text(size = 20))
+ggsave("t-student.png")
+ggsave("t-student.pdf")
+```
+
+# Distribuição qui-quadrado
+
+```{r, eval=FALSE}
+por <- 0.0001
+x <- seq(from = por, to = 25, by = por)
+
+dados <- tibble(x = x,
+                y_k2 = dchisq(x, df = 2),
+                y_k5  = dchisq(x, df = 5),
+                y_k10 = dchisq(x, df = 10))
+
+ggplot(dados)+
+  geom_line(aes(x, y = y_k2, color = "c1"), size = 1) +
+  geom_line(aes(x, y = y_k5, color = "c2"), size = 1) +
+  geom_line(aes(x, y = y_k10, color = "c3"), size = 1) +
+  scale_color_manual("Graus de liberdade",
+                     labels = c("k = 2", "k = 5", "k = 10"),
+                     values = c("c1" = "blue", "c2" = "red", "c3" = "black")) +
+  labs(x = "x", y = "função densidade") +
+  theme_minimal() +
+  theme(axis.title = element_text(size = 25),
+        axis.text = element_text(size = 20),
+        legend.title = element_text(size = 20),
+        legend.text = element_text(size = 15))
+
+ggsave("fd_qui_quadrado.pdf")
+ggsave("fd_qui_quadrado.png")
+  
+```
+
+# table of chi-square
+
+```{r, eval = F}
+p <- c(0.005, 0.010, 0.025, 0.050, 0.100, 0.500, 0.900, 0.950, 0.975, 0.990, 0.995)
+gl <- c(1:30, seq(from = 40, to = 60, by = 5), seq(from = 70, to = 120, by = 10))
+
+tb <- p %>% 
+  sapply(function(p){
+    gl %>% 
+      map_dbl(~ qchisq(p, df = .x))
+  })
+colnames(tb) <- str_c(p)
+rownames(tb) <- str_c(gl)
+
+write.xlsx(tb, "table_chi_square.xlsx")
+```
+
+# confidence interval for proportion: maximum value for $p\cdot (1-p)$
+
+```{r, eval = F}
+x <- seq(from = 0, to = 1, by = 0.00001)
+y <- x %>% map_dbl(~ .x * (1 - .x))
+
+tibble(x, y) %>% 
+  ggplot() +
+  geom_line(aes(x, y), color = "blue", size = 1)+
+  labs(y = TeX("$p \\cdot (1-p)$"), x = TeX("$p$"))+
+  scale_x_continuous(breaks = c(0, 1/2, 1), limits = c(0,1.2),
+                     labels = c("0", TeX("$\\frac{1}{2}$"),"1")) +
+  scale_y_continuous(breaks = c(0, 1/4), limits = c(0, 1),
+                     labels = c(0, TeX("$\\frac{1}{4}$"))) +
+  theme_minimal() +
+  geom_segment(x = 0, y = 1/4, xend = 1/2, yend = 1/4, linetype = "dashed", size = 1) +
+  geom_segment(x = 1/2, y = 0, xend = 1/2, yend = 1/4, linetype = "dashed", size = 1) +
+  theme(axis.title = element_text(size = 30),
+        axis.text = element_text(size = 25))
+ggsave("../proportion.png")
+ggsave("../proportion.pdf")
+  
+```
+

@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587667719995.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3049544374",
+    "id" : "D1E84F12",
+    "lastKnownWriteTime" : 1589918568,
+    "last_content_update" : 1589918568436,
+    "path" : "~/Dropbox/atividade_didatica/1sem2020/mat236/slides/testeHipoteses_duasPopulacoes/code_R/arq-aux.Rmd",
+    "project_path" : "arq-aux.Rmd",
+    "properties" : {
+        "chunk_output_type" : "console",
+        "cursorPosition" : "15,14",
+        "docOutlineSize" : "335.8686878498674",
+        "docOutlineVisible" : "0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

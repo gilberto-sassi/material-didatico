@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1559064409587.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2662893590",
+    "id" : "A6DA9F8F",
+    "lastKnownWriteTime" : 1559839116,
+    "last_content_update" : 1559839116678,
+    "path" : "C:/Users/Admin/Dropbox/atividade_didatica/1sem_2019/MAT236/slides/aula_14/code_r/regressao.Rmd",
+    "project_path" : "regressao.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "cursorPosition" : "232,0",
+        "scrollLine" : "218",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

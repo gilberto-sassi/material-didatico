@@ -1,0 +1,7 @@
+x <- c(
+  14.2, 14.4, 14.4, 12.2, 11.7
+) %>% 
+  conv_unit("K", "C")
+
+paste0(x, collapse = " & ") %>% 
+  str_replace_all('\\.', ",")

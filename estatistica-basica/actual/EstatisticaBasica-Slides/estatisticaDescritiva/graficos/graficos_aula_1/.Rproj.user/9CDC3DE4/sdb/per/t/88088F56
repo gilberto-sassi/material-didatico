@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(tidyverse)\n\ndados <- tibble(x = c('Ensino fundamental',\n                      'Ensino médio',\n                      'Ensino superior'),\n                y = c(12,18,6))\n\n\nggplot(data = dados)+\n  geom_bar(mapping = aes(x=x, y = y), stat = 'identity') +\n  xlab('Escolaridade') +\n  ylab('Frequência') +\n  theme(axis.text = element_text(size = 15),\n        axis.title = element_text(size = 20))\nggsave('escolaridade.png', width = 7.5)\n\n\n\n# ggplot(dados, aes(x=\"\", y=y, fill=x))+\n#   geom_bar(width = 1, stat = \"identity\")+\n#   coord_polar(\"y\", start=0) +\n#   xlab('') + ylab('') +\n#   scale_fill_manual(values=c(\"#999999\", \"#E69F00\", \"#56B4E9\"), \n#                     name=\"Escolaridade\") +\n#   theme(legend.title = element_text(size = 20),\n#         legend.text = element_text(size = 15))\n# ggsave('setores_escolaridade.png')\n\ntibble(x = 0:5,\n       y = c(20,5,7,3,0,1)) %>%\n  ggplot()+\n  geom_bar(mapping = aes(x=x, y=y), stat = 'identity')+\n  ylab('Frequência')+\n  scale_x_continuous(name = \"Número de filhos\",\n                   breaks = 0:5)+\n  theme(axis.text = element_text(size = 15),\n        axis.title = element_text(size = 20)) \nggsave('numero_filhos.png')\n\ntibble(x = seq(from=2,to=22,by=2), y = c(0,0,10,0,12,0,8,0,5,0,1)) %>%\n  ggplot()+\n  geom_bar(mapping = aes(x=x, y = y), stat = 'identity')+\n  xlab('Salário')+\n  ylab('Frequência')+\n  scale_x_continuous(breaks = seq(from=2,to=22,by=2))+\n  theme(axis.title = element_text(size = 20),\n        axis.text = element_text(size = 15))\nggsave('salario_bar.png')\n\nread_delim('tabela21.csv',delim = ';') %>%\n  ggplot() +\n  geom_histogram(mapping = aes(x = salario, y = ..density..), \n                 breaks=c(4,8,12,16,20,24))+\n  xlab('Salário') +\n  ylab('Densidade de frequência') +\n  scale_x_continuous(breaks = c(4,8,12,16,20,24)) +\n  theme(axis.text = element_text(size = 15),\n        axis.title = element_text(size = 19))\nggsave('histograma.png')\n",
+    "created" : 1529001613052.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "512381457",
+    "id" : "88088F56",
+    "lastKnownWriteTime" : 1534805129,
+    "last_content_update" : 1534805129998,
+    "path" : "C:/Users/Gilberto/Dropbox/2sem2018/MATD03T01/slides/aula_1/graficos_aula_1/graficos.R",
+    "project_path" : "graficos.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

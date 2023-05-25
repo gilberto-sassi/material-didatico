@@ -1,0 +1,22 @@
+n <- 6
+x <- c(
+  90.2,
+  90.3,
+  88.9,
+  89.2,
+  90.7,
+  90.9
+) 
+if (length(x) < n){
+  x <- c(x, rep(NA , n - length(x))) %>% round(2)
+} else {
+  x <- x %>% round(4)
+}
+
+
+paste0(x, collapse = " & ") %>% 
+  str_replace_all("\\.", ",") %>% 
+  str_replace_all("NA", " ")
+
+# conv_unit(c(100, 125, 150, 175), "F", "C") %>% round(2)
+  

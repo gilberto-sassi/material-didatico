@@ -1,0 +1,55 @@
+```{r dgp, include = FALSE}
+library(exams)
+library(magrittr)
+library(readxl)
+library(writexl)
+library(knitr)
+library(statBasics)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+# tamanho da amostra
+tam <- 20:30 |> sample(1)
+
+# desvio padrão da população
+s <- 20:30 |> sample(1)
+
+# média da população
+m <- 50:100 |> sample(1)
+
+amostra <- rnorm(tam, m, s)
+
+ic_small <- ci_1pop_norm(amostra, sd_pop = s, conf_level = 0.99) |>
+    round(2)
+ic_large <- ci_1pop_norm(amostra, conf_level = 0.99) |>
+    round(2)
+```
+
+Question
+========
+Conforme vimos em sala, quando não conhecemos a variância (ou o desvio padrão) populacional de uma variável aleatória contínua com distribuição normal, usamos um quantil da distribuição t-Student com n-1 graus de liberdade e o desvio padrão da amostra para construir o intervalo de confiança para a média da população (intervalo de confiança T). Além disso, este intervalo será _maior_ que o intervalo de confiança quando conhecemos a variância (ou o desvio padrão) populacional.
+
+Considere X uma variável aleatória contínua com distribuição normal com desvio padrão `r s` e suponha que coletamos uma amostra com `r tam` observações. Um pesquisador construiu dois intervalos de confiança com coeficiente de confiança &gamma; = 99%: um intervalo de confiança Z (usando o desvio padrão da população) e outro intervalo de confiança T (não usamos o desvio padrão da população). Neste contexto, marque apenas as alternativas **CORRETAS**.
+  
+Answerlist
+----------
+* O Intervalo de confiança $(`r ic_small$lower_ci`, `r ic_small$upper_ci`)$ é intervalo de confiança Z (usamos o desvio padrão da população).
+* O Intervalo de confiança $(`r ic_large$lower_ci`, `r ic_large$upper_ci`)$ é intervalo de confiança Z (usamos o desvio padrão da população).
+* O Intervalo de confiança $(`r ic_large$lower_ci`, `r ic_large$upper_ci`)$ é intervalo de confiança T (não usamos o desvio padrão da população).
+* O Intervalo de confiança $(`r ic_small$lower_ci`, `r ic_small$upper_ci`)$ é intervalo de confiança T (não usamos o desvio padrão da população).
+
+Solution
+========
+Answerlist
+----------
+* CORRETA.
+* FALSA. O Intervalo de confiança $(`r ic_small$lower_ci`, `r ic_small$upper_ci`)$ é intervalo de confiança Z (usamos o desvio padrão da população).
+* CORRETA.
+* FALSA. O Intervalo de confiança $(`r ic_large$lower_ci`, `r ic_large$upper_ci`)$ é intervalo de confiança T (não usamos o desvio padrão da população).
+
+Meta-information
+================
+exname: icTversusIcZ
+extype: mchoice
+exsolution: 1010
+exshuffle: TRUE
