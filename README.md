@@ -6,6 +6,8 @@ Estes slides e listas de exercícios são resumos e exercícios selecionados das
 
 # Referências
 
+## Estatística Básica
+
 * [Applied Statistics and Probability for Engineers](https://gilbertosassi.netlify.app/ensino/2022/12/primeiro-semestre-de-2023/applied-statistics-montgomery.pdf)
 * [Estatística Aplicada às Ciências Sociais](https://gilbertosassi.netlify.app/ensino/2022/12/primeiro-semestre-de-2023/estatistica-aplicada-barbetta.pdf)
 * [Estatística Básica](https://gilbertosassi.netlify.app/ensino/2022/12/primeiro-semestre-de-2023/estatistica-basica-bussab-morettin.pdf)
