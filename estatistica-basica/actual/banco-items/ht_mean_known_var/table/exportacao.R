@@ -7,8 +7,8 @@ library(statBasics)
 library(exams)
 library(tidyverse)
 
-exams::exams2moodle("banco-items/ht_mean_known_var/table/enunciado.Rmd",
+exams::exams2moodle("estatistica-basica/actual/banco-items/ht_mean_known_var/table/enunciado.Rmd",
                     n = 1000,
                     verbose = TRUE,
-                    dir = "banco-items/ht_mean_known_var/table",
+                    dir = "estatistica-basica/actual/banco-items/ht_mean_known_var/table/",
                     name = "teste-tabela-normal-dp_conhecido")
