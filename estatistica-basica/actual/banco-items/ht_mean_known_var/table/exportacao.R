@@ -11,4 +11,4 @@ exams::exams2moodle("estatistica-basica/actual/banco-items/ht_mean_known_var/tab
                     n = 1000,
                     verbose = TRUE,
                     dir = "estatistica-basica/actual/banco-items/ht_mean_known_var/table/",
-                    name = "teste-tabela-normal-dp_conhecido")
+                    name = "teste-z-tabela")

@@ -7,8 +7,8 @@ library(statBasics)
 library(exams)
 library(tidyverse)
 
-exams::exams2moodle("banco-items/ht_2pop_mean_dp_desconhecido_igual/table/enunciado.Rmd",
+exams::exams2moodle("estatistica-basica/actual/banco-items/ht_2pop_mean_dp_desconhecido_igual/table/enunciado.Rmd",
                     n = 1000,
                     verbose = TRUE,
-                    dir = "banco-items/ht_2pop_mean_dp_desconhecido_igual/table",
-                    name = "ht_2pop_mean_dp_desconhecido_igual_table")
+                    dir = "estatistica-basica/actual/banco-items/ht_2pop_mean_dp_desconhecido_igual/table",
+                    name = "teste-t-2pop-var-igual")
