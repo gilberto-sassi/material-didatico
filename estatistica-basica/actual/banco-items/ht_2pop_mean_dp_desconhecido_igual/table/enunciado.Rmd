@@ -15,11 +15,13 @@ tam <- sample(100:500, 1)
 
 # desvio padrão da população 1
 dp_pop <- runif(1, 10, 15) |> round(2)
+
 # média da população 1 e 2
 media_pop_1 <- runif(1, 10, 15) |> round(2)
 # média da população 1
-media_pop_2 <- runif(1, 10, 15) |> round(2)
+media_pop_2 <- runif(1, 20, 25) |> round(2)
 # amostra da população 1
+
 amostra1 <- rnorm(tam, media_pop_1, dp_pop)
 # amostra da população 2
 amostra2 <- rnorm(tam, media_pop_2, dp_pop)
@@ -83,8 +85,8 @@ gt(tab) |>
         sig = "Nível de significância",
         tam_1 = "Tamanho da amostra da população 1",
         tam_2 = "tamanho da amostra da população 2",
-        dp_1 = "Desvio padrão da população 1",
-        dp_2 = "Desvio padrão da população 2",
+        dp_1 = "Desvio padrão da amostra da população 1",
+        dp_2 = "Desvio padrão da amostra da população 2",
         media_pop_1 = "Média da amostra da população 1",
         media_pop_2 = "Média da amostra da população 2",
         estatistica = "Estatística de teste",

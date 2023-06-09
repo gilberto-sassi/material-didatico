@@ -19,10 +19,12 @@ tam <- sample(100:500, 1)
 dp_pop_1 <- runif(1, 10, 15) |> round(2)
 # média da população 1
 media_pop_1 <- runif(1, 10, 15) |> round(2)
-# desvio padrão da população 1
+
+# desvio padrão da população 2
 dp_pop_2 <- runif(1, 10, 15) |> round(2)
-# média da população 1
-media_pop_2 <- runif(1, 10, 15) |> round(2)
+# média da população 2
+media_pop_2 <- runif(1, 20, 25) |> round(2)
+
 # amostra da população 1
 amostra1 <- rnorm(tam, media_pop_1, dp_pop_1)
 # amostra da população 2
@@ -45,7 +47,7 @@ sol <- c(
 ) |> round(2)
 
 decisao <- ifelse(
-    fit_correto$p_value[1] < g,
+    sol[2] < g,
     "rejeitamos a hipótese nula.",
     "não rejeitamos a hipótese nula."
 )

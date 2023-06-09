@@ -11,4 +11,4 @@ exams::exams2moodle("estatistica-basica/actual/banco-items/ht_2pop_mean_dp_desco
                     n = 1000,
                     verbose = TRUE,
                     dir = "estatistica-basica/actual/banco-items/ht_2pop_mean_dp_desconhecido_igual/table",
-                    name = "teste-t-2pop-var-igual")
+                    name = "teste-t-2pop-var-igual-tabela")
