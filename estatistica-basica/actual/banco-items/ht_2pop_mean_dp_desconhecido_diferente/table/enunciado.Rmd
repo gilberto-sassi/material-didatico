@@ -13,24 +13,29 @@ options(scipen = 999) #prevent scientific notation
 # tamanho da amostra
 tam <- sample(100:500, 1)
 
-# matriz de correlação
-dp_pop <- runif(1, 10, 15) |> round(2)
-# média da população 1 e 2
-media_pop_1 <- runif(1, 10, 15) |> round(2)
+# dp da população 1
+dp_pop_1 <- runif(1, 2, 3) |> round(2)
+# dp da população 2
+dp_pop_2 <- runif(1, 7, 9) |> round(2)
+
+
+# média da população 2
+media_pop_1 <- runif(1, 5, 10) |> round(2)
 # média da população 1
-media_pop_2 <- runif(1, 10, 15) |> round(2)
+media_pop_2 <- runif(1, 15, 20) |> round(2)
+
 # amostra da população 1
-amostra1 <- rnorm(tam, media_pop_1, dp_pop)
+amostra1 <- rnorm(tam, media_pop_1, dp_pop_1)
 # amostra da população 2
-amostra2 <- rnorm(tam, media_pop_2, dp_pop)
+amostra2 <- rnorm(tam, media_pop_2, dp_pop_2)
 
 # nível de significância
 g <- runif(1, 0.01, 0.1) |> round(2)
 
 # ajuste
-fit_correto <- ht_2pop_mean(amostra1, amostra2, var_equal = T, sig_level = g)
-fit_less <- ht_2pop_mean(amostra1, amostra2, var_equal = T, sig_level = g, alternative = "less")
-fit_greater <- ht_2pop_mean(amostra1, amostra2, var_equal = T, sig_level = g, alternative = "greater")
+fit_correto <- ht_2pop_mean(amostra1, amostra2, sig_level = g)
+fit_less <- ht_2pop_mean(amostra1, amostra2, sig_level = g, alternative = "less")
+fit_greater <- ht_2pop_mean(amostra1, amostra2, sig_level = g, alternative = "greater")
 
 sol <- c(
     fit_correto$statistic[1],
@@ -49,7 +54,7 @@ f <- \(x) format(x, decimal.mark = ",")
 Question
 ========
 
-Suponha que um pesquisador precisa decidir entre as hipóteses H~0~: &mu;~1~ - &mu;~2~ = 0 contra H~1~: &mu;~1~ - &mu;~2~ &#8800; 0. Assuma que as variâncias das populações são iguais. Algumas informações sobre este teste de hipóteses está na tabela abaixo. Complete e assinale corretamente as informações.
+Suponha que um pesquisador precisa decidir entre as hipóteses H~0~: &mu;~1~ - &mu;~2~ = 0 contra H~1~: &mu;~1~ - &mu;~2~ &#8800; 0. Assuma que as variâncias das populações são diferentes. Algumas informações sobre este teste de hipóteses está na tabela abaixo. Complete e assinale corretamente as informações.
 
 ```{r, label="tabela hipóteses", echo=F}
 tab <- tibble(
@@ -83,8 +88,8 @@ gt(tab) |>
         sig = "Nível de significância",
         tam_1 = "Tamanho da amostra da população 1",
         tam_2 = "tamanho da amostra da população 2",
-        dp_1 = "Desvio padrão da população 1",
-        dp_2 = "Desvio padrão da população 2",
+        dp_1 = "Desvio padrão da amostra da população 1",
+        dp_2 = "Desvio padrão da amostra da população 2",
         media_pop_1 = "Média da amostra da população 1",
         media_pop_2 = "Média da amostra da população 2",
         estatistica = "Estatística de teste",
@@ -115,13 +120,13 @@ Solutionlist
 * A região crítica é dada por: `r fit_correto$critical_region[1]`.
 * 
 * 
-* `r ifelse(fit_correto$p_value < g, glue("Falso, pois ao nível de significância &gamma; = {g}, rejeitamos a hipótese nula."), "Verdadeiro.")`
-* `r ifelse(fit_correto$p_value < g, "Verdadeiro.", glue("Falso, pois ao nível de significância &gamma; = {g}, rejeitamos a hipótese nula."))` 
+* `r ifelse(fit_correto$p_value < g, glue("Falso, pois ao nível de significância &alpha; = {g}, rejeitamos a hipótese nula."), "Verdadeiro.")`
+* `r ifelse(fit_correto$p_value < g, "Verdadeiro.", glue("Falso, pois ao nível de significância &alpha; = {g}, rejeitamos a hipótese nula."))` 
 
 Meta-information
 ================
-exname: teste_t_2pop_table_var_igual
+exname: teste_t_2pop_table_var_diff_mean
 extype: cloze
 exsolution: `r sol[1]`|`r sol[2]`|100|`r ifelse(fit_correto$p_value[1] < g, "01", "10")`
 exclozetype: num|num|schoice|mchoice
-extol: 0.02
+extol: 0.05

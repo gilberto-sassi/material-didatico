@@ -14,11 +14,11 @@ options(scipen = 999) #prevent scientific notation
 # tamanho da amostra
 tam <- sample(100:500, 1)
 # desvio padrão da população
-dp_pop <- runif(1, 2, 5) |> round(2)
+dp_pop <- runif(1, 1.5, 3) |> round(2)
 # m_0
-m_0 <- runif(1, 10, 15) |> round(2)
+m_0 <- runif(1, 15, 20) |> round(2)
 # m_1
-media_pop <- runif(1, 10, 15)
+media_pop <- runif(1, 4, 8)
 # amostra
 amostra <- rnorm(tam, media_pop, dp_pop)
 # nível de significância
@@ -106,13 +106,13 @@ Solutionlist
 * A região crítica é dada por: `r fit_correto$critical_region`.
 * 
 * 
-* `r ifelse(fit_correto$p_value < g, glue("Falso, pois ao nível de significância &gamma; = {g}, rejeitamos a hipótese nula."), "Verdadeiro.")`
-* `r ifelse(fit_correto$p_value < g, "Verdadeiro.", glue("Falso, pois ao nível de significância &gamma; = {g}, não rejeitamos a hipótese nula."))` 
+* `r ifelse(fit_correto$p_value < g, glue("Falso, pois ao nível de significância &alpha; = {g}, rejeitamos a hipótese nula."), "Verdadeiro.")`
+* `r ifelse(fit_correto$p_value < g, "Verdadeiro.", glue("Falso, pois ao nível de significância &alpha; = {g}, não rejeitamos a hipótese nula."))` 
 
 Meta-information
 ================
-exname: testeT
+exname: teste_t
 extype: cloze
 exsolution: `r sol[1]`|`r sol[2]`|100|`r ifelse(fit_correto$p_value < g, "01", "10")`
 exclozetype: num|num|schoice|mchoice
-extol: 0.02
+extol: 0.05

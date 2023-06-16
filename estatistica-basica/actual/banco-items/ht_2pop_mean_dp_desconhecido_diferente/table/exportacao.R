@@ -7,8 +7,9 @@ library(statBasics)
 library(exams)
 library(tidyverse)
 
-exams::exams2moodle("banco-items/ht_2pop_mean_dp_desconhecido_igual/table/enunciado.Rmd",
+path <- "estatistica-basica/actual/banco-items/ht_2pop_mean_dp_desconhecido_diferente/table"
+exams::exams2moodle(glue("{path}/enunciado.Rmd"),
                     n = 1000,
                     verbose = TRUE,
-                    dir = "banco-items/ht_2pop_mean_dp_desconhecido_igual/table",
-                    name = "ht_2pop_mean_dp_desconhecido_igual_table")
+                    dir = path,
+                    name = "teste_t_2pop_var_diff_table")
