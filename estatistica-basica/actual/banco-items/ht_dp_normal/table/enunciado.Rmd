@@ -14,15 +14,20 @@ options(scipen = 999) #prevent scientific notation
 # set.seed(123456)
 
 # tamanho da amostra
-tam <- sample(100:500, 1)
+tam <- sample(1000:5000, 1)
+
 # desvio padrão da população
-dp_pop <- runif(1, 10, 15) |> round(2)
+dp_pop <- runif(1, 5, 10) |> round(2)
+
 # m_0
-dp_0 <- runif(1, 10, 15) |> round(2)
+dp_0 <- runif(1, 15, 20) |> round(2)
 # m_1
+
 media_pop <- runif(1, 10, 15)
+
 # amostra
 amostra <- rnorm(tam, media_pop, dp_pop)
+
 # nível de significância
 g <- runif(1, 0.01, 0.1) |> round(2)
 
@@ -44,7 +49,7 @@ decisao <- ifelse(
     "não rejeitamos a hipótese nula."
 )
 
-f <- \(x) format(x, decimal.mark = ",")
+f <- \(x, digits = 4) format(x, decimal.mark = ",", digits = digits)
 ```
 
 Question
@@ -108,8 +113,8 @@ Solutionlist
 * A região crítica é dada por: `r fit_correto$critical_region[1]`.
 * 
 * 
-* `r ifelse(fit_correto$p_value < g, glue("Falso, pois ao nível de significância &gamma; = {g}, rejeitamos a hipótese nula."), "Verdadeiro.")`
-* `r ifelse(fit_correto$p_value < g, "Verdadeiro.", glue("Falso, pois ao nível de significância &gamma; = {g}, rejeitamos a hipótese nula."))` 
+* `r ifelse(fit_correto$p_value < g, glue("Falso, pois ao nível de significância &alpha; = {g}, rejeitamos a hipótese nula."), "Verdadeiro.")`
+* `r ifelse(fit_correto$p_value < g, "Verdadeiro.", glue("Falso, pois ao nível de significância &alpha; = {g}, rejeitamos a hipótese nula."))` 
 
 Meta-information
 ================

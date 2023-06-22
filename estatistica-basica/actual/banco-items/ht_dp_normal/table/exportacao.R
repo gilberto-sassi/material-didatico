@@ -7,8 +7,9 @@ library(statBasics)
 library(exams)
 library(tidyverse)
 
-exams::exams2moodle("banco-items/ht_dp_normal/table/enunciado.Rmd",
+path <- "estatistica-basica/actual/banco-items/ht_dp_normal/table"
+exams::exams2moodle(glue("{path}/enunciado.Rmd"),
                     n = 1000,
                     verbose = TRUE,
-                    dir = "banco-items/ht_dp_normal/table",
-                    name = "teste-tabela-normal-dp")
+                    dir = path,
+                    name = "teste-quiqua-variancia")
