@@ -13,12 +13,16 @@ options(scipen = 999) #prevent scientific notation
 
 # tamanho da amostra
 tam <- sample(100:500, 1)
+
 # proporção da hipótese nula
-prop_0 <- runif(1, 0.25, 0.75) |> round(2)
+prop_0 <- runif(1, 0.2, 0.4) |> round(2)
+
 # probabilidade de sucesso
-prob <- runif(1, 0.25, 0.75) |> round(2)
+prob <- runif(1, 0.6, 0.8) |> round(2)
+
 # amostra
 amostra <- rbinom(tam, 1, prob)
+
 # nível de significância
 g <- runif(1, 0.01, 0.1) |> round(2)
 
@@ -91,21 +95,21 @@ Questionlist
 * A região crítica é dada por: `r fit_correto$critical_region`.
 * A região crítica é dada por: `r fit_less$critical_region`.
 * A região crítica é dada por: `r fit_greater$critical_region`.
-* Ao nível de significância &alpha; = `r g`, não rejeitamos a hipótese nula.
-* Ao nível de significância &alpha; = `r g`, rejeitamos a hipótese nula.
+* Ao nível de significância &alpha; = `r f(g)`, não rejeitamos a hipótese nula.
+* Ao nível de significância &alpha; = `r f(g)`, rejeitamos a hipótese nula.
 
 Solution
 ========
 Solutionlist
 ------------
 
-* A estatística de teste (t~0~) é: `r sol[1]`.
+* A estatística de teste (t~0~) é: `r f(sol[1])`.
 * O valor-p é: `r sol[2]`.
 * A região crítica é dada por: `r fit_correto$critical_region`.
 * 
 * 
-* `r ifelse(fit_correto$p_value < g, glue("Falso, pois ao nível de significância &gamma; = {g}, rejeitamos a hipótese nula."), "Verdadeiro.")`
-* `r ifelse(fit_correto$p_value < g, "Verdadeiro.", glue("Falso, pois ao nível de significância &gamma; = {g}, não rejeitamos a hipótese nula."))` 
+* `r ifelse(fit_correto$p_value < g, glue("Falso, pois ao nível de significância &alpha; = {f(g)}, rejeitamos a hipótese nula."), "Verdadeiro.")`
+* `r ifelse(fit_correto$p_value < g, "Verdadeiro.", glue("Falso, pois ao nível de significância &alpha; = {f(g)}, não rejeitamos a hipótese nula."))` 
 
 Meta-information
 ================
@@ -113,4 +117,4 @@ exname: testeT
 extype: cloze
 exsolution: `r sol[1]`|`r sol[2]`|100|`r ifelse(fit_correto$p_value < g, "01", "10")`
 exclozetype: num|num|schoice|mchoice
-extol: 0.02
+extol: 0.05

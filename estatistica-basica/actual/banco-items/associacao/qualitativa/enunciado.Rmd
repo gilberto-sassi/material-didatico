@@ -120,4 +120,4 @@ exname: testeT
 extype: cloze
 exsolution: `r sol[1]`|`r sol[2]`|`r ifelse(sol[2] < g, "10", "01")`
 exclozetype: num|num|schoice
-extol: 0.05
+extol: 0.02

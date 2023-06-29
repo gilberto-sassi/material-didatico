@@ -7,8 +7,9 @@ library(statBasics)
 library(exams)
 library(tidyverse)
 
-exams::exams2moodle("banco-items/associacao/quantitativa/enunciado.Rmd",
+path <- "estatistica-basica/actual/banco-items/associacao/quantitativa"
+exams::exams2moodle(glue("{path}/enunciado.Rmd"),
                     n = 1000,
                     verbose = TRUE,
-                    dir = "banco-items/associacao/quantitativa",
-                    name = "associacao_correlacao")
+                    dir = path,
+                    name = "teste-z-associacao")
