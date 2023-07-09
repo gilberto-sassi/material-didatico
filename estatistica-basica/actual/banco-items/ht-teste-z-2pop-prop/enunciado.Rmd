@@ -1,0 +1,131 @@
+```{r, label="Simulação de dados", include=F}
+library(exams)
+library(glue)
+library(writexl)
+library(readxl)
+library(statBasics)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+tam1 <- sample(500:1000, 1)
+prop1 <- runif(1, 0.6, 0.8) |> round(2)
+n1 <- rbinom(tam1, 1, prop1) |> sum()
+
+tam2 <- sample(500:1000, 1)
+prop2 <- runif(1, 0.3, 0.5)
+n2 <- rbinom(tam2, 1, prop2) |> sum()
+
+# nível de significância
+g <- runif(1, 0.01, 0.1) |> round(2)
+
+# ajuste
+ajuste <- ht_2pop_prop(n1, n2, tam1, tam2, delta = 0, alternative = "two.sided", sig_level = g)
+ajuste_greater <- ht_2pop_prop(n1, n2, tam1, tam2, delta = 0, alternative = "greater", sig_level = g)
+ajuste_less <- ht_2pop_prop(n1, n2, tam1, tam2, delta = 0, alternative = "less", sig_level = g)
+
+sol <- list(
+    (n1 / tam1) * 100,
+    (n2 / tam2) * 100,
+    ajuste$statistic,
+    ajuste$p_value,
+    ajuste$critical_value
+) |> map(~ round(.x, 3))
+
+decisao_valor_p <- ifelse(
+    sol[[4]] < g, 1, 0
+)
+
+decisao_proc_geral <- ifelse(
+    abs(sol[[3]]) > sol[[5]], 1, 0
+)
+
+rc <- c(
+    ajuste$critical_region,
+    ajuste_greater$critical_region,
+    ajuste_less$critical_region
+)
+
+f <- \(x) format(x, decimal.mark = ",")
+```
+
+Question
+========
+
+Uma amostra aleatória com `r tam1` cidadãos da cidade A indicou que `r n1` são favoráveis ao aumento do limite de velocidadede uma rodovia local para 120km/hr, e outra amostra com `r tam2` cidadãos da cidade B indicou que `r n2` são favoráveis ao aumento do limite de velocidade. Existe evidência de que as proporções de cidadãos favoráveis ao aumento da velocidade nas duas cidade são diferentes? Use &alpha;=`r f(g * 100)`%.
+
+**Use três casas decimais nas respostas abaixo.**
+
+_PS: os dados deste exercícios foram simulados._
+
+**Solução:** 
+
+A porcentagem de pessoas favoráveis ao aumento é:
+
+* \#\#ANSWER1\#\#% na cidade A.
+* \#\#ANSWER2\#\#% na cidade B.
+
+A estatística de teste é * \#\#ANSWER3\#\#.
+
+No procedimento de Neyman-Pearson, o valor crítico (quantil) é \#\#ANSWER5\#\# e a região crítica é \#\#ANSWER8\#\#.
+
+Finalmente, o valor-p é \#\#ANSWER4\#\#.
+
+<hr>
+
+**Decisão usando o valor-p:**
+
+\#\#ANSWER6\#\#
+
+<hr>
+
+**Decisão usando o procedimento geral de Neyman-Pearson:**
+
+\#\#ANSWER7\#\#
+
+
+```{r, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+* Usando o valor-p, podemos afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600 ao nível de significância &alpha; = `r f(g)`.
+* Usando o valor-p, **NÃO** temos evidência para afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600 ao nível de significância &alpha; = `r f(g)`.
+* Usando o procedimento geral de Neyman-Pearson, podemos afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600 ao nível de significância &alpha; = `r f(g)`.
+* Usando o procedimento geral de Neyman-Pearson, **NÃO** temos evidência para afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600 ao nível de significância &alpha; = `r f(g)`.
+* RC = `r rc[1]`.
+* RC = `r rc[2]`.
+* RC = `r rc[3]`.
+
+
+Solution
+========
+
+A porcentagem de pessoas favoráveis ao aumento é:
+
+* `r f(sol[[1]])`% na cidade A.
+* `r f(sol[[2]])`% na cidade B.
+
+A estatística de teste é * `r f(sol[[3]])`.
+
+No procedimento de Neyman-Pearson, o valor crítico (quantil) é `r f(sol[[5]])` e a região crítica é RC=`r rc[1]`.
+
+Finalmente, o valor-p é `r f(sol[[4]])`.
+
+
+```{r, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+* `r ifelse(decisao_valor_p, glue("Ao nível de significância &alpha; = {f(g)} e usando valor-p, podemos afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600. "), glue("Ao nível de significância &alpha; = {f(g)} e usando o valor-p, **NÃO** temos evidência para afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600. "))` 
+*
+* `r ifelse(decisao_proc_geral, glue("Ao nível de significância &alpha; = {f(g)} e usando procedimento geral de Neyman-Pearson, podemos afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600. "), glue("Ao nível de significância &alpha; = {f(g)} e usando procedimento geral de Neyman-Pearson,  **NÃO** temos evidência para afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600. "))` 
+*   
+* RC = `r rc[1]`.
+*
+* 
+
+
+Meta-information
+================
+exname: teste_z_prop_2_pop
+extype: cloze
+exsolution: `r sol[[1]]`|`r sol[[2]]`|`r sol[[3]]`|`r sol[[4]]`|`r sol[[5]]`|`r ifelse(decisao_valor_p, "10", "01")`|`r ifelse(decisao_proc_geral, "10", "01")`|100
+exclozetype: num|num|num|num|num|schoice|schoice|schoice
+extol: 0.05

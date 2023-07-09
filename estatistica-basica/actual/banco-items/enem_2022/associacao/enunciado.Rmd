@@ -1,0 +1,105 @@
+```{r, label="Simulação de dados", include=F}
+library(exams)
+library(glue)
+library(writexl)
+library(readxl)
+library(statBasics)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+
+pasta <- "/home/gilberto/Insync/sassi.pereira.gilberto@gmail.com/Google Drive/atividade_didatica/material-didatico/estatistica-basica/actual/banco-items/enem_2022/associacao"
+dados_enem <- glue("{pasta}/amostra_enem_salvador.xlsx") |>
+    read_xlsx()
+
+dicionario <- glue("{pasta}/amostra_enem_salvador.xlsx") |>
+    read_xlsx(sheet = 2)
+
+
+ajuste <- with(dados_enem, {
+    stats::chisq.test(tp_cor_raca, tp_escola)
+})
+
+g <- runif(1, 0.01, 0.1) |> round(2)
+
+valor_critico <- qchisq(1 - g, df = ajuste$parameter) |>
+    round(3)
+
+sol <- list(
+    ajuste$statistic,
+    ajuste$parameter,
+    ajuste$p.value,
+    valor_critico
+) |> map(~ round(.x, 3))
+
+rc_correto <- str_interp("(${valor_critico}, Inf)")
+rc_errado <- str_interp("(0, ${valor_critico})")
+
+f <- \(x) format(x, decimal.mark = ",", big.mark = ".")
+```
+
+Question
+========
+
+Em anexo a esta questão, inclui uma amostra com informações de 5000 candidatos na prova do ENEM na edição de 2022 que está no arquivo [amostra_enem_salvador.xlsx](https://ufbabr-my.sharepoint.com/:x:/g/personal/gilberto_sassi_ufba_br/EQQwfK2USU9GlNPoz16ifeMBfJmv5xb9cUf57Odj_0enRA?e=HHt7Ph){target="_blank"}. Ao nível de significância &alpha; = `r f(g*100)`%, temos evidência para afirmar que o tipo de escola (`tp_escola`) está associada com a renda familiar (`q006`)? 
+
+**Use três casas decimais nas respostas abaixo.**
+
+**Solução:** 
+
+A estatística de teste é \#\#ANSWER1\#\# e o número de grau de liberdade na distribuição qui-quadrado é \#\#ANSWER2\#\#.  
+
+No procedimento de Neyman-Pearson, o valor crítico (quantil) é \#\#ANSWER4\#\# e a região crítica é \#\#ANSWER5\#\#.
+
+O valor-p é \#\#ANSWER3\#\#.
+
+<hr>
+
+**Decisão usando o valor-p:**
+
+\#\#ANSWER6\#\#
+
+<hr>
+
+**Decisão usando o procedimento geral de Neyman-Pearson:**
+
+\#\#ANSWER7\#\#
+
+
+```{r, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+* A região crítica é RC=`r rc_correto`.
+* A região crítica é RC=`r rc_errado`.
+* Usando o valor-p, podemos afirmar que o tipo de escola (`tp_escola`) e raça autodeclarada (`tp_cor_raca`) estão associadas ao nível de significância &alpha; = `r f(g)`.
+* Usando o valor-p, **NÃO** temos evidência para afirmar que o tipo de escola (`tp_escola`) e raça autodeclarada (`tp_cor_raca`) estão associadas ao nível de significância &alpha; = `r f(g)`.
+* Usando o procedimento geral de Neyman-Pearson, podemos afirmar que o tipo de escola (`tp_escola`) e raça autodeclarada (`tp_cor_raca`) estão associadas ao nível de significância &alpha; = `r f(g)`.
+* Usando o procedimento geral de Neyman-Pearson, **NÃO** temos evidência para afirmar que o tipo de escola (`tp_escola`) e raça autodeclarada (`tp_cor_raca`) estão associadas ao nível de significância &alpha; = `r f(g)`.
+
+Solution
+========
+
+A estatística de teste é `r f(sol[[1]])` e o número de grau de liberdade na distribuição qui-quadrado é `r f(sol[[2]])`.  
+
+No procedimento de Neyman-Pearson, o valor crítico (quantil) é `r f(sol[[4]])` e a região crítica é `r rc_correto`.
+
+O valor-p é `r f(sol[[3]])`.
+
+```{r, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+* A região crítica é RC=`r rc_correto`.
+* 
+* Usando o valor-p, podemos afirmar que o tipo de escola (`tp_escola`) e raça autodeclarada (`tp_cor_raca`) estão associadas ao nível de significância &alpha; = `r f(g)`.
+* 
+* Usando o procedimento geral de Neyman-Pearson, podemos afirmar que o tipo de escola (`tp_escola`) e raça autodeclarada (`tp_cor_raca`) estão associadas ao nível de significância &alpha; = `r f(g)`.
+* 
+  
+
+Meta-information
+================
+exname: enem_2022_teste_associacao
+extype: cloze
+exsolution: `r sol[[1]]`|`r sol[[2]]`|`r sol[[3]]`|`r sol[[4]]`|10|10|10
+exclozetype: num|num|num|num|schoice|schoice|schoice
+extol: 0.05

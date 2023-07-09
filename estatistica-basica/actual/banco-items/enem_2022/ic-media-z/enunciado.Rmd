@@ -1,0 +1,107 @@
+```{r, label="Simulação de dados", include=F}
+library(exams)
+library(glue)
+library(writexl)
+library(readxl)
+library(statBasics)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+# tamanho da amostra
+tam <- sample(1000:10000, 1)
+
+dados_enem <- read_xlsx("/home/gilberto/Insync/sassi.pereira.gilberto@gmail.com/Google Drive/atividade_didatica/material-didatico/estatistica-basica/actual/banco-items/enem_2022/associacao/amostra_enem_salvador.xlsx")
+
+dados_enem <- mutate(dados_enem, ind_negra = case_match(
+    tp_cor_raca,
+    "Parda" ~ "Negra",
+    "Preta" ~ "Negra",
+    .default = tp_cor_raca
+))
+
+# média da população
+prop_pop <- mean(dados_enem$ind_negra == "Negra") |> round(2)
+
+#------------------------------------------------------------------------------
+
+# amostra
+amostra <- tibble(tp_cor_raca = rbinom(tam, 1, prop_pop) |> map_chr(\(i) {
+    ifelse(i, "Negra", "Outra raça")
+}))
+
+# nível de significância
+g <- runif(1, 0.90, 0.99) |> round(2)
+
+# Salvando os dados
+write_xlsx(amostra, "dados.xlsx")
+
+amostra <- amostra$tp_cor_raca == "Negra"
+
+# ajuste
+ajuste <- ci_1pop_bern(amostra, conf_level = g)
+
+sol <- c(
+    ajuste$lower_ci * 100,
+    ajuste$upper_ci * 100,
+    mean(amostra) * 100,
+    (ajuste$upper_ci - mean(amostra)) * 100
+) |> round(3)
+
+decisao <- ifelse(sol[1] > 60, 1, 0)
+
+f <- \(x) format(x, decimal.mark = ",")
+```
+
+Question
+========
+
+Em anexo a esta questão, inclui uma amostra com informações de `r tam` candidatos na prova do ENEM na edição de 2022 na cidade de Salvador que está no arquivo [dados.xlsx](dados.xlsx). Construa o intervalo de confiança para a a prorporção de pessoas negras (`tp_cor_raca`) com coeficiente de confiança &gamma; = `r f(g * 100)`%. 
+
+**Use três casas decimais nas respostas abaixo.**
+
+_PS: os dados deste exercícios foram simulados._
+
+**Solução:** 
+
+Com coeficiente de confiança `r  f(100 *g)`%, a proporção de pessoas negras está entre \#\#ANSWER1\#\#% e \#\#ANSWER2\#\#%. 
+
+A proporção de pessoas negras é \#\#ANSWER3\#\#%,  e a margem de erro é \#\#ANSWER4\#\#%.
+
+<hr>
+
+**Interpretação de Intervalo de confiança**
+
+Escolha a alternativa correta:
+
+\#\#ANSWER5\#\#
+
+```{r, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+* Usando este intervalo, podemos afirmar que podemos afirmar que a proporção de pessoas negras é maior que 60% ao nível de significância &alpha; = `r f(1-g)`.
+* Usando este intervalo, **NÃO** temos evidência para afirmar que podemos afirmar que a proporção de pessoas negras é maior que 60% ao nível de significância &alpha; = `r f(1-g)`.
+
+
+Solution
+========
+
+**Solução:** 
+
+Com coeficiente de confiança `r  f(100 *g)`\%, a porcentagem de pessoas negras está entre `r f(sol[[1]])`% e `r f(sol[[2]])`%. 
+
+A porcentagem de pessoas negras é `r f(sol[[3]])`%,  e a margem de erro é `r f(sol[[4]])`%.
+
+
+```{r, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+* Usando este intervalo, podemos afirmar que podemos afirmar que a proporção de pessoas negras é maior que 60% ao nível de significância &alpha; = `r f(1-g)`.
+* 
+
+Meta-information
+================
+exname: enem_2021_IC_1pop_prop
+extype: cloze
+exsolution: `r sol[1]`|`r sol[2]`|`r sol[3]`|`r sol[4]`|10
+exclozetype: num|num|num|num|schoice
+extol: 0.05
