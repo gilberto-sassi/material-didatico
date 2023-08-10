@@ -65,7 +65,7 @@ _PS: os dados deste exercícios foram simulados._
 
 Com coeficiente de confiança `r  f(100 *g)`%, a proporção de pessoas negras está entre \#\#ANSWER1\#\#% e \#\#ANSWER2\#\#%. 
 
-A proporção de pessoas negras é \#\#ANSWER3\#\#%,  e a margem de erro é \#\#ANSWER4\#\#%.
+A porcentagem de pessoas negras é \#\#ANSWER3\#\#%,  e a margem de erro é \#\#ANSWER4\#\#%.
 
 <hr>
 
@@ -78,8 +78,8 @@ Escolha a alternativa correta:
 ```{r, echo = FALSE, results = "asis"}
 exams::answerlist(rep("", length(sol)), markup = "markdown")
 ```
-* Usando este intervalo, podemos afirmar que podemos afirmar que a proporção de pessoas negras é maior que 60% ao nível de significância &alpha; = `r f(1-g)`.
-* Usando este intervalo, **NÃO** temos evidência para afirmar que podemos afirmar que a proporção de pessoas negras é maior que 60% ao nível de significância &alpha; = `r f(1-g)`.
+* Usando este intervalo, podemos afirmar que podemos afirmar que a porcentagem de pessoas negras é maior que 60% ao nível de significância &alpha; = `r f(1-g)`.
+* Usando este intervalo, **NÃO** temos evidência para afirmar que podemos afirmar que a porcentagem de pessoas negras é maior que 60% ao nível de significância &alpha; = `r f(1-g)`.
 
 
 Solution
@@ -95,12 +95,12 @@ A porcentagem de pessoas negras é `r f(sol[[3]])`%,  e a margem de erro é `r f
 ```{r, echo = FALSE, results = "asis"}
 exams::answerlist(rep("", length(sol)), markup = "markdown")
 ```
-* Usando este intervalo, podemos afirmar que podemos afirmar que a proporção de pessoas negras é maior que 60% ao nível de significância &alpha; = `r f(1-g)`.
+* Usando este intervalo, podemos afirmar que podemos afirmar que a porcentagem de pessoas negras é maior que 60% ao nível de significância &alpha; = `r f(1-g)`.
 * 
 
 Meta-information
 ================
-exname: enem_2021_IC_1pop_prop
+exname: enem_2022_IC_1pop_prop
 extype: cloze
 exsolution: `r sol[1]`|`r sol[2]`|`r sol[3]`|`r sol[4]`|10
 exclozetype: num|num|num|num|schoice

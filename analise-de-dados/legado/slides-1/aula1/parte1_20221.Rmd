@@ -1,0 +1,1205 @@
+---
+title: " Estatística Descritiva com `R`<br>"
+subtitle: "Curso livre de `R`"
+author: "Profa Carolina e Prof Gilberto"
+date: "Parte 1"
+output:
+  bookdown::ioslides_presentation2:
+    transition: "faster"
+    logo: "https://i.postimg.cc/ZRypsc2c/logo.jpg"
+    widescreen: true
+    css: "../assets/estilo.css"
+---
+
+
+```{r setup, include=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = FALSE,
+                    fig.align = "center", out.width="50%")
+#rmarkdown::find_pandoc(dir = "/home/gilberto/.local/bin", version = "2.13")
+library(glue)
+library(readxl)
+library(writexl)
+library(statBasics)
+library(tidyverse)
+library(janitor)
+library(dplyr)
+library(simplevis)
+library(gt)
+library(ggthemes)
+library(xtable)
+library(readxl)
+library(writexl)
+library(statBasics)
+library(tidyverse)
+```
+
+# Sobre o curso
+
+## Preparando o ambiente {.smaller}
+
+* Você precisa de um computador para acompanhar as aulas.
+* Usaremos nas aulas: [colab.research.google.com/#language=r](https://colab.research.google.com/#create=true&language=r).
+* No seu dia-a-dia, recomendamos instalar o `R` com versão pelo menos `4.1`: [cran.r-project.org](https://cran.r-project.org).
+* **IDE** recomendadas: [_RStudio_](https://www.rstudio.com/products/rstudio/download/preview/) e [_VSCode_](https://code.visualstudio.com).
+  * Caso você queira usar o [_VSCode_](https://code.visualstudio.com), instale a extensão da linguagem `R`: `ikuyadeu.r`.
+* Neste curso, usaremos o _framework_ [**tidyverse**](https://www.tidyverse.org):
+  * Instale o framework a partir do repositório CRAN: `install.packages("tidyverse")`
+* Outras linguagens interessantes: [`python`](https://www.python.org) e [`julia`](https://julialang.org).
+  * [`python`](https://www.python.org): linguagem interpretada de próposito geral, contemporânea do `R`,  simples e fácil de aprender.
+  * [`julia`](https://julialang.org): linguagem interpretada para análise de dados, lançada em 2012, promete simplicidade e velocidade.
+
+# A linguagem `R`<br><br>uma introdução
+ 
+## O começo de tudo {.smaller}
+
+### O precursor do `R`: `S`.
+
+* `R` é uma linguagem derivada do `S`.
+* `S` foi desenvolvido em `fortran` por **John Chambers** em _1976_ no **Bell Labs**.
+* `S` foi desenvolvido para ser um ambiente de análise estatística.
+* Filosofia do `S`: permitir que usuários possam analisar dados usando estatística com pouco conhecimento de programação.
+
+### História do `R`
+
+* Em _1991_, **Ross Ihaka** e **Robert Gentleman** criaram o `R` na **Nova Zelândia**.
+* Em _1996_, **Ross** e **Robert** liberam o `R` sob a licença "GNU General License", o que tornou o `R` um software livre.
+* Em _1997_, **The Core Group** é criado para melhorar e controlar o código fonte do `R`.
+
+## Porque usar `R` 
+
+* Constante melhoramento e atualização.
+* Portabilidade (roda em praticamente todos os sistemas operacionais).
+* Grande comunidade de desenvolvedores que adicionam novas capacidades ao R através de pacotes.
+* Gráficos de maneira relativamente simples.
+* Interatividade.
+* Um grande comunidade de usuários (especialmente útil para resolução de problemas).
+
+## Onde estudar fora de aula?
+
+### Livros 
+
+* **Nível _cheguei agora aqui_:** [zen do R](https://curso-r.github.io/zen-do-r/index.html).
+* **Nível Iniciante:** [R Tutorial na W3Schools](https://www.w3schools.com/r/default.asp).
+* **Nível Iniciante:** [Hands-On Programming with `R`](https://rstudio-education.github.io/hopr/).
+* **Nível Intermediário:** [`R` for Data Science](https://r4ds.had.co.nz).
+* **Nível Avançado:** [Advanced `R`](https://adv-r.hadley.nz).
+
+### Em pt-br
+
+* Curso-R: [material.curso-r.com](http://material.curso-r.com/).
+
+## O que você pode fazer quando estiver em apuros? {.smaller}
+
+* consultar a documentação do `R`: 
+```{r, echo = T, eval = F}
+help(mean)
+?mean
+```
+* Peça ajuda a um programador mais experiente.
+* Consulte o [pt.stackoverflow.com](https://pt.stackoverflow.com/).
+* Use ferramentas de busca como o [google](https://www.google.com.br/) e [duckduckgo.com](https://duckduckgo.com/).
+```r
+log("G")
+```
+  * Na ferramenta de busca, pesquise por `Error in log("G"): non-numeric argument to mathematical function`
+
+## Operações básicas {.smaller}
+
+#### Soma
+
+```{r}
+1 + 1
+```
+
+#### Substração
+
+```{r}
+2 - 1
+```
+
+#### Divisão
+
+```{r}
+3 / 2
+```
+
+#### Potenciação
+
+```{r}
+2^3
+```
+
+## Os dados no `R`
+
+* **Tipo de dados:** caracter (`character`), número real (`double`), número inteiro (`integer`), número complexo (`complex`) e lógico (`logical`).
+
+* **Estrutura de dados:** atomic `vector` (a estrutura de dados mais básicA no `R`), `matrix`, `array`, `list` e `data.frame` (`tibble` no `tidyverse`).
+
+* **Estrutura de dados Homogênea:** `vector`, `matrix` e `array`.
+
+* **Estrutura de dados Heterôgenea:** `list` e `data.frame` (`tibble` no `tidyverse`).
+
+## Tipo de dados no `R` 
+
+#### Número inteiro
+
+```{r}
+typeof(1L)
+```
+
+#### Número real
+
+```{r}
+typeof(1.2)
+```
+
+####  Número complexo
+
+```{r}
+typeof(1 + 1i)
+```
+
+## Tipo de dados no `R` 
+
+#### Número lógico
+
+```{r}
+typeof(TRUE)
+```
+
+#### Caracter
+
+```{r}
+typeof("Gilberto")
+```
+
+## Estrutura de dados homogênea
+
+#### Vetor
+
+* Agrupamento de valores de mesmo tipo em um único objeto.
+
+* Criação de vetor: `c(...)` e `vector('<tipo de dados>', <comprimento do vetor>)`, `seq(from = a, to = b, by = c)`.
+
+#### Vetor de caracteres
+
+```{r}
+a  <- c("Gilberto", "Sassi")
+a
+```
+```{r}
+b <- vector("character", 3)
+b
+```
+
+## Estrutura de dados homogênea 
+
+#### Vetor de números reais
+
+```{r}
+a  <- c(0.2, 1.35)
+a
+```
+
+```{r}
+b <- vector("double", 3)
+b
+```
+
+```{r}
+d <- seq(from = 1, to = 3.5, by = 0.5)
+d
+```
+
+## Estrutura de dados homogênea 
+
+#### Vetor de números inteiros
+
+```{r}
+a  <- c(1L, 2L)
+a
+```
+
+```{r}
+b <- vector("integer", 3)
+b
+```
+
+```{r}
+d <- 1:4
+d
+```
+
+## Estrutura de dados homogênea 
+
+#### Vetor lógico
+
+```{r}
+a  <- c(TRUE, FALSE)
+a
+```
+
+```{r}
+b <- vector("logical", 3)
+b
+```
+
+## Estrutura de dados homogênea {.smaller}
+
+#### Matriz
+
+* Agrupamento de valores de mesmo tipo em um único objeto de dimensão 2.
+
+* Criação de matriz: `matrix(..., nrow = <integer>, ncol = <integer>)` ou `diag(<vector>)`.
+
+
+#### Matriz de caracteres
+
+```{r}
+a <- matrix(c("a", "b", "c", "d"), nrow = 2)
+a
+```
+
+#### Matriz de números reais
+
+```{r}
+a <- matrix(seq(from = 0, to = 1.5, by = 0.5), nrow = 2)
+a
+```
+
+## Estrutura de dados homogênea 
+
+#### Matriz de inteiros
+
+```{r}
+a <- matrix(1L:4L, nrow = 2)
+a
+```
+
+#### Matriz de valores lógicos
+
+```{r}
+a <- matrix(c(TRUE, F, F, T), nrow = 2)
+a
+```
+
+## Estrutura de dados homogênea {.smaller}
+
+#### Array
+
+* Agrupamento de valores de mesmo tipo em um único objeto em duas ou mais dimensões.
+
+* Criação de array: `array(..., dim = <vector of integers>)`.
+
+```{r}
+dados_matriz_1 <- 10:13
+dados_matriz_2  <- 14:17
+resultado <- array(c(dados_matriz_1, dados_matriz_2), dim = c(2, 2, 2))
+resultado
+```
+
+## Estrutura de dados homogênea {.smaller}
+
+#### Operações com vetores númericos (`double`, `integer` e `complex`).
+
+* Operações básicas (operação, substração, multiplicação e divisão ) realizada em cada elemento do vetor.
+
+* _Slicing_: extrair parte de um vetor (não precisa ser vetor numérico).
+
+#### _Slicing_
+
+```{r}
+a <- c("a", "b", "c", "d", "e", "f", "g", "h", "i")
+a[1:5] # selecionado todos os elementos entre o primeiro e o quinta
+```
+
+#### Adição (vetores númericos)
+
+```{r}
+a <- 1:5
+b <- 6:10
+a + b
+```
+
+## Estrutura de dados homogênea {.smaller}
+
+#### Substração (vetores numéricos)
+
+```{r}
+a <- 1:5
+b <- 6:10
+b - a
+```
+
+#### Multiplicação (vetores numéricos)
+
+```{r}
+a <- 1:5
+b <- 6:10
+b * a
+```
+
+#### Divisão (vetores numéricos)
+
+```{r}
+a <- 1:5
+b <- 6:10
+b / a
+```
+
+## Estrutura de dados homogênea 
+
+### Operações com matrizes númericas (`double`, `integer` e `complex`).
+
+* Operações básicas (operação, substração, multiplicação e divisão) realizada em cada elemento das matrizes.
+
+* Multiplicação de matrizes (vide [multiplicação de matrizes](https://pt.wikipedia.org/wiki/Produto_de_matrizes)), inversão de matrizes (vide [inversão de matrizes](https://pt.wikipedia.org/wiki/Matriz_inversa)), matriz transposta (vide [matriz transposta](https://pt.wikipedia.org/wiki/Matriz_transposta)), determinante (vide [determinante de uma matriz](https://pt.wikipedia.org/wiki/Determinante)) e solução de sistema de equações lineares (vide [sistema de equações lineares](https://pt.wikipedia.org/wiki/Sistema_de_equações_lineares)).
+
+
+## Estrutura de dados heterogênea 
+
+#### Lista
+
+* Agrupamento de valores de tipos diversos e estrutura de dados.
+
+* Criação de listas: `list(...)` e `vector("list", <comprimento da lista>)`.
+
+```{r}
+a <- list(pedido_id = 8001406,
+          nome = "Fulano",
+          sobrenome = "de Tal",
+          cpf = "12345678900",
+          itens = list(list(descricao = "Ferrari",
+                            frete = 0,
+                            valor = 500000),
+                      list(descricao = "Dolly", frete = 1.5, valor = 3.90)))
+```
+
+
+## Estrutura de dados heterogênea {.smaller}
+
+* Agrupamento de dados em tabela, onde: cada coluna é uma variável; cada linha é uma observação.
+
+* Criação de `tibble`: `tibble(...)` e `tribble(....)`.
+
+#### `tibble` (data frame)
+
+```{r}
+library(tidyverse) # carregando o framework tidyverse
+a <- tibble(variavel_1 = c(1, 2), variavel_2 = c("a", "b"))
+glimpse(a)
+a
+```
+
+## Estrutura de dados heterogênea {.smaller}
+
+#### Operações em um `tibble`
+
+Algumas funções úteis depois de aprender a carregar os dados no `R`.
+
+|Função|Descrição|
+|:---------:|:------------:|
+|`head()`|Mostra as primeiras linhas de um `tibble`|
+|`tail()`|Mostra as últimas linhas de um `tibble`|
+|`glimpse()`|Impressão de informações básicas dos dados|
+|`add_case()` ou `add_row()`|Adiciona uma nova observação|
+
+## Estrutura de dados heterogênea {.smaller}
+
+#### Concatenação de listas
+
+```{r}
+a  <- list("a", "b")
+b <- list(1, 2)
+d <- c(a, b)
+d
+```
+
+## Estrutura de dados heterogênea {.smaller}
+
+#### _Slicing_ a lista
+
+```{r}
+d[1:2]
+```
+
+#### Acessando o valor de elmento em uma lista
+
+```{r}
+d[[2]] # acessando o segundo elemento da lista d
+```
+
+#### Acessando elementos em uma lista usando `$`
+
+```{r}
+d <- list(elemento_1 = 1, elemento_2 = "docente")
+d$elemento_2 # retorna o valor
+```
+
+## Estrutura de dados heterogênea {.smaller}
+
+#### _Slicing_ uma lista com `["nome"]`
+
+```{r}
+d <- list(elemento_1 = 1, elemento_2 = "docente", elemento_3 = list("olá"))
+d["elemento_3"] # funciona como slicing
+```
+
+#### Obtendo os nomes dos elementos em um lista
+
+```{r}
+d <- list(c(1, 2, 3), elemento_1 = 1, elemento_2 = "docente", elemento_3 = list("olá"))
+names(d)
+```
+
+## Valores especiais em `R`
+
+|Valores especiais|Descrição|Função para identificar|
+|:-------------:|:---------------:|:--------------------:|
+|`NA` (Not Available)|Valor faltante.|`is.na()`|
+|`NaN` (Not a Number)|Resultado do cálculo indefinido.|`is.nan()`|
+|`Inf` (Infinito)|Valor que excede o valor máximo que sua máquina aguenta.|`is.inf()`|
+|`NULL` (Nulo)|Valor indefinido de expressões e funções (diferente de `NaN` e `NA`)|`is.null()`|
+
+## Parênteses 1: guia de estilo no `R` {.smaller}
+
+* O nome de um objeto precisa ter um _significado_. O nome deve indicar e deixar claro o que este objeto é ou faz ~qualquer pessoa precisa entender o que este objeto é ou faz~.
+
+* Use a convenção do `R`:
+  * Use apenas letras minúsculas, números e _underscore_ (comece sempre com letras minúsculas).
+  
+  * Nomes de objetos precisam ser substantivos e precisam descrever o que este objeto é ou faz (seja conciso, direto e significativo).
+  
+  * Evite ao máximo os nomes que já são usados ( _buit-in_ ) do `R`.
+  
+  * Coloque espaço depois da vírgula.
+  
+  * Não coloque espaço antes nem depois de parênteses. Exceção: Coloque um espaço `()` antes e depois de `if`, `for` ou `while`, e coloque um espaço depois de `()`.
+  
+  * Coloque espaço entre operadores básicos: `+`, `-`, `*`, `==` e outros. Exceção: `^`.
+  
+* Para mais detalhes, consulte: [guia de estilo do `tidyverse`](https://style.tidyverse.org).
+
+## Parênteses 2: estrutura de diretórios  {.smaller}
+
+* Mantenha uma estrutura (organização) consistente de diretórios em seus projetos.
+
+* Sugestão de estrutura:
+  * `data`: diretório para armazenar seus conjuntos de dados.
+    * `raw`: dados brutos.
+    * `processed`: dados processados.
+  * `scripts`: código fonte do seu projeto.
+  * `figures`: figuras criadas no seu projeto.
+  * `output`: outros arquivos que não são figuras.
+  * `previous`: arquivos da versão anterior do projeto.
+  * `notes`: notas de reuniões e afins.
+  * `relatorio` (ou `artigos`): documento final de seu projeto.
+  * `documents`: livros, artigos e qualquer coisa que são referências em seu projeto.
+  
+* Para mais detalhes, consulte esse guia do [curso-r](https://curso-r.com): [diretórios e `.Rproj`](https://curso-r.github.io/zen-do-r/rproj-dir.html).
+
+## Lendo dados no `R` {.smaller}
+
+### Leitura de arquivos no formato `xlsx` ou `xls`
+
+* **Pacote:** `readxl` do `tidyverse` (instale com o comando `install.packages('readxl')`)
+* Parêmetros das funções `read_xls` (para ler arquivos `.xls`) e `read_xlsx` (para ler arquivos `.xlsx`):
+  * `path`: caminho até o arquivo.
+  * `sheet`: especifica a planilha do arquivo que será lida.
+  * `range`: especifica uma área de uma planilha para leitura. Por exemplo: `B3:E15`.
+  * `col_names`: Argumento lógico com valor padrão igual a `TRUE`. Indica se a primeira linha tem o nome das variáveis.
+  
+* Para mais detalhes, consulte a documentação oficial do _tidyverse_: [documentação de `read_xl`](https://readxl.tidyverse.org).
+
+## Lendo dados no `R`
+
+### Leitura de arquivos no formato `xlsx` ou `xls`
+
+```{r}
+library(tidyverse)
+library(readxl)
+dados_iris <- read_xlsx("../data/raw/iris.xlsx")
+
+head(dados_iris, n = 4)
+```
+
+## Lendo dados no `R` {.smaller}
+
+### Leitura de arquivos no formato `csv`
+
+* **Pacote:** `readr` do `tidyverse` (instale com o comando `install.packages('readr')`).
+
+* Parêmetros das funções `read_csv` e `read_csv2`:
+  * `path`: caminho até o arquivo.
+
+#### Padrão imperial inglês versus o resto do planeta
+
+* Se você mora ou está em um país que usa padrão _imperial inglês_:
+  * colunas separadas por `,`.
+  * casa decimal indicada por `.`.
+  
+* Se você mora ou está em um país que usa o sistema métrico:
+  * colunas separadas por `;`.
+  * casa decimal por `,`.
+
+**Preste atenção em como o seus dados estão armazenados!**
+
+Para mais detalhes, consulte a documentação oficial do _tidyverse_: [documentação de `read_r`](https://readr.tidyverse.org),
+
+## Lendo dados no `R` {.smaller}
+
+### Leitura de arquivos no formato `csv`
+
+```{r, message=FALSE}
+library(tidyverse)
+library(readr)
+dados_mtcars <- read_csv2("../data/raw/mtcars.csv")
+dados_mtcars
+```
+
+## Lendo dados no `R` 
+
+### Leitura de arquivos no formato `ods`
+
+* **Pacote:** `readODS`  (instale com o comando `install.packages('readODS')`).
+
+* Parêmetros das funções `read_ods`:
+* `path`: caminho até o arquivo.
+  * `sheet`: especifica a planilha do arquivo que será lida.
+  * `range`: especifica uma área de uma planilha para leitura. Por exemplo: `B3:E15`.
+  * `col_names`: Argumento lógico com valor padrão igual a `TRUE`. Indica se a primeira linha tem o nome das variáveis.
+
+* Para mais detalhes, consulte a documentação do _readODS_: [documentação de `readODS`](https://github.com/chainsawriot/readODS).
+
+## Lendo dados no `R` 
+
+### Leitura de arquivos no formato `ods`
+
+```{r}
+library(tidyverse)
+library(readODS)
+dados_toothgrowth <- read_ods("../data/raw/ToothGrowth.ods")
+
+glimpse(dados_toothgrowth)
+```
+
+## Salvando dados no `R`
+
+### Salvar no formato `.csv` (sistema métrico)
+
+```{r}
+library(readr)
+write_csv2(dados_toothgrowth, file = "../data/processed/dados_csv2.csv")
+```
+
+### Salvar no formato `.xlsx` 
+
+```{r}
+library(writexl)
+write_xlsx(dados_toothgrowth, path = "../data/processed/dados_xlsx.xlsx")
+```
+
+### Salvar no formato `ods`
+
+```{r}
+library(readODS)
+write_ods(dados_toothgrowth, path = "../data/processed/dados_ods.ods")
+```
+
+# Estatística Descritiva no `R`<br/><br/><br/> Gráficos e Tabelas 
+
+## Alguns conceitos básicos
+
+* **População**: todos os elementos ou indivíduos alvo do estudo.
+
+* **Amostra**: parte da população.
+
+* **Parâmetro:** característica numérica da população. Usamos letras gregas para denotar parâmetros populacionais.
+
+* **Estatística:** característica numérica da amostra. Em geral, usamos uma estatística para estimar o parâmetro populacional.
+
+* **Variável:** _característica mensurável comum a todos os elementos da população._ Usamos letras maiúsculas do alfabeto latino para representar uma variável e letras minúsculas do alfabeto latino para representar o valor observado da variável em um elemento da amostra.
+
+<!-- Por exemplo, podemos representar _a variável "Idade de um residente da cidade de Salvador" por $X$_ e seu _valor observado em um elemento da amostra por $x$_. -->
+
+---
+
+**Exemplo**:
+
+* **População**: Todos os residentes da cidade de Salvador com 25 anos ou mais.
+
+* **Amostra**: 5 residentes da cidade de Salvador com 25 anos ou mais _selecionados segundo um plano de amostragem probabilística_.
+
+* **Variável:** salário em R\$ (denotado pela letra $X$).
+
+* **Parâmetro:** _salário médio_ da população de residentes da cidade de Salvador com 25 anos ou mais (denotado pela letra grega $\mu$).
+
+* **Estatística:** _salário médio_ da amostra de 20 residentes da cidade de Salvador com 25 anos ou mais.
+
+---
+
+**Exemplo (continuação)**:
+
+Suponha que foi selecionada uma amostra de $n=5$ residentes da cidade de Salvador com 25 anos ou mais para os quais foi observada a variável salário em R\$.
+
+| Elemento da amostra | Salário |
+|---------------------|---------|
+| 1                   | 843.95  |
+| 2                   | 876.98  |
+| 3                   | 1055.87 |
+| 4                   | 907.05  |
+| 5                   | 912.93  |
+
+: Salário em R\$ de uma amostra de $5$ residentes da cidade de Salvador com 25 anos ou mais.
+
+---
+
+**Exemplo (continuação)**:
+
+Para este exemplo, temos que:
+
+* Variável: $X$: sálario em R\$.
+
+* Valores observados de $X$: $x_i$: valor observado da variável no $i$-ésimo elemento da amostra, $i=1,2,3,4,5$: 843.95; 876.98; 1055.87; 907.05; 912.93 
+
+* Parâmetro: $\mu$: salário médio dos residentes da cidade de Salvador com 25 anos ou mais.
+
+* Estatística: média amostral: $\overline x = \frac{x_1 + x_2 + x_3 + x_4 + x_5}{n}$.
+
+---
+
+**Exemplo (continuação)**:
+
+Média amostral:
+$$
+\begin{split}
+\overline x 
+&= \frac{x_1 + x_2 + x_3 + x_4 + x_5}{n} \\
+&= \frac{843.95+876.98+1055.87+907.05+912.93}{5} \\
+&= 919.356.
+\end{split}
+$$
+
+## Classificação de variáveis
+
+```{r, out.width="90%", fig.align='center', fig.cap='Classificação de variáveis.', echo=FALSE}
+knitr::include_graphics("../figures/variavel.png")
+```
+
+## Tabela de frequência -- Variável qualitativa {.smaller}
+
+A primeira coisa que fazemos é contar! 
+
+|$X$|frequência|frequência relativa|porcentagem|
+|:---:|:---:|:---:|:---:|
+|$B_1$|$n_1$|$f_1$|$100 \cdot f_1\%$|
+|$B_2$|$n_2$|$f_2$|$100 \cdot f_2\%$|
+|$\vdots$|$\vdots$|$\vdots$|$\vdots$|
+|$B_k$|$n_k$|$f_k$|$100 \cdot f_k\%$|
+|Total|$n$|$1$|$100\%$|
+
+Em que $n$ é o tamanho da amostra.
+
+## Tabela de frequência -- Variável qualitativa
+
+A primeira coisa que podemos fazer é construir a tabela de frequência.
+
+* **Pacote:** `tabyl` do `janitor`  (instale com o comando `install.packages('janitor')`).
+
+* Parêmetros da função `tabyl`:
+  * `dat`: _data frame_ ou vetor com os valores da variável que desejamos tabular.
+  * `var1`: nome da primeira variável.
+  * `var2`: nome da segunda variável (opcional).
+
+* Para mais detalhes, consulte a documentação oficial do _janitor_: [documentação de `tabyl`](https://cran.r-project.org/web/packages/janitor/janitor.pdf).
+
+---
+
+```{r, echo=TRUE, results='markup', eval=FALSE}
+library(tidyverse)
+library(readxl)
+library(janitor)
+library(dplyr)
+
+df_empresa <- read_xlsx("../data/raw/empresa.xlsx")
+
+tab <- tabyl(df_empresa, escolaridade)
+tab <- as_tibble(tab)
+tab <- tab |> rename(frequencia = n,
+              freq_relativa = percent)
+tab <-  tab |>
+  add_column(porcentagem = tab$freq_relativa*100)
+
+tab <-  tab |>
+  add_case(escolaridade = "Total",
+           frequencia = sum(tab$frequencia),
+           freq_relativa = sum(tab$freq_relativa),
+           porcentagem = sum(tab$porcentagem))
+```
+
+```{r, echo=FALSE, results='markup', eval=TRUE}
+library(tidyverse)
+library(readxl)
+library(janitor)
+library(dplyr)
+
+df_empresa <- read_xlsx("../data/raw/empresa.xlsx")
+
+tab <- tabyl(df_empresa, escolaridade)
+tab <- as_tibble(tab)
+tab <- tab |> rename(frequencia = n,
+              freq_relativa = percent)
+tab <-  tab |>
+  add_column(porcentagem = tab$freq_relativa*100)
+
+tab <-  tab |>
+  add_case(escolaridade = "Total",
+           frequencia = sum(tab$frequencia),
+           freq_relativa = sum(tab$freq_relativa),
+           porcentagem = sum(tab$porcentagem))
+```
+
+----
+
+```{r, echo=FALSE, results='markup'}
+tab <- tabyl(df_empresa, escolaridade)
+tab <- as_tibble(tab)
+tab <- tab |> rename(frequencia = n,
+              freq_relativa = percent)
+tab <-  tab |>
+  add_column(porcentagem = tab$freq_relativa*100)
+
+tab |>
+  add_case(escolaridade = "Total",
+           frequencia = sum(tab$frequencia),
+           freq_relativa = sum(tab$freq_relativa),
+           porcentagem = sum(tab$porcentagem)) |>
+  knitr::kable(digits = 2, format.args = list(decimal = ",", big.mark = "."))
+```
+
+
+## Gráficos no `R`
+
+* **Pacote:** `ggplot2`
+
+* Permite gráficos personalizados com uma sintaxe simples e rápida, e iterativa _por camadas_.
+
+* Começamos com um camada com os dados `ggplot(dados)`, e vamos adicionando as camadas de anotações, e sumários estatísticos.
+
+* Usa a _gramática de gráficos_ proposta por Leland Wilkinson: [Grammar of Graphics](https://www.springer.com/gp/book/9780387245447).
+
+* Ideia desta gramática: delinear os atributos estéticos das figuras geométricas (incluindo transformações nos dados e mudança no sistema de coordenadas).
+
+* Para mais detalhes, você pode consultar [`ggplot2`: elegant graphics for data analysis](https://ggplot2-book.org) e [documentação do `ggplot2`](https://ggplot2.tidyverse.org)
+
+## Gráficos no `R` 
+
+#### Estrutura básica de `ggplot2`
+
+```r
+ggplot(data = <data possible tibble>) +
+  <Geom functions>(mapping = aes(<MAPPINGS>)) +
+  <outras camadas>
+```
+
+Você pode usar diversos temas e extensões que a comunidade cria e criou para melhorar a aparência e facilitar a construção de `ggplot2`.
+
+* Lista com extensões do `ggplot`: [extensões do `ggplots`](https://exts.ggplot2.tidyverse.org/gallery/).
+
+Indicação de extensões:
+
+* Temas adicionais para o pacote `ggplot2`: [`ggthemes`](https://github.com/jrnold/ggthemes).
+
+* Gráfico de matriz de correlação: [`ggcorrplot`](https://rpkgs.datanovia.com/ggcorrplot/).
+
+* Gráfico quantil-quantil: [`qqplotr`](https://github.com/aloy/qqplotr).
+
+## Gráficos no `R` 
+
+### Gráfico de barras no `ggplot2`
+
+* **função:** `geom_bar()`. Para porcentagem: `geom_bar(x = <variável no eixo x>, y = ..prop.. * 100)`.
+
+* Argumentos adicionais:
+
+  * **`fill`**: mudar a cor do preenchimento das figuras geométricas.
+  * **`color`**: mudar a cor da figura geométrica.
+
+* Rótulos dos eixos
+
+  * **Mudar os rótulos:** `labs(x = <rótulo do eixo x>, y = <rótulo do eixo y>)`.
+  * **Trocar o eixo-x pelo eixo-y:** `coord_flip()`.
+
+----
+
+```{r, out.width="55%"}
+library(ggthemes)
+ggplot(df_empresa) +
+  geom_bar(mapping = aes(x = escolaridade, y = ..prop.. * 100, group = 1),
+  fill = "blue", color = "red") +
+  labs(x = "Escolaridade", y = "Porcentagem") +
+  theme_gdocs() +
+  coord_flip()
+```
+
+---
+
+### Gráfico no `R` com o _simplevis_
+
+* **Pacote:** `gg_bar` do `simplevis`  (instale com o comando `install.packages('simplevis')`).
+
+* Parêmetros da função `gg_bar`:
+  * `data`: _data frame_ da variável tabulada.
+  * `x_var`: variável do eixo `x`.
+  * `y_var`: variável (numérica) do eixo `y`.
+
+* Para mais detalhes, consulte a documentação oficial do _simplevis_: [documentação de `gg_bar`](https://statisticsnz.github.io/simplevis/articles/simplevis.html).
+
+---
+
+```{r, echo = TRUE, eval = TRUE}
+
+tab <- tabyl(df_empresa, escolaridade)
+tab <- as_tibble(tab)
+tab <- tab |> rename(frequencia = n, freq_relativa = percent)
+tab <-  tab |>   add_column(porcentagem = tab$freq_relativa*100)
+```
+
+```{r, out.width="55%"}
+library(simplevis)
+
+gg_bar(tab, x_var = escolaridade, y_var = porcentagem)
+```
+
+## Tabela de frequência -- Variável quantitativa discreta {.smaller}
+
+A primeira coisa que fazemos é contar! 
+
+|$X$|frequência|frequência relativa|porcentagem|
+|:---:|:--:|:--:|:--:|
+|$x_1$|$n_1$|$f_1$|$100\cdot f_1 \%$|
+|$x_2$|$n_2$|$f_2$|$100\cdot f_2 \%$|
+|$x_3$|$n_3$|$f_3$|$100\cdot f_3 \%$|
+|$\vdots$|$\vdots$|$\vdots$|$\vdots$|
+|$x_k$|$n_k$|$f_k$|$100\cdot f_k \%$|
+|Total|$n$|$1$|$100 \%$|
+
+Em que $n$ é o tamanho da amostra.
+
+## Tabela de frequência -- Variável quantitativa discreta {.smaller}
+
+A primeira coisa que podemos fazer é construir a tabela de frequência.
+
+```{r, eval=F}
+df_empresa <- read_xlsx("../data/raw/empresa.xlsx")
+
+tab <- tabyl(df_empresa, numero_filhos)
+tab <- as_tibble(tab)
+tab <- tab |> rename(frequencia = n,
+                     freq_relativa = percent)
+tab <-  tab |>
+  add_column(porcentagem = tab$freq_relativa*100)
+
+tab <- tab |> mutate(numero_filhos = as.character(numero_filhos))
+
+tab <-  tab |>
+  add_case(numero_filhos = "Total",
+           frequencia = sum(tab$frequencia),
+           freq_relativa = sum(tab$freq_relativa),
+           porcentagem = sum(tab$porcentagem))
+```
+
+---
+
+```{r, echo=FALSE}
+df_empresa <- read_xlsx("../data/raw/empresa.xlsx")
+
+tab <- tabyl(df_empresa, numero_filhos)
+tab <- as_tibble(tab)
+tab <- tab |> rename(frequencia = n,
+                     freq_relativa = percent)
+tab <-  tab |>
+  add_column(porcentagem = tab$freq_relativa*100)
+
+tab <- tab |> mutate(numero_filhos = as.character(numero_filhos))
+
+tab <-  tab |>
+  add_case(numero_filhos = "Total",
+           frequencia = sum(tab$frequencia),
+           freq_relativa = sum(tab$freq_relativa),
+           porcentagem = sum(tab$porcentagem))
+knitr::kable(tab, digits = 2,
+          format.args = list(decimal = ",", big.mark = "."))
+```
+
+## Gráfico de barras no `R`
+
+```{r, out.width="50%", fig.align="center"}
+ggplot(df_empresa) +
+  geom_bar(aes(x = numero_filhos, y = ..prop.., group = 1)) +
+  labs(x = "Número de filhos", y = "Frequência relativa") +
+  theme_calc()
+```
+
+---
+
+```{r, echo = TRUE, eval = TRUE}
+
+tab <- tabyl(df_empresa, numero_filhos)
+tab <- as_tibble(tab)
+tab <- tab |> rename(frequencia = n, freq_relativa = percent)
+tab <-  tab |> add_column(porcentagem = tab$freq_relativa*100)
+tab <- tab |> mutate(numero_filhos = as.character(numero_filhos))
+```
+
+```{r, out.width="55%"}
+library(simplevis)
+
+gg_bar(tab, x_var = numero_filhos, y_var = porcentagem)
+```
+
+## Tabela de frequência -- Variável quantitativa contínua {.smaller}
+
+* `X`: variável quantitativa contínua
+
+|`X`|Frequência|Frequência relativa|Porcentagem|
+|:-----:|:-------:|:-------:|:---------:|
+|$[l_0, l_1)$| $n_1$|$f_1 = \frac{n_1}{n_1 + \dots + n_k}$|$p_1 = f_1 \cdot 100$|
+|$[l_1, l_2)$| $n_2$|$f_2 = \frac{n_2}{n_1 + \dots + n_k}$|$p_2 = f_2 \cdot 100$|
+|$\vdots$| $\vdots$|$\vdots$|$\vdots$|
+|$[l_{k-1}, l_k]$| $n_k$|$f_k = \frac{n_k}{n_1 + \dots + n_k}$|$p_k = f_k \cdot 100$|
+Table: Tabela de frequências para a variável quantitativa contínua.
+
+-----
+
+Em que $\min = l_0 \leq l_1 \leq \cdots \leq l_{k-1} \leq l_k = \max$ ($\min$ é o menor valor do suporte da variável `X` e $\max$ é o maior valor do suporte da variável `X`), $n_i$ é número de valores de `X` entre $l_{i-1}$ e $l_i$, e $l_0, l_1, \dots, l_k$ quebram o suporte da variável `X` (_breakpoints_). 
+
+$l_0, l_1, \cdots, l_k$ são escolhidos de acordo com a teoria por trás da análise de dados (ou pelo regulador).
+
+Recomendação: use $l_0, l_1, \cdots, l_k$ igualmente espaçados, e use a [regra de Sturges](https://onlinelibrary.wiley.com/doi/10.1002/wics.35) para determinar o valor de $k$: $k = 1 + \log2(n)$ onde $n$ é tamanho da amostra. Se $1 + \log2(n)$ não é um número inteiro, usamos $k = \lceil 1 + \log2(n) \rceil$.
+
+## Tabela de frequência -- Variável quantitativa contínua {.smaller}
+
+```{r, eval= FALSE}
+
+df_iris <- read_xlsx("../data/raw/iris.xlsx")
+
+k <- round(1 + log2(nrow(df_iris)))
+
+sep_len_int <- cut(df_iris$Sepal.Length, 
+    breaks = k, include.lowest = T, right = F)
+
+tab <- tabyl(sep_len_int)
+tab <- as_tibble(tab)
+tab <- tab |> rename(frequencia = n,
+                     freq_relativa = percent)
+tab <-  tab |>
+  add_column(porcentagem = tab$freq_relativa*100)
+
+tab <-  tab |>
+  add_case(sep_len_int = "Total",
+           frequencia = sum(tab$frequencia),
+           freq_relativa = sum(tab$freq_relativa),
+           porcentagem = sum(tab$porcentagem))
+```
+
+---
+
+```{r, echo = FALSE}
+df_iris <- read_xlsx("../data/raw/iris.xlsx")
+
+k <- round(1 + log2(nrow(df_iris)))
+
+sep_len_int <- cut(df_iris$Sepal.Length, 
+    breaks = k, include.lowest = T, right = F)
+
+tab <- tabyl(sep_len_int)
+tab <- as_tibble(tab)
+tab <- tab |> rename(frequencia = n,
+                     freq_relativa = percent)
+tab <-  tab |>
+  add_column(porcentagem = tab$freq_relativa*100)
+
+tab <-  tab |>
+  add_case(sep_len_int = "Total",
+           frequencia = sum(tab$frequencia),
+           freq_relativa = sum(tab$freq_relativa),
+           porcentagem = sum(tab$porcentagem))
+knitr::kable(tab, digits = 2, format.args = list(decimal = ",", big.mark = "."))
+```
+
+## Histograma
+
+Para variávieis quantitativas contínuas, geralmente não construímos gráficos de barras, e sim uma figura geométrica chamada de _histograma_. 
+
+* O histograma é um gráfico de barras contíguas em que a área de cada barra é
+igual à frequência relativa.
+
+* Cada faixa de valor $[l_{i-1}, l_{i}), i=1, \dots, n,$ será representada por um barra com área $f_i, i=1, \dots, n$.
+
+* Como cada barra terá área igual a $f_i$ e base $l_i - l_{i-1}$, e a altura de cada barra será $\frac{f_i}{l_i - l_{i-1}}$.
+
+* $\frac{f_i}{l_i - l_{i-1}}$ é denominada de densidade de frequência.
+
+## Histograma {.smaller}
+
+```{r}
+df_iris <- read_xlsx("../data/raw/iris.xlsx")
+k <- round(1 + log2(nrow(df_iris)))
+
+ggplot(df_iris) +
+  geom_histogram(aes(x = Sepal.Length, y = ..density..),
+                bins = k, fill = "blue") +
+  theme_calc() +
+  labs(x = "Comprimento de Pétala", y = "Densidade de Frequência")
+```
+
+## Medidas resumo (variável quantitativa) {.smaller}
+
+A ideia é encontrar um ou alguns valores que sintetizem todos os valores.
+
+### Medidas de posição (tendência central)
+
+A ideia é encontrar um valor que representa _bem_ todos os valores.
+
+* **Média:**  $\overline{x} = \dfrac{x_1+\cdots+x_n}{n}$.
+
+* **Mediana:** valor que divide a sequência ordenada de valores em duas partes iguais.
+
+### Medidas de dispersão
+
+A ideia é medir a homogeneidade dos valores.
+
+* **Variância: ** $s^2 = \dfrac{(x_1 - \overline{X})^2 + \cdots + (x_n - \overline{X})^2}{n-1}$.
+
+* **Desvio padrão: ** $s = \sqrt{s^2}$ (mesma unidade dos dados).
+
+* **Coeficiente de variação** $cv= \dfrac{s}{\overline{x}} \cdot 100\%$ (adimensional, ou seja, "sem unidade").
+
+## Medidas resumo: exemplo
+
+Podemos usar a função `summarise` do pacote `dplyr` (incluso no pacote `tidyverse`).
+
+```{r}
+df_empresa |>
+  summarise(media = mean(salario),  mediana = median(salario), 
+            dp = sd(salario), cv = dp / media)
+```
+
+## Medidas resumo: exemplo {.smaller}
+
+Podemos usar a função  `group_by` para calcular medidas resumo por categorias de uma variável qualitativa.
+
+```{r, eval=FALSE}
+
+df_empresa <- read_xlsx("../data/raw/empresa.xlsx")
+
+df_empresa |> 
+  group_by(escolaridade) |>
+  summarise(media = mean(salario), md = median(salario), dp = sd(salario), cv = dp / media) |>
+  gt() |>
+  tab_header(
+    title = "Medidas resumo por escolaridade.",
+    subtitle = "Média, mediana, desvio padrão e coeficiente de variação em salários mínimos."
+  ) |>
+  cols_label(
+    escolaridade = "Escolaridade",
+    media = "Média salarial",
+    md = "Salário mediano",
+    dp = "Desvio padrão de salário",
+    cv = "Coeficiente de variação"
+  ) |>
+  fmt_number(
+    columns = c(media, md, dp, cv),
+    decimals = 2,
+    dec_mark = ",",
+    sep_mark = "."
+  )
+```
+
+---
+
+```{r, echo=FALSE}
+df_empresa <- read_xlsx("../data/raw/empresa.xlsx")
+
+df_empresa |> 
+  group_by(escolaridade) |>
+  summarise(media = mean(salario), md = median(salario), dp = sd(salario), cv = dp / media) |>
+  gt() |>
+  tab_header(
+    title = "Medidas resumo por escolaridade.",
+    subtitle = "Média, mediana, desvio padrão e coeficiente de variação em salários mínimos."
+  ) |>
+  cols_label(
+    escolaridade = "Escolaridade",
+    media = "Média salarial",
+    md = "Salário mediano",
+    dp = "Desvio padrão de salário",
+    cv = "Coeficiente de variação"
+  ) |>
+  fmt_number(
+    columns = c(media, md, dp, cv),
+    decimals = 2,
+    dec_mark = ",",
+    sep_mark = "."
+  )
+```
+
+## {.smaller}
+
+```{r, eval=FALSE}
+df_empresa <- read_xlsx("../data/raw/empresa.xlsx")
+
+df_empresa |> 
+  group_by(escolaridade) |>
+  summarise(media = mean(salario), md = median(salario), dp = sd(salario), cv = dp / media) |>
+  gt() |>
+  tab_header(
+    title = "Medidas resumo da variável salário por categoria de escolaridade."
+    #subtitle = "Média, desvio padrão, mediana e coeficiente de variação em salários mínimos."
+  ) |>
+  cols_label(
+    escolaridade = "Escolaridade",
+    media = "Média",
+    md = "Mediana",
+    dp = "Desvio padrão",
+    cv = "Coeficiente de variação"
+  ) |>
+  fmt_number(
+    columns = c(media, md, dp, cv),
+    decimals = 2,
+    dec_mark = ",",
+    sep_mark = "."
+  )
+```
+
+---
+
+```{r, echo=FALSE}
+df_empresa <- read_xlsx("../data/raw/empresa.xlsx")
+
+df_empresa |> 
+  group_by(escolaridade) |>
+  summarise(media = mean(salario), md = median(salario), dp = sd(salario), cv = dp / media) |>
+  gt() |>
+  tab_header(
+    title = "Medidas resumo da variável salário por categoria de escolaridade."
+    #subtitle = "Média, desvio padrão, mediana e coeficiente de variação em salários mínimos."
+  ) |>
+  cols_label(
+    escolaridade = "Escolaridade",
+    media = "Média",
+    md = "Mediana",
+    dp = "Desvio padrão",
+    cv = "Coeficiente de variação"
+  ) |>
+  fmt_number(
+    columns = c(media, md, dp, cv),
+    decimals = 2,
+    dec_mark = ",",
+    sep_mark = "."
+  )
+```
+
+
+

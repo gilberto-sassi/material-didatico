@@ -90,10 +90,10 @@ exams::answerlist(rep("", length(sol)), markup = "markdown")
 * RC = `r rc[1]`.
 * RC = `r rc[2]`.
 * RC = `r rc[3]`.
-* Usando o valor-p, podemos afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600 ao nível de significância &alpha; = `r f(g)`.
-* Usando o valor-p, **NÃO** temos evidência para afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600 ao nível de significância &alpha; = `r f(g)`.
-* Usando o procedimento geral de Neyman-Pearson, podemos afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600 ao nível de significância &alpha; = `r f(g)`.
-* Usando o procedimento geral de Neyman-Pearson, **NÃO** temos evidência para afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600 ao nível de significância &alpha; = `r f(g)`.
+* Usando o valor-p, podemos afirmar que a nota média de matemática nesta edição do ENEM em 2022 é maior que 600 ao nível de significância &alpha; = `r f(g)`.
+* Usando o valor-p, **NÃO** temos evidência para afirmar que a nota média de matemática nesta edição do ENEM em 2022 é maior que 600 ao nível de significância &alpha; = `r f(g)`.
+* Usando o procedimento geral de Neyman-Pearson, podemos afirmar que a nota média de matemática nesta edição do ENEM em 2022 é maior que 600 ao nível de significância &alpha; = `r f(g)`.
+* Usando o procedimento geral de Neyman-Pearson, **NÃO** temos evidência para afirmar que a nota média de matemática nesta edição do ENEM em 2022 é maior que 600 ao nível de significância &alpha; = `r f(g)`.
 
 Solution
 ========
@@ -109,14 +109,14 @@ exams::answerlist(rep("", length(sol)), markup = "markdown")
 * RC = `r rc[1]`.
 *
 * 
-* `r ifelse(decisao_valor_p, glue("Ao nível de significância &alpha; = {f(g)} e usando valor-p, podemos afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600. "), glue("Ao nível de significância &alpha; = {f(g)} e usando o valor-p, **NÃO** temos evidência para afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600. "))` 
+* `r ifelse(decisao_valor_p, glue("Ao nível de significância &alpha; = {f(g)} e usando valor-p, podemos afirmar que a nota média de matemática nesta edição do ENEM em 2022 é maior que 600. "), glue("Ao nível de significância &alpha; = {f(g)} e usando o valor-p, **NÃO** temos evidência para afirmar que a nota média de matemática nesta edição do ENEM em 2022 é maior que 600. "))` 
 *
-* `r ifelse(decisao_proc_geral, glue("Ao nível de significância &alpha; = {f(g)} e usando procedimento geral de Neyman-Pearson, podemos afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600. "), glue("Ao nível de significância &alpha; = {f(g)} e usando procedimento geral de Neyman-Pearson,  **NÃO** temos evidência para afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600. "))` 
+* `r ifelse(decisao_proc_geral, glue("Ao nível de significância &alpha; = {f(g)} e usando procedimento geral de Neyman-Pearson, podemos afirmar que a nota média de matemática nesta edição do ENEM em 2022 é maior que 600. "), glue("Ao nível de significância &alpha; = {f(g)} e usando procedimento geral de Neyman-Pearson,  **NÃO** temos evidência para afirmar que a nota média de matemática nesta edição do ENEM em 2022 é maior que 600. "))` 
 *   
 
 Meta-information
 ================
-exname: enem_2021_HT
+exname: enem_2022_HT
 extype: cloze
 exsolution: `r sol[[1]]`|`r sol[[2]]`|`r sol[[3]]`|`r sol[[4]]`|`r sol[[5]]`|100|`r ifelse(decisao_valor_p, "10", "01")`|`r ifelse(decisao_proc_geral, "10", "01")`
 exclozetype: num|num|num|num|num|schoice|schoice|schoice

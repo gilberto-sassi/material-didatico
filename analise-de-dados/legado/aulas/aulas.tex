@@ -1,0 +1,3604 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  10pt,
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usetheme[]{Boadilla}
+\usecolortheme{seagull}
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{#1}
+\newcommand{\BaseNTok}[1]{#1}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.00,0.50,0.50}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\ConstantTok}[1]{#1}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.00,1.00}{#1}}
+\newcommand{\DataTypeTok}[1]{#1}
+\newcommand{\DecValTok}[1]{#1}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{#1}
+\newcommand{\FunctionTok}[1]{#1}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.00,1.00}{#1}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{#1}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{1.00,0.25,0.00}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{1.00,0.25,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.50,0.50}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.00,0.50,0.50}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.00,0.50,0.50}{#1}}
+\newcommand{\VariableTok}[1]{#1}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.00,0.50,0.50}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\usepackage{longtable,booktabs}
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\usepackage[normalem]{ulem}
+% Avoid problems with \sout in headers with hyperref
+\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{enumerate}
+\usepackage{times}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing, shapes, arrows.meta, positioning}
+\usepackage{bm}
+\usepackage{multirow}
+
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\DP}{DP}
+\DeclareMathOperator{\DM}{DM}
+\DeclareMathOperator{\espe}{E}
+
+% \usepackage[all]{background}
+
+% \backgroundsetup{
+% placement=center,
+% scale=1.5,
+% color=black,
+% opacity=0.1,
+% angle=0,
+% contents={%
+%   \includegraphics[width=5cm]{logo-ufba.png}
+%   }%
+% }
+
+% \usebackgroundtemplate{}  
+
+
+%PE - Curso - Introducao a Estatistica usando o R Aplicacao em Analise Laboratoriais
+\title[\texttt{R} para Ciência de Dados]{\LARGE{\texttt{R} para Ciência de Dados: \\Exploração e Visualização de Dados}}
+\institute[IME-UFBA]{\Large{Instituto de Matemática e Estatística\\ Universidade Federal da Bahia}\\ \vspace{1cm} \large{Profa Carolina \& Prof Gilberto}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm, minimum height=2em]
+
+%\doublespacing
+
+ \begin{frame}{}
+	\maketitle
+ \end{frame}
+
+\begin{frame}[fragile]{Preparando o ambiente}
+\protect\hypertarget{preparando-o-ambiente}{}
+\textbf{\large Durante o curso}
+
+\begin{itemize}
+\tightlist
+\item
+  Usaremos nas aulas: \href{https://posit.cloud/}{posit.cloud}.
+\item
+  Recomendamos instalar e usar \texttt{R} com versão pelo menos
+  \texttt{4.1}: \href{https://cran.r-project.org}{cran.r-project.org}.
+\item
+  usaremos o \emph{framework}
+  \href{https://www.tidyverse.org}{\texttt{tidyverse}}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Instalação: \texttt{install.packages("tidyverse")}
+  \end{itemize}
+\end{itemize}
+
+\rule{\textwidth}{0.5pt}
+
+\textbf{\large Na sua casa}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{IDE} recomendadas:
+  \href{https://www.rstudio.com/products/rstudio/download/preview/}{\emph{RStudio}}
+  e \href{https://code.visualstudio.com}{\emph{VSCode}}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Caso você queira usar o
+    \href{https://code.visualstudio.com}{\emph{VSCode}}, instale a
+    extensão da linguagem \texttt{R}:
+    \href{https://marketplace.visualstudio.com/items?itemName=REditorSupport.r}{\texttt{REditorSupport}}.
+  \end{itemize}
+\item
+  Outras linguagens interessantes:
+  \href{https://www.python.org}{\texttt{python}} e
+  \href{https://julialang.org}{\texttt{julia}}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://www.python.org}{\texttt{python}}: linguagem
+    interpretada de próposito geral, contemporânea do \texttt{R},
+    simples e fácil de aprender.
+  \item
+    \href{https://julialang.org}{\texttt{julia}}: linguagem interpretada
+    para análise de dados, lançada em 2012, promete simplicidade e
+    velocidade.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{A linguagem \texttt{R}}
+\protect\hypertarget{a-linguagem-r}{}
+\textbf{A precursora da linguagem \texttt{R}: \texttt{S}.}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{R} é uma linguagem derivada do \texttt{S}.
+\item
+  \texttt{S} foi desenvolvido em \texttt{fortran} por \textbf{John
+  Chambers} em \emph{1976} no \textbf{Bell Labs}.
+\item
+  \texttt{S} foi desenvolvido para ser um ambiente de análise
+  estatística.
+\item
+  Filosofia do \texttt{S}: permitir que usuários possam analisar dados
+  usando estatística com pouco conhecimento de programação.
+\end{itemize}
+
+\textbf{História da linguagem \texttt{R}}
+
+\begin{itemize}
+\tightlist
+\item
+  Em \emph{1991}, \textbf{Ross Ihaka} e \textbf{Robert Gentleman}
+  criaram o \texttt{R} na \textbf{Nova Zelândia}.
+\item
+  Em \emph{1996}, \textbf{Ross} e \textbf{Robert} liberam o \texttt{R}
+  sob a licença ``GNU General License'', o que tornou o \texttt{R} um
+  software livre.
+\item
+  Em \emph{1997}, \textbf{The Core Group} é criado para melhorar e
+  controlar o código fonte do \texttt{R}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Motivos para usar \texttt{R}}
+\protect\hypertarget{motivos-para-usar-r}{}
+\large
+
+\begin{itemize}
+\tightlist
+\item
+  Constante melhoramento e atualização.
+\item
+  Portabilidade (roda em praticamente todos os sistemas operacionais).
+\item
+  Grande comunidade de desenvolvedores que adicionam novas capacidades
+  ao R através de pacotes.
+\item
+  Gráficos de maneira relativamente simples.
+\item
+  Interatividade.
+\item
+  Um grande comunidade de usuários (especialmente útil para resolução de
+  problemas).
+\end{itemize}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]{Onde estudar fora de aula?}
+\protect\hypertarget{onde-estudar-fora-de-aula}{}
+\large
+
+\textbf{Livros}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Nível \emph{cheguei agora aqui}:}
+  \href{https://curso-r.github.io/zen-do-r/index.html}{zen do R}.
+\item
+  \textbf{Nível Iniciante:}
+  \href{https://www.w3schools.com/r/default.asp}{R Tutorial na
+  W3Schools}.
+\item
+  \textbf{Nível Iniciante:}
+  \href{https://rstudio-education.github.io/hopr/}{Hands-On Programming
+  with \texttt{R}}.
+\item
+  \textbf{Nível Intermediário:} \href{https://r4ds.had.co.nz}{\texttt{R}
+  for Data Science}.
+\item
+  \textbf{Nível Avançado:} \href{https://adv-r.hadley.nz}{Advanced
+  \texttt{R}}.
+\end{itemize}
+
+\textbf{Em pt-br}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Curso R}:
+  \href{http://material.curso-r.com/}{material.curso-r.com}.
+\item
+  \textbf{\texttt{ecoR}}: \href{http://ecor.ib.usp.br/}{ecor.ib.usp.br}.
+\end{itemize}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]{O que você pode fazer quando estiver em apuros?}
+\protect\hypertarget{o-que-vocuxea-pode-fazer-quando-estiver-em-apuros}{}
+\begin{itemize}
+\tightlist
+\item
+  consultar a documentação do \texttt{R}:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{help}\NormalTok{(mean)}
+\NormalTok{?mean}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Peça ajuda a um programador mais experiente.
+\item
+  Consulte o \href{https://pt.stackoverflow.com/}{pt.stackoverflow.com}.
+\item
+  Use ferramentas de busca como o
+  \href{https://www.google.com.br/}{google} e
+  \href{https://duckduckgo.com/}{duckduckgo.com}.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{log}\NormalTok{(}\StringTok{"G"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Na ferramenta de busca, pesquise
+  por\newline \texttt{Error\ in\ log("G"):\ non-numeric\ argument\ to\ mathematical\ function}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Operações básicas}
+\protect\hypertarget{operauxe7uxf5es-buxe1sicas}{}
+\footnotesize
+
+\textbf{Soma}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1} \OperatorTok{+}\StringTok{ }\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+\textbf{Substração}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2} \OperatorTok{{-}}\StringTok{ }\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\textbf{Multiplicação}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{3} \OperatorTok{*}\StringTok{ }\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 9
+\end{verbatim}
+
+\textbf{Divisão}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{3} \OperatorTok{/}\StringTok{ }\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.5
+\end{verbatim}
+
+\textbf{Potenciação}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2}\OperatorTok{\^{}}\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8
+\end{verbatim}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]{Operações básicas\newline Exercício}
+\protect\hypertarget{operauxe7uxf5es-buxe1sicasexercuxedcio}{}
+Qual o resultado das seguintes operações?
+
+\begin{enumerate}
+\tightlist
+\item
+  \texttt{5.32\ +\ 7.99}
+\item
+  \texttt{5.55\ -\ 10}
+\item
+  \texttt{3.33\ *\ 5.12}
+\item
+  \texttt{1\ /\ 4.55}
+\item
+  \texttt{5\^{}1.23}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Os dados no \texttt{R}}
+\protect\hypertarget{os-dados-no-r}{}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Tipo de dados:} caracter (\texttt{character}), número real
+  (\texttt{double}), número inteiro (\texttt{integer}), número complexo
+  (\texttt{complex}) e lógico (\texttt{logical}).
+\item
+  \textbf{Estrutura de dados:} atomic \texttt{vector} (a estrutura de
+  dados mais básicA no \texttt{R}), \texttt{matrix}, \texttt{array},
+  \texttt{list} e \texttt{data.frame} (\texttt{tibble} no
+  \texttt{tidyverse}).
+\item
+  \textbf{Estrutura de dados Homogênea:} \texttt{vector},
+  \texttt{matrix} e \texttt{array}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{array} é uma estrutura de dados multidimensional para
+    armazenar sequências de matrizes (ou sequência de \emph{arrays}).
+    Para detalhes sobre \texttt{array}, consulte
+    \href{https://www.datacamp.com/tutorial/arrays-in-r}{\emph{Arrays}
+    in R}.
+  \end{itemize}
+\item
+  \textbf{Estrutura de dados Heterôgenea:} \texttt{list} e
+  \texttt{data.frame} (\texttt{tibble} no \texttt{tidyverse}).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Funções na linguagem \texttt{R}}
+\protect\hypertarget{funuxe7uxf5es-na-linguagem-r}{}
+\textbf{Função:} é uma ação e tem os seguinte componentes na ordem:
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{nome da função}
+\item
+  \emph{parênteses}
+\item
+  \emph{argumentos posicionais}
+\item
+  \emph{argumentos nomeados}
+\end{itemize}
+
+\footnotesize
+
+\[
+\overbrace{\texttt{nome\_funcao}}^{\text{\textit{nome da função}}} \overbrace{(}^{\text{\textit{parênteses}}} \overbrace{\texttt{valor1},\quad \texttt{valor2}}^{\text{\textit{argumentos posicionais}}},\quad \overbrace{\texttt{nome1 = valor3},\quad \texttt{nome2 = valor4}}^{\text{\textit{argumentos nomeados}}} \overbrace{)}^{\text{\textit{parênteses}}}
+\]
+
+\normalsize
+
+\textbf{example:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{read\_xlsx}\NormalTok{(}\StringTok{\textquotesingle{}data/raw/casas.xlsx\textquotesingle{}}\NormalTok{, }\DataTypeTok{sheet=}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Funções na linguagem
+\texttt{R}\newline Exercício}
+\protect\hypertarget{funuxe7uxf5es-na-linguagem-rexercuxedcio}{}
+\begin{itemize}
+\tightlist
+\item
+  Obtenha ajuda para \texttt{mean} usando a função \texttt{help}.
+\item
+  Calcule o logaritmo de 10 na base 3 usando a função \texttt{log}.
+\item
+  Leia o conjunto de dados \texttt{amostra\_enem\_salvador.xlsx} usando
+  a função \texttt{read\_xlsx} do pacote \texttt{readxl}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Tipo de dados no \texttt{R}}
+\protect\hypertarget{tipo-de-dados-no-r}{}
+\textbf{Número inteiro}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{(1L)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "integer"
+\end{verbatim}
+
+\textbf{Número real}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{(}\FloatTok{1.2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+\textbf{Número complexo}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{(}\DecValTok{1} \OperatorTok{+}\StringTok{ }\NormalTok{1i)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "complex"
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Tipo de dados no \texttt{R}}
+\protect\hypertarget{tipo-de-dados-no-r-1}{}
+\textbf{Número lógico ou valor booleano}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{(}\OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "logical"
+\end{verbatim}
+
+\textbf{Caracter ou \emph{string}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{(}\StringTok{"Gilberto"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados homogênea}
+\protect\hypertarget{estrutura-de-dados-homoguxeanea}{}
+\textbf{Vetor}
+
+\begin{itemize}
+\tightlist
+\item
+  Agrupamento de valores de mesmo tipo em um único objeto.
+\item
+  Criação de vetor:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{c(...)}
+  \item
+    \texttt{vector(\textquotesingle{}\textless{}tipo\ de\ dados\textgreater{}\textquotesingle{},\ \textless{}comprimento\ do\ vetor\textgreater{})}
+  \item
+    \texttt{seq(from\ =\ a,\ to\ =\ b,\ by\ =\ c)}.
+  \end{itemize}
+\end{itemize}
+
+\textbf{Vetor de caracteres}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vetor\_nomes  \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Gilberto"}\NormalTok{, }\StringTok{"Sassi"}\NormalTok{)}
+\NormalTok{vetor\_nomes}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Gilberto" "Sassi"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vetor\_texto\_vazio \textless{}{-}}\StringTok{ }\KeywordTok{vector}\NormalTok{(}\StringTok{"character"}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{vetor\_texto\_vazio}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "" "" ""
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados homogênea}
+\protect\hypertarget{estrutura-de-dados-homoguxeanea-1}{}
+\textbf{Vetor de números reais}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vetor\_numerico  \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{0.2}\NormalTok{, }\FloatTok{1.35}\NormalTok{)}
+\NormalTok{vetor\_numerico}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.20 1.35
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vetor\_vazio \textless{}{-}}\StringTok{ }\KeywordTok{vector}\NormalTok{(}\StringTok{"double"}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{vetor\_vazio}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0 0 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vetor\_seq \textless{}{-}}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{1}\NormalTok{, }\DataTypeTok{to =} \FloatTok{3.5}\NormalTok{, }\DataTypeTok{by =} \FloatTok{0.5}\NormalTok{)}
+\NormalTok{vetor\_seq}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.0 1.5 2.0 2.5 3.0 3.5
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados homogênea}
+\protect\hypertarget{estrutura-de-dados-homoguxeanea-2}{}
+\textbf{Vetor de números inteiros}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vetor\_inteiros  \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(1L, 2L)}
+\NormalTok{vetor\_inteiros}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vetor\_inteiros\_vazio \textless{}{-}}\StringTok{ }\KeywordTok{vector}\NormalTok{(}\StringTok{"integer"}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{vetor\_inteiros\_vazio}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0 0 0
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados homogênea}
+\protect\hypertarget{estrutura-de-dados-homoguxeanea-3}{}
+\textbf{Vetor lógico}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vetor\_logico  \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{)}
+\NormalTok{vetor\_logico}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vetor\_logico\_vazio \textless{}{-}}\StringTok{ }\KeywordTok{vector}\NormalTok{(}\StringTok{"logical"}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{vetor\_logico\_vazio}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE FALSE FALSE
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados homogênea}
+\protect\hypertarget{estrutura-de-dados-homoguxeanea-4}{}
+\textbf{Matriz}
+
+\begin{itemize}
+\tightlist
+\item
+  Agrupamento de valores de mesmo tipo em um único objeto de dimensão 2.
+\item
+  Criação de matriz:
+  \texttt{matrix(...,\ nrow\ =\ \textless{}integer\textgreater{},\ ncol\ =\ \textless{}integer\textgreater{})},
+  \texttt{cbind}, \texttt{rbind} ou
+  \texttt{diag(\textless{}vector\textgreater{})}.
+\end{itemize}
+
+\textbf{Matriz de caracteres}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{matriz\_texto \textless{}{-}}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{, }\StringTok{"d"}\NormalTok{), }\DataTypeTok{nrow =} \DecValTok{2}\NormalTok{)}
+\NormalTok{matriz\_texto}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,] "a"  "c" 
+## [2,] "b"  "d"
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados homogênea}
+\protect\hypertarget{estrutura-de-dados-homoguxeanea-5}{}
+\textbf{Matriz de números reais}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{matriz\_num\_real \textless{}{-}}\StringTok{ }\KeywordTok{diag}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\FloatTok{1.1}\NormalTok{, }\FloatTok{2.3}\NormalTok{, }\FloatTok{3.3}\NormalTok{))}
+\NormalTok{matriz\_num\_real}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]  1.1  0.0  0.0
+## [2,]  0.0  2.3  0.0
+## [3,]  0.0  0.0  3.3
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados homogênea}
+\protect\hypertarget{estrutura-de-dados-homoguxeanea-6}{}
+\textbf{Matriz de inteiros}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{matriz\_inteiros \textless{}{-}}\StringTok{ }\KeywordTok{cbind}\NormalTok{(}\KeywordTok{c}\NormalTok{(1L, 2L), }\KeywordTok{c}\NormalTok{(3L, 4L), }\DataTypeTok{nrow =} \DecValTok{2}\NormalTok{)}
+\NormalTok{matriz\_inteiros}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          nrow
+## [1,] 1 3    2
+## [2,] 2 4    2
+\end{verbatim}
+
+\textbf{Matriz de valores lógicos}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{matriz\_logica \textless{}{-}}\StringTok{ }\KeywordTok{rbind}\NormalTok{(}
+  \KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{),}
+  \KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{, }\OtherTok{TRUE}\NormalTok{)}
+\NormalTok{)}
+\NormalTok{matriz\_logica}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1]  [,2]
+## [1,] TRUE FALSE
+## [2,] TRUE  TRUE
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Estrutura de dados homogênea\newline Exercício}
+\protect\hypertarget{estrutura-de-dados-homoguxeaneaexercuxedcio}{}
+Crie as seguintes matrizes e vetores:
+
+\begin{enumerate}
+\tightlist
+\item
+  \(\begin{pmatrix} \text{João} & \text{Joana}\\ \text{Josué} & \text{Joaquina}\end{pmatrix}\)
+\item
+  \(\begin{pmatrix} 1 & 0 & 0 \\ 0 & 2.5 & 0 \\ 0 & 0 & 3.1 \end{pmatrix}\)
+\item
+  \(\begin{pmatrix} TRUE & TRUE & FALSE \end{pmatrix}\)
+\item
+  \(\begin{pmatrix} 0,1 & 0,2 & 0,3 & 0,4 & 0,5 \end{pmatrix}\)
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados homogênea}
+\protect\hypertarget{estrutura-de-dados-homoguxeanea-7}{}
+\textbf{Operações com vetores númericos (\texttt{double},
+\texttt{integer} e \texttt{complex}).}
+
+\begin{itemize}
+\tightlist
+\item
+  Operações básicas (operação, substração, multiplicação e divisão )
+  realizada em cada elemento do vetor.
+\item
+  \emph{Slicing}: extrair parte de um vetor
+\end{itemize}
+
+\rule{\textwidth}{0.5pt}
+
+\textbf{\emph{Slicing}}
+
+Selecionando todos os elementos entre o primeiro e o quinto.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{letras \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{, }\StringTok{"d"}\NormalTok{, }\StringTok{"e"}\NormalTok{, }\StringTok{"f"}\NormalTok{, }\StringTok{"g"}\NormalTok{, }\StringTok{"h"}\NormalTok{, }\StringTok{"i"}\NormalTok{)}
+\NormalTok{letras[}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "a" "b" "c" "d" "e"
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados homogênea}
+\protect\hypertarget{estrutura-de-dados-homoguxeanea-8}{}
+\textbf{Adição (vetores númericos)}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vetor\_}\DecValTok{1}\NormalTok{ \textless{}{-}}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{5}
+\NormalTok{vetor\_}\DecValTok{2}\NormalTok{ \textless{}{-}}\StringTok{ }\DecValTok{6}\OperatorTok{:}\DecValTok{10}
+\NormalTok{vetor\_}\DecValTok{1} \OperatorTok{{-}}\StringTok{ }\NormalTok{vetor\_}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -5 -5 -5 -5 -5
+\end{verbatim}
+
+\textbf{Substração (vetores numéricos)}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vetor\_}\DecValTok{1}\NormalTok{ \textless{}{-}}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{5}
+\NormalTok{vetor\_}\DecValTok{2}\NormalTok{ \textless{}{-}}\StringTok{ }\DecValTok{6}\OperatorTok{:}\DecValTok{10}
+\NormalTok{vetor\_}\DecValTok{1} \OperatorTok{{-}}\StringTok{ }\NormalTok{vetor\_}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -5 -5 -5 -5 -5
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados homogênea}
+\protect\hypertarget{estrutura-de-dados-homoguxeanea-9}{}
+\textbf{Multiplicação (vetores numéricos)}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vetor\_}\DecValTok{1}\NormalTok{ \textless{}{-}}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{5}
+\NormalTok{vetor\_}\DecValTok{2}\NormalTok{ \textless{}{-}}\StringTok{ }\DecValTok{6}\OperatorTok{:}\DecValTok{10}
+\NormalTok{vetor\_}\DecValTok{1} \OperatorTok{*}\StringTok{ }\NormalTok{vetor\_}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  6 14 24 36 50
+\end{verbatim}
+
+\textbf{Divisão (vetores numéricos)}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vetor\_}\DecValTok{1}\NormalTok{ \textless{}{-}}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{5}
+\NormalTok{vetor\_}\DecValTok{2}\NormalTok{ \textless{}{-}}\StringTok{ }\DecValTok{6}\OperatorTok{:}\DecValTok{10}
+\NormalTok{vetor\_}\DecValTok{1} \OperatorTok{/}\StringTok{ }\NormalTok{vetor\_}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1666667 0.2857143 0.3750000 0.4444444 0.5000000
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Estrutura de dados homogênea}
+\protect\hypertarget{estrutura-de-dados-homoguxeanea-10}{}
+Realize as seguintes operações envolvendo vetores:
+
+\begin{enumerate}
+\tightlist
+\item
+  \(\begin{pmatrix} 1 & 2 & 3 \end{pmatrix} + \begin{pmatrix} 0,1 & 0,05 & 0,33 \end{pmatrix}\)
+\item
+  \(\begin{pmatrix} 1 & 2 & 3 \end{pmatrix} - \begin{pmatrix} 0,1 & 0,05 & 0,33 \end{pmatrix}\)
+\item
+  \(\begin{pmatrix} 1 & 2 & 3 \end{pmatrix} * \begin{pmatrix} 0,1 & 0,05 & 0,33 \end{pmatrix}\)
+\item
+  \(\begin{pmatrix} 1 & 2 & 3 \end{pmatrix} / \begin{pmatrix} 0,1 & 0,05 & 0,33 \end{pmatrix}\)
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados homogênea}
+\protect\hypertarget{estrutura-de-dados-homoguxeanea-11}{}
+\textbf{Operações com matrizes númericas (\texttt{double},
+\texttt{integer} e \texttt{complex}).}
+
+\begin{itemize}
+\tightlist
+\item
+  Operações básicas: adição, substração, multiplicação e divisão
+  (realizadas em cada elemento das matrizes).
+\item
+  Outras operações elementares:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Multiplicação de matrizes (vide
+    \href{https://pt.wikipedia.org/wiki/Produto_de_matrizes}{multiplicação
+    de matrizes}): \texttt{A\ \%*\%\ B}
+  \item
+    Inversão de matrizes (vide
+    \href{https://pt.wikipedia.org/wiki/Matriz_inversa}{inversão de
+    matrizes}): \texttt{solve(A)}
+  \item
+    Matriz transposta (vide
+    \href{https://pt.wikipedia.org/wiki/Matriz_transposta}{matriz
+    transposta}): \texttt{t(A)}
+  \item
+    Determinante (vide
+    \href{https://pt.wikipedia.org/wiki/Determinante}{determinante de
+    uma matriz}): \texttt{det(A)}
+  \item
+    Solução de sistema de equações lineares (vide
+    \href{https://pt.wikipedia.org/wiki/Sistema_de_equações_lineares}{sistema
+    de equações lineares}): \texttt{solve(A,\ b)}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados homogênea}
+\protect\hypertarget{estrutura-de-dados-homoguxeanea-12}{}
+\textbf{Exemplo}
+
+Cada pessoa de uma equipe de quatro pessoas divide a administração de
+duas regiões (A e B) conforme as matrizes abaixo:
+
+\textbf{Postos de venda da região A}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{postos\_regiao\_a \textless{}{-}}\StringTok{ }\KeywordTok{rbind}\NormalTok{(}
+  \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{), }\CommentTok{\# primeira linha}
+  \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{) }\CommentTok{\# segunda linha}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Postos de venda da região B}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{postos\_regiao\_b \textless{}{-}}\StringTok{ }\KeywordTok{rbind}\NormalTok{(}
+  \KeywordTok{c}\NormalTok{(}\DecValTok{23}\NormalTok{, }\DecValTok{19}\NormalTok{), }\CommentTok{\# primeira linha}
+  \KeywordTok{c}\NormalTok{(}\DecValTok{44}\NormalTok{, }\DecValTok{12}\NormalTok{) }\CommentTok{\# segunda linha}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados homogênea}
+\protect\hypertarget{estrutura-de-dados-homoguxeanea-13}{}
+\textbf{Soma de vetores}
+
+Número de total de postos de venda administrados por cada pessoa.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{postos \textless{}{-}}\StringTok{ }\NormalTok{postos\_regiao\_a }\OperatorTok{+}\StringTok{ }\NormalTok{postos\_regiao\_b}
+\NormalTok{postos}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]   25   23
+## [2,]   45   17
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados homogênea}
+\protect\hypertarget{estrutura-de-dados-homoguxeanea-14}{}
+\textbf{Subtração de vetores}
+
+Número de postos de venda da região A, conhecendo o total de número de
+postos e o número de postos de venda região B.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# postos de venda da região A}
+\NormalTok{postos\_regiao\_a \textless{}{-}}\StringTok{ }\NormalTok{postos }\OperatorTok{{-}}\StringTok{ }\NormalTok{postos\_regiao\_b}
+\NormalTok{postos\_regiao\_a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    2    4
+## [2,]    1    5
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados homogênea}
+\protect\hypertarget{estrutura-de-dados-homoguxeanea-15}{}
+Suponha que cada pessoa consiga vender um determinado número de produtos
+por posto de venda conforme a matriz abaixo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{produtos\_pessoa \textless{}{-}}\StringTok{ }\KeywordTok{rbind}\NormalTok{(}
+  \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{),}
+  \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+A quantidade de produtos vendidos por pessoa na região A é dado por:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vendas\_regiao\_a \textless{}{-}}\StringTok{ }\NormalTok{postos\_regiao\_a }\OperatorTok{*}\StringTok{ }\NormalTok{produtos\_pessoa}
+\NormalTok{vendas\_regiao\_a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    8    8
+## [2,]    1   15
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados homogênea}
+\protect\hypertarget{estrutura-de-dados-homoguxeanea-16}{}
+Imagine que temos o número de produtos vendidos por pessoa na região A e
+sabemos o número de postos de cada pessoa na equipe na região A. Então,
+podemos descobrir o número de produtos vendidos por um posto para cada
+pessoa.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vendas\_regiao\_a }\OperatorTok{/}\StringTok{ }\NormalTok{postos\_regiao\_a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    4    2
+## [2,]    1    3
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Outras operações importantes com matrizes}
+\protect\hypertarget{outras-operauxe7uxf5es-importantes-com-matrizes}{}
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Código em \texttt{R} & Descrição da operação\tabularnewline
+\midrule
+\endhead
+\texttt{A\ \%o\%\ B} &
+\href{https://pt.wikipedia.org/wiki/Produto_diádico}{produto diádico
+\(A\cdot B^T\)}\tabularnewline
+\texttt{crossprod(A,\ B)} &
+\href{https://pt.wikipedia.org/wiki/Produto_diádico}{\(A\cdot B^T\)}\tabularnewline
+\texttt{crossprod(A)} &
+\href{https://pt.wikipedia.org/wiki/Produto_diádico}{\(A\cdot A^T\)}\tabularnewline
+\texttt{diag(x)} & retorna uma matrix diagonal com diagonal igual a
+\texttt{x}\tabularnewline
+\texttt{diag(A)} & retorna um vetor com a diagona de
+\(A\)\tabularnewline
+\texttt{diag(k)} & retorna uma matriz diagona de ordem
+\(k\)\tabularnewline
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}{Estrutura de dados homogênea\newline Exercício}
+\protect\hypertarget{estrutura-de-dados-homoguxeaneaexercuxedcio-1}{}
+Realizei as seguinte operações envolvendo as matrizes:
+
+\begin{enumerate}
+\tightlist
+\item
+  \(\begin{pmatrix} 1 & 0\\ 2 & 0,5 \end{pmatrix} + \begin{pmatrix} 0,1 & 0\\ 0 & 0,5 \end{pmatrix}\)
+\item
+  \(\begin{pmatrix} 1 & 0\\ 2 & 0,5 \end{pmatrix} - \begin{pmatrix} 0,1 & 0\\ 0 & 0,5 \end{pmatrix}\)
+\item
+  \(\begin{pmatrix} 1 & 0\\ 2 & 0,5 \end{pmatrix} \cdot \begin{pmatrix} 0,1 & 0\\ 0 & 0,5 \end{pmatrix}\)
+\item
+  \(\begin{pmatrix} 1 & 0\\ 2 & 0,5 \end{pmatrix} / \begin{pmatrix} 0,1 & 0\\ 0 & 0,5 \end{pmatrix}\)
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados heterogênea}
+\protect\hypertarget{estrutura-de-dados-heteroguxeanea}{}
+\textbf{Lista}
+
+\begin{itemize}
+\tightlist
+\item
+  Agrupamento de valores de tipos diversos e estrutura de dados.
+\item
+  Criação de listas: \texttt{list(...)} e
+  \texttt{vector("list",\ \textless{}comprimento\ da\ lista\textgreater{})}.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lista\_info \textless{}{-}}\StringTok{ }\KeywordTok{list}\NormalTok{(}\DataTypeTok{pedido\_id =} \DecValTok{8001406}\NormalTok{,}
+          \DataTypeTok{nome =} \StringTok{"Fulano"}\NormalTok{,}
+          \DataTypeTok{sobrenome =} \StringTok{"de Tal"}\NormalTok{,}
+          \DataTypeTok{cpf =} \StringTok{"12345678900"}\NormalTok{,}
+          \DataTypeTok{itens =} \KeywordTok{list}\NormalTok{(}\KeywordTok{list}\NormalTok{(}\DataTypeTok{descricao =} \StringTok{"Ferrari"}\NormalTok{,}
+                            \DataTypeTok{frete =} \DecValTok{0}\NormalTok{,}
+                            \DataTypeTok{valor =} \DecValTok{500000}\NormalTok{),}
+                      \KeywordTok{list}\NormalTok{(}\DataTypeTok{descricao =} \StringTok{"Dolly"}\NormalTok{,}
+                          \DataTypeTok{frete =} \FloatTok{1.5}\NormalTok{,}
+                          \DataTypeTok{valor =} \FloatTok{3.90}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados heterogênea\newline Exercício}
+\protect\hypertarget{estrutura-de-dados-heteroguxeaneaexercuxedcio}{}
+Crie uma lista, chamada \texttt{informacoes\_pessoais} com os seguintes
+campos:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{nome}: seu nome
+\item
+  \texttt{idade}: sua idade
+\item
+  \texttt{informacao\_profissional}: uma lista com os seguintes campos:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{escolaridade}: escolaridade
+  \item
+    \texttt{profissao}: variável qualitativa com os valores possíveis:
+    \texttt{funcionário\ público},
+    \texttt{funcionário\ da\ iniciativa\ privada}, \texttt{estudante} e
+    \texttt{desempregado}
+  \end{itemize}
+\item
+  \texttt{matriz}: inclua uma matriz de números reais de dimensão
+  \(2\times 2\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados heterogênea}
+\protect\hypertarget{estrutura-de-dados-heteroguxeanea-1}{}
+\begin{itemize}
+\tightlist
+\item
+  Agrupamento de dados em tabela, onde: cada coluna é uma variável; cada
+  linha é uma observação. Usamos a tabela \texttt{tidy}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Cada variável em uma única coluna
+  \item
+    Cada unidade observacional em uma única linha
+  \end{itemize}
+\item
+  Criação de \texttt{tibble}: \texttt{tibble(...)} e
+  \texttt{tribble(....)}.
+\end{itemize}
+
+\textbf{\texttt{tibble} (data frame)}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df \textless{}{-}}\StringTok{ }\KeywordTok{tibble}\NormalTok{(}\DataTypeTok{nome =} \KeywordTok{c}\NormalTok{(}\StringTok{"João"}\NormalTok{, }\StringTok{"Josué"}\NormalTok{), }\DataTypeTok{idade =} \KeywordTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{21}\NormalTok{))}
+\KeywordTok{glimpse}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 2
+## Columns: 2
+## $ nome  <chr> "João", "Josué"
+## $ idade <dbl> 20, 21
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados heterogênea}
+\protect\hypertarget{estrutura-de-dados-heteroguxeanea-2}{}
+\textbf{Operações em um \texttt{tibble}}
+
+Algumas funções úteis depois de aprender a carregar os dados no
+\texttt{R}.
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Código em \texttt{R} & Descrição\tabularnewline
+\midrule
+\endhead
+\texttt{head()} & Mostra as primeiras linhas de um
+\texttt{tibble}\tabularnewline
+\texttt{tail()} & Mostra as últimas linhas de um
+\texttt{tibble}\tabularnewline
+\texttt{glimpse()} & Impressão de informações básicas dos
+dados\tabularnewline
+\texttt{add\_case()} ou \texttt{add\_row()} & Adiciona uma nova
+observação\tabularnewline
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados heterogênea\newline Exercício}
+\protect\hypertarget{estrutura-de-dados-heteroguxeaneaexercuxedcio-1}{}
+Realize as seguintes operações no \emph{dataset} \texttt{iris}
+(disponível no \texttt{R}):
+
+\begin{itemize}
+\tightlist
+\item
+  imprima um resumo sobre o \emph{dataset} \texttt{iris}
+\item
+  pegue as 5 primeiras linhas de \texttt{iris}
+\item
+  pegue as 5 últimas linhas de \texttt{iris}
+\item
+  adicione \emph{Joaquim} de \emph{30 anos} ao \texttt{tibble}
+  \texttt{df} para obter o seguinte \emph{dataset}:
+
+  \begin{longtable}{lr}
+  \toprule
+  nome & idade \\ 
+  \midrule
+  João & 20 \\ 
+  Josué & 21 \\ 
+  Joaquim & 30 \\ 
+  \bottomrule
+  \end{longtable}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados heterogênea}
+\protect\hypertarget{estrutura-de-dados-heteroguxeanea-3}{}
+\textbf{Concatenação de listas}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lista\_}\DecValTok{1}\NormalTok{  \textless{}{-}}\StringTok{ }\KeywordTok{list}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{)}
+\NormalTok{lista\_}\DecValTok{2}\NormalTok{ \textless{}{-}}\StringTok{ }\KeywordTok{list}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{lista\_final \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(lista\_}\DecValTok{1}\NormalTok{, lista\_}\DecValTok{2}\NormalTok{)}
+\NormalTok{lista\_final}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] "a"
+## 
+## [[2]]
+## [1] "b"
+## 
+## [[3]]
+## [1] 1
+## 
+## [[4]]
+## [1] 2
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados heterogênea}
+\protect\hypertarget{estrutura-de-dados-heteroguxeanea-4}{}
+\small
+
+\textbf{\emph{Slicing} a lista}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lista\_final[}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] "a"
+## 
+## [[2]]
+## [1] "b"
+\end{verbatim}
+
+\textbf{Acessando elemento pela ordem}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Acessando o segundo elemento da lista d.}
+\NormalTok{lista\_final[[}\DecValTok{2}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "b"
+\end{verbatim}
+
+\textbf{Acessando elemento usando \texttt{\$}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lista \textless{}{-}}\StringTok{ }\KeywordTok{list}\NormalTok{(}\DataTypeTok{elemento\_1 =} \DecValTok{1}\NormalTok{, }\DataTypeTok{elemento\_2 =} \StringTok{"docente"}\NormalTok{)}
+\NormalTok{lista}\OperatorTok{$}\NormalTok{elemento\_}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "docente"
+\end{verbatim}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados heterogênea}
+\protect\hypertarget{estrutura-de-dados-heteroguxeanea-5}{}
+\small
+
+\textbf{\emph{Slicing} uma lista com \texttt{{[}"nome"{]}}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lista \textless{}{-}}\StringTok{ }\KeywordTok{list}\NormalTok{(}\DataTypeTok{elemento\_1 =} \DecValTok{1}\NormalTok{, }\DataTypeTok{elemento\_2 =} \StringTok{"docente"}\NormalTok{,}
+          \DataTypeTok{elemento\_3 =} \KeywordTok{list}\NormalTok{(}\StringTok{"olá"}\NormalTok{))}
+\NormalTok{lista[}\StringTok{"elemento\_3"}\NormalTok{] }\CommentTok{\# funciona como slicing}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $elemento_3
+## $elemento_3[[1]]
+## [1] "olá"
+\end{verbatim}
+
+\textbf{Obtendo os nomes dos elementos em um lista}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lista \textless{}{-}}\StringTok{ }\KeywordTok{list}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{), }\DataTypeTok{elemento\_1 =} \DecValTok{1}\NormalTok{, }\DataTypeTok{elemento\_2 =} \StringTok{"docente"}\NormalTok{,}
+              \DataTypeTok{elemento\_3 =} \KeywordTok{list}\NormalTok{(}\StringTok{"olá"}\NormalTok{))}
+\KeywordTok{names}\NormalTok{(lista)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] ""           "elemento_1" "elemento_2" "elemento_3"
+\end{verbatim}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]{Estrutura de dados heterogênea\newline Exercício}
+\protect\hypertarget{estrutura-de-dados-heteroguxeaneaexercuxedcio-2}{}
+Recupe e imprima as seguintes informações da lista
+\texttt{informacoes\_pessoais}:
+
+\begin{itemize}
+\tightlist
+\item
+  os três primeiros campos de \texttt{informacoes\_pessoais}
+\item
+  os nomes dos campos de \texttt{informacoes\_pessoais}
+\item
+  campo \texttt{nome} de \texttt{informacoes\_pessoais}
+\item
+  o terceiro campo de \texttt{informacoes\_pessoais}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Valores especiais em \texttt{R}}
+\protect\hypertarget{valores-especiais-em-r}{}
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\begin{minipage}[b]{0.25\columnwidth}\raggedright
+Valores especiais\strut
+\end{minipage} & \begin{minipage}[b]{0.29\columnwidth}\raggedright
+Descrição\strut
+\end{minipage} & \begin{minipage}[b]{0.38\columnwidth}\raggedright
+Função para identificar\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.25\columnwidth}\raggedright
+\texttt{NA} (Not Available)\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+Valor faltante.\strut
+\end{minipage} & \begin{minipage}[t]{0.38\columnwidth}\raggedright
+\texttt{is.na()}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.25\columnwidth}\raggedright
+\texttt{NaN} (Not a Number)\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+Resultado do cálculo indefinido.\strut
+\end{minipage} & \begin{minipage}[t]{0.38\columnwidth}\raggedright
+\texttt{is.nan()}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.25\columnwidth}\raggedright
+\texttt{Inf} (Infinito)\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+Valor que excede o valor máximo que sua máquina aguenta.\strut
+\end{minipage} & \begin{minipage}[t]{0.38\columnwidth}\raggedright
+\texttt{is.inf()}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.25\columnwidth}\raggedright
+\texttt{NULL} (Nulo)\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+Valor indefinido de expressões e funções (diferente de \texttt{NaN} e
+\texttt{NA})\strut
+\end{minipage} & \begin{minipage}[t]{0.38\columnwidth}\raggedright
+\texttt{is.null()}\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}[fragile]{Parênteses 1: guia de estilo no \texttt{R}}
+\protect\hypertarget{paruxeanteses-1-guia-de-estilo-no-r}{}
+O nome de um objeto precisa ter um \emph{significado}. O nome deve
+indicar e deixar claro o que este objeto é ou faz \sout{qualquer pessoa
+precisa entender o que este objeto é ou faz}.
+
+\begin{itemize}
+\tightlist
+\item
+  Use a convenção do \texttt{R}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Use apenas letras minúsculas, números e \emph{underscore} (comece
+    sempre com letras minúsculas).
+  \item
+    Nomes de objetos precisam ser substantivos e precisam descrever o
+    que este objeto é ou faz (seja conciso, direto e significativo).
+  \item
+    Evite ao máximo os nomes que já são usados ( \emph{buit-in} ) do
+    \texttt{R}.Por exemplo: \texttt{c}.
+  \item
+    Coloque espaço depois da vírgula.
+  \item
+    Não coloque espaço antes nem depois de parênteses. Exceção: Coloque
+    um espaço \texttt{()} antes e depois de \texttt{if}, \texttt{for} ou
+    \texttt{while}, e coloque um espaço depois de \texttt{()}.
+  \item
+    Coloque espaço entre operadores básicos: \texttt{+}, \texttt{-},
+    \texttt{*}, \texttt{==} e outros. Exceção: \texttt{\^{}}.
+  \end{itemize}
+\end{itemize}
+
+Para mais detalhes, consulte: \href{https://style.tidyverse.org}{guia de
+estilo do \texttt{tidyverse}}.
+\end{frame}
+
+\begin{frame}[fragile]{Parênteses 2: estrutura de diretórios}
+\protect\hypertarget{paruxeanteses-2-estrutura-de-diretuxf3rios}{}
+Mantenha uma estrutura (organização) consistente de diretórios em seus
+projetos.
+
+\begin{itemize}
+\tightlist
+\item
+  Sugestão de estrutura:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{data}: diretório para armazenar seus conjuntos de dados.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \texttt{raw}: dados brutos.
+    \item
+      \texttt{processed}: dados processados.
+    \end{itemize}
+  \item
+    \texttt{scripts}: código fonte do seu projeto.
+  \item
+    \texttt{figures}: figuras criadas no seu projeto.
+  \item
+    \texttt{output}: outros arquivos que não são figuras.
+  \item
+    \texttt{previous}: arquivos da versão anterior do projeto.
+  \item
+    \texttt{notes}: notas de reuniões e afins.
+  \item
+    \texttt{relatorio} (ou \texttt{artigos}): documento final de seu
+    projeto.
+  \item
+    \texttt{documents}: livros, artigos e qualquer coisa que são
+    referências em seu projeto.
+  \end{itemize}
+\end{itemize}
+
+Para mais detalhes, consulte esse guia do
+\href{https://curso-r.com}{curso-r}:
+\href{https://curso-r.github.io/zen-do-r/rproj-dir.html}{diretórios e
+\texttt{.Rproj}}.
+\end{frame}
+
+\begin{frame}[fragile]{Lendo dados no \texttt{R}}
+\protect\hypertarget{lendo-dados-no-r}{}
+\textbf{Leitura de arquivos no formato \texttt{xlsx} ou \texttt{xls}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Pacote:} \texttt{readxl} do \texttt{tidyverse} (instale com o
+  comando
+  \texttt{install.packages(\textquotesingle{}readxl\textquotesingle{})})
+\item
+  Parêmetros das funções \texttt{read\_xls} (para ler arquivos
+  \texttt{.xls}) e \texttt{read\_xlsx} (para ler arquivos
+  \texttt{.xlsx}):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{path}: caminho até o arquivo.
+  \item
+    \texttt{sheet}: especifica a planilha do arquivo que será lida.
+  \item
+    \texttt{range}: especifica uma área de uma planilha para leitura.
+    Por exemplo: \texttt{B3:E15}.
+  \item
+    \texttt{col\_names}: Argumento lógico com valor padrão igual a
+    \texttt{TRUE}. Indica se a primeira linha tem o nome das variáveis.
+  \end{itemize}
+\end{itemize}
+
+Para mais detalhes, consulte a documentação oficial do \emph{tidyverse}:
+\href{https://readxl.tidyverse.org}{documentação de \texttt{read\_xl}}.
+\end{frame}
+
+\begin{frame}[fragile]{Lendo dados no \texttt{R}}
+\protect\hypertarget{lendo-dados-no-r-1}{}
+\textbf{Leitura de arquivos no formato \texttt{xlsx} ou \texttt{xls}}
+
+\small
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\KeywordTok{library}\NormalTok{(readxl)}
+\NormalTok{dados\_iris \textless{}{-}}\StringTok{ }\KeywordTok{read\_xlsx}\NormalTok{(}\StringTok{"data/raw/iris.xlsx"}\NormalTok{)}
+\NormalTok{dados\_iris \textless{}{-}}\StringTok{ }\KeywordTok{clean\_names}\NormalTok{(dados\_iris)}
+
+\KeywordTok{glimpse}\NormalTok{(dados\_iris)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 150
+## Columns: 5
+## $ comprimento_sepala <dbl> 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9, 5~
+## $ largura_sepala     <dbl> 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3~
+## $ comprimento_petala <dbl> 1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5, 1~
+## $ largura_petala     <dbl> 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0~
+## $ especies           <chr> "setosa", "setosa", "setosa", "setosa", "setosa", "~
+\end{verbatim}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]{Lendo dados no \texttt{R}\newline Exercício}
+\protect\hypertarget{lendo-dados-no-rexercuxedcio}{}
+Leia o \emph{dataset} \texttt{dados\_leitura.xlsx} usando o pacote
+\texttt{readxl}.
+\end{frame}
+
+\begin{frame}[fragile]{Lendo dados no \texttt{R}}
+\protect\hypertarget{lendo-dados-no-r-2}{}
+\small
+
+\textbf{As formatações dos arquivos \texttt{csv}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{csv}: \emph{comma separated values} (valores separados por
+  coluna). O \emph{separador} varia em diferentes sistemas de medidas.
+\item
+  No sistema métrico:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    As casas decimais são separadas por \texttt{,}
+  \item
+    O agrupamento de milhar é marcada por \texttt{.}
+  \item
+    As colunas dos arquivos de texto são separadas por \texttt{;}
+  \end{itemize}
+\item
+  No sistema imperial inglês (UK e USA):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    As casas decimais são separadas por \texttt{.}
+  \item
+    O agrupamento de milhar é marcada por \texttt{,}
+  \item
+    As colunas dos arquivos de texto são separadas por \texttt{,}
+  \end{itemize}
+\end{itemize}
+
+\textbf{\emph{Preste atenção em como o seus dados estão armazenados!}}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]
+\textbf{Leitura de arquivos no formato \texttt{csv}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Pacote:} \texttt{readr} do \texttt{tidyverse} (instale com o
+  comando
+  \texttt{install.packages(\textquotesingle{}readr\textquotesingle{})}).
+\item
+  Parêmetros das funções \texttt{read\_csv} (sistema imperial inglês) e
+  \texttt{read\_csv2} (sistema métrico):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{path}: caminho até o arquivo.
+  \end{itemize}
+\end{itemize}
+
+Para mais detalhes, consulte a documentação oficial do \emph{tidyverse}:
+\href{https://readr.tidyverse.org}{documentação de \texttt{read\_r}}.
+\end{frame}
+
+\begin{frame}[fragile]{Lendo dados no \texttt{R}}
+\protect\hypertarget{lendo-dados-no-r-3}{}
+\textbf{Leitura de arquivos no formato \texttt{csv}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados\_mtcarros \textless{}{-}}\StringTok{ }\KeywordTok{read\_csv2}\NormalTok{(}\StringTok{"data/raw/mtcarros.csv"}\NormalTok{)}
+\NormalTok{dados\_mtcarros \textless{}{-}}\StringTok{ }\KeywordTok{clean\_names}\NormalTok{(dados\_mtcarros)}
+\KeywordTok{glimpse}\NormalTok{(dados\_mtcarros)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 32
+## Columns: 11
+## $ milhas_por_galao <dbl> 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8,~
+## $ cilindros        <dbl> 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4,~
+## $ cilindrada       <dbl> 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.~
+## $ cavalos_forca    <dbl> 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 1~
+## $ eixo             <dbl> 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92,~
+## $ peso             <dbl> 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.19~
+## $ velocidade       <dbl> 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.0~
+## $ forma            <dbl> 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1,~
+## $ transmissao      <dbl> 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,~
+## $ marchas          <dbl> 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4,~
+## $ carburadores     <dbl> 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1,~
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Lendo dados no \texttt{R}\newline Exercício}
+\protect\hypertarget{lendo-dados-no-rexercuxedcio-1}{}
+Leia o \emph{dataset} \texttt{dados\_leitura.csv} usando o pacote
+\texttt{readr}.
+\end{frame}
+
+\begin{frame}[fragile]{Lendo dados no \texttt{R}}
+\protect\hypertarget{lendo-dados-no-r-4}{}
+\textbf{Leitura de arquivos no formato \texttt{ods}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Pacote:} \texttt{readODS} (instale com o comando
+  \texttt{install.packages(\textquotesingle{}readODS\textquotesingle{})}).
+\item
+  Parêmetros das funções \texttt{read\_ods}:
+\item
+  \texttt{path}: caminho até o arquivo.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{sheet}: especifica a planilha do arquivo que será lida.
+  \item
+    \texttt{range}: especifica uma área de uma planilha para leitura.
+    Por exemplo: \texttt{B3:E15}.
+  \item
+    \texttt{col\_names}: Argumento lógico com valor padrão igual a
+    \texttt{TRUE}. Indica se a primeira linha tem o nome das variáveis.
+  \end{itemize}
+\end{itemize}
+
+Para mais detalhes, consulte a documentação do \emph{readODS}:
+\href{https://github.com/chainsawriot/readODS}{documentação de
+\texttt{readODS}}.
+\end{frame}
+
+\begin{frame}[fragile]{Lendo dados no \texttt{R}}
+\protect\hypertarget{lendo-dados-no-r-5}{}
+\textbf{Leitura de arquivos no formato \texttt{ods}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados\_dentes \textless{}{-}}\StringTok{ }\KeywordTok{read\_ods}\NormalTok{(}\StringTok{"data/raw/crescimento\_dentes.ods"}\NormalTok{)}
+\NormalTok{dados\_dentes \textless{}{-}}\StringTok{ }\KeywordTok{clean\_names}\NormalTok{(dados\_dentes)}
+
+\KeywordTok{glimpse}\NormalTok{(dados\_dentes)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 60
+## Columns: 3
+## $ comprimento <dbl> 4.2, 11.5, 7.3, 5.8, 6.4, 10.0, 11.2, 11.2, 5.2, 7.0, 16.5~
+## $ suplemento  <chr> "Vitamina C", "Vitamina C", "Vitamina C", "Vitamina C", "V~
+## $ dose        <dbl> 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1.0, 1.0~
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Lendo dados no \texttt{R}\newline Exercício}
+\protect\hypertarget{lendo-dados-no-rexercuxedcio-2}{}
+Leia o \emph{dataset} \texttt{dados\_leitura.ods} usando o pacote
+\texttt{readODS}.
+\end{frame}
+
+\begin{frame}[fragile]{Salvando dados no \texttt{R}}
+\protect\hypertarget{salvando-dados-no-r}{}
+\small
+
+\textbf{Salvar no formato \texttt{.csv} (sistema métrico)}
+
+\texttt{write\_csv2} é parte do pacote \texttt{readr}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{write\_csv2}\NormalTok{(dados\_dentes, }\DataTypeTok{file =} \StringTok{"data/processed/nome.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\rule{\textwidth}{0.5pt}
+
+\textbf{Salvar no formato \texttt{.xlsx} }
+
+\texttt{write\_xlsx} é parte do pacote \texttt{writexl}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{write\_xlsx}\NormalTok{(dados\_dentes, }\DataTypeTok{path =} \StringTok{"data/processed/nome.xlsx"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\rule{\textwidth}{0.5pt}
+
+\textbf{Salvar no formato \texttt{ods}}
+
+\texttt{write\_ods} é parte do pacote \texttt{readODS}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{write\_ods}\NormalTok{(dados\_toothgrowth, }\DataTypeTok{path =} \StringTok{"data/processed/nome.ods"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]{Salvando dados no \texttt{R}\newline Exercício}
+\protect\hypertarget{salvando-dados-no-rexercuxedcio}{}
+\begin{enumerate}
+\tightlist
+\item
+  Salve o objeto \texttt{milhas} do pacote \texttt{dados} como
+  \texttt{milhas.ods} na pasta \texttt{output} do seu projeto.
+\item
+  Salve o objeto \texttt{diamante} do pacote \texttt{dados} como
+  \texttt{diamante.csv} na pasta \texttt{output} do seu projeto.
+\item
+  Salve o objeto \texttt{velho\_fiel} do pacote \texttt{dados} como
+  \texttt{velho\_fiel.xlsx} na pasta \texttt{output} do seu projeto.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Estatística Descritiva no \texttt{R}\newline Gráficos e
+Tabelas}
+\protect\hypertarget{estatuxedstica-descritiva-no-rgruxe1ficos-e-tabelas}{}
+\textbf{Alguns conceitos básicos}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{População}: todos os elementos ou indivíduos alvo do estudo.
+\item
+  \textbf{Amostra}: parte da população.
+\item
+  \textbf{Parâmetro:} característica numérica da população. Usamos
+  letras gregas para denotar parâmetros populacionais.
+\item
+  \textbf{Estatística:} função ou \emph{cálculo} da amostra
+\item
+  \textbf{Estimativa:} característica numérica da amostra, obtida da
+  estatística computada na amostra. Em geral, usamos uma estimativa para
+  estimar o parâmetro populacional.
+\item
+  \textbf{Variável:} \emph{característica mensurável comum a todos os
+  elementos da população.}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Usamos letras maiúsculas do alfabeto latino para representar uma
+    variável.
+  \item
+    Usamos letras minúsculas do alfabeto latino para representar o valor
+    observado da variável em um elemento da amostra.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Exemplo}
+\protect\hypertarget{exemplo}{}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{População}: todos os eleitores nas eleições gerais de 2022.
+\item
+  \textbf{Amostra}: 3.500 pessoas abordadas pelo \texttt{datafolha}.
+\item
+  \textbf{Variável:} candidato a presidente de cada pessoa.
+\item
+  \textbf{Parâmetro:} porcentagem de pessoas que escolhem Lula como
+  presidente entre todos os eleitores.
+\item
+  \textbf{Estatística:} porcentagem de pessoas que escolhem o lula
+\item
+  \textbf{Estimativa:} porcentagem de pessoas que escolhem Lula como
+  presidente entre todos os eleitores da amostra de 3.500 pessoas
+  entrevistas pelo datafolha.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Classificação de variáveis}
+\protect\hypertarget{classificauxe7uxe3o-de-variuxe1veis}{}
+\tiny
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[node distance = 15em, scale=0.5]
+  \tikzstyle{decision} = [diamond, draw, fill=blue!20, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+  \tikzstyle{block} = [rectangle, draw, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em]
+  \tikzstyle{line} = [draw, -latex]
+  \tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm, minimum height=2em]
+  \node [block] (variavel) {Variável};
+  \node [block, left of=variavel, text width=12em] (qualitativa) {\textbf{Variável qualitativa}\newline \textit{valores categóricos (texto)}};
+  \node [block, right of=variavel, text width=10em] (quantitativa) {\textbf{Variável quantitativa}\newline \textit{valores numéricos}};
+  \node [block, below of=qualitativa, left of=qualitativa, text width=6em, node distance=7.5em] (ordinal) {\textbf{Ordinal}\newline\textit{Exemplo}\newline Escolaridade};
+  \node [block, below of=qualitativa, right of=qualitativa, text width=4em, node distance=7.5em] (nominal) {\textbf{Nominal}\newline\textit{Exemplo}\newline Gênero};
+  \node [block, below of=quantitativa, left of=quantitativa, text width=8em, node distance=7.5em] (discreta) {\textbf{Discreta}\newline\textit{Exemplo}\newline Número de filhos};
+  \node [block, below of=quantitativa, right of=quantitativa, text width=4em, node distance=7.5em] (continua) {\textbf{Contínua}\newline\textit{Exemplo}\newline Salário};
+  \path [line] (variavel) -- (qualitativa);
+  \path [line] (variavel) -- (quantitativa);
+  \path [line] (quantitativa) -- (discreta);
+  \path [line] (quantitativa) -- (continua);
+  \path [line] (qualitativa) -- (ordinal);
+  \path [line] (qualitativa) -- (nominal);
+\end{tikzpicture}
+\caption{Classificação de variáveis.}
+\end{figure}
+
+\normalsize
+\end{frame}
+
+\begin{frame}{Tabela de frequência -- Variável qualitativa}
+\protect\hypertarget{tabela-de-frequuxeancia-variuxe1vel-qualitativa}{}
+A primeira coisa que fazemos é contar!
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+\(X\) & frequência & frequência relativa & porcentagem\tabularnewline
+\midrule
+\endhead
+\(B_1\) & \(n_1\) & \(f_1\) & \(100 \cdot f_1\%\)\tabularnewline
+\(B_2\) & \(n_2\) & \(f_2\) & \(100 \cdot f_2\%\)\tabularnewline
+\(\vdots\) & \(\vdots\) & \(\vdots\) & \(\vdots\)\tabularnewline
+\(B_k\) & \(n_k\) & \(f_k\) & \(100 \cdot f_k\%\)\tabularnewline
+Total & \(n\) & \(1\) & \(100\%\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+Em que \(n\) é o tamanho da amostra.
+\end{frame}
+
+\begin{frame}[fragile]{Tabela de distribuição de
+frequências\newline Variável qualitativa}
+\protect\hypertarget{tabela-de-distribuiuxe7uxe3o-de-frequuxeanciasvariuxe1vel-qualitativa}{}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Pacote:} \texttt{tabyl}, \texttt{adorn\_totals} e
+  \texttt{adorn\_pct\_formatting} do \texttt{janitor} (instale com o
+  comando
+  \texttt{install.packages(\textquotesingle{}janitor\textquotesingle{})}).
+\item
+  \texttt{tabyl}cria a tabela de distribuição de frequências e tem os
+  seguintes parâmetros:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{dat}: \emph{data frame} ou vetor com os valores da variável
+    que desejamos tabular.
+  \item
+    \texttt{var1}: nome da primeira variável.
+  \item
+    \texttt{var2}: nome da segunda variável (opcional).
+  \end{itemize}
+\item
+  \texttt{adorn\_totals}: adiciona uma linha com os totais de cada
+  coluna
+\item
+  \texttt{adorn\_pct\_formatting}: acrescenta o sinal de porcentagem e
+  tem o seguinte parâmetro:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{digits}: o número de casas decimais depois da vírgula
+  \end{itemize}
+\item
+  \texttt{rename} (do pacote \texttt{dplyr}) muda os nomes das colunas
+  para português no seguinte formato:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{"novo\ nome"\ =\ "velho\ nome"}
+  \end{itemize}
+\end{itemize}
+
+Para mais detalhes, consulte a documentação oficial do \emph{janitor}:
+\href{https://cran.r-project.org/web/packages/janitor/janitor.pdf}{documentação
+de \texttt{tabyl}}.
+\end{frame}
+
+\begin{frame}[fragile]{Tabela de distribuição de
+frequências\newline Variável qualitativa}
+\protect\hypertarget{tabela-de-distribuiuxe7uxe3o-de-frequuxeanciasvariuxe1vel-qualitativa-1}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tab \textless{}{-}}\StringTok{ }\KeywordTok{tabyl}\NormalTok{(dados\_iris, especies)  }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{adorn\_totals}\NormalTok{()  }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{adorn\_pct\_formatting}\NormalTok{(}\DataTypeTok{digits =} \DecValTok{2}\NormalTok{) }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{rename}\NormalTok{(}
+    \StringTok{"Espécies"}\NormalTok{ =}\StringTok{ }\NormalTok{especies, }\StringTok{"Frequência"}\NormalTok{ =}\StringTok{ }\NormalTok{n,}
+    \StringTok{"Porcentagem"}\NormalTok{ =}\StringTok{ }\NormalTok{percent}
+\NormalTok{  )}
+\NormalTok{tab}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Espécies Frequência Porcentagem
+##      setosa         50      33.33%
+##  versicolor         50      33.33%
+##   virginica         50      33.33%
+##       Total        150     100.00%
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Tabela de distribuição de
+frequências\newline Variável qualitativa\newline Exercício}
+\protect\hypertarget{tabela-de-distribuiuxe7uxe3o-de-frequuxeanciasvariuxe1vel-qualitativaexercuxedcio}{}
+Para o conjunto de dados \texttt{amostra\_enem\_salvador.xlsx}, construa
+a tabela de distribuição de frequências para as seguintes variáveis:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{tp\_sexo}: gênero que a pessoa se identifica (segundo
+  classificação usada pelo IBGE)
+\item
+  \texttt{tp\_cor\_raca}: raça (segundo classificação usada pelo IBGE)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tabela de distribuição de frequências\newline Variável
+quantitativa discreta}
+\protect\hypertarget{tabela-de-distribuiuxe7uxe3o-de-frequuxeanciasvariuxe1vel-quantitativa-discreta}{}
+Muito semelhante a tabela de distribuição de frequência para variáveis
+qualitativas.
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+\(X\) & frequência & frequência relativa & porcentagem\tabularnewline
+\midrule
+\endhead
+\(x_1\) & \(n_1\) & \(f_1\) & \(100 \cdot f_1\%\)\tabularnewline
+\(x_2\) & \(n_2\) & \(f_2\) & \(100 \cdot f_2\%\)\tabularnewline
+\(\vdots\) & \(\vdots\) & \(\vdots\) & \(\vdots\)\tabularnewline
+\(x_k\) & \(n_k\) & \(f_k\) & \(100 \cdot f_k\%\)\tabularnewline
+Total & \(n\) & \(1\) & \(100\%\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+Em que \(n\) é o tamanho da amostra e \(\{x_1, \dots, x_k\}\) são os
+números que são valores únicos de \(X\) na amostra.
+\end{frame}
+
+\begin{frame}[fragile]{Tabela de distribuição de
+frequências\newline Variável quantitativa discreta}
+\protect\hypertarget{tabela-de-distribuiuxe7uxe3o-de-frequuxeanciasvariuxe1vel-quantitativa-discreta-1}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tab \textless{}{-}}\StringTok{ }\KeywordTok{tabyl}\NormalTok{(dados\_mtcarros, carburadores)  }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{adorn\_totals}\NormalTok{()  }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{adorn\_pct\_formatting}\NormalTok{(}\DataTypeTok{digits =} \DecValTok{2}\NormalTok{) }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{rename}\NormalTok{(}
+    \StringTok{"Carburadores"}\NormalTok{ =}\StringTok{ }\NormalTok{carburadores, }\StringTok{"Frequência"}\NormalTok{ =}\StringTok{ }\NormalTok{n,}
+    \StringTok{"Porcentagem"}\NormalTok{ =}\StringTok{ }\NormalTok{percent}
+\NormalTok{  )}
+\NormalTok{tab}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  Carburadores Frequência Porcentagem
+##             1          7      21.88%
+##             2         10      31.25%
+##             3          3       9.38%
+##             4         10      31.25%
+##             6          1       3.12%
+##             8          1       3.12%
+##         Total         32     100.00%
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Tabela de distribuição de
+frequências\newline Variável quantitativa discreta\newline Exercício}
+\protect\hypertarget{tabela-de-distribuiuxe7uxe3o-de-frequuxeanciasvariuxe1vel-quantitativa-discretaexercuxedcio}{}
+Para o conjunto de dados \texttt{amostra\_enem\_salvador.xlsx}, construa
+a tabela de distribuição de frequências para a variável \texttt{q005}:
+número de pessoas que moram na casa da(o) candidata(o).
+\end{frame}
+
+\begin{frame}[fragile]{Tabela de frequência\newline Variável
+quantitativa contínua}
+\protect\hypertarget{tabela-de-frequuxeanciavariuxe1vel-quantitativa-contuxednua}{}
+\texttt{X}: variável quantitativa contínua
+
+\begin{longtable}[]{@{}cccc@{}}
+\caption{Tabela de frequências para a variável quantitativa
+contínua.}\tabularnewline
+\toprule
+\texttt{X} & Frequência & Frequência relativa &
+Porcentagem\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\texttt{X} & Frequência & Frequência relativa &
+Porcentagem\tabularnewline
+\midrule
+\endhead
+\([l_0, l_1)\) & \(n_1\) & \(f_1 = \frac{n_1}{n_1 + \dots + n_k}\) &
+\(p_1 = f_1 \cdot 100\)\tabularnewline
+\([l_1, l_2)\) & \(n_2\) & \(f_2 = \frac{n_2}{n_1 + \dots + n_k}\) &
+\(p_2 = f_2 \cdot 100\)\tabularnewline
+\(\vdots\) & \(\vdots\) & \(\vdots\) & \(\vdots\)\tabularnewline
+\([l_{k-1}, l_k]\) & \(n_k\) & \(f_k = \frac{n_k}{n_1 + \dots + n_k}\) &
+\(p_k = f_k \cdot 100\)\tabularnewline
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{itemize}
+\tightlist
+\item
+  \(\text{menor valor de }X = l_0 \leq l_1 \leq \cdots \leq l_{k-1} \leq l_k = \text{maior valor de }X\)
+\item
+  \(n_i\) é número de valores de \texttt{X} entre \(l_{i-1}\) e \(l_i\)
+\item
+  \(l_0, l_1, \dots, l_k\) quebram o suporte da variável \texttt{X}
+  (\emph{breakpoints}).
+\item
+  \(l_0, l_1, \cdots, l_k\) são escolhidos de acordo com a teoria por
+  trás da análise de dados
+\end{itemize}
+
+\textbf{Recomendações:}
+
+\begin{itemize}
+\tightlist
+\item
+  use \(l_0, l_1, \cdots, l_k\) igualmente espaçados
+\item
+  e use a
+  \href{https://onlinelibrary.wiley.com/doi/10.1002/wics.35}{regra de
+  Sturges} para determinar o valor de \(k\):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(k = 1 + \log2(n)\) onde \(n\) é tamanho da amostra
+  \item
+    Se \(1 + \log2(n)\) não é um número inteiro, usamos
+    \(k = \lceil 1 + \log2(n) \rceil\).
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Tabela de frequência\newline Variável
+quantitativa contínua}
+\protect\hypertarget{tabela-de-frequuxeanciavariuxe1vel-quantitativa-contuxednua-1}{}
+Primeiro agrupamos os valores em faixas usando a regra de Sturges.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{k \textless{}{-}}\StringTok{ }\KeywordTok{ceiling}\NormalTok{(}\DecValTok{1} \OperatorTok{+}\StringTok{ }\KeywordTok{log}\NormalTok{(}\KeywordTok{nrow}\NormalTok{(dados\_iris)))}
+\NormalTok{dados\_iris2 \textless{}{-}}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}
+\NormalTok{  dados\_iris,}
+  \DataTypeTok{comprimento\_sepala\_int =} \KeywordTok{cut}\NormalTok{(}
+\NormalTok{    comprimento\_sepala,}
+    \DataTypeTok{breaks =}\NormalTok{ k,}
+    \DataTypeTok{include.lowest =} \OtherTok{TRUE}\NormalTok{,}
+    \DataTypeTok{right =} \OtherTok{FALSE}
+\NormalTok{  )}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Tabela de frequência\newline Variável
+quantitativa contínua}
+\protect\hypertarget{tabela-de-frequuxeanciavariuxe1vel-quantitativa-contuxednua-2}{}
+Agora podemos contar a frequência de cada intervalo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{tabyl}\NormalTok{(dados\_iris2, comprimento\_sepala\_int) }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{adorn\_totals}\NormalTok{() }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{adorn\_pct\_formatting}\NormalTok{(}\DataTypeTok{digits =} \DecValTok{2}\NormalTok{) }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{rename}\NormalTok{(}
+    \StringTok{"Comprimento de sépala"}\NormalTok{ =}\StringTok{ }\NormalTok{comprimento\_sepala\_int,}
+    \StringTok{"Frequência absoluta"}\NormalTok{ =}\StringTok{ }\NormalTok{n,}
+    \StringTok{"Porcentagem"}\NormalTok{ =}\StringTok{ }\NormalTok{percent}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{verbatim}
+##  Comprimento de sépala Frequência absoluta Porcentagem
+##             [4.3,4.81)                  16      10.67%
+##            [4.81,5.33)                  30      20.00%
+##            [5.33,5.84)                  34      22.67%
+##            [5.84,6.36)                  28      18.67%
+##            [6.36,6.87)                  25      16.67%
+##            [6.87,7.39)                  10       6.67%
+##             [7.39,7.9]                   7       4.67%
+##                  Total                 150     100.00%
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Tabela de frequência\newline Variável
+quantitativa contínua\newline Exercício}
+\protect\hypertarget{tabela-de-frequuxeanciavariuxe1vel-quantitativa-contuxednuaexercuxedcio}{}
+Para o conjunto de dados \texttt{amostra\_enem\_salvador.xlsx}, construa
+as seguintes tabelas de distribuição de frequências:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{nu\_nota\_mt} (nota da prova em matemática):
+  \(l_0, l_1, \dots, l_k\) são igualmente espaços com
+  \(l_k - l_{k-1}=100\)
+\item
+  \texttt{nu\_nota\_cn} (nota da prova de ciências humanas): use a regra
+  de Sturges
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Gráficos no \texttt{R}}
+\protect\hypertarget{gruxe1ficos-no-r}{}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Pacote:} \texttt{ggplot2}
+\item
+  Permite gráficos personalizados com uma sintaxe simples e rápida, e
+  iterativa \emph{por camadas}.
+\item
+  Começamos com um camada com os dados \texttt{ggplot(dados)}, e vamos
+  adicionando as camadas de anotações, e sumários estatísticos.
+\item
+  Usa a \emph{gramática de gráficos} proposta por Leland Wilkinson:
+  \href{https://www.springer.com/gp/book/9780387245447}{Grammar of
+  Graphics}.
+\item
+  Ideia desta gramática: delinear os atributos estéticos das figuras
+  geométricas (incluindo transformações nos dados e mudança no sistema
+  de coordenadas).
+\end{itemize}
+
+Para mais detalhes, você pode consultar
+\href{https://ggplot2-book.org}{\texttt{ggplot2}: elegant graphics for
+data analysis} e \href{https://ggplot2.tidyverse.org}{documentação do
+\texttt{ggplot2}}
+\end{frame}
+
+\begin{frame}[fragile]{Gráficos no \texttt{R}}
+\protect\hypertarget{gruxe1ficos-no-r-1}{}
+\textbf{Estrutura básica de \texttt{ggplot2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =} \OperatorTok{\textless{}}\NormalTok{data possible tibble}\OperatorTok{\textgreater{}}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\ErrorTok{\textless{}}\NormalTok{Geom functions}\OperatorTok{\textgreater{}}\NormalTok{(}\DataTypeTok{mapping =} \KeywordTok{aes}\NormalTok{(}\OperatorTok{\textless{}}\NormalTok{MAPPINGS}\OperatorTok{\textgreater{}}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\ErrorTok{\textless{}}\NormalTok{outras camadas}\OperatorTok{\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+Você pode usar diversos temas e extensões que a comunidade cria e criou
+para melhorar a aparência e facilitar a construção de \texttt{ggplot2}.
+
+Lista com extensões do \texttt{ggplot2}:
+\href{https://exts.ggplot2.tidyverse.org/gallery/}{extensões do
+\texttt{ggplot2}}.
+
+\rule{\textwidth}{0.5pt}
+
+Indicação de extensões:
+
+\begin{itemize}
+\tightlist
+\item
+  Temas adicionais para o pacote \texttt{ggplot2}:
+  \href{https://github.com/jrnold/ggthemes}{\texttt{ggthemes}}.
+\item
+  Gráfico de matriz de correlação:
+  \href{https://rpkgs.datanovia.com/ggcorrplot/}{\texttt{ggcorrplot}}.
+\item
+  Gráfico quantil-quantil:
+  \href{https://github.com/aloy/qqplotr}{\texttt{qqplotr}}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Gráficos no \texttt{R}}
+\protect\hypertarget{gruxe1ficos-no-r-2}{}
+\textbf{Gráfico de barras no \texttt{ggplot2}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{função:} \texttt{geom\_bar()}. Para porcentagem:
+  \texttt{geom\_bar(x\ =\ \textless{}variável\ no\ eixo\ x\textgreater{},\ y\ =\ ..prop..\ *\ 100)}.
+\item
+  Argumentos adicionais:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{\texttt{fill}}: mudar a cor do preenchimento das figuras
+    geométricas.
+  \item
+    \textbf{\texttt{color}}: mudar a cor da figura geométrica.
+  \end{itemize}
+\item
+  Rótulos dos eixos
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Mudar os rótulos:}
+    \texttt{labs(x\ =\ \textless{}rótulo\ do\ eixo\ x\textgreater{},\ y\ =\ \textless{}rótulo\ do\ eixo\ y\textgreater{})}.
+  \item
+    \textbf{Trocar o eixo-x pelo eixo-y:} \texttt{coord\_flip()}.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Gráfico de barras\newline Variável qualitativa}
+\protect\hypertarget{gruxe1fico-de-barrasvariuxe1vel-qualitativa}{}
+Gráfico de barras para a variável qualitativa \texttt{especies} do
+conjunto de dados \texttt{iris.xlsx}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(dados\_iris) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom\_bar}\NormalTok{(}\DataTypeTok{mapping =} \KeywordTok{aes}\NormalTok{(especies), }\DataTypeTok{fill =} \StringTok{"blue"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Espécies"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Frequência"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=1\linewidth]{aulas_files/figure-beamer/unnamed-chunk-57-1} \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Gráfico de barras\newline Variável
+qualitativa\newline Exercício}
+\protect\hypertarget{gruxe1fico-de-barrasvariuxe1vel-qualitativaexercuxedcio}{}
+Para o conjunto de dados \texttt{amostra\_enem\_salvador.xlsx}, construa
+o gráfico de barras para as seguintes variáveis:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{tp\_sexo}: gênero que a pessoa se identifica (segundo
+  classificação do IBGE)
+\item
+  \texttt{tp\_cor\_raca}: raça autodeclarada (segundo classificação do
+  IBGE)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tabela de distribuição de frequências\newline Variável
+quantitativa discreta}
+\protect\hypertarget{tabela-de-distribuiuxe7uxe3o-de-frequuxeanciasvariuxe1vel-quantitativa-discreta-2}{}
+De maneira similar, podemos contar quantas vezes cada valor de uma
+variável quantitativa discreta foi amostrado.
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+\(X\) & frequência & frequência relativa & porcentagem\tabularnewline
+\midrule
+\endhead
+\(x_1\) & \(n_1\) & \(f_1\) & \(100\cdot f_1 \%\)\tabularnewline
+\(x_2\) & \(n_2\) & \(f_2\) & \(100\cdot f_2 \%\)\tabularnewline
+\(x_3\) & \(n_3\) & \(f_3\) & \(100\cdot f_3 \%\)\tabularnewline
+\(\vdots\) & \(\vdots\) & \(\vdots\) & \(\vdots\)\tabularnewline
+\(x_k\) & \(n_k\) & \(f_k\) & \(100\cdot f_k \%\)\tabularnewline
+Total & \(n\) & \(1\) & \(100 \%\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+Em que \(n\) é o tamanho da amostra.
+\end{frame}
+
+\begin{frame}[fragile]{Tabela de distribuição de
+frequências\newline Variável quantitativa discreta}
+\protect\hypertarget{tabela-de-distribuiuxe7uxe3o-de-frequuxeanciasvariuxe1vel-quantitativa-discreta-3}{}
+Vamos construir a tabela de distribuição de frequências para a variável
+quantitativa discreta \texttt{carburadores} do conjunto de dados
+\texttt{mtcarros}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tab \textless{}{-}}\StringTok{ }\KeywordTok{tabyl}\NormalTok{(dados\_mtcarros, carburadores) }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{adorn\_totals}\NormalTok{() }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{adorn\_pct\_formatting}\NormalTok{(}\DataTypeTok{digits =} \DecValTok{2}\NormalTok{) }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{rename}\NormalTok{(}
+    \StringTok{"Número de carburadores"}\NormalTok{ =}\StringTok{ }\NormalTok{carburadores,}
+    \StringTok{"Frequência (absoluta)"}\NormalTok{ =}\StringTok{ }\NormalTok{n,}
+    \StringTok{"Porcentagem"}\NormalTok{ =}\StringTok{ }\NormalTok{percent}
+\NormalTok{  )}
+\NormalTok{tab}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]
+\small
+
+\begin{verbatim}
+##  Número de carburadores Frequência (absoluta) Porcentagem
+##                       1                     7      21.88%
+##                       2                    10      31.25%
+##                       3                     3       9.38%
+##                       4                    10      31.25%
+##                       6                     1       3.12%
+##                       8                     1       3.12%
+##                   Total                    32     100.00%
+\end{verbatim}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]{Gráfico de barras\newline Variável quantitativa
+discreta}
+\protect\hypertarget{gruxe1fico-de-barrasvariuxe1vel-quantitativa-discreta}{}
+\small
+
+Gráfico de barras para a variável quantitativa discreta
+\texttt{carburadores} do conjunto de dados \texttt{mtcarros.csv}.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{after\_stat(prop)} retorna a \emph{frequência relativa} ou
+  \emph{proporção} de um valor (ou categoria) de uma variável.
+\item
+  \texttt{after\_stat(count)} retorna a \emph{frequência absoluta} de um
+  valor (ou categoria) de uma variável.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(dados\_mtcarros) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom\_bar}\NormalTok{(}
+    \DataTypeTok{mapping =} \KeywordTok{aes}\NormalTok{(carburadores, }\KeywordTok{after\_stat}\NormalTok{(}\DecValTok{100} \OperatorTok{*}\StringTok{ }\NormalTok{prop)),}
+    \DataTypeTok{fill =} \StringTok{"\#002f81"}
+\NormalTok{  ) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Número de carburadores"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Porcentagem"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+\end{frame}
+
+\begin{frame}
+\begin{center}\includegraphics[width=1\linewidth]{aulas_files/figure-beamer/unnamed-chunk-61-1} \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Gráfico de barras\newline Variável quantitativa
+discreta\newline Exercício}
+\protect\hypertarget{gruxe1fico-de-barrasvariuxe1vel-quantitativa-discretaexercuxedcio}{}
+\begin{itemize}
+\tightlist
+\item
+  Para a variável \texttt{q005} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx}, construa o gráfico de barras
+  onde o eixo y é a frequência absoluta.
+\item
+  Para a variável \texttt{q005} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx}, construa o gráfico de barras
+  onde o eixo y é a frequência relativa.
+\item
+  Para a variável \texttt{q005} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx}, construa o gráfico de barras
+  onde o eixo y é a porcentagem.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Histograma}
+\protect\hypertarget{histograma}{}
+Para variávieis quantitativas contínuas, geralmente não construímos
+gráficos de barras, e sim uma figura geométrica chamada de
+\emph{histograma}.
+
+\begin{itemize}
+\tightlist
+\item
+  O histograma é um gráfico de barras contíguas em que a área de cada
+  barra é igual à frequência relativa.
+\item
+  Cada faixa de valor \([l_{i-1}, l_{i}), i=1, \dots, n,\) será
+  representada por um barra com área \(f_i, i=1, \dots, n\).
+\item
+  Como cada barra terá área igual a \(f_i\) e base \(l_i - l_{i-1}\), e
+  a altura de cada barra será \(\frac{f_i}{l_i - l_{i-1}}\).
+\item
+  \(\frac{f_i}{l_i - l_{i-1}}\) é denominada de densidade de frequência.
+\item
+  Podemos usar os seguintes parâmetros (\textbf{obrigatório o uso de
+  apenas um deles}):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{bins}: número de intervalos no histograma (usando, por
+    exemplo, a regra de Sturges)
+  \item
+    \texttt{binwidth}: tamanho (ou largura) dos intervalos
+  \item
+    \texttt{breaks}: os limites de cada intervalo
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Histograma}
+\protect\hypertarget{histograma-1}{}
+\begin{figure}
+\centering
+\caption{Representação de uma única barra de um histograma.}
+\begin{tikzpicture}
+  \filldraw[blue!30] (1,0) rectangle (3,2);
+  \draw[black] (1,0) rectangle (3,2);
+  \node at (2,1) {\tiny$\frac{f_i}{l_i - l_{i-1}}\cdot l_i - l_{i-1}$};
+  \draw[->] (0,0) -- (0,3);
+  \draw[->] (0,0) -- (4,0);
+  \node[right] at (4,0) {Variável contínua};
+  \node[above] at (0,3) {Denside de frequência};
+  \draw[decorate,decoration={brace,mirror}] (3,0) -- (3,2);
+  \node[right] at (3,1) {$\frac{f_i}{l_i - l_{i-1}}$};
+  \draw[decorate,decoration={brace,mirror}] (1,0) -- (3,0);
+  \node[below] at (2,0) {$l_i - l_{i-1}$};
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Histograma}
+\protect\hypertarget{histograma-2}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(dados\_iris) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom\_histogram}\NormalTok{(}
+    \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ comprimento\_sepala, }\DataTypeTok{y =} \KeywordTok{after\_stat}\NormalTok{(density)),}
+    \DataTypeTok{bins =}\NormalTok{ k,}
+    \DataTypeTok{fill =} \StringTok{"\#002f81"}
+\NormalTok{  ) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme\_minimal}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}
+    \DataTypeTok{x =} \StringTok{"Comprimento de Sépala"}\NormalTok{,}
+    \DataTypeTok{y =} \StringTok{"Densidade de Frequência"}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=1\linewidth]{aulas_files/figure-beamer/unnamed-chunk-62-1} \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Histograma\newline Exercício}
+\protect\hypertarget{histogramaexercuxedcio}{}
+\begin{itemize}
+\tightlist
+\item
+  Para a variável \texttt{nu\_nota\_mt} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx}, construa o histograma onde os
+  intervalos tem o mesmo tamanho igual a 100.
+\item
+  Para a variável \texttt{nu\_nota\_cn} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx}, construa o histograma usando a
+  regra de Sturge.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Medidas resumo\newline Variável quantitativa}
+\protect\hypertarget{medidas-resumovariuxe1vel-quantitativa}{}
+\small
+
+A ideia é encontrar um ou alguns valores que sintetizem todos os
+valores.
+
+\rule{\textwidth}{0.5pt}
+
+\textbf{Medidas de posição (tendência central)}
+
+A ideia é encontrar um valor que representa \emph{bem} todos os valores.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Média:} \(\overline{x} = \dfrac{x_1+\cdots+x_n}{n}\).
+\item
+  \textbf{Mediana:} valor que divide a sequência ordenada de valores em
+  duas partes iguais.
+\end{itemize}
+
+\rule{\textwidth}{0.5pt}
+
+\textbf{Medidas de dispersão}
+
+A ideia é medir a homogeneidade dos valores.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Variância: }
+  \(s^2 = \dfrac{(x_1 - \overline{X})^2 + \cdots + (x_n - \overline{X})^2}{n-1}\).
+\item
+  \textbf{Desvio padrão: } \(s = \sqrt{s^2}\) (mesma unidade dos dados).
+\item
+  \textbf{Coeficiente de variação}
+  \(cv= \dfrac{s}{\overline{x}} \cdot 100\%\) (adimensional, ou seja,
+  ``sem unidade'').
+\end{itemize}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]{Medidas resumo: exemplo}
+\protect\hypertarget{medidas-resumo-exemplo}{}
+Podemos usar a função \texttt{summarise} do pacote \texttt{dplyr}
+(incluso no pacote \texttt{tidyverse}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados\_iris }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}
+    \DataTypeTok{media =} \KeywordTok{mean}\NormalTok{(comprimento\_sepala),}
+    \DataTypeTok{mediana =} \KeywordTok{median}\NormalTok{(comprimento\_sepala),}
+    \DataTypeTok{dp =} \KeywordTok{sd}\NormalTok{(comprimento\_sepala),}
+    \DataTypeTok{cv =}\NormalTok{ dp }\OperatorTok{/}\StringTok{ }\NormalTok{media}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 4
+##   media mediana    dp    cv
+##   <dbl>   <dbl> <dbl> <dbl>
+## 1  5.84     5.8 0.828 0.142
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Medidas resumo: exemplo}
+\protect\hypertarget{medidas-resumo-exemplo-1}{}
+Podemos usar a função \texttt{group\_by} para calcular medidas resumo
+por categorias de uma variável qualitativa.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tabela \textless{}{-}}\StringTok{ }\NormalTok{dados\_iris }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{group\_by}\NormalTok{(especies) }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}
+    \DataTypeTok{media =} \KeywordTok{mean}\NormalTok{(comprimento\_sepala),}
+    \DataTypeTok{mediana =} \KeywordTok{median}\NormalTok{(comprimento\_sepala),}
+    \DataTypeTok{dp =} \KeywordTok{sd}\NormalTok{(comprimento\_sepala),}
+    \DataTypeTok{cv =}\NormalTok{ dp }\OperatorTok{/}\StringTok{ }\NormalTok{media}
+\NormalTok{  )}
+\NormalTok{tabela}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 5
+##   especies   media mediana    dp     cv
+##   <chr>      <dbl>   <dbl> <dbl>  <dbl>
+## 1 setosa      5.01     5   0.352 0.0704
+## 2 versicolor  5.94     5.9 0.516 0.0870
+## 3 virginica   6.59     6.5 0.636 0.0965
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Medidas de resumo\newline Exercício}
+\protect\hypertarget{medidas-de-resumoexercuxedcio}{}
+\begin{itemize}
+\tightlist
+\item
+  Calcule média, mediana, o desvio padrão e coeficiente de variação para
+  a variável \texttt{nu\_nota\_mt} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx} por gênero (\texttt{tp\_sexo}).
+\item
+  Calcule média, mediana, o desvio padrão e coeficiente de variação para
+  a variável \texttt{nu\_nota\_cn} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx} por gênero (\texttt{tp\_sexo}).
+\item
+  Calcule média, mediana, o desvio padrão e coeficiente de variação para
+  a variável \texttt{nu\_nota\_mt} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx} por raça
+  (\texttt{tp\_cor\_raca}).
+\item
+  Calcule média, mediana, o desvio padrão e coeficiente de variação para
+  a variável \texttt{nu\_nota\_cn} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx} por raça
+  (\texttt{tp\_cor\_raca}).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Quantis}
+\protect\hypertarget{quantis}{}
+\textbf{Ideia}
+
+\(q(p)\) é um valor que satisfaz;
+
+\begin{itemize}
+\tightlist
+\item
+  \(100 \cdot p\%\) das observações é no máximo \(q(p)\)
+\item
+  \(100 \cdot (1-p)\%\) das observações é no mínimo \(q(1-p)\)
+\end{itemize}
+
+\rule{\textwidth}{0.5pt}
+
+\textbf{Alguns quantis especiais}
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Primeiro quartil:} \(q_1 = q(0,25)\)
+\item
+  \emph{Primeiro quartil:} \(q_2 = q(0,5)\)
+\item
+  \emph{Primeiro quartil:} \(q_3 = q(0,75)\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Quantis}
+\protect\hypertarget{quantis-1}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados\_iris }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{group\_by}\NormalTok{(especies) }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}
+    \DataTypeTok{q1 =} \KeywordTok{quantile}\NormalTok{(comprimento\_sepala, }\FloatTok{0.25}\NormalTok{),}
+    \DataTypeTok{q2 =} \KeywordTok{quantile}\NormalTok{(comprimento\_sepala, }\FloatTok{0.5}\NormalTok{),}
+    \DataTypeTok{q3 =} \KeywordTok{quantile}\NormalTok{(comprimento\_sepala, }\FloatTok{0.75}\NormalTok{),}
+    \DataTypeTok{frequencia =} \KeywordTok{n}\NormalTok{()}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 5
+##   especies      q1    q2    q3 frequencia
+##   <chr>      <dbl> <dbl> <dbl>      <int>
+## 1 setosa      4.8    5     5.2         50
+## 2 versicolor  5.6    5.9   6.3         50
+## 3 virginica   6.22   6.5   6.9         50
+\end{verbatim}
+
+\texttt{n()} calcula a frequência de cada valor de uma variável
+qualitativa.
+\end{frame}
+
+\begin{frame}[fragile]{Quantis\newline Exercício}
+\protect\hypertarget{quantisexercuxedcio}{}
+\begin{itemize}
+\tightlist
+\item
+  Calcule o primeiro quartil, segundo quartil e o terceiro quartil para
+  a variável \texttt{nu\_nota\_mt} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx} por gênero (\texttt{tp\_sexo}).
+  Inclua uma coluna com a frequência da variável \texttt{tp\_sexo}.
+\item
+  Calcule o primeiro quartil, segundo quartil e o terceiro quartil para
+  a variável \texttt{nu\_nota\_cn} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx} por gênero (\texttt{tp\_sexo}).
+  Inclua uma coluna com a frequência da variável \texttt{tp\_sexo}.
+\item
+  Calcule o primeiro quartil, segundo quartil e o terceiro quartil para
+  a variável \texttt{nu\_nota\_mt} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx} por raça
+  (\texttt{tp\_cor\_raca}). Inclua uma coluna com a frequência da
+  variável \texttt{tp\_cor\_raca}.
+\item
+  Calcule o primeiro quartil, segundo quartil e o terceiro quartil para
+  a variável \texttt{nu\_nota\_cn} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx} por raça
+  (\texttt{tp\_cor\_raca}). Inclua uma coluna com a frequência da
+  variável \texttt{tp\_cor\_raca}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Diagrama de caixa (ou \emph{boxplot})}
+\protect\hypertarget{diagrama-de-caixa-ou-boxplot}{}
+\textbf{Medida de dispersão:} distância entre \(q_3\) e \(q_1\)
+
+\textbf{Diferença de quartis:} \(dq = q_3 - q_1\)
+
+\begin{center}\includegraphics[width=0.75\linewidth]{../../figures/motivacao_dq} \end{center}
+\end{frame}
+
+\begin{frame}{Diagrama de caixa (ou \emph{boxplot})}
+\protect\hypertarget{diagrama-de-caixa-ou-boxplot-1}{}
+\textbf{Assimetria à direita ou positiva:}
+
+\begin{itemize}
+\tightlist
+\item
+  frequências diminuem à direita no histograma
+\item
+  \(q_2\) perto \(q_1\): \(q_2 - q_1 < q_3 - q_2\)
+\end{itemize}
+
+\rule{\textwidth}{0.5pt}
+
+\textbf{Assimetria à esquerda ou negativa:} frequências diminuem à
+esquerda no histograma
+
+\begin{itemize}
+\tightlist
+\item
+  frequências diminuem à direita no histograma
+\item
+  \(q_2\) perto \(q_3\): \(q_2 - q_1 > q_3 - q_2\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Diagrama de caixa (ou \emph{boxplot})}
+\protect\hypertarget{diagrama-de-caixa-ou-boxplot-2}{}
+\textbf{Assimetria}
+
+\begin{center}\includegraphics[width=1\linewidth]{aulas_files/figure-beamer/unnamed-chunk-67-1} \end{center}
+\end{frame}
+
+\begin{frame}{Diagrama de caixa (ou \emph{boxplot})}
+\protect\hypertarget{diagrama-de-caixa-ou-boxplot-3}{}
+\begin{center}\includegraphics[width=0.25\linewidth]{../../figures/boxplot} \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Diagrama de caixa (ou \emph{boxplot})}
+\protect\hypertarget{diagrama-de-caixa-ou-boxplot-4}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(dados\_iris) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom\_boxplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ comprimento\_sepala)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Comprimento de Sépala"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.85\linewidth]{aulas_files/figure-beamer/unnamed-chunk-69-1} \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Gráficos lado a lado com \texttt{patchwork}}
+\protect\hypertarget{gruxe1ficos-lado-a-lado-com-patchwork}{}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{patchwork} permite que colocar gráficos lado a lado com
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{+}: figuras ao lado
+  \item
+    \texttt{\textbackslash{}}: figuras embaixo
+  \end{itemize}
+\item
+  Para mais detahes, visite a
+  \href{https://patchwork.data-imaginist.com/articles/patchwork.html}{documentação
+  do patchwork}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sepala \textless{}{-}}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(dados\_iris) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom\_boxplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ comprimento\_sepala)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Comprimento de Sépala"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{ylim}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme\_minimal}\NormalTok{()}
+\NormalTok{petala \textless{}{-}}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(dados\_iris) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom\_boxplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ comprimento\_petala)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Comprimento de Pétala"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{ylim}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme\_minimal}\NormalTok{()}
+\NormalTok{sepala }\OperatorTok{+}\StringTok{ }\NormalTok{petala}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}
+\begin{center}\includegraphics[width=1\linewidth]{aulas_files/figure-beamer/unnamed-chunk-71-1} \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Diagrama de caixa\newline Exercício}
+\protect\hypertarget{diagrama-de-caixaexercuxedcio}{}
+Para o conjunto de dados \texttt{amostra\_enem\_salvador.xlsx}, construa
+o diagrama de caixa para as variáveis \texttt{nu\_nota\_mt} e
+\texttt{nu\_nota\_cn} e os coloque lado a lado usando o pacote
+\texttt{patchwork}.
+\end{frame}
+
+\begin{frame}{Gráficos\newline Duas variáveis}
+\protect\hypertarget{gruxe1ficosduas-variuxe1veis}{}
+\textbf{Ideia}: estudar a associação entre duas variáveis quantitativas.
+
+\begin{center}\includegraphics[width=0.75\linewidth]{aulas_files/figure-beamer/unnamed-chunk-72-1} \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Gráfico de dispersão}
+\protect\hypertarget{gruxe1fico-de-dispersuxe3o}{}
+\small
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(dados\_iris) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(comprimento\_petala, comprimento\_sepala)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}
+    \DataTypeTok{x =} \StringTok{"Comprimento de pétala"}\NormalTok{,}
+    \DataTypeTok{y =} \StringTok{"Comprimento de sépala"}
+\NormalTok{  ) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.75\linewidth]{aulas_files/figure-beamer/unnamed-chunk-73-1} \end{center}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]{Gráfico de dispersão\newline Exercício}
+\protect\hypertarget{gruxe1fico-de-dispersuxe3oexercuxedcio}{}
+Para o conjunto de dados \texttt{amostra\_enem\_salvador.xlsx}, construa
+o gráfico de dispersão entre as variáveis \texttt{nu\_nota\_mt} e
+\texttt{nu\_nota\_cn}.
+
+Inclua o argumento nomeado \texttt{alpha\ =\ 0.1} na função
+\texttt{geom\_point} para incluir opacidade no gráfico de dispersão.
+Isso ajuda quando temos amostra de tamanho médio e grande.
+\end{frame}
+
+\begin{frame}{Associação entre duas variáveis qualitativas}
+\protect\hypertarget{associauxe7uxe3o-entre-duas-variuxe1veis-qualitativas}{}
+\textbf{Ideia}
+
+Sejam \(X\) e \(Y\) duas variáveis qualitativas com os seguintes valores
+possíveis:
+
+\begin{itemize}
+\tightlist
+\item
+  \(X: A_1, \cdots, A_r\)
+\item
+  \(Y: B_1, \cdots, B_s\)
+\end{itemize}
+
+Desejamos estudar a associação entre \(X\) e \(Y\).
+
+\rule{\textwidth}{0.5pt}
+
+\textbf{Associação entre \(X\) e \(Y\)}
+
+Suponha que \(A_i\) tenha porcentagem \(100 \cdot f_i \cdot \%\). Então,
+\(X\) e \(Y\) são:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{não associados:} se ao conhecermos o valor de \(Y\) para um
+  elemento da população, \textbf{continuamos} com a porcentagem
+  \(100 \cdot f_i \%\) deste elemento ter valor de \(X\) igual a \(A_i\)
+\item
+  \textbf{associados:} se ao conhecermos o valor de \(Y\) para um
+  elemento da população, \textbf{alteramos} a porcentagem
+  \(100 \cdot fi \%\) deste elemento ter valor de \(X\) igual a \(A_i\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Associação entre duas variáveis
+qualitativas\newline Gráfico de barras}
+\protect\hypertarget{associauxe7uxe3o-entre-duas-variuxe1veis-qualitativasgruxe1fico-de-barras}{}
+Vamos checar a associação entre \texttt{fundacao\_tipo} e
+\texttt{geral\_condicao}.
+
+\small
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados\_casas \textless{}{-}}\StringTok{ }\KeywordTok{read\_xlsx}\NormalTok{(}\StringTok{"data/raw/casas.xlsx"}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(dados\_casas) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom\_bar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ fundacao\_tipo, }\DataTypeTok{fill =}\NormalTok{ geral\_condicao),}
+          \DataTypeTok{position =} \StringTok{"fill"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Tipo de fundação da casa"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Porcentagem"}\NormalTok{,}
+      \DataTypeTok{fill =} \StringTok{"Condição geral"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale\_y\_continuous}\NormalTok{(}\DataTypeTok{labels =}\NormalTok{ scales}\OperatorTok{::}\NormalTok{percent) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+\end{frame}
+
+\begin{frame}
+\begin{center}\includegraphics[width=1\linewidth]{aulas_files/figure-beamer/unnamed-chunk-75-1} \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Associação entre duas variáveis
+qualitativas\newline Gráfico de barras}
+\protect\hypertarget{associauxe7uxe3o-entre-duas-variuxe1veis-qualitativasgruxe1fico-de-barras-1}{}
+Podemos agrupar as barras por grupos para analisar a associação entre
+duas variáveis qualitativas.
+
+\small
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados\_casas \textless{}{-}}\StringTok{ }\KeywordTok{read\_xlsx}\NormalTok{(}\StringTok{"data/raw/casas.xlsx"}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(dados\_casas) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom\_bar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ fundacao\_tipo, }\DataTypeTok{fill =}\NormalTok{ geral\_condicao),}
+          \DataTypeTok{position =} \StringTok{"dodge"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Tipo de fundação da casa"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Porcentagem"}\NormalTok{,}
+      \DataTypeTok{fill =} \StringTok{"Condição geral"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale\_y\_continuous}\NormalTok{(}\DataTypeTok{labels =}\NormalTok{ scales}\OperatorTok{::}\NormalTok{percent) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+\end{frame}
+
+\begin{frame}
+\begin{center}\includegraphics[width=1\linewidth]{aulas_files/figure-beamer/unnamed-chunk-77-1} \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Associação entre duas variáveis
+qualitativas\newline Gráfico de barras\newline Exercício}
+\protect\hypertarget{associauxe7uxe3o-entre-duas-variuxe1veis-qualitativasgruxe1fico-de-barrasexercuxedcio}{}
+\begin{itemize}
+\tightlist
+\item
+  Verifique se existe associação entre as variáveis \texttt{q006} e
+  \texttt{tp\_cor\_raca} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx} usando gráfico de gráficos
+  usando o \texttt{position=fill}.
+\item
+  Verifique se existe associação entre as variáveis \texttt{q006} e
+  \texttt{tp\_sexo} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx} usando gráfico de gráficos
+  usando o \texttt{position=dodge}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Comparação de medianas usando Diagrama de caixa}
+\protect\hypertarget{comparauxe7uxe3o-de-medianas-usando-diagrama-de-caixa}{}
+Podemos comparar medianas de diferentes grupos usando o diagrama de
+caixa.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(dados\_iris) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom\_boxplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ especies, }\DataTypeTok{y =}\NormalTok{ comprimento\_sepala)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Espécies"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Comprimento de Sépala"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}
+\begin{center}\includegraphics[width=1\linewidth]{aulas_files/figure-beamer/unnamed-chunk-79-1} \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Comparação de medianas usando Diagrama de
+caixa\newline Exercício}
+\protect\hypertarget{comparauxe7uxe3o-de-medianas-usando-diagrama-de-caixaexercuxedcio}{}
+\begin{itemize}
+\tightlist
+\item
+  Para o conjunto de dados \texttt{amostra\_enem\_salvador.xlsx},
+  compare a variável \texttt{nu\_nota\_mt} por raça
+  (\texttt{tp\_cor\_raca}).
+\item
+  Para o conjunto de dados \texttt{amostra\_enem\_salvador.xlsx},
+  compare a variável \texttt{nu\_nota\_cn} por raça
+  (\texttt{tp\_cor\_raca}).
+\item
+  Coloque os dois gráficos acima lado a lado usando o pacote
+  \texttt{patchwork}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Salvando tabelas com o pacote \texttt{gt}}
+\protect\hypertarget{salvando-tabelas-com-o-pacote-gt}{}
+Vamos usar o pacote \texttt{gt} para customizar a apresentação de uma
+tabela.
+
+A ideia do pacote \texttt{gt} é melhorar apresentação por camadas.
+
+\begin{center}\includegraphics[width=0.5\linewidth]{../../figures/gt-table} \end{center}
+
+Para mais detalhes, visite \href{https://gt.rstudio.com/}{documentação
+do pacote \texttt{gt}}
+\end{frame}
+
+\begin{frame}[fragile]{Salvando tabelas com o pacote \texttt{gt}}
+\protect\hypertarget{salvando-tabelas-com-o-pacote-gt-1}{}
+Vamos usar um exemplo para ensinar como usar o pacote \texttt{gt}.
+
+\small
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tab \textless{}{-}}\StringTok{ }\NormalTok{dados\_iris }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{group\_by}\NormalTok{(especies) }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}
+    \DataTypeTok{m\_petala =} \KeywordTok{mean}\NormalTok{(comprimento\_petala),}
+    \DataTypeTok{dp\_petala =} \KeywordTok{sd}\NormalTok{(comprimento\_petala),}
+    \DataTypeTok{q1\_petala =} \KeywordTok{quantile}\NormalTok{(comprimento\_petala, }\DataTypeTok{probs =} \FloatTok{0.25}\NormalTok{),}
+    \DataTypeTok{q2\_petala =} \KeywordTok{quantile}\NormalTok{(comprimento\_petala, }\DataTypeTok{probs =} \FloatTok{0.5}\NormalTok{),}
+    \DataTypeTok{q3\_petala =} \KeywordTok{quantile}\NormalTok{(comprimento\_petala, }\DataTypeTok{probs =} \FloatTok{0.75}\NormalTok{),}
+    \DataTypeTok{cv\_petala =}\NormalTok{ dp\_petala }\OperatorTok{/}\StringTok{ }\NormalTok{m\_petala}
+\NormalTok{  )}
+\NormalTok{tab}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]
+\scriptsize
+
+\begin{verbatim}
+## # A tibble: 3 x 7
+##   especies   m_petala dp_petala q1_petala q2_petala q3_petala cv_petala
+##   <chr>         <dbl>     <dbl>     <dbl>     <dbl>     <dbl>     <dbl>
+## 1 setosa         1.46     0.174       1.4      1.5       1.58     11.9 
+## 2 versicolor     4.26     0.470       4        4.35      4.6      11.0 
+## 3 virginica      5.55     0.552       5.1      5.55      5.88      9.94
+\end{verbatim}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]{Salvando tabelas com o pacote \texttt{gt}}
+\protect\hypertarget{salvando-tabelas-com-o-pacote-gt-2}{}
+\textbf{Cabeçalho da tabela:} legenda e sub-legenda da tabela.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{tab\_header}: permite incluir legenda (\texttt{title}) e
+  sub-legenda na tabela (\texttt{subtitle})
+\item
+  \texttt{gtsave}: permite salvar objeto \texttt{gt}nos formatos
+  \texttt{.html}, \texttt{.tex} e \texttt{.docx}.
+\item
+  \texttt{md}: permite formatação usando a sintaxe \texttt{markdown}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Para mais detalhes sobre markdown, consulte
+    \href{https://www.markdownguide.org/cheat-sheet}{\emph{cheatsheet}
+    do markdown}
+  \end{itemize}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gt\_tab \textless{}{-}}\StringTok{ }\KeywordTok{gt}\NormalTok{(tab) }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{tab\_header}\NormalTok{(}
+    \DataTypeTok{title =} \KeywordTok{md}\NormalTok{(}\StringTok{"**Comprimento de pétala**"}\NormalTok{),}
+    \DataTypeTok{subtitle =} \KeywordTok{md}\NormalTok{(}\StringTok{"\_Algumas estatísticas descritivas\_"}\NormalTok{)}
+\NormalTok{  )}
+\KeywordTok{gtsave}\NormalTok{(gt\_tab, }\StringTok{"output/tabela.html"}\NormalTok{)}
+\KeywordTok{gtsave}\NormalTok{(gt\_tab, }\StringTok{"output/tabela.tex"}\NormalTok{)}
+\KeywordTok{gtsave}\NormalTok{(gt\_tab, }\StringTok{"output/tabela.docx"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Salvando tabelas com o pacote
+\texttt{gt}\newline Exercício}
+\protect\hypertarget{salvando-tabelas-com-o-pacote-gtexercuxedcio}{}
+\begin{enumerate}
+\tightlist
+\item
+  Calcule a média, o desvio padrão, o primeiro quartil, o segundo
+  quartil e o terceiro quartil para a variável \texttt{nu\_nota\_mt} por
+  raça (\texttt{tp\_cor\_raca}) do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx}e salve o resultado em objeto
+  \texttt{tab}.
+\item
+  Crie um objeto \texttt{gt} com nome \texttt{gt\_tab} a partir da
+  tabela em \texttt{tab}.
+\item
+  Inclua uma legenda com o texto ``Nota em matemática por raça'' e
+  sublegenda ``Edição 2021'' com a função \texttt{tab\_header}.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Salvando tabelas com o pacote \texttt{gt}}
+\protect\hypertarget{salvando-tabelas-com-o-pacote-gt-3}{}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{tab\_source}: inclusão de \_fonte de dados\_dentes
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gt\_tab \textless{}{-}}\StringTok{ }\NormalTok{gt\_tab }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{tab\_source\_note}\NormalTok{(}
+    \DataTypeTok{source\_note =} \KeywordTok{md}\NormalTok{(}\StringTok{"**Fonte:** Elboração própria."}\NormalTok{)}
+\NormalTok{  )}
+\NormalTok{gt\_tab}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}
+\scriptsize
+
+\setlength{\LTpost}{0mm}
+\begin{longtable}{lrrrrrr}
+\caption*{
+{\large \textbf{Comprimento de pétala}} \\ 
+{\small \emph{Algumas estatísticas descritivas}}
+} \\ 
+\toprule
+especies & m\_petala & dp\_petala & q1\_petala & q2\_petala & q3\_petala & cv\_petala \\ 
+\midrule
+setosa & 1.462 & 0.1736640 & 1.4 & 1.50 & 1.575 & 11.878522 \\ 
+versicolor & 4.260 & 0.4699110 & 4.0 & 4.35 & 4.600 & 11.030774 \\ 
+virginica & 5.552 & 0.5518947 & 5.1 & 5.55 & 5.875 & 9.940466 \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+\textbf{Fonte:} Elboração própria.\\
+\end{minipage}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]{Salvando tabelas com o pacote
+\texttt{gt}\newline Exercício}
+\protect\hypertarget{salvando-tabelas-com-o-pacote-gtexercuxedcio-1}{}
+Inclua \emph{fonte de dados} usando a função \texttt{tab\_source\_note}
+como texto ``Fonte: elaboração própria.'' no objeto \texttt{gt\_tab}.
+\end{frame}
+
+\begin{frame}[fragile]{Rótulo (legenda) para grupo de linhas}
+\protect\hypertarget{ruxf3tulo-legenda-para-grupo-de-linhas}{}
+\texttt{tab\_row\_group}: permite colocar um \emph{rótulo} para um grupo
+de linhas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gt\_tab \textless{}{-}}\StringTok{ }\NormalTok{gt\_tab }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{tab\_row\_group}\NormalTok{(}
+    \DataTypeTok{rows =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{),}
+    \DataTypeTok{label =} \KeywordTok{md}\NormalTok{(}\StringTok{"\_Espécies principais\_"}\NormalTok{)}
+\NormalTok{  )}
+\NormalTok{gt\_tab}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}
+\footnotesize
+
+\setlength{\LTpost}{0mm}
+\begin{longtable}{lrrrrrr}
+\caption*{
+{\large \textbf{Comprimento de pétala}} \\ 
+{\small \emph{Algumas estatísticas descritivas}}
+} \\ 
+\toprule
+especies & m\_petala & dp\_petala & q1\_petala & q2\_petala & q3\_petala & cv\_petala \\ 
+\midrule
+\multicolumn{7}{l}{\emph{Espécies principais}} \\ 
+\midrule
+setosa & 1.462 & 0.1736640 & 1.4 & 1.50 & 1.575 & 11.878522 \\ 
+virginica & 5.552 & 0.5518947 & 5.1 & 5.55 & 5.875 & 9.940466 \\ 
+\midrule
+\multicolumn{7}{l}{\vspace*{-5mm}} \\ 
+versicolor & 4.260 & 0.4699110 & 4.0 & 4.35 & 4.600 & 11.030774 \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+\textbf{Fonte:} Elboração própria.\\
+\end{minipage}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]{Rótulo (legenda) para grupo de
+linhas\newline Exercício}
+\protect\hypertarget{ruxf3tulo-legenda-para-grupo-de-linhasexercuxedcio}{}
+Inclua um \emph{rótulo} para as linhas \texttt{pardas} e \texttt{pretas}
+com o texto ``negras'' no objeto \texttt{gt\_tab}.
+\end{frame}
+
+\begin{frame}[fragile]{Rótulo (legenda) para grupo de colunas}
+\protect\hypertarget{ruxf3tulo-legenda-para-grupo-de-colunas}{}
+\texttt{tab\_spanner}: permite \emph{rótulo} para grupo de colunas.
+
+\small
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gt\_tab \textless{}{-}}\StringTok{ }\NormalTok{gt\_tab }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{tab\_spanner}\NormalTok{(}
+    \DataTypeTok{columns =} \KeywordTok{c}\NormalTok{(}
+\NormalTok{      q1\_petala,}
+\NormalTok{      q2\_petala,}
+\NormalTok{      q3\_petala}
+\NormalTok{    ),}
+    \DataTypeTok{label =} \StringTok{"Quantis"}
+\NormalTok{  ) }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{tab\_spanner}\NormalTok{(}
+    \DataTypeTok{columns =} \KeywordTok{c}\NormalTok{(dp\_petala, cv\_petala),}
+    \DataTypeTok{label =} \StringTok{"Dispersão"}
+\NormalTok{  )}
+\NormalTok{gt\_tab}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+\end{frame}
+
+\begin{frame}
+\footnotesize
+
+\setlength{\LTpost}{0mm}
+\begin{longtable}{lrrrrrr}
+\caption*{
+{\large \textbf{Comprimento de pétala}} \\ 
+{\small \emph{Algumas estatísticas descritivas}}
+} \\ 
+\toprule
+ &  & \multicolumn{2}{c}{Dispersão} & \multicolumn{3}{c}{Quantis} \\ 
+\cmidrule(lr){3-4} \cmidrule(lr){5-7}
+especies & m\_petala & dp\_petala & cv\_petala & q1\_petala & q2\_petala & q3\_petala \\ 
+\midrule
+\multicolumn{7}{l}{\emph{Espécies principais}} \\ 
+\midrule
+setosa & 1.462 & 0.1736640 & 11.878522 & 1.4 & 1.50 & 1.575 \\ 
+virginica & 5.552 & 0.5518947 & 9.940466 & 5.1 & 5.55 & 5.875 \\ 
+\midrule
+\multicolumn{7}{l}{\vspace*{-5mm}} \\ 
+versicolor & 4.260 & 0.4699110 & 11.030774 & 4.0 & 4.35 & 4.600 \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+\textbf{Fonte:} Elboração própria.\\
+\end{minipage}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]{Rótulo (legenda) para grupo de
+colunas\newline Exercício}
+\protect\hypertarget{ruxf3tulo-legenda-para-grupo-de-colunasexercuxedcio}{}
+Inclua um \emph{rótulo} pra as colunas do primeiro quartil, segundo
+quartil e terceiro quartil com o texto ``Quartis'' no objeto
+\texttt{gt\_tab}.
+\end{frame}
+
+\begin{frame}[fragile]{Movendo as colunas na tabela}
+\protect\hypertarget{movendo-as-colunas-na-tabela}{}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{cols\_move\_to\_start}: move uma ou mais colunas para o início
+  da tabela.
+\item
+  \texttt{cols\_move\_to\_end}: move uma ou mais colunas para o fim da
+  tabela.
+\item
+  \texttt{cols\_move}: move uma ou mais colunas para depois um
+  determinada coluna.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gt\_tab \textless{}{-}}\StringTok{ }\NormalTok{gt\_tab }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{cols\_move\_to\_start}\NormalTok{(}
+    \DataTypeTok{columns =} \KeywordTok{c}\NormalTok{(especies, dp\_petala, cv\_petala)}
+\NormalTok{  ) }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{cols\_move\_to\_end}\NormalTok{(}
+    \DataTypeTok{columns =}\NormalTok{ m\_petala}
+\NormalTok{  ) }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{cols\_move}\NormalTok{(}
+    \DataTypeTok{after =}\NormalTok{ cv\_petala,}
+    \DataTypeTok{columns =} \KeywordTok{c}\NormalTok{(q1\_petala, q2\_petala, q3\_petala)}
+\NormalTok{  )}
+\NormalTok{gt\_tab}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}
+\footnotesize
+
+\setlength{\LTpost}{0mm}
+\begin{longtable}{lrrrrrr}
+\caption*{
+{\large \textbf{Comprimento de pétala}} \\ 
+{\small \emph{Algumas estatísticas descritivas}}
+} \\ 
+\toprule
+ & \multicolumn{2}{c}{Dispersão} & \multicolumn{3}{c}{Quantis} &  \\ 
+\cmidrule(lr){2-3} \cmidrule(lr){4-6}
+especies & dp\_petala & cv\_petala & q1\_petala & q2\_petala & q3\_petala & m\_petala \\ 
+\midrule
+\multicolumn{7}{l}{\emph{Espécies principais}} \\ 
+\midrule
+setosa & 0.1736640 & 11.878522 & 1.4 & 1.50 & 1.575 & 1.462 \\ 
+virginica & 0.5518947 & 9.940466 & 5.1 & 5.55 & 5.875 & 5.552 \\ 
+\midrule
+\multicolumn{7}{l}{\vspace*{-5mm}} \\ 
+versicolor & 0.4699110 & 11.030774 & 4.0 & 4.35 & 4.600 & 4.260 \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+\textbf{Fonte:} Elboração própria.\\
+\end{minipage}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]{Movendo as colunas na tabela\newline Exercício}
+\protect\hypertarget{movendo-as-colunas-na-tabelaexercuxedcio}{}
+Deixe as colunas de \texttt{gt\_tab} na seguinte ordem: \emph{raça},
+\emph{média}, \emph{primeiro quartil}, \emph{segundo quartil},
+\emph{terceiro quartil} e \emph{desvio padrão} usando as funções
+\texttt{cols\_move\_to\_start}, \texttt{cols\_move} e
+\texttt{cols\_move\_to\_end}.
+\end{frame}
+
+\begin{frame}[fragile]{Atualizando as colunas}
+\protect\hypertarget{atualizando-as-colunas}{}
+\texttt{cols\_label}: permite atualizar os \emph{rótulos} das colunas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gt\_tab \textless{}{-}}\StringTok{ }\NormalTok{gt\_tab }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{cols\_label}\NormalTok{(}
+    \DataTypeTok{especies =} \KeywordTok{md}\NormalTok{(}\StringTok{"**Espécies**"}\NormalTok{),}
+    \DataTypeTok{dp\_petala =} \StringTok{"Desvio padrão"}\NormalTok{,}
+    \DataTypeTok{cv\_petala =} \StringTok{"Coeficiente de variação"}\NormalTok{,}
+    \DataTypeTok{q1\_petala =} \KeywordTok{md}\NormalTok{(}\StringTok{"*Q1*"}\NormalTok{),}
+    \DataTypeTok{q2\_petala =} \KeywordTok{md}\NormalTok{(}\StringTok{"*Q2*"}\NormalTok{),}
+    \DataTypeTok{q3\_petala =} \KeywordTok{md}\NormalTok{(}\StringTok{"*Q3*"}\NormalTok{),}
+    \DataTypeTok{m\_petala =} \StringTok{"Média"}
+\NormalTok{  )}
+\NormalTok{gt\_tab}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}
+\setlength{\LTpost}{0mm}
+\begin{longtable}{lrrrrrr}
+\caption*{
+{\large \textbf{Comprimento de pétala}} \\ 
+{\small \emph{Algumas estatísticas descritivas}}
+} \\ 
+\toprule
+ & \multicolumn{2}{c}{Dispersão} & \multicolumn{3}{c}{Quantis} &  \\ 
+\cmidrule(lr){2-3} \cmidrule(lr){4-6}
+\textbf{Espécies} & Desvio padrão & CV & \emph{Q1} & \emph{Q2} & \emph{Q3} & Média \\ 
+\midrule
+\multicolumn{7}{l}{\emph{Espécies principais}} \\ 
+\midrule
+setosa & 0.1736640 & 11.878522 & 1.4 & 1.50 & 1.575 & 1.462 \\ 
+virginica & 0.5518947 & 9.940466 & 5.1 & 5.55 & 5.875 & 5.552 \\ 
+\midrule
+\multicolumn{7}{l}{\vspace*{-5mm}} \\ 
+versicolor & 0.4699110 & 11.030774 & 4.0 & 4.35 & 4.600 & 4.260 \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+\textbf{Fonte:} Elboração própria.\\
+\end{minipage}
+\end{frame}
+
+\begin{frame}[fragile]{Atualizando as colunas\newline Exercício}
+\protect\hypertarget{atualizando-as-colunasexercuxedcio}{}
+Para o objeto \texttt{gt\_tab}, garante que as colunas tenham os
+seguintes nomes: \emph{Raça}, \emph{Média}, \emph{Desvio padrão},
+\emph{Primeiro quartil}, \emph{Segundo quartil} e \emph{Terceiro
+quartil}.
+\end{frame}
+
+\begin{frame}[fragile]{Formatação de valores}
+\protect\hypertarget{formatauxe7uxe3o-de-valores}{}
+\texttt{fmt\_number}: formatação de valores numéricos de uma ou mais
+colunas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gt\_tab \textless{}{-}}\StringTok{ }\NormalTok{gt\_tab }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{fmt\_number}\NormalTok{(}
+    \DataTypeTok{columns =} \KeywordTok{c}\NormalTok{(}
+\NormalTok{      dp\_petala, q1\_petala, q2\_petala,}
+\NormalTok{      q3\_petala, m\_petala}
+\NormalTok{    ),}
+    \DataTypeTok{decimals =} \DecValTok{2}\NormalTok{,}
+    \DataTypeTok{dec\_mark =} \StringTok{","}\NormalTok{,}
+    \DataTypeTok{sep\_mark =} \StringTok{"."}
+\NormalTok{  ) }\OperatorTok{|}\ErrorTok{\textgreater{}}
+\StringTok{  }\KeywordTok{fmt\_number}\NormalTok{(}
+    \DataTypeTok{columns =}\NormalTok{ cv\_petala,}
+    \DataTypeTok{decimals =} \DecValTok{2}\NormalTok{,}
+    \DataTypeTok{dec\_mark =} \StringTok{","}\NormalTok{,}
+    \DataTypeTok{sep\_mark =} \StringTok{"."}\NormalTok{,}
+    \DataTypeTok{patter =} \StringTok{"\{x\} }\CharTok{\textbackslash{}\textbackslash{}}\StringTok{\%"}
+\NormalTok{  )}
+\NormalTok{gt\_tab}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}
+\setlength{\LTpost}{0mm}
+\begin{longtable}{lrrrrrr}
+\caption*{
+{\large \textbf{Comprimento de pétala}} \\ 
+{\small \emph{Algumas estatísticas descritivas}}
+} \\ 
+\toprule
+ & \multicolumn{2}{c}{Dispersão} & \multicolumn{3}{c}{Quantis} &  \\ 
+\cmidrule(lr){2-3} \cmidrule(lr){4-6}
+\textbf{Espécies} & Desvio padrão & CV & \emph{Q1} & \emph{Q2} & \emph{Q3} & Média \\ 
+\midrule
+\multicolumn{7}{l}{\emph{Espécies principais}} \\ 
+\midrule
+setosa & $0,17$ & $11,88$ \% & $1,40$ & $1,50$ & $1,58$ & $1,46$ \\ 
+virginica & $0,55$ & $9,94$ \% & $5,10$ & $5,55$ & $5,88$ & $5,55$ \\ 
+\midrule
+\multicolumn{7}{l}{\vspace*{-5mm}} \\ 
+versicolor & $0,47$ & $11,03$ \% & $4,00$ & $4,35$ & $4,60$ & $4,26$ \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+\textbf{Fonte:} Elboração própria.\\
+\end{minipage}
+\end{frame}
+
+\begin{frame}[fragile]{Formatação de valores\newline Exercício}
+\protect\hypertarget{formatauxe7uxe3o-de-valoresexercuxedcio}{}
+No objeto \texttt{gt\_tab}, para as colunas numéricas coloque
+``\texttt{,}'' para o separador de casa decimal e ``\texttt{.}'' para o
+agrupador de milhar.
+\end{frame}
+
+\end{document}

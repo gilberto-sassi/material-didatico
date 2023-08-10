@@ -1,0 +1,376 @@
+---
+title: " Estatística Descritiva com `R`<br>"
+subtitle: "Curso livre de `R`"
+author: "Profa Carolina e Prof Gilberto"
+date: "Parte 2"
+lang: pt
+output:
+  bookdown::ioslides_presentation2:
+    fig_caption: true
+    transition: "faster"
+    logo: "https://i.postimg.cc/ZRypsc2c/logo.jpg"
+    widescreen: true
+    css: "../assets/estilo.css"
+---
+
+```{r, include=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = FALSE)
+rmarkdown::find_pandoc(dir = "/home/gilberto/.local/bin", version = "2.13")
+library(glue)
+library(gt)
+library(ggthemes)
+library(xtable)
+library(readxl)
+library(writexl)
+library(statBasics)
+library(tidyverse)
+library(simplevis)
+```
+
+# Inferência Estatística
+
+## O processo da inferência estatística
+
+* Usando as técnicas de Estatística Descritiva, podemos fazer afirmações válidas para uma amostra.
+
+* Já em Inferência Estatística, queremos fazer afirmações válidas para toda a população. Isto é, queremos fazer generalizações para a população a partir da amostra, conforme ilustrado na Figura abaixo.
+
+```{r inferencia, out.width="30%",fig.align="center", fig.cap="Ilustração da inferência estatística.", echo=FALSE}
+knitr::include_graphics("../figures/inducao.png")
+```
+
+## O que podemos fazer com Inferência Estatística?
+
+* **Estimação pontual:**
+
+  - utilizar os dados observados (amostra) para encontrar o melhor palpite sobre o parâmetro (populacional). Usamos uma estimativa para ``aproximar'' o parâmetro.
+
+* **Exemplo:** 
+
+  - com base em uma amostra da população de Salvador com 25 anos ou mais (conjunto de dados observados), qual seria nosso melhor chute para a média salarial (em R$) dessa população?
+
+## O que podemos fazer com Inferência Estatística?
+
+* **Intervalo de confiança:** 
+
+  - utilizar os dados observados (amostra) para encontrar um intervalo numérico $(a,b)$,
+tal que o parâmetro populacional de interesse esteja contido nesse intervalo com algum _nível de confiança_ pré-fixado.
+
+* **Exemplo:** 
+
+  - com base em uma amostra da população de Salvador com 25 anos ou mais (conjunto de dados observados), qual seria o intervalo numérico que contém o valor da média salarial (em R$) dessa população _95\% de confiança_?
+
+## O que podemos fazer com Inferência Estatística?
+
+* **Teste de hipóteses:** 
+  - decidir entre duas hipóteses científicas $H_0$ e $H_1$, onde $H_1$ é negação de $H_0$.
+
+* **Exemplo:**
+
+  - queremos decidir entre:
+$$
+\begin{cases}
+H_0: \mbox{a média salarial é menor ou igual a R\$ 1000,00}\\
+H_1: \mbox{a média salarial é maior do que R\$ 1000,00}\\
+\end{cases}
+$$
+
+## Intervalos de confiança
+
+### Intervalo de confiança para a média populaional
+
+* Usamos quando a variável de interesse é quantitativa.
+
+* Seja $\mu$ a média na população. Queremos encontrar $a$ e $b$ tal que $a < \mu < b$ com coeficiente de confiança $\gamma$.
+
+### Intervalo de confiança para a proporção populacional
+
+* Usamos quando a variável de interesse assume uma de duas opções (`sucesso` e `fracasso`).
+
+* Seja $p$ aproporção de sucesso na população. Queremos encontrar $a$ e $b$ tal que $a < p < b$ com coeficiente de confiança $\gamma$. 
+
+## Intervalo de confiança para a média populacional
+
+Considere a variável `salario` do conjunto de dados `empresa.xlsx`.
+
+Suponha que desejamos construir um intervalo de confiança para a média salarial com coeficiente de confiança $\gamma = 98\%$.
+
+```{r}
+dados <- read_xlsx("../data/raw/empresa.xlsx")
+ci_general(dados$salario, conf_level = 0.98)
+```
+
+## Interpretação do intervalo de confiança {.smaller}
+
+Para cada amostra (ou estudo), o intervalo de confiança pode estar correto ($a < \mu < b$) ou pode estar incorreto ($\mu < a$ ou $b < \mu$).
+
+No conjunto de dados `amostras.xlsx`, temos seis amostras de uma população com média $25$, e vamos calcular o intervalo de confiança para cada amostra.
+
+```{r, eval=FALSE}
+dados <- read_xlsx("../data/raw/amostras.xlsx")
+intervalos <- dados |>
+  group_by(amostra) |>
+  summarise(li = ci_general(valores)$lower_ci, ls = ci_general(valores)$upper_ci)
+gt(intervalos) |>
+  fmt_number(
+    columns = c(li, ls),
+    decimals = 2,
+    dec_mark = ",",
+    sep_mark = "."
+  ) |>
+  cols_label(
+    amostra = md("**amostras**"),
+    li = md("**Limite inferior**"),
+    ls = md("**Limite superior**")
+  )
+```
+
+---
+
+```{r, echo=FALSE}
+dados <- read_xlsx("../data/raw/amostras.xlsx")
+intervalos <- dados |>
+  group_by(amostra) |>
+  summarise(li = ci_general(valores)$lower_ci, ls = ci_general(valores)$upper_ci)
+gt(intervalos) |>
+  fmt_number(
+    columns = c(li, ls),
+    decimals = 2,
+    dec_mark = ",",
+    sep_mark = "."
+  ) |>
+  cols_label(
+    amostra = md("**amostras**"),
+    li = md("**Limite inferior**"),
+    ls = md("**Limite superior**")
+  )
+```
+
+
+## Interpretação do intervalo de confiança 
+
+**Importante:** $\gamma\%$ dos intervalos de confiança estão corretos e contêm o verdadeiro valor (desconhecido) do parâmetro populacional.
+
+```{r, fig.cap="Interpretação do intervalo de confiança: &#120574;% dos intervalos estão corretos.", echo=FALSE, fig.align="center", out.width="50%"}
+knitr::include_graphics("../figures/interpretacao-ic.png")
+```
+
+## Intervalo de confiança para a proporção populacional {.smaller}
+
+Considere a variável `procedencia` do conjunto de dados `empresa.xlsx`.
+
+Suponha que desejamos construir um intervalo de confiança para a proporção de pessoas que vieram da capital com coeficiente de confiança $\gamma = 99\%$.
+
+Nesse caso, temos
+
+* `sucesso`: funcionário nasceu na capital;
+* `fracasso`: funcionário não nasceu na capital.
+
+```{r}
+dados <- read_xlsx("../data/raw/empresa.xlsx")
+ci_bern(dados$procedencia == 'capital', conf_level = 0.99)
+```
+
+## Teste de hipóteses {.smaller}
+
+**Objetivo:** decidir entre duas hipóteses científicas $H_0$ e $H_1$, onde $H_0$ é chamada de hipótese nula e $H_1$ é chamada de hipótese alternativa.
+
+### Como estabelecer $H_0$ e $H_1$
+
+* Valor padrão (_benchmark_ do mercado ou _benchmark_ do regulador) ou especificação do cliente vai sempre no $H_0$.
+* Hipótese científica ou pergunta vai sempre no $H_1$.
+
+Ao decidirmos, podemos errar de duas formas:
+
+```{r, echo=FALSE, fig.cap="Tipos de erros que um analista pode cometer ao decidir usando as informações (<em>evidências estatísticas</em>) de uma amostra.", fig.align="center", out.width="80%"}
+knitr::include_graphics("../figures/erros-ht.png")
+```
+
+## Teste de hipóteses {.smaller}
+
+Usamos probabilidade para controlar os _falsos positivos_ ou _falsos negativos_:
+
+* **$\alpha=$** $P(\mbox{falso positivo}) = P(\mbox{Erro tipo I})$ -- nível de significância.
+* **$\beta=$** $P(\mbox{falso negativo}) = P(\mbox{Erro tipo II})$.
+* **$1-\beta=$** $P(\mbox{verdadeiro negativo})$ -- poder do teste.
+
+Impossível estabelecer uma decisão que miniza, simultaneamente, $\alpha$ e $\beta$ (ou minimiza $\alpha$ e maximiza $1-\beta$).
+
+```{r, echo=FALSE, fig.align="center", fig.cap="Ilustração dos erros tipos I e II. Impossível minimizar, simultaneamente, &#120572; e &#120573;.", out.width="70%"}
+knitr::include_graphics("../figures/alpha-beta.png")
+```
+
+## Teste de hipóteses {.smaller}
+
+**Falso positivo:** é o erro mais grave!
+
+### Estratégia para especificar $H_0$ e $H_1$: 
+
+1. Determinar o erro mais grave que será o falso positivo;
+1. Determino $H_0$ e $H_1$ a partir do falso positivo.
+
+##### Exemplo (Ilustração do falso positivo)
+
+Em um julgamento precisamos decidir se um _réu_ é: **inocente** ou **culpado**.
+
+<div class="columns-2">
+<div>
+Temos dois erros possíveis:
+
+* Culpar um inocente;
+* Inocentar um culpado.
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</div>
+<div>
+Determinando as hipóteses nulas e alternativas:
+
+1. O erro mais grave é **culpar um inocente**;
+1. **Falso positivo** é culpar um inocente;
+1. $\begin{cases}H_0: \mbox{o réu é inocente}\\ H_1: \mbox{o réu é culpado}\end{cases}$.
+</div>
+</div>
+
+
+## Valor-p {.smaller}
+
+### Descrição intuitiva
+
+* `estatística teste`: quantidade que indica a _evidência_ contra $H_0$. Quanto mais _extrema_ (muito pequeno ou muito grande), mais _evidência_ temos contra $H_0$.
+* O valor-p, ou _p-value_ em inglês, é a probabilidade de coletar uma outra amostra com **estatística teste** igual ou mais extrema do que a amostra observada coletada quando $H_0$ é verdadeira. Lembre que o erro tipo I ou falso positivo é o mais grave. 
+* Rejeitamos $H_0$ quando o valor-p é pequeno, e usamos como valor de referência o nível de significância $\alpha\%$. Ilustramos essa ideia na Figura abaixo.
+
+```{r, echo=F, fig.cap="Decisão usando o valor-p.", fig.align="center"}
+knitr::include_graphics("../figures/valor-p.png")
+```
+
+## Valor-p {.smaller}
+
+### Interpretação
+
+Imagine um contexto em que $H_0$ é verdade. Neste contexto, o valor-p pode ser pequeno ou grande, ou seja, podemos rejeitar ou não a hipótese nula. 
+
+O importante é que para $\alpha \cdot 100 \%$ das amostras rejeitaremos $H_0$.
+
+```{r, eval=FALSE}
+dados <- read_xlsx("../data/raw/amostras.xlsx")
+dados |>
+  group_by(amostra) |>
+  summarise(valor_p = t.test(valores, mu = 25)$p.value) |>
+  gt() |>
+  fmt_number(
+    columns = valor_p,
+    decimals = 2,
+    sep_mark = ".",
+    dec_mark = ","
+  ) |> 
+  cols_label(
+    amostra = md("**Amostras**"),
+    valor_p = md("**Valor-p**")
+  )
+```
+
+---
+
+```{r, echo=FALSE}
+dados <- read_xlsx("../data/raw/amostras.xlsx")
+dados |>
+  group_by(amostra) |>
+  summarise(valor_p = t.test(valores, mu = 25)$p.value) |>
+  gt() |>
+  fmt_number(
+    columns = valor_p,
+    decimals = 2,
+    sep_mark = ".",
+    dec_mark = ","
+  ) |> 
+  cols_label(
+    amostra = md("**Amostras**"),
+    valor_p = md("**Valor-p**")
+  )
+```
+
+## Teste de hipóteses para a média populacional {.smaller}
+
+A média salarial dos funcionários é maior que 5 salários mínimos ao nível de significância de $5\%$?
+
+$$
+\begin{cases}
+H_0: \mbox{a média salarial é no máximo 5 salários mínimos},\\
+H_1: \mbox{a média salarial é mario que 5 salários mínimos}.
+\end{cases}
+$$
+
+```{r}
+dados <- read_xlsx("../data/raw/empresa.xlsx")
+t.test(dados$salario, mu = 5, alternative = "greater")
+```
+
+## Teste de hipóteses para a proporção populacional {.smaller}
+
+Os funcionários com origem na capital são maioria ao nível de significância $1\%$?
+
+$$
+\begin{cases}
+H_0: \mbox{a porcentagem de funcionários com origem na capital é no máximo 50%},\\
+H_1: \mbox{a porcentagem de funcionários com origem na capital é maior que 50%}.
+\end{cases}
+$$
+
+```{r}
+dados <- read_xlsx("../data/raw/empresa.xlsx")
+num_sucessos <- sum(sum(dados$procedencia == 'capital'))
+tamanho_amostra <- nrow(dados)
+prop.test(num_sucessos, tamanho_amostra, p = 0.5, alternative = "greater")
+```
+
+## Associação entre duas variáveis quantitativas {.smaller}
+
+Para duas variáveis quantitativas, estudamos a associação entre as duas variáveis usando o  gráfico de dispersão. Além disso, podemos calcular o coeficiente de correlação linear de Pearson.
+
+```{r}
+
+df_iris <- read_xlsx("../data/raw/iris.xlsx")
+
+ggplot(data = df_iris) +
+  geom_point(aes(x = Sepal.Length, y = Petal.Length)) +
+  labs(x = "Comprimento de sépala", y = "Comprimento de pétala",
+       title = "Associação entre duas variáveis quantitativas") +
+  theme_calc()
+```
+
+---
+  
+  ```{r}
+library(simplevis)
+
+df_iris <- read_xlsx("../data/raw/iris.xlsx")
+
+gg_point(df_iris,
+         x_var = Sepal.Length, y_var = Petal.Length,
+         x_title = "Comprimento de sépala", y_title = "Comprimento de pétala")
+```
+
+## Associação entre duas variáveis quantitativas {.smaller}
+
+Também podemos calcular o coeficiente de correlação linear de Pearson. Lembre que se $X$ e $Y$ são duas variáveis quantitativas com valores
+
+
+|$X$|$x_1$|$x_2$|$\cdots$|$x_n$|
+  |:---:|:---:|:---:|:---:|:---:|
+  |$Y$|$y_1$|$y_1$|$\cdots$|$y_n$|
+  Table: Amostra de duas variáveis quantitativas $X$ e $Y$.
+
+Então, o coeficiente de correlação linear é dado por
+$$
+  \begin{split}
+r &=  \left( \dfrac{(x_1-\overline{x})}{s_x} \cdot \dfrac{(y_1 - \overline{y})}{s_y} \right) + \cdots + \left( \dfrac{(x_n-\overline{x})}{s_x} \cdot \dfrac{(y_n - \overline{y})}{s_y} \right).
+\end{split}
+$$
+  
+  ```{r}
+cor(df_iris$Sepal.Length, df_iris$Petal.Length)
+```

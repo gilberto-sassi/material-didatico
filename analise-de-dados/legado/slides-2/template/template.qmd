@@ -1,0 +1,68 @@
+---
+title: "Template"
+author: "Gilberto Pereira Sassi"
+knitr:
+  opts_chunk: 
+      echo: true
+format: 
+    revealjs:
+        scrollable: true
+        logo: "ufba.jpg"
+        footer: "Algum título"
+        theme: moon
+        show-slide-number: print
+        preview-links: auto
+        self-contained: true
+        self-contained-math: true
+        menu: true
+---
+
+## Primeiro slide
+
+olá 
+
+- one ^[footnote]
+- two
+- three
+
+
+::: aside
+Some additional commentary of more peripheral interest.
+:::
+
+## Segundo slide
+
+Olá
+
+```{r}
+#| echo: fenced
+
+amostra <- rnorm(1000)
+plot(amostra)
+```
+
+::: {.notes}
+Speaker notes go here.
+:::
+
+## {auto-animate="true"}
+
+```r
+# Fill in the spot we created for a plot
+output$phonePlot <- renderPlot({
+  # Render a barplot
+})
+```
+
+## {auto-animate=true}
+
+```r
+# Fill in the spot we created for a plot
+output$phonePlot <- renderPlot({
+  # Render a barplot
+  barplot(WorldPhones[,input$region]*1000, 
+          main=input$region,
+          ylab="Number of Telephones",
+          xlab="Year")
+})
+```

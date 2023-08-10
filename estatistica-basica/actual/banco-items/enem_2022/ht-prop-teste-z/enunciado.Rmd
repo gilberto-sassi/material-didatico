@@ -98,10 +98,10 @@ Finalmente, o valor-p é \#\#ANSWER3\#\#.
 ```{r, echo = FALSE, results = "asis"}
 exams::answerlist(rep("", length(sol)), markup = "markdown")
 ```
-* Usando o valor-p, podemos afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600 ao nível de significância &alpha; = `r f(g)`.
-* Usando o valor-p, **NÃO** temos evidência para afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600 ao nível de significância &alpha; = `r f(g)`.
-* Usando o procedimento geral de Neyman-Pearson, podemos afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600 ao nível de significância &alpha; = `r f(g)`.
-* Usando o procedimento geral de Neyman-Pearson, **NÃO** temos evidência para afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600 ao nível de significância &alpha; = `r f(g)`.
+* Usando o valor-p, podemos afirmar que a porcentagem de pessoas negras em Salvador é maior que 60% ao nível de significância &alpha; = `r f(g)`.
+* Usando o valor-p, **NÃO** temos evidência para afirmar que a porcentagem de pessoas negras em Salvador é maior que 60% ao nível de significância &alpha; = `r f(g)`.
+* Usando o procedimento geral de Neyman-Pearson, podemos afirmar que a porcentagem de pessoas negras em Salvador é maior que 60% ao nível de significância &alpha; = `r f(g)`.
+* Usando o procedimento geral de Neyman-Pearson, **NÃO** temos evidência para afirmar que a porcentagem de pessoas negras em Salvador é maior que 60% ao nível de significância &alpha; = `r f(g)`.
 * RC = `r rc[1]`.
 * RC = `r rc[2]`.
 * RC = `r rc[3]`.
@@ -119,9 +119,9 @@ Finalmente, o valor-p é `r f(sol[[3]])`.
 ```{r, echo = FALSE, results = "asis"}
 exams::answerlist(rep("", length(sol)), markup = "markdown")
 ```
-* Usando o valor-p, podemos afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600 ao nível de significância &alpha; = `r f(g)`.
+* Usando o valor-p, podemos afirmar que a porcentagem de pessoas negras em Salvador é maior que 60% ao nível de significância &alpha; = `r f(g)`.
 * 
-* Usando o procedimento geral de Neyman-Pearson, podemos afirmar que a nota média de matemática nesta edição do ENEM em 2021 é maior que 600 ao nível de significância &alpha; = `r f(g)`.
+* Usando o procedimento geral de Neyman-Pearson, podemos afirmar que a porcentagem de pessoas negras em Salvador é maior que 60% ao nível de significância &alpha; = `r f(g)`.
 * 
 * RC = `r rc[1]`.
 * 

@@ -1,0 +1,2865 @@
+---
+title: "Exploração e visualização de dados"
+author: "Gilberto Pereira Sassi"
+lang: pt-br
+fontsize: 10pt
+bibliography: refs.bib
+biblio-style: apa
+format:
+    beamer:
+        institute: "Departamento de Estatística\\newline Instituto de Matemática e Estatística"
+        theme: Pittsburgh
+        colortheme: spruce
+        logo: logo_menor.png
+        keep-tex: true
+        colorlinks: true
+        linkcolor: titulo
+        urlcolor: titulo
+        filecolor: magenta
+        include-in-header: header.tex
+        include-before-body: before_body.tex
+pdf-engine: pdflatex
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r setup, include=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE,
+                    fig.align = "center", out.width="50%")
+#rmarkdown::find_pandoc(dir = "/home/gilberto/.local/bin", version = "2.13")
+library(glue)
+library(readxl)
+library(writexl)
+library(janitor)
+library(dplyr)
+library(gt)
+library(ggthemes)
+library(statBasics)
+library(MASS)
+library(readODS)
+library(dados)
+library(patchwork)
+library(aplpack)
+library(tidyverse)
+```
+
+# Sobre o curso
+
+## Preparando o ambiente 
+
+* Em casa, você pode usar:
+  - [colab.research.google.com/#create=true&language=r](https://colab.research.google.com/#create=true&language=r);
+  - [posit.cloud](https://posit.cloud).
+* No seu dia-a-dia, recomenda-se instalar o `R` com versão pelo menos `4.1`: [cran.r-project.org](https://cran.r-project.org).
+* **IDE** recomendadas: [_RStudio_](https://posit.co/downloads/) e [_VSCode_](https://code.visualstudio.com).
+  * Caso você queira usar o [_VSCode_](https://code.visualstudio.com), instale [a extensão da linguagem `R`](https://code.visualstudio.com/docs/languages/r).
+* Neste curso, usaremos o _framework_ [**tidyverse**](https://www.tidyverse.org):
+  * Instale o framework a partir do repositório CRAN: `install.packages("tidyverse")`
+* Outras linguagens interessantes: [`python`](https://www.python.org) e [`julia`](https://julialang.org).
+  * [`python`](https://www.python.org): linguagem interpretada de próposito geral, contemporânea do `R`,  simples e fácil de aprender.
+  * [`julia`](https://julialang.org): linguagem interpretada para análise de dados, lançada em 2012, promete simplicidade e velocidade.
+
+# A linguagem `R`:\newline\newline\ uma introdução
+ 
+## O começo de tudo 
+
+**O precursor do `R`: `S`.**
+
+* `R` é uma linguagem derivada do `S`.
+* `S` foi desenvolvido em `fortran` por **John Chambers** em _1976_ no **Bell Labs**.
+* `S` foi desenvolvido para ser um ambiente de análise estatística.
+* Filosofia do `S`: permitir que usuários possam analisar dados usando estatística com pouco conhecimento de programação.
+
+**História do `R`**
+
+* Em _1991_, **Ross Ihaka** e **Robert Gentleman** criaram o `R` na **Nova Zelândia**.
+* Em _1996_, **Ross** e **Robert** liberam o `R` sob a licença "GNU General License", o que tornou o `R` um software livre.
+* Em _1997_, **The Core Group** é criado para melhorar e controlar o código fonte do `R`.
+
+## Porque usar `R` 
+
+* Constante melhoramento e atualização.
+* Portabilidade (roda em praticamente todos os sistemas operacionais).
+* Grande comunidade de desenvolvedores que adicionam novas capacidades ao R através de pacotes.
+* Gráficos de maneira relativamente simples.
+* Interatividade.
+* Um grande comunidade de usuários (especialmente útil para resolução de problemas).
+
+## Onde estudar fora de aula?
+
+**Livros **
+
+Recomendo principalmente o livro [`R` for Data Science](https://r4ds.had.co.nz).
+
+\vspace{0.5cm}
+
+* **Nível Iniciante:** [R Tutorial na W3Schools](https://www.w3schools.com/r/default.asp).
+* **Nível Iniciante:** [Hands-On Programming with `R`](https://rstudio-education.github.io/hopr/).
+* **Nível Iniciante:** [`R` for Data Science](https://r4ds.had.co.nz).
+* **Nível Intermediário:** [Advanced `R`](https://adv-r.hadley.nz/).
+
+\regrafina
+
+**Livros em português**
+
+* **Nível _cheguei agora aqui_:** [zen do R](https://curso-r.github.io/zen-do-r/index.html).
+* **Nível Avançado:** [Advanced `R`](https://adv-r.hadley.nz).
+* **Nível Iniciante:** [material.curso-r.com](http://material.curso-r.com/).
+* **Nível Iniciante:** [ecoR](http://ecor.ib.usp.br/doku.php).
+* **Nível Iniciante:** [analises-ecologicas.com](https://analises-ecologicas.com/).
+
+---
+
+**Plataformas de ensino on-line**
+
+* **Datacamp:** [datacamp.com](https://www.datacamp.com/)
+* **Dataquest:** [dataquest.io](https://www.dataquest.io/)
+
+## O que você pode fazer quando estiver em apuros?
+
+* consultar a documentação do `R`: 
+```{r}
+#| echo: true
+#| eval: false
+help(mean)
+?mean
+```
+
+* Peça ajuda a um programador mais experiente.
+* Conmsulte [Rstudio community](https://community.rstudio.com/).
+* Consulte [pt.stackoverflow.com](https://pt.stackoverflow.com/).
+* Use ferramentas de busca como o [google](https://www.google.com.br/) e [duckduckgo.com](https://duckduckgo.com/).
+
+```r
+sqrt("Gilberto")
+```
+
+* Na ferramenta de busca, pesquise por `Error in sqrt("Gilberto"): non-numeric argument to mathematical function`
+
+## Operações básicas 
+
+**Soma**
+
+```{r}
+1 + 1
+```
+
+**Substração**
+
+```{r}
+2 - 1
+```
+
+**Divisão**
+
+```{r}
+3 / 2
+```
+
+**Potenciação**
+
+```{r}
+2^3
+```
+
+## Operações básicas\newline Exercício
+
+Qual o resultado das seguintes operações?
+
+1. `5.32 + 7.99`
+1. `5.55 - 10`
+1. `3.33 * 5.12`
+1. `1 / 4.55`
+1. `5^1.23`
+
+## Funções na linguagem `R`
+
+**Função:** é uma ação e tem os seguinte componentes na ordem:
+
+* _nome da função_
+* _parênteses_
+* _argumentos posicionais_
+* _argumentos nomeados_
+
+\footnotesize
+
+$$
+\overbrace{\texttt{nome\_funcao}}^{\text{\textit{nome da função}}} \overbrace{(}^{\text{\textit{parênteses}}} \overbrace{\texttt{valor1},\quad \texttt{valor2}}^{\text{\textit{argumentos posicionais}}},\quad \overbrace{\texttt{nome1 = valor3},\quad \texttt{nome2 = valor4}}^{\text{\textit{argumentos nomeados}}} \overbrace{)}^{\text{\textit{parênteses}}}
+$$
+
+\normalsize
+
+**example:**
+
+```r
+read_xlsx('data/raw/casas.xlsx', sheet=1)
+```
+
+## Funções na linguagem `R`\newline Exercício
+
+* Obtenha ajuda para `mean` usando a função `help`.
+* Calcule o logaritmo de 10 na base 3 usando a função `log`.
+* Leia o conjunto de dados `amostra_enem_salvador.xlsx` usando a função `read_xlsx` do pacote `readxl`.
+
+## Estrutura de dados no `R`
+
+* **Tipo de dados:** caracter (`character`), número real (`double`), número inteiro (`integer`), número complexo (`complex`) e lógico (`logical`).
+* **Estrutura de dados:** atomic `vector` (a estrutura de dados mais básicA no `R`), `matrix`, `array`, `list` e `data.frame` (`tibble` no `tidyverse`).
+* **Estrutura de dados Homogênea:** `vector`, `matrix` e `array`.
+* **Estrutura de dados Heterôgenea:** `list` e `data.frame` (`tibble` no `tidyverse`).
+
+## Tipo de dados no `R` 
+
+**Número inteiro**
+
+```{r}
+class(1L)
+```
+
+**Número real**
+
+```{r}
+class(1.2)
+```
+
+**Número complexo**
+
+```{r}
+class(1 + 1i)
+```
+
+
+## Tipo de dados no `R` 
+
+**Número lógico ou valor booleano**
+
+```{r}
+class(TRUE)
+```
+
+**Caracter ou *string***
+
+```{r}
+class("Gilberto")
+```
+
+
+## Estrutura de dados homogênea
+
+**Vetor**
+
+* Agrupamento de valores de mesmo tipo em um único objeto.
+* Criação de vetor: 
+  - `c(...)`;
+  - `vector('<tipo de dados>', <comprimento do vetor>)`;
+  - `seq(from = a, to = b, by = c)`;
+  - `seq_along(<vetor>)` - vetor de números inteiros com o mesmo trabalho de `<vetor>`;
+  - `seq_len(<número inteiro>)` - vetor de números inteiros com o tamanho `<número inteiro>`;
+  - `<número inicial>:<número final>` - sequência de números inteiros entre `<número inicial>` e `<número final>`
+* Podemos checar o `tipo de dados` de um vetor com a função `class`.
+
+---
+
+**Vetor de caracteres**
+
+```{r}
+nomes  <- c("Gilberto", "Sassi")
+class(nomes)
+nomes
+```
+
+```{r}
+texto_vazio <- vector("character", 3)
+class(texto_vazio)
+texto_vazio
+```
+
+
+## Estrutura de dados homogênea 
+
+**Vetor de números reais**
+
+```{r}
+vetor_real  <- c(0.2, 1.35)
+class(vetor_real)
+vetor_real
+```
+
+
+```{r}
+vetor_real <- vector("double", 3)
+vetor_real
+```
+
+```{r}
+vetor_real <- seq(from = 1, to = 3.5, by = 0.5)
+vetor_real
+```
+
+
+## Estrutura de dados homogênea 
+
+**Vetor de números inteiros**
+
+```{r}
+vetor_inteiro  <- c(1L, 2L)
+class(vetor_inteiro)
+vetor_inteiro
+```
+
+```{r}
+vetor_inteiro <- vector("integer", 3)
+vetor_inteiro
+```
+
+```{r}
+vetor_inteiro <- 1:4
+vetor_inteiro
+```
+
+---
+
+
+```{r}
+vetor_real  <- seq_along(nomes)
+class(vetor_real)
+vetor_real
+```
+
+```{r}
+vetor_real <- seq_len(5)
+class(vetor_real)
+vetor_real
+```
+
+
+## Estrutura de dados homogênea 
+
+**Vetor lógico**
+
+```{r}
+vetor_logico  <- c(TRUE, FALSE)
+class(vetor_logico)
+vetor_logico
+```
+
+```{r}
+vetor_logico <- vector("logical", 3)
+vetor_logico
+```
+
+## Estrutura de dados homogênea\newline Exercício
+
+Crie os seguintes vetores:
+
+1. $\begin{pmatrix} 0,1 & 0,2 & 0,3 & 0,4 & 0,5  \end{pmatrix}$
+1. $\begin{pmatrix} TRUE & TRUE & FALSE \end{pmatrix}$
+1. $\begin{pmatrix} "Marx" & "Engels" & "Lênin" \end{pmatrix}$
+1. $\begin{pmatrix} 1 & 2 & 3 \end{pmatrix}$
+
+## Estrutura de dados homogênea
+
+**Operações com vetores númericos (`double`, `integer` e `complex`).**
+
+* Operações básicas (operação, substração, multiplicação e divisão ) realizada em cada elemento do vetor.
+* _Slicing_: extrair parte de um vetor (não precisa ser vetor numérico).
+
+**_Slicing_**
+
+```{r}
+vetor <- c("a", "b", "c", "d", "e", "f", "g", "h", "i")
+# selecionado todos os elementos entre o primeiro e o quinta
+vetor[1:5] 
+```
+
+**Adição (vetores númericos)**
+
+```{r}
+vetor_1 <- 1:5
+vetor_2 <- 6:10
+vetor_1 + vetor_2
+```
+
+## Estrutura de dados homogênea 
+
+\small
+
+**Substração (vetores numéricos)**
+
+```{r}
+vetor_1 <- 1:5
+vetor_2 <- 6:10
+vetor_2 - vetor_1
+```
+
+**Multiplicação (vetores numéricos)**
+
+```{r}
+vetor_1 <- 1:5
+vetor_2 <- 6:10
+vetor_2 * vetor_1
+```
+
+**Divisão (vetores numéricos)**
+
+```{r}
+vetor_1 <- 1:5
+vetor_2 <- 6:10
+vetor_2 / vetor_1
+```
+
+\normalsize
+
+## Estrutura de dados homogênea\newline Exercício
+
+Realize as seguintes operações envolvendo vetores:
+
+1. $\begin{pmatrix} 1 & 2 & 3 \end{pmatrix} + \begin{pmatrix} 0,1 & 0,05 & 0,33 \end{pmatrix}$
+1. $\begin{pmatrix} 1 & 2 & 3 \end{pmatrix} - \begin{pmatrix} 0,1 & 0,05 & 0,33 \end{pmatrix}$
+1. $\begin{pmatrix} 1 & 2 & 3 \end{pmatrix} * \begin{pmatrix} 0,1 & 0,05 & 0,33 \end{pmatrix}$
+1. $\begin{pmatrix} 1 & 2 & 3 \end{pmatrix} / \begin{pmatrix} 0,1 & 0,05 & 0,33 \end{pmatrix}$
+
+
+## Estrutura de dados homogênea
+
+**Matriz**
+
+* Agrupamento de valores de mesmo tipo em um único objeto de dimensão 2.
+* Criação de matriz:
+  - `matrix(..., nrow = <integer>, ncol = <integer>, byrow = TRUE)` - preenche a matriz a partir das linhas se `byrow = TRUE`;
+  - `diag(<vector>)` - diagonal principal igual a `<vetor>` e outros elementos zero;
+  - `rbind()` - especificação das linhas da matriz;
+  - `cbind()` - especificação das colunas da matriz.
+
+---
+
+**Matriz de caracteres**
+
+```{r}
+matriz_texto <- rbind(c("a", "b"), c("c", "d"))
+matriz_texto
+```
+
+
+
+**Matriz de números reais**
+
+```{r}
+matriz_real <- matrix(seq(from = 0, to = 1.5, by = 0.5),
+                      nrow = 2, byrow = TRUE)
+matriz_real
+```
+
+## Estrutura de dados homogênea 
+
+**Matriz de inteiros**
+
+```{r}
+matriz_inteiro <- cbind(c(1L, 2L), c(3L, 4L))
+matriz_inteiro
+```
+
+**Matriz de valores lógicos**
+
+```{r}
+matriz_logico <- matrix(c(TRUE, F, F, T), nrow = 2)
+matriz_logico
+```
+
+## Estrutura de dados homogênea
+
+**Array**
+
+* Agrupamento de valores de mesmo tipo em um único objeto em duas ou mais dimensões.
+* Criação de array: `array(..., dim = <vector of integers>)`.
+
+```{r}
+#| echo: true
+#| eval: false
+dados_matriz_1 <- 10:13
+dados_matriz_2  <- 14:17
+resultado <- array(c(dados_matriz_1, dados_matriz_2),
+                  dim = c(2, 2, 2))
+resultado
+```
+
+---
+
+```{r}
+#| echo: false
+#| eval: true
+dados_matriz_1 <- 10:13
+dados_matriz_2  <- 14:17
+resultado <- array(c(dados_matriz_1, dados_matriz_2), dim = c(2, 2, 2))
+resultado
+```
+
+
+## Estrutura de dados homogênea 
+
+**Operações com matrizes númericas (`double`, `integer` e `complex`).**
+
+* Operações básicas (operação, substração, multiplicação e divisão) realizada em cada elemento das matrizes.
+* Outras operações:
+  - [Multiplicação de matrizes](https://pt.wikipedia.org/wiki/Produto_de_matrizes);
+  - [Inversão de matrizes](https://pt.wikipedia.org/wiki/Matriz_inversa);
+  - [Matriz transposta](https://pt.wikipedia.org/wiki/Matriz_transposta);
+  - [Determinante](https://pt.wikipedia.org/wiki/Determinante);
+  - [Solução de sistema de equações lineares](https://pt.wikipedia.org/wiki/Sistema_de_equações_lineares).
+
+## Operações com matrizes
+
+**Matrizes**
+
+```{r}
+matriz_a <- rbind(c(1, 2), c(0, 3))
+matriz_b <- matrix(runif(4), ncol = 2)
+```
+
+\regrafina
+
+\small
+
+**Soma**
+
+```{r}
+matriz_soma <- matriz_a + matriz_b
+matriz_soma
+```
+
+**Subtração**
+
+```{r}
+matriz_menos <- matriz_a - matriz_b
+matriz_menos
+```
+
+\normalsize
+
+## Operações com matrizes
+
+**Produto de Hadamard**
+
+* Multiplicação de matrizes, elemento por elemento.
+* Para detalhes consulte [produto de Hadamard](https://en.wikipedia.org/wiki/Hadamard_product_(matrices)).
+
+```{r}
+matriz_hadamard <- matriz_a * matriz_b
+matriz_hadamard
+```
+
+\regrafina
+
+[**Multiplicação de matrizes**](https://pt.wikipedia.org/wiki/Matriz_inversa)
+
+```{r}
+matriz_multiplicacao <- matriz_a %*% matriz_b
+matriz_multiplicacao
+```
+
+## Operações com matrizes 
+
+\small
+
+[**Matriz inversa**](https://pt.wikipedia.org/wiki/Matriz_inversa)
+
+```{r}
+matriz_inversa <- solve(matriz_a)
+matriz_inversa
+matriz_a %*% matriz_inversa
+```
+
+
+[**Matriz transposta**](https://pt.wikipedia.org/wiki/Matriz_transposta)
+
+```{r}
+matriz_transposta <- t(matriz_a)
+matriz_transposta
+```
+
+\normalsize
+
+## Operações com matrizes 
+
+\small
+
+[**Determinante**](https://pt.wikipedia.org/wiki/Determinante)
+
+```{r}
+det(matriz_a)
+```
+
+[**Solução de sistema de equações lineares**](https://pt.wikipedia.org/wiki/Sistema_de_equações_lineares)
+
+```{r}
+b <- c(1, 2)
+solve(matriz_a, b)
+```
+
+**Matriz inversa generalizada**
+
+$G$ é a matriz inversa generalizada de $A$ se $A \cdot G \cdot A = A$. Para detalhes vide [matriz inversa generalizada](https://en.wikipedia.org/wiki/Generalized_inverse).
+
+```{r}
+library(MASS) # ginv é uma função do pacote MASS
+ginv(matriz_a)
+```
+
+\normalsize
+
+## Operações com matrizes
+
+**Outras operações com matrizes.**
+
+|Operador ou função|Descrição|
+|:--------------:|:-----------:|
+|`A %o% B`| [produto diádico $A\cdot B^T$](https://pt.wikipedia.org/wiki/Produto_diádico)|
+|`crossprod(A, B)`|[$A\cdot B^T$](https://pt.wikipedia.org/wiki/Produto_diádico)|
+|`crossprod(A)`|[$A\cdot A^T$](https://pt.wikipedia.org/wiki/Produto_diádico)|
+|`diag(x)`|retorna uma matrix diagonal com diagonal igual a `x`|
+|`diag(A)`|retorna um vetor com a diagona de $A$|
+|`diag(k)`|retorna uma matriz diagona de ordem $k$|
+
+## Estrutura de dados homogênea\newline Exercício
+
+Realize as seguinte operações envolvendo as matrizes:
+
+1. $\begin{pmatrix} 1 & 0\\ 2 & 0,5 \end{pmatrix} + \begin{pmatrix} 0,1 & 0\\ 0 & 0,5 \end{pmatrix}$
+1. $\begin{pmatrix} 1 & 0\\ 2 & 0,5 \end{pmatrix} - \begin{pmatrix} 0,1 & 0\\ 0 & 0,5 \end{pmatrix}$
+1. Multiplicação de matriz: $\begin{pmatrix} 1 & 0\\ 2 & 0,5 \end{pmatrix} \cdot \begin{pmatrix} 0,1 & 0\\ 0 & 0,5 \end{pmatrix}$ 
+1. Divisão elemento a elemento:  $\begin{pmatrix} 1 & 0\\ 2 & 0,5 \end{pmatrix} / \begin{pmatrix} 0,1 & 0\\ 0 & 0,5 \end{pmatrix}$
+1. Resolva o seguinte sistema de equações: $\begin{cases} x + 2 y = 21 \\ x - 2y = 1 \end{cases}$.
+1. Encontre a matriz inversa de $\begin{pmatrix} 1 & 2 \\ 1 & -2 \end{pmatrix}$.
+
+
+## Estrutura de Dados Heterogênea 
+
+**Lista**
+
+* Agrupamento de valores de tipos diversos e estrutura de dados 
+* Criação de listas: `list(...)` e `vector("list", <comprimento da lista>)`
+
+```{r}
+#| echo: true
+#| eval: false
+lista_info <- list(pedido_id = 8001406,
+          nome = "Fulano",
+          sobrenome = "de Tal",
+          cpf = "12345678900",
+          itens = list(list(descricao = "Ferrari",
+                            frete = 0,
+                            valor = 500000),
+                        list(descricao = "Dolly", frete = 1.5,
+                              valor = 3.90)))
+lista_info
+```
+
+---
+
+\scriptsize
+
+```{r}
+#| echo: false
+#| eval: true
+lista_info <- list(pedido_id = 8001406,
+          nome = "Fulano",
+          sobrenome = "de Tal",
+          cpf = "12345678900",
+          itens = list(list(descricao = "Ferrari",
+                            frete = 0,
+                            valor = 500000),
+                      list(descricao = "Dolly", frete = 1.5, valor = 3.90)))
+lista_info
+```
+
+\normalsize
+
+## Estrutura de dados heterogênea\newline Exercício
+
+Crie uma lista, chamada `informacoes_pessoais` com os seguintes campos:
+
+* `nome`: seu nome
+* `idade`: sua idade
+* `informacao_profissional`: uma lista com os seguintes campos:
+  * `matricula`: escolaridade
+  * `origem`: variável qualitativa com a sua cidade de origem.
+* `matriz`: inclua uma matriz de números reais de dimensão $2\times 2$
+
+## Operação com listas
+
+* _slicing_ - `[]` - extrai parte da lista (valor retornado é uma lista).
+* Acessando $k$-ésimo valor da lista: `lista[[k]]`.
+* Acessando um valor da lista pela chave (nome do campo): `lista$cpf`.
+* Concatenação de listas: `c()`.
+
+\regrafina
+
+**_Slicing_**
+
+```{r}
+lista_info[c(2, 4)]
+```
+
+**Acessando elemento pela posição**
+
+```{r}
+lista_info[[2]]
+```
+
+---
+
+**Acessando elemento pela chave**
+
+```{r}
+lista_info$nome
+```
+
+**Concatenação de listas**
+
+```{r}
+lista_1 <- list(1, 2)
+lista_2 <- list("Gilberto", "Sassi")
+lista_concatenada <- c(lista_1, lista_2)
+lista_concatenada
+```
+
+## Estrutura de dados heterogênea\newline Exercício
+
+Recupe e imprima as seguintes informações da lista `informacoes_pessoais`:
+
+* os três primeiros campos de `informacoes_pessoais`
+* os nomes dos campos de `informacoes_pessoais`
+* campo `nome` de `informacoes_pessoais`
+* o terceiro campo de `informacoes_pessoais`
+
+
+## Estrutura de Dados Heterogênea 
+
+**Tidy data**
+
+* Dados em formato de tabela.
+* Cada coluna é uma variável e cada linha é uma observação.
+
+\regrafina
+
+**`tibble` (data frame)**
+
+* Estrutura de dados tabular.
+* Assumimos que os dados estão **tidy**.
+* Criação de `tibble`: `tibble(...)` e `tribble(....)`.
+* `glimpse` mostra as informações do `tibble`.
+
+---
+
+```{r}
+library(tidyverse) # carregando o framework tidyverse
+data_frame <- tibble(
+  nome = c("Marx", "Engels", "Rosa", "Lênin", "Olga Benário"),
+  idade = c(22, 23, 21, 24, 30)
+)
+glimpse(data_frame)
+```
+
+## Valores especiais em `R` 
+
+|Valores especiais|Descrição|Função para identificar|
+|:-------------|:---------------|--------------------:|
+|`NA`|Valor faltante.|`is.na()`|
+|`NaN`|Resultado do cálculo indefinido.|`is.nan()`|
+|`Inf`|Valor que excede o valor máximo que sua máquina aguenta.|`is.inf()`|
+|`NULL`|Valor indefinido de expressões e funções (diferente de `NaN` e `NA`)|`is.null()`|
+
+
+## Operações básicas em um `tibble`
+
+|Função|Descrição|
+|:---------|:------------|
+|`head()`|Mostra as primeiras linhas de um `tibble`|
+|`tail()`|Mostra as últimas linhas de um `tibble`|
+|`glimpse()`|Impressão de informações básicas dos dados|
+|`add_case()`|Adiciona uma nova observação|
+|`add_row()`|Adiciona uma nova observação|
+
+---
+
+```{r}
+head(data_frame, n=2)
+```
+
+```{r}
+tail(data_frame, n=2)
+```
+
+
+## Estrutura de dados heterogênea\newline Exercício
+
+Realize as seguintes operações no _dataset_ `iris` (disponível no `R`):
+
+* imprima um resumo sobre o _dataset_ `iris`.
+* pegue as 5 primeiras linhas de `iris`.
+* pegue as 5 últimas linhas de `iris`.
+* crie _na mão_ o seguinte conjunto de dados:
+
+```{r}
+#| echo: false
+df_equipe <- tibble(
+  nomes = c("Fidel Castro", "Ernesto 'Che' Guevara", "Célia Sánchez"),
+  origem = c("Cuba", "Cuba", "Cuba")
+)
+knitr::kable(df_equipe)
+```
+
+# Organização é fundamental
+
+## Guia de estilo no `R`
+
+O nome de um objeto precisa ter um _significado_. 
+
+O nome deve indicar e deixar claro o que este objeto é ou faz.
+
+* Use a convenção do `R`:
+  * Use apenas letras minúsculas, números e _underscore_ (comece sempre com letras minúsculas).
+  * Nomes de objetos precisam ser substantivos e precisam descrever o que este objeto é ou faz (seja conciso, direto e significativo).
+  * Evite ao máximo os nomes que já são usados ( _buit-in_ ) do `R`.Por exemplo: `c`.
+  * Coloque espaço depois da vírgula.
+  * Não coloque espaço antes nem depois de parênteses. Exceção: Coloque um espaço `()` antes e depois de `if`, `for` ou `while`, e coloque um espaço depois de `()`.
+  * Coloque espaço entre operadores básicos: `+`, `-`, `*`, `==` e outros. Exceção: `^`.
+
+## Estrutura de diretórios
+
+Mantenha uma estrutura (organização) consistente de diretórios em seus projetos.
+
+* Sugestão de estrutura:
+  - `dados`: diretório para armazenar seus conjuntos de dados.
+    + `brutos`: dados brutos.
+    + `processados`: dados processados.
+  - `scripts`: código fonte do seu projeto.
+  - `figuras`: figuras criadas no seu projeto.
+  - `output`: outros arquivos que não são figuras.
+  - `legado`: arquivos da versão anterior do projeto.
+  - `notas`: notas de reuniões e afins.
+  - `relatorio` (ou `artigos`): documento final de seu projeto.
+  - `documentos`: livros, artigos e qualquer coisa que são referências em seu projeto.  
+
+Para mais detalhes, consulte esse guia do [curso-r](https://curso-r.com): [diretórios e `.Rproj`](https://curso-r.github.io/zen-do-r/rproj-dir.html).
+
+# Importação e exportação de dados
+
+## Lendo dados no `R` 
+
+\normalsize
+
+**Leitura de arquivos no formato `xlsx` ou `xls`**
+
+* **Pacote:** `readxl`
+* Parêmetros das funções `read_xls` (arquivos `.xls`) e `read_xlsx` (arquivos `.xlsx`):
+  - `path`: caminho até o arquivo.
+  - `sheet`: especifica a planilha do arquivo que será lida.
+  - `range`: especifica uma área de uma planilha para leitura. Por exemplo: `B3:E15`.
+  - `col_names`: Argumento lógico com valor padrão igual a `TRUE`. Indica se a primeira linha tem o nome das variáveis.
+  
+Para mais detalhes, consulte a documentação: [documentação de `read_xl`](https://readxl.tidyverse.org).
+
+## Lendo dados no `R` 
+
+**Leitura de arquivos no formato `xlsx` ou `xls`**
+
+\small
+
+```{r}
+library(tidyverse)
+library(readxl)
+dados_iris <- read_xlsx("dados/brutos/iris.xlsx")
+dados_iris <- clean_names(dados_iris)
+
+glimpse(dados_iris)
+```
+
+\normalsize
+
+## Lendo dados no `R`\newline Exercício
+
+Leia o _dataset_ `dados_leitura.xlsx` usando o pacote `readxl`. 
+
+## Lendo dados no `R` 
+
+\small
+
+**As formatações dos arquivos `csv`**
+
+* `csv`: _comma separated values_ (valores separados por coluna). O _separador_ varia em diferentes sistemas de medidas.
+
+\regrafina
+
+* No sistema métrico:
+  * As casas decimais são separadas por `,`
+  * O agrupamento de milhar é marcada por `.`
+  * As colunas dos arquivos de texto são separadas por `;`
+
+\regrafina
+
+* No sistema imperial inglês (UK e USA):
+  * As casas decimais são separadas por `.`
+  * O agrupamento de milhar é marcada por `,`
+  * As colunas dos arquivos de texto são separadas por `,`
+
+***Preste atenção em como o seus dados estão armazenados!***
+
+\normalsize
+
+---
+
+**Leitura de arquivos no formato `csv`**
+
+
+* **Pacote:** `readr` do `tidyverse` (instale com o comando `install.packages('readr')`).
+* Parêmetros das funções `read_csv` (sistema imperial inglês) e `read_csv2` (sistema métrico):
+  * `path`: caminho até o arquivo.
+
+Para mais detalhes, consulte a documentação oficial do _tidyverse_: [documentação de `read_r`](https://readr.tidyverse.org).
+
+## Lendo dados no `R`
+
+**Leitura de arquivos no formato `csv`**
+
+\scriptsize
+
+```{r, message=FALSE}
+dados_mtcarros <- read_csv2("dados/brutos/mtcarros.csv")
+dados_mtcarros <- clean_names(dados_mtcarros)
+glimpse(dados_mtcarros)
+```
+
+\normalsize
+
+## Lendo dados no `R`\newline Exercício
+
+Leia o _dataset_ `dados_leitura.csv` usando o pacote `readr`. 
+
+## Lendo dados no `R` 
+
+**Leitura de arquivos no formato `ods`**
+
+* **Pacote:** `readODS`  (instale com o comando `install.packages('readODS')`).
+* Parêmetros das funções `read_ods`:
+* `path`: caminho até o arquivo.
+  * `sheet`: especifica a planilha do arquivo que será lida.
+  * `range`: especifica uma área de uma planilha para leitura. Por exemplo: `B3:E15`.
+  * `col_names`: Argumento lógico com valor padrão igual a `TRUE`. Indica se a primeira linha tem o nome das variáveis.
+
+Para mais detalhes, consulte a documentação do _readODS_: [documentação de `readODS`](https://github.com/chainsawriot/readODS).
+
+## Lendo dados no `R` 
+
+**Leitura de arquivos no formato `ods`**
+
+```{r}
+library(readODS)
+dados_dentes <- read_ods("dados/brutos/crescimento_dentes.ods")
+dados_dentes <- clean_names(dados_dentes)
+
+glimpse(dados_dentes)
+```
+
+## Lendo dados no `R`\newline Exercício
+
+Leia o _dataset_ `dados_leitura.ods` usando o pacote `readODS`. 
+
+## Exportando dados no `R`
+
+\small
+
+**Salvar no formato `.csv` (sistema métrico)**
+
+`write_csv2` é parte do pacote `readr`.
+
+```{r}
+#| eval: false
+write_csv2(dados_dentes, file = "dados/processados/nome.csv")
+```
+
+\rule{\textwidth}{0.5pt}
+
+**Salvar no formato `.xlsx` **
+
+`write_xlsx` é parte do pacote `writexl`.
+
+```{r}
+#| eval: false
+write_xlsx(dados_dentes, path = "dados/processados/nome.xlsx")
+```
+
+\rule{\textwidth}{0.5pt}
+
+**Salvar no formato `ods`**
+
+`write_ods` é parte do pacote `readODS`.
+
+```{r}
+#| eval: false
+write_ods(dados_toothgrowth, path = "dados/processados/nome.ods")
+```
+
+\normalsize
+
+## Salvando dados no `R`\newline Exercício
+
+1. Salve o objeto `milhas` do pacote `dados` como `milhas.ods` na pasta `output` do seu projeto.
+1. Salve o objeto `diamante` do pacote `dados` como `diamante.csv` na pasta `output` do seu projeto.
+1. Salve o objeto `velho_fiel` do pacote `dados` como `velho_fiel.xlsx` na pasta `output` do seu projeto.
+
+# O operador pipe\newline\ `|>`
+
+## `|>` 
+
+ O valor resultante da expressão do lado esquerdo vira primeiro argumento da função do lado direito. 
+
+ **Principal vantagem:** simplifica a leitura e a documentação de funções compostas.
+
+ \regrafina
+
+Executar
+
+```r
+f(x, y)
+```
+
+é exatamente a mesma coisa que executar
+
+```r
+x |> f(y)
+```
+
+---
+
+```r
+log(sqrt(sum(x^2)))
+```
+
+é exatamente a mesma coisa que executar
+
+```r
+x^2 |> sum() |> sqrt() |> log()
+```
+
+
+## `|>` \newline _Fazendo_ um bolo
+
+Exemplo adaptado de [6.1 O operador pipe](https://livro.curso-r.com/6-1-o-operador-pipe.html).
+
+\regrafina
+
+Para cozinhar o bolo precisamos usar as seguintes funções:
+
+* `acrescente(lugar, algo)`
+* `misture(algo)`
+* `asse(algo)`
+
+## `|>` \newline _Fazendo_ um bolo
+
+
+
+* Passo 1:
+```r
+acrescente(
+  "tigela vazia",
+  "farinha"
+)
+```
+* Passo2:
+```r
+acrescente(
+  acrescente(
+    "tigela vazia",
+    "farinha"
+  ),
+  "ovos"
+)
+```
+
+---
+
+* Passo3:
+```r
+acrescente(
+  acrescente(
+    acrescente(
+      "tigela vazia",
+      "farinha"
+    ),
+    "ovos"
+  ),
+  "leite"
+)
+```
+
+---
+
+* Passo4:
+```r
+acrescente(
+  acrescente(
+    acrescente(
+      acrescente(
+        "tigela vazia",
+        "farinha"
+      ),
+      "ovos"
+    ),
+    "leite"
+  ),
+  "fermento"
+)
+```
+
+---
+
+* Passo 5:
+```r
+misture(
+  acrescente(
+    acrescente(
+      acrescente(
+        acrescente(
+          "tigela vazia",
+          "farinha"
+        ),
+        "ovos"
+      ),
+      "leite"
+    ),
+    "fermento"
+  )
+)
+```
+
+---
+
+* Passo 6:
+```r
+asse(
+  misture(
+    acrescente(
+      acrescente(
+        acrescente(
+          acrescente(
+            "tigela vazia",
+            "farinha"
+          ),
+          "ovos"
+        ),
+        "leite"
+      ),
+      "fermento"
+    )
+  )
+)
+```
+
+---
+
+Usando o operador `|>`.
+
+\vspace{0.5cm}
+
+```r
+acrescente("tigela vazia", "farinha") |>
+  acrescente("ovos") |>
+  acrescente("leite") |>
+  acrescente("fermento") |>
+  misture() |>
+  asse()
+```
+
+# Estatística descritiva
+
+## Estatística Descritiva no `R`\newline Conceitos básicos
+
+
+* **População**: todos os elementos ou indivíduos alvo do estudo.
+* **Amostra**: parte da população.
+* **Parâmetro:** característica numérica da população. Usamos letras gregas para denotar parâmetros populacionais.
+* **Estatística:** função ou _cálculo_ da amostra
+* **Estimativa:** característica numérica da amostra, obtida da estatística computada na amostra. Em geral, usamos uma estimativa para estimar o parâmetro populacional.
+* **Variável:** _característica mensurável comum a todos os elementos da população._ 
+  * Usamos letras maiúsculas do alfabeto latino para representar uma variável.
+  * Usamos letras minúsculas do alfabeto latino para representar o valor observado da variável em um elemento da amostra. 
+
+## Estatística Descritiva no `R`\newline Conceitos básicos
+
+**Exemplo**
+
+* **População**: todos os eleitores nas eleições gerais de 2022.
+* **Amostra**: 3.500 pessoas abordadas pelo `datafolha`.
+* **Variável:** candidato a presidente de cada pessoa.
+* **Parâmetro:** porcentagem de pessoas que escolhem Lula como presidente entre todos os eleitores.
+* **Estatística:** porcentagem de pessoas que escolhem o lula
+* **Estimativa:** porcentagem de pessoas que escolhem Lula como presidente entre todos os eleitores da amostra de 3.500 pessoas entrevistas pelo datafolha.
+
+## Classificação de variáveis
+
+\tiny
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[node distance = 15em, scale=0.5]
+  \tikzstyle{decision} = [diamond, draw, fill=blue!20, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+  \tikzstyle{block} = [rectangle, draw, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em]
+  \tikzstyle{line} = [draw, -latex]
+  \tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm, minimum height=2em]
+  \node [block] (variavel) {Variável};
+  \node [block, left of=variavel, text width=12em] (qualitativa) {\textbf{Variável qualitativa}\newline \textit{valores categóricos (texto)}};
+  \node [block, right of=variavel, text width=10em] (quantitativa) {\textbf{Variável quantitativa}\newline \textit{valores numéricos}};
+  \node [block, below of=qualitativa, left of=qualitativa, text width=6em, node distance=7.5em] (ordinal) {\textbf{Ordinal}\newline\textit{Exemplo}\newline Escolaridade};
+  \node [block, below of=qualitativa, right of=qualitativa, text width=4em, node distance=7.5em] (nominal) {\textbf{Nominal}\newline\textit{Exemplo}\newline Gênero};
+  \node [block, below of=quantitativa, left of=quantitativa, text width=8em, node distance=7.5em] (discreta) {\textbf{Discreta}\newline\textit{Exemplo}\newline Número de filhos};
+  \node [block, below of=quantitativa, right of=quantitativa, text width=4em, node distance=7.5em] (continua) {\textbf{Contínua}\newline\textit{Exemplo}\newline Salário};
+  \path [line] (variavel) -- (qualitativa);
+  \path [line] (variavel) -- (quantitativa);
+  \path [line] (quantitativa) -- (discreta);
+  \path [line] (quantitativa) -- (continua);
+  \path [line] (qualitativa) -- (ordinal);
+  \path [line] (qualitativa) -- (nominal);
+\end{tikzpicture}
+\caption{Classificação de variáveis.}
+\end{figure}
+
+\normalsize
+
+# Tabela
+
+## Tabela de frequência\newline Variável qualitativa 
+
+A primeira coisa que fazemos é contar! 
+
+|$X$|frequência|frequência relativa|porcentagem|
+|:---:|:---:|:---:|:---:|
+|$B_1$|$n_1$|$f_1$|$100 \cdot f_1\%$|
+|$B_2$|$n_2$|$f_2$|$100 \cdot f_2\%$|
+|$\vdots$|$\vdots$|$\vdots$|$\vdots$|
+|$B_k$|$n_k$|$f_k$|$100 \cdot f_k\%$|
+|Total|$n$|$1$|$100\%$|
+
+Em que $n$ é o tamanho da amostra.
+
+## Tabela de distribuição de frequências\newline Variável qualitativa
+
+* **Pacote:** `janitor`.
+* `tabyl`: cria a tabela de distribuição de frequências e tem os seguintes parâmetros:
+  * `dat`: _data frame_ ou vetor com os valores da variável que desejamos tabular.
+  * `var1`: nome da primeira variável.
+  * `var2`: nome da segunda variável (opcional).
+* `adorn_totals`: adiciona uma linha com os totais de cada coluna
+* `adorn_pct_formatting`: acrescenta o sinal de porcentagem e tem o seguinte parâmetro:
+  * `digits`: o número de casas decimais depois da vírgula
+* `rename` (do pacote `dplyr`) muda os nomes das colunas para português no seguinte formato:
+  * `"novo nome" = "velho nome"`
+
+Para mais detalhes, consulte a documentação oficial do _janitor_: [documentação de `tabyl`](https://cran.r-project.org/web/packages/janitor/janitor.pdf).
+
+## Tabela de distribuição de frequências\newline Variável qualitativa
+
+```{r}
+dados_iris <- read_xlsx("dados/brutos/iris.xlsx")
+tab <- tabyl(dados_iris, especies)  |>
+  adorn_totals()  |>
+  adorn_pct_formatting(digits = 2) |>
+  rename(
+    "Espécies" = especies, "Frequência" = n,
+    "Porcentagem" = percent
+  )
+tab
+```
+
+## Tabela de distribuição de frequências\newline Variável qualitativa\newline Exercício
+
+Para o conjunto de dados `amostra_enem_salvador.xlsx`, construa a tabela de distribuição de frequências para as seguintes variáveis:
+
+* `tp_sexo`: gênero que a pessoa se identifica (segundo classificação usada pelo IBGE)
+* `tp_cor_raca`: raça (segundo classificação usada pelo IBGE)
+
+## Tabela de distribuição de frequências\newline Variável quantitativa discreta
+
+Muito semelhante a tabela de distribuição de frequência para variáveis qualitativas.
+
+|$X$|frequência|frequência relativa|porcentagem|
+|:---:|:---:|:---:|:---:|
+|$x_1$|$n_1$|$f_1$|$100 \cdot f_1\%$|
+|$x_2$|$n_2$|$f_2$|$100 \cdot f_2\%$|
+|$\vdots$|$\vdots$|$\vdots$|$\vdots$|
+|$x_k$|$n_k$|$f_k$|$100 \cdot f_k\%$|
+|Total|$n$|$1$|$100\%$|
+
+Em que $n$ é o tamanho da amostra e $\{x_1, \dots, x_k\}$ são os números que são valores únicos de $X$ na amostra.
+
+## Tabela de distribuição de frequências\newline Variável quantitativa discreta
+
+```{r}
+dados_mtcarros <- read_csv2("dados/brutos/mtcarros.csv")
+tab <- tabyl(dados_mtcarros, carburadores)  |>
+  adorn_totals()  |>
+  adorn_pct_formatting(digits = 2) |>
+  rename(
+    "Carburadores" = carburadores, "Frequência" = n,
+    "Porcentagem" = percent
+  )
+tab
+```
+
+## Tabela de distribuição de frequências\newline Variável quantitativa discreta\newline Exercício
+
+Para o conjunto de dados `amostra_enem_salvador.xlsx`, construa a tabela de distribuição de frequências para a variável `q005`: número de pessoas que moram na casa da(o) candidata(o).
+
+## Tabela de frequência\newline Variável quantitativa contínua
+
+`X`: variável quantitativa contínua
+
+|`X`|Frequência|Frequência relativa|Porcentagem|
+|:-----:|:-------:|:-------:|:---------:|
+|$[l_0, l_1)$| $n_1$|$f_1 = \frac{n_1}{n_1 + \dots + n_k}$|$p_1 = f_1 \cdot 100$|
+|$[l_1, l_2)$| $n_2$|$f_2 = \frac{n_2}{n_1 + \dots + n_k}$|$p_2 = f_2 \cdot 100$|
+|$\vdots$| $\vdots$|$\vdots$|$\vdots$|
+|$[l_{k-1}, l_k]$| $n_k$|$f_k = \frac{n_k}{n_1 + \dots + n_k}$|$p_k = f_k \cdot 100$|
+Table: Tabela de frequências para a variável quantitativa contínua.
+
+-----
+
+* $\text{menor valor de }X = l_0 \leq l_1 \leq \cdots \leq l_{k-1} \leq l_k = \text{maior valor de }X$
+* $n_i$ é número de valores de `X` entre $l_{i-1}$ e $l_i$
+* $l_0, l_1, \dots, l_k$ quebram o suporte da variável `X` (_breakpoints_).
+* $l_0, l_1, \cdots, l_k$ são escolhidos de acordo com a teoria por trás da análise de dados
+
+**Recomendações:**
+
+* use $l_0, l_1, \cdots, l_k$ igualmente espaçados
+* e use a [regra de Sturges](https://onlinelibrary.wiley.com/doi/10.1002/wics.35) para determinar o valor de $k$:
+  * $k = 1 + \log2(n)$ onde $n$ é tamanho da amostra
+  * Se $1 + \log2(n)$ não é um número inteiro, usamos $k = \lceil 1 + \log2(n) \rceil$.
+
+## Tabela de frequência\newline Variável quantitativa contínua
+
+Primeiro agrupamos os valores em faixas usando a regra de Sturges.
+
+\regrafina
+
+Usamos a função `cut`, com os seguintes argumentos:
+
+* `breaks` - número de intervalos ou os limites dos intervalos;
+* `include.lowest` - se `TRUE` inclue o valor à esquerda no intervalo;
+* `right` - se `TRUE` inclue o valor à direita no intervalo.
+
+\regrafina
+
+Usamos a função `mutate` para adicionar uma nova coluna em um `tibble`, com os seguintes argumentos:
+
+* `.data` - `tibble` para adicionar uma nova coluna;
+* `<nome da variavel> = <vetor>` - adicione uma ou mais colunas separadas por vírgula.
+
+---
+
+\small
+
+```{r}
+k <- ceiling(1 + log(nrow(dados_iris)))
+dados_iris2 <- mutate(
+  dados_iris,
+  comprimento_sepala_int = cut(
+    comprimento_sepala,
+    breaks = k,
+    include.lowest = TRUE,
+    right = FALSE
+  )
+)
+glimpse(dados_iris2)
+```
+
+\normalsize
+
+## Tabela de frequência\newline Variável quantitativa contínua
+
+Agora podemos contar a frequência de cada intervalo.
+
+```{r}
+#| eval: false
+tabyl(dados_iris2, comprimento_sepala_int) |>
+  adorn_totals() |>
+  adorn_pct_formatting(digits = 2) |>
+  rename(
+    "Comprimento de sépala" = comprimento_sepala_int,
+    "Frequência absoluta" = n,
+    "Porcentagem" = percent
+  )
+```
+
+---
+
+```{r}
+#| echo: false
+tabyl(dados_iris2, comprimento_sepala_int) |>
+  adorn_totals() |>
+  adorn_pct_formatting(digits = 2) |>
+  rename(
+    "Comprimento de sépala" = comprimento_sepala_int,
+    "Frequência absoluta" = n,
+    "Porcentagem" = percent
+  )
+```
+
+## Tabela de frequência\newline Variável quantitativa contínua\newline Exercício
+
+Para o conjunto de dados `amostra_enem_salvador.xlsx`, construa as seguintes tabelas de distribuição de frequências:
+
+* `nu_nota_mt` (nota da prova em matemática): $l_0, l_1, \dots, l_k$ são igualmente espaços com $l_k - l_{k-1}=100$
+* `nu_nota_cn` (nota da prova de ciências humanas): use a regra de Sturges
+
+# Gráficos
+
+## Gráficos usando `ggplot2`
+
+* **Pacote:** `ggplot2`.
+* Permite gráficos personalizados com uma sintaxe simples e rápida, e iterativa _por camadas_.
+* Começamos com um camada com os dados `ggplot(dados)`, e vamos adicionando as camadas de anotações, e sumários estatísticos.
+* Usa a _gramática de gráficos_ proposta por Leland Wilkinson: [Grammar of Graphics](https://www.springer.com/gp/book/9780387245447).
+* Ideia desta gramática: delinear os atributos estéticos das figuras geométricas (incluindo transformações nos dados e mudança no sistema de coordenadas).
+
+Para mais detalhes, você pode consultar [`ggplot2`: elegant graphics for data analysis](https://ggplot2-book.org) e [documentação do `ggplot2`](https://ggplot2.tidyverse.org).
+
+## Gráficos usando `ggplot2`
+
+**Estrutura básica de `ggplot2`**
+
+```r
+ggplot(data = <data possible tibble>) +
+  <Geom functions>(mapping = aes(<MAPPINGS>)) +
+  <outras camadas>
+```
+
+Você pode usar diversos temas e extensões que a comunidade cria e criou para melhorar a aparência e facilitar a construção de `ggplot2`.
+
+Lista com extensões do `ggplot2`: [extensões do `ggplot2`](https://exts.ggplot2.tidyverse.org/gallery/).
+
+\regrafina
+
+Indicação de extensões:
+
+* Temas adicionais para o pacote `ggplot2`: [`ggthemes`](https://github.com/jrnold/ggthemes).
+* Gráfico de matriz de correlação: [`ggcorrplot`](https://rpkgs.datanovia.com/ggcorrplot/).
+* Gráfico quantil-quantil: [`qqplotr`](https://github.com/aloy/qqplotr).
+
+## Gráficos usando `ggplot2`
+
+**Gráfico de barras no `ggplot2`**
+
+* **função:** `geom_bar()`. Para porcentagem: `geom_bar(x = <variável no eixo x>, y = after_stat(prop * 100))`.
+* Argumentos adicionais:
+  * **`fill`**: mudar a cor do preenchimento das figuras geométricas.
+  * **`color`**: mudar a cor da figura geométrica.
+* Rótulos dos eixos
+  * **Mudar os rótulos:** `labs(x = <rótulo do eixo x>, y = <rótulo do eixo y>)`.
+  * **Trocar o eixo-x pelo eixo-y:** `coord_flip()`.
+
+## Gráfico de barras\newline Variável qualitativa
+
+Gráfico de barras para a variável qualitativa `especies` do conjunto de dados `iris.xlsx`.
+
+```{r}
+ggplot(dados_iris) +
+  geom_bar(mapping = aes(especies), fill = "blue") +
+  labs(x = "Espécies", y = "Frequência") +
+  theme_minimal()
+```
+
+## Gráfico de barras\newline Variável qualitativa\newline Exercício
+
+Para o conjunto de dados `amostra_enem_salvador.xlsx`, construa o gráfico de barras para as seguintes variáveis:
+
+* `tp_sexo`: gênero que a pessoa se identifica (segundo classificação do IBGE);
+* `tp_cor_raca`: raça autodeclarada (segundo classificação do IBGE).
+
+## Tabela de distribuição de frequências\newline Variável quantitativa discreta
+
+De maneira similar, podemos contar quantas vezes cada valor de uma variável quantitativa discreta foi amostrado.
+
+|$X$|frequência|frequência relativa|porcentagem|
+|:---:|:--:|:--:|:--:|
+|$x_1$|$n_1$|$f_1$|$100\cdot f_1 \%$|
+|$x_2$|$n_2$|$f_2$|$100\cdot f_2 \%$|
+|$x_3$|$n_3$|$f_3$|$100\cdot f_3 \%$|
+|$\vdots$|$\vdots$|$\vdots$|$\vdots$|
+|$x_k$|$n_k$|$f_k$|$100\cdot f_k \%$|
+|Total|$n$|$1$|$100 \%$|
+
+Em que $n$ é o tamanho da amostra.
+
+## Tabela de distribuição de frequências\newline Variável quantitativa discreta
+
+Vamos construir a tabela de distribuição de frequências para a variável quantitativa discreta `carburadores` do conjunto de dados `mtcarros`.
+
+```{r}
+#| eval: false
+tab <- tabyl(dados_mtcarros, carburadores) |>
+  adorn_totals() |>
+  adorn_pct_formatting(digits = 2) |>
+  rename(
+    "Número de carburadores" = carburadores,
+    "Frequência (absoluta)" = n,
+    "Porcentagem" = percent
+  )
+tab
+```
+
+----
+
+\small
+
+```{r}
+#| echo: false
+tab <- tabyl(dados_mtcarros, carburadores) |>
+  adorn_totals() |>
+  adorn_pct_formatting(digits = 2) |>
+  rename(
+    "Número de carburadores" = carburadores,
+    "Frequência (absoluta)" = n,
+    "Porcentagem" = percent
+  )
+tab
+```
+
+\normalsize
+
+## Gráfico de barras\newline Variável quantitativa discreta
+
+\small
+
+Gráfico de barras para a variável quantitativa discreta `carburadores` do conjunto de dados `mtcarros.csv`.
+
+* `after_stat(prop)` retorna a _frequência relativa_ ou _proporção_ de um valor (ou categoria) de uma variável.
+* `after_stat(count)` retorna a _frequência absoluta_  de um valor (ou categoria) de uma variável.
+
+```{r}
+#| eval: false
+ggplot(dados_mtcarros) +
+  geom_bar(
+    mapping = aes(carburadores, after_stat(100 * prop)),
+    fill = "#002f81"
+  ) +
+  labs(x = "Número de carburadores", y = "Porcentagem") +
+  theme_minimal()
+```
+
+\normalsize
+
+---
+
+```{r}
+#| echo: false
+#| out.width: 100%
+ggplot(dados_mtcarros) +
+  geom_bar(
+    mapping = aes(carburadores, after_stat(100 * prop)),
+    fill = "#002f81"
+  ) +
+  labs(x = "Número de carburadores", y = "Porcentagem") +
+  theme_minimal()
+```
+
+## Gráfico de barras\newline Variável quantitativa discreta\newline Exercício
+
+* Para a variável `q005` do conjunto de dados `amostra_enem_salvador.xlsx`, construa o gráfico de barras onde o eixo y é a frequência absoluta.
+* Para a variável `q005` do conjunto de dados `amostra_enem_salvador.xlsx`, construa o gráfico de barras onde o eixo y é a frequência relativa.
+* Para a variável `q005` do conjunto de dados `amostra_enem_salvador.xlsx`, construa o gráfico de barras onde o eixo y é a porcentagem.
+
+## Histograma
+
+Para variávieis quantitativas contínuas, geralmente não construímos gráficos de barras, e sim uma figura geométrica chamada de _histograma_.
+
+* O histograma é um gráfico de barras contíguas em que a área de cada barra é
+igual à frequência relativa.
+* Cada faixa de valor $[l_{i-1}, l_{i}), i=1, \dots, n,$ será representada por um barra com área $f_i, i=1, \dots, n$.
+* Como cada barra terá área igual a $f_i$ e base $l_i - l_{i-1}$, e a altura de cada barra será $\frac{f_i}{l_i - l_{i-1}}$.
+* $\frac{f_i}{l_i - l_{i-1}}$ é denominada de densidade de frequência.
+* Podemos usar os seguintes parâmetros (**obrigatório o uso de apenas um deles**):
+  * `bins`: número de intervalos no histograma (usando, por exemplo, a regra de Sturges)
+  * `binwidth`: tamanho (ou largura) dos intervalos
+  * `breaks`: os limites de cada intervalo
+
+## Histograma
+
+\begin{figure}
+\centering
+\caption{Representação de uma única barra de um histograma.}
+\begin{tikzpicture}
+  \filldraw[blue!30] (1,0) rectangle (3,2);
+  \draw[black] (1,0) rectangle (3,2);
+  \node at (2,1) {\tiny$\frac{f_i}{l_i - l_{i-1}}\cdot l_i - l_{i-1}$};
+  \draw[->] (0,0) -- (0,3);
+  \draw[->] (0,0) -- (4,0);
+  \node[right] at (4,0) {Variável contínua};
+  \node[above] at (0,3) {Denside de frequência};
+  \draw[decorate,decoration={brace,mirror}] (3,0) -- (3,2);
+  \node[right] at (3,1) {$\frac{f_i}{l_i - l_{i-1}}$};
+  \draw[decorate,decoration={brace,mirror}] (1,0) -- (3,0);
+  \node[below] at (2,0) {$l_i - l_{i-1}$};
+\end{tikzpicture}
+\end{figure}
+
+## Histograma
+
+```{r}
+#| eval: false
+ggplot(dados_iris) +
+  geom_histogram(
+    aes(x = comprimento_sepala, y = after_stat(density)),
+    bins = k,
+    fill = "#002f81"
+  ) +
+  theme_minimal() +
+  labs(
+    x = "Comprimento de Sépala",
+    y = "Densidade de Frequência"
+  )
+```
+
+---
+
+```{r}
+#| echo: false
+#| out.width: 100%
+ggplot(dados_iris) +
+  geom_histogram(
+    aes(x = comprimento_sepala, y = after_stat(density)),
+    bins = k,
+    fill = "#002f81"
+  ) +
+  theme_minimal() +
+  labs(
+    x = "Comprimento de Sépala",
+    y = "Densidade de Frequência"
+  )
+```
+
+## Histograma\newline Exercício
+
+* Para a variável `nu_nota_mt` do conjunto de dados `amostra_enem_salvador.xlsx`, construa o histograma onde os intervalos tem o mesmo tamanho igual a 100.
+* Para a variável `nu_nota_cn` do conjunto de dados `amostra_enem_salvador.xlsx`, construa o histograma usando a regra de Sturge.
+
+## Histograma\newline Linha de densidade
+
+* Podemos adicionar uma linha que acompanha o formato do histograma.
+* Chamamos esta linha de densidade.
+* Podemos fazer isso com a função `geom_density` do pacote `ggplot2`.
+
+```{r}
+#| eval: false
+#| out.width: 100%
+ggplot(dados_iris, aes(x = comprimento_sepala,
+                      y = after_stat(density))) +
+  geom_histogram(
+    bins = k,
+    fill = "#002f81"
+  ) +
+  geom_density(size = 2, color = "red") +
+  theme_minimal() +
+  labs(
+    x = "Comprimento de Sépala",
+    y = "Densidade de Frequência"
+  )
+```
+
+---
+
+```{r}
+#| echo: false
+#| out.width: 100%
+ggplot(dados_iris, aes(x = comprimento_sepala, y = after_stat(density))) +
+  geom_histogram(
+    bins = k,
+    fill = "#002f81"
+  ) +
+  geom_density(size = 2, color = "red") +
+  theme_minimal() +
+  labs(
+    x = "Comprimento de Sépala",
+    y = "Densidade de Frequência"
+  )
+```
+
+## Histograma\newline Exercício
+
+* Para a variável `nu_nota_mt` do conjunto de dados `amostra_enem_salvador.xlsx`, construa o histograma onde os intervalos tem o mesmo tamanho igual a 100. Adicione a curva de densidade ao histograma.
+* Para a variável `nu_nota_cn` do conjunto de dados `amostra_enem_salvador.xlsx`, construa o histograma usando a regra de Sturge. Adicione a curva de densidade ao histograma.
+
+
+# Medidas de resumo
+
+## Medidas resumo\newline Variável quantitativa
+
+\small
+
+A ideia é encontrar um ou alguns valores que sintetizem todos os valores.
+
+\regrafina
+
+**Medidas de posição (tendência central)**
+
+A ideia é encontrar um valor que representa _bem_ todos os valores.
+
+* **Média:** $\overline{x} = \dfrac{x_1+\cdots+x_n}{n}$.
+* **Mediana:** valor que divide a sequência ordenada de valores em duas partes iguais.
+  - Ordene os valores do menor ao maior;
+  - Valor que divide os valores entre os 50% menores e os 50% maoires:
+    + $50\%$ dos valores $x_i$ satisfazem: $x_i \leq \text{Mediana}$;
+    + $50\%$ dos valores $x_i$ satisfazem: $x_i \geq \text{Mediana}$.
+
+## Medidas resumo\newline Variável quantitativa
+
+\begin{figure}
+  \centering
+  \caption{Representação gráfica para nota em matemática, português, ciências naturais e ciências humanas.}
+  \label{fig:dispersao}
+   \begin{tikzpicture}[scale=0.7]
+    \draw[->] (-1,0) -- (11,0);
+    \node[right] at (11,0) {\scriptsize Nota em matemática.};
+    \foreach \i in {1,2,3,4,5,6,7,8,9} \filldraw[black] (\i,0) circle (0.025cm);
+    \foreach \i in {1,2,3,4,5,6,7,8,9} \node[below] at (\i,0) {\i};
+    \foreach \i in {3,4,5,6,7} \filldraw[blue] (\i,0.2) circle (0.035cm);
+    \draw[->] (-1,1) -- (11,1);
+    \node[right] at (11,1) {\scriptsize Nota em português.};
+    \foreach \i in {1,2,3,4,5,6,7,8,9} \filldraw[black] (\i,1) circle (0.025cm);
+    \foreach \i in {1,2,3,4,5,6,7,8,9} \node[below] at (\i,1) {\i};
+    \foreach \i in {1,3,5,7,9} \filldraw[blue] (\i,1+0.2) circle (0.035cm);
+    \draw[->] (-1,2) -- (11,2);
+    \node[right] at (11,2) {\scriptsize Nota em ciências naturais.};
+    \foreach \i in {1,2,3,4,5,6,7,8,9} \filldraw[black] (\i,2) circle (0.025cm);
+    \foreach \i in {1,2,3,4,5,6,7,8,9} \node[below] at (\i,2) {\i};
+    \foreach \i in {1,2,3,4,5} \filldraw[blue] (5,2+\i*0.2) circle (0.035cm);
+    \draw[->] (-1,4) -- (11,4);
+    \node[right] at (11,4) {\scriptsize Nota em ciências humanas.};
+    \foreach \i in {1,2,3,4,5,6,7,8,9} \filldraw[black] (\i,4) circle (0.025cm);
+    \foreach \i in {1,2,3,4,5,6,7,8,9} \node[below] at (\i,4) {\i};
+    \filldraw[blue] (4,4+0.2) circle (0.035cm);
+    \filldraw[blue] (6,4+0.2) circle (0.035cm);
+    \foreach \i in {1,2,3} \filldraw[blue] (5,4+\i*0.2) circle (0.035cm);
+    \draw[red, line width=0.5cm, opacity=0.15] (5,-1) -- (5,5);
+    \node[above] at (5,5) {$\underbrace{\mbox{Média, Moda e Mediana}}_{\downarrow}$};
+  \end{tikzpicture}
+\end{figure}
+
+---
+
+A variáveis _nota em matemática_, _nota em português_, _nota em ciências naturais_, e _nota em ciências humanas_ têm a mesma média, moda e mediana, mas as variáveis não são guais.
+
+Precisamos analisar como os valores são distribuídos.
+
+\regrafina
+
+**Medidas de dispersão**
+
+A ideia é medir a homogeneidade dos valores.
+
+* **Variância: ** $s^2 = \dfrac{(x_1 - \overline{x})^2 + \cdots + (x_n - \overline{x})^2}{n-1}$.
+* **Desvio padrão: ** $s = \sqrt{s^2}$ (mesma unidade dos dados).
+* **Coeficiente de variação** $cv= \dfrac{s}{\overline{x}} \cdot 100\%$ (adimensional, ou seja, "sem unidade").
+
+\normalsize
+
+## Medidas resumo: exemplo
+
+Podemos usar a função `summarise` do pacote `dplyr` (incluso no pacote `tidyverse`).
+
+```{r}
+dados_iris |>
+  summarise(
+    media = mean(comprimento_sepala),
+    mediana = median(comprimento_sepala),
+    dp = sd(comprimento_sepala),
+    cv = dp / media
+  )
+```
+
+
+## Medidas resumo: exemplo
+
+Podemos usar a função  `group_by` para calcular medidas resumo por categorias de uma variável qualitativa.
+
+```{r}
+tabela <- dados_iris |>
+  group_by(especies) |>
+  summarise(
+    media = mean(comprimento_sepala),
+    mediana = median(comprimento_sepala),
+    dp = sd(comprimento_sepala),
+    cv = dp / media
+  )
+tabela
+```
+
+## Medidas de resumo\newline Exercício
+
+* Calcule média, mediana, o desvio padrão e coeficiente de variação para a variável `nu_nota_mt` do conjunto de dados `amostra_enem_salvador.xlsx` por gênero (`tp_sexo`).
+* Calcule média, mediana, o desvio padrão e coeficiente de variação para a variável `nu_nota_cn` do conjunto de dados `amostra_enem_salvador.xlsx` por gênero (`tp_sexo`).
+* Calcule média, mediana, o desvio padrão e coeficiente de variação para a variável `nu_nota_mt` do conjunto de dados `amostra_enem_salvador.xlsx` por raça (`tp_cor_raca`).
+* Calcule média, mediana, o desvio padrão e coeficiente de variação para a variável `nu_nota_cn` do conjunto de dados `amostra_enem_salvador.xlsx` por raça (`tp_cor_raca`).
+
+## Quantis
+
+**Ideia**
+
+$q(p)$ é um valor que satisfaz;
+
+* $100 \cdot p\%$ das observações $x_i$ satisfazem $x_i \leq q(p)$
+* $100 \cdot (1-p)\%$ das observações satisfazem $x_i \geq q(1-p)$
+
+\regrafina
+
+**Alguns quantis especiais**
+
+* *Primeiro quartil:* $q_1 = q(0,25)$
+* *Primeiro quartil:* $q_2 = q(0,5)$
+* *Primeiro quartil:* $q_3 = q(0,75)$
+
+## Quantis
+
+```{r}
+dados_iris |>
+  group_by(especies) |>
+  summarise(
+    q1 = quantile(comprimento_sepala, 0.25),
+    q2 = quantile(comprimento_sepala, 0.5),
+    q3 = quantile(comprimento_sepala, 0.75),
+    frequencia = n()
+  )
+```
+
+`n()` calcula a frequência de cada valor de uma variável qualitativa.
+
+## Quantis\newline Exercício
+
+* Calcule o primeiro quartil, segundo quartil e o terceiro quartil para a variável `nu_nota_mt` do conjunto de dados `amostra_enem_salvador.xlsx` por gênero (`tp_sexo`). Inclua uma coluna com a frequência da variável `tp_sexo`.
+* Calcule o primeiro quartil, segundo quartil e o terceiro quartil para a variável `nu_nota_cn` do conjunto de dados `amostra_enem_salvador.xlsx` por gênero (`tp_sexo`). Inclua uma coluna com a frequência da variável `tp_sexo`.
+* Calcule o primeiro quartil, segundo quartil e o terceiro quartil para a variável `nu_nota_mt` do conjunto de dados `amostra_enem_salvador.xlsx` por raça (`tp_cor_raca`). Inclua uma coluna com a frequência da variável `tp_cor_raca`.
+* Calcule o primeiro quartil, segundo quartil e o terceiro quartil para a variável `nu_nota_cn` do conjunto de dados `amostra_enem_salvador.xlsx` por raça (`tp_cor_raca`). Inclua uma coluna com a frequência da variável `tp_cor_raca`.
+
+## Letter Value
+
+Para detalhes veja @hoaglin1983understanding.
+
+# Diagrama de caixa\newline\newline\ _boxplot_
+
+## Diagrama de caixa (ou _boxplot_)
+
+* Permite visualizar: centro (mediana); dispersão (intervalo interquartil); assimetria; e ponto exterior.
+* Pontos exteriores: valores observados acima de $LS$ ou abaixo de $LI$.
+* Pontos exteriores precisam de nossa atenção.
+* Como calcular $LS$ e $LI$:
+  - $LS = 1,5 \cdot (q_3 - q1) + q_3$;
+  - $LS = -1,5 \cdot (q_3 - q1) + q_1$.
+
+
+```{r}
+#| echo: false
+#| out.width: 25%
+knitr::include_graphics("boxplot.png")
+```
+
+
+## Diagrama de caixa (ou _boxplot_)
+
+**Medida de dispersão:** distância entre $q_3$ e $q_1$
+
+**Diferença de quartis:** $dq = q_3 - q_1$
+
+```{r}
+#| out.width: "85%"
+#| echo: false
+#| fig.align: center
+knitr::include_graphics("motivacao_dq.png")
+```
+
+## Diagrama de caixa (ou _boxplot_)
+
+**Assimetria à direita ou positiva:**
+
+* frequências diminuem à direita no histograma
+* $q_2$ perto $q_1$: $q_2 - q_1 < q_3 - q_2$
+
+\regrafina
+
+**Assimetria à esquerda ou negativa:** frequências diminuem à esquerda no histograma
+
+* frequências diminuem à direita no histograma
+* $q_2$ perto $q_3$: $q_2 - q_1 > q_3 - q_2$
+
+## Diagrama de caixa (ou _boxplot_)
+
+**Assimetria**
+
+```{r}
+#| echo: false
+#| fig.height: 6
+#| out.width: "85%"
+tam <- 1000
+k <- ceiling(1 + log2(tam))
+a <- 1
+b <- 15
+#------------------------------------------------------------------------------
+# assimetria positiva
+amostra <- rbeta(tam, shape1 = a, shape2 = b)
+p1 <- ggplot(tibble(x = amostra)) +
+    geom_histogram(aes(x = x, y = after_stat(density)),
+                    bins = k, fill = "blue") +
+    theme_gdocs() +
+    scale_x_continuous(breaks = NULL) +
+    scale_y_continuous(breaks = NULL) +
+    labs(x = "X", y = "Densidade de\n frequência",
+        title = "Assimetria à direita ou positiva")
+
+p2 <- ggplot(tibble(x = amostra)) +
+    geom_boxplot(aes(x = "", y = x), outlier.shape = NA) +
+    theme_calc() +
+    scale_x_discrete(breaks = NULL) +
+    scale_y_continuous(breaks = NULL) +
+    labs(x = "", y = "X", title = "Assimetria à direira ou positiva")
+
+#------------------------------------------------------------------------------
+# assimetria negativa
+amostra <- rbeta(tam, shape1 = b, shape2 = a)
+n1 <- ggplot(tibble(x = amostra)) +
+    geom_histogram(aes(x = x, y = after_stat(density)),
+                    bins = k, fill = "blue") +
+    theme_gdocs() +
+    scale_x_continuous(breaks = NULL) +
+    scale_y_continuous(breaks = NULL) +
+    labs(x = "X", y = "Densidade de\n frequência",
+        title = "Assimetria à esquerda ou negativa")
+
+n2 <- ggplot(tibble(x = amostra)) +
+    geom_boxplot(aes(x = "", y = x), outlier.shape = NA) +
+    theme_calc() +
+    scale_x_discrete(breaks = NULL) +
+    scale_y_continuous(breaks = NULL) +
+    labs(x = "", y = "X",
+        title = "Assimetria à esquerda ou negativa")
+
+#------------------------------------------------------------------------------
+# simetria
+amostra <- rbeta(tam, shape1 = 5, shape2 = 5)
+s1 <- ggplot(tibble(x = amostra)) +
+    geom_histogram(aes(x = x, y = after_stat(density)),
+                    bins = k, fill = "blue") +
+    theme_gdocs() +
+    scale_x_continuous(breaks = NULL) +
+    scale_y_continuous(breaks = NULL) +
+    labs(x = "X", y = "Densidade de\n frequência",
+        title = "Simetria")
+
+s2 <- ggplot(tibble(x = amostra)) +
+    geom_boxplot(aes(x = "", y = x), outlier.shape = NA) +
+    theme_calc() +
+    scale_x_discrete(breaks = NULL) +
+    scale_y_continuous(breaks = NULL) +
+    labs(x = "", y = "X",
+        title = "Simetria")
+
+p1 + p2 + n1 + n2 + s1 + s2 + plot_layout(nrow = 3, byrow =  TRUE)
+```
+
+
+## Diagrama de caixa (ou _boxplot_)
+
+```{r}
+#| out.width: 85%
+ggplot(dados_iris) +
+  geom_boxplot(aes(x = "", y = comprimento_sepala)) +
+  labs(x = "", y = "Comprimento de Sépala") +
+  theme_minimal()
+```
+
+## Gráficos lado a lado com `patchwork`
+
+* `patchwork` permite que colocar gráficos lado a lado com
+  * `+`: figuras ao lado
+  * `\`: figuras embaixo
+* Para mais detahes, visite a [documentação do patchwork](https://patchwork.data-imaginist.com/articles/patchwork.html)
+
+```{r}
+#| out.width: 85%
+#| eval: false
+sepala <- ggplot(dados_iris) +
+  geom_boxplot(aes(x = "", y = comprimento_sepala)) +
+  labs(x = "", y = "Comprimento de Sépala") +
+  ylim(c(0, 10)) +
+  theme_minimal()
+petala <- ggplot(dados_iris) +
+  geom_boxplot(aes(x = "", y = comprimento_petala)) +
+  labs(x = "", y = "Comprimento de Pétala") +
+  ylim(c(0, 10)) +
+  theme_minimal()
+sepala + petala
+```
+
+---
+
+```{r}
+#| out.width: 100%
+#| echo: false
+sepala <- ggplot(dados_iris) +
+  geom_boxplot(aes(x = "", y = comprimento_sepala)) +
+  labs(x = "", y = "Comprimento de Sépala") +
+  ylim(c(0, 10)) +
+  theme_minimal()
+petala <- ggplot(dados_iris) +
+  geom_boxplot(aes(x = "", y = comprimento_petala)) +
+  labs(x = "", y = "Comprimento de Pétala") +
+  ylim(c(0, 10)) +
+  theme_minimal()
+sepala + petala
+```
+
+## Diagrama de caixa\newline Duas ou mais populações
+
+Se adicionarmos uma variável qualitativa em `aes(x = <variável qualitativa>)`, construimos o diagrama de caixa para cada grupo (ou população) de `<variável qualitativa>`.
+
+\vfill
+
+```{r}
+#| eval: false
+ggplot(dados_iris) +
+  geom_boxplot(aes(x = especies, y = comprimento_sepala)) +
+  labs(x = "", y = "Comprimento de Sépala") +
+  ylim(c(0, 10)) +
+  theme_minimal()
+```
+
+---
+
+```{r}
+#| echo: false
+#| out.width: 100%
+ggplot(dados_iris) +
+  geom_boxplot(aes(x = especies, y = comprimento_sepala)) +
+  labs(x = "", y = "Comprimento de Sépala") +
+  ylim(c(0, 10)) +
+  theme_minimal()
+```
+
+
+## Diagrama de caixa\newline Exercício
+
+Para o conjunto de dados `amostra_enem_salvador.xlsx`:
+
+*  construa o diagrama de caixa para as variáveis `nu_nota_mt`, `nu_nota_lc`, `nu_nota_ch` e `nu_nota_cn` e os coloque lado a lado usando o pacote `patchwork`.
+*  construa o diagrama de caixa para as variável `nu_nota_mt` cada valor de `tp_cor_raca`.
+*  construa o diagrama de caixa para as variável `nu_nota_mt` cada valor de `tp_sexo`.
+*  construa o diagrama de caixa para as variável `nu_nota_mt` cada valor de `tp_tipo_escola`.
+
+# Violin plot
+
+## Violin plot
+
+* Adaptação do diagrama de caixa proposta por @hintze1998violin.
+* **Ideia:** visualizar o formato do histograma através da curva de densidade.
+* Recomanda-se usar para amostras com tamanho de amostra **igual ou maior que 30**.
+* **Sugestão:** usar diagrama de caixa (com sumário estatístico) e violin plot.
+
+\regrafina
+
+\scriptsize
+
+**Curva de densidade:**
+
+Considere uma amostra aleatória $x_1\, dots, x_n$ da variável $X$. Então, a curva de densidade é dada por:
+$$d(x, h) = \frac{1}{n \cdot h} \sum_{i=1}^{n}\delta_i,$$
+onde $\delta_i = \begin{cases} 1, & x-\frac{h}{2} \leq x_i \leq x+\frac{h}{2}\\ 0, & \text{caso contrário} \end{cases}$, $h$ é a largura banda usada para estimar no [estimador _kernel_](https://rdrr.io/r/stats/bandwidth.html), e $n$ é tamanho da amostra.
+
+* $h$ deve garantir entre $\left[x - \frac{h}{2}; x + \frac{h}{2}\right]$ entre 10% e 40% dos valores observados.
+* Por padrão, $h$ garante que $\left[x - \frac{h}{2}; x + \frac{h}{2}\right]$ tem 15% dos valores observados.
+
+\normalsize
+
+## Violin plot
+
+**Diagrama de caixa não consegue capturar a forma da distribuição dos valores.**
+
+**Exemplo de @hintze1998violin:**
+
+* Vamos amostrar valores da distribuição com densidade dada por 
+$$f(x) = 0,5 \cdot  f_X(20\cdot x - 10) + 0,5 \cdot f_Y(20\cdot x - 10),$$
+onde $X\sim Beta(2; 6)$ e $Y\sim Beta(2; 0,8)$. Esta distribuição é bimodal.
+* Vamos amostrar valores da distribuição uniforme $X \sim U[-10, 10]$.
+* Vamos amostrar valores da distribuição normal $X \sim N(0, 54,95)$.
+
+---
+
+```{r}
+alpha <- c(2, 2)
+beta <- c(6, 0.8)
+amostrador <- function(n) {
+  indices <- sample.int(2, n, TRUE, prob = c(0.5, 0.5))
+  indices |> map_dbl(\(k) {
+    20 * rbeta(1, alpha[k], beta[k]) - 10
+  })
+}
+n <- 1000
+dados <- tibble(
+  bimodal = amostrador(n),
+  uniforme = runif(n, -10, 10),
+  normal = rnorm(n, 0, sqrt(54.95))
+)
+```
+
+---
+
+```{r}
+#| eval: false
+bimodal <- ggplot(dados, aes(x = "")) +
+  geom_boxplot(aes(y = bimodal)) + theme_minimal() +
+  ylim(c(-10, 10))
+uniforme <- ggplot(dados, aes(x = "")) +
+  geom_boxplot(aes(y = uniforme)) + theme_minimal() +
+  ylim(c(-10, 10))
+normal <- ggplot(dados, aes(x = "")) +
+  geom_boxplot(aes(y = normal)) + theme_minimal() +
+  ylim(c(-10, 10))
+bimodal + uniforme + normal
+```
+
+---
+
+* Os três diagramas de caixas são semelhantes.
+* O diagrama de caixa não consegue identificar as formas das distribuições.
+
+```{r}
+#| echo: false
+#| out-width: 75%
+bimodal <- ggplot(dados, aes(x = "")) +
+  geom_boxplot(aes(y = bimodal)) + theme_minimal() +
+  ylim(c(-10, 10))
+uniforme <- ggplot(dados, aes(x = "")) +
+  geom_boxplot(aes(y = uniforme)) + theme_minimal() +
+  ylim(c(-10, 10))
+normal <- ggplot(dados, aes(x = "")) +
+  geom_boxplot(aes(y = normal)) + theme_minimal() +
+  ylim(c(-10, 10))
+bimodal + uniforme + normal
+```
+
+
+## Violin plot
+
+**Exemplo**
+
+```{r}
+#| eval: false
+ggplot(dados_iris, aes(x = especies, y = comprimento_petala)) +
+  geom_violin() + 
+  geom_boxplot(width = 0.1) +
+  theme_minimal() +
+  labs(x = "Espécies", y = "Comprimento de pétala")
+```
+
+---
+
+```{r}
+#| echo: false
+#| out.width: 100%
+ggplot(dados_iris, aes(x = especies, y = comprimento_petala)) +
+  geom_violin() + 
+  geom_boxplot(width = 0.1) +
+  theme_minimal() +
+  labs(x = "Espécies", y = "Comprimento de pétala")
+```
+
+
+# LV plot
+
+# Ramos-e-folhas
+
+## Ramos-e-folhas
+
+* Alternativa para histograma quando $20 \leq \text{tamanho da amostra} \leq 300$.
+* Olhar os números não nos apresenta informações.
+* Diagrama de ramos-e-folhas é uma forma de escanear rapidamente os dados.
+* Simples e rápido de desenhar a mão no papel.
+* Facilita na ordenação dos dados para encontrar quantis.
+* Não envolve qualquer teoria elaborada ou complexa.
+* Valores da amostra são mostrados no diagrama.
+* O que podemos achar no diagrama de ramos-e-folhas:
+  - simetria
+  - dispersão ou distribuição dos valores
+  - centralidade (mediana)
+  - pontos exteriores (valores isolados do montante)
+  - região de concentração dos valores observados
+  - regiões sem observações
+
+
+---
+
+**Desvantagens do histograma:**
+
+* Dados originais não são apresentados.
+* Pode ser difícil de desenhar na mão.
+
+\regrafina
+
+\destaque{\large\bf Ideia}
+
+* Cada valor observado é divido em duas partes: _ramo_ e _folha_.
+* Criamos uma coluna com os ramos em ordem crescente.
+* Para cada ramo, escrevemos as folhas correspondente a cada valor observado.
+* **Indesejável:**
+    a. Um ramos todos as folhas.
+    a. Vários ramos com uma folha.
+* Se um ramo tiver muitas folhas, podemos quebrar o ramo em duas linhas:
+   a. `*` fica com os dígitos 0, 1, 2, 3, e 4;
+   a. `.` ficam com os dígitos 5, 6, 7, 8, e 9.
+   
+---
+
+* Se os ramos `*` e `.` tiverem muitas folhas, podemos  quebrar o ramos em cinco linhas:
+   a. dígitos 0 e 1 ficam na linha `*`;
+   a. dígitos 2 e 3 ficam na linha `t` (do inglês _two_ e _three_);
+   a. dígitos 4 e 5 ficam na linha `f` (do inglês _four_ e _five_);
+   a. dígitos 6 e 7 ficam na linha `s` (do ingles _six_ e _seven_);
+   a. dígitos 8 e 9 ficam na linha `.`.
+* O ramo com parênteses indica que a mediana está neste ramo.
+* Número de linhas no diagrama de ramos-e-folhas:
+$$\text{próxima potência de 10 maior que }\frac{R}{L},$$
+em que $R=\max\{x_1, \dots, x_n\} - \min\{x_1, \dots, x_n\}$ e $L=\lfloor 10 \cdot \log_{10}(n) \rfloor$, onde $n$ é o tamanho da amostra.
+* Não arredonde valores. Trunque os valores em uma casa significativa.
+
+---
+
+* **Posto de $x$** - número de observações menores ou iguais a $x$:
+$$\#\{i \in \{1, \dots, n\} \mid x_i \leq x \};$$
+* **Profundidade de $x$:**
+$$\min\left\{\#\{i \in \{1, \dots, n\} \mid x_i \leq x \}; \#\{i \in \{1, \dots, n\} \mid x_i \geq x \}\right\};$$
+* Inclua a esquerda da coluna de ramos uma coluna de profundadidade.
+* Se existirem valores isolados, você indicar eles separadamente.
+
+## Ramos-e-folhas
+
+* **Função:** `stem.leaf` do pacote [`aplpack`](https://www.uni-bielefeld.de/fakultaeten/wirtschaftswissenschaften/fakultaet/lehrende-ehemalige/pwolf/wolf_aplpack/index.xml).
+* Parâmetros da função `stem`:
+  - `x`: vetor numérico
+  - `m`: controla a quantidade de ramos. Se `m = 0.5`, `0` e `1` são agrupados no `0`, `2` e `3` são agrupados no `2`, e assim por diantes. Quando aumentamos `m=1`, cria-se o diagrama de ramos-e-folhas padrão. Se `m=2`, cada ramo é quadrado em duas linhas (`*` e `.`). Se `m=3`, cada ramos é quebrado em cinco linhas (`*`, `t`, `f`, `s` e `.`).
+
+\vfill
+
+\regrafina
+
+
+```{r}
+#| eval: false
+dados_menstruacao <- read_csv("dados/brutos/menstruacao.csv")
+stem.leaf(dados_menstruacao$tamanho_ciclo, m=1)
+```
+
+---
+
+```{r}
+#| echo: false
+dados_menstruacao <- read_csv("dados/brutos/menstruacao.csv")
+stem.leaf(dados_menstruacao$tamanho_ciclo, m=1)
+```
+
+## Ramos-e-folhas\newline back-to-back
+
+* Comparação de uma mesma variável em duas populações diferentes.
+* No lado esquerdo, coloca-se os valores observados para uma população.
+* No lado direito, coloca-se os valores observados para a outra população.
+
+\regrafina
+
+\small
+
+```{r}
+#| eval: false
+df_companhia_MB <- read_xlsx("dados/brutos/companhia_MB.xlsx")
+df_solteiro <- filter(df_companhia_MB, estado_civil == "solteiro")
+df_casado <- filter(df_companhia_MB, estado_civil == "casado")
+
+stem.leaf.backback(df_solteiro$idade, df_casado$idade, m=2)
+```
+
+\normalsize
+
+---
+
+```{r}
+#| echo: false
+df_companhia_MB <- read_xlsx("dados/brutos/companhia_MB.xlsx")
+df_solteiro <- filter(df_companhia_MB, estado_civil == "solteiro")
+df_casado <- filter(df_companhia_MB, estado_civil == "casado")
+
+stem.leaf.backback(df_solteiro$idade, df_casado$idade, m=2)
+```
+
+
+## Ramos-e-folhas\newline Exercício
+
+Construa o gráfico de ramos-e-folhas para os seguintes conjunto de dados:
+
+* `rivers` (vetor disponível no `R`).
+* variável `erupcoes` do conjunto de dados `velho_fiel` do pacote `dados`.
+* variável `comprimento_sepala` do conjunto de dados `iris`.
+* compare a variável `comprimento` para os grupos `Vitamina C` e `Suco de laranja` usando ramos-e-folha back-to-back do conjunto de dados `comprimento_dentes`.
+
+# Associção entre duas variáveis
+
+## Gráficos\newline Duas variáveis
+
+**Ideia**: estudar a associação entre duas variáveis quantitativas.
+
+```{r}
+#| echo: false
+#| out.width: 75%
+library(patchwork)
+library(mvtnorm)
+tam <- 1000
+m_positiva <- rmvnorm(tam, mean = c(0,0), sigma = cbind(c(1, 0.95), c(0.95, 1)))
+g1 <- ggplot(tibble(x = m_positiva[, 1], y = m_positiva[, 2])) +
+  geom_point(aes(x, y)) +
+  theme_calc() +
+  scale_x_continuous(breaks = NULL) +
+  scale_y_continuous(breaks = NULL) +
+  labs(title = "Associação positiva")
+
+m_negativa <- rmvnorm(tam, mean = c(0,0), sigma = cbind(c(1, -0.95), c(-0.95, 1)))
+g2 <- ggplot(tibble(x = m_negativa[, 1], y = m_negativa[, 2])) +
+  geom_point(aes(x, y)) +
+  theme_calc() +
+  scale_x_continuous(breaks = NULL) +
+  scale_y_continuous(breaks = NULL) +
+  labs(title = "Associação negativa")
+
+m_nulo <- rmvnorm(tam, mean = c(0,0), sigma = cbind(c(1, 0), c(0, 1)))
+g3 <- ggplot(tibble(x = m_nulo[, 1], y = m_nulo[, 2])) +
+  geom_point(aes(x, y)) +
+  theme_calc() +
+  scale_x_continuous(breaks = NULL) +
+  scale_y_continuous(breaks = NULL) +
+  labs(title = "Associação nula")
+
+g1 + g2 + g3
+```
+
+
+## Gráfico de dispersão
+
+```{r}
+#| eval: false
+#| echo: true
+ggplot(dados_iris) +
+  geom_point(aes(comprimento_petala, comprimento_sepala)) +
+  labs(
+    x = "Comprimento de pétala",
+    y = "Comprimento de sépala"
+  ) +
+  theme_minimal()
+```
+
+
+---
+
+```{r}
+#| out.width: 100%
+#| echo: false
+ggplot(dados_iris) +
+  geom_point(aes(comprimento_petala, comprimento_sepala)) +
+  labs(
+    x = "Comprimento de pétala",
+    y = "Comprimento de sépala"
+  ) +
+  theme_minimal()
+```
+
+## Gráfico de dispersão\newline Exercício
+
+Para o conjunto de dados `amostra_enem_salvador.xlsx`, construa o gráfico de dispersão entre as variáveis `nu_nota_mt` e `nu_nota_cn`. 
+
+Inclua o argumento nomeado `alpha = 0.1` na função `geom_point` para incluir opacidade no gráfico de dispersão. Isso ajuda quando temos amostra de tamanho médio e grande.
+
+## Associação entre duas variáveis qualitativas
+
+**Ideia**
+
+Sejam $X$ e $Y$ duas variáveis qualitativas com os seguintes valores possíveis:
+
+* $X: A_1, \cdots, A_r$
+* $Y: B_1, \cdots, B_s$
+
+Desejamos estudar a associação entre $X$ e $Y$.
+
+\regrafina
+
+**Associação entre $X$ e $Y$**
+
+Suponha que $A_i$ tenha porcentagem $100 \cdot f_i \cdot \%$. Então, $X$ e $Y$ são:
+
+* **não associados:** se ao conhecermos o valor de $Y$ para um elemento da população, **continuamos** com a porcentagem $100 \cdot f_i \%$ deste elemento ter valor de $X$ igual a $A_i$
+* **associados:** se ao conhecermos o valor de $Y$ para um elemento da população, **alteramos** a  porcentagem $100 \cdot fi \%$ deste elemento ter valor de $X$ igual a $A_i$
+
+## Associação entre duas variáveis qualitativas\newline Gráfico de barras
+
+Vamos checar a associação entre `fundacao_tipo` e `geral_condicao`.
+
+\vspace{0.5cm}
+
+\small
+
+```{r}
+#| warning: false
+#| eval: false
+dados_casas <- read_xlsx("dados/brutos/casas.xlsx")
+ggplot(dados_casas) +
+  geom_bar(aes(x = fundacao_tipo, fill = geral_condicao),
+          position = "fill") +
+  labs(x = "Tipo de fundação da casa", y = "Porcentagem",
+      fill = "Condição geral") +
+  scale_y_continuous(labels = scales::percent) +
+  theme_minimal()
+```
+
+\normalsize
+
+---
+
+```{r}
+#| warning: false
+#| echo: false
+#| out.width: 100%
+dados_casas <- read_xlsx("dados/brutos/casas.xlsx")
+ggplot(dados_casas) +
+  geom_bar(aes(x = fundacao_tipo, fill = geral_condicao), position = "fill") +
+  labs(x = "Tipo de fundação da casa", y = "Porcentagem", fill = "Condição geral") +
+  scale_y_continuous(labels = scales::percent) +
+  theme_minimal()
+```
+
+## Associação entre duas variáveis qualitativas\newline Gráfico de barras
+
+Podemos agrupar as barras por grupos para analisar a  associação entre duas variáveis qualitativas.
+
+\vspace{0.5cm}
+
+\small
+
+```{r}
+#| warning: false
+#| eval: false
+dados_casas <- read_xlsx("dados/brutos/casas.xlsx")
+ggplot(dados_casas) +
+  geom_bar(aes(x = fundacao_tipo, fill = geral_condicao),
+          position = "dodge") +
+  labs(x = "Tipo de fundação da casa", y = "Porcentagem",
+      fill = "Condição geral") +
+  scale_y_continuous(labels = scales::percent) +
+  theme_minimal()
+```
+
+\normalsize
+
+---
+
+```{r}
+#| warning: false
+#| echo: false
+#| out.width: 100%
+dados_casas <- read_xlsx("dados/brutos/casas.xlsx")
+ggplot(dados_casas) +
+  geom_bar(aes(x = fundacao_tipo, fill = geral_condicao), position = "dodge") +
+  labs(x = "Tipo de fundação da casa", y = "Porcentagem", fill = "Condição geral") +
+  theme_minimal()
+```
+
+## Associação entre duas variáveis qualitativas\newline Gráfico de barras\newline Exercício
+
+* Verifique se existe associação entre as variáveis `q006` e `tp_cor_raca` do conjunto de dados `amostra_enem_salvador.xlsx` usando gráfico de gráficos usando o `position=fill`.
+* Verifique se existe associação entre as variáveis `q006` e `tp_sexo` do conjunto de dados `amostra_enem_salvador.xlsx` usando gráfico de gráficos usando o `position=dodge`.
+
+## Comparação de medianas usando Diagrama de caixa
+
+Podemos comparar medianas de diferentes grupos usando o diagrama de caixa.
+
+```{r}
+#| eval: false
+ggplot(dados_iris) +
+  geom_boxplot(aes(x = especies, y = comprimento_sepala)) +
+  labs(x = "Espécies", y = "Comprimento de Sépala") +
+  theme_minimal()
+```
+
+---
+
+```{r}
+#| echo: false
+#| out.width: 100%
+ggplot(dados_iris) +
+  geom_boxplot(aes(x = especies, y = comprimento_sepala)) +
+  labs(x = "Espécies", y = "Comprimento de Sépala") +
+  theme_minimal()
+```
+
+## Comparação de medianas usando Diagrama de caixa\newline Exercício
+
+* Para o conjunto de dados `amostra_enem_salvador.xlsx`, compare a variável `nu_nota_mt` por raça (`tp_cor_raca`).
+* Para o conjunto de dados `amostra_enem_salvador.xlsx`, compare a variável `nu_nota_cn` por raça (`tp_cor_raca`).
+* Coloque os dois gráficos acima lado a lado usando o pacote `patchwork`.
+
+# Customizando tabelas\newline\ usando o pacote `gt`
+
+## Salvando tabelas com o pacote `gt`
+
+Vamos usar o pacote `gt` para customizar a apresentação de uma tabela.
+
+A ideia do pacote `gt` é melhorar apresentação por camadas.
+
+```{r}
+#| echo: false
+#| out.width: 75%
+
+knitr::include_graphics("gt-table.jpeg")
+```
+
+Para mais detalhes, visite [documentação do pacote `gt`](https://gt.rstudio.com/)
+
+## Salvando tabelas com o pacote `gt`
+
+Vamos usar um exemplo para ensinar como usar o pacote `gt`.
+
+\small
+
+```{r}
+#| eval: false
+tab <- dados_iris |>
+  group_by(especies) |>
+  summarise(
+    m_petala = mean(comprimento_petala),
+    dp_petala = sd(comprimento_petala),
+    q1_petala = quantile(comprimento_petala, probs = 0.25),
+    q2_petala = quantile(comprimento_petala, probs = 0.5),
+    q3_petala = quantile(comprimento_petala, probs = 0.75),
+    cv_petala = dp_petala / m_petala
+  )
+tab
+```
+
+---
+
+\scriptsize
+
+```{r}
+#| echo: false
+tab <- dados_iris |>
+  group_by(especies) |>
+  summarise(
+    m_petala = mean(comprimento_petala),
+    dp_petala = sd(comprimento_petala),
+    q1_petala = quantile(comprimento_petala, probs = 0.25),
+    q2_petala = quantile(comprimento_petala, probs = 0.5),
+    q3_petala = quantile(comprimento_petala, probs = 0.75),
+    cv_petala = dp_petala * 100 / m_petala
+  )
+tab
+```
+
+\normalsize
+
+## Salvando tabelas com o pacote `gt`
+
+**Cabeçalho da tabela:** legenda e sub-legenda da tabela.
+
+* `tab_header`: permite incluir legenda (`title`) e sub-legenda na tabela (`subtitle`)
+* `gtsave`: permite salvar objeto `gt`nos formatos `.html`, `.tex` e `.docx`.
+* `md`: permite formatação usando a sintaxe `markdown`.
+  * Para mais detalhes sobre markdown, consulte [_cheatsheet_ do markdown](https://www.markdownguide.org/cheat-sheet)
+
+
+```{r}
+gt_tab <- gt(tab) |>
+  tab_header(
+    title = md("**Comprimento de pétala**"),
+    subtitle = md("_Algumas estatísticas descritivas_")
+  )
+gtsave(gt_tab, "output/tabela.html")
+gtsave(gt_tab, "output/tabela.tex")
+gtsave(gt_tab, "output/tabela.docx")
+```
+
+## Salvando tabelas com o pacote `gt`\newline Exercício
+
+1. Calcule a média, o desvio padrão, o primeiro quartil, o segundo quartil e o terceiro quartil para a variável `nu_nota_mt` por raça (`tp_cor_raca`) do conjunto de dados `amostra_enem_salvador.xlsx`e salve o resultado em objeto `tab`.
+1. Crie um objeto `gt` com nome `gt_tab` a partir da tabela em `tab`.
+1. Inclua uma legenda com o texto "Nota em matemática por raça" e sublegenda "Edição 2021" com a função `tab_header`. 
+
+## Salvando tabelas com o pacote `gt`
+
+* `tab_source`: inclusão de _fonte de dados_dentes
+
+
+```{r}
+#| eval: false
+gt_tab <- gt_tab |>
+  tab_source_note(
+    source_note = md("**Fonte:** Elboração própria.")
+  )
+gt_tab
+```
+
+---
+
+\scriptsize
+
+```{r}
+#| echo: false
+gt_tab <- gt_tab |>
+  tab_source_note(
+    source_note = md("**Fonte:** Elboração própria.")
+  )
+gt_tab
+```
+
+\normalsize
+
+## Salvando tabelas com o pacote `gt`\newline Exercício
+
+Inclua _fonte de dados_ usando a função `tab_source_note` como texto "Fonte: elaboração própria." no objeto `gt_tab`.
+
+## Rótulo (legenda) para grupo de linhas
+
+`tab_row_group`: permite colocar um _rótulo_ para um grupo de linhas.
+
+
+```{r}
+#| eval: false
+gt_tab <- gt_tab |>
+  tab_row_group(
+    rows = c(1, 3),
+    label = md("_Espécies principais_")
+  )
+gt_tab
+```
+
+---
+
+\footnotesize
+
+```{r}
+#| echo: false
+gt_tab <- gt_tab |>
+  tab_row_group(
+    rows = c(1, 3),
+    label = md("_Espécies principais_")
+  )
+gt_tab
+```
+
+\normalsize
+
+## Rótulo (legenda) para grupo de linhas\newline Exercício
+
+Inclua um _rótulo_ para as linhas `pardas` e `pretas` com o texto "negras" no objeto `gt_tab`.
+
+## Rótulo (legenda) para grupo de colunas
+
+`tab_spanner`: permite _rótulo_ para grupo de colunas.
+
+\small
+
+```{r}
+#| eval: false
+gt_tab <- gt_tab |>
+  tab_spanner(
+    columns = c(
+      q1_petala,
+      q2_petala,
+      q3_petala
+    ),
+    label = "Quantis"
+  ) |>
+  tab_spanner(
+    columns = c(dp_petala, cv_petala),
+    label = "Dispersão"
+  )
+gt_tab
+```
+
+\normalsize
+
+---
+
+\footnotesize
+
+```{r}
+#| echo: false
+gt_tab <- gt_tab |>
+  tab_spanner(
+    columns = c(
+      q1_petala,
+      q2_petala,
+      q3_petala
+    ),
+    label = "Quantis"
+  ) |>
+  tab_spanner(
+    columns = c(dp_petala, cv_petala),
+    label = "Dispersão"
+  )
+gt_tab
+```
+
+\normalsize
+
+## Rótulo (legenda) para grupo de colunas\newline Exercício
+
+Inclua um _rótulo_ pra as colunas do primeiro quartil, segundo quartil e terceiro quartil com o texto "Quartis" no objeto `gt_tab`.
+
+## Movendo as colunas na tabela
+
+* `cols_move_to_start`: move uma ou mais colunas para o início da tabela.
+* `cols_move_to_end`: move uma ou mais colunas para o fim da tabela.
+* `cols_move`: move uma ou mais colunas para depois um determinada coluna.
+
+```{r}
+#| eval: false
+gt_tab <- gt_tab |>
+  cols_move_to_start(
+    columns = c(especies, dp_petala, cv_petala)
+  ) |>
+  cols_move_to_end(
+    columns = m_petala
+  ) |>
+  cols_move(
+    after = cv_petala,
+    columns = c(q1_petala, q2_petala, q3_petala)
+  )
+gt_tab
+```
+
+---
+
+\footnotesize
+
+```{r}
+#| echo: false
+gt_tab <- gt_tab |>
+  cols_move_to_start(
+    columns = c(especies, dp_petala, cv_petala)
+  ) |>
+  cols_move_to_end(
+    columns = m_petala
+  ) |>
+  cols_move(
+    after = cv_petala,
+    columns = c(q1_petala, q2_petala, q3_petala)
+  )
+gt_tab
+```
+
+\normalsize
+
+## Movendo as colunas na tabela\newline Exercício
+
+Deixe as colunas de `gt_tab` na seguinte ordem: _raça_, _média_, _primeiro quartil_, _segundo quartil_, _terceiro quartil_ e _desvio padrão_  usando as funções `cols_move_to_start`, `cols_move` e `cols_move_to_end`.
+
+## Atualizando as colunas
+
+`cols_label`: permite atualizar os _rótulos_ das colunas.
+
+```{r}
+#| eval: false
+gt_tab <- gt_tab |>
+  cols_label(
+    especies = md("**Espécies**"),
+    dp_petala = "Desvio padrão",
+    cv_petala = "Coeficiente de variação",
+    q1_petala = md("*Q1*"),
+    q2_petala = md("*Q2*"),
+    q3_petala = md("*Q3*"),
+    m_petala = "Média"
+  )
+gt_tab
+```
+
+---
+
+
+```{r}
+#| echo: false
+gt_tab <- gt_tab |>
+  cols_label(
+    especies = md("**Espécies**"),
+    dp_petala = "Desvio padrão",
+    cv_petala = "CV",
+    q1_petala = md("*Q1*"),
+    q2_petala = md("*Q2*"),
+    q3_petala = md("*Q3*"),
+    m_petala = "Média"
+  )
+gt_tab
+```
+
+
+## Atualizando as colunas\newline Exercício
+
+Para o objeto `gt_tab`, garante que as colunas tenham os seguintes nomes: _Raça_, _Média_, _Desvio padrão_, _Primeiro quartil_, _Segundo quartil_ e _Terceiro quartil_.
+
+## Formatação de valores
+
+`fmt_number`: formatação de valores numéricos de uma ou mais colunas.
+
+```{r}
+#| eval: false
+gt_tab <- gt_tab |>
+  fmt_number(
+    columns = c(
+      dp_petala, q1_petala, q2_petala,
+      q3_petala, m_petala
+    ),
+    decimals = 2,
+    dec_mark = ",",
+    sep_mark = "."
+  ) |>
+  fmt_number(
+    columns = cv_petala,
+    decimals = 2,
+    dec_mark = ",",
+    sep_mark = ".",
+    patter = "{x} \\%"
+  )
+gt_tab
+```
+
+
+
+---
+
+```{r}
+#| echo: false
+gt_tab <- gt_tab |>
+  fmt_number(
+    columns = c(
+      dp_petala, q1_petala, q2_petala,
+      q3_petala, m_petala
+    ),
+    decimals = 2,
+    dec_mark = ",",
+    sep_mark = "."
+  ) |>
+  fmt_number(
+    columns = cv_petala,
+    decimals = 2,
+    dec_mark = ",",
+    sep_mark = ".",
+    patter = "{x} \\%"
+  )
+gt_tab
+```
+
+## Formatação de valores\newline Exercício
+
+No objeto `gt_tab`, para as colunas numéricas coloque "`,`" para o separador de casa decimal e "`.`" para o agrupador de milhar.
+
+## Referências

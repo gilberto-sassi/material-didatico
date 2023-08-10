@@ -1,0 +1,975 @@
+---
+title: "Estatística básica usando o <code>R</code>: bem-vinde ao <code>tidyverse</code>"
+author: "Parte 2<br>Exploração e visualização de dados<br>Gilberto e Carolina"
+knitr:
+  opts_chunk: 
+      echo: true
+      results: markup
+      code-line-numbers: false
+      comment: "##"
+      fig.align: 'center'
+format: 
+    revealjs:
+        scrollable: true
+        logo: "ufba.jpg"
+        progress: true
+        footer: "Exploração e visualização de dados usando <code>R</code>"
+        theme: simple
+        preview-links: auto
+        slide-number: true
+        smaller: false
+        menu: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Conceitos básicos {.smaller}
+
+```{r}
+#| echo: false
+#| message: false
+library(readxl)
+library(janitor)
+library(tidyverse)
+library(patchwork)
+```
+
+Começamos com alguns conceitos básicos, que usaremos durante todo esse curso.
+
+* **População**: Todos os elementos ou indivíduos alvo do estudo; 
+* **Amostra**: Parte da população; 
+* **Parâmetro:** característica da população (grandeza); 
+* **Estimativa:** característica da amostra. Usamos a estimativa para aproximar o parâmetro; 
+* **Variável:** _característica de um elemento da população (mensurando ou analito)._ Geralmente usamos uma letra maiúscula do alfabeto latino para representar uma variável (mensurando ou analito), e uma letra minúscula do alfabeto latino para representar o valor de uma variável para um elemento (indicação) da população.Por exemplo, podemos representar _a variável "Teor de hidrocloro" por $X$_ e um _indicação da amostra por $x=25,1$ mg/comprimido._ 
+
+## Classificação de variáveis
+
+```{r}
+#| echo: false
+#| out.width: 50%
+#| fig.align: center
+#| fig.cap: Classificação de variáveis.
+knitr::include_graphics("figures/variavel.png")
+```
+
+## Tabela de distribuição de frequência <br> variável qualitativa {.smaller}
+
+A primeira coisa que fazemos é contar! 
+
+|$X$|frequência|frequência relativa|porcentagem|
+|:---:|:---:|:---:|:---:|
+|$B_1$|$n_1$|$f_1$|$100 \cdot f_1\%$|
+|$B_2$|$n_2$|$f_2$|$100 \cdot f_2\%$|
+|$\vdots$|$\vdots$|$\vdots$|$\vdots$|
+|$B_k$|$n_k$|$f_k$|$100 \cdot f_k\%$|
+|Total|$n$|$1$|$100\%$|
+
+Em que $n$ é o tamanho da amostra. 
+
+Geralmente não incluímos a coluna de _frequência relativa_.
+
+## Tabela de distribuição de frequência <br> variável qualitativa 
+
+**Pacotes:** `janitor`
+
+```{r}
+#| eval: false
+library(readxl)
+library(janitor)
+library(tidyverse)
+df_oscars_pixar <- read_xlsx("data/raw/dados_pixar_oscars.xlsx")
+df_oscars_pixar |>
+    tabyl(tipo_premio_indicado) |>
+    arrange(desc(n)) |>
+    adorn_totals() |>
+    adorn_pct_formatting(digits = 2) |>
+    rename(
+        "Indicação ao Oscar" = tipo_premio_indicado,
+        "Frequência" = n,
+        "Porcentagem" = percent
+    )
+```
+
+----
+
+```{r}
+#| echo: false
+library(janitor)
+df_oscars_pixar <- read_xlsx("data/raw/dados_pixar_oscars.xlsx")
+df_oscars_pixar |>
+    tabyl(tipo_premio_indicado) |>
+    arrange(desc(n)) |>
+    adorn_totals() |>
+    adorn_pct_formatting(digits = 2) |>
+    rename(
+        "Indicação ao Oscar" = tipo_premio_indicado,
+        "Frequência" = n,
+        "Porcentagem" = percent
+    )
+```
+
+## Tabela de distribuição de frequência <br> variável quantitativa discreta
+
+**Pacotes:** `janitor`
+
+```{r}
+#| eval: false
+library(janitor)
+df_mtcarros <- read_csv2("data/raw/mtcarros.csv")
+df_mtcarros |>
+    tabyl(marchas) |>
+    arrange(desc(n)) |>
+    adorn_totals() |>
+    adorn_pct_formatting(digits = 2) |>
+    rename(
+        "Marchas" = marchas,
+        "Frequência" = n,
+        "Porcentagem" = percent 
+    )
+
+```
+
+-----
+
+```{r}
+#| echo: false
+library(janitor)
+df_mtcarros <- read_csv2("data/raw/mtcarros.csv")
+df_mtcarros |>
+    tabyl(marchas) |>
+    arrange(desc(n)) |>
+    adorn_totals() |>
+    adorn_pct_formatting(digits = 2) |>
+    rename(
+        "Marchas" = marchas,
+        "Frequência" = n,
+        "Porcentagem" = percent 
+    )
+
+```
+
+## Tabela de distribuição de frequência <br> variável quantitativa contínua {.smaller}
+
+**Primeiro agregamos os valores em intervalos.**
+
+i. Usamos inter usadas na área de pesquisa
+ii. Regra de Sturge: $1 + \log_2(n)$ ($n$ é o tamanho da amostra)
+
+```{r}
+df_trabalhador <- read_xlsx("data/raw/companhia_MB.xlsx")
+k <- round(1 + log2(nrow(df_trabalhador)))
+faixas <- seq(
+    from = min(df_trabalhador$salario),
+    to = max(df_trabalhador$salario),
+    length.out = k
+)
+df_trabalhador <- df_trabalhador |>
+    mutate(faixa_salario = cut(
+        salario, 
+        breaks = faixas,
+        include.lowest = T,
+        right = F
+    ))
+
+```
+
+## Tabela de distribuição de frequência <br> variável quantitativa contínua 
+
+```{r}
+df_trabalhador |>
+    tabyl(faixa_salario) |>
+    adorn_totals() |>
+    adorn_pct_formatting(digits = 2) |>
+    rename(
+        "Salário" = faixa_salario,
+        "Frequência Absoluta" = n,
+        "Porcentagem" = percent
+    )
+```
+
+# Medidas de Resumo <br><br>Medidas de posição e dispersão
+
+## {.smaller}
+
+A ideia é encontrar um ou alguns valores que sintetizem todos os valores.
+
+**Medidas de posição (tendência central)**
+
+A ideia é encontrar um valor que representa _bem_ todos os valores.
+
+* **Média:**  $\overline{x} = \dfrac{x_1+\cdots+x_n}{n}$
+* **Mediana:** valor que divide a sequência ordenada de valores em duas partes iguais.
+
+**Medidas de dispersão**
+
+A ideia é medir a homogeneidade dos valores.
+
+* **Variância: ** $s^2 = \dfrac{(x_1 - \overline{X})^2 + \cdots + (x_n - \overline{X})^2}{n-1}$;
+* **Desvio padrão: ** $s = \sqrt{s^2}$ (mesma unidade dos dados);
+* **coeficiente de variação** $cv= \dfrac{s}{\overline{x}} \cdot 100\%$ (adimensional, ou seja, "sem unidade")
+
+## Medidas de resumo
+
+**Pacote:** `dplyr`
+
+```{r}
+df_trabalhador |>
+    group_by(escolaridade) |>
+    summarise(
+        media = mean(salario),
+        mediana = median(salario),
+        variancia = var(salario),
+        dp = sd(salario),
+        cv = dp / media
+    )
+
+```
+
+## Quantis {.smaller}
+
+### Ideia
+
+$q(p)$ é um valor que satisfaz:
+
+* $100\cdot p\%$ das observações é no máximo $q(p)$
+* $100\cdot (1-p)\%$ das observações é no mínimo $q(p)$
+
+### Alguns quantis especiais
+
+* **Primeiro quartil:** $q_1 = q\left(\frac{1}{4}\right)$
+* **Segundo quartil:** $q_2 = q\left(\frac{2}{4}\right)$
+* **Terceiro quartil:** $q_3 = q\left(\frac{3}{4}\right)$
+
+## Quantis
+
+```{r}
+df_trabalhador |>
+    group_by(escolaridade) |>
+    summarise(
+        q1 = quantile(salario, 0.25),
+        q2 = quantile(salario, 0.5),
+        q3 = quantile(salario, 0.75)
+    )
+```
+
+# Exportando tabelas <br><br>pacote `gt`
+
+## Pacote `gt`
+
+Vamos usar o pacote `gt` para customizar a apresentação de uma tabela. 
+
+A ideia do pacote `gt` é melhorar apresentação por camadas.
+
+```{r}
+#| out.width: 50%
+#| echo: false
+knitr::include_graphics("figures/gt-table.jpeg")
+```
+
+Para mais detalhes, visite [`pacote gt`](https://gt.rstudio.com).
+
+## Exemplo
+
+Vamos customizar e salvar a tabela com as medidas de resumo para a variável `salario` do conjunto de dados _companhia\_MB.xlsx_.
+
+```{r}
+df <- read_xlsx("data/raw/companhia_MB.xlsx")
+tab <- df |>
+    group_by(escolaridade) |>
+    summarise(
+        media = mean(salario),
+        mediana = median(salario),
+        dp = sd(salario),
+        cv = dp / media,
+        q1 = quantile(salario, 1 / 4),
+        q3 = quantile(salario, 3 / 4)
+    )
+```
+
+## Cabeçalho e subcabeçalho
+
+* `tab_header`: permite incluir cabeçalho (`title`) e subcabeçalho (`subtitle`)
+* `gtsave`: permite salvar tabela em formato `html` (página web), `tex` ($\LaTeX$) e `rtf` (word)
+
+```{r}
+library(gt)
+gt_tab <- gt(tab) |>
+  tab_header(
+    title = md("**Escolaridade dos funcionário:** _Empresa tal_ "),
+    subtitle = md("**Criado por:** _Gilberto Sassi_")
+  )
+gtsave(gt_tab, filename = "output/gt_tab.html")
+gtsave(gt_tab, filename = "output/gt_tab.tex")
+gtsave(gt_tab, filename = "output/gt_tab.rtf")
+```
+
+## Incluindo fonte dos dados
+
+* `tab_source_note`: inclusão de _fonte de dados_
+* `md`: formatação de texto usando a sintaxe [`markdown`](https://www.markdownguide.org/cheat-sheet)
+* `html`: formatação de texto usando sintaxe [`html`](https://www.w3schools.com/html/html_formatting.asp)
+
+```{r, eval=FALSE}
+gt_tab <- gt_tab |>
+  tab_source_note(
+    source_note = md("_Exemplo didático:_ Tabela 2.1.")
+  ) |>
+  tab_source_note(
+    source_note = html("Livro: <strong>Estatística básica.</strong>")
+  )
+gt_tab
+```
+
+## {.smaller}
+
+```{r, echo=FALSE}
+gt_tab <- gt_tab |>
+  tab_source_note(
+    source_note = md("_Exemplo didático:_ Tabela 2.1.")
+  ) |>
+  tab_source_note(
+    source_note = html("Livro: <strong>Estatística básica.</strong>")
+  )
+gt_tab
+```
+
+## Rótulo para grupo de linhas
+
+`tab_row_group`: permite colocar _rótulo_ para um grupo de linhas
+
+```{r, eval=FALSE}
+gt_tab <- gt_tab |>
+  tab_row_group(
+    label = md("**Nível**: ensino básico"),
+    rows = 1:2
+  ) |>
+  tab_row_group(
+    label = html("<strong>Nível</strong>: ensino universitário"),
+    row = 3
+  )
+gt_tab
+```
+
+## {.smaller}
+
+```{r, echo=FALSE}
+gt_tab <- gt_tab |>
+  tab_row_group(
+    label = md("**Nível**: ensino básico"),
+    rows = 1:2
+  ) |>
+  tab_row_group(
+    label = html("<strong>Nível</strong>: ensino universitário"),
+    row = 3
+  )
+gt_tab
+```
+
+## Rótulo para grupo de colunas
+
+`tab_spanner`: permite colocar _rótulo_ para grupo de colunas
+
+```{r, eval=FALSE}
+gt_tab <- gt_tab |>
+  tab_spanner(
+    label = md("_Variável_"),
+    columns = "escolaridade"
+  ) |>
+  tab_spanner(
+    label = html("<strong>Quantis</strong>"),
+    columns = c(q1, mediana, q3)
+  )
+gt_tab
+```
+
+## {.smaller}
+
+```{r, echo=FALSE}
+gt_tab <- gt_tab |>
+  tab_spanner(
+    label = md("_Variável_"),
+    columns = "escolaridade"
+  ) |>
+  tab_spanner(
+    label = html("<strong>Quantis</strong>"),
+    columns = c(q1, mediana, q3)
+  )
+gt_tab
+```
+
+## Movendo colunas {.smaller}
+
+* `col_move_to_start`: move uma ou mais colunas para o início da tabela
+* `col_move_to_end`: move uma ou mais colunas para o fim da tabela
+* `col_move`: move uma coluna ou mais colunas depois uma determinada coluna
+
+```{r}
+#| eval: false
+gt_tab <- gt_tab |>
+    cols_move_to_start(
+        columns = escolaridade
+    ) |>
+    cols_move_to_end(
+        columns = c(q1, mediana, q3)
+    ) |>
+    cols_move(
+        columns = cv,
+        after = media
+    )
+gt_tab
+```
+
+## {.smaller}
+
+```{r}
+#| echo: false
+gt_tab <- gt_tab |>
+    cols_move_to_start(
+        columns = escolaridade
+    ) |>
+    cols_move_to_end(
+        columns = c(q1, mediana, q3)
+    ) |>
+    cols_move(
+        columns = cv,
+        after = media
+    )
+gt_tab
+```
+
+## Atualização dos rótulos das colunas
+
+`cols_label`: permite atualizar os _rótulos_ de colunas
+
+```{r}
+#| eval: false
+gt_tab <- gt_tab |>
+    cols_label(
+        escolaridade = md("_Escolaridade_"),
+        media = html("<em>Média</em>"),
+        cv = md("_Coeficiente de variação_"),
+        dp = html("<em>Desvio padrão</em>"),
+        q1 = md("_Primeiro quartil_"),
+        mediana = html("<em>Segundo quartil</em>"),
+        q3 = md("_Terceiro quartil_")
+    )
+gt_tab
+```
+
+## {.smaller}
+
+```{r}
+#| echo: false
+gt_tab <- gt_tab |>
+    cols_label(
+        escolaridade = md("_Escolaridade_"),
+        media = html("<em>Média</em>"),
+        cv = md("_Coeficiente de variação_"),
+        dp = html("<em>Desvio padrão</em>"),
+        q1 = md("_Primeiro quartil_"),
+        mediana = html("<em>Segundo quartil</em>"),
+        q3 = md("_Terceiro quartil_")
+    )
+gt_tab
+```
+
+## Formatação de valores nas colunas
+
+`fmt_number:` formatação de valores numéricos em uma tabela
+
+```{r}
+#| eval: false
+gt_tab <- gt_tab |>
+    fmt_number(
+        columns = c(media, mediana, dp, q1, q3),
+        decimals = 2,
+        dec_mark = ",",
+        sep_mark = "."
+    ) |>
+    fmt_number(
+        columns = cv,
+        decimals = 2,
+        dec_mark = ",",
+        sep_mark = ".",
+        pattern = "{x}100%"
+    )
+gt_tab
+```
+
+## {.smaller}
+
+```{r}
+#| echo: false
+gt_tab <- gt_tab |>
+    fmt_number(
+        columns = c(media, mediana, dp, q1, q3),
+        decimals = 2,
+        dec_mark = ",",
+        sep_mark = "."
+    ) |>
+    fmt_number(
+        columns = cv,
+        decimals = 2,
+        dec_mark = ",",
+        sep_mark = ".",
+        pattern = "{x}.100%"
+    )
+gt_tab
+```
+
+# Gráficos <br><br>`ggplot2`
+
+## Gráficos no `R` {.smaller}
+
+* **Pacote:** `ggplot2` 
+* Permite gráficos personalizados com uma sintaxe simples e rápida, e iterativa _por camadas_
+* Começamos com um camada com os dados `ggplot(dados)`, e vamos adicionando as camadas de anotações, e sumários estatísticos
+* Usa a _gramática de gráficos_ proposta por Leland Wilkinson: [Grammar of Graphics](https://www.springer.com/gp/book/9780387245447)
+* Ideia desta gramática: delinear os atributos estéticos das figuras geométricas (incluindo transformações nos dados e mudança no sistema de coordenadas)
+
+* Para mais detalhes, você pode consultar [`ggplot2`: elegant graphics for data analysis](https://ggplot2-book.org) e [documentação do `ggplot2`](https://ggplot2.tidyverse.org)
+
+## Estrutura básica `ggplot2` {.smaller}
+
+```{r}
+#| eval: false
+ggplot(data = <data possible tibble>) +
+  <Geom functions>(mapping = aes(<MAPPINGS>)) +
+  <outras camadas>
+```
+
+Você pode usar diversos temas e extensões que a comunidade cria e criou para melhorar a aparência e facilitar a construção de `ggplot2`.
+
+* Lista com extensões do `ggplot`: [extensões do `ggplots`](https://exts.ggplot2.tidyverse.org/gallery/)
+
+Indicação de extensões:
+
+* Temas adicionais para o pacote `ggplot2`: [`ggthemes`](https://jrnold.github.io/ggthemes/index.html)
+* Gráfico de matriz de correlação: [`ggcorrplot`](https://rpkgs.datanovia.com/ggcorrplot/)
+* Gráfico quantil-quantil: [`qqplotr`](https://aloy.github.io/qqplotr/)
+
+## Gráfico de barras {.smaller}
+
+#### Gráfico de Barras no `ggplot2`
+
+* **função:** `geom_bar()`. Para porcentagem: `geom_bar(x = <variável no eixo x>, y = ..prop.. * 100)`.
+* Argumentos adicionais:  
+  * **`fill`**: mudar a cor do preenchimento das figuras geométricas
+  * **`color`**: mudar a cor da figura geométrica
+
+#### Rótulos dos eixos
+
+* **Mudar os rótulos:** `labs(x = <rótulo do eixo x>, y = <rótulo do eixo y>, title = <legenda do gráfico>)`
+* **Trocar o eixo-x pelo eixo-y:** `coord_flip()`
+
+#### Salvar gráficos
+
+* `ggsave()`: salvar gráficos nos formatos `pdf`, `png` e `jpeg`
+
+## Gráfico de barras
+
+```{r}
+#| eval: false
+library(ggplot2)
+library(ggthemes)
+df_iris <- read_xlsx("data/raw/dados_iris.xlsx")
+ggplot(df_iris) +
+    geom_bar(aes(x = especies), fill = "blue", color = "red") +
+    labs(x = "Espécies", y = "Frequência absoluta") +
+    theme_gdocs()
+ggsave("figures/barras.jpeg")
+ggsave("figures/barras.png")
+ggsave("figures/barras.pdf")
+```
+
+## {.smaller}
+
+```{r}
+#| echo: false
+library(ggplot2)
+library(ggthemes)
+df_iris <- read_xlsx("data/raw/dados_iris.xlsx")
+ggplot(df_iris) +
+    geom_bar(aes(x = especies), fill = "blue", color = "red") +
+    labs(x = "Espécies", y = "Frequência absoluta") +
+    theme_gdocs()
+ggsave("figures/barras.jpeg")
+ggsave("figures/barras.png")
+ggsave("figures/barras.pdf")
+```
+
+## Histograma {.smaller}
+
+Para variávieis quantitativas contínuas usamos _histograma_. 
+
+* O histograma é um gráfico de barras contíguas em que a área de cada barra é
+igual à frequência relativa.
+* Cada faixa de valor $[l_{i-1}, l_{i}), i=1, \dots, n,$ será representada por um barra com área $f_i, i=1, \dots, n$.
+* Como cada barra terá área igual a $f_i$ e base $\Delta_i = l_i - l_{i-1}$, e a altura de cada barra será $\frac{f_i}{l_i - l_{i-1}}$.
+* $\frac{f_i}{l_i - l_{i-1}}$ é denominada de densidade de frequência.
+* Podemos fornecer:
+    * `bins`: número de intervalos
+    * `binwidth`: tamanho dos intervalos
+    * `breaks`: limites dos intervalos
+
+## Histograma
+
+```{r}
+#| echo: false
+#| out.width: 85%
+knitr::include_graphics("figures/barra-histograma.png")
+```
+
+## Histograma
+
+```{r}
+#| eval: false
+df_iris <- read_xlsx("data/raw/dados_iris.xlsx")
+k <- round(1 + log2(nrow(df_iris)))
+
+ggplot(df_iris) +
+  geom_histogram(aes(x = comprimento_sepala, y = ..density..),
+                bins = k, fill = "blue", closed = "left") +
+  theme_gdocs() +
+  labs(
+    x = "Comprimento sépala",
+    y = "Densidade de frequência",
+    title = "Histograma"
+  )
+
+```
+
+## {.smaller}
+
+```{r}
+#| echo: false
+df_iris <- read_xlsx("data/raw/dados_iris.xlsx")
+k <- round(1 + log2(nrow(df_iris)))
+
+ggplot(df_iris) +
+  geom_histogram(aes(x = comprimento_sepala, y = ..density..),
+                bins = k, fill = "blue", closed = "left") +
+  theme_gdocs() +
+  labs(
+    x = "Comprimento sépala",
+    y = "Densidade de frequência",
+    title = "Histograma"
+  )
+
+```
+
+## Diagrama de caixa {.smaller}
+
+**medida de dispersão:** distância entre $q_1$ e $q_3$ pequena indica homogeneidade
+
+**Diferença de quartis:** $dq = q_3 - q_1$
+
+```{r}
+#| echo: false
+#| out.width: 50%
+knitr::include_graphics("figures/motivacao_dq.png")
+```
+
+## Diagrama de caixa {.smaller}
+
+**Assimetria à direita ou positiva:** 
+
+* frequências diminuem à direita no histograma
+* $q_2$ perto $q_1$: $q_2 - q_1 < q_3 - q_2$ 
+
+**Assimetria à esquerda ou negativa:** frequências diminuem à esquerda no histograma
+
+* frequências diminuem à direita no histograma
+* $q_2$ perto $q_3$: $q_2 - q_1 > q_3 - q_2$ 
+
+## Diagrama de caixa {.smaller}
+
+**Assimetria**
+
+```{r}
+#| echo: false
+#| out.heigth: 100%
+tam <- 1000
+k <- ceiling(1 + log2(tam))
+a <- 1
+b <- 15
+#------------------------------------------------------------------------------
+# assimetria positiva
+amostra <- rbeta(tam, shape1 = a, shape2 = b)
+p1 <- ggplot(tibble(x = amostra)) +
+    geom_histogram(aes(x = x, y = ..density..), 
+                    bins = k, fill = "blue") +
+    theme_gdocs() +
+    scale_x_continuous(breaks = NULL) +
+    scale_y_continuous(breaks = NULL) +
+    labs(x = "X", y = "Densidade de\n frequência",
+        title = "Assimetria à direita ou positiva")
+
+p2 <- ggplot(tibble(x = amostra)) +
+    geom_boxplot(aes(x = "", y = x), outlier.shape = NA) +
+    theme_calc() +
+    scale_x_discrete(breaks = NULL) +
+    scale_y_continuous(breaks = NULL) +
+    labs(x = "", y = "X", title = "Assimetria à direira ou positiva")
+
+#------------------------------------------------------------------------------
+# assimetria negativa
+amostra <- rbeta(tam, shape1 = b, shape2 = a)
+n1 <- ggplot(tibble(x = amostra)) +
+    geom_histogram(aes(x = x, y = ..density..), 
+                    bins = k, fill = "blue") +
+    theme_gdocs() +
+    scale_x_continuous(breaks = NULL) +
+    scale_y_continuous(breaks = NULL) +
+    labs(x = "X", y = "Densidade de\n frequência",
+        title = "Assimetria à esquerda ou negativa")
+
+n2 <- ggplot(tibble(x = amostra)) +
+    geom_boxplot(aes(x = "", y = x), outlier.shape = NA) +
+    theme_calc() +
+    scale_x_discrete(breaks = NULL) +
+    scale_y_continuous(breaks = NULL) +
+    labs(x = "", y = "X",
+        title = "Assimetria à esquerda ou negativa")
+
+#------------------------------------------------------------------------------
+# simetria
+amostra <- rbeta(tam, shape1 = 5, shape2 = 5)
+s1 <- ggplot(tibble(x = amostra)) +
+    geom_histogram(aes(x = x, y = ..density..), 
+                    bins = k, fill = "blue") +
+    theme_gdocs() +
+    scale_x_continuous(breaks = NULL) +
+    scale_y_continuous(breaks = NULL) +
+    labs(x = "X", y = "Densidade de\n frequência",
+        title = "Simetria")
+
+s2 <- ggplot(tibble(x = amostra)) +
+    geom_boxplot(aes(x = "", y = x), outlier.shape = NA) +
+    theme_calc() +
+    scale_x_discrete(breaks = NULL) +
+    scale_y_continuous(breaks = NULL) +
+    labs(x = "", y = "X",
+        title = "Simetria")
+
+p1 + p2 + n1 + n2 + s1 + s2 + plot_layout(nrow = 3, byrow =  T)
+```
+
+## Diagrama de caixa
+
+```{r}
+#| echo: false
+#| out.width: 75%
+knitr::include_graphics("figures/boxplot.png")
+```
+
+## Diagrama de caixa
+
+```{r}
+df_enem <- read_csv2("data/raw/enem_salvador_2021.csv")
+ggplot(df_enem) +
+  geom_boxplot(aes(x = "", y = NU_NOTA_MT)) +
+  labs(x = "", y = "Notas em matemática", title = "Boxplot") +
+  theme_gdocs()
+```
+
+## Gráficos lado a lado com `patchwork` {.smaller}
+
+* `patchwork` permite colocar gráficos lado a lado com os operadores binários `+` (ao lado) e `\` (embaixo)
+* Mais detalhes em [documentação `patchwork`](https://patchwork.data-imaginist.com/articles/patchwork.html)
+
+```{r}
+#| eval: false
+df_enem <- read_csv2("data/raw/enem_salvador_2021.csv")
+g1 <- ggplot(df_enem) +
+  geom_boxplot(aes(x = "", y = NU_NOTA_MT)) +
+  labs(x = "", y = "Notas em matemática", title = "Boxplot") +
+  theme_gdocs()
+g2 <- ggplot(df_enem) +
+  geom_boxplot(aes(x = "", y = NU_NOTA_LC)) +
+  labs(x = "", y = "Notas em linguagens e códigos", title = "Boxplot") +
+  theme_gdocs()
+g1 + g2
+```
+
+## Gráficos lado a lado com `patchwork`
+
+```{r}
+#| echo: false
+df_enem <- read_csv2("data/raw/enem_salvador_2021.csv")
+g1 <- ggplot(df_enem) +
+  geom_boxplot(aes(x = "", y = NU_NOTA_MT)) +
+  labs(x = "", y = "Notas em matemática", title = "Boxplot") +
+  theme_gdocs()
+g2 <- ggplot(df_enem) +
+  geom_boxplot(aes(x = "", y = NU_NOTA_LC)) +
+  labs(x = "", y = "Notas em linguagens e códigos", title = "Boxplot") +
+  theme_gdocs()
+g1 + g2
+```
+
+
+# Gráficos<br><br>Duas variáveis
+
+## Gráfico de dispersão
+
+**Ideia:** estudar a associação entre duas variáveis quantitativas
+
+```{r}
+#| echo: false
+#| out.width: 75%
+library(patchwork)
+library(mvtnorm)
+tam <- 1000
+m_positiva <- rmvnorm(tam, mean = c(0,0), sigma = cbind(c(1, 0.95), c(0.95, 1)))
+g1 <- ggplot(tibble(x = m_positiva[, 1], y = m_positiva[, 2])) +
+  geom_point(aes(x, y)) +
+  theme_calc() +
+  scale_x_continuous(breaks = NULL) +
+  scale_y_continuous(breaks = NULL) +
+  labs(title = "Associação positiva")
+
+m_negativa <- rmvnorm(tam, mean = c(0,0), sigma = cbind(c(1, -0.95), c(-0.95, 1)))
+g2 <- ggplot(tibble(x = m_negativa[, 1], y = m_negativa[, 2])) +
+  geom_point(aes(x, y)) +
+  theme_calc() +
+  scale_x_continuous(breaks = NULL) +
+  scale_y_continuous(breaks = NULL) +
+  labs(title = "Associação negativa")
+
+m_nulo <- rmvnorm(tam, mean = c(0,0), sigma = cbind(c(1, 0), c(0, 1)))
+g3 <- ggplot(tibble(x = m_nulo[, 1], y = m_nulo[, 2])) +
+  geom_point(aes(x, y)) +
+  theme_calc() +
+  scale_x_continuous(breaks = NULL) +
+  scale_y_continuous(breaks = NULL) +
+  labs(title = "Associação nula")
+
+g1 + g2 + g3
+```
+
+## Gráfico de dispersão
+
+```{r}
+#| eval: false
+df_iris <- read_xlsx("data/raw/dados_iris.xlsx")
+ggplot(df_iris) +
+  geom_point(aes(comprimento_sepala, comprimento_petala)) +
+  labs(
+    x = "Comprimento de sépala",
+    y = "Comprimento de pétala",
+    title = "Gráfico de dispersão"
+  ) +
+  theme_gdocs()
+```
+
+## Gráfico de dispersão
+
+```{r}
+#| echo: false
+df_iris <- read_xlsx("data/raw/dados_iris.xlsx")
+ggplot(df_iris) +
+  geom_point(aes(comprimento_sepala, comprimento_petala)) +
+  labs(
+    x = "Comprimento de sépala",
+    y = "Comprimento de pétala",
+    title = "Gráfico de dispersão"
+  ) +
+  theme_gdocs()
+```
+
+## Gráfico de barras {.smaller}
+
+**Ideia**
+
+Sejam $X$ e $Y$ duas variáveis qualitativas com seguintes valores possíveis
+
+* $X$: $A_1, \dots, A_r$
+* $Y$. $B_1, \dots, B_s$
+
+Desejamos estudar  a associação entre $X$ e $Y$.
+
+**Associação entre $X$ e $Y$**
+
+Suponha que $A_i$ tenha porcentagem $f_i\cdot 100\%$. Então, $X$ e $Y$ são:
+
+* **não associados** se ao conhecermos o valor de $Y$ para um elemento da população, _continuamos_ com a porcentagem $100\cdot f_i \%$ deste elemento ter valor de $X$ igual a $A_i$
+* **associados** se ao conhecermos o valor de $Y$ para um elemento da população, _alteramos_ a porcentagem $100\cdot f_i\%$ deste elemento ter valor de $X$ igual a $A_i$
+
+## Gráfico de barras {.smaller}
+
+```{r}
+#| eval: false
+df_enem <- read_csv2("data/raw/enem_salvador_2021.csv")
+ggplot(df_enem) +
+  geom_bar(aes(x=TP_COR_RACA, fill=TP_ESCOLA), position = "fill") +
+  labs(x = "Raça", y = "Porcentagem") +
+  scale_y_continuous(labels = scales::percent)+
+  scale_fill_manual(name = "Tipo de escola", values = c("blue", "orange", "magenta")) +
+  theme_gdocs()
+```
+
+## Gráfico de barras {.smaller}
+
+```{r}
+#| echo: false
+df_enem <- read_csv2("data/raw/enem_salvador_2021.csv")
+ggplot(df_enem) +
+  geom_bar(aes(x=TP_COR_RACA, fill=TP_ESCOLA), position = "fill") +
+  labs(x = "Raça", y = "Porcentagem") +
+  scale_y_continuous(labels = scales::percent)+
+  scale_fill_manual(name = "Tipo de escola", values = c("blue", "orange", "magenta")) +
+  theme_gdocs()
+```
+
+## Gráfico de barras {.smaller}
+
+Podemos agrupar as barras por grupos para analisar a associação entre duas variáveis qualitativas.
+
+```{r}
+#| eval: false
+df_enem <- read_csv2("data/raw/enem_salvador_2021.csv")
+ggplot(df_enem) +
+  geom_bar(aes(x=TP_COR_RACA, fill=TP_ESCOLA), position = "dodge") +
+  labs(x = "Raça", y = "Porcentagem") +
+  scale_fill_manual(name = "Tipo de escola", values = c("blue", "orange", "magenta")) +
+  theme_gdocs()
+```
+
+## Gráfico de barras
+
+```{r}
+#| echo: false
+df_enem <- read_csv2("data/raw/enem_salvador_2021.csv")
+ggplot(df_enem) +
+  geom_bar(aes(x=TP_COR_RACA, fill=TP_ESCOLA), position = "dodge") +
+  labs(x = "Raça", y = "Porcentagem") +
+  scale_fill_manual(name = "Tipo de escola", values = c("blue", "orange", "magenta")) +
+  theme_gdocs()
+```
+
+
+## Diagrama de caixa
+
+Podemos comparar medianas de diferentes grupos usando o diagrama de caixa.
+
+```{r}
+#| eval: false
+df_enem <- read_csv2("data/raw/enem_salvador_2021.csv")
+ggplot(df_enem) +
+  geom_boxplot(aes(x = TP_COR_RACA, y = NU_NOTA_MT)) +
+  labs(x = "Raça", y = "Nota em matemática") +
+  theme_gdocs()
+```
+
+
+## Diagrama de caixa
+
+```{r}
+#| echo: false
+df_enem <- read_csv2("data/raw/enem_salvador_2021.csv")
+ggplot(df_enem) +
+  geom_boxplot(aes(x = TP_COR_RACA, y = NU_NOTA_MT)) +
+  labs(x = "Raça", y = "Nota em matemática") +
+  theme_gdocs()
+```
