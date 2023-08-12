@@ -10,6 +10,7 @@ MASS
 readODS
 dados
 patchwork
+aplpack
 tidyverse
 ggplot2
 tibble
@@ -19,5 +20,5 @@ purrr
 stringr
 forcats
 lubridate
+lettervalue
 mvtnorm
-aplpack

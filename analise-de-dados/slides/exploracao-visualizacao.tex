@@ -329,7 +329,7 @@ Estatística}
 % 	\maketitle
 %  \end{frame}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, sharp corners, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, interior hidden, enhanced, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, enhanced, interior hidden, borderline west={3pt}{0pt}{shadecolor}, frame hidden, boxrule=0pt, breakable]}{\end{tcolorbox}}\fi
 
 \hypertarget{sobre-o-curso}{%
 \section{Sobre o curso}\label{sobre-o-curso}}
@@ -1349,8 +1349,8 @@ Realize as seguintes operações envolvendo vetores:
 
 \begin{verbatim}
           [,1]     [,2]
-[1,] 1.0955103 2.795051
-[2,] 0.2796227 3.692629
+[1,] 1.5533594 2.192055
+[2,] 0.6252355 3.875765
 \end{verbatim}
 
 \textbf{Subtração}
@@ -1364,8 +1364,8 @@ Realize as seguintes operações envolvendo vetores:
 
 \begin{verbatim}
            [,1]     [,2]
-[1,]  0.9044897 1.204949
-[2,] -0.2796227 2.307371
+[1,]  0.4466406 1.807945
+[2,] -0.6252355 2.124235
 \end{verbatim}
 
 \normalsize
@@ -1393,9 +1393,9 @@ Realize as seguintes operações envolvendo vetores:
 \end{Shaded}
 
 \begin{verbatim}
-           [,1]     [,2]
-[1,] 0.09551027 1.590103
-[2,] 0.00000000 2.077888
+          [,1]      [,2]
+[1,] 0.5533594 0.3841101
+[2,] 0.0000000 2.6272940
 \end{verbatim}
 
 \regrafina
@@ -1411,9 +1411,9 @@ de matrizes}}
 \end{Shaded}
 
 \begin{verbatim}
-          [,1]     [,2]
-[1,] 0.6547558 2.180310
-[2,] 0.8388682 2.077888
+         [,1]     [,2]
+[1,] 1.803830 1.943584
+[2,] 1.875706 2.627294
 \end{verbatim}
 \end{frame}
 
@@ -3665,8 +3665,12 @@ por categorias de uma variável qualitativa.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Quantis}
+\begin{frame}{Quantis}
 \protect\hypertarget{quantis-1}{}
+\end{frame}
+
+\begin{frame}[fragile]{Quantis}
+\protect\hypertarget{quantis-2}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{dados\_iris }\SpecialCharTok{|\textgreater{}}
@@ -3722,9 +3726,525 @@ qualitativa.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Letter Value}
-\protect\hypertarget{letter-value}{}
-Para detalhes veja Hoaglin, Mosteller, e Tukey (1983).
+\begin{frame}{Valor de letra (\emph{letter value})}
+\protect\hypertarget{valor-de-letra-letter-value}{}
+\begin{itemize}
+\tightlist
+\item
+  Proposto para ser simples para calcular sumários usando Tukey et al.
+  (1977) e Hoaglin, Mosteller, e Tukey (1983).
+\item
+  Medidas de posição e dispersão simples usando apenas estatísticas de
+  ordem.
+\item
+  Medidas de resumo resistente (alteração em uma pequena parte da
+  amostra tem poucos efeitos nas medidas de resumo).
+\end{itemize}
+
+\textbf{Definição}
+
+Lembre que
+
+\begin{enumerate}
+\tightlist
+\item
+  Estatística de ordem \(i\) com notação \(x_{(i)}\): \(i\)-ésimo menor
+  valor observado;
+\item
+  Posto à esquerda de \(x\): \(\#\{i \mid x_i \leq x\}\);
+\item
+  Posto à direita de \(x\): \(\#\{i \mid x_i \geq x\}\);
+\item
+  Profundidade de \(x\):
+  \(\min\{\text{Posto à esquerda de }x; \text{Posto à direita de }x\}\);
+\item
+  Profundidade de \(x_{(j)}\): \(\min\{j; n+1-j\}\).
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\tightlist
+\item
+  Definimos os valores de letras espeficando a profundadidade.
+\item
+  Para variáveis quantitativas contínuas, a área a abaixo ou acima (área
+  da cauda) dos valores de letras são aproximadamente potências de
+  \(\frac{1}{2}\).
+\end{itemize}
+
+\tiny
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1325}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1446}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.3133}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2530}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1566}}@{}}
+\caption{Definição de valores de letras.}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Estatística
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Profundidade
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Representação por um letra
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Quantidade de valores
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+área da cauda
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Estatística
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Profundidade
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Representação por um letra
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Quantidade de valores
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+área da cauda
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+Mediana & \(\frac{n+1}{2}\) & \(M\) & 1 & \(\frac{1}{2}\) \\
+Fourths (quartas) &
+\(\frac{\lfloor \text{profundidade da mediana} \rfloor + 1}{2}\) & \(F\)
+& 2 & \(\frac{1}{4}\) \\
+Eighths (oitavas) &
+\(\frac{\lfloor \text{profundidade das quartas} \rfloor + 1}{2}\) &
+\(E\) & 2 & \(\frac{1}{8}\) \\
+Sixteenths (16 avos) &
+\(\frac{\lfloor \text{profundidade das quartas} \rfloor + 1}{2}\) &
+\(D\) & 2 & \(\frac{1}{16}\) \\
+thirty-seconds (32 avos) &
+\(\frac{\lfloor \text{profundidade das 16 avos} \rfloor + 1}{2}\) &
+\(D\) & 2 & \(\frac{1}{32}\) \\
+thirty-fourths (64 avos) &
+\(\frac{\lfloor \text{profundidade das 32 avos} \rfloor + 1}{2}\) &
+\(C\) & 2 & \(\frac{1}{64}\) \\
+thirty-fourths (128 avos) &
+\(\frac{\lfloor \text{profundidade das 64 avos} \rfloor + 1}{2}\) &
+\(B\) & 2 & \(\frac{1}{128}\) \\
+thirty-fourths (256 avos) &
+\(\frac{\lfloor \text{profundidade das 128 avos} \rfloor + 1}{2}\) &
+\(B\) & 2 & \(\frac{1}{256}\) \\
+thirty-fourths (512 avos) &
+\(\frac{\lfloor \text{profundidade das 256 avos} \rfloor + 1}{2}\) &
+\(B\) & 2 & \(\frac{1}{512}\) \\
+thirty-fourths (1024 avos) &
+\(\frac{\lfloor \text{profundidade das 512 avos} \rfloor + 1}{2}\) &
+\(B\) & 2 & \(\frac{1}{1024}\) \\
+\bottomrule\noalign{}
+\end{longtable}
+
+\normalsize
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\tightlist
+\item
+  A profundidade dos extremos (mínimo e máximo) é 1, e usamos o número 1
+  para representar esses \emph{valores de letras}.
+\item
+  Com exceção da mediana, toda profundadidade do slide anterior tem dois
+  \emph{valores de letras}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    uma mais perto do mínimo valor observado
+  \item
+    uma mais perto do máximo valor observado
+  \end{itemize}
+\item
+  Para calcular os \emph{valores de letras} precisamos que a
+  profundidade seja maior que um.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+Geralmente, usamos os \emph{valores de letras} no seguinte diagrama
+chamada de \emph{diagrama de resumo de cinco números}:
+
+\tikzset{every picture/.style={line width=0.75pt}}
+
+\begin{figure}
+\centering
+\caption{Diagrama de resumo de cinco números.}
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+\draw   (190.79,181.55) -- (189.81,91.05) -- (379.4,89) ;
+\draw    (379.4,89) -- (380.38,179.5) ;
+\draw (258,94.8) node [anchor=north west][inner sep=0.75pt]   [align=left] {Mediana};
+\draw (192,115.2) node [anchor=north west][inner sep=0.75pt]   [align=left] {1 quartil};
+\draw (319.6,114) node [anchor=north west][inner sep=0.75pt]   [align=left] {3 quartil};
+\draw (193.2,153.6) node [anchor=north west][inner sep=0.75pt]   [align=left] {Mínimo};
+\draw (324,151.6) node [anchor=north west][inner sep=0.75pt]   [align=left] {Máximo};
+\draw (68.4,35.6) node [anchor=north west][inner sep=0.75pt]   [align=left] {n (tamanho da amostra)};
+\draw (64,96) node [anchor=north west][inner sep=0.75pt]   [align=left] {M};
+\draw (96,100) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {Profundidade da mediana};
+\draw (45.6,67.2) node [anchor=north west][inner sep=0.75pt]   [align=left] {Letra};
+\draw (95.2,67.2) node [anchor=north west][inner sep=0.75pt]   [align=left] {Profundidade};
+\draw (66,117.6) node [anchor=north west][inner sep=0.75pt]   [align=left] {F};
+\draw (96,120) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {Profundidade das quartas};
+\draw (67.6,152) node [anchor=north west][inner sep=0.75pt]   [align=left] {1};
+\draw (136.8,151.2) node [anchor=north west][inner sep=0.75pt]   [align=left] {1};
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+Podemos adicionar outras letras no diagrama para obter, por exemplo, um
+diagrama de resumo de nove números:
+
+\begin{figure}
+\centering
+\caption{Diagrama de resumo de nove números.}
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Right Angle [id:dp6451507548785453] 
+\draw   (207.85,258.94) -- (208.53,110.2) -- (399.75,111.06) ;
+%Straight Lines [id:da6622189196600071] 
+\draw    (399.55,110.46) -- (399.15,264.86) ;
+
+% Text Node
+\draw (278,114.8) node [anchor=north west][inner sep=0.75pt]   [align=left] {Mediana};
+% Text Node
+\draw (212.8,143.6) node [anchor=north west][inner sep=0.75pt]   [align=left] {1 quartil};
+% Text Node
+\draw (340,143.2) node [anchor=north west][inner sep=0.75pt]   [align=left] {3 quartil};
+% Text Node
+\draw (215.6,228.8) node [anchor=north west][inner sep=0.75pt]   [align=left] {Mínimo};
+% Text Node
+\draw (338.8,229.6) node [anchor=north west][inner sep=0.75pt]   [align=left] {Máximo};
+% Text Node
+\draw (88.4,55.6) node [anchor=north west][inner sep=0.75pt]   [align=left] {n (tamanho da amostra)};
+% Text Node
+\draw (84,116) node [anchor=north west][inner sep=0.75pt]   [align=left] {M};
+% Text Node
+\draw (116,120) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {Profundidade da mediana};
+% Text Node
+\draw (65.6,87.2) node [anchor=north west][inner sep=0.75pt]   [align=left] {Letra};
+% Text Node
+\draw (115.2,87.2) node [anchor=north west][inner sep=0.75pt]   [align=left] {Profundidade};
+% Text Node
+\draw (86,140.8) node [anchor=north west][inner sep=0.75pt]   [align=left] {F};
+% Text Node
+\draw (116.4,145.6) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {Profundidade das quartas};
+% Text Node
+\draw (87,227.6) node [anchor=north west][inner sep=0.75pt]   [align=left] {1};
+% Text Node
+\draw (159.8,229.2) node [anchor=north west][inner sep=0.75pt]   [align=left] {1};
+% Text Node
+\draw (86.4,171.2) node [anchor=north west][inner sep=0.75pt]   [align=left] {E};
+% Text Node
+\draw (114.4,175.6) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {Profundidade das oitavas};
+% Text Node
+\draw (212.4,172) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {oitava inferior};
+% Text Node
+\draw (316.8,172.8) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {oitava superior};
+% Text Node
+\draw (85.6,201.6) node [anchor=north west][inner sep=0.75pt]   [align=left] {D};
+% Text Node
+\draw (114.4,208) node [anchor=north west][inner sep=0.75pt]  [font=\tiny] [align=left] {Profundidade das 16 avos};
+% Text Node
+\draw (211.6,204.4) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {16 avo inferior};
+% Text Node
+\draw (316,205.2) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {16 avo superior};
+
+
+\end{tikzpicture}
+
+\end{figure}
+\end{frame}
+
+\begin{frame}{Valor de letra (\emph{letter value})}
+\protect\hypertarget{valor-de-letra-letter-value-1}{}
+\begin{itemize}
+\tightlist
+\item
+  Por que usamos a profundidade \(\frac{n+1}{2}\) para a mediana em vez
+  de \(\frac{n}{2}\)?
+\item
+  Por que usamos a profundidade
+  \(\frac{\lfloor \text{profundidade anterior} \rfloor + 1}{2}\) em vez
+  de \(\frac{\lfloor \text{profundidade anterior} \rfloor}{2}\) (exceto
+  os extremos)?
+\end{itemize}
+
+\regrafina
+
+\begin{itemize}
+\tightlist
+\item
+  É simples usar
+  \(\frac{\lfloor \text{profundidade anterior} \rfloor + 1}{2}\);
+\end{itemize}
+
+Seja \(X_i \stackrel{\text{iid}}{\sim} F\) e considere as estatísticas
+de ordem \(X_{(1)}, \dots, X_{(n)}\).
+
+Então \(F(X_i) \sim U(0,1)\) , e \(U_{(i)}=F(X_{(i)}), i=1,\dots,n\)
+pois \(F\) é não decrescente.
+
+Pode-se provar que:
+
+\begin{enumerate}
+\tightlist
+\item
+  \(U_{(i)}\) tem FDA dada por
+  \(F_{U_{(i)}}(x) = \sum_{j=i}^{n} \binom{n}{j} x^j(1-x)^{n-j}\);
+\item
+  \(U_{(i)}\) tem Função Densidade de Probabilidade (FDP) dada por
+  \(f_{U_{(i)}}(x) = \frac{n!}{(i-1)! (n-r)!} x^{i-1}(1-x)^{n-i}\);
+\item
+  \(\espe[U_{(i)}] = \frac{i}{n+1}\);
+\item
+  \(\espe[U_{(i)} - U_{(i-1)}] = \frac{1}{n+1}\).
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+Em média, temos que:
+
+\tikzset{every picture/.style={line width=0.75pt}}
+
+\begin{figure}
+\centering
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Straight Lines [id:da9697108800550001] 
+\draw    (130.2,109.8) -- (370.2,109.8) ;
+%Shape: Circle [id:dp6708000057628175] 
+\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (166.4,110.1) .. controls (166.4,108.5) and (167.7,107.2) .. (169.3,107.2) .. controls (170.9,107.2) and (172.2,108.5) .. (172.2,110.1) .. controls (172.2,111.7) and (170.9,113) .. (169.3,113) .. controls (167.7,113) and (166.4,111.7) .. (166.4,110.1) -- cycle ;
+%Shape: Circle [id:dp6641192243897238] 
+\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (206.8,110.1) .. controls (206.8,108.5) and (208.1,107.2) .. (209.7,107.2) .. controls (211.3,107.2) and (212.6,108.5) .. (212.6,110.1) .. controls (212.6,111.7) and (211.3,113) .. (209.7,113) .. controls (208.1,113) and (206.8,111.7) .. (206.8,110.1) -- cycle ;
+%Shape: Circle [id:dp15485081925049138] 
+\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (244.8,110.1) .. controls (244.8,108.5) and (246.1,107.2) .. (247.7,107.2) .. controls (249.3,107.2) and (250.6,108.5) .. (250.6,110.1) .. controls (250.6,111.7) and (249.3,113) .. (247.7,113) .. controls (246.1,113) and (244.8,111.7) .. (244.8,110.1) -- cycle ;
+%Shape: Circle [id:dp21112009656826347] 
+\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (327.8,109.1) .. controls (327.8,107.5) and (329.1,106.2) .. (330.7,106.2) .. controls (332.3,106.2) and (333.6,107.5) .. (333.6,109.1) .. controls (333.6,110.7) and (332.3,112) .. (330.7,112) .. controls (329.1,112) and (327.8,110.7) .. (327.8,109.1) -- cycle ;
+%Straight Lines [id:da36807862397370217] 
+\draw    (170.4,120.6) -- (208.6,121) ;
+\draw [shift={(208.6,121)}, rotate = 180.6] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (0,5.59) -- (0,-5.59)   ;
+\draw [shift={(170.4,120.6)}, rotate = 180.6] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (0,5.59) -- (0,-5.59)   ;
+%Straight Lines [id:da9495809539107128] 
+\draw    (212.8,121.8) -- (251,122.2) ;
+\draw [shift={(251,122.2)}, rotate = 180.6] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (0,5.59) -- (0,-5.59)   ;
+\draw [shift={(212.8,121.8)}, rotate = 180.6] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (0,5.59) -- (0,-5.59)   ;
+%Straight Lines [id:da5633477916690803] 
+\draw    (331.6,119.4) -- (369.8,119.8) ;
+\draw [shift={(369.8,119.8)}, rotate = 180.6] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (0,5.59) -- (0,-5.59)   ;
+\draw [shift={(331.6,119.4)}, rotate = 180.6] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (0,5.59) -- (0,-5.59)   ;
+%Straight Lines [id:da9067596530968447] 
+\draw    (128.8,120.2) -- (167,120.6) ;
+\draw [shift={(167,120.6)}, rotate = 180.6] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (0,5.59) -- (0,-5.59)   ;
+\draw [shift={(128.8,120.2)}, rotate = 180.6] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (0,5.59) -- (0,-5.59)   ;
+
+% Text Node
+\draw (276.4,92.4) node [anchor=north west][inner sep=0.75pt]   [align=left] {...};
+% Text Node
+\draw (156.4,87) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize]  {$U_{(}{}_{1}{}_{)}$};
+% Text Node
+\draw (196,87.8) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize]  {$U_{(}{}_{2}{}_{)}$};
+% Text Node
+\draw (234.8,87.8) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize]  {$U_{(}{}_{3}{}_{)}$};
+% Text Node
+\draw (317.2,87.8) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize]  {$U_{(}{}_{n}{}_{)}$};
+% Text Node
+\draw (124.8,87) node [anchor=north west][inner sep=0.75pt]   [align=left] {0};
+% Text Node
+\draw (364.8,86.2) node [anchor=north west][inner sep=0.75pt]   [align=left] {1};
+% Text Node
+\draw (172.4,122) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize]  {$\frac{1}{n+1}$};
+% Text Node
+\draw (214.8,123.2) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize]  {$\frac{1}{n+1}$};
+% Text Node
+\draw (333.6,120.8) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize]  {$\frac{1}{n+1}$};
+% Text Node
+\draw (130.8,121.6) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize]  {$\frac{1}{n+1}$};
+
+
+\end{tikzpicture}
+\caption{Representação da distância média entre $U_{(i)}$ e $U_{(i-1)}$ para $i=1, \dots, n+1$, onde $U_{(0)}=0$ e $U_{(n+1)}=1$.}
+\end{figure}
+
+Para achar a metade dessa reta entre 0 e 1 dividida em \(n+1\)
+intervalos, pegamos o ponto \(\frac{n+1}{2}\) deta reta.
+
+Esta é a razão para usarmos
+\(\frac{\lfloor \text{profundidade anterior} \rfloor + 1}{2}\).
+\end{frame}
+
+\begin{frame}[fragile]{Valor de letra (\emph{letter value})}
+\protect\hypertarget{valor-de-letra-letter-value-2}{}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Pacote:} \texttt{lettervalue}
+\item
+  Parêmetros das funções \texttt{letter\_value}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{x}: vetor numérico.
+  \item
+    \texttt{level}: indicação da profundadidade do diagrama de resumo
+    (valores entre 2 e 9). Valor padrão é 2.
+  \item
+    \texttt{na\_rm}: argumento booleano. Por padrão, os valores
+    faltantes são retirados.
+  \end{itemize}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(lettervalue)}
+\FunctionTok{letter\_value}\NormalTok{(dados\_iris}\SpecialCharTok{$}\NormalTok{comprimento\_sepala, }\AttributeTok{level =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+n = 150
+
+      dados_iris$comprimento_sepala
+      -----------------------------
+M 75.5|        5.8        |
+F 38  | 5.1           6.4 |
+E 19.5| 4.9           6.8 |
+1 1   | 4.3           7.9 |
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Valor de letra (\emph{letter
+value})\newline Exercício}
+\protect\hypertarget{valor-de-letra-letter-valueexercuxedcio}{}
+Para o conjunto de dados \texttt{enem\_amostra\_salvador.xlsx},
+construa:
+
+\begin{itemize}
+\tightlist
+\item
+  o diagrama de resumo com 5 números para a variável
+  \texttt{nu\_nota\_mt};
+\item
+  o diagrama de resumo com 7 números para a variável
+  \texttt{nu\_nota\_mt};
+\item
+  o diagrama de resumo com 5 números para a variável
+  \texttt{nu\_nota\_lc};
+\item
+  o diagrama de resumo com 7 números para a variável
+  \texttt{nu\_nota\_lc}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Medidas de resumo usando valores de letra}
+\protect\hypertarget{medidas-de-resumo-usando-valores-de-letra}{}
+\begin{block}{Medidas de posição}
+\protect\hypertarget{medidas-de-posiuxe7uxe3o}{}
+\begin{itemize}
+\tightlist
+\item
+  Mediana: \[M\]
+\item
+  Trimédia:
+  \[\frac{\text{primeiro quartil}}{4} + \frac{\text{mediana}}{2} + \frac{\text{terceiro quartil}}{4}\]
+\end{itemize}
+\end{block}
+
+\begin{block}{Medidas de dispersão}
+\protect\hypertarget{medidas-de-dispersuxe3o}{}
+\begin{itemize}
+\tightlist
+\item
+  F-spread: \(d_F = F_U - F_L\), onde \(F_U\) é o terceiro quartil e
+  \(F_L\) é o primeiro quartil;
+\item
+  F-pseudo sigma: \(\frac{d_F}{1,379}\).
+\end{itemize}
+\end{block}
+
+\begin{block}{Pontos exteriores}
+\protect\hypertarget{pontos-exteriores}{}
+\begin{itemize}
+\tightlist
+\item
+  Valores da amostra que se destacam;
+\item
+  Valores muito pequenos ou muito grandes (0,7\% da amostra);
+\item
+  abaixo de \(1,5\cdot d_F - F_L\) ou acima de \(1,5 \cdot d_F + F_U\).
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\textbf{Motivação para F-spread.}
+
+Considere a distribuição \(N(\mu, \sigma^2)\):
+
+\begin{itemize}
+\tightlist
+\item
+  O quantil de ordem 25\% é \(\mu - 0,6745\cdot \sigma\);
+\item
+  O quantil de ordem 75\% é \(\mu + 0,6745\cdot \sigma\);
+\item
+  \(d_F\) é aproximadamente
+  \(\mu + 0,6745\cdot \sigma - (\mu - 0,6745\cdot \sigma) = 1,349\cdot \sigma\);
+\item
+  \(\sigma = \frac{d_F}{1,349}\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Medidas de resumo usando valores de letra}
+\protect\hypertarget{medidas-de-resumo-usando-valores-de-letra-1}{}
+Para calcular medidas resumo, usamos a função \texttt{summary} em um
+objeto \texttt{lv}.
+
+\small
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{valores\_letras }\OtherTok{\textless{}{-}} \FunctionTok{letter\_value}\NormalTok{(rivers)}
+\FunctionTok{summary}\NormalTok{(valores\_letras)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1 x 6
+  trimean median f_spread f_pseudo_sigma f_pseudo_variance outliers  
+    <dbl>  <dbl>    <dbl>          <dbl>             <dbl> <list>    
+1     460    425      370           268.            71990. <dbl [15]>
+\end{verbatim}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]{Medidas de resumo usando valores de
+letra\newline Exercício}
+\protect\hypertarget{medidas-de-resumo-usando-valores-de-letraexercuxedcio}{}
+Para o conjunto de dados \texttt{enem\_amostra\_salvador.xlsx}, calcule:
+
+\begin{itemize}
+\tightlist
+\item
+  medidas de resumo para a variável \texttt{nu\_nota\_mt};
+\item
+  medidas de resumo para a variável \texttt{nu\_nota\_lc};
+\item
+  medidas de resumo para a variável \texttt{nu\_nota\_cn};
+\item
+  medidas de resumo para a variável \texttt{nu\_nota\_ch}.
+\end{itemize}
 \end{frame}
 
 \hypertarget{diagrama-de-caixa-boxplot}{%
@@ -3811,7 +4331,7 @@ esquerda no histograma
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.85\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-79-1.pdf}
+{\centering \includegraphics[width=0.85\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-81-1.pdf}
 
 }
 
@@ -3831,7 +4351,7 @@ esquerda no histograma
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.85\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-80-1.pdf}
+{\centering \includegraphics[width=0.85\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-82-1.pdf}
 
 }
 
@@ -3878,7 +4398,7 @@ esquerda no histograma
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-82-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-84-1.pdf}
 
 }
 
@@ -3909,7 +4429,7 @@ construimos o diagrama de caixa para cada grupo (ou população) de
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-84-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-86-1.pdf}
 
 }
 
@@ -4058,7 +4578,7 @@ dos valores.}
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.75\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-87-1.pdf}
+{\centering \includegraphics[width=0.75\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-89-1.pdf}
 
 }
 
@@ -4083,7 +4603,7 @@ dos valores.}
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-89-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-91-1.pdf}
 
 }
 
@@ -4375,7 +4895,7 @@ variáveis}\label{associuxe7uxe3o-entre-duas-variuxe1veis}}
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.75\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-94-1.pdf}
+{\centering \includegraphics[width=0.75\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-96-1.pdf}
 
 }
 
@@ -4400,7 +4920,7 @@ variáveis}\label{associuxe7uxe3o-entre-duas-variuxe1veis}}
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-96-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-98-1.pdf}
 
 }
 
@@ -4484,7 +5004,7 @@ Vamos checar a associação entre \texttt{fundacao\_tipo} e
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-98-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-100-1.pdf}
 
 }
 
@@ -4520,7 +5040,7 @@ duas variáveis qualitativas.
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-100-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-102-1.pdf}
 
 }
 
@@ -4563,7 +5083,7 @@ caixa.
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-102-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-104-1.pdf}
 
 }
 
@@ -5078,6 +5598,10 @@ plot-density trace synergism''}. \emph{The American Statistician} 52
 Hoaglin, David C, Frederick Mosteller, e John W Tukey. 1983.
 {``Understanding robust and exploratory data anlysis''}. \emph{Wiley
 series in probability and mathematical statistics}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-tukey1977exploratory}{}}%
+Tukey, John W et al. 1977. \emph{Exploratory data analysis}. Vol. 2.
+Reading, MA.
 
 \end{CSLReferences}
 \end{frame}
