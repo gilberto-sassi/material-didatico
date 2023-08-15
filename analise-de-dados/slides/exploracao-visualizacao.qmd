@@ -1821,6 +1821,319 @@ $q(p)$ é um valor que satisfaz;
 
 ## Quantis
 
+* Existem diversas formas para calcular os quantis.
+* Várias formas de calcular os quantis.
+* Vamos ver apenas 9 formas neste curso usadas na linguagem `R` e propostas por @hyndman1996sample.
+
+Considere uma amostra $x_1,\dots, x_n$. O $i$-ésimo menor valor da amostra é chamado de estatística de ordem $i$ e é denotado por $x_{(i)}$. Mais precisamente:
+$$
+\#\{x \in\{1, \dots, n\} \mid x \leq x_{(i)} \}=i.
+$$
+
+---
+
+As aproximações dos quantis satisfazem a seguinte equação:
+$$
+\hat{Q}(p) = (1-\gamma)x_{(j)} + \gamma x_{(j+1)},
+$$
+onde
+
+* $j=\lfloor p \cdot n +m \rfloor$ onde $m\in \mathbb{R}$;
+* $g=p\cdot n + m - j$;
+* $0 \leq \gamma \leq 1$ é uma função de $g$ e $j$.
+
+Vamos usar a variável dos dados apresentados na Tabela 2.1 [página 28 de @morettin2017estatistica]:
+
+```{r}
+dados_MB <- read_xlsx("dados/brutos/companhia_MB.xlsx")
+p <- c(1/8, 1/4, 1/2, 3/4, 7/8)
+salario <- dados_MB$salario
+```
+
+
+## Quantis
+
+### Método 1 - `type = 1`
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+* $m=0$;
+* $j=\lfloor p\cdot n \rfloor$;
+
+:::
+
+:::{.column width="50%"}
+
+* $g = p\cdot n - \lfloor p\cdot n \rfloor$;
+* $\gamma = \begin{cases} 1, & g > 0\\ 0,& g = 0 \end{cases}.$
+
+:::
+
+:::
+
+```{r}
+(quantil_tipo_1 <- quantile(salario, probs = p, type = 1))
+```
+
+### Método 2 - `type = 2`
+
+:::{.columns}
+
+:::{.column width="50%"}
+Método implementado pelo [SAS](https://www.sas.com/pt_br/home.html).
+
+* $m=0$;
+* $j=\lfloor p\cdot n \rfloor$;
+
+:::
+
+:::{.column width="50%"}
+
+* $g = p\cdot n - \lfloor p\cdot n \rfloor$.
+* $\gamma = \begin{cases} 1,& g> 0\\ \frac{1}{2},& g = 0 \end{cases}.$
+
+:::
+
+:::
+
+```{r}
+(quantil_tipo_2 <- quantile(salario, probs = p, type = 2))
+```
+
+## Quantis
+
+### Método 3 - `type = 3`
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+* $m=-\frac{1}{2}$;
+* $j=\lfloor p\cdot n + m \rfloor$;
+
+:::
+
+:::{.column width="50%"}
+
+* $g = p\cdot n + m- \lfloor p\cdot n+m \rfloor$;
+* $\gamma = \begin{cases} 1, & g > 0\\ 0,& g = 0 \text{ e j é par}\\ 1,& g = 0 \text{ e j é ímpar} \end{cases}.$
+
+:::
+
+:::
+
+```{r}
+(quantil_tipo_3 <- quantile(salario, probs = p, type = 3))
+```
+
+### Método 4 - `type = 4`
+
+:::{.columns}
+
+:::{.column width="30%"}
+
+* $m=0$;
+* $j=\lfloor p\cdot n \rfloor$;
+
+:::
+
+:::{.column width="70%"}
+
+* $g = p\cdot n - \lfloor p\cdot n \rfloor$.
+* $\gamma = \begin{cases} f_i,& g> 0\\ 0,& g = 0 \end{cases}$, em que $f_i = \frac{p - \frac{i}{n}}{\frac{1}{n}}$.
+
+:::
+
+:::
+
+```{r}
+(quantil_tipo_4 <- quantile(salario, probs = p, type = 4))
+```
+
+## Quantis
+
+### Método 5 - `type = 5`
+
+Método apresentado por @morettin2017estatistica.
+
+:::{.columns}
+
+:::{.column width="30%"}
+
+* $m=-\frac{1}{2}$;
+* $j=\lfloor p\cdot n + m \rfloor$;
+
+:::
+
+:::{.column width="70%"}
+
+* $g = p\cdot n + m- \lfloor p\cdot n+m \rfloor$;
+* $\gamma = \frac{p-p_i}{p_{i+1} - p_i}\cdot I_{(p_i, p_{i+1})}$, em que $p_i=\frac{i-0,5}{n}$.
+
+:::
+
+:::
+
+```{r}
+(quantil_tipo_5 <- quantile(salario, probs = p, type = 5))
+```
+
+### Método 6 - `type = 6`
+
+Método usado por SPSS e Minitab.
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+* $m=p$;
+* $j=\lfloor p\cdot n + m \rfloor$;
+
+:::
+
+:::{.column width="50%"}
+
+* $g = p\cdot n +m - \lfloor p\cdot n +m \rfloor$.
+* $\gamma = g$.
+
+:::
+
+:::
+
+```{r}
+(quantil_tipo_6 <- quantile(salario, probs = p, type = 6))
+```
+
+## Quantis
+
+### Método 7 - `type = 7`
+
+Método usado pela linguagem `R` e `S`.
+
+:::{.columns}
+
+:::{.column width="30%"}
+
+* $m=1-p$;
+* $j=\lfloor p\cdot n + m \rfloor$;
+
+:::
+
+:::{.column width="70%"}
+
+* $g = p\cdot n + m- \lfloor p\cdot n+m \rfloor$;
+* $\gamma = g$.
+
+:::
+
+:::
+
+```{r}
+(quantil_tipo_7 <- quantile(salario, probs = p, type = 7))
+```
+
+### Método 8 - `type = 8`
+
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+* $m=\frac{p+1}{3}$;
+* $j=\lfloor p\cdot n + m \rfloor$;
+
+:::
+
+:::{.column width="50%"}
+
+* $g = p\cdot n +m - \lfloor p\cdot n +m \rfloor$.
+* $\gamma = g$.
+
+:::
+
+:::
+
+```{r}
+(quantil_tipo_8 <- quantile(salario, probs = p, type = 8))
+```
+
+
+## Quantis
+
+### Método 9 - `type = 9`
+
+Adequado com normalidade.
+
+:::{.columns}
+
+:::{.column width="30%"}
+
+* $m=frac{p}{4}+\frac{3}{8}$;
+* $j=\lfloor p\cdot n + m \rfloor$;
+
+:::
+
+:::{.column width="70%"}
+
+* $g = p\cdot n + m- \lfloor p\cdot n+m \rfloor$;
+* $\gamma = g$.
+
+:::
+
+:::
+
+```{r}
+(quantil_tipo_9 <- quantile(salario, probs = p, type = 9))
+```
+
+---
+
+
+```{r}
+#| echo: false
+tipos <- seq_len(9) |> 
+  sapply(\(k) quantile(dados_MB$salario, probs = p, type = k)) |>
+  t()
+colnames(tipos) <- format(p * 100, big.mark = ".", decimal.mark = ",") |> paste("%")
+rownames(tipos) <- NULL
+df_tipos <- as_tibble(tipos) |> 
+  mutate(tipos = paste("tipos", seq_len(9))) |> 
+  dplyr::select(tipos, everything())
+knitr::kable(df_tipos, format.args = list(decimal.mark = ",", big.mark = "."),
+             caption = "Comparação de alguns quantis calculados usando diferentes métodos de aproximação para a variável \\texttt{salario}.")
+```
+
+---
+
+Vamos considerar o caso normal para uma amostra de tamanho 1000.
+
+```{r}
+set.seed(12345)
+amostra <- rnorm(1000, mean = 500, sd = 100)
+```
+
+
+```{r}
+#| echo: false
+
+tipos <- seq_len(9) |> 
+  sapply(\(k) quantile(amostra, probs = p, type = k)) |> 
+  t()
+tipos <- rbind(
+  qnorm(p, mean = 500, sd = 100),
+  tipos
+)
+
+colnames(tipos) <- format(p * 100, big.mark = ".", decimal.mark = ",") |> paste("%")
+rownames(tipos) <- NULL
+df_tipos <- as_tibble(tipos) |> 
+  mutate(tipos = c("Quantil populacional", paste("tipos", seq_len(9)))) |> 
+  dplyr::select(tipos, everything())
+knitr::kable(df_tipos, format.args = list(decimal.mark = ",", big.mark = "."),
+             caption = "Comparação de alguns quantis calculados usando diferentes métodos de aproximação para a distribuição normal com média 500 e desvio padrão 100.")
+```
 
 
 ## Quantis
@@ -3172,5 +3485,7 @@ gt_tab
 ## Formatação de valores\newline Exercício
 
 No objeto `gt_tab`, para as colunas numéricas coloque "`,`" para o separador de casa decimal e "`.`" para o agrupador de milhar.
+
+# Bibliografia 
 
 ## Referências

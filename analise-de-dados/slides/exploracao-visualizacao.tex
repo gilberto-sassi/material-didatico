@@ -190,9 +190,14 @@
 \usepackage{multirow}
 
 
-\definecolor{titulo}{HTML}{003D1F}
-\definecolor{cabecalho}{HTML}{E5F0EB}
+% \definecolor{titulo}{HTML}{003D1F}
+% \definecolor{cabecalho}{HTML}{E5F0EB}
 
+\definecolor{titulo}{RGB}{0, 61, 3}
+\definecolor{cabecalho}{RGB}{229, 240, 235}
+
+
+\setbeamercolor{block title}{bg=cabecalho, fg=titulo}
 
 \DeclareMathOperator{\Var}{Var}
 \DeclareMathOperator{\DP}{DP}
@@ -329,7 +334,7 @@ Estatística}
 % 	\maketitle
 %  \end{frame}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, enhanced, interior hidden, borderline west={3pt}{0pt}{shadecolor}, frame hidden, boxrule=0pt, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, interior hidden, enhanced, frame hidden, sharp corners, boxrule=0pt, breakable]}{\end{tcolorbox}}\fi
 
 \hypertarget{sobre-o-curso}{%
 \section{Sobre o curso}\label{sobre-o-curso}}
@@ -1349,8 +1354,8 @@ Realize as seguintes operações envolvendo vetores:
 
 \begin{verbatim}
           [,1]     [,2]
-[1,] 1.5533594 2.192055
-[2,] 0.6252355 3.875765
+[1,] 1.1422965 2.207227
+[2,] 0.8543412 3.799302
 \end{verbatim}
 
 \textbf{Subtração}
@@ -1364,8 +1369,8 @@ Realize as seguintes operações envolvendo vetores:
 
 \begin{verbatim}
            [,1]     [,2]
-[1,]  0.4466406 1.807945
-[2,] -0.6252355 2.124235
+[1,]  0.8577035 1.792773
+[2,] -0.8543412 2.200698
 \end{verbatim}
 
 \normalsize
@@ -1394,8 +1399,8 @@ Realize as seguintes operações envolvendo vetores:
 
 \begin{verbatim}
           [,1]      [,2]
-[1,] 0.5533594 0.3841101
-[2,] 0.0000000 2.6272940
+[1,] 0.1422965 0.4144536
+[2,] 0.0000000 2.3979065
 \end{verbatim}
 
 \regrafina
@@ -1412,8 +1417,8 @@ de matrizes}}
 
 \begin{verbatim}
          [,1]     [,2]
-[1,] 1.803830 1.943584
-[2,] 1.875706 2.627294
+[1,] 1.850979 1.805831
+[2,] 2.563024 2.397907
 \end{verbatim}
 \end{frame}
 
@@ -3665,12 +3670,499 @@ por categorias de uma variável qualitativa.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Quantis}
+\begin{frame}[fragile]{Quantis}
 \protect\hypertarget{quantis-1}{}
+\begin{itemize}
+\tightlist
+\item
+  Existem diversas formas para calcular os quantis.
+\item
+  Várias formas de calcular os quantis.
+\item
+  Vamos ver apenas 9 formas neste curso usadas na linguagem \texttt{R} e
+  propostas por Hyndman e Fan (1996).
+\end{itemize}
+
+Considere uma amostra \(x_1,\dots, x_n\). O \(i\)-ésimo menor valor da
+amostra é chamado de estatística de ordem \(i\) e é denotado por
+\(x_{(i)}\). Mais precisamente: \[
+\#\{x \in\{1, \dots, n\} \mid x \leq x_{(i)} \}=i.
+\]
+\end{frame}
+
+\begin{frame}[fragile]
+As aproximações dos quantis satisfazem a seguinte equação: \[
+\hat{Q}(p) = (1-\gamma)x_{(j)} + \gamma x_{(j+1)},
+\] onde
+
+\begin{itemize}
+\tightlist
+\item
+  \(j=\lfloor p \cdot n +m \rfloor\) onde \(m\in \mathbb{R}\);
+\item
+  \(g=p\cdot n + m - j\);
+\item
+  \(0 \leq \gamma \leq 1\) é uma função de \(g\) e \(j\).
+\end{itemize}
+
+Vamos usar a variável dos dados apresentados na Tabela 2.1 (página 28 de
+Morettin e Bussab 2010):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados\_MB }\OtherTok{\textless{}{-}} \FunctionTok{read\_xlsx}\NormalTok{(}\StringTok{"dados/brutos/companhia\_MB.xlsx"}\NormalTok{)}
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\DecValTok{8}\NormalTok{, }\DecValTok{1}\SpecialCharTok{/}\DecValTok{4}\NormalTok{, }\DecValTok{1}\SpecialCharTok{/}\DecValTok{2}\NormalTok{, }\DecValTok{3}\SpecialCharTok{/}\DecValTok{4}\NormalTok{, }\DecValTok{7}\SpecialCharTok{/}\DecValTok{8}\NormalTok{)}
+\NormalTok{salario }\OtherTok{\textless{}{-}}\NormalTok{ dados\_MB}\SpecialCharTok{$}\NormalTok{salario}
+\end{Highlighting}
+\end{Shaded}
 \end{frame}
 
 \begin{frame}[fragile]{Quantis}
 \protect\hypertarget{quantis-2}{}
+\begin{block}{Método 1 - \texttt{type\ =\ 1}}
+\protect\hypertarget{muxe9todo-1---type-1}{}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \(m=0\);
+\item
+  \(j=\lfloor p\cdot n \rfloor\);
+\end{itemize}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \(g = p\cdot n - \lfloor p\cdot n \rfloor\);
+\item
+  \(\gamma = \begin{cases} 1, & g > 0\\ 0,& g = 0 \end{cases}.\)
+\end{itemize}
+\end{column}
+\end{columns}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(quantil\_tipo\_1 }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(salario, }\AttributeTok{probs =}\NormalTok{ p, }\AttributeTok{type =} \DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+12.5%   25%   50%   75% 87.5% 
+ 6.26  7.44  9.80 13.85 16.61 
+\end{verbatim}
+\end{block}
+
+\begin{block}{Método 2 - \texttt{type\ =\ 2}}
+\protect\hypertarget{muxe9todo-2---type-2}{}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+Método implementado pelo
+\href{https://www.sas.com/pt_br/home.html}{SAS}.
+
+\begin{itemize}
+\tightlist
+\item
+  \(m=0\);
+\item
+  \(j=\lfloor p\cdot n \rfloor\);
+\end{itemize}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \(g = p\cdot n - \lfloor p\cdot n \rfloor\).
+\item
+  \(\gamma = \begin{cases} 1,& g> 0\\ \frac{1}{2},& g = 0 \end{cases}.\)
+\end{itemize}
+\end{column}
+\end{columns}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(quantil\_tipo\_2 }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(salario, }\AttributeTok{probs =}\NormalTok{ p, }\AttributeTok{type =} \DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ 12.5%    25%    50%    75%  87.5% 
+ 6.260  7.515 10.165 14.270 16.610 
+\end{verbatim}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Quantis}
+\protect\hypertarget{quantis-3}{}
+\begin{block}{Método 3 - \texttt{type\ =\ 3}}
+\protect\hypertarget{muxe9todo-3---type-3}{}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \(m=-\frac{1}{2}\);
+\item
+  \(j=\lfloor p\cdot n + m \rfloor\);
+\end{itemize}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \(g = p\cdot n + m- \lfloor p\cdot n+m \rfloor\);
+\item
+  \(\gamma = \begin{cases} 1, & g > 0\\ 0,& g = 0 \text{ e j é par}\\ 1,& g = 0 \text{ e j é ímpar} \end{cases}.\)
+\end{itemize}
+\end{column}
+\end{columns}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(quantil\_tipo\_3 }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(salario, }\AttributeTok{probs =}\NormalTok{ p, }\AttributeTok{type =} \DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+12.5%   25%   50%   75% 87.5% 
+ 5.73  7.44  9.80 13.85 16.61 
+\end{verbatim}
+\end{block}
+
+\begin{block}{Método 4 - \texttt{type\ =\ 4}}
+\protect\hypertarget{muxe9todo-4---type-4}{}
+\begin{columns}[T]
+\begin{column}{0.3\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \(m=0\);
+\item
+  \(j=\lfloor p\cdot n \rfloor\);
+\end{itemize}
+\end{column}
+
+\begin{column}{0.7\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \(g = p\cdot n - \lfloor p\cdot n \rfloor\).
+\item
+  \(\gamma = \begin{cases} f_i,& g> 0\\ 0,& g = 0 \end{cases}\), em que
+  \(f_i = \frac{p - \frac{i}{n}}{\frac{1}{n}}\).
+\end{itemize}
+\end{column}
+\end{columns}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(quantil\_tipo\_4 }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(salario, }\AttributeTok{probs =}\NormalTok{ p, }\AttributeTok{type =} \DecValTok{4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ 12.5%    25%    50%    75%  87.5% 
+ 5.995  7.440  9.800 13.850 16.415 
+\end{verbatim}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Quantis}
+\protect\hypertarget{quantis-4}{}
+\begin{block}{Método 5 - \texttt{type\ =\ 5}}
+\protect\hypertarget{muxe9todo-5---type-5}{}
+Método apresentado por Morettin e Bussab (2010).
+
+\begin{columns}[T]
+\begin{column}{0.3\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \(m=-\frac{1}{2}\);
+\item
+  \(j=\lfloor p\cdot n + m \rfloor\);
+\end{itemize}
+\end{column}
+
+\begin{column}{0.7\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \(g = p\cdot n + m- \lfloor p\cdot n+m \rfloor\);
+\item
+  \(\gamma = \frac{p-p_i}{p_{i+1} - p_i}\cdot I_{(p_i, p_{i+1})}\), em
+  que \(p_i=\frac{i-0,5}{n}\).
+\end{itemize}
+\end{column}
+\end{columns}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(quantil\_tipo\_5 }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(salario, }\AttributeTok{probs =}\NormalTok{ p, }\AttributeTok{type =} \DecValTok{5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ 12.5%    25%    50%    75%  87.5% 
+ 6.260  7.515 10.165 14.270 16.610 
+\end{verbatim}
+\end{block}
+
+\begin{block}{Método 6 - \texttt{type\ =\ 6}}
+\protect\hypertarget{muxe9todo-6---type-6}{}
+Método usado por SPSS e Minitab.
+
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \(m=p\);
+\item
+  \(j=\lfloor p\cdot n + m \rfloor\);
+\end{itemize}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \(g = p\cdot n +m - \lfloor p\cdot n +m \rfloor\).
+\item
+  \(\gamma = g\).
+\end{itemize}
+\end{column}
+\end{columns}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(quantil\_tipo\_6 }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(salario, }\AttributeTok{probs =}\NormalTok{ p, }\AttributeTok{type =} \DecValTok{6}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   12.5%      25%      50%      75%    87.5% 
+ 6.06125  7.47750 10.16500 14.48000 16.85375 
+\end{verbatim}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Quantis}
+\protect\hypertarget{quantis-5}{}
+\begin{block}{Método 7 - \texttt{type\ =\ 7}}
+\protect\hypertarget{muxe9todo-7---type-7}{}
+Método usado pela linguagem \texttt{R} e \texttt{S}.
+
+\begin{columns}[T]
+\begin{column}{0.3\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \(m=1-p\);
+\item
+  \(j=\lfloor p\cdot n + m \rfloor\);
+\end{itemize}
+\end{column}
+
+\begin{column}{0.7\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \(g = p\cdot n + m- \lfloor p\cdot n+m \rfloor\);
+\item
+  \(\gamma = g\).
+\end{itemize}
+\end{column}
+\end{columns}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(quantil\_tipo\_7 }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(salario, }\AttributeTok{probs =}\NormalTok{ p, }\AttributeTok{type =} \DecValTok{7}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   12.5%      25%      50%      75%    87.5% 
+ 6.41000  7.55250 10.16500 14.06000 16.46375 
+\end{verbatim}
+\end{block}
+
+\begin{block}{Método 8 - \texttt{type\ =\ 8}}
+\protect\hypertarget{muxe9todo-8---type-8}{}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \(m=\frac{p+1}{3}\);
+\item
+  \(j=\lfloor p\cdot n + m \rfloor\);
+\end{itemize}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \(g = p\cdot n +m - \lfloor p\cdot n +m \rfloor\).
+\item
+  \(\gamma = g\).
+\end{itemize}
+\end{column}
+\end{columns}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(quantil\_tipo\_8 }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(salario, }\AttributeTok{probs =}\NormalTok{ p, }\AttributeTok{type =} \DecValTok{8}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   12.5%      25%      50%      75%    87.5% 
+ 6.19375  7.50250 10.16500 14.34000 16.69125 
+\end{verbatim}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Quantis}
+\protect\hypertarget{quantis-6}{}
+\begin{block}{Método 9 - \texttt{type\ =\ 9}}
+\protect\hypertarget{muxe9todo-9---type-9}{}
+Adequado com normalidade.
+
+\begin{columns}[T]
+\begin{column}{0.3\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \(m=frac{p}{4}+\frac{3}{8}\);
+\item
+  \(j=\lfloor p\cdot n + m \rfloor\);
+\end{itemize}
+\end{column}
+
+\begin{column}{0.7\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \(g = p\cdot n + m- \lfloor p\cdot n+m \rfloor\);
+\item
+  \(\gamma = g\).
+\end{itemize}
+\end{column}
+\end{columns}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(quantil\_tipo\_9 }\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(salario, }\AttributeTok{probs =}\NormalTok{ p, }\AttributeTok{type =} \DecValTok{9}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+    12.5%       25%       50%       75%     87.5% 
+ 6.210312  7.505625 10.165000 14.322500 16.670938 
+\end{verbatim}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{longtable}[]{@{}lrrrrr@{}}
+\caption{Comparação de alguns quantis calculados usando diferentes
+métodos de aproximação para a variável \texttt{salario}.}\tabularnewline
+\toprule\noalign{}
+tipos & 12,5 \% & 25,0 \% & 50,0 \% & 75,0 \% & 87,5 \% \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+tipos & 12,5 \% & 25,0 \% & 50,0 \% & 75,0 \% & 87,5 \% \\
+\midrule\noalign{}
+\endhead
+tipos 1 & 6,260000 & 7,440000 & 9,800 & 13,8500 & 16,61000 \\
+tipos 2 & 6,260000 & 7,515000 & 10,165 & 14,2700 & 16,61000 \\
+tipos 3 & 5,730000 & 7,440000 & 9,800 & 13,8500 & 16,61000 \\
+tipos 4 & 5,995000 & 7,440000 & 9,800 & 13,8500 & 16,41500 \\
+tipos 5 & 6,260000 & 7,515000 & 10,165 & 14,2700 & 16,61000 \\
+tipos 6 & 6,061250 & 7,477500 & 10,165 & 14,4800 & 16,85375 \\
+tipos 7 & 6,410000 & 7,552500 & 10,165 & 14,0600 & 16,46375 \\
+tipos 8 & 6,193750 & 7,502500 & 10,165 & 14,3400 & 16,69125 \\
+tipos 9 & 6,210312 & 7,505625 & 10,165 & 14,3225 & 16,67094 \\
+\bottomrule\noalign{}
+\end{longtable}
+\end{frame}
+
+\begin{frame}[fragile]
+Vamos considerar o caso normal para uma amostra de tamanho 1000.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{12345}\NormalTok{)}
+\NormalTok{amostra }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\AttributeTok{mean =} \DecValTok{500}\NormalTok{, }\AttributeTok{sd =} \DecValTok{100}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.3182}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1364}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1364}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1364}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1364}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1364}}@{}}
+\caption{Comparação de alguns quantis calculados usando diferentes
+métodos de aproximação para a distribuição normal com média 500 e desvio
+padrão 100.}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+tipos
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+12,5 \%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+25,0 \%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+50,0 \%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+75,0 \%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+87,5 \%
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+tipos
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+12,5 \%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+25,0 \%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+50,0 \%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+75,0 \%
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+87,5 \%
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+Quantil populacional & 384,9651 & 432,5510 & 500,0000 & 567,4490 &
+615,0349 \\
+tipos 1 & 395,0647 & 440,0202 & 547,6248 & 588,8139 & 663,2446 \\
+tipos 2 & 395,0647 & 440,6661 & 548,3718 & 591,2640 & 663,2446 \\
+tipos 3 & 393,9734 & 440,0202 & 547,6248 & 588,8139 & 663,2446 \\
+tipos 4 & 394,5191 & 440,0202 & 547,6248 & 588,8139 & 661,2967 \\
+tipos 5 & 395,0647 & 440,6661 & 548,3718 & 591,2640 & 663,2446 \\
+tipos 6 & 394,6555 & 440,3432 & 548,3718 & 592,4890 & 668,3179 \\
+tipos 7 & 397,6417 & 440,9891 & 548,3718 & 590,0390 & 661,7837 \\
+tipos 8 & 394,9283 & 440,5585 & 548,3718 & 591,6723 & 664,9357 \\
+tipos 9 & 394,9624 & 440,5854 & 548,3718 & 591,5703 & 664,5129 \\
+\bottomrule\noalign{}
+\end{longtable}
+\end{frame}
+
+\begin{frame}[fragile]{Quantis}
+\protect\hypertarget{quantis-7}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{dados\_iris }\SpecialCharTok{|\textgreater{}}
@@ -4331,7 +4823,7 @@ esquerda no histograma
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.85\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-81-1.pdf}
+{\centering \includegraphics[width=0.85\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-94-1.pdf}
 
 }
 
@@ -4351,7 +4843,7 @@ esquerda no histograma
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.85\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-82-1.pdf}
+{\centering \includegraphics[width=0.85\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-95-1.pdf}
 
 }
 
@@ -4398,7 +4890,7 @@ esquerda no histograma
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-84-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-97-1.pdf}
 
 }
 
@@ -4429,7 +4921,7 @@ construimos o diagrama de caixa para cada grupo (ou população) de
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-86-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-99-1.pdf}
 
 }
 
@@ -4578,7 +5070,7 @@ dos valores.}
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.75\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-89-1.pdf}
+{\centering \includegraphics[width=0.75\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-102-1.pdf}
 
 }
 
@@ -4603,7 +5095,7 @@ dos valores.}
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-91-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-104-1.pdf}
 
 }
 
@@ -4895,7 +5387,7 @@ variáveis}\label{associuxe7uxe3o-entre-duas-variuxe1veis}}
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.75\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-96-1.pdf}
+{\centering \includegraphics[width=0.75\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-109-1.pdf}
 
 }
 
@@ -4920,7 +5412,7 @@ variáveis}\label{associuxe7uxe3o-entre-duas-variuxe1veis}}
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-98-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-111-1.pdf}
 
 }
 
@@ -5004,7 +5496,7 @@ Vamos checar a associação entre \texttt{fundacao\_tipo} e
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-100-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-113-1.pdf}
 
 }
 
@@ -5040,7 +5532,7 @@ duas variáveis qualitativas.
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-102-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-115-1.pdf}
 
 }
 
@@ -5083,7 +5575,7 @@ caixa.
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-104-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-117-1.pdf}
 
 }
 
@@ -5585,6 +6077,9 @@ No objeto \texttt{gt\_tab}, para as colunas numéricas coloque
 agrupador de milhar.
 \end{frame}
 
+\hypertarget{bibliografia}{%
+\section{Bibliografia}\label{bibliografia}}
+
 \begin{frame}{Referências}
 \protect\hypertarget{referuxeancias}{}
 \hypertarget{refs}{}
@@ -5598,6 +6093,15 @@ plot-density trace synergism''}. \emph{The American Statistician} 52
 Hoaglin, David C, Frederick Mosteller, e John W Tukey. 1983.
 {``Understanding robust and exploratory data anlysis''}. \emph{Wiley
 series in probability and mathematical statistics}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-hyndman1996sample}{}}%
+Hyndman, Rob J., e Yanan Fan. 1996. {``Sample Quantiles in Statistical
+Packages''}. \emph{The American Statistician} 50 (4): 361--65.
+\url{https://doi.org/10.1080/00031305.1996.10473566}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-morettin2017estatistica}{}}%
+Morettin, Pedro A, e Wilton O Bussab. 2010. \emph{Estatística Básica}.
+Editora Saraiva.
 
 \leavevmode\vadjust pre{\hypertarget{ref-tukey1977exploratory}{}}%
 Tukey, John W et al. 1977. \emph{Exploratory data analysis}. Vol. 2.
