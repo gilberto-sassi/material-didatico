@@ -1,0 +1,31 @@
+Question
+========
+Marque todas as alternativas que são $\sigma$-álgebra.
+  
+Answerlist
+----------
+* $\mathcal{F} = \{(x, y] \mid x < y, x, y \in \mathbb{R}\}$.
+* $\mathcal{F} =\sigma\left(\{ (x, y] \mid x < y, x, y \in \mathbb{R} \} \right)$.
+* $\mathcal{F} =\{\{1, 2, 3\}, \emptyset, \{1\}\}$.
+* $\mathcal{F} =\{\mathbb{R}, \emptyset, (x, y], (-\infty,x]\cup(y, \infty)\}$.
+* $\mathcal{F} =\{\{1, 2, 3, 4, 5, 6\}. \emptyset, \{1, 3, 5\}, \{2, 4, 6\} \}$.
+* Seja $S=\{1, 2, 3, 4, 5, 6\}$. $\mathcal{F}=\{A \subset S \mid A \text{ é finito ou } A^c \text{ é finito} \}$.
+* Seja $(0,1)$. $\mathcal{F}=\{A \subset S \mid A \text{ é finito ou } A^c \text{ é finito} \}$.
+
+Solution
+========
+Answerlist
+----------
+* Falsa. Esta coleção não é uma $\sigma$-álgebra, pois $(x, y]^c = (-\infty,x]\cup(y, \infty) \not\in \mathcal{F}$ .
+* Correta.
+* Falsa. Esta coleção não é uma $\sigma$-álgebra, pois $\{1\}^c = \{2, 3\}$.
+* Correta.
+* Correta.
+* Falsa. Esta coleção não é uma $\sigma$-álgebra, pois $\{\frac{1}{n} \mid n \in \mathbb{N} \}^c \not\in \mathcal{F}$.
+
+Meta-information
+================
+exname: sigmaAlgebra
+extype: mchoice
+exsolution: 010110
+exshuffle: TRUE
