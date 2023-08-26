@@ -1,0 +1,544 @@
+---
+title: "ANOVA"
+output: bookdown::html_notebook2
+editor_options: 
+  chunk_output_type: console
+---
+
+## used packages
+
+```{r}
+library(openxlsx)
+library(readxl)
+library(writexl)
+library(latex2exp)
+library(xtable)
+library(measurements)
+library(tidyverse)
+
+```
+
+## Data from exercicio 11-5 (Monrgomery)
+
+```{r}
+dados <- tibble(Jogador = c(
+  'Philip Rivers',
+ 'Chad Pennington',
+ 'Kurt Warner',
+ 'Drew Brees',
+ 'Peyton Manning',
+ 'Aaron Rodgers',
+ 'Matt Schaub',
+ 'Tony Romo',
+ 'Jeff Garcia',
+ 'Matt Cassel',
+ 'Matt Ryan',
+ 'Shaun Hill',
+ 'Seneca Wallace',
+ 'Eli Manning',
+ 'Donovan McNabb',
+ 'Jay Cutler',
+ 'Trent Edwards',
+ 'Jake Delhomme',
+ 'Jason Campbell',
+ 'David Garrard',
+ 'Brett Favre',
+ 'Joe Flacco',
+ 'Kerry Collins',
+ 'Ben Roethlis-berger',
+  'Kyle Orton',
+ 'JaMarcus Russell',
+ 'Tyler Thigpen',
+ 'Gus Freotte',
+ 'Dan Orlovsky',
+ 'Marc Bulger',
+ 'Ryan Fitzpatrick',
+ 'Derek Anderson'
+), Time = c(
+  'SD',
+  'MIA',
+  'ARI',
+  'NO',
+  'IND',
+  'GB',
+  'HOU',
+  'DAL',
+  'TB',
+  'NE',
+  'ATL',
+  'SF',
+  'SEA',
+  'NYG',
+  'PHI',
+  'DEN',
+  'BUF',
+  'CAR',
+  'WAS',
+  'JAC',
+  'NYJ',
+  'BAL',
+  'TEN',
+  'PIT',
+  'CHI',
+  'OAK',
+  'KC',
+  'MIN',
+  'DET',
+  'STL',
+  'CIN',
+  'CLE'
+), `Jardas por tentativa` = c(
+   8.39,
+  7.67,
+  7.66,
+  7.98,
+  7.21,
+  7.53,
+  8.01,
+  7.66,
+  7.21,
+  7.16,
+  7.93,
+  7.10,
+  6.33,
+  6.76,
+  6.86,
+  7.35,
+  7.22,
+  7.94,
+  6.41,
+  6.77,
+  6.65,
+  6.94,
+  6.45,
+  7.04,
+  6.39,
+  6.58,
+  6.21,
+  7.17,
+  6.34,
+  6.18,
+  5.12,
+  5.71
+), `Pontos de classificação` = c(
+   105.5,
+ 97.4,
+ 96.9,
+ 96.2,
+ 95,
+ 93.8,
+ 92.7,
+ 91.4,
+ 90.2,
+ 89.4,
+ 87.7,
+ 87.5,
+ 87,
+ 86.4,
+ 86.4,
+ 86,
+ 85.4,
+ 84.7,
+ 84.3,
+ 81.7,
+ 81,
+ 80.3,
+ 80.2,
+ 80.1,
+ 79.6,
+ 77.1,
+ 76,
+ 73.7,
+ 72.6,
+ 71.4,
+ 70,
+ 66.5
+))
+
+dados %>% 
+  xtable(caption = "Dados NFL.", label = "tab:NFL",
+         digits = 2, align = rep("c", ncol(dados) + 1)) %>% 
+  print.xtable(booktabs = T, format.args = list(big.mark = ".", decimal.mark = ","),
+               include.rownames = F)
+```
+
+## Data from exercise 11-2 (Montgomery)
+
+```{r}
+dados <- tibble(`Preço de venda` = c(
+  25.9,
+ 29.5,
+ 27.9,
+ 25.9,
+ 29.9,
+ 29.9,
+ 30.9,
+ 28.9,
+ 35.9,
+ 31.5,
+ 31.0,
+ 30.9,
+  30.0,
+  36.9,
+  41.9,
+  40.5,
+  43.9,
+  37.5,
+  37.9,
+  44.5,
+  37.9,
+  38.9,
+  36.9,
+  45.8
+), IPTU = c(
+   4.9176,
+  5.0208,
+  4.5429,
+  4.5573,
+  5.0597,
+  3.8910,
+  5.8980,
+  5.6039,
+  5.8282,
+  5.3003,
+  6.2712,
+  5.9592,
+  5.0500,
+ 8.2464,
+ 6.6969,
+ 7.7841,
+ 9.0384,
+ 5.9894,
+ 7.5422,
+ 8.7951,
+ 6.0831,
+ 8.3607,
+ 8.1400,
+ 9.1416
+))
+
+dados %>% 
+  xtable(caption = "Preço e IPTU por metro quadrado de 24 em 1000.",
+         label = "tab:casa-iptu", digits = 4, align = rep("c", ncol(dados) + 1)) %>% 
+  print.xtable(booktabs = T, 
+               format.args = list(big.mark = ".", decimal.mark = ","),
+               include.rownames = F)
+```
+
+## Data for exercise 11-8 (Montgomery)
+
+```{r}
+dados <- tibble(Modelo = c(
+  '300C/SRT-8',
+ 'CARAVAN 2WD',
+ 'CROSSFIRE ROADSTER',
+'DAKOTA PICKUP 2WD',
+ 'DAKOTA PICKUP 4WD',
+ 'DURANGO 2WD',
+ 'GRAND CHEROKEE 2WD',
+'GRAND CHEROKEE 4WD',
+'LIBERTY/CHEROKEE 2WD',
+'LIBERTY/CHEROKEE 4WD',
+'NEON/SRT-4/SX 2.0',
+ 'PACIFICA 2WD',
+ 'PACIFICA AWD',
+ 'PT CRUISER',
+ 'RAM 1500 PICKUP 2WD',
+'RAM 1500 PICKUP 4WD',
+'SEBRING 4-DR',
+ 'STRATUS 4-DR',
+ 'TOWN & COUNTRY 2WD',
+'VIPER CONVERTIBLE',
+ 'WRANGLER/TJ 4WD'
+),`Cilindrada do motor cm3` = c(
+   215,
+  201,
+  196,
+  226,
+  226,
+  348,
+  226,
+  348,
+  148,
+  226,
+  122,
+  215,
+  215,
+  148,
+  500,
+  348,
+  165,
+  148,
+  148,
+  500,
+  148
+) %>% conv_unit("inch3", "cm3"), `Consumo km/l` = c(
+   30.8,
+ 32.5,
+ 35.4,
+ 28.1,
+ 24.4,
+ 24.1,
+ 28.5,
+ 24.2,
+ 32.8,
+ 28,
+ 41.3,
+ 30.0,
+ 28.2,
+ 34.1,
+ 18.7,
+ 20.3,
+ 35.1,
+ 37.9,
+ 33.8,
+ 25.9,
+ 26.4
+) * 0.425144)
+
+dados %>% 
+  xtable(caption = "dados de quilometragem da gasolina",
+         label = "tab:quilometragem", digits = 2, 
+         align = rep("c", ncol(dados) + 1)) %>% 
+  print.xtable(booktabs = T,
+               format.args = list(big.mark = ".", decimal.mark = ","),
+               include.rownames = F)
+
+
+```
+
+## Data from exercise 11-9 (Montgomery)
+
+```{r}
+m <- rbind(c(
+ 825,
+ 830,
+ 890,
+ 895,
+ 890,
+ 910,
+ 915,
+ 960,
+ 990,
+ 1010, 1012, 1030, 1050
+  ), c(
+   40,
+ 42,
+ 49,
+ 46,
+ 44,
+ 48,
+ 46,
+ 43,
+ 53,
+ 52,
+ 54,
+ 57,
+ 58
+))
+rownames(m) <- c("x", "y")
+
+m %>% 
+  xtable(caption = "Dados sobre uma máquina de produção de papel.",
+         label = "tab:prod-papel", digits = 0,
+         align = rep("c", ncol(m) + 1)) %>% 
+  print.xtable(booktabs = T,
+               format.args = list(big.mark = ".", decimal.mark = ","),
+               include.colnames = F)
+```
+
+## data from exercise 11-10 (Mongomery)
+
+```{r}
+m <- rbind(c(
+   60,
+ 63,
+ 65,
+ 70,
+ 70,
+ 70,
+ 80,
+ 90,
+ 80,
+ 80,
+ 85, 89, 90, 90,
+ 90,
+ 90,
+ 94, 100, 100, 100
+), c(
+   1,
+ 0,
+ 1,
+ 2,
+ 5,
+ 1,
+ 4,
+ 6,
+ 2,
+ 3,
+ 5,
+ 4,
+ 6,
+ 8,
+ 4,
+ 5,
+ 7,
+ 9,
+ 7,
+ 6
+))
+rownames(m) <- c("x", "y")
+
+m %>% 
+  xtable(caption = "Dados com exposição ao ruído e hipertensão",
+         label = "tab:ruido-hipertensao",
+         align = rep("c", ncol(m) + 1),
+         digits = 0) %>% 
+  print.xtable(booktabs = T,
+               format.args = list(big.mark = ".", decimal.mark = ","),
+               include.colnames = F)
+```
+
+## Data from exercise 11-11 (Montgomery)
+
+```{r}
+m <- rbind(c(
+   1.6,
+ 9.4,
+ 15.5, 20.0, 22.0,
+ 35.5,
+ 43.0,
+ 40.5,
+ 33.0
+), c(
+   240,
+ 181,
+ 193,
+ 155,
+ 172,
+110,
+ 113,
+ 75,
+ 94
+))
+rownames(m) <- c("x","y")
+
+m %>% 
+  xtable(caption = "Dados com $x:$ desgaste da peça de metal com (volume em 10^-4 milimetros cúbicos), e $y:$ viscosidade do óleo.",
+         label = "tab:viscosidade-desgaste",
+         align = rep("c", ncol(m) + 1),
+         digits = 1) %>% 
+  print.xtable(booktabs = T,
+               format.args = list(big.mark = ".", decimal.mark = ","),
+               include.colnames = F)
+```
+
+## data from exercise 11-13 (Montgomery)
+
+```{r}
+dados <- tibble(`Resistência ao cisalhamento $(y)$` = c(
+   2158.70,
+  1678.15,
+  2316.00,
+  2061.30,
+  2207.50,
+  1708.30,
+  1784.70,
+  2575.00,
+  2357.90,
+  2277.70,
+  2165.20,
+  2399.55,
+  1779.80,
+  2336.75,
+  1765.30,
+  2053.50,
+  2414.40,
+  2200.50,
+  2654.20,
+  1753.70
+), `Idade em semanas` = c(
+   15.50,
+ 23.75,
+ 8.00,
+ 17.00,
+ 5.00,
+ 19.00,
+ 24.00,
+ 2.50,
+ 7.50,
+ 11.00,
+ 13.00,
+ 3.75,
+ 25.00,
+ 9.75,
+ 22.00,
+ 18.00,
+ 6.00,
+ 12.50,
+ 2.00,
+ 21.50
+))
+
+dados %>% 
+  xtable(caption = "Resistência ao cisalhamento (psi) e Idade do propelente quando o motor é fundido.",
+         label = "tab:cisalhamento-propelente",
+         align = rep("c", ncol(dados) + 1),
+         digits = 2) %>% 
+  print.xtable(booktabs = T,
+               format.args = list(big.mark = ".", decimal.mark = ","),
+               include.rownames = F)
+```
+
+## data from exercise 11-14 (Montgomery)
+
+```{r}
+dados <- tibble(`Temperatura C` = c(
+  1100, 1200, 1300, 1100,
+ 1500,
+1200, 1300
+), `Porosidade (%)` = c(
+  30.8,
+ 19.2,
+ 6.0,
+ 13.5,
+ 11.4,
+7.7,
+ 3.6
+))
+
+dados %>% 
+  xtable(caption = "Dados para microestrutura para pó ultrafino de zircônia parcialmente estabilizada.",
+         label = "tab:zirconia",
+         align = rep("c", ncol(dados) + 1),
+         digits = 2) %>% 
+  print.xtable(booktabs = T,
+               format.args = list(big.mark = ".", decimal.mark = ","),
+               include.rownames = F)
+
+```
+
+## data from exercise 11-17 (Montgomery)
+
+```{r}
+x = c(1.0, 1.5, 1.5, 1.5, 2.5, 4.0, 5.0, 5.0, 7.0, 8.0, 8.5, 9.0, 9.5,
+9.5, 10.0, 12.0, 12.0, 13.0, 13.0, 14.5, 15.5, 15.5, 16.5,
+17.0, 22.5, 29.0, 31.5)
+y = c(
+   1.80, 1.85, 1.87, 1.77, 2.02, 2.27, 2.15, 2.26, 2.47, 2.19,
+2.26, 2.40, 2.39, 2.41, 2.50, 2.32, 2.32, 2.43, 2.47, 2.56,
+2.65, 2.47, 2.64, 2.56, 2.70, 2.72, 2.57
+)
+
+dados <- tibble(x, y)
+
+dados %>% 
+  xtable(caption = "Peso e tamanho de dugongos.",
+         label="tab:dugongos",
+         digits = 2,
+         align = rep("c", ncol(dados) + 1)) %>% 
+  print.xtable(booktabs = T, 
+               format.args = list(big.mark = ".", decimal.mark = ","),
+               include.rownames =F)
+```
+

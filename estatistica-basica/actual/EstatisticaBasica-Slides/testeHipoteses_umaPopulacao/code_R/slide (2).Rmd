@@ -1,0 +1,29 @@
+---
+title: "Untitled"
+output: 
+  beamer_presentation:
+    keep_tex: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## R Markdown
+
+```{r, echo = F}
+sd_pop <- 2
+alpha <- 0.01
+delta <- 4
+n <- 5
+```
+
+Vamos usar o `power.t.test`
+
+```{r, echo=T}
+power.t.test(n = 5, delta = 4, sd = 2, sig.level = 0.01, 
+             power = NULL, 
+             type = "one.sample", 
+             alternative = "two.sided")
+```
+

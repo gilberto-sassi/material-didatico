@@ -1,0 +1,304 @@
+\documentclass[12pt, a4paper]{article}
+
+%encoding
+%--------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%--------------------------------------
+
+%Portuguese-specific commands
+%--------------------------------------
+\usepackage[portuguese]{babel}
+%--------------------------------------
+
+
+%hyphenation
+\input{../../hyphen/hyphen.tex}
+
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{graphicx}
+
+\usepackage{geometry}
+\geometry{margin=0.35in}
+
+
+\begin{document}
+
+\begin{center}
+Universiadade Federal da Bahia\\
+Instituto de Matemática e Estatística\\
+Prof. Dr. Gilberto Pereira Sassi\\
+\vspace{1cm}
+Lista de exercícios -- probabilidade.
+\vspace{1cm}
+% $1^\circ$  Lista
+\end{center}
+
+\begin{enumerate}
+    \item Uma moeda viciada de modo que a probabilidade de sair cara é 4 vezes maior que a de sair coroa. Para 2 lançamentos 
+    independentes dessa moeda, determinar:
+    \begin{enumerate}
+     \item O espaço amostral.
+     \item A probabilidade de sair somente uma cara.
+     \item A probabilidade de sair pelo menos uma cara.
+     \item A probabilidade de dois resultados iguais.
+    \end{enumerate}
+
+
+    \item Uma universidade tem 10 mil alunos dos quais 4 mil são considerados esportistas. Temos, ainda, que 500 alunos são do
+    curso de biologia diurno, 700 de biologia noturno, 100 são esportistas e da biologia diurno e 200 são esportistas da biologia noturno. Um aluno é escolhido ao acaso e pergunta-se a probabilidade de:
+    \begin{enumerate}
+     \item Ser esportista.
+     \item Ser esportista e aluno da biologia noturno.
+     \item Não ser da biologia.
+     \item Ser esportista ou aluno da biologia.
+     \item Não ser esportista, nem aluno da biologia.
+    \end{enumerate}
+    
+    \item Sejam $A$ e $B$ dois eventos em um dado espaço amostral, tais que $P(A)=0,2$, $P(B)=p$, $P(A \cup B)=0,5$ e
+    $P(A \cap B)=0,1$. Determine o valor de $p$.
+    
+    \item Dois processadores tipo A e B são colocados em teste por 50 mil hora. A probabilidade de que um erro de cálculo aconteça em 
+    um processador do tipo A é $\frac{1}{30}$, no tipo B $\frac{1}{80}$ e, em ambos, $\frac{1}{1000}$. Qual a probabilidade de que:
+    \begin{enumerate}
+     \item Pelo menos um dos processadores tenha apresentado erro?
+     \item Nenhum processador tenha apresentado erro?
+     \item Apenas o processador A tenha apresentado erro?
+    \end{enumerate}
+
+\item Das pacientes de uma Clínica de Ginecologia com idade acima de 40 anos, $60\%$ são ou foram casadas e $40\%$ são solteiras. Sendo solteira, a probabilidade de ter distúrbio hormonal no último ano é de $10\%$, enquanto que para as demais essa probabilidade aumenta para $30\%$. Pergunta-se:
+\begin{enumerate}
+	\item Qual a probabilidade de uma paciente escolhida ao acaso ter tido um distúrbio hormonal?
+	\item Se a paciente sorteada tiver distúrbio hormonal, qual a probabilidade de ser solteira?
+	\item Se escolhermos duas pacientes ao acaso e com reposição, qual é a probabilidade de pelo menos uma ter o distúrbio?
+\end{enumerate}
+\item Numa certa população, a probabilidade de gostar de teatro é $\frac{1}{3}$, enquanto que a de gostar de cinema é $\frac{1}{2}$. Determine a probabilidade de gostar de teatro e não de cinema, nos seguintes casos:
+\begin{enumerate}
+	\item Gostar de teatro e de cinema são eventos disjuntos;
+	\item Gostar de teatro e de cinema são eventos independentes;
+	\item Todos que gostam de teatro gostam de cinema;
+	\item A probabilidade de gostar de teatro e cinema é $\frac{1}{8}$.
+\end{enumerate}
+
+\item Um médico desconfia que um paciente tem tumor no abdômen, pois isto ocorreu em $70\%$ dos casos similares que tratou. Se o paciente de fato tiver o tumor, o exame ultra-som detectará com probabilidade de 0,9. Entretanto, se ele não tiver o tumor, o exame pode, erroneamente, indicar que tem com probabilidade 0,1. Se o exame detectou um tumor, qual é a probabilidade do paciente tê-lo de fato?
+
+\item Verifique se as seguintes afirmações são válidas:
+\begin{enumerate}
+	\item Se $P(A)=\frac{1}{3}$ e $P(B \mid A) = \frac{3}{5}$, então $A$ e $B$ não podem ser disjuntos.
+	\item Se $P(A)=\frac{1}{2}$, $P(B \mid A)=1$ e $P(A \mid B)=\frac{1}{2}$, então $A$ não pode estar contido em $B$.
+\end{enumerate}
+
+\item Uma classe de estatística teve a seguinte distribuição de notas finais: 4 do sexo masculino e 6 do feminino foram reprovados, 8 do sexo masculino e 14 do feminino foram aprovados. Para um aluno sorteado dessa classe, denote por $M$ se o aluno for do sexo masculino e por $A$ se o aluno foi aprovado. Calcule:
+\begin{enumerate}
+	\item $P(A \cup M^c)$;
+	\item $P(A^c \cap M^c)$;
+	\item $P(A \mid M)$.
+\end{enumerate}
+
+\item Dois armários guardam as bolas de voleibol e basquete. O armário 1 tem 3 bolas de voleibol e 1 de basquete, enquanto 2 tem 3 bolas de voleibol e 2 de basquete. Escolhendo-se, ao acaso, um armário e, em sequida, um de suas bolsas, calcule a probabilidade dela ser:
+\begin{enumerate}
+	\item De voleibol, sabendo-se que o armário 1 foi escolhido;
+	\item De basquete, sabendo-se que o armário 2 foir escolhido;
+	\item De basquete.
+\end{enumerate}
+
+%\item Das pacientes de uma Clínica Ginecologia com idade acima de 40 anos, 60\% são ou foram casadas são casadas e 40\% são solteiras. Sendo solteira, a probabilidade de ter tido um distúrbio hormonal no último ano é de 10\%, enquanto que para as demais essa probabilidade aumenta para 30\%. Pergunta-se:
+%\begin{enumerate}
+%	\item Qual a probabilidade de uma paciente escolhida ao acaso ter tido um distúrbio hormonal?
+%	\item Se a paciente sorteada fiver distúrbio hormonal, qual a probabilidade de ser solteira?
+%	\item Se escolhermos duas pacientes ao acaso e com reprosição, qual a probabilidade de pelo menos uma ter o distúrbio?
+%\end{enumerate}
+
+\item Você entrega a seu amigo uma carta, destinada à sua namorada, para ser colocada no correio. Entretando, ele pode se esquecer com probabilidade 0,1. Se não se esquecer, a probabilidade de que o correio estravie a carta é de 0,1. Finalmente, se foi enviada pelo correio a probabilidade de que a namorada não a receba é 0,1. Sua namorada recebeu a carta, qual a probabilidade de seu amigo ter esquecido de colacá-la no correio.
+
+%\item Um médico desconfia que um paciente tem tumor no abdômen, pois isto ocorreu em 70\% dos casos similares que tratou. Se o paciente de fato tiver o tumor, o exame ultra-som o decterá com probabilidade 0,9. Entretanto, se ele não tiver o tumor, o exame pode, erroneamente, indicar que tem com probabilidade 0,1. Se o exame detectou um tumor, qual é a probabilidade do paciente tê-lo de fato?
+
+\item Três fábricas fornecem equipamentos de precisão para o laboratório de química de uma universidade. Apesar de serem aparelhos de precisão, existe uma pequena chance de subestimação ou superestimação das medidas efetuadas. A tabela~\ref{tab:fab} a seguir apresenta o comportamento do equipamento produzido em cada fábrica:
+\begin{table}[htbp]
+	\centering
+	\caption{Probabilidades para cada fábrica.}
+	\label{tab:fab}
+	\begin{tabular}{l|ccc}
+		\toprule[0.05cm]
+		& \multicolumn{3}{|c}{Probabilidade}\\ \cmidrule[0.025cm]{2-4}
+		& Subestima & Exata & Superestima \\ \midrule[0.05cm]
+		Fábrica I & 0,01 & 0,98 & 0,01 \\
+		Fábrica II & 0,005 & 0,98 & 0,015 \\
+		Fábrica III & 0,00 & 0,99 & 0,01 \\ \bottomrule[0.05cm]
+	\end{tabular}
+\end{table}
+As fábricas I, II, III fornecem, respectivamente, 20\%, 30\% e 50\% dos aparelhos utilizados. Escolhemos, ao acaso, um desses aparelhos e perguntamos qual é a probabilidade de:
+\begin{enumerate}
+	\item Haver superestimação de medidas?
+	\item Não haver subestimação de medidas?
+	\item Dando medidas exatas, ter sido fabricado em III?
+	\item Ter sido produzido por I, dado que não subestima as medidas?
+\end{enumerate}
+
+\item A aplicação de fundo anticorrosivo em chapas de aço de $1m^2$ é feita mecanicamente e pode produzir defeitos (pequenas bolhas na pintura), de acordo com uma variável aleatória Poisson de parâmetro $\lambda=1$ por $m^2$. Uma chapa é sorteada ao acaso para ser inspecionada, pergunta-se a probabilidade de:
+\begin{enumerate}
+	\item Encontrarmos pelo menos um defeito;
+	\item No máximo 2 defeitos serem encontrados;
+	\item Encontrarmos de 2 a 4 defeitos;
+	\item Não mais de 1 defeito ser encontrado.
+\end{enumerate}
+
+\item Uma variável aleatória discreta $X$ tem a seguinte função de distribuição acumulada:
+\begin{align*}
+F(x) = \begin{cases}
+0 & \mbox{ se } x < -1,\\
+0,2 & \mbox{ se } -1 \leq x < 2,\\
+0,5 & \mbox{ se } 2 \leq x < 5,\\
+0,7 & \mbox{ se } 5 \leq x < 6,\\
+0,9 & \mbox{ se } 6 \leq x < 15,\\
+1 & \mbox{ se } x \geq 15.
+\end{cases}
+\end{align*}
+Determine:
+\begin{itemize}
+	\item A função de probabilidade de $X$;
+	\item $P(X \leq -2)$;
+	\item $P(X < 2)$;
+	\item $P(3 \leq X \leq 12)$ ;
+	\item $P(X  > 14)$.
+\end{itemize}
+
+\item Um time paulista de futebol tem probabilidade 0,92 de vitória sempre que joga. Se o time atuar 4 vezes, determine a probabilidade de que vença:
+\begin{enumerate}
+	\item Todas as 4 partidas;
+	\item Exatamente 2 partidas;
+	\item Pelo menos uma partida;
+	\item No máximo 3 partidas.
+\end{enumerate}
+
+\item Um vacina contra a gripe é eficiente em 70\% dos casos. Sorteamos, ao acaso, 20 dos pacientes vacinados e pergunta-se a probabilidade de obter:
+\begin{enumerate}
+	\item Pelo menos 18 imunizados;
+	\item No máximo 4 imunizados;
+	\item Não mais do que 3 não imunizados.
+\end{enumerate}
+
+\item A resistência (em toneladas) de vigas de concreto produzidas por uma empresa, comporta-se conforme a função de probabilidade tabela~\ref{tab:res}.
+\begin{table}[!htbp]
+	\centering
+	\caption{Função de probabilidade}
+	\label{tab:res}
+	\begin{tabular}{l|ccccc}
+		\toprule[0.05cm]
+		Resistência & 2 & 3 & 4 & 5 & 6 \\ \midrule[0.05cm]
+		$p_i$ & 0,1 & 0,1 & 0,4 & 0,2 & 0,2 \\ \bottomrule[0.05cm]
+	\end{tabular}
+\end{table}
+Admita que essas vigas são aprovadas para uso em contratações se suportam pelo menos 3 toneladas. De uma grande lote fabricado pela empresa, escolhemos 15 vigas ao acaso. Qual será a probabilidade de:
+\begin{enumerate}
+	\item Todas serem aptas para construções?
+	\item No mínimo 13 serem aptas?
+\end{enumerate}
+
+\item As pacientes diagnosticadas com câncer de mama precocemente têm 80\% de probabilidade de serem completamente curadas. Para um grupo de 12 pacientes nessas condições, calcule a probabilidade de:
+\begin{enumerate}
+	\item Oito ficarem completamente curadas;
+	\item Não serem curadas de 3 a 5 pacientes;
+	\item Não mais de 2 permancerem com a doença.
+\end{enumerate}
+
+\item Uma indústria de tintas recebe pedidos de seus vendedores através de fax, telefone e Internet. O número de pedidos que chegam por qualquer meio (no horário comercial) é uma variável aleatória discreta com distribuição Poisson com taxa de 5 pedidos por hora.
+\begin{enumerate}
+	\item Calcule a probabilidade de mais de 2 pedidos por hora;
+	\item Em um dia de trabalho (8 horas), qual seria a probabilidade de haver 50 pedidos?
+	\item Não haver nenhum pedido, em um dia de trabalho, é um evento raro?
+\end{enumerate}
+
+\item No estudo do desempenho de uma central de computação, o acesso à Unidade Central de Processamento é assumido ser Poisson com 4 requisições por segundo. Essas requisições podem ser de várias naturezas tais como: imprimir um arquivo, efetuar um certo cálculo ou enviar uma mensagem pela Internet, entre outras. Escolhendo-se ao acaso um intervalo de 1 segundo, qual é a probabilidade de haver mais de 2 acessos à CPU? E do número de acessos não ultrapassar 5?
+
+\item O tempo adequado de troca do conjunto de amortecedores de certa marca em automóveis, sujeitos a uso contínuo e severo, pode ser considerado como uma variável contínua, medida em anos. Suponha que a função densidade é dada pela seguinte expressão:
+\begin{align*}
+f(x) = \begin{cases}
+\dfrac{x}{4} & 0 \leq x \leq 2;\\
+\dfrac{1}{8} & 2 < x \leq 6;\\
+0 & \mbox{caso contrário}.
+\end{cases}
+\end{align*}
+\begin{enumerate}
+	\item Verifique que a função acima é, de fato, uma densidade;
+	\item Qual é a probabilidae de um automóvel, sujeito às condições descritas acima, necessitar de troca de amortecedores antes de 1 ano de uso? E entre 1 e 3 anos?
+\end{enumerate}
+
+
+\item Suponha que o peso de recém-nascidos (em kg) pode ser considerado uma variável aleatória com a seguinte densidade:
+\begin{align*}
+f(x) = \begin{cases}
+\dfrac{x+1}{10} & 0 \leq x \leq 2;\\
+\dfrac{-3\cdot x + 18}{40} & 2 < x \leq 6;\\
+0 & \mbox{caso contrário}.
+\end{cases}
+\end{align*}
+Qual a probabilidade de, escolhendo ao acaso uma criança, ela ter peso:
+\begin{enumerate}
+	\item Inferior a 3 kg?
+	\item Entre 1 e 4 kg?
+	\item Pelo menos 3 kg?
+\end{enumerate}
+
+\item O tempo de corrosão, em anos, de uma certa peça metálica é uma variável aleatória contínua com função de  densidade:
+\begin{align*}
+f(x) = \begin{cases}
+a \cdot x & 0 \leq x \leq 1;\\
+a  & 1 \leq x \leq 2;\\
+-a\cdot x + 3 \cdot a & 2 < x \leq 3;\\
+0 & \mbox{caso contrário}.
+\end{cases}
+\end{align*}
+\begin{enumerate}
+	\item Calcule a constante $a$;
+	\item Uma peça é considerada como tendo boa resistência à corrosão se dura mais que 1,5 anos. Em um lote de 3 peças, qual a probabilidade de termos exatamente 1 delas com boa resistência?
+\end{enumerate}
+
+\item Dois amigos planejam um encontro entre 20 e 21 horas. Um deles é pontual e pretende chegar às 20:30 horas e esperar exatos 15 minutos. O outro é mais imprevisível e poderá chegar em qualquer momento do intervalo incialmente previsto, saindo imediatamente se não encontrar o amigo. Qual é a probabilidade de eles se encontrarem? Qual é a probabilidade de eles não se encontrarem por um lapso de no máximo 5 minutos?
+
+\item O tempo, em minutos, de utilização de uma caixa eletrônico por clientes de um certo banco, foi modelado por uma variável aleatória contínua $T$ com modelo exponencial com taxa de decaimento $\alpha=3$. Determine:
+\begin{enumerate}
+	\item $P(T < 1)$;
+	\item $P(T > 1 \mid T \leq 2)$;
+	\item Um número $a$ tal que $P(T \leq a) = 0,4$.
+\end{enumerate}
+
+\item Seja $X \sim N(5,4)$. Determine:
+\begin{enumerate}
+	\item $P(X \leq 6)$;
+	\item $P(7 < X < 8)$;
+	\item $P(2 \leq X < 5)$;
+	\item $P(-1 \leq X \leq 2)$;
+	\item $P(X \leq -1)$;
+	\item $P(-2 \leq X \leq -1)$.
+\end{enumerate}
+
+\item Um teste de aptidão feito por pilotos de aeronaves em treinamento inicial requer que uma série de operações seja realizada em um rápida sucessão. Suponha que o tempo necessário para completar o teste seja distribuído de acordo com uma Normal com média 90 minutos e desvio padrão de 20 minutos.
+\begin{enumerate}
+	\item Para passar no teste, o candidato deve completá-lo em menos de 80 minutos. Se 65 candidatos fazem o teste, quantos são esperados passar?
+	\item Se os 5\% melhores candidatos são alocados para aeronaves maiores, quão rápido deve ser o candidato para que obtenha essa posição?
+\end{enumerate}
+
+\item Com base em experiências anteriores, a Companhia Telefônica sabe que 10\% das contas dos seus clientes em uma comunidade são pagas com atraso. Para os itens abaixo, use a aproximação da variável aleatória contínua Normal.
+\begin{enumerate}
+	\item Se 20 contas são enviadas em um dia de pela Companhia Telefônica, qual é a probabilidade de que menos do que 3 sejam pagas com atraso?
+	\item Se 150 contas são enviadas mensalmente para a comunidade, encontre a probabilidade de que 17 ou mais sejam pagas com atraso.
+\end{enumerate}
+
+\item A durabilidade de um tipo de pneu da marca \textit{Rodabem} é descrita por uma variável aleatória contínua Normal de média 60.000 km e desvio padrão 8.300 km. 
+\begin{enumerate}
+	\item Se a \textit{Rodabem} garante os pneus pelos primeiros 48.000 km, qual a proporção de pneus que deverão ser trocados pela garantia?
+	\item Qual deveria ser a garantia com a proporção do item (a), se a garantia fosse para os primeiros 45.000 km?
+	\item Qual deveria ser a garantia (em km) de tal forma a assegurar que o fabricante trocaria sob garantia no máximo 2\% dos pneus?
+	\item Se você comprar 4 pneus \textit{Rodabem}, qual será a probabilidade de que você utilizaria a garantia (45.000 km ) para trocar um ou mais desses pneus?
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

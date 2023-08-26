@@ -1,0 +1,554 @@
+\documentclass[12pt, a4paper]{article}
+
+%encoding
+%--------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%--------------------------------------
+
+%Portuguese-specific commands
+%--------------------------------------
+\usepackage[portuguese]{babel}
+%--------------------------------------
+
+
+%hyphenation
+\input{../../hyphen/hyphen.tex}
+
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{graphicx}
+
+\usepackage{geometry}
+\geometry{margin=0.25in, bottom = 0.45in, top = 0.25in}
+
+\DeclareMathOperator {\vari}{Var}
+\DeclareMathOperator {\espe}{E}
+
+\begin{document}
+
+\begin{center}
+Universiadade Federal da Bahia\\
+Instituto de Matemática e Estatística\\
+Prof. Dr. Gilberto Pereira Sassi\\
+\vspace{1cm}
+Lista de exercícios -- Regressão linear simples.
+\vspace{1cm}
+\end{center}
+
+\begin{enumerate}
+	\item[] Em alguns casos desta lista de exercícios, você vai precisar alguma ferramenta computacional como o \texttt{R}, \texttt{Python} e afins.
+	
+	\item Diabete e obesidade são condições sérias que acometem uma proporção grande da população mundial. Uma forma de medir a quantidade de gordura corporal é monitorar o peso, mas medir precisamente a quantidade de gordura corporal envolve o uso de equipamentos sofisticados de Raio-X. Em vez de medir a quantidade de gordura corporal, poderíamos usar o Índice de Massa Corporal (BMI) para aproximar a quantidade de gordura corporal. Em um estudo com 250 homens na Universidade Brigham Young, o BMI e gordura corporal foi mensurado para cada homem. Algumas informações do experimento estão na Tabela~\ref{tab:bmi-fat}.
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{ccccc}
+			\toprule[0.05cm]
+			$S_x =   6322,28 $ & $S_{x^2} = 162674,18$ & $S_y =  4757,90 $ & $S_{y^2} =  107679,27$ & $S_{x \cdot y} =125471,10$\\
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Algumas informações do experimento.}
+		\label{tab:bmi-fat}
+	\end{table}
+	\begin{enumerate}
+		\item Calcule as estimativas para o intercepto $a$ e para a inclinação $b$.
+		\item Usando a equação do item $(a)$, qual seria a gordura corporal de um homem com $BMI=30$.
+		\item Estime $\sigma^2$.
+		\item Calcule a variância de $\hat{a}$.
+		\item Calcule a variância de $\hat{b}$.
+		\item Podemos rejeitar $H_0: b =0$ ao nível de significância $\alpha  = 5\%$? Calcule o valor-p.
+		\item Construa um intervalo de confiança para o intercepto com coeficiente de confiança $\gamma=95\%$.
+		\item Construa um intervalo de confiança para a inclinação com coeficiente de confiança $\gamma=99\%$.
+		\item Encontre o intervalo de confiança para a predição da gordura corporal quando $BMI=25$ com coeficiente de confiança $\gamma=95\%$. 
+		\item Calcule $R^2$ e interprete.
+		\item Qual o incremento médio na gordura corporal ao aumentarmos em uma unidade o BMI?
+	\end{enumerate}
+
+	\item Um estudo tem o objetivo de analisar a força compressiva $(x)$ e a permeabilidade intrínseca $(y)$ de várias misturas e curas de concreto. Algumas informações do experimento estão na Tabela~\ref{tab:concreto-permeabilidade}. 
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{cccccc}
+			\toprule[0.05cm]
+			$n=14$ & $S_y = 572$ & $S_{y^2}=23.530$ & $S_x = 43$ & $S_{x^2} = 157,42$ & $S_{x\cdot y} = 1697,80$\\
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Algumas informações do experimento.}
+		\label{tab:concreto-permeabilidade}
+	\end{table}
+	\begin{enumerate}
+		\item Calcule as estimativas do intercepto e inclinação.
+		\item Estime $\sigma^2$.
+		\item Usando a equação do item $(a)$, qual seria a permeabilidade de uma mistura com força compressiva $x= 4,3$.
+		\item Rejeitamos $H_0: b = 0$ ao nível de significância $\alpha=5\%$? Calcule o valor-p.
+		\item Calcule $\vari\left(\hat{a}\right)$ e $\vari\left(\hat{b}\right)$ para este modelo.
+		\item Construa um intervalo de confiança para $a$ e $b$ com coeficiente de confiança $\gamma=95\%$.
+		\item Qual a permeabilidade média, se $x=2,5$?
+		\item Encontre o intervalo para a predição de $y_0$ quando $x=2,5$. Interprete esse intervalo.
+		\item Calcule o $R^2$ e interprete.
+		\item Qual é o aumento na permeabilidade  intrínseca $(y)$ se aumentarmos em uma unidade a força compressiva?
+	\end{enumerate}	
+
+	\item Métodos de regressão foram usados pra analisar a relação entre temperatura da superfície da pista $(x)$ e a deflexão do pavimento $(y)$. Algumas informações deste estudo estão na Tabela~\ref{tab:deflexao}.
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{cccccc}
+			\toprule[0.05cm]
+			$n=20$ & $S_y = 12,75$ & $S_{y^2}=  8,86$ & $S_x =  1478$ & $S_{x^2} = 143.215,8$ & $S_{xy} = 1083,67$ \\
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Alguns sumários do estudos.}
+		\label{tab:deflexao}
+	\end{table}
+	\begin{enumerate}
+		\item Estime $a$ e $b$.
+		\item Estime $\sigma^2$.
+		\item Qual a deflexão média do pavimento se a temperatura da superfície da pista é $x = 85^\circ F$.
+		\item Qual a mudança na deflexão do pavimento se a temperatura da superfície da pista aumenta em $1^\circ F$?
+		\item Podemos rejeitar $H_0: b=0$ ao nível de significância $\alpha=5\%$? Calcule o valor-p.
+		\item Calcule $\vari\left(\hat{a}\right)$ e $\vari\left(\hat{b}\right)$.
+		\item Construa um intervalo de confiança para o intercepto $a$ e inclinação $b$ com coeficiente de confiança $\gamma=99\%$.
+		\item Construa um intervalo de confiança para a predição da deflexão do pavimento se a temperatura de superfície da pista é $x= 85^\circ F$. Use $\gamma=99\%$.
+	\end{enumerate} 
+
+	\item A Tabela~\ref{tab:NFL} mostra dados sobre a classificação dos jogadores \textit{quaterback} para a liga de futebol americano NFL em 2008. Acredita-se que a classificação $(y)$ está associada ao número de jardas por tentativa $(x)$.
+	\begin{table}[htbp]
+		\centering
+		\scalebox{0.5}{
+		\begin{tabular}{l|c|c|c}
+			\toprule[0.05cm]
+			Jogador & Time & Jardas por tentativa $(x)$ & Pontos de classificação $(y)$ \\ 
+			\midrule[0.025cm]
+			Philip Rivers & SD & 8,39 & 105,50 \\ 
+			Chad Pennington & MIA & 7,67 & 97,40 \\ 
+			Kurt Warner & ARI & 7,66 & 96,90 \\ 
+			Drew Brees & NO & 7,98 & 96,20 \\ 
+			Peyton Manning & IND & 7,21 & 95,00 \\ 
+			Aaron Rodgers & GB & 7,53 & 93,80 \\ 
+			Matt Schaub & HOU & 8,01 & 92,70 \\ 
+			Tony Romo & DAL & 7,66 & 91,40 \\ 
+			Jeff Garcia & TB & 7,21 & 90,20 \\ 
+			Matt Cassel & NE & 7,16 & 89,40 \\ 
+			Matt Ryan & ATL & 7,93 & 87,70 \\ 
+			Shaun Hill & SF & 7,10 & 87,50 \\ 
+			Seneca Wallace & SEA & 6,33 & 87,00 \\ 
+			Eli Manning & NYG & 6,76 & 86,40 \\ 
+			Donovan McNabb & PHI & 6,86 & 86,40 \\ 
+			Jay Cutler & DEN & 7,35 & 86,00 \\ 
+			Trent Edwards & BUF & 7,22 & 85,40 \\ 
+			Jake Delhomme & CAR & 7,94 & 84,70 \\ 
+			Jason Campbell & WAS & 6,41 & 84,30 \\ 
+			David Garrard & JAC & 6,77 & 81,70 \\ 
+			Brett Favre & NYJ & 6,65 & 81,00 \\ 
+			Joe Flacco & BAL & 6,94 & 80,30 \\ 
+			Kerry Collins & TEN & 6,45 & 80,20 \\ 
+			Ben Roethlis-berger & PIT & 7,04 & 80,10 \\ 
+			Kyle Orton & CHI & 6,39 & 79,60 \\ 
+			JaMarcus Russell & OAK & 6,58 & 77,10 \\ 
+			Tyler Thigpen & KC & 6,21 & 76,00 \\ 
+			Gus Freotte & MIN & 7,17 & 73,70 \\ 
+			Dan Orlovsky & DET & 6,34 & 72,60 \\ 
+			Marc Bulger & STL & 6,18 & 71,40 \\ 
+			Ryan Fitzpatrick & CIN & 5,12 & 70,00 \\ 
+			Derek Anderson & CLE & 5,71 & 66,50 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		}
+		\caption{Dados NFL.} 
+		\label{tab:NFL}
+	\end{table}
+	\begin{enumerate}
+		\item Estime o intercepto e a inclinação em uma regressão linear simples.
+		\item Estime $\sigma^2$.
+		\item Qual seria a classificação do jogador se o número de jardas por tentativa é $x=7,5$.
+		\item Qual o incremente médio na classificação do jogador para cada incremento em uma unidade no número de jardas por tentativa.
+		\item Rejeitamos $H_0: b = 0$ ao nível de significância $\alpha=1\%$? Calcule o valor-p.
+		\item Estime $\vari\left(\hat{a}\right)$ e $\vari\left(\hat{b}\right)$.
+		\item Decida entre as hipóteses: $H_0: b = 10$ e $H_1; b \neq 10$. Use $\alpha=5\%$. Calcule o valor-p. 
+		\item Construa um intervalo de confiança para $a$ e $b$ com coeficiente de confiança $\gamma=95\%$.
+		\item Qual a classificação média para número de jardas por tentativa é $x=8$?
+		\item Construa um intervalo de confiança para a predição da classificação quando o número de jardas por tentativa é  $x=8$ ?
+		\item Calcule o $R^2$ e interprete.
+		\item Construa o gráfico de probabilidade normal para os resíduos. Podemos assumir a normalidade na regressão linear simples?
+		\item Desenhe o gráfico de dispersão entre $x$ e o resíduo. Podemos assumir a linearidade entre $y$ e $x$?
+	\end{enumerate}
+
+	\item A Tabela~\ref{tab:casa-iptu} apresenta os dados com o preço de venda e o IPTU para 24 casas.
+	\begin{table}[ht]
+		\centering
+		\scalebox{0.5}{
+		\begin{tabular}{c|c}
+			\toprule[0.05cm]
+			Preço de venda & IPTU \\ 
+			\midrule[0.025cm]
+			25,9000 & 4,9176 \\ 
+			29,5000 & 5,0208 \\ 
+			27,9000 & 4,5429 \\ 
+			25,9000 & 4,5573 \\ 
+			29,9000 & 5,0597 \\ 
+			29,9000 & 3,8910 \\ 
+			30,9000 & 5,8980 \\ 
+			28,9000 & 5,6039 \\ 
+			35,9000 & 5,8282 \\ 
+			31,5000 & 5,3003 \\ 
+			31,0000 & 6,2712 \\ 
+			30,9000 & 5,9592 \\ 
+			30,0000 & 5,0500 \\ 
+			36,9000 & 8,2464 \\ 
+			41,9000 & 6,6969 \\ 
+			40,5000 & 7,7841 \\ 
+			43,9000 & 9,0384 \\ 
+			37,5000 & 5,9894 \\ 
+			37,9000 & 7,5422 \\ 
+			44,5000 & 8,7951 \\ 
+			37,9000 & 6,0831 \\ 
+			38,9000 & 8,3607 \\ 
+			36,9000 & 8,1400 \\ 
+			45,8000 & 9,1416 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		}
+		\caption{Preço e IPTU por metro quadrado de 24 casa em 1000 reais.} 
+		\label{tab:casa-iptu}
+	\end{table}
+	\begin{enumerate}
+		\item Assuma que a regressão linear simples é adequada para os dados da Tabela~\ref{tab:casa-iptu}. Estime os coeficientes da regressão linear simples entre o preço de venda $(y)$ e o iptu $(x)$.
+		\item Qual o preço médio de uma casa se o IPTU é $x=7,5$.
+		\item Análise os resíduos para checar a qualidade do ajuste.
+		\item Rejeitamos $H_0: b = 0$ ao nível de significância $\alpha=5\%$? Use o teste-$t$ e calcule o valor-p.
+		\item Rejeitamos $H_0: b = 0$ ao nível de significância $\alpha=5\%$? Use ANOVA e calcule o valor-p.
+		\item Estime $\vari\left(\hat{a}\right)$  e $\vari\left(\hat{b}\right)$.
+		\item Teste a hipótese $H_0: a = 0$. Use $\alpha = 1\%$. Calcule o valor-p.
+		\item Construa um intervalo de confiança para $a$ e $b$ com coeficiente de confiança $\gamma=95\%$.
+		\item Construa um intervalo de confiança para a predição de $y_0$ se $x=7,5$ com coeficiente de confiança $\gamma=99\%$.
+		\item Calcule o $R^2$ e interprete.
+	\end{enumerate}
+
+	\item A Tabela~\ref{tab:quilometragem} apresenta dados de quilometragem e as cilindradas para veículos da DaimlerChrysler para o modelo de 2005.
+	\begin{table}[ht]
+		\centering
+		\scalebox{0.5}{
+		\begin{tabular}{l|c|c}
+			\toprule[0.05cm]
+			Modelo & Cilindrada do motor $cm^3$ & Consumo $km/l$ \\ 
+			\midrule[0.025cm]
+			300C/SRT-8 & 3.523,22 & 13,09 \\ 
+			CARAVAN 2WD & 3.293,80 & 13,82 \\ 
+			CROSSFIRE ROADSTER & 3.211,86 & 15,05 \\ 
+			DAKOTA PICKUP 2WD & 3.703,48 & 11,95 \\ 
+			DAKOTA PICKUP 4WD & 3.703,48 & 10,37 \\ 
+			DURANGO 2WD & 5.702,70 & 10,25 \\ 
+			GRAND CHEROKEE 2WD & 3.703,48 & 12,12 \\ 
+			GRAND CHEROKEE 4WD & 5.702,70 & 10,29 \\ 
+			LIBERTY/CHEROKEE 2WD & 2.425,29 & 13,94 \\ 
+			LIBERTY/CHEROKEE 4WD & 3.703,48 & 11,90 \\ 
+			NEON/SRT-4/SX 2.0 & 1.999,22 & 17,56 \\ 
+			PACIFICA 2WD & 3.523,22 & 12,75 \\ 
+			PACIFICA AWD & 3.523,22 & 11,99 \\ 
+			PT CRUISER & 2.425,29 & 14,50 \\ 
+			RAM 1500 PICKUP 2WD & 8.193,53 & 7,95 \\ 
+			RAM 1500 PICKUP 4WD & 5.702,70 & 8,63 \\ 
+			SEBRING 4-DR & 2.703,87 & 14,92 \\ 
+			STRATUS 4-DR & 2.425,29 & 16,11 \\ 
+			TOWN \& COUNTRY 2WD & 2.425,29 & 14,37 \\ 
+			VIPER CONVERTIBLE & 8.193,53 & 11,01 \\ 
+			WRANGLER/TJ 4WD & 2.425,29 & 11,22 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		}
+		\caption{dados de quilometragem da gasolina} 
+		\label{tab:quilometragem}
+	\end{table}
+	\begin{enumerate}
+		\item Ajuste um modelo de regressão linear simples relacionando a quilometragem de gasolina e a cilindrada dos veículos.
+		\item Encontre a estimativa média da quilometragem para um carro com $x=2458,06 cm^3$ cilindradas.
+		\item Teste a significância da regressão ao nível de significância $\alpha=5\%$. Calcule o valor-p.
+		\item Estime o erro padrão do intercepto e inclinação.
+		\item Decida entre as hipóteses: $H_0: b \geq -0,05$ e $H_1: b < -0,05$. Use $\alpha=1\%$. Calcule o valor-p.
+		\item Teste as hipóteses $H_0:a=0$ e $H_1: a \neq 0$ usando $\alpha=1\%$. Calcule o valor-p. 
+		\item Construa um intervalo de confiança para o intercepto e inclinação com o coeficiente de confiança $\gamma=95\%$.
+		\item Construa um intervalo de confiança para a predição de $y_0$ se $x=2458,06 cm^3$ com coeficiente de confiança $\gamma=99\%$.
+		\item Qual a variabilidade total da quilometragem é explicada pelas cilindradas?
+		\item Análise os resíduos para checar as suposições da regressão linear simples.
+	\end{enumerate}
+
+	\item Na Tabela~\ref{tab:prod-papel}, apresentamos dados sobre a produção de papel em que 
+	\begin{description}
+		\item[y:] concentração de licor verde $(Na_2S)$ -- gramas por litro;
+		\item[x:] produção da máquina de papel -- toneladas por dia.
+	\end{description}
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{c|ccccccccccccc}
+			\toprule[0.05cm]
+			x & 825 & 830 & 890 & 895 & 890 & 910 & 915 & 960 & 990 & 1.010 & 1.012 & 1.030 & 1.050 \\ \midrule[0.025cm]
+			y & 40 & 42 & 49 & 46 & 44 & 48 & 46 & 43 & 53 & 52 & 54 & 57 & 58 \\  
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Dados sobre uma máquina de produção de papel.} 
+		\label{tab:prod-papel}
+	\end{table}
+	\begin{enumerate}
+		\item Ajuste um modelo de regressão linear simples para os dados na Tabela~\ref{tab:prod-papel}.
+		\item Estime $\sigma^2$.
+		\item Construa um diagrama de dispersão para $x$ e $y$, e desenha a reta ajustada pelo item $(a)$.
+		\item Estime a concentração média de licor verde se a produção da máquina da papel é $x=950$ toneladas por dia.
+		\item Teste a significância da regressão usando $\alpha=5\%$. Calcule o valor-p.
+		\item Estime $\vari\left(\hat{a}\right)$ e $\vari\left(\hat{b}\right)$.
+		\item Decida entre as hipóteses $H_0: a = 0$ e $H_1: a \neq 0$ usando $\alpha=5\%$. Calcule o valor-p.
+		\item Construa um intervalo de confiança para o intercepto e a inclinação com coeficiente de confiança $\gamma=95\%$.
+		\item Construa um intervalo de predição para $y_0$ se $x=950$ com coeficiente de confiança $\gamma=99\%$.
+		\item Calcule $R^2$ e interprete.
+		\item Analise o resíduos para checar as suposições da regressão linear simples.
+	\end{enumerate}
+
+	\item Um estudo tem o objetivo de analisar a relação entre exposição à ruído e hipertensão. Os dados estão na Tabela~\ref{tab:ruido-hipertensao}.
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{c|cccccccccccccccccccc}
+			\toprule[0.05cm]
+			x & 60 & 63 & 65 & 70 & 70 & 70 & 80 & 90 & 80 & 80 & 85 & 89 & 90 & 90 & 90 & 90 & 94 & 100 & 100 & 100 \\ \midrule[0.025cm]
+			y & 1 & 0 & 1 & 2 & 5 & 1 & 4 & 6 & 2 & 3 & 5 & 4 & 6 & 8 & 4 & 5 & 7 & 9 & 7 & 6 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Dados com exposição ao ruído e hipertensão} 
+		\label{tab:ruido-hipertensao}
+	\end{table}
+	\begin{enumerate}
+		\item Construa um gráfico de dispersão entre $y$, aumento na pressão sanguínea em milímetros de mercúrio, e $x$, pressão sonora em decibéis. Este gráfico indica que podemos usar regressão linear simples?
+		\item Ajuste um modelo de regressão linear simples.
+		\item Estime $\sigma^2$.
+		\item Qual o aumento na pressão média sanguínea associada com a pressão sonora $x=85$ decibéis.
+		\item Estime $\vari(\hat{a})$ e $\vari(\hat{b})$.
+		\item Esta regressão é significativa usando $\alpha=5\%$. Calcule o valor-p.
+		\item Teste $H_0: a = 0$ e $H_1: a \neq 0$ usando $\alpha = 5\%$. Calcule o valor-p.
+		\item Construa um intervalo de confiança para o intercepto e a inclinação com coeficiente de confiança $\gamma=95\%$.
+		\item Encontra um intervalo de confiança para predição do aumento na pressão sanguínea se a exposição ao ruído é $x=85$ decibéis com coeficiente de confiança $\gamma=99\%$.
+		\item Qual a porcentagem da variância total do aumento da pressão sanguínea é devida pela exposição ao ruído?
+		\item Analise o ruído para checar a qualidade do ajuste.
+	\end{enumerate}
+
+	\item Um estudo deseja analisar a relação entre o desgaste de uma peça de metal e a viscosidade do óleo usado na lubrificação. Os dados estão na Tabela~\ref{tab:viscosidade-desgaste}.
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|ccccccccc}
+			\toprule[0.05cm]
+			x & 1,6 & 9,4 & 15,5 & 20,0 & 22,0 & 35,5 & 43,0 & 40,5 & 33,0 \\ \midrule[0.025cm]
+			y & 240,0 & 181,0 & 193,0 & 155,0 & 172,0 & 110,0 & 113,0 & 75,0 & 94,0 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\caption{Dados com $y:$ desgaste da peça de metal com (volume em $10^{-4}$ milimetros cúbicos), e $x:$ viscosidade do óleo.} 
+		\label{tab:viscosidade-desgaste}
+	\end{table}
+	\begin{enumerate}
+		\item Construa o diagrama de dispersão para as variáveis $x$ e $y$. É razoável usar regressão linear simples para este conjunto de dados é plausível?
+		\item Estime o intercepto e a inclinação para o modelo de regressão linear simples.
+		\item Estime $\sigma^2$.
+		\item Qual seria o desgaste médio para um óleo com viscosidade $x= 30$.
+		\item Esta regressão linear é significativa? Use $\alpha = 5\%$. Calcule o valor-p.
+		\item Estime $\vari(\hat{a})$ e $\vari(\hat{b})$.
+		\item Decida entre as hipóteses $H_0: a=0$ e $H_1: a \neq 0$. Use $\alpha = 5\%$. Calcule o valor-p.
+		\item Decida entre as hipóteses $H_0: a \leq 2500$ e $H_1: a > 2500$. Use $\alpha = 5\%$. Calcule o valor-p.
+		\item Construa um intervalo de confiança para o intercepto e inclinação com coeficiente de confiança $\gamma=99\%$.
+		\item Construa um intervalo de confiança para a predição do desgaste médio quando a viscosidade é $x=30$ com coeficiente de confiança $\gamma = 95\%$.
+		\item Calcule $R^2$ e interprete o resultado.
+		\item Analise os resíduos para verificar a qualidade do ajuste da regressão linear simples.
+	\end{enumerate}
+
+	\item Um motor de foguete é produzido unindo dois tipos de propelentes: um  de ignição e um sustentador. Os engenheiros suspeitam que a resistência ao cisalhamento da liga $(y)$ está associada a idade em semanas da liga do propelente quando o motor é fundido. Os  dados do estudo estão na Tabela~\ref{tab:cisalhamento-propelente}.
+	\begin{table}[ht]
+		\centering
+		\scalebox{0.5}{
+			\begin{tabular}{c|c}
+				\toprule[0.05cm]
+				Resistência ao cisalhamento $(y)$ & Idade em semanas $(x)$ \\ 
+				\midrule[0.025cm]
+				2.158,70 & 15,50 \\ 
+				1.678,15 & 23,75 \\ 
+				2.316,00 & 8,00 \\ 
+				2.061,30 & 17,00 \\ 
+				2.207,50 & 5,00 \\ 
+				1.708,30 & 19,00 \\ 
+				1.784,70 & 24,00 \\ 
+				2.575,00 & 2,50 \\ 
+				2.357,90 & 7,50 \\ 
+				2.277,70 & 11,00 \\ 
+				2.165,20 & 13,00 \\ 
+				2.399,55 & 3,75 \\ 
+				1.779,80 & 25,00 \\ 
+				2.336,75 & 9,75 \\ 
+				1.765,30 & 22,00 \\ 
+				2.053,50 & 18,00 \\ 
+				2.414,40 & 6,00 \\ 
+				2.200,50 & 12,50 \\ 
+				2.654,20 & 2,00 \\ 
+				1.753,70 & 21,50 \\ 
+				\bottomrule[0.05cm]
+			\end{tabular}
+		}
+		\caption{Resistência ao cisalhamento (psi) e Idade do propelente quando o motor é fundido.} 
+		\label{tab:cisalhamento-propelente}
+	\end{table}
+	\begin{enumerate}
+		\item Construa o diagrama de dispersão para os dados da Tabela~\ref{tab:cisalhamento-propelente}. O modelo de  regressão linear simples é adequado para esse conjunto de dados?
+		\item Encontre as estimativas do intercepto e da inclinação da regressão linear simples.
+		\item Estime $\sigma^2$.
+		\item Estime a resistência média ao cisalhamento do motor construído com um propelente com $20$ semanas.
+		\item Construa um intervalo de confiança para o intercepto e a inclinação com coeficiente de confiança $\gamma=95\%$.
+		\item Construa um intervalo de confiança para a predição da resistência média ao cisalhamento se o motor foi fundido com um propelente com $20$ semanas com coeficiente de confiança $\gamma=95\%$.
+		\item Calcule o $R^2$ e interprete o resultado.
+		\item Construa o gráfico de probabilidade normal para os resíduos. Algum ponto está afastado da reta $y=x$?
+		\item Delete os pontos identificados no item $(h)$, e atualize as estimativas com o intercepto e a inclinação. Atualize $R^2$   e compare com o valor obtido no item $(g)$. Atualize a estimativa para $\sigma^2$, e compare com a estimativa do item $(c)$.
+	\end{enumerate}
+
+	\item Um estudo deseja analisar a microestrutura para pó ultrafino de zircônia parcialmente estabilizada como uma função de temperatura. Os dados estão na Tabela~\ref{tab:zirconia}.
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{c|c}
+			\toprule
+			Temperatura $^\circ C(x)$ & Porosidade (\%) $(y)$ \\ 
+			\midrule
+			1.100,00 & 30,80 \\ 
+			1.200,00 & 19,20 \\ 
+			1.300,00 & 6,00 \\ 
+			1.100,00 & 13,50 \\ 
+			1.500,00 & 11,40 \\ 
+			1.200,00 & 7,70 \\ 
+			1.300,00 & 3,60 \\ 
+			\bottomrule
+		\end{tabular}
+		\caption{Dados para microestrutura para pó ultrafino de zircônia parcialmente estabilizada.} 
+		\label{tab:zirconia}
+	\end{table}
+	\begin{enumerate}
+		\item Ajuste um modelo de regressão linear simples.
+		\item Estime $\sigma^2$.
+		\item Estime a porosidade média para a temperatura $1400^\circ C$.
+		\item Desenhe o diagrama de dispersão para $x$ e $y$, e desenhe no mesmo gráfico a reta obtida no item $(a)$.
+		\item Construa um intervalo de confiança para o intercepto e inclinação com coeficiente de confiança $\gamma=95\%$.
+		\item Estime a porosidade média para a temperatura $1500^\circ C$.
+		\item Construa um intervalo de confiança para a predição $y_0$ quando a temperatura $1500^\circ C$ com coeficiente de confiança $\gamma=99\%$.
+	\end{enumerate}
+
+	\item Um pesquisador analisou a idade $(x)$ e o comprimento ou tamanho $(y)$ de $27$ dugongos (``peixes-bois marinhos''). Os dados estão na Tabela~\ref{tab:dugongos}.
+	\begin{table}[ht]
+		\centering
+		\scalebox{0.5}{
+		\begin{tabular}{c|c}
+			\toprule[0.05cm]
+			x & y \\ 
+			\midrule[0.025cm]
+			1,00 & 1,80 \\ 
+			1,50 & 1,85 \\ 
+			1,50 & 1,87 \\ 
+			1,50 & 1,77 \\ 
+			2,50 & 2,02 \\ 
+			4,00 & 2,27 \\ 
+			5,00 & 2,15 \\ 
+			5,00 & 2,26 \\ 
+			7,00 & 2,47 \\ 
+			8,00 & 2,19 \\ 
+			8,50 & 2,26 \\ 
+			9,00 & 2,40 \\ 
+			9,50 & 2,39 \\ 
+			9,50 & 2,41 \\ 
+			10,00 & 2,50 \\ 
+			12,00 & 2,32 \\ 
+			12,00 & 2,32 \\ 
+			13,00 & 2,43 \\ 
+			13,00 & 2,47 \\ 
+			14,50 & 2,56 \\ 
+			15,50 & 2,65 \\ 
+			15,50 & 2,47 \\ 
+			16,50 & 2,64 \\ 
+			17,00 & 2,56 \\ 
+			22,50 & 2,70 \\ 
+			29,00 & 2,72 \\ 
+			31,50 & 2,57 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		}
+		\caption{Peso e tamanho de dugongos.} 
+		\label{tab:dugongos}
+	\end{table}	
+	\begin{enumerate}
+		\item Encontre as estimativas do intercepto e da inclinação para os dados da Tabela~\ref{tab:dugongos}.
+		\item Estime $\sigma^2$.
+		\item Análise os resíduos para checar a qualidade do ajuste.
+		\item Construa um intervalo de confiança para o intercepto e a inclinação com coeficiente de confiança $\gamma=95\%$.
+		\item Qual o tamanho ou comprimento médio para um dugongo com 11 anos de idade.
+		\item Construa um intervalo de confiança para a predição de $y_0$ com coeficiente de confiança $\gamma=99\%$.
+		\item Calcule o $R^2$ e interprete.
+		\item Qual o incremento médio no tamanho (comprimento) ao aumentarmos em um ano o tempo de vida de um dugongo.
+	\end{enumerate}
+
+	\item Um pesquisador deseja analisar a relação entre duas variáveis $x$ e $y$. Algumas informações deste estudo estão na Tabela~\ref{tab:tabelas-1}. Complete as informações da Tabela~\ref{tab:tabelas-1}.
+	\begin{table}[htbp]
+		\centering
+		\scalebox{0.85}{
+		\begin{tabular}{l|c|c|c|c|c}
+			\toprule[0.05cm]
+			\multicolumn{6}{l}{Equação da reta: $y = 12,9 + 2,34 x$ e $R^2=98,1\%$.} \\ \midrule[0.025cm]
+			 & Coeficiente & Desvio padrão do coeficiente & $T_0$ & Valor-p & \\ 		 
+			 \midrule[0.025cm]
+			 Intercepto & $12,857$ & $1,032$ & & & \\
+			Inclinação & $2,3445$ & $0,1150$ & & & \\
+			\midrule[0.025cm]
+			\midrule[0.025cm]
+			 \multicolumn{6}{c}{Análise de variância}\\
+			 \midrule[0.025cm]
+			 Fonte de variação & Graus de liberdade & Soma de quadrados & Quadrados médios & $F_0$ & Valor-p\\ \midrule[0.025cm]
+			 Regressão & $1$ & $912,43$ & $912,43$ & & \\
+			 Resíduos & $8$ & $17,55$ & & $-$ & $-$ \\ \midrule[0.025cm]
+			 Total & $9$ & $929,98$ & $-$ & $-$ & $-$ \\
+			\bottomrule[0.05cm]
+		\end{tabular}
+		}
+		\caption{Algumas informações do experimento.}
+		\label{tab:tabelas-1}
+	\end{table}
+	\begin{enumerate}
+		\item Essa regressão é significativa? Use $\alpha = 5\%$.
+		\item Temos evidência estatística para rejeitar $H_0: a = 0$? Use $\alpha=5\%$.
+		\item Qual estimativa para $\sigma^2$.
+		\item Construa um intervalo de confiança para o intercepto e a inclinação com coeficiente de confiança $\gamma=95\%$.
+	\end{enumerate}
+
+	\item Um pesquisador deseja analisar a relação entre duas variáveis $x$ e $y$. Algumas informações deste estudo estão na Tabela~\ref{tab:tabelas-2}. Complete as informações da Tabela~\ref{tab:tabelas-2}.
+	\begin{table}[htbp]
+		\centering
+		\scalebox{0.85}{
+			\begin{tabular}{l|c|c|c|c|c}
+				\toprule[0.05cm]
+				\multicolumn{6}{l}{Equação da reta: $y = 26,8 + 1,48 x$ e $R^2=93,7\%$.} \\ \midrule[0.025cm]
+				& Coeficiente & Desvio padrão do coeficiente & $T_0$ & Valor-p & \\ 		 
+				\midrule[0.025cm]
+				Intercepto & $26,753$ & $2,373$ & & & \\
+				Inclinação & $1,4756$ & $0,1063$ & & & \\
+				\midrule[0.025cm]
+				\midrule[0.025cm]
+				\multicolumn{6}{c}{Análise de variância}\\
+				\midrule[0.025cm]
+				Fonte de variação & Graus de liberdade & Soma de quadrados & Quadrados médios & $F_0$ & Valor-p\\ \midrule[0.025cm]
+				Regressão & $1$ &  &  & & \\
+				Resíduos &  & $94,8$ & & $-$ & $-$ \\ \midrule[0.025cm]
+				Total & $15$ & $1500,0$ & $-$ & $-$ & $-$ \\
+				\bottomrule[0.05cm]
+			\end{tabular}
+		}
+		\caption{Algumas informações do experimento.}
+		\label{tab:tabelas-2}
+	\end{table}
+	\begin{enumerate}
+		\item Essa regressão é significativa? Use $\alpha = 5\%$.
+		\item Temos evidência estatística para rejeitar $H_0: a = 0$? Use $\alpha=5\%$.
+		\item Qual estimativa para $\sigma^2$.
+		\item Construa um intervalo de confiança para o intercepto e a inclinação com coeficiente de confiança $\gamma=99\%$.
+	\end{enumerate}
+
+\end{enumerate}
+\end{document}

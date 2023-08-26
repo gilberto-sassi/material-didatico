@@ -1,0 +1,37 @@
+N;Estado Civil;Grau de Instrução;N de Filhos;salario;Região de Procedência;Idade
+1;solteiro;ensino fundamental;0;4.00;interior;0.33
+2;casado;ensino fundamental;1;4.56;capital;1.38
+3;casado;ensino fundamental;2;5.25;capital;2.44
+4;solteiro;ensino médio;0;5.73;outra;0.48
+5;solteiro;ensino fundamental;0;6.26;outra;0.52
+6;casado;ensino fundamental;0;6.66;interior;0.56
+7;solteiro;ensino fundamental;0;6.86;interior;0.57
+8;solteiro;ensino fundamental;0;7.39;capital;0.62
+9;casado;ensino médio;1;7.59;capital;1.63
+10;solteiro;ensino médio;0;7.44;outra;0.62
+11;casado;ensino médio;2;8.12;interior;2.68
+12;solteiro;ensino fundamental;0;8.46;capital;0.71
+13;solteiro;ensino médio;0;8.74;outra;0.73
+14;casado;ensino fundamental;3;8.95;outra;3.75
+15;casado;ensino médio;0;9.13;interior;0.76
+16;solteiro;ensino médio;0;9.35;outra;0.78
+17;casado;ensino médio;1;9.77;capital;1.81
+18;casado;ensino fundamental;2;9.80;outra;2.82
+19;solteiro;superior;0;10.53;interior;0.88
+20;solteiro;ensino médio;0;10.76;interior;0.90
+21;casado;ensino médio;1;11.06;outra;1.92
+22;solteiro;ensino médio;0;11.59;capital;0.97
+23;solteiro;ensino fundamental;0;12.00;outra;1.00
+24;casado;superior;0;12.79;outra;1.07
+25;casado;ensino médio;2;13.23;interior;3.10
+26;casado;ensino médio;2;13.60;outra;3.13
+27;solteiro;ensino fundamental;0;13.85;outra;1.15
+28;casado;ensino médio;0;14.69;interior;1.22
+29;casado;ensino médio;5;14.71;interior;6.23
+30;casado;ensino médio;2;15.99;capital;3.33
+31;solteiro;superior;0;16.22;outra;1.35
+32;casado;ensino médio;1;16.61;interior;2.38
+33;casado;superior;3;17.26;capital;4.44
+34;solteiro;superior;0;18.75;capital;1.56
+35;casado;ensino médio;2;19.40;capital;3.62
+36;casado;superior;3;23.30;interior;4.94

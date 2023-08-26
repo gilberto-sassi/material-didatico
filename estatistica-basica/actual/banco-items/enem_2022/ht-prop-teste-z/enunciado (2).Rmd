@@ -1,0 +1,136 @@
+```{r, label="Simulação de dados", include=F}
+library(exams)
+library(glue)
+library(writexl)
+library(readxl)
+library(statBasics)
+library(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+# tamanho da amostra
+tam <- sample(1000:10000, 1)
+
+dados_enem <- read_xlsx("/home/gilberto/Insync/sassi.pereira.gilberto@gmail.com/Google Drive/atividade_didatica/material-didatico/estatistica-basica/actual/banco-items/enem_2022/associacao/amostra_enem_salvador.xlsx")
+
+dados_enem <- mutate(dados_enem, ind_negra = case_match(
+    tp_cor_raca,
+    "Parda" ~ "Negra",
+    "Preta" ~ "Negra",
+    .default = tp_cor_raca
+))
+
+# média da população
+prop_pop <- mean(dados_enem$ind_negra == "Negra") |> round(2)
+
+#------------------------------------------------------------------------------
+
+# amostra
+amostra <- tibble(tp_cor_raca = rbinom(tam, 1, prop_pop) |> map_chr(\(i) {
+    ifelse(i, "Negra", "Outra raça")
+}))
+
+# nível de significância
+g <- runif(1, 0.01, 0.1) |> round(2)
+
+# Salvando os dados
+write_xlsx(amostra, "dados.xlsx")
+
+amostra <- amostra$tp_cor_raca == "Negra"
+
+# ajuste
+ajuste <- ht_1pop_prop(amostra, proportion = 0.6, alternative = "greater", sig_level = g)
+ajuste_less <- ht_1pop_prop(amostra, proportion = 0.6, alternative = "less", sig_level = g)
+ajuste_bilateral <- ht_1pop_prop(amostra, proportion = 0.6, alternative = "two.sided", sig_level = g)
+
+
+sol <- list(
+    mean(amostra) * 100,
+    ajuste$statistic,
+    ajuste$p_value,
+    ajuste$critical_value
+) |> map(~ round(.x, 3))
+
+decisao_valor_p <- ifelse(
+    sol[[3]] < g, 1, 0
+)
+
+decisao_proc_geral <- ifelse(
+    sol[[2]] > sol[[4]], 1, 0
+)
+
+rc <- c(
+    ajuste$critical_region,
+    ajuste_less$critical_region,
+    ajuste_bilateral$critical_region
+)
+
+f <- \(x) format(x, decimal.mark = ",")
+```
+
+Question
+========
+
+Em anexo a esta questão, inclui uma amostra com informações de `r tam` candidatos na prova do ENEM na edição de 2022 que está no arquivo [dados.xlsx](dados.xlsx). Ao nível de significância &alpha; = `r f(g)`, temos evidência para afirmar que a proporção de pessoas negras (`tp_cor_raca`) é maior que 60%? 
+
+**Use três casas decimais nas respostas abaixo.**
+
+**Solução:** 
+
+A porcentagem de pessoas negras na amostra é \#\#ANSWER1\#\#%,  e a estatística de teste, que é uma distância padronizada, é z~0~=\#\#ANSWER2\#\#.
+
+No procedimento de Neyman-Pearson, o valor crítico (quantil) é \#\#ANSWER4\#\# e a região crítica é \#\#ANSWER7\#\#.
+
+Finalmente, o valor-p é \#\#ANSWER3\#\#.
+
+<hr>
+
+**Decisão usando o valor-p:**
+
+\#\#ANSWER5\#\#
+
+<hr>
+
+**Decisão usando o procedimento geral de Neyman-Pearson:**
+
+\#\#ANSWER6\#\#
+
+
+```{r, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+* Usando o valor-p, podemos afirmar que a porcentagem de pessoas negras em Salvador é maior que 60% ao nível de significância &alpha; = `r f(g)`.
+* Usando o valor-p, **NÃO** temos evidência para afirmar que a porcentagem de pessoas negras em Salvador é maior que 60% ao nível de significância &alpha; = `r f(g)`.
+* Usando o procedimento geral de Neyman-Pearson, podemos afirmar que a porcentagem de pessoas negras em Salvador é maior que 60% ao nível de significância &alpha; = `r f(g)`.
+* Usando o procedimento geral de Neyman-Pearson, **NÃO** temos evidência para afirmar que a porcentagem de pessoas negras em Salvador é maior que 60% ao nível de significância &alpha; = `r f(g)`.
+* RC = `r rc[1]`.
+* RC = `r rc[2]`.
+* RC = `r rc[3]`.
+
+Solution
+========
+
+A porcentagem de pessoas negras na amostra é `r f(sol[[1]])`%,  e a estatística de teste, que é uma distância padronizada, é z~0~=`r f(sol[[2]])`.
+
+No procedimento de Neyman-Pearson, o valor crítico (quantil) é `r f(sol[[4]])` e a região crítica é RC=`r rc[1]`.
+
+Finalmente, o valor-p é `r f(sol[[3]])`.
+
+
+```{r, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+* Usando o valor-p, podemos afirmar que a porcentagem de pessoas negras em Salvador é maior que 60% ao nível de significância &alpha; = `r f(g)`.
+* 
+* Usando o procedimento geral de Neyman-Pearson, podemos afirmar que a porcentagem de pessoas negras em Salvador é maior que 60% ao nível de significância &alpha; = `r f(g)`.
+* 
+* RC = `r rc[1]`.
+* 
+* 
+
+Meta-information
+================
+exname: enem_2022_teste_z_prop_1pop
+extype: cloze
+exsolution: `r sol[[1]]`|`r sol[[2]]`|`r sol[[3]]`|`r sol[[4]]`|10|10|100
+exclozetype: num|num|num|num|schoice|schoice|schoice
+extol: 0.05

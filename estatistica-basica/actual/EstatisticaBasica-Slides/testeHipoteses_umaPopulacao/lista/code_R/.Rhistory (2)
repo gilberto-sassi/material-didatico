@@ -1,0 +1,152 @@
+library(openxlsx)
+library(readxl)
+library(writexl)
+library(latex2exp)
+library(xtable)
+library(tidyverse)
+library(openxlsx)
+library(readxl)
+library(writexl)
+library(latex2exp)
+library(xtable)
+library(tidyverse)
+library(measurements)
+x <- c(18,
+30.7, 19.8, 27.1, 22.3, 18.8, 31.8, 23.4, 21.2, 27.9, 31.9, 27.1, 25.0,
+30.7, 19.8, 27.1, 22.3, 18.8, 31.8, 23.4, 21.2, 224.7, 26.9, 21.8, 29.2, 34.8, 26.7, 31.6
+)
+28/4
+x <- c(18,
+30.7, 19.8, 27.1, 22.3, 18.8, 31.8, 23.4, 21.2, 27.9, 31.9, 27.1, 25.0,
+30.7, 19.8, 27.1, 22.3, 18.8, 31.8, 23.4, 21.2, 224.7, 26.9, 21.8, 29.2, 34.8, 26.7, 31.6
+)
+x <- c(18,
+30.7, 19.8, 27.1, 22.3, 18.8, 31.8, 23.4, 21.2, 27.9, 31.9, 27.1, 25.0,
+30.7, 19.8, 27.1, 22.3, 18.8, 31.8, 23.4, 21.2, 224.7, 26.9, 21.8, 29.2, 34.8, 26.7, 31.6
+) %>% matrix(nrow = 4)
+x
+conv_unit_options$length
+x <- c(18,
+30.7, 19.8, 27.1, 22.3, 18.8, 31.8, 23.4, 21.2, 27.9, 31.9, 27.1, 25.0,
+30.7, 19.8, 27.1, 22.3, 18.8, 31.8, 23.4, 21.2, 224.7, 26.9, 21.8, 29.2, 34.8, 26.7, 31.6
+) %>% conv_unit("ft", "mm") %>%
+matrix(nrow = 4)
+x
+conv_unit_options$area
+conv_unit(1, "acre", "mm2")
+conv_unit_options$volume
+conv_unit_options$length
+conv_unit(1, "foot", "mm")
+conv_unit(1, "feet", "mm")
+conv_unit_options$volume
+x <- (c(18,
+30.7, 19.8, 27.1, 22.3, 18.8, 31.8, 23.4, 21.2, 27.9, 31.9, 27.1, 25.0,
+30.7, 19.8, 27.1, 22.3, 18.8, 31.8, 23.4, 21.2, 224.7, 26.9, 21.8, 29.2, 34.8, 26.7, 31.6
+) * 43560.000443512) %>% conv_unit("ft3", "m3") %>%
+matrix(nrow = 4)
+x
+q()
+library(openxlsx)
+library(readxl)
+library(writexl)
+library(latex2exp)
+library(xtable)
+library(tidyverse)
+x <- c(
+131.15, 130.69, 130.91, 129.54, 129.64,
+128.77, 130.72, 128.33, 128.24, 129.65, 130.14, 129.29,
+128.71, 129.00, 129.39, 130.42, 129.53, 130.12, 129.78,
+130.92
+)
+x <- c(
+131.15, 130.69, 130.91, 129.54, 129.64,
+128.77, 130.72, 128.33, 128.24, 129.65, 130.14, 129.29,
+128.71, 129.00, 129.39, 130.42, 129.53, 130.12, 129.78,
+130.92
+) %>% matrix(ncol = 5)
+x
+x <- c(
+131.15, 130.69, 130.91, 129.54, 129.64,
+128.77, 130.72, 128.33, 128.24, 129.65, 130.14, 129.29,
+128.71, 129.00, 129.39, 130.42, 129.53, 130.12, 129.78,
+130.92
+) %>% matrix(ncol = 5)
+xtable(x, caption = "Quantidade de sódio nos cereais matinais em miligramas.",
+label = "tab:cereal-matinal",
+digits = 2,
+align = rep("c", ncol(x) + 1)) %>%
+print.xtable(booktabs = T, format.args = list(decimal.mark = ","),
+include.rownames = F, include.colnames = F)
+x <- c(
+131.15, 130.69, 130.91, 129.54, 129.64,
+128.77, 130.72, 128.33, 128.24, 129.65, 130.14, 129.29,
+128.71, 129.00, 129.39, 130.42, 129.53, 130.12, 129.78,
+130.92
+) %>% matrix(nrow = 2)
+xtable(x, caption = "Quantidade de sódio nos cereais matinais em miligramas.",
+label = "tab:cereal-matinal",
+digits = 2,
+align = rep("c", ncol(x) + 1)) %>%
+print.xtable(booktabs = T, format.args = list(decimal.mark = ","),
+include.rownames = F, include.colnames = F)
+q()
+?pbinom
+set.seed(1235813)
+n <- 300
+p <- 98 / 275
+amostra <- rbinom(n, 1, prob = p)
+lower <- -1.96  / (2 * sqrt(n)) + mean(amostra)
+set.seed(1235813)
+n <- 300
+p <- 98 / 275
+amostra <- rbinom(n, 1, prob = p)
+a <- 0.05
+lower <- -1.96  / (2 * sqrt(n)) + mean(amostra)
+upper <- 1.96  / (2 * sqrt(n)) + mean(amostra)
+set.seed(1235813)
+n <- 300
+p <- 98 / 275
+amostra <- rbinom(n, 1, prob = p)
+a <- 0.05
+lower <- (-1.96  / (2 * sqrt(n)) + mean(amostra)) %>% round(4)
+upper <- (1.96  / (2 * sqrt(n)) + mean(amostra)) %>% round(4)
+library(openxlsx)
+library(readxl)
+library(writexl)
+library(latex2exp)
+library(xtable)
+library(tidyverse)
+set.seed(1235813)
+n <- 300
+p <- 98 / 275
+amostra <- rbinom(n, 1, prob = p)
+a <- 0.05
+lower <- (-1.96  / (2 * sqrt(n)) + mean(amostra)) %>% round(4)
+upper <- (1.96  / (2 * sqrt(n)) + mean(amostra)) %>% round(4)
+(1.96 / (upper - lower))^2
+set.seed(1235813)
+n <- 300
+p <- 98 / 275
+amostra <- rbinom(n, 1, prob = p)
+a <- 0.05
+lower <- (-1.96  / (2 * sqrt(n)) + mean(amostra)) %>% round(2)
+upper <- (1.96  / (2 * sqrt(n)) + mean(amostra)) %>% round(2)
+(1.96 / (upper - lower))^2
+set.seed(1235813)
+n <- 300
+p <- 98 / 275
+amostra <- rbinom(n, 1, prob = p)
+a <- 0.05
+lower <- (-1.96  / (2 * sqrt(n)) + mean(amostra)) %>% round(5)
+upper <- (1.96  / (2 * sqrt(n)) + mean(amostra)) %>% round(5)
+(1.96 / (upper - lower))^2
+set.seed(1235813)
+n <- 300
+p <- 98 / 275
+amostra <- rbinom(n, 1, prob = p)
+a <- 0.05
+lower <- (-1.96  / (2 * sqrt(n)) + mean(amostra)) %>% round(6)
+upper <- (1.96  / (2 * sqrt(n)) + mean(amostra)) %>% round(6)
+(1.96 / (upper - lower))^2
+lower
+upper

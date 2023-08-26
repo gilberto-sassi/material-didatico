@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/enem_2022_teste_associacao/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> Q1 : estatistica-basica_actual_banco-items_enem_2022_associacao_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Em anexo a esta questão, inclui uma amostra com informações de 5000 candidatos na prova do ENEM na edição de 2022 que está no arquivo <a href="https://ufbabr-my.sharepoint.com/:x:/g/personal/gilberto_sassi_ufba_br/EQQwfK2USU9GlNPoz16ifeMBfJmv5xb9cUf57Odj_0enRA?e=HHt7Ph" target="_blank">amostra_enem_salvador.xlsx</a>. Ao nível de significância α = 8%, temos evidência para afirmar que o tipo de escola (<code>tp_escola</code>) está associada com a renda familiar (<code>q006</code>)?</p>
+<p><strong>Use três casas decimais nas respostas abaixo.</strong></p>
+<p><strong>Solução:</strong></p>
+<p>A estatística de teste é  {1:NUMERICAL:=267.247:0.05} e o número de grau de liberdade na distribuição qui-quadrado é  {1:NUMERICAL:=10:0.05}.</p>
+<p>No procedimento de Neyman-Pearson, o valor crítico (quantil) é  {1:NUMERICAL:=16.753:0.05} e a região crítica é {1:MULTICHOICE:=A região crítica é RC=(16.753, Inf).~A região crítica é RC=(0, 16.753).}.</p>
+<p>O valor-p é  {1:NUMERICAL:=0:0.05}.</p>
+<hr>
+<p><strong>Decisão usando o valor-p:</strong></p>
+<p>{1:MULTICHOICE:=Usando o valor-p, podemos afirmar que o tipo de escola (<code>tp_escola</code>) e raça autodeclarada (<code>tp_cor_raca</code>) estão associadas ao nível de significância α = 0,08.~Usando o valor-p, <strong>NÃO</strong> temos evidência para afirmar que o tipo de escola (<code>tp_escola</code>) e raça autodeclarada (<code>tp_cor_raca</code>) estão associadas ao nível de significância α = 0,08.}</p>
+<hr>
+<p><strong>Decisão usando o procedimento geral de Neyman-Pearson:</strong></p>
+<p>{1:MULTICHOICE:=Usando o procedimento geral de Neyman-Pearson, podemos afirmar que o tipo de escola (<code>tp_escola</code>) e raça autodeclarada (<code>tp_cor_raca</code>) estão associadas ao nível de significância α = 0,08.~Usando o procedimento geral de Neyman-Pearson, <strong>NÃO</strong> temos evidência para afirmar que o tipo de escola (<code>tp_escola</code>) e raça autodeclarada (<code>tp_cor_raca</code>) estão associadas ao nível de significância α = 0,08.}</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>A estatística de teste é 267,247 e o número de grau de liberdade na distribuição qui-quadrado é 10.</p>
+<p>No procedimento de Neyman-Pearson, o valor crítico (quantil) é 16,753 e a região crítica é (16.753, Inf).</p>
+<p>O valor-p é 0.</p>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li> A região crítica é RC=(16.753, Inf). /  </li>
+<li> Usando o valor-p, podemos afirmar que o tipo de escola (<code>tp_escola</code>) e raça autodeclarada (<code>tp_cor_raca</code>) estão associadas ao nível de significância α = 0,08. /  </li>
+<li> Usando o procedimento geral de Neyman-Pearson, podemos afirmar que o tipo de escola (<code>tp_escola</code>) e raça autodeclarada (<code>tp_cor_raca</code>) estão associadas ao nível de significância α = 0,08. /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>7</defaultgrade>
+</question>
+
+</quiz>

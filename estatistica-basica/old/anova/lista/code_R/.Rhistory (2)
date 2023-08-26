@@ -1,0 +1,172 @@
+library(openxlsx)
+library(readxl)
+library(writexl)
+library(latex2exp)
+library(xtable)
+library(measurements)
+library(tidyverse)
+x <- c(
+106,
+90 ,103, 90, 79, 88, 92,
+95
+)
+source('~/.active-rstudio-document', echo=TRUE)
+source('~/.active-rstudio-document', echo=TRUE)
+source('~/.active-rstudio-document', echo=TRUE)
+rep("c", 15) %>% paste0(collapse = "")
+rep(" ", 15) %>% paste0(collapse = " & ")
+x <- c(
+3.63,
+3.24,
+3.98,
+3.66,
+4.34,
+4.36,
+4.17,
+4.4,
+3.4,
+3.75,
+4.2,
+4.02,
+4.02,
+3.9
+)
+x <- c(
+3.63,
+3.24,
+3.98,
+3.66,
+4.34,
+4.36,
+4.17,
+4.4,
+3.4,
+3.75,
+4.2,
+4.02,
+4.02,
+3.9
+)
+?`?`
+?ifelse
+source('~/.active-rstudio-document', echo=TRUE)
+conv_unit_options$mass
+conv_unit(1, "Da", 'g')
+conv_unit(1, "oz", 'g')
+conv_unit(1, "fg", 'g')
+conv_unit(1, "pg", 'g')
+conv_unit(1, "ng", 'g')
+conv_unit(4, "oz", 'g')
+conv_unit(1, "carat", 'g')
+conv_unit(1, "Pg", 'g')
+conv_unit(3.63, "Da", 'g')
+source('~/.active-rstudio-document', echo=TRUE)
+source('~/.active-rstudio-document', echo=TRUE)
+ifelse(length(x) < 14,
+x <- c(x, rep(NA, 14 - length(x))),
+x) %>% round(2)
+x <- c(
+3.63,
+3.24,
+3.98,
+3.66,
+4.34,
+4.36,
+4.17,
+4.4,
+3.4,
+3.75,
+4.2,
+4.02,
+4.02,
+3.9
+) * 1.7718
+ifelse(length(x) < 14,
+x <- c(x, rep(NA, 14 - length(x))),
+x) %>% round(2)
+x <- c(
+3.63,
+3.24,
+3.98,
+3.66,
+4.34,
+4.36,
+4.17,
+4.4,
+3.4,
+3.75,
+4.2,
+4.02,
+4.02,
+3.9
+) * 1.7718
+length(x) < 14
+x
+ifelse(length(x) < 14,
+x <- c(x, rep(NA, 14 - length(x))),
+x)
+source('~/.active-rstudio-document', echo=TRUE)
+source('~/.active-rstudio-document', echo=TRUE)
+source('~/.active-rstudio-document', echo=TRUE)
+source('~/.active-rstudio-document', echo=TRUE)
+source('~/.active-rstudio-document', echo=TRUE)
+source('~/.active-rstudio-document', echo=TRUE)
+source('~/.active-rstudio-document', echo=TRUE)
+source('~/.active-rstudio-document', echo=TRUE)
+source('~/.active-rstudio-document', echo=TRUE)
+source('~/.active-rstudio-document', echo=TRUE)
+conv_unit(c(100, 125, 150, 175), "F", "C")
+rep("c", 7) %>% paste0(collapse = "")
+source('~/.active-rstudio-document', echo=TRUE)
+conv_unit(c(100, 125, 150, 175), "F", "C")
+conv_unit(c(100, 125, 150, 175), "F", "C") %>% round(2)
+conv_unit(c(100, 125, 150, 175), "F", "C") %>% round(2)
+conv_unit(c(100, 125, 150, 175), "F", "C") %>% round(2)
+source('~/.active-rstudio-document', echo=TRUE)
+source('~/.active-rstudio-document', echo=TRUE)
+conv_unit(c(100, 125, 150, 175), "F", "C") %>% round(2)
+source('~/.active-rstudio-document', echo=TRUE)
+conv_unit(c(100, 125, 150, 175), "F", "C") %>% round(2)
+source('~/.active-rstudio-document', echo=TRUE)
+conv_unit(c(100, 125, 150, 175), "F", "C") %>% round(2)
+source('~/.active-rstudio-document', echo=TRUE)
+rep("c", 8) %>% paste0(collapse = "")
+n <- 8
+x <- c(
+0.0121,
+0.0132,
+0.0011,
+0.0023,
+0.0391,
+0.0054,
+0.0003,
+0.0014,
+)
+x <- c(
+0.0121,
+0.0132,
+0.0011,
+0.0023,
+0.0391,
+0.0054,
+0.0003,
+0.0014
+)
+source('~/.active-rstudio-document', echo=TRUE)
+source('~/.active-rstudio-document', echo=TRUE)
+source('~/.active-rstudio-document', echo=TRUE)
+source('~/.active-rstudio-document', echo=TRUE)
+rep("c", 6) %>% paste0(collapse = "")
+source('~/.active-rstudio-document', echo=TRUE)
+source('~/.active-rstudio-document', echo=TRUE)
+source('~/.active-rstudio-document', echo=TRUE)
+x <- c(
+90.2,
+90.3,
+88.9,
+89.2,
+90.7,
+90.9
+)
+source('~/.active-rstudio-document', echo=TRUE)
+q()

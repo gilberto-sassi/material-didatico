@@ -1,0 +1,203 @@
+\documentclass[12pt, a4paper]{article}
+
+%encoding
+%--------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%--------------------------------------
+
+%Portuguese-specific commands
+%--------------------------------------
+\usepackage[portuguese]{babel}
+%--------------------------------------
+
+
+%hyphenation
+\input{../../hyphen/hyphen.tex}
+
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{graphicx}
+
+\usepackage{geometry}
+\geometry{margin=0.35in}
+
+
+\begin{document}
+
+\begin{center}
+Universiadade Federal da Bahia\\
+Instituto de Matemática e Estatística\\
+Prof. Dr. Gilberto Pereira Sassi\\
+\vspace{1cm}
+Lista de exercícios -- Intervalo de Confiança.
+\vspace{1cm}
+% $1^\circ$  Lista
+\end{center}
+
+\begin{enumerate}
+    \item Um pesquisador deseja pesquisador o hábito de praticar exercícios físicos na UFBA, e entrevistou 500 alunos de diversos cursos. 
+ Desses, 175 afirmaram que praticam algum tipo de esporte. Encontre o intervalo de confiança para a porcentagem de alunos que praticam exercícios físicos. Use $\gamma=0.98$.
+ 
+  \item Um gerente de um \textit{call center} afirma em um relatório que o número de atendimentos em $20$ min é insuficiente para 10 atendentes. O conselho de administração do \textit{call center} duvida
+ desse relatório e acredita que o número médio de atendimentos é 8. Coletou-se uma amostra de número de atendimentos em intervalos de 20 minutos com os valores: 11; 12; 9; 8; 11; 4; 11; 7; 8; 11; 9; 10; 9; 11; 13; 10; 12; 14; 7; 4; 15; 8; 11; 11; 9. Assuma a normalidade dos dados.
+ Com coeficiente de confiança de $99\%$, você concordaria com o conselho de administração?
+ 
+ \item Um cliente estatístico cansado de esperar na fila do banco, anotou o tempo (em min) que 16 clientes demoraram no caixa eletrônico: 2,21; 2,64; 
+ 4,04; 0,09; 2,28; 0,12; 32,01; 6,29; 4,81; 9,09; 1,13; 2,23; 1,99; 0,44; 8,61. Assuma a normalidade da variável tempo (em min). Com coeficiente de confiança de $95\%$, construa o intervalo de confiança do tempo de utilização 
+ do caixa eletrônico.
+ 
+ \item Por analogia com  produtos similares, o tempo de reação de um novo medicamento tem distribuição normal com desvio padrão igual a 2 minutos (a média é desconhecida). Vinte pacientes foram sorteados, receberam o medicamento e tiveram seu tempo de reação anotado. Os dados foram os seguintes (em minutos): 2,9; 3,4; 3,5; 4,1; 4,6; 4,7; 4,5; 3,8; 5,3; 4,9; 4,8; 5,7; 5,8; 5,0; 3,4; 5,9; 6,3; 4,6; 5,5 e 6,2. Obtenha um intervalo de confiança para o tempo médio de reação. Use como coeficiente de confiança $\gamma = 96\%$.
+	\item 30 observações foram coletadas de uma variável aleatória com distribuição Normal com média $\mu$ e variância $\sigma^2=36$.
+	\begin{enumerate}[(a)]
+		\item Calcule $P(\lvert \bar{X} - \mu \rvert\leq 3)$.
+		\item Determine o valor de $a$ tal que $P(\lvert \bar{X} -  \mu  \rvert \geq a) = 0.9$.
+	\end{enumerate}
+	
+%  \item Repita a questão 5. supondo que desconhecemos a variância, mas obtemos um desvio padrão amostral $s = 36$ com uma amostra de 10 elementos .
+  
+  \item O intervalo $[35,21; 35,99]$ com confiança $95\%$ foi construído a partir de uma amostra de tamanho 100, para a média $\mu$ de uma população Normal com desvio padrão igual a 2.
+	\begin{enumerate}[(a)]
+		\item  Qual o valor encontrado para média dessa amostra?
+		\item Se utilizássemos essa mesma amostra, mas uma confiança de $90\%$, qual seria o novo intervalo?
+	\end{enumerate}
+	
+  \item Uma amostra de trinta dias do número de ocorrências policiais em um certo bairro de São Paulo apresentou os seguintes resultados: 7, 11, 8, 9, 10, 14, 6, 8, 8, 7, 8, 10, 10, 14, 12, 14, 12, 9, 11, 13, 13, 8, 6, 8, 13, 10,  14, 5, 14, e 10. 
+	\begin{enumerate}[(a)]
+		\item Construa o intervalo de confiança para a proporção de dias violentos (com pelo menos 12 ocorrências). Use uma confiança de 99\%.
+		\item Em um ano (360 dias) e com confiança de 99\%, qual seria a estimativa intervalar de dias violentos nesse bairro?
+	\end{enumerate}
+	
+  \item Antes de uma eleição, um partido está interessado em estimar a probabilidade $p$ de eleitores favoráveis ao seu candidato. 
+	\begin{enumerate}[(a)]
+		\item Com coeficiente de confiança $\gamma = 0,95$, determine quantos eleitores precisam ser entrevistados para que a amplitude do intervalo de confiança seja no máximo $0,05$.
+		\item Se a amostra final, com tamanho obtido em (a), observou-se que 51\% dos eleitores eram favoráveis ao candidato, construa um intervalo para a proporção de eleitores favoráveis ao partido  com confiança 99\%.
+	\end{enumerate}
+	
+  \item A companhia de tecnologia UOL, do grupo Folha, afirma que sua \textit{home page} recebe entre 47,51 e 54,75 milhões de acesso por mês com coeficiente de confiança $\gamma=98\%$. Assuma que o número de acesso  por mês à \textit{home page} da UOL tem distribuição normal.
+	\begin{enumerate}[(a)]
+		\item Suponha que esse este intervalo foi construído usando o número de acesso dos últimos 12 meses. Qual foi o número médio de acesso nos últimos 12 meses?
+		\item Usando a informação dos item, construa um intervalo de confiança para o número médio de acessos com confiança 99\%.
+	\end{enumerate}
+	
+  \item Uma nova empresa farmacêutica deseja estudar o tempo de reação de um novo medicamento. Dezesseis voluntários foram escolhidos ao acaso e tiveram seu tempo de reação em minutos anotado na Tabela~\ref{exe_1}. Assuma que o tempo de reação tem distribuição normal e obtenha um intervalo de confiança para o tempo médio de reação. Use $\gamma = 96\%$.
+  \begin{table}[ht]
+		\centering
+		\caption{Tempo de reação do medicamente para 16 voluntários.}
+		\begin{tabular}{cccccccc}
+			\toprule[0.05cm]
+			8.87 & 8.97 & 0.72 & 5.59 & 0.79 & 1.66 & 16.41 & 0.86 \\ 
+			0.45 & 8.04 & 1.77 & 5.09 & 1.51 & 3.53 & 2.05 & 4.22 \\ 
+			\bottomrule[0.05cm]
+		\end{tabular}
+		\label{exe_1}
+	\end{table}
+	
+  \item Será coletada uma amostra de um população Normal com desvio padrão igual a 9. Para um coeficiente de confiança $\gamma=90\%$, determine a amplitude do intervalo de confiança para a média população nos casos em que o tamanho da amostra é 30, 50 e 100. Comente as diferenças.
+  
+  \item Numa pesquisa com 50 eleitores, o candidato José João obteve a preferência de 17 desses eleitores. Supondo que a eleição ocorresse na época da pesquisa, construa os intervalos de confiança para a proporção de votos a serem recebidos pelo candidato mencionado. Use o coeficiente de confiança igual $\gamma=94\%$.
+  
+  \item A análise de ocorrência de um mineral numa região é uma variável aleatória com média 4 e variância $\dfrac{3}{2}$. A unidade de medida é porcentagem de mineral por unidade de volume. Qual tamanho deveria ter uma amostra para que $P(3,5 \leq \bar{X} \leq 4,5) = 0,95$?
+
+  \item Uma amostra aleatória foi coletada de uma distribuição normal e os seguintes intervalos de confianças foram construídos usando o mesmo conjunto de dados:
+  \begin{enumerate}[i.]
+  	\item $(37,53; 49,87)$;
+  	\item $(35,59; 51,81)$.
+  \end{enumerate}
+  \begin{enumerate}[(a)]
+  	\item Qual o valor da média?
+  	\item Um dos intervalos de confiança tem coeficiente de confiança $\gamma=95\%$ e outro tem coeficiente de confiança $\gamma=95\%$. Qual tem coeficiente de confiança $\gamma=95\%$?
+  \end{enumerate}
+  
+  \item Suponha que uma amostra aleatória com $n=100$ amostras de água de um lago foram coletadas e a concentração de cálcio (miligramas por litro) foi mensurada. Assuma que a concentração de cálcio tem distribuição normal. Um intervalo de confiança para coeficiente de confiança $\gamma=95\%$ na concentração de cálcio é $(0,49; 0,82)$.
+  \begin{enumerate}[(a)]
+  	\item Um intervalo de confiança com coeficiente de confiança $\gamma=99\%$ é mais longo ou curto?
+  	\item Considere a seguinte declaração: Há uma chance de $95\%$ de $\mu$ estar entre $0,49$ e $0,82$. Esta declaração está correta? Explique a sua resposta. 
+  \end{enumerate}
+  
+  \item A experiência passada indica que a resistência à ruptura do fio usada na produção de cortinas tem distribuição normal e o desvio padrão populacional é $\sigma=2$ psi. Uma amostra aleatória com nove cortinas foram testadas, e força de ruptura média é $98$ psi. Construa um intervalo de confiança com coeficiente de confiança $\gamma=95\%$ para a força de ruptura média populacional.
+  
+  \item O rendimento de um processo químico está em estudo. De experiência passada, sabemos que o rendimento tme distribuição normal com desvio padrão $\sigma = 3$. Os últimos cinco dias da operação da planta industrial resultaram nos seguintes rendimentos: 91,6; 88,75; 90,8; 89,95 e 91,3. Encontre o intervalo de confiança de coeficiente de confiança $\gamma=97\%$ para o rendimento médio populacional.
+  
+  \item Uma máquina produz hastes de metal usadas em sistema de suspensão de automóveis. Uma amostra aleatória de $15$ rodas foi coletada, e o diâmetro é mensurado. Os dados (em milímetros) estão na Tabela~\ref{tab:hastes-metal-suspensao}. Assuma a normalidade do diâmetros das hastes de metal. Construa um intervalo de confiança com coeficiente de confiança $\gamma=99\%$ para o diâmetro das hastes de metal.
+  \begin{table}[ht]
+  \centering
+  \begin{tabular}{ccc}
+  	\toprule
+  	8,24 & 8,21 & 8,23 \\ 
+  	8,25 & 8,26 & 8,23 \\ 
+  	8,20 & 8,26 & 8,19 \\ 
+  	8,23 & 8,20 & 8,28 \\ 
+  	8,24 & 8,25 & 8,24 \\ 
+  	\bottomrule
+  \end{tabular}
+  \caption{Hastes de metal usadas em sistema de suspensão de automóveis.} 
+  \label{tab:hastes-metal-suspensao}
+\end{table}
+
+	\item Um plano de saúde monitora o número de tomografias computorizadas em cada mês realizadas em suas clínicas e hospitais. Os dados dos últimos 12 meses para uma clínica específica foram (número de tomografias por milhar): 2,31; 2,09; 2,36; 1,95; 1,98; 2,25; 2,16; 2,07; 1,88; 1,94; 1,97 e 2,02. Assuma que o número mensal de tomografias  computorizadas por milhar tem distribuição normal.
+	\begin{enumerate}[(a)]
+		\item Construa um intervalo de confiança para o número médio (por milhar) de tomografias por mês;
+		\item Historicamente, o número médio de tomografias por milhar é 1,95. Esta clínica está realizando mais tomografias que as outras clínicas do plano de saúde?
+	\end{enumerate}
+	
+	\item Os dados no nível de pH na chuva no Condado Ingham, Michigan, estão na Tabela~\ref{tab:ph-ingham}. Assuna que o nível que o pH da chuva tem distribuição normal. Encontre um intervalo de confiança para a variância com coeficiente de confiança $\gamma=95\%$.
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{cccccccc}
+			\toprule
+			5,47 & 3,74 & 5,65 & 4,64 & 4,86 & 5,70 & 5,04 & 4,64 \\ 
+			5,37 & 3,71 & 5,39 & 5,48 & 4,56 & 4,15 & 4,62 & 5,12 \\ 
+			5,38 & 4,96 & 4,16 & 4,57 & 4,61 & 3,98 & 4,51 & 3,71 \\ 
+			4,63 & 4,64 & 5,62 & 4,57 & 4,32 & 5,65 & 4,34 & 4,64 \\ 
+			5,37 & 5,11 & 4,57 & 4,51 & 3,98 & 3,10 & 4,16 &  \\ 
+			\bottomrule
+		\end{tabular}
+		\caption{pH na chuva no Condado Ingham, Michigan.} 
+		\label{tab:ph-ingham}
+	\end{table}
+
+	\item Um estudo com o objetivo de estudar o nível de composição de aminoácido essencial (Lysine) de farejo de soja está na Tabela~\ref{tab:lysine-farelo-soja} (g/kg). Assuma que o nível de composição de aminoácido essencial (Lysine) de farejo de soja tem distribuição normal. Construa um intervalo de confiança com coeficiente de confiança $\gamma=99\%$ para $\sigma^2$.
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{ccccc}
+			\toprule
+			22,20 & 20,90 & 27,00 & 26,50 & 25,60 \\ 
+			24,70 & 26,00 & 24,80 & 23,80 & 23,90 \\ 
+			\bottomrule
+		\end{tabular}
+		\caption{Nível de aminoácido (Lysine) de farejo de soja.} 
+		\label{tab:lysine-farelo-soja}
+	\end{table}
+	
+	\item A fração de circuitos integrados defeituosos produzidos  em um processo de fotolitografia está sob análise. Uma amostra aleatória de $300$ circuitos foram testadas e descobrimos que $13$ circuitos estavam defeituosos. Construa um intervalo de confiança a fração de circuitos defeituosos com coeficiente de confiança $\gamma=95\%$.
+	
+	\item As pesquisas de boca de urna da eleição presidencial de 2004 nos Estados Unidos no estado de Ohio apresentou o seguinte resultado: de 2020 respondentes, 768 tinham diploma de ensino superior. Entre os eleitores com diploma universitário, 412 votaram para George Bush.
+	\begin{enumerate}[(a)]
+		\item Construa um intervalo de confiança para a proporção de eleitores universitários no estado de Ohio com coeficiente de confiança $\gamma=95\%$.
+		\item Entre os eleitores com diploma universitário no estado Ohio, construa um intervalo de confiança para a proporção de eleitores universitários que escolheram George Bush com coeficiente de confiança $\gamma=99\%$. 
+	\end{enumerate}
+	
+	\item Entre mil casos selecionados aleatoriamente de câncer de pulmão, 823 resultaram em óbito dentro de $10$ anos. 
+	\begin{enumerate}[(a)]
+		\item Construa um intervalo de confiança para a taxa de mortalidade em 10 anos para o câncer de pulmão com coeficiente de confiança $\gamma=95\%$.
+		\item Qual o tamanho da amostra para o erro de estimativa ser no máximo que $0,03$? Use $\gamma = 95\%$.
+	\end{enumerate}
+	
+	\item Uma amostra aleatória de $50$ de capacetes de suspensão usados por motociclistas e motoristas de carros de corrida foram sujeitados a teste de impacto, 18 capacetes foram danificados.
+	\begin{enumerate}[(a)]
+		\item Construa um intervalo de confiança para a proporção de capacetes que podem sofrer danos no teste com coeficiente de confiança $\gamma=95\%$;
+		\item Quantos capacetes precisam ser testados para que o erro na estimativa será no máximo $0,02$? Use $\gamma=95\%$.
+	\end{enumerate}
+
+	\item Em um pouco mais de um mês, de cinco de junho de 1879 a dois de julho de 1879, Albert Michelson mediu a velocidade da luz no ar 100 vezes. Hoje, sabemos que a verdadeira velocidade da luz é $299.734,5 km/seg$. Os dados de Michelson tem a média $\bar{x} = 299.852,4 km/seg$ com desvio padrão $s = 79,01 km/seg$. Encontre o intervalo de confiança para a velocidade média da luz. Use $\gamma= 95\%$.
+	
+\end{enumerate}
+
+
+\end{document}

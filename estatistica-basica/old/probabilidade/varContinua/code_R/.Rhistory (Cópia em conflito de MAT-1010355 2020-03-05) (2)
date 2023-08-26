@@ -1,0 +1,512 @@
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.6, y = dnorm(0, mean = 0, sd = 1) +0.02,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 1.6, y = dnorm(0, mean = 0, sd = 2) +0.02,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.6, y = dnorm(0, mean = 0, sd = 1) +0.02,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 1.6, y = dnorm(0, mean = 0, sd = 2) - 0.02,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.6, y = dnorm(0, mean = 0, sd = 1) +0.02,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 2, y = dnorm(0, mean = 0, sd = 2) - 0.02,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.6, y = dnorm(0, mean = 0, sd = 1) +0.02,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 2.3, y = dnorm(0, mean = 0, sd = 2) - 0.02,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.6, y = dnorm(0, mean = 0, sd = 1) +0.02,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 2.5, y = dnorm(0, mean = 0, sd = 2) - 0.02,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.6, y = dnorm(0, mean = 0, sd = 1) +0.02,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 2.7, y = dnorm(0, mean = 0, sd = 2) - 0.02,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.6, y = dnorm(0, mean = 0, sd = 1) +0.02,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 2.7, y = dnorm(0, mean = 0, sd = 2) - 0.02,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 2.7, y = dnorm(0, mean = 0, sd = 3) - 0.02,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.6, y = dnorm(0, mean = 0, sd = 1) +0.02,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 2.7, y = dnorm(0, mean = 0, sd = 2) - 0.02,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 2.7, y = dnorm(0, mean = 0, sd = 3) - 0.1,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.6, y = dnorm(0, mean = 0, sd = 1) +0.02,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 2.7, y = dnorm(0, mean = 0, sd = 2) - 0.02,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 2.7, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.6, y = dnorm(0, mean = 0, sd = 1) +0.02,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 2.7, y = dnorm(0, mean = 0, sd = 2) - 0.02,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 3.5, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.6, y = dnorm(0, mean = 0, sd = 1) +0.02,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 2.7, y = dnorm(0, mean = 0, sd = 2) - 0.02,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 5, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.6, y = dnorm(0, mean = 0, sd = 1) +0.02,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 2.7, y = dnorm(0, mean = 0, sd = 2) - 0.02,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 6, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.6, y = dnorm(0, mean = 0, sd = 1) +0.02,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 2.7, y = dnorm(0, mean = 0, sd = 2) - 0.02,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 6.2, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.6, y = dnorm(0, mean = 0, sd = 1) +0.02,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 2.4, y = dnorm(0, mean = 0, sd = 2) - 0.02,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 6.2, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.6, y = dnorm(0, mean = 0, sd = 1) +0.02,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 2.4, y = dnorm(0, mean = 0, sd = 2) - 0.01,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 6.2, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.4, y = dnorm(0, mean = 0, sd = 1) +0.02,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 2.2, y = dnorm(0, mean = 0, sd = 2) - 0.01,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 6, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.4, y = dnorm(0, mean = 0, sd = 1) +0.02,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 1.2, y = dnorm(0, mean = 0, sd = 2) - 0.01,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 6, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.4, y = dnorm(0, mean = 0, sd = 1) +0.02,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 1.2, y = dnorm(0, mean = 0, sd = 2) - 0.01,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 6, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggsave("normal.png")
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.4, y = dnorm(0, mean = 0, sd = 1) +0.02,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 1.4, y = dnorm(0, mean = 0, sd = 2) ,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 6, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggsave("normal.png")
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.5, y = dnorm(0, mean = 0, sd = 1) +0.015,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 1.5, y = dnorm(0, mean = 0, sd = 2) + 0.015 ,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 6.1, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggsave("normal.png")
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 1) +0.015,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 2) + 0.015 ,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 6.3, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggsave("normal.png")
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 1) +0.015,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 2) + 0.015 ,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 6.3, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=9$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = "") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL)
+ggsave("normal.png")
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 1) +0.015,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 2) + 0.015 ,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 6.3, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=9$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = Tex("\\phi(x)")) +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL) +
+ggsave("normal.png")
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 1) +0.015,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 2) + 0.015 ,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 6.3, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=9$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = TeX("\\phi(x)")) +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL) +
+ggsave("normal.png")
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 1) +0.015,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 2) + 0.015 ,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 6.3, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=9$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = TeX("\\phi(x)")) +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL) +
+ggsave("normal.png")
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 1) +0.015,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 2) + 0.015 ,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 6.3, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=9$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = TeX("\\phi(x)"), parse = T) +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL) +
+ggsave("normal.png")
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 1) +0.015,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 2) + 0.015 ,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 6.3, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=9$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "", y = expression(phi(x))) +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL) +
+ggsave("normal.png")
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 1) +0.015,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 2) + 0.015 ,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 6.3, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=9$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "x", y = "f(x)") +
+scale_x_continuous(breaks = 0) +
+scale_y_continuous(labels = NULL) +
+theme(axis.title = element_text(size = 20),
+axis.text = element_text(size = 15))
+ggsave("normal.png")
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 1) +0.015,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 2) + 0.015 ,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 6.3, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=9$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "x", y = "f(x)") +
+scale_x_continuous(breaks = 0, labels = TeX("\\mu")) +
+scale_y_continuous(labels = NULL) +
+theme(axis.title = element_text(size = 20),
+axis.text = element_text(size = 15))
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 1) +0.015,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 2) + 0.015 ,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 6.3, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=9$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "x", y = "f(x)") +
+scale_x_continuous(breaks = 0, labels = expression(mu)) +
+scale_y_continuous(labels = NULL) +
+theme(axis.title = element_text(size = 20),
+axis.text = element_text(size = 15))
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 1) +0.015,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 2) + 0.015 ,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 6.3, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=9$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "x", y = "f(x)") +
+scale_x_continuous(breaks = 0, labels = expression(mu)) +
+scale_y_continuous(labels = NULL) +
+theme(axis.title = element_text(size = 20),
+axis.text = element_text(size = 20))
+ggplot(dd)+
+geom_line(aes(x, y_1), color = "blue")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 1) +0.015,label =  TeX("$\\sigma^2=1$"),
+size = 7.5)+
+geom_line(aes(x, y_2), color = "red")+
+annotate("text", x = 0 + 1.7, y = dnorm(0, mean = 0, sd = 2) + 0.015 ,label =  TeX("$\\sigma^2=4$"),
+size = 7.5)+
+geom_line(aes(x, y_3), color = "brown") +
+annotate("text", x = 0 + 6.3, y = dnorm(0, mean = 0, sd = 3) - 0.08,label =  TeX("$\\sigma^2=9$"),
+size = 7.5)+
+geom_vline(xintercept = 0, color = "black") +
+theme_minimal() +
+labs(x = "x", y = "f(x)") +
+scale_x_continuous(breaks = 0, labels = expression(mu)) +
+scale_y_continuous(labels = NULL) +
+theme(axis.title = element_text(size = 25),
+axis.text = element_text(size = 20))
+ggsave("normal.png")
+# Gráficos
+# packages used
+library(latex2exp)
+library(tidyverse)
+z_pos <- seq(from = 0.0, to = 3.9, by = 0.1) %>%
+sapply(function(i){
+tt <- seq(from = 0.00, to = 0.09, by = 0.01) %>%
+map_dbl(~ pnorm(.x + i) %>% round(4))
+names(tt) <- seq(from = 0.00, to = 0.09, by = 0.01) %>% str_c()
+tt
+}) %>% t()
+rownames(z_pos) <- seq(from = 0.0, to = 3.9, by = 0.1) %>% str_c()
+z_neg <- seq(from = 0.0, to = 3.9, by = 0.1) %>%
+sapply(function(i){
+tt <- seq(from = 0.00, to = 0.09, by = 0.01) %>%
+map_dbl(~ pnorm(-1 * (.x + i)) %>% round(4))
+names(tt) <- (-1 * seq(from = 0.00, to = 0.09, by = 0.01)) %>% str_c()
+tt
+}) %>% t()
+rownames(z_neg) <- (-1 * seq(from = 0.0, to = 3.9, by = 0.1)) %>% str_c()
