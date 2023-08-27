@@ -41,7 +41,11 @@ library(readODS)
 library(dados)
 library(patchwork)
 library(aplpack)
+library(rlang)
+library(KbMvtSkew)
 library(tidyverse)
+
+
 ```
 
 # Sobre o curso
@@ -2676,6 +2680,440 @@ Para o conjunto de dados `amostra_enem_salvador.xlsx`:
 *  construa o diagrama de caixa para as variável `nu_nota_mt` cada valor de `tp_cor_raca`.
 *  construa o diagrama de caixa para as variável `nu_nota_mt` cada valor de `tp_sexo`.
 *  construa o diagrama de caixa para as variável `nu_nota_mt` cada valor de `tp_tipo_escola`.
+
+# Medidas de assimetria 
+
+## Medidas de assimetria\newline usando quantis
+
+Podemos mensurar a assimetria usando os quartis.
+
+Note que: 
+
+1. $q_2 - q_1 < q_3 - q_1$ e $q_3 - q_2 < q_3 - q_1$;
+1. Se os dados têm assimetria à esquerda (ou negativa): $q_2 - q_1 > q_3 - q_2$;
+1. Se os dados têm assimetria à direita (ou positiva): $q_2 - q_1 < q_3 - q_2$;
+1. $-1 \leq \frac{q_3 - q_2 - (q_2 - q_1)}{q_3 - q_1} \leq 1$.
+
+---
+
+$B = \frac{q_3 - q_2 - (q_2 - q_1)}{q_3 - q_1}$ é chamado de coeficiente de Bowley.
+
+1. A variável tem assimetria à esquerda (ou negativa) se, e somente se, $B < 0$;
+1. A variável tem assimetria à direita (ou positiva) se, e somente se, $B > 0$;
+1. A variável tem simetria se, e somente, se $B \approx 0$.
+
+\regrafina
+
+**Não use o coeficiente de Bowley para amostras menores que 100.**
+
+Podemos usar a seguinte **regra de ouro** como referência:
+
+1. se $-0,25 \leq B \leq 0,25$, temos indícios que a variável tem simetria;
+1. se $B < -0,25$, temos indícios que a variável tem assimetria negativa;
+1. se $B > 0,25$, temos indícios que a variável tem assimetria positiva.
+
+---
+
+```{r}
+#| echo: false
+#| cache: true
+
+set.seed(12345)
+tamanhos <- c(
+  25, 30, 50, 60, 70, 80, 90, 100,
+  150, 250, 300, 500, 750, 1000
+)
+
+n <- 10000
+g <- 0.90
+lower <- tamanhos |>
+  map_dbl(\(tam) {
+    seq_len(n) |>
+      map_dbl(~ BowleySkew(rnorm(tam))) |>
+      quantile(probs = (1 - g) / 2)
+  })
+
+upper <- tamanhos |>
+  map_dbl(\(tam) {
+    seq_len(n) |>
+      map_dbl(~ BowleySkew(rnorm(tam))) |>
+      quantile(probs = (1 + g) / 2)
+  })
+df <- tibble(tamanhos, lower, upper)
+
+knitr::kable(
+  df,
+  digits = 2,
+  col.names = c("Tamanhos das amostras", "Limite inferior", "Limite superior"),
+  caption = "Limite inferior e superior para o coeficiente de Bowley no contexto de normalidade pelo tamanho da amostra, usando intervalo de confiança com coeficiente de confiança 90%.",
+  align = c("c", "c", "c"),
+  format.args = list(decimal.mark = ",", big.mark = ".")
+)
+```
+
+---
+
+Podemos usar a função `BowleySkew` do pacote `KbMvtSkew` para calcular o coeficiente de Bowley.
+
+Vamos usar o conjunto de dados `rivers` que tem o comprimento dos 141 maiores rios da América do Norte (EUA, Canadá e México).
+
+```{r}
+library(KbMvtSkew)
+BowleySkew(rivers)
+```
+
+## Medidas de assimetria\newline usando momentos
+
+Definimos os momentos amostrais por $m_r = \frac{1}{n} \sum_{i=1}^{n} (x_i - \bar{x})^r$ para $r \geq 1$.
+
+* $m_2$ é uma aproximação para a variância da população.
+* $m_1$ é aproximadamente zero.
+
+Note que:
+
+* existe assimetria à direita ou positiva se, e somente se, $m_3 > 0$.
+* existe assimetria à esquerda ou negativa se, e somente se, $m_3 < 0$.
+* existe simetria se, e somente se, $m_3 = 0$.
+
+Para criarmos uma medida sem unidade, usamos:
+$$
+g_1 = \frac{m_3}{m_2^\frac{3}{2}}.
+$$
+
+## Medidas de assimetria\newline usando momentos
+
+**Melhorias de $g_1$:**
+
+Medida de assimetria usada po SAS, SPSS e Excel:
+$$
+G_1 = \frac{\sqrt{n(n-1)}}{n-2} \frac{m_3}{m_2^{\frac{3}{2}}};
+$$
+
+Método implementado pelo MINITAB:
+$$
+b_1 = \left( \frac{n-1}{n} \right)^{\frac{3}{2}} \frac{m_3}{m_2^{\frac{3}{2}}}.
+$$
+
+---
+
+* Para amostras grandes, $g_1$, $G_1$ e $b_1$ são próximos.
+* $g_1$ é a _pior_ estimativa (maior variabilidade nas estimativas), mas está nos livros introdutórios de estatística pela simplificidade;
+* $b_1$ é a _melhor_ estimativa no contexto de normalidade;
+* $G_1$ é a _melhor_ estimativa no contexto de ausência de normalidade.
+
+Consulte @joanes1998comparing para mais detalhes.
+
+Segundo @doane2011measuring, podemos usar as 3 tabelas seguintes como referência para $g_1$, $G_1$ e $b_1$.
+
+---
+
+```{r}
+#| echo: false
+#| cache: true
+
+library(e1071)
+
+set.seed(12345)
+tamanhos <- c(
+  25, 30, 50, 60, 70, 80, 90, 100,
+  150, 250, 300, 500, 750, 1000
+)
+
+n <- 10000
+g <- 0.90
+lower <- tamanhos |>
+  map_dbl(\(tam) {
+    seq_len(n) |>
+      map_dbl(~ skewness(rnorm(tam), type = 1)) |>
+      quantile(probs = (1 - g) / 2)
+  })
+
+upper <- tamanhos |>
+  map_dbl(\(tam) {
+    seq_len(n) |>
+      map_dbl(~ skewness(rnorm(tam), type = 1)) |>
+      quantile(probs = (1 + g) / 2)
+  })
+df <- tibble(tamanhos, lower, upper)
+
+knitr::kable(
+  df,
+  digits = 2,
+  col.names = c("Tamanhos das amostras", "Limite inferior", "Limite superior"),
+  caption = "Limite inferior e superior para $g_1$ no contexto de normalidade pelo tamanho da amostra, usando intervalo de confiança com coeficiente de confiança 90%.",
+  align = c("c", "c", "c"),
+  format.args = list(decimal.mark = ",", big.mark = ".")
+)
+```
+
+---
+
+```{r}
+#| echo: false
+#| cache: true
+
+library(e1071)
+
+set.seed(12345)
+tamanhos <- c(
+  25, 30, 50, 60, 70, 80, 90, 100,
+  150, 250, 300, 500, 750, 1000
+)
+
+n <- 10000
+g <- 0.90
+lower <- tamanhos |>
+  map_dbl(\(tam) {
+    seq_len(n) |>
+      map_dbl(~ skewness(rnorm(tam), type = 2)) |>
+      quantile(probs = (1 - g) / 2)
+  })
+
+upper <- tamanhos |>
+  map_dbl(\(tam) {
+    seq_len(n) |>
+      map_dbl(~ skewness(rnorm(tam), type = 2)) |>
+      quantile(probs = (1 + g) / 2)
+  })
+df <- tibble(tamanhos, lower, upper)
+
+knitr::kable(
+  df,
+  digits = 2,
+  col.names = c("Tamanhos das amostras", "Limite inferior", "Limite superior"),
+  caption = "Limite inferior e superior para $G_1$ no contexto de normalidade pelo tamanho da amostra, usando intervalo de confiança com coeficiente de confiança 90%.",
+  align = c("c", "c", "c"),
+  format.args = list(decimal.mark = ",", big.mark = ".")
+)
+```
+
+---
+
+```{r}
+#| echo: false
+#| cache: true
+
+library(e1071)
+
+set.seed(12345)
+tamanhos <- c(
+  25, 30, 50, 60, 70, 80, 90, 100,
+  150, 250, 300, 500, 750, 1000
+)
+
+n <- 10000
+g <- 0.90
+lower <- tamanhos |>
+  map_dbl(\(tam) {
+    seq_len(n) |>
+      map_dbl(~ skewness(rnorm(tam), type = 3)) |>
+      quantile(probs = (1 - g) / 2)
+  })
+
+upper <- tamanhos |>
+  map_dbl(\(tam) {
+    seq_len(n) |>
+      map_dbl(~ skewness(rnorm(tam), type = 3)) |>
+      quantile(probs = (1 + g) / 2)
+  })
+df <- tibble(tamanhos, lower, upper)
+
+knitr::kable(
+  df,
+  digits = 2,
+  col.names = c("Tamanhos das amostras", "Limite inferior", "Limite superior"),
+  caption = "Limite inferior e superior para $b_1$ no contexto de normalidade pelo tamanho da amostra, usando intervalo de confiança com coeficiente de confiança 90%.",
+  align = c("c", "c", "c"),
+  format.args = list(decimal.mark = ",", big.mark = ".")
+)
+```
+
+## Medidas de assimetria\newline usando momentos
+
+Podemosa usar a função `skewness` do pacote `e1071` para estimar a assimetria usando momentos. Com o argumento `type`, podemos escolher entre $g_1$, $G_1$ e $b_1$:
+
+a. `type = 1`, `skewness` calcula $g_1$;
+a. `type = 2`, `skewness` calcula $G_2$;
+a. `type = 3`, `skewness` calcula $b_1$ (valor padrão).
+
+## Medidas de assimetria
+
+```{r}
+library(e1071)
+# coeficiente de Bowley
+BowleySkew(rivers)
+
+# g_1
+skewness(rivers, type = 1)
+
+# G_1
+skewness(rivers, type = 2)
+
+# b_1
+skewness(rivers, type = 3)
+```
+
+## Medidas de assimetria\newline Exercício
+
+Para o conjunto de dados `amostra_enem_salvador.xlsx`, cheque a assimetria de `nu_nota_mt`, `nu_nota_lc`, `nu_nota_ch` e `nu_nota_cn` usando:
+
+* diagrama de caixa;
+* histograma;
+* coeficiente de Bowley;
+* $g_1$;
+* $G_1$;
+* $b_1$.
+
+# Medida de curtose
+
+## Medida de curtose
+
+Idea: mede a chance de aparecer _pontos exteriores_ ao amostrador valores desta variável na população, usando a distribuição normal como padrão.
+
+* uma variável com normalidade tem curtose igual a 0. Dizemos que a variável é mesocúrtica (de mesocurtose);
+* se a variável que tem mais chance de aparecer _pontos exteriores_, então a curtose é negativa e dizemos que a variável é lepcúrtica (de leptocurtose);
+* se a variável que menos chance de aparecer _pontos exterioes_, então a curtose é positiva e dizemos que a variável é platicúrtica (de platicurtose).
+
+Medimos a curtose usando uma função do quarto momento amostral:
+$$
+g_2 = \frac{m_4}{m_2^2} - 3.
+$$
+
+---
+
+Medida usada por SAS, SPSS e Excel:
+$$
+G_2 = \frac{n-1}{(n-2)(n-3)}\left[ (n+1) \left(\frac{m_4}{m_2^2}-3\right) +6  \right].
+$$
+
+Medida usada por MINITAB:
+$$
+b_2 = \left( \frac{n-1}{n} \right)^2 \frac{m_4}{m_2^2}-3.
+$$
+
+---
+
+* Para amostras grandes, $g_1$, $G_1$ e $b_1$ são próximos.
+* $g_1$ é a _pior_ estimativa (maior variabilidade nas estimativas), mas está nos livros introdutórios de estatística pela simplificidade;
+* $b_1$ é a _melhor_ estimativa no contexto de normalidade;
+* $G_1$ é a _melhor_ estimativa no contexto de ausência de normalidade.
+
+Consulte @joanes1998comparing para mais detalhes.
+
+---
+
+```{r}
+#| echo: false
+
+tabela <- function(tamanhos, f, g = 0.90, n = 10000) {
+
+  lower <- tamanhos |>
+    map_dbl(\(tam) {
+      seq_len(n) |>
+        map_dbl(~ {{f}}(rnorm(tam))) |>
+        quantile(probs = (1 - g) / 2)
+    })
+  
+  upper <- tamanhos |>
+    map_dbl(\(tam) {
+      seq_len(n) |>
+        map_dbl(~ {{f}}(rnorm(tam))) |>
+        quantile(probs = (1 + g) / 2)
+    })
+  
+  df <- tibble(tamanhos, lower, upper)
+  df
+}
+
+tamanhos <- c(
+  25, 30, 50, 60, 70, 80, 90, 100,
+  150, 250, 300, 500, 750, 1000
+)
+
+k <- \(x) kurtosis(x, type = 1)
+
+df <- tabela(tamanhos, k)
+
+knitr::kable(
+  df,
+  digits = 2,
+  col.names = c("Tamanhos das amostras", "Limite inferior", "Limite superior"),
+  caption = "Limite inferior e superior para $g_2$ no contexto de normalidade pelo tamanho da amostra, usando intervalo de confiança com coeficiente de confiança 90%.",
+  align = c("c", "c", "c"),
+  format.args = list(decimal.mark = ",", big.mark = ".")
+)
+```
+
+---
+
+```{r}
+#| echo: false
+
+k <- \(x) kurtosis(x, type = 2)
+
+df <- tabela(tamanhos, k)
+
+knitr::kable(
+  df,
+  digits = 2,
+  col.names = c("Tamanhos das amostras", "Limite inferior", "Limite superior"),
+  caption = "Limite inferior e superior para $G_2$ no contexto de normalidade pelo tamanho da amostra, usando intervalo de confiança com coeficiente de confiança 90%.",
+  align = c("c", "c", "c"),
+  format.args = list(decimal.mark = ",", big.mark = ".")
+)
+```
+
+---
+
+```{r}
+#| echo: false
+
+k <- \(x) kurtosis(x, type = 3)
+
+df <- tabela(tamanhos, k)
+
+knitr::kable(
+  df,
+  digits = 2,
+  col.names = c("Tamanhos das amostras", "Limite inferior", "Limite superior"),
+  caption = "Limite inferior e superior para $b_2$ no contexto de normalidade pelo tamanho da amostra, usando intervalo de confiança com coeficiente de confiança 90%.",
+  align = c("c", "c", "c"),
+  format.args = list(decimal.mark = ",", big.mark = ".")
+)
+```
+
+
+---
+
+Podemos usar a função `kurtosis` do pacote `e1071` para estimar  a curtose. Com o argumento `type`, podemos escolher entre $g_2$, $G_2$ e $b_2$:
+
+a. `type = 1`, `kurtosis` calcula $g_2$;
+a. `type = 2`, `kurtosis` calcula $G_2$;
+a. `type = 3`, `kurtosis` calcula $b_2$.
+
+## Medida de curtose
+
+```{r}
+library(e1071)
+
+# g_2
+kurtosis(rivers, type = 1)
+
+# G_2
+kurtosis(rivers, type = 2)
+
+# b_2
+kurtosis(rivers, type = 3)
+```
+
+## Medida de curtose\newline Exercício
+
+Para o conjunto de dados `amostra_enem_salvador.xlsx`, cheque a curtose de `nu_nota_mt`, `nu_nota_lc`, `nu_nota_ch` e `nu_nota_cn`, e classifique cada uma dessas variáveis como mesocúrtica, platicúrtica e leptocúrtica usando:
+
+* histograma;
+* $g_2$;
+* $G_2$;
+* $b_2$.
 
 # Violin plot
 

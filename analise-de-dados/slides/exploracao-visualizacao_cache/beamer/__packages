@@ -11,6 +11,8 @@ readODS
 dados
 patchwork
 aplpack
+rlang
+KbMvtSkew
 tidyverse
 ggplot2
 tibble
@@ -21,4 +23,5 @@ stringr
 forcats
 lubridate
 lettervalue
+e1071
 mvtnorm
