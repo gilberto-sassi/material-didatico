@@ -1,0 +1,1811 @@
+---
+title: "R Markdown e Quarto"
+author: "Gilberto Pereira Sassi"
+lang: pt-br
+fontsize: 10pt
+bibliography: refs.bib
+biblio-style: apa
+format:
+    beamer:
+        institute: "Departamento de Estatística\\newline Instituto de Matemática e Estatística"
+        theme: Pittsburgh
+        colortheme: spruce
+        logo: logo_menor.png
+        keep-tex: true
+        colorlinks: true
+        linkcolor: titulo
+        urlcolor: titulo
+        filecolor: magenta
+        include-in-header: header.tex
+        include-before-body: before_body.tex
+pdf-engine: pdflatex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, out.width = "100%")
+library(glue)
+library(readxl)
+library(writexl)
+library(janitor)
+library(gt)
+library(ggthemes)
+library(readODS)
+library(patchwork)
+library(statBasics)
+library(tidyverse)
+
+
+knitr::opts_chunk$set(echo = TRUE, results = "markup", fig.align = "center",
+                       cache = FALSE, fig.height = 3)
+```
+
+## Preparando o ambiente
+
+\textbf{\large Durante o curso}
+
+* Usaremos nas aulas: [posit.cloud](https://posit.cloud/).
+* Recomendamos instalar e usar `R` com versão pelo menos `4.1`: [cran.r-project.org](https://cran.r-project.org).
+* usaremos o _framework_ [`tidyverse`](https://www.tidyverse.org):
+  * Instalação: `install.packages("tidyverse")`
+
+\rule{\textwidth}{0.5pt}
+
+\textbf{\large Na sua casa}
+
+* **IDE** recomendadas: [_RStudio_](https://www.rstudio.com/products/rstudio/download/preview/) e [_VSCode_](https://code.visualstudio.com).
+  * Caso você queira usar o [_VSCode_](https://code.visualstudio.com), instale a extensão da linguagem `R`: [`REditorSupport`](https://marketplace.visualstudio.com/items?itemName=REditorSupport.r).
+* Outras linguagens interessantes: [`python`](https://www.python.org) e [`julia`](https://julialang.org).
+  * [`python`](https://www.python.org): linguagem interpretada de próposito geral, contemporânea do `R`,  simples e fácil de aprender.
+  * [`julia`](https://julialang.org): linguagem interpretada para análise de dados, lançada em 2012, promete simplicidade e velocidade.
+
+## Onde estudar sozinho
+
+Este curso é apenas o começo!\newline \colorbox{cabecalho}{\textcolor{titulo}{Você vai ter que estudar sozinho para avançar mais...}}
+
+Para usar o pacote `rmarkdown`, você precisa ter:
+
+* conhecimento básico da linguagem `R`
+* conhecimento básico da linguagem `latex`
+* conhecimento básico da linguagem `markdown`
+
+## Onde estudar sozinho
+
+**`R`**
+
+* [Zen do `R`](https://curso-r.github.io/zen-do-r/)
+* [`R` for Datascience](https://r4ds.had.co.nz/)
+* [eco`R`](http://ecor.ib.usp.br/doku.php)
+
+\textbf{\LaTeX}
+
+* [Learn \LaTeX\ in 30 minutes](https://pt.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes)
+* [Detexify](https://detexify.kirelabs.org/classify.html)
+* [Learn \LaTeX\ with Wikibooks](https://en.wikibooks.org/wiki/LaTeX)
+
+**`markdown`**
+
+* [Tutorial de `markdown` da Microsoft](https://code.visualstudio.com/docs/languages/markdown)
+* [Tutorial de `markdown` da Mozilla](https://developer.mozilla.org/pt-BR/docs/MDN/Writing_guidelines/Howto/Markdown_in_MDN)
+* [`markdown` Basics](https://quarto.org/docs/authoring/markdown-basics.html)
+
+---
+
+**`rmakdown`**
+
+* [`rmarkdown`: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
+* [`bookdown`: Authoring Books and Technical Documents with `rmarkdown`](https://bookdown.org/yihui/bookdown/)
+* [`blogdown`: Creating Websites with `rmarkdown`](https://bookdown.org/yihui/blogdown/)
+
+## Pacotes da linguagem `R` deste curso
+
+* `rmarkdown`
+* `blogdown`
+* `bookdown`
+* `readxl`
+* `writexl`
+* `janitor`
+* `patchwork`
+* `prettydoc`
+* `glue`
+* `ggthemes`
+* `gt`
+* `rticles`
+* `tidyverse`
+
+# A linguagem `R`
+
+## Sobre a linguagem `R`
+
+**A precursora da linguagem `R`: `S`.**
+
+* `R` é uma linguagem derivada da `S`.
+* `S` foi desenvolvido em `fortran` por **John Chambers** em 1976 no **Bell Labs**.
+* `S` foi desenvolvida para realizar análise estatística de dados.
+* Filosofia do `S`: permitir que usuários possam analisar dados usando estatística com pouco conhecimento de programação.
+
+\regrafina
+
+**História da linguagem `R`**
+
+* Em 1991, **Ross Ihaka** e **Robert Gentleman** criaram o `R` na Nova Zelândia.
+* Em 1996, **Ross** e **Robert** liberam o `R` sob a licença "GNU General License", o que tornou o `R` um software livre.
+* Em 1997, The Core Group é criado para melhorar e controlar o código fonte do `R`.
+
+# `markdown`
+
+## `markdown`
+
+* Criado em 2004 por **John Gruber**.
+* Criado iniciado para textos para internet.
+* **Ideia:** fácil de escrever, fácil de ler e entender o código, e permitir edição em forma de prosa. Foco no conteúdo e não nos detalhes da linguagem.
+* `markdown` foi inspirada pela formatação permitida ao escrever e-mails.
+* `markdown` é portável.
+* Não depende de versões como `Microsfot Word`.
+* Uso amplamente disseminado, com versões adotadas em aplicativos como: WhatsApp, Notion, GitHub, Stack Overflow, entre outros.
+
+`rmarkdown` and `quarto` usam `pandoc` para converter código `markdown` para os formatos `HTML`, `pdf` e `docx`.
+
+## `markdown`\newline Sintaxe básica
+
+Seções (e subseções) são partes que dividem um texto de acordo com conteúdo afins.
+
+Para mais detalhes, consulte [Seções e subseções de acordo com NBR 6024/2012](https://www.bccl.unicamp.br/wp-content/uploads/2020/08/Manual-de-numera%C3%A7%C3%A3o-progressiva-das-secoes-de-um-documento_BCCL.pdf).
+
+```{r}
+#| echo: false
+#| out.width: 75%
+knitr::include_graphics("figuras/secao-subsecao.png")
+```
+
+## `markdown`\newline Sintaxe básica
+
+Podemos definir seções e subseções com `#`.
+
+\colorbox{cabecalho}{\textcolor{titulo}{O caractere \texttt{\#} precisa estar na primeira coluna da linha.}}\newline
+\colorbox{cabecalho}{\textcolor{titulo}{É necessário incluir um único espaço depois de \texttt{\#}.}}
+
+|código `markdown`|código `HTML`|código \LaTeX|
+|:---|:---|:---|
+|`# texto`|`<h1>texto</h1>`| `\section{texto}`|
+|`## texto`|`<h2>texto</h2>`| `\subsection{texto}`|
+|`### texto`|`<h3>texto</h3>`| `\subsubsection{texto}`|
+|`#### texto`|`<h4>texto</h4>`| `\paragraph{texto}`|
+|`##### texto`|`<h5>texto</h5>`| `\subparagraph{texto}`|
+|`###### texto`|`<h6>texto</h6>`|  |
+
+## `markdown`\newline Sintaxe básica
+
+**Parágrafos**
+
+Para criar parágrafos, separa blocos de linhas com um (ou mais) linhas em branco.
+
+|código `markdown`|código `HTML`|código \LaTeX|
+|:---|:---|:---|
+|`Primeira linha.` |`<p>Primeira linha.</p>`| `Primeira linha.`|
+||`<p>Segunda linha.</p>`||
+|`Segunda linha.`||`Segunda linha.`|
+
+**Não inclua tabs ou espaços na primeira linha de parágrafos.**
+
+## `markdown`\newline Sintaxe básica
+
+**Formatação de texto**
+
+\scriptsize
+
+|Descrição|código `markdown`|código `HTML`|código \LaTeX|Resultado|
+|:-----|:---|:---|:---|:--:|
+|Itálico|`*Itálico*`|`<em>Itálico</em>`| `\textit{Itálico}`|*Itálico*|
+|Negrito|`**Negrito**`|`<strong>Negrito</strong>`| `\textbf{Negrito}`|**Negrito**|
+|Tachado|`~~Tachado~~`|`<s>Tachado</s>`||~~Tachado~~|
+|Sobrescrito|`x^2^`|`x<sup>2</sup>`||x^2^|
+|Subscrito|`t~0~`|`t<sub>0</sub>`||t~0~|
+
+
+\normalsize
+
+Podemos ter um texto em negrito e em itálico:
+
+```markdown
+***Negrito e Itálico***
+```
+
+## `markdown`\newline Sintaxe básica
+
+**Bloco de citação**
+
+Na primeira linha do parágrafo, inclua `>`.
+
+**Exemplo de código**
+
+```markdown
+> Isto é uma citação.
+```
+
+**Resultado**
+
+\hfill\break
+
+> Isto é uma citação.
+
+## `markdown`\newline Sintaxe básica
+
+**Bloco de citação com múltiplos parágrafos**
+
+Adicione `>` em cada parágrafo e nos espaços em branco entre os parágrafos.
+
+**Exemplo de código**
+
+```markdown
+> Primeira linha do bloco de citação.
+>
+> Segunda linha do bloco de citação.
+```
+
+**Resultado**
+
+\hfill\break
+
+> Primeira linha do bloco de citação.
+>
+> Segunda linha do bloco de citação.
+
+## `markdown`\newline Sintaxe básica
+
+**Bloco de citação** pode ter todos os outros elementos `markdown`.
+
+**Exemplo**
+
+```markdown
+> ### Um lindo bloco de citação
+> Primeiro parágrafo tem **negrito**.
+>
+> Segundo parágrafo tem *Itálico*.
+>
+> Terceiro Páragrafo tem ***Negrito e Itálico***.
+```
+
+**Resultado**
+
+> ### Um lindo bloco de citação
+> Primeiro parágrafo tem **negrito**.
+>
+> Segundo parágrafo tem *Itálico*.
+>
+> Terceiro Páragrafo tem ***Negrito e Itálico***.
+
+## `markdown`\newline Sintaxe básica
+
+**Listas ordenadas**
+
+As listas ordenadas devem começar com o número `1` (ou `i.`).
+
+\small
+
+|código `markdown`|código `HTML`|código \LaTeX|
+|:---|:---|:---|
+|`1. Primeiro item`|`<ol>`| `\begin{enumerate}`|
+|`8. Segundo item`|\quad`<li>Primeiro item</li>`|\quad `\item Primeiro item`|
+|`1. Terceiro item`|\quad`<li>Segundo item</li>`|\quad `\item Segundo item`|
+||\quad`<li>Terceiro item</li>`|\quad `\item Terceiro item`|
+||`</ol>`| `\end{enumerate}`|
+
+\normalsize
+
+**Resultado**
+
+1. Primeiro item
+8. Segundo item
+1. Terceiro item
+
+## `markdown`\newline Sintaxe básica
+
+**Listas não ordenadas**
+
+As listas não ordenadas começam com: `-`, `*` ou `+`.
+
+\small
+
+|código `markdown`|código `HTML`|código \LaTeX|
+|:---|:---|:---|
+|`+ Primeiro item`|`<ul>`| `\begin{itemize}`|
+|`+ Segundo item`|\quad`<li>Primeiro item</li>`|\quad `\item Primeiro item`|
+|`+ Terceiro item`|\quad`<li>Segundo item</li>`|\quad `\item Segundo item`|
+||\quad`<li>Terceiro item</li>`|\quad `\item Terceiro item`|
+||`</ul>`| `\end{itemize}`|
+
+\normalsize
+
+**Resultado**
+
++ Primeiro item
++ Segundo item
++ Terceiro item
+
+## `markdown`\newline Sintaxe básica
+
+**Listas aninhadas**
+
+Indente as listas que estão dentro de outras listas com dois espaços.
+
+\scriptsize
+
+|código `markdown`|código `HTML`|código \LaTeX|
+|:---|:---|:---|
+|`+ Item 1`|`<ul>`| `\begin{itemize}`|
+|\quad`+ Item 1 interno`|\quad`<li>Item 1</li>`|\quad `\item Item 1`|
+|\quad`+ Item 2 interno`|\quad`<ul>`|\quad `\begin{itemize}`|
+|`+ Item 2`|\quad\quad`<li>Item 1 interno</li>`|\quad\quad `\item Item 1 interno`|
+||\quad\quad`<li>Item 2 interno</li>`|\quad\quad `\item Item 2 interno`|
+||\quad`</ul>`|\quad `\end{itemize}`|
+||\quad`<li>Item 2</li>`|\quad `\item Item 2`|
+||`</ul>`| `\end{itemize}`|
+
+\normalsize
+
+**Resultado**
+
+* Item 1
+  + Item 1
+  + Item 2
+* Item 2
+
+## `markdown`\newline Sintaxe básica
+
+**Listas aninhadas**
+
+Indente as listas que estão dentro de outras listas com dois espaços.
+
+\scriptsize
+
+|código `markdown`|código `HTML`|código \LaTeX|
+|:---|:---|:---|
+|`+ Item 1`|`<ul>`| `\begin{itemize}`|
+|\quad`1. Item 1 interno`|\quad`<li>Item 1</li>`|\quad `\item Item 1`|
+|\quad`1. Item 2 interno`|\quad`<ol>`|\quad `\begin{enumerate}`|
+|`+ Item 2`|\quad\quad`<li>Item 1 interno</li>`|\quad\quad `\item Item 1 interno`|
+||\quad\quad`<li>Item 2 interno</li>`|\quad\quad `\item Item 2 interno`|
+||\quad`</ol>`|\quad `\end{enumerate}`|
+||\quad`<li>Item 2</li>`|\quad `\item Item 2`|
+||`</ul>`| `\end{itemize}`|
+
+\normalsize
+
+**Resultado**
+
++ Item 1
+  1. Item 1
+  1. Item 2
++ Item 2
+
+## `markdown`\newline Sintaxe básica
+
+**Código fonte (sem inclusão do resultado)**
+
+Para inclusão de código *inline* (dentro de uma frase): `` `print("olá mundo!")` ``.
+
+**Exemplo**
+
+```markdown
+Um texto com código `print(1 + 2)`.
+```
+
+**Resultado**
+
+Um texto com código `print(1 + 2)`.
+
+--- 
+
+Para inclusão de código *em bloco*, use `` ``` ``.
+
+**Exemplo**
+
+Podemos substituir `r` por: `python`, `html`, `julia` entre outros.
+
+`` ```r ``\newline
+`print("Olá mundo!")`\newline
+`print(1 + 2)`\newline
+`` ``` ``
+
+**Resultado**
+
+```r
+print("Olá mundo")
+print(1 + 2)
+```
+
+Para ver a lista de linguagens compatíveis consulte: [linguagens compatíveis com `markdown`](https://github.com/jgm/skylighting/tree/master/skylighting-core/xml).
+
+## `markdown`\newline Sintaxe básica
+
+**Tabelas**
+
+`markdown` usa tabelas conhecidas como `pipe table` que tem a seguinte sintaxe:
+
+* As colunas são separadas por `|`.
+* A primeira linha contém cabeçalho das colunas.
+* A segunda linha contém o alinhamento:
+  * `-----` (default) valores serão alinhados à esquerda
+  * `----:` valores serão alinhados à direita
+  * `:----` valores serão alinhados à esquerda
+  * `:---:` valores ficarão centralizados
+* A partir da terceira linha, incluimos as informações
+* Incluímos a legenda da tabela depois de incluirmos todas as linhas
+
+---
+
+\destaque{As células de uma \textit{pipe table} \textbf{não} podem conter:} 
+\begin{itemize}
+    \item \destaque{parágrafos}
+    \item \destaque{listas}
+    \item \destaque{valor em múltiplas linhas}
+\end{itemize}
+
+Gerador de tabelas `markdown`: [tablesgenerator.com/markdown_tables](https://www.tablesgenerator.com/markdown_tables).
+
+---
+
+**Exemplo**
+
+\scriptsize
+
+```markdown
+| default | alinhamento à esquerda | alinhamento à direita | centralizado |
+|---------|:-----|------:|:------:|
+|12|12|12|12|
+|123|123|123|123|
+|1|1|1|1|
+
+: Legenda da tabela.
+```
+
+\normalsize
+
+**Resultado**
+
+| default | alinhamento à esquerda | alinhamento à direita | centralizado |
+|---------|:-----|------:|:------:|
+|12|12|12|12|
+|123|123|123|123|
+|1|1|1|1|
+
+: Legenda da tabela.
+
+## `markdown`\newline Sintaxe básica
+
+**Links e imagens**
+
+A sintaxe básica para links é `[texto do link](endereço do link)`, onde:
+
+* `texto do link` é um texto descritivo para o link
+* `endereço do link` é o endereço para redirecionamento
+
+**Exemplo:**
+
+```markdown
+[Google](https://www.google.com.br)
+```
+
+**Resultado:**
+
+[Google](https://www.google.com.br)
+
+\regrafina
+
+Se ***`texto do link`*** é igual a ***`endereço do link`***, você pode usar: 
+
+```markdown
+<https://www.google.com.br>
+```
+
+## `markdown`\newline Sintaxe básica
+
+**Links e imagens**
+
+A sintaxe básica para links é `![texto da imagem](endereço da imagem)`, onde:
+
+* `texto da imagem` é um texto descritivo da imagem
+* `endereço da imagem` é *filename* da imagem 
+
+\destaque{A imagem precisa estar dentro do mesmo diretório que o arquivo \texttt{.Rmd}.}
+
+**Exemplo**
+
+```markdown
+![Logo da linguagem R](figuras/r.png)
+```
+
+---
+
+**Resultado**
+
+![Logo da linguagem R](figuras/r.png)
+
+## `markdown`\newline Sintaxe básica
+
+**Exemplo** 
+
+* Vamos analisar um documento simples usando `markdown`.
+* Por hora, ignore as primeiras linhas delimitadas `---`.
+
+[Exemplo com sintaxe](https://ufbabr-my.sharepoint.com/:u:/g/personal/gilberto_sassi_ufba_br/EVkS8aZN8rZDqXEJXXVFWzIBfkqMGhKClWZ5Mbmiv6vh4g?e=apQKvV){target="_blank"}
+
+## `markdown`\newline Sintaxe básica
+
+**Exercício** 
+
+\small
+
+Use [loremipsum.io](https://loremipsum.io/){target="_blank"} para criar um texto `html`.
+
+Inclua:
+
+* o texto precisa ter 6 parágrafos
+* uma citação de sua preferência
+* texto negrito, texto itálico, texto tachado, e texto tachado e negrito
+* inclua uma lista de itens que você gosta 
+* inclua a seguinte tabela com as colunas centralizadas
+* inclua um link para o website do nosso curso [rmarkdown.simple.ink](https://rmarkdown.simple.ink){target="_blank"}
+* inclua o logo rmarkdown ao final do arquivo (o arquivo na pasta `figuras`)
+
+|Cidade|População|
+|:---|---:|
+|São Paulo| 11.451.245|
+|Rio de Janeiro|6.211.423|
+|Brasília|2.817.068|
+|Fortaleza|2.428.678|
+|Salvador|2.418.005|
+
+\normalsize
+
+# Equações usando \LaTeX
+
+## Expressões matemáticas usando \LaTeX
+
+\texttt{rmarkdown} e \texttt{quarto} usam \href{https://en.wikibooks.org/wiki/LaTeX}{\LaTeX}\ para composição tipográfica de equações matemáticas.
+
+Existem dois tipos de inclusão de equações matemáticas:
+
+* *inline*: equação é parte de um parágrafo
+  * usamos `$` para equações em modo *inline*
+* *display*: equação em um linha separada com texto centralizado
+  * usamos `$$`para equações em modo *display*
+
+## Expressões matemáticas usando \LaTeX\newline Equações em modo *inline*
+
+**Exemplo:**
+
+```markdown
+A equação $e^{i\pi} + 1=0$ foi proposta por Euler.
+```
+
+**Resultado:**
+
+A equação $e^{i\pi} + 1=0$ foi proposta por Euler.
+
+## Expressões matemáticas usando \LaTeX\newline Equações em modo *display*
+
+**Exemplo:**
+
+```markdown
+A seguinte equação foi proposta por Euler:
+$$
+e^{i\pi} + 1=0
+$$
+```
+
+**Resultado:**
+
+A seguinte equação foi proposta por Euler:
+$$
+e^{i\pi} + 1=0
+$$
+
+## Expressões matemáticas usando \LaTeX\newline Símbolos e funções importantes
+
+\scriptsize
+
+|Descrição|Código \LaTeX|Resultado|
+|:---|:---|---:|
+|Letra alpha|`\alpha`|$\alpha$|
+|Letra epsilon|`\epsilon`|$\epsilon$|
+|União de conjuntos|`\cup`|$\cup$|
+|Intersecção de conjuntos|`\cap`|$\cap$|
+|Menor (desigualdade)|`<`|$<$|
+|Espaço simples|`b\ a`|$b\ a$|
+|Espaço duplo|`b\quad a`|$b\quad a$|
+|Espaço triplo|`b\qquad a`|$b\qquad a$|
+|Maior (desigualdade)|`>`|$>$|
+|Infinito|`\infty`|$\infty$|
+|Logaritmo|`\log`|$\log$|
+|Multiplicação|`\cdot`|$\cdot$|
+|Contém|`\subset`|$\subset$|
+|Contido|`\supset`|$\supset$|
+|Integral|`\int`|$\int$|
+|Somatório|`\sum`|$\sum$|
+|Produtório|`\prod`|$\prod$|
+|Limite|`\lim`|$\lim$|
+
+\normalsize
+
+[Lista exaustiva de símbolos e funções](https://en.wikibooks.org/wiki/LaTeX/Mathematics#Symbols).
+
+[Detexfy - aplicativo para descobrir símbolos matemáticos](https://detexify.kirelabs.org/classify.html).
+
+## Expressões matemáticas usando \LaTeX\newline Sobrescrito, subscrito e fração
+
+**Sobrescrito e subscrito**
+
+Muito comum em expressões matemáticas envolvendo expoentes, índices, e em alguns proponentes especiais.
+
+* Sobrescrito e limite superior em $\int$, $\prod$, $\sum$, $\cap$ e $\cup$: `^`
+* Subscrito e limite inferior em em $\int$, $\prod$, $\sum$, $\cap$ e $\cup$: `_`
+
+Se o sobrescrito e subscrito tiver mais de um caracter, envolva a expressão em chaves `{}`.
+
+\regrafina
+
+**Fração**
+
+|Código \LaTeX|Resultado|
+|:----|:-----|
+|`\frac{a}{b}`|$\frac{a}{b}$|
+
+## Expressões matemáticas usando \LaTeX\newline Sobrescrito e subscrito
+
+|Código \LaTeX|Resultado|
+|:----|-----:|
+|`a^{n_j}`|$a^{n_j}$|
+|`a_{n^i}`|$a_{n^i}$|
+|`\int_{-\infty}^{\infty} \frac{1}{1 + x^2} dx`|$\int_{-\infty}^{\infty} \frac{1}{1 + x^2} dx$|
+|`\sum_{i=1}^{\infty} \frac{1}{i^2}`|$\sum_{i=1}^{\infty} \frac{1}{i^2}$|
+|`\prod_{i=1}^n i`|$\prod_{i=1}^n i$|
+|`\cup_{i=1}^{n+12} A_i`|$\cup_{i=1}^{n+12} A_i$|
+|`\cap_{i=-\infty}^0 B_i`|$\cap_{i=-\infty}^0 B_i$|
+
+## Expressões matemáticas usando \LaTeX\newline Parênteses, colchetes e chaves
+
+\normalsize
+
+|Descrição|Código \LaTeX|Resultado|
+|:----|:---|----:|
+|Parênteses|`(x + y)`|$(x+y)$|
+|Colchetes|`[x + y]`|$[x+y]$|
+|Chaves|`\{x + y\}`|$\{x+y\}$|
+|Produto interno|`\langle x, y \rangle`|$\langle x, y \rangle$|
+|Valor absoluto|`|x + y|`|$|x + y|$|
+|Norma|`\|x + y\|`|$\|x+y\|$|
+|Arrendonda para baixo|`\lfloor x + y \rfloor`|$\lfloor x + y \rfloor$|
+|Arrendonda para cima|`\lceil x + y \rceil`|$\lceil x + y \rceil$|
+
+
+---
+
+Para aumentar o tamanho de parênteses, colchetes e outros: `\big`, `\Big`, `\bigg`, e `\Bigg`.
+
+Para aumentar o tamanho de parênteses, colchetes e outros: `\left` e `\right` (na mesma linha).
+
+Para detalhes sobre ajuste no tamanho de parênteses, colchetes e outros, consulte [parênteses, colchetes e outros](https://www.overleaf.com/learn/latex/Brackets_and_Parentheses).
+
+\regrafina
+
+Use `split` para quebrar uma equação em várias linhas, e use `&` para alinhamento.
+
+## Expressões matemáticas usando \LaTeX\newline Parênteses, colchetes e chaves
+
+**Exemplo**
+
+```latex
+$$
+\begin{split}
+a &= \sum_{i=-\infty}^{\infty} \left\{ a_i + b_i \right.\\
+&= \left. c_i + \int_a^b x \cdot i dx \right\}
+\end{split}
+$$
+```
+
+**Resultado**
+
+$$
+\begin{split}
+a &=  \sum_{i=-\infty}^{\infty} \left\{ a_i + b_i \right.\\
+&= \left. c_i + \int_a^b x \cdot i\ dx \right\}
+\end{split}
+$$
+
+## Expressões matemáticas usando \LaTeX\newline Exercício
+
+Use a plataforma [www.texrendr.com](http://www.texrendr.com/){target="_blank"} para codificar em \LaTeX\ as seguintes equações matemáticas:
+
+* $\sum_{i=0}^\infty \frac{1}{2^i} = 2$
+* $\int_{-\infty}^\infty \exp\left( -\frac{x^2}{2} \right)dx = \sqrt{2\pi}$
+* $\prod_{i=1}^n \frac{1}{2} = \frac{1}{2^n}$
+* $\lfloor 1,2 \rfloor = 1$
+* $\lceil 1,2 \rceil = 2$
+* $\|(1, 2)\|^2 = 5$
+* $$\begin{split}\sum_{i=1}^{n} \alpha^i &= 1 + \alpha + \cdots + \alpha^n \\ &= \frac{1-\alpha^{n+1}}{1-\alpha} \end{split}$$
+
+# Pacote `rmarkdown`
+
+## `rmarkdown`
+
+
+Documentos com extensão `.Rmd` ou `.rmd` permitem combinar:
+
+* código fonte (`code` tag in `html` e `verbatim` em \LaTeX)
+* resutaldo de computações
+* texto simples em prosa
+
+Documentos com extensão `.Rmd` ou `.rmd` são renderizados (processados) pelo pacote `rmarkdown`.
+
+Gerador de texto aleatório para este curso: [loremipsum.io](https://loremipsum.io/).
+
+Cheatsheet do pacote `rmarkdown`: [cheatsheet do pacote `rmarkdown`](https://posit.co/wp-content/uploads/2022/10/rmarkdown-1.pdf).
+
+\regrafina
+
+`rmakdown` envia o documento `.Rmd` para o pacote `knitr` que converte o documento para `markdown`, e em seguida `pandoc` converte este arquivo `.md` para formato adequado.
+
+```{r}
+#| echo: false
+#| out.width: 50%
+
+knitr::include_graphics("figuras/rmarkdown-flow.png")
+```
+
+## `rmarkdown`\newline RStudio
+
+1. Para criar um arquivo `.Rmd` no IDE `Rstudio`:\newline `file > New File > R Markdown`. 
+1. Em seguida, escolha a opção adequada para o seu texto, incluindo:
+    a. _document_ (documentos em prosa).
+    a. _presentation_ (apresentação).
+    a. _template_ (documentos usando _templates_).
+
+## `rmarkdown`\newline Estrutura básica de documentos `.Rmd`
+
+\tiny
+
+```rmarkdown
+---
+title: "Um belo título para o documento"
+date: 01-12-2023
+output: html_document
+---
+```
+
+`` ```{r} ``
+```rmarkdown
+#| label: setup
+#| include: false
+#| echo: false
+
+library(tidyverse)
+```
+`` ``` ``
+
+```rmarkdown
+# Uma seção
+
+Eu tenho `r 2 + 3` irmões.
+
+Gráfico simples usando o pacote `ggplot2` do *framework* `tidyverse`.
+``` 
+
+`` ```{r}``
+
+```rmarkdown
+#| echo: false
+
+mtcars |>
+  ggplot(aes(x = cyl)) +
+  geom_bar()
+```
+
+`` ``` ``
+
+
+```rmarkdown
+## Uma subseção
+
+Algum texto sobre alguma coisa muito importante.
+
+```
+
+\normalsize
+
+## `rmarkdown`\newline YAML
+
+\small
+
+* Criada em 2001.
+* YAML (Yet Another Markup Language) é uma linguagem desenvolvida para armazenar dados.
+* Fácil de ler e escrever. 
+* YAML é delimitada por `---` e sempre está nas primeiras linhas do documento `.Rmd`.
+* YAML contrala a formatação do documento `.Rmd`.
+* YAML usa dupla _chave valor_: `chave: valor`:
+  + `valor` não pode ter espaço em branco. Se `valor` tiver espaço em branco, use aspas or `|`. 
+  + `chave`: nome do campo 
+
+```yaml  
+title: "Um título que faz sentido"
+```
+
+ou
+
+```yaml  
+title: |
+  Um título que faz sentido
+```
+
+\normalsize
+
+---
+
+
+
+`valor` pode ter subcampos, e usamos indentação para neste subcampo
+
+```yaml
+output:
+  html_document:
+    highlight: "haddock"
+    includes:
+      in_header: header.html
+      before_body: before_body.html        
+```
+
+\regrafina
+
+Podemos usar código `R`, prefixando o campo com `!r`.
+
+
+```yaml
+date: !r lubridate::today()
+```
+
+\regrafina
+
+Campos comuns em YAML: `title`, `date` e `output`.
+
+## `rmarkdown`\newline YAML
+
+**Citações e bibliografia**
+
+* `rmarkdown` usa [`bibtex`](https://tug.org/bibtex/) para incluir referências e citações.
+* **Google Scholar** e maioria das revistas científicas incluem citações `bibtex`.
+* Para espeficar um formato de bibliografia, use CSL (*Citation Style Language*).
+
+```yaml
+bibliography: refs.bib
+csl: apa.csl
+```
+
+---
+
+No texto, use `@` + identificador da referência no arquivo `.bib`.
+
+* Citação direta no texto: `@wickham2023r`.
+* Citação entre parenteses: `[@wickham2023r]`.
+* Cite apenas o ano entre parenteses: `[-@wickham2023r]`
+* Citação entre parenteses com comentário: `[veja @wickham2023r para mais detalhes]`.
+* Separe múltiplas citações com `;`: `[@wickham2023r; @wickham2019advanced; @xie2016bookdown]`
+
+## `rmarkdown`\newline YAML
+
+**Parâmetros**
+
+* Valores que passamos para os documentos.
+* Útil para produzir documentos em série, onde apenas alguns valores são modificados.
+* Valores ficam disponível na lista `params`.
+
+```yaml
+params:
+  nome: "Gilberto Pereira Sassi"
+  idade: 22
+```
+
+\regrafina
+
+No texto, use `` `r
+ params$nome` `` e `` `r
+ params$idade` ``.
+
+Geralmente `params` é usado junto com a função `render` do pacote `rmarkdown`.
+
+## `rmakrdown`\newline YAML
+
+**Exemplo**
+
+\scriptsize
+
+```rmarkdown
+---
+title: "Seu título vem aqui"
+date: 31/12/2023
+output: html_document
+params:
+  nome: "Nome da pessoa"
+  vinculo: professor
+---
+
+# Primeira seção
+```
+
+`Texto da primeira seção com o nome` `` `r
+ params$nome` `` `e Vínculo` `` `r
+ params$vinculo` `` `.`
+
+\regrafina
+
+Para produzir documento, use o seguinte código `R`
+
+```r
+render(
+  "filename.Rmd",
+  render_options = list(
+    params = list(nome = "Um nome", data = "01/01/1900")
+  )
+)
+```
+
+\normalsize
+
+# `rmarkdown`\newline\newline\ `ioslides_presentation`
+
+## `rmarkdown`\newline `ioslides_presentation`
+
+Apresentação em formato `.html`.
+
+Para criar, especifique `output: ioslides_presentation` no cabeçalho YAML.
+
+```yaml
+---
+title: "Um lindo slide"
+author: "Fulano de Tal"
+date: 01/01/1900
+output: ioslides_presentation
+---
+```
+
+\colorbox{cabecalho}{\textcolor{titulo}{Neste caso, você pode usar código \texttt{html} no texto.}}
+
+## `rmarkdown`\newline `ioslides_presentation`
+
+\small
+
+Para adicionar um novo slide use `##`:
+
+```markdown
+## Um novo slide
+
+Conteúdo do slide
+```
+
+Você pode adicionar um subtítulo do slide com `|`:
+
+```markdown
+## Título do slide | Subtítulo do slide
+
+Conteúdo do slide
+```
+
+Se o slide estiver muito grande, você pode usar `---` para quebrar o conteúdo:
+
+```markdown
+## Título do slide | Subtítulo do slide
+
+Conteúdo do slide
+
+---
+
+Essa parte vai para um novo slide
+```
+
+\normalsize
+
+## `rmarkdown`\newline `ioslides_presentation`
+
+O `ioslides` tem os seguintes modos de exibição:
+
+* `f`: modo tela cheia
+* `w`: modo tela ampla
+* `o`: modo _overview_ 
+* `h`: modo de destaque do código
+* `p`: modo de apresentação para o palestrante
+* `esc`: volta ao modo normal de apresentação
+
+
+## `rmarkdown`\newline `ioslides_presentation`
+
+Algumas configurações disponíveis no cabeçalho YAML:
+
+* `incremental`: itens das listas são apresentadas um por um
+  + Campo booleano (`true` - os itens das listas são apresentados um por um )
+  + Valor `default`: `false`
+* `widescreen`: apresentação em modo de tela ampla
+  + Campo booleano (`true` - a apresentação fica em tela ampla)
+  + Valor `default`: apresentação em modo de tela normal
+* `smaller`: tamanho da fonte menor
+  + Campo booleano: (`true` - tamanho da fonte fica um pouco menor)
+  + Valor `default`: tamanho normal (12pt)
+* `transition`: velocidade de transição entre os slides
+  + Valores possíveis: `default`, `slower`, `faster`, ou número real que indica os segundos gastos na transição de slides:
+  + Valor `deafult`: `default`
+* `logo`: adiciona a logo ao slide
+  + Nome do arquivo. Por exemplo, `logo.png`
+
+---
+
+Podemos incluir código `.html` para customização adicional da apresentação com `includes`:
+
+* `in_header`: inclusão de código entre `<header>` e `</header>`
+* `before_body`: inclusão de código imediatamente depois `<body>`
+* `after_body`: inclusão de código imediatamente antes de `</body>`
+
+```yaml
+output:
+  pdf_document:
+    includes:
+      in_header: in_header.html
+      before_body: before_body.html
+      after_body: after_body.html
+```
+
+## `rmarkdown`\newline `ioslides_presentation`
+
+Podemos fazer algumas configuraçãoes específicas para um slide.
+
+\regrafina
+
+Implementação da opção `incremental: true` para um único slide.
+
+```markdown
+## Título do slide {.build}
+```
+
+\regrafina
+
+Implementação da opção `smaller: true` para um único slide.
+
+```markdown
+## Título do slide {.build .smaller}
+```
+
+## `rmarkdown`\newline `ioslides_presentation`
+
+Para destacar um parte do código dentro de um _chunk_ usamos `## <b>` e `## </b>`.
+
+\regrafina
+
+**Exemplo:**
+
+\small
+
+`` ```{r} ``
+```rmarkdown
+library(tidyverse)
+
+## <b>
+ggplot(airquality, aes(Ozone)) + geom_histogram(bins = 8)
+## </b>
+
+summarise(
+  media_ozone = mean(Ozone), dp_ozone = sd(Ozone),
+  q1 = quantile(Ozone), mediana = median(Ozone),
+  q3 = quantile(Ozone), cv_ozone = dp_ozone / media_ozone
+)
+```
+`` ``` ``
+
+\normalsize
+
+## `rmarkdown`\newline `ioslides_presentation`
+
+Podemos fazer algumas configuraçãoes específicas para um slide.
+
+\regrafina
+
+Implementação da opção `incremental: true` para um único slide.
+
+```markdown
+## Título do slide {.build}
+```
+
+\regrafina
+
+Implementação da opção `smaller: true` para um único slide.
+
+```markdown
+## Título do slide {.build .smaller}
+```
+
+## `rmarkdown`\newline `ioslides_presentation`
+
+Para destacar um parte do código dentro de um _chunk_ usamos `## <b>` e `## </b>`.
+
+\regrafina
+
+**Exemplo:**
+
+\small
+
+`` ```{r} ``
+```rmarkdown
+library(tidyverse)
+
+## <b>
+ggplot(airquality, aes(Ozone)) + geom_histogram(bins = 8)
+## </b>
+
+summarise(
+  media_ozone = mean(Ozone), dp_ozone = sd(Ozone),
+  q1 = quantile(Ozone), mediana = median(Ozone),
+  q3 = quantile(Ozone), cv_ozone = dp_ozone / media_ozone
+)
+```
+`` ``` ``
+
+\normalsize
+
+## `rmarkdown`\newline `ioslides_presentation`
+
+Centralização do conteúdo do slide use `<div class="centered">` e `</div>`.
+
+```html
+<div class="centered">
+  Texto centralizado no slide.
+</div>
+```
+
+\regrafina
+
+Conteúdo em duas colunas: `<div class="columns">` e `</div>`.
+
+```html
+<div class="columns">
+![](imagem.png)
+
++ Primeiro item
++ Segundo item
++ Terceiro item
+</div>
+```
+
+## `rmarkdown`\newline `ioslides_presentation`
+
+Colorindo texto: `<div class="cor">` e `</div>`.
+
+Onde cor é uma das opções:  `red`, `blue`, `green`, `yellow`, and `gray`.
+
+**Exemplo:**
+
+\small
+
+```html
+Isto é muito importante: <div class="red2">coisa importante</div>.
+```
+
+\normalsize
+
+\regrafina
+
+Notas para apresentador (apenas você vai ver) em reuniões on-line: `<div class="notes">` e `</div>`.
+
+```html
+<div class="notes">
+Texto que apenas o apresentador vai ver!
+</div>
+```
+
+\textcolor{titulo}{Acrescente \texttt{?presentme=true} no endereço do arquivo \texttt{.html} para ativar o as notas do apresentador.}
+
+## `rmarkdown`\newline `ioslides_presentation`
+
+Use o seguinte comando dentro da linguagem `R` (no console): `pagedown::chrome_print('arquivo.Rmd')`.
+
+\colorbox{cabecalho}{\textcolor{titulo}{Necessário ter o pacote \texttt{pagedown} instalado.}}
+
+\regrafina
+
+
+**Exemplo:**
+
+```r
+pagedown::chrome_print("slides/apresentacao.Rmd")
+```
+
+## `rmarkdown`\newline `ioslides_presentation`
+
+Você pode carregar esta apresentação nas plataformas [netlify.com](https://www.netlify.com/) e [github.com](https://github.com/).
+
+**Netlify**
+
+1. Faça login em [netlify.com](https://www.netlify.com/).
+1. Clique em _sites_ na barra lateral.
+1. Arraste o arquivo `.html` até o quadrado em destaque como apresentado na figura abaixo.
+
+```{r}
+#| out.width: 105%
+#| echo: false
+#| fig.cap: "Colocando sua página on-line usando netlify."
+knitr::include_graphics("figuras/netlify-dropdown.png")
+```
+
+---
+
+**GitHub Pages**
+
+1. Faça login em [github.com](https://github.com/).
+1. Crie um repositório público chamado `<username>.github.io`. 
+  + Se o _username_ é `fulano-tal`, você criará o repositório `fulano-tal.github.io`.
+1. Adicione o arquivo `arquivo.html` neste repositório. 
+1. Depois de alguns minutos ~~poucos~~, o arquivo está disponível em `https://<username>.github.io/arquivo.html`.
+  + Se o _username_ é `fulano-tal` e o arquivo tem nome `arquivo.html`, o arquivo está on-line em `https://fulano-tal.github.io/arquivo.html`.
+
+```{r}
+#| out.width: 75%
+#| echo: false
+#| fig.cap: "Colocando sua página on-line usando GitHub Pages."
+knitr::include_graphics("figuras/github-add-file.png")
+```
+
+## `rmarkdown`\newline `ioslides_presentation`
+
+**Exemplo**
+
+Vamos analisar um exemplo!
+
+[exemplo-6](https://ufbabr-my.sharepoint.com/:f:/g/personal/gilberto_sassi_ufba_br/EkgnO10OXN9EgwRNTWBlrz8BhxgoeoZzGwU9vyqHchTFwQ?e=kCV2k8)
+
+## `rmarkdown`\newline `ioslides_presentation`
+
+Crie um documento chamado `apresentacao.html`, e inclua
+
+* `title ` - inclua o seguinte título: **Apresentação ioslides**.
+* `date` - data de nascimento.
+* `author` - inclua o seu nome.
+* logo do pacote `rmarkdown`.
+* garanta que as figuras tenham legendas.
+* três slides com subtítulo.
+* centralize o texto de um dos slides.
+* coloco o texto em duas colunas em um dos slides.
+* deixa alguma parte do texto azul.
+* notas para o apresentador.
+* inclua um slide com um chunk com o seguinte código
+```r
+library(ggthemes)
+library(tidyverse)
+ggplot(mtcars) +
+  geom_histogram(aes(mpg), bins = 7, fill = "blue") +
+  theme_calc()
+```
+
+---
+
+Use [loremipsum.io](https://loremipsum.io/) para gerar o texto dos slides.
+
+Gere o arquivo `.pdf` da apresentação _ioslides_.
+
+# `rmarkdown`\newline\newline\ `beamer_presentation`
+
+## `rmarkdown`\newline `beamer_presentation`
+
+Apresentação em formato `.pdf`.
+
+Para criar, especifique `output: beamer_presentation` no cabeçalho YAML.
+
+```yaml
+---
+title: "Apresentação beamer"
+author: "Gilberto P. Sassi"
+date: 01/01/1900
+output: beamer_presentation
+---
+```
+
+
+\colorbox{cabecalho}{\textcolor{titulo}{Neste caso, você pode usar \texttt{\LaTeX}\ no texto.}}
+
+## `rmarkdown`\newline `beamer_presentation`
+
+Algumas configurações disponíveis no cabeçalho YAML:
+
+* `theme`: estilo dos slides
+  + Veja as opções em [Matrix de temas Beamer](https://hartwork.org/beamer-theme-matrix/)
+* `colortheme`: coloração dos slides
+  + Veja as opções em [Matrix de temas Beamer](https://hartwork.org/beamer-theme-matrix/)
+* `fonttheme`: fonte da apresentação
+  + Opções: `default`, `professionalfonts`, `serif`,  `structurebold`, `structureitalicserif`, `structuresmallcapsserif`
+  + Veja as fontes em [Fontes disponíveis para `Beamer`](https://deic.uab.cat/~iblanes/beamer_gallery/index_by_font.html)
+* `highlight`: formatação do código incluído no texto
+  + Valores possíveis: `default`, `tango`, `pygments`, `kate`, `monochrome`, `espresso`, `zenburn`, `haddock`, `breezedark`, `arrow`, e `rstudio`
+  + Valor `default`: `default`
+* `fig_caption`: inclusão de legenda na figura
+  + Campo booleano (apenas `true` e `false`)
+  + Valor `default`: `true`
+
+---
+
+* `lang`: especificação da linguagem do documento
+  + para português brasileiro use `pt-br`
+* `fontsize`: tamanho de fonte
+  + Valores possíveis: `10pt`, `11pt`, `12pt`, e outros
+  + Valor `default`: `12pt`
+* `linkcolor`: cor para links internos dentro do documento
+  + Valores possíveis: consulte [pacote `xcolor`](https://www.overleaf.com/learn/latex/Using_colours_in_LaTeX)
+* `urlcolor`: cor para link externo dentro do documento
+  + Valores possíveis: consulte [pacote `xcolor`](https://www.overleaf.com/learn/latex/Using_colours_in_LaTeX)
+* `citecolor`: cor para citações dentro do texto
+  + Valores possíveis: consulte [pacote `xcolor`](https://www.overleaf.com/learn/latex/Using_colours_in_LaTeX)
+* `citation_package`: processamento das citações dentro do documento
+  + Valores possíveis: `pandoc-citeproc`, `natbib`, e `biblatex`
+  + Valor `default`: `pandoc-citeproc`
+* `keep_tex`: matenha código fonte \LaTeX?
+  + Campo booleano (apenas `true` e `false`. Se `true`, mantenha o código fonte \LaTeX)
+  + Valor `default`: `false`
+
+
+---
+
+Podemos incluir código \LaTeX\ para customização adicional do documento com `includes`:
+
+* `in_header`: inclusão de código no preâmbulo (entre `\documentclass{article}` e `\begin{document}`)
+* `before_body`: inclusão de código imediatamente depois `\begin{document}`
+* `after_body`: inclusão de código imediatamente antes de `\end{document}`
+
+```yaml
+output:
+  pdf_document:
+    includes:
+      in_header: preambulo.tex
+      before_body: prefixo.tex
+      after_body: sufixo.tex
+```
+
+## `rmarkdown`\newline `beamer_presentation`
+
+Vamos analisar um exemplo!
+
+[exemplo-7](https://ufbabr-my.sharepoint.com/:f:/g/personal/gilberto_sassi_ufba_br/EilR6FOzfwpNgwv6lL-klfgBMqkuoVWymd1TudVNmvlXKg?e=KqhfR9)
+
+## `rmarkdown`\newline `beamer_presentation`
+
+**Exercício**
+
+Crie um documento chamado `apresentacao.pdf`, e inclua
+
+* `title` - inclua o seguinte título: "Apresentação em pdf".
+* `date` - data de nascimento.
+* `author` - inclua seu nome.
+* três slides com texto dummy.
+* mude o tamanho da fonte para 10pt
+* especifique o idioma para português do Brasil (`pt-br`)
+* inclua o seguinte código entre `\documentclass` e `\begin{document}`
+```latex
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{bm}
+```
+
+---
+
+* inclua o código imediatamente depois de `\begin{docoument}`
+```latex
+\doublespacing
+```
+* escolha um tema, a cor do tema e a fonte dos slides (consulte [galeria de temas](https://deic.uab.cat/~iblanes/beamer_gallery/index.html))
+
+Use [loremipsum.io](https://loremipsum.io/) para gerar o texto para colocar nos slides.
+
+# `rmarkdown`\newline\newline\ `prettydoc`
+
+## `rmarkdown`\newline `prettydoc`
+
+**Objetivo:** Criar documentos `html` com formatação _bonita_ rapidamente.
+
+Para criar, especifque `output: prettydoc::html_pretty` no cabeçalho YAML.
+
+```yaml
+---
+title: "Um lindo título"
+author: "Fulano de tal"
+date: 01/01/1900
+output: prettydoc::html_pretty
+---
+```
+
+Para mais informações, consulte [prettydoc.statr.me](https://prettydoc.statr.me/).
+
+## `rmarkdown`\newline `prettydoc`
+
+Configurações disponíveis no cabeçalho YAML.
+
+* `theme`: estilo dos slides
+  + Opções disponíveis: `cayman`, `tactile`, `architect`, `leonids`, `hpstr`
+* `highlight`: formatação do código no texto
+  + Opções disponíveis: `github`, `vignette`
+
+## `rmarkdown`\newline `prettydoc`
+
+**Vamos analisar um exemplo!**
+
+[exemplo-8](https://ufbabr-my.sharepoint.com/:u:/g/personal/gilberto_sassi_ufba_br/EcN43jJaJOlAqKvt3DTBJlkBMMFpx23iX3Wyiwv3Uawt_g?e=LWLTgh)
+
+## `rmarkdown`\newline `prettydoc`
+
+**Exercício**
+
+Crie um documento chamado `documento.html`, e inclua
+
+* `title` - inclua o seguinte título: "um lindo documento"
+* `date` - inclua a sua data de nascimento
+* `author` - inclua o seu nome
+* três slides com texto _dummy_
+* inclua o tema `leonids` 
+* inclua a formatação de código `github`
+
+Use [loremipsum.io](https://loremipsum.io/) para gerar o texto para colocar nos slides.
+
+# `rmarkdown`\newline\newline\ `rticles`
+
+## `rmarkdown`\newline `rticles`
+
+**Objetivo:** simplificar a produção de textos acadêmicos para revistas científicas.
+
+Para criar um documento, use o seguinte código:
+
+```r
+rmarkdown::draft(
+  "manuscrito.Rmd",
+  template = "elsevier",
+  package = "rticles"
+)
+```
+
+Para consultar as revistas disponíveis use o código `rticles::jornals()`.
+
+## `rmarkdown`\newline `rticles`
+
+**Vamos analisar um exemplo!**
+
+```r
+rmarkdown::draft(
+    "paper/manuscrito.Rmd",
+    template = "acm",
+    package = "rticles"
+)
+```
+
+## `rmarkdown`\newline `rticles`
+
+Crie um manuscrito usando para publicar em uma revista da **springer** dentro da pasta `scripts`.
+
+## `rmarkdown`\newline outras extensões
+
+Algumas pacotes úteis que usam `rmarkdown`:
+
+* pacote para automatização de envio de emails: [`blastula`](https://rstudio.github.io/blastula/)
+* pacote para criação de blogs e websites usando o [gerador de site estatístico](https://jamstack.org/)  -- [`Hugo`](https://gohugo.io/): [`blogdown`](https://bookdown.org/yihui/blogdown/)
+* pacote para redação de livros: [`bookdown`](https://bookdown.org/yihui/bookdown/)
+
+# `quarto`
+
+## `quarto`
+
+* Próxima geração do pacote `rmarkdown` desenvolvida por [`posit`](https://posit.co/) (sucessor de `rstudio`).
+* `quarto` usa `markdown` e \LaTeX\ para produzir documentos.
+* `quarto` permite que usemos código das seguintes linguagens:
+  + [`python`](https://www.python.org/)
+  + [`R`](https://cran.r-project.org/)
+  + [`julia`](https://julialang.org/)
+  + [`Observable JS`](https://observablehq.com/@observablehq/observable-javascript)
+* Se você sabe usar `rmarkdown`, você sabe usar `quarto`.
+* Para a linguagem `R`, `quarto` usa `knitr`.
+* De forma semelhante ao pacote `rmarkdown`, `quarto` usa `pandoc`.
+* Os arquivos tem extensão `.qmd`.
+* Para criar documento `.pdf`, é necessário tem \LaTeX\ instalada (por exemplo, [`miktex`](https://miktex.org/) e [`texlive`](https://tug.org/texlive/)).
+
+Para detalhes, consulte [`quarto`](https://quarto.org/).
+
+# `quarto`\newline\newline\ `html`
+
+## `quarto`\newline `html`
+
+Documentos em formato `html`.
+
+Para criar, especifique `format: html` no cabeçalho YAML.
+
+```yaml
+---
+title: "Título magnífico"
+author: "Fulano de Tal"
+date: 01/01/1900
+format: html
+---
+```
+
+\colorbox{cabecalho}{\textcolor{titulo}{Neste caso, podemos usamos código \texttt{html} no texto.}}
+
+## `quarto`\newline `html`
+
+
+Algumas configurações disponíveis no cabeçalho YAML.
+
+* `toc`: inclusão de sumário
+  + Campo booleano (`true` inclue o sumário)
+  + Valor `default`: `false` 
+* `toc-depth`: nível de seção para inclusão no sumário 
+  + Valores possíveis: números inteiros de 1 a 6
+  + Valor `default`: 6
+* `toc-location`: localização do sumário. Essa opção pode estar desabilitada dependendo do tema.
+  + Valores possíveis: `left`, `right` e `body`
+  + Valor `default`: `right`
+
+---
+
+* `number-sections`: numeração das seções
+  + Campo booleano (`true` - as seções serão numeradas)
+  + Valor `default`: `false`
+* `number-depth`: nível máximo de seção para numeração
+  + Valores possíveis: números inteiros entre 1 a 6
+  + Valor `default`: 6
+
+Para retirar a numeração de uma seção, use o seguinte `{.unnumbered}`.
+
+```markdown
+## Seção {.unnumbered}
+```
+
+---
+
+Você pode esconder todos os códigos (`echo: false`) com a seguintes opções:
+```yaml
+execute:
+  echo: true # inclusão do código de todos os chunks
+```
+
+Valores possíveis: `false`, `true`, e `fenced`. `fenced` mostra o _chunk_ completamente incluindo `` ```{r} `` e `` ``` ``.
+
+\regrafina
+
+* `embed-resources`: inclusão de figuras, css, js e outros elementos diretamente no código do arquivo `html`
+  + Campo booleano (`true` - inclusão das figuras e outros elementos no código)
+  + Valor `default`: `false`
+* `anchor-sections`: link para seções do documento
+  + Campo booleano (`true` - inclusão de links para as seções)
+  + Valor `default`: `false`
+* `link-external-icon`: mostre um ícone para indicar que o link é externo.
+  + Campos booleano (`true` - inclucão do ícone nos links externos)
+  + Valor `default`: `false`
+
+---
+
+* `link-external-newwindow`: abrir o link externo em uma nova aba?
+  + Campo booleano (`true` - o link é aberto em nova aba)
+  + Valor `default`: `false`
+* `include-in-header`: inclusão de código `html` imediatamente antes de `</header>`
+  + Valor possíveis: _filename_ indicando a localização do arquivo dentro da pasta
+* `include-before-body`: inclusão de código `html` imediatamente depois de `<body>`
+  + Valor possíveis: _filename_ indicando a localização do arquivo dentro da pasta
+* `include-after-body`: inclusão de código `html` imediatamente antes de `</body>`
+  + Valor possíveis: _filename_ indicando a localização do arquivo dentro da pasta
+* `code-fold`: botão para mostrar/esconder o código
+  + Valores possíveis: 
+    - `false`: não inclui o botão
+    - `true`: inclui o botão com o código escondido
+    - `show`: inclui o botão com o código a mostra
+  + Valor `default`: `false` 
+* `code-summary`: nome para inclusão no botão
+  + Valor especial: texto entre aspas
+
+---
+
+```yaml
+code-tools:
+  source: true
+  toggle: true
+  caption: "Nome do botão"
+```
+
+or
+
+```yaml
+code-tools: true
+```
+
+
+`code-tools` inclue o botão para esconder ou mostrar o código de todos os _chunks_.
+
+Subopções de `code-tools`:
+
+* `source`: mostrar o código da página? `true` - inclue o botão para mostrar o código da página.
+* `toggle`: mostrar o botão de mostrar/esconder o código de todos os _chunk_? `true` - mostra o botão para mostrar o botão.
+* `caption`: nome do botão. Valores possíveis: `none` ou `texto`.
+
+---
+
+* `code-copy`: inclusão de botão de copiar.
+  + Valores possíveis:
+    - `hover` - inclusão do botão de copiar ao passar o mouse em cima - `default` 
+    - `true` - inclusão do botão de copiar
+    - `false` - nunca inclua o botão de copiar
+* `code-line-number`: numeração nos blocos de código.
+  + Campo booleano (`true` - inclua o numeração nos blocos de código)
+  + Valor `default`: `false`
+* `theme`: tema da página. Por padrão, `quarto` usa _Bootstrap 5_. 
+  + Valores possíveis: [temas disponíveis para documentos `html`](https://quarto.org/docs/output-formats/html-themes.html)
+* `highlight-style`: tema para formtação dos blocos de código.
+  + Valores possíveis: [temas disponíveis para formatação dos blocos de código](https://quarto.org/docs/output-formats/html-code.html#highlighting)
+
+---
+
+
+\scriptsize
+
+|Código|Descrição|Exemplo|
+|:---|:----|----:|
+|`max-width`|Largura máxima da página| `max-width: 1400px`|
+|`mainfont`|[Fonte do documento](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family)|`mainfont: monospace`|
+|`fontsize`|[Tamanho da fonte](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family)|`fontsize: 12px`|
+|`fontcolor`|[Cor da fonte (letras)](https://developer.mozilla.org/en-US/docs/Web/CSS/color)|`fontcolor: #ff9522`|
+|`monofont`|[Fonte das linhas de códigos](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family)|`monofont: math`|
+|`linestretch`|[Correponde a propriedade CSS `line-height`](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height)|`linestretch: 1.7`|
+|`backgroundcolor`|[Cor do fundo do documento](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color)|`background: "#9596b4"`|
+|`margin-*`|[Corresponde a propriedade CSS `margin`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin)|`margin-top: 1em`|
+
+
+: Algumas opções de formatação.
+
+`*` pode ser: `left`, `right`, `top`, e `bottom`.
+\normalsize
+
+## `quarto`\newline `html`
+
+**Vamos analisar um exemplo!**
+
+[exemplo-10](https://ufbabr-my.sharepoint.com/:f:/g/personal/gilberto_sassi_ufba_br/Em1mAhSxjuBDoykKBRJWHvQBjvcwfKylceSuBv-P7le9aQ?e=exHf9T)
+
+## `quarto`\newline `html`
+
+Crie um documento chamado `documento.html`, e inclua:
+
+* `title` - inclua o seguinte título: `Documento html`
+* `date` - inclua a sua data de nascimento
+* inclua três seções com texto _dummy_
+* inclua o sumário e deixe ele a esquerda
+* numere as seções
+* inclua figuras, css, js e outros elementos diretamente no código
+* mude o tema do documento `html`
+* muda o estilo de formatação dos blocos de código
+* mude o tamanho da fonte
+* mude a largura da linha
+* mude a fonte do documento
+
+# `quarto`\newline\newline\ `pdf`
+
+## `quarto`\newline `pdf`
+
+Necessário ter \LaTeX\ instalado (por exemplo, [`miktex`](https://miktex.org/) e [`texlive`](https://tug.org/texlive/)).
+
+Para criar, especifique `format: pdf` no cabeçalho YAML.
+
+```yaml
+---
+title: "Título do documento .pdf"
+author: "Fulano de Tal"
+date: 01/01/1900
+format: pdf
+---
+```
+
+\colorbox{cabecalho}{\textcolor{titulo}{Neste caso, podemos usar código \LaTeX\ no texto.}}
+
+Opções semelhantes ao formato `output: pdf_document` do pacote `rmarkdown`.
+
+Verifique as opções em: [opções para `format: pdf`](https://quarto.org/docs/reference/formats/pdf.html).
+
+## `quarto`\newline `pdf`
+
+* `cite-method`: método de produção de citação
+  + Valor possíveis: `biblatex`, `natbib`, e `citeproc`
+  + Valor `default`: `citeproc`
+* `biblio-title`: texto da seção de bibliografia
+* `include-in-header`: inclusão de código `latex` imediatamente antes de `\begin{document}`
+  + Valor possíveis: _filename_ indicando a localização do arquivo dentro da pasta
+* `include-before-body`: inclusão de código `latex` imediatamente depois de `\begin{document}`
+  + Valor possíveis: _filename_ indicando a localização do arquivo dentro da pasta
+* `include-after-body`: inclusão de código `latex` imediatamente antes de `\end{document}`
+  + Valor possíveis: _filename_ indicando a localização do arquivo dentro da pasta
+
+## `quarto`\newline `pdf`
+
+* `pdf-engine`: aplicativo usado para gerar os documentos
+  + Valores possíveis: `xelatex`, `pdflatex`, `lualatex`, `tectonic`, `latexmk`, `context`, `wkhtmltopdf`, `prince`, `weasyprint`, e `pdfroff`
+  + Valor `default`: `xelatex`
+* `lof`: inclua a lista de figuras
+  + Campo booleano (`true` - inclusão da lista de figuras)
+  + Valor `default`: `false`
+* `lot`: inclua a lista de tabelas
+  + Campos booleano (`true` - inclusão da lista de tabelas)
+  + Valor `default`: `false`
+
+## `quarto`\newline `pdf`
+
+**Vamos analisar um exemplo!**
+
+[exemplo-11](https://ufbabr-my.sharepoint.com/:f:/g/personal/gilberto_sassi_ufba_br/Ehk4nU-6hABMlXzD-m2Ma-QBbs_hoTrcqELCTMF777q7Lg?e=GOKhhi)
+
+
+## `quarto`\newline `pdf`
+
+**Exercício**
+
+Crie um documento chamado `documento.pdf`, e inclua os seguintes campos no cabeçalho YAML:
+
+* `title` - inclua o seguinte título: "Documento pdf gerado com quarto"
+* `date` - inclua sua data de nascimento
+* `lang` - inclua o idioma português brasileiro - pt-br
+* `fontsize` - formate o texto para 12pt
+* inclua 3 cm de margem superior e a esquerda, e 2 cm para margem inferior e a direita
+*  inclua o pacote enumerate como preâmbulo
+* Inclua duas seções, três parágrafos e o seguinte código (com seu
+resultado) em seu documento:
+
+```r
+summary(iris)
+ggplot(iris) + geom_bar(aes(x = Species))
+```
+
+# `quarto`\newline\newline\ `docx`
+
+## `quarto`\newline `docx`
+
+
+
+Use `format: pdf` e `format: html` sempre que possível.
+
+`format: docx` é útil por causa do monopólio da Microsoft em produtos de processamento de texto (e planilha).
+
+Para customizar customizações, use template:
+
+* Crie um documento simples `template.docx`:
+```bash
+quarto pandoc -o relatorio/template.docx \
+   --print-default-data-file reference.docx
+```
+* Modifique o estilo e as configurações de margens deste documento
+* Modifique o cabeçalho YAML para:
+
+---
+
+```yaml
+---
+title: "Um título lindo"
+author: "fulnao de tal"
+date: 01/01/1900
+output:
+  docx:
+    reference-doc: template.docx
+---
+```
+
+## `quarto`\newline `docx`
+
+**Vamos analisar um exemplo!**
+
+[exemplo-12](https://ufbabr-my.sharepoint.com/:f:/g/personal/gilberto_sassi_ufba_br/Eumpmr8uaVxBkYslMRphEdcBDSLHag5_79LwD5hBYDl-5Q?e=5WG8A4)
+
+## `quarto`\newline `docx`
+
+Crie um documento chamado `documento.docx`, e inclua os seguinte campos no cabeçalho YAML:
+
+* `title` - inclua o seguinte título: `Documento word usando quarto`
+* `date` - inclua sua data de nascimento
+* `author` - inclua seu nome
+* Inclua um documento de template:
+  + Modifique o estilo de título do documento:
+  + fonte: times new roman
+  + Negrito e itálico
+  + tamanho: 30pt
+* Inclua três seções com um parágrafos cada.
+
