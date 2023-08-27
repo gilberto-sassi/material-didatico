@@ -3367,6 +3367,179 @@ Construa o gráfico de ramos-e-folhas para os seguintes conjunto de dados:
 * variável `comprimento_sepala` do conjunto de dados `iris`.
 * compare a variável `comprimento` para os grupos `Vitamina C` e `Suco de laranja` usando ramos-e-folha back-to-back do conjunto de dados `comprimento_dentes`.
 
+# Gráfico quantil-quantil 
+
+## Gráfico quantil-quantil
+
+**Objetivo:** checar se duas variáveis quantitativas tem a mesma distribuição.
+
+\regrafina
+
+* Considere duas variáveis quantitativas $X$ e $Y$ com
+  * $X\quad$: $x_1, \dots, x_n$;
+  * $Y\quad$: $y_1, \dots, y_m$.
+* Considere os quantis de $X$ e $Y$: 
+  * $x_{(1)}, \dots, x_{(n)}$;
+  * $y_{(1)}, \dots, y_{(m)}$.
+* Se $m=n$, cada par $(x_(j), y_{(j)}), \forall j=1, \dots, n$ desenhamos um ponto no plano cartesiano.
+* Se $m<n$, cada par $(q_{(\frac{j}{m})}, x_{(m)}), \forall j=1, \dots,m$ desenhamos um ponto no plano cartesiano onde $q_{(\frac{j}{m})}$ é o quantil de ordem $\frac{j}{m}$ na variável $X$.
+* Se os pontos estiverem _aproximadamente_ sobre a reta $y=x$, então $X$ e $Y$ tem a mesma distribuição.
+
+## Gráfico quantil-quantil\newline Exemplo
+
+Vamos comparar a altura de 150 crianças de duas escolas privadas de uma região nobre de salvador: escola $A$ e escola $B$.
+
+```{r}
+#| eval: false
+df_escola_a <- read_xlsx("dados/brutos/escola_a.xlsx")
+df_escola_b <- read_xlsx("dados/brutos/escola_b.xlsx")
+
+estat_ordem_a <- sort(df_escola_a$escola_a)
+estat_ordem_b <- sort(df_escola_b$escola_b)
+
+tibble(escola_a = estat_ordem_a, escola_b = estat_ordem_b) |> 
+  ggplot(aes(escola_a, escola_b)) +
+  geom_point(size = 3) +
+  geom_abline(intercept = 0, slope = 1, size = 2,
+              color = "blue") +
+  theme_minimal() +
+  labs(x = "Escola A", y = "Escola B")
+```
+
+---
+
+```{r}
+#| echo: false
+#| out-width: 100%
+df_escola_a <- read_xlsx("dados/brutos/escola_a.xlsx")
+df_escola_b <- read_xlsx("dados/brutos/escola_b.xlsx")
+
+estat_ordem_a <- sort(df_escola_a$escola_a)
+estat_ordem_b <- sort(df_escola_b$escola_b)
+
+tibble(escola_a = estat_ordem_a, escola_b = estat_ordem_b) |> 
+  ggplot(aes(escola_a, escola_b)) +
+  geom_point(size = 3) +
+  geom_abline(intercept = 0, slope = 1, size = 2,
+              color = "blue") +
+  theme_minimal() +
+  labs(x = "Escola A", y = "Escola B")
+```
+
+## Gráfico quantil-quantil\newline Exemplo
+
+Vamos comparar a altura de 150 crianças de duas escolas:
+
+* escola $A$: escola privada de uma região nobre;
+* escola $C$: escola pública de uma região periférica.
+
+```{r}
+#| eval: false
+df_escola_a <- read_xlsx("dados/brutos/escola_a.xlsx")
+df_escola_c <- read_xlsx("dados/brutos/escola_c.xlsx")
+
+estat_ordem_a <- sort(df_escola_a$escola_a)
+estat_ordem_c <- sort(df_escola_c$escola_c)
+
+tibble(escola_a = estat_ordem_a, escola_c = estat_ordem_c) |> 
+  ggplot(aes(escola_a, escola_c)) +
+  geom_point(size = 3) +
+  geom_abline(intercept = 0, slope = 1, size = 2,
+              color = "blue") +
+  theme_minimal() +
+  labs(x = "Escola A", y = "Escola C")
+```
+
+---
+
+```{r}
+#| echo: false
+#| out.width: 100%
+df_escola_a <- read_xlsx("dados/brutos/escola_a.xlsx")
+df_escola_c <- read_xlsx("dados/brutos/escola_c.xlsx")
+
+estat_ordem_a <- sort(df_escola_a$escola_a)
+estat_ordem_c <- sort(df_escola_c$escola_c)
+
+tibble(escola_a = estat_ordem_a, escola_c = estat_ordem_c) |> 
+  ggplot(aes(escola_a, escola_c)) +
+  geom_point(size = 3) +
+  geom_abline(intercept = 0, slope = 1, size = 2,
+              color = "blue") +
+  theme_minimal() +
+  labs(x = "Escola A", y = "Escola C")
+```
+
+
+## Gráfico quantil-quantil\newline checando normalidade
+
+* Seja $X$ uma variável quantitativa com amostra $x_1, \dots, x_n$;
+* Considere as estatísticas de ordem: $x_{(1)}, \dots, x_{(n)}$;
+* Considere os valores padronizados: $z_{(j)} = \frac{x_{(i)} - \bar{x}}{s}, \forall i=1, \dots, n$;
+* Considere os quantis da distribuição normal: $q_{(i)} = \Phi^{-1} \left( \frac{i-0.5}{n} \right), \forall i=1, \dots, n$;
+* Para cada par $(x_{(i)}, q_{(i)}), \forall i=1, \dots,n$, desenhamos um ponto no plano cartesiano;
+* Se os pontos estiverem sobre a reta $y=x$, temos indícios que $X$ tem distribuição normal.
+
+Este gráfico também é chamado \textcolor{titulo}{gráfico de probabilidade normal}.
+
+## Gráfico de probabilidade normal
+
+Vamos checar se a variável `largura_sepala` no conjunto de dados `iris.xlsx` tem distribuição normal.
+
+Vamos usar o pacote [`qqplotr`](https://aloy.github.io/qqplotr/) que é uma extensão do pacote [`ggplot2`](https://ggplot2.tidyverse.org/index.html).
+
+* `stat_qq_point` inclui os pontos no plano cartesiano;
+* `stat_qq_line` inclui a reta $y=x$;
+* `stat_qq_band(bandType = "ts")` inclui uma faixa ao gráfico. Os pontos precisam estar dentro desta faixa (intervalo de confiança) para indicar a normalidade.
+
+---
+
+```{r}
+#| eval: false
+library(qqplotr)
+
+ggplot(
+  dados_iris,
+  aes(sample = largura_sepala)
+) +
+  stat_qq_point(color = "blue") +
+  stat_qq_line(size = 1.5, color = "purple") +
+  stat_qq_band(bandType = "ts", fill = "red", alpha = 0.25) +
+  theme_minimal() +
+  labs(
+    x = "Quantis teóricos da distribuição normal",
+    y = "Quantis amostrais"
+  )
+```
+
+---
+
+```{r}
+#| echo: false
+#| out.width: 100%
+library(qqplotr)
+
+ggplot(
+  dados_iris,
+  aes(sample = largura_sepala)
+) +
+  stat_qq_point(color = "blue") +
+  stat_qq_line(size = 1.5, color = "purple") +
+  stat_qq_band(bandType = "ts", fill = "red", alpha = 0.25) +
+  theme_minimal() +
+  labs(
+    x = "Quantis teóricos da distribuição normal",
+    y = "Quantis amostrais"
+  )
+```
+
+## Gráfico quantil-quantil\newline Exercício
+
+* Verifique se `nu_nota_mt` e `nu_nota_lc` do conjunto de dados `amostra_enem_salvador.xlsx` tem a mesma distribuição usando histograma, _violin plot_, _lv plot_ e gráfico quantil-quantil;
+* Verifique se `nu_nota_mt` do conjunto de dados `amostra_enem_salvador.xlsx` tem distribuição normal usando histograma e gráfico quantil-quantil;
+* Verifique se `nu_nota_lc` do conjunto de dados `amostra_enem_salvador.xlsx` tem distribuição normal usando histograma e gráfico quantil-quantil.
+
+
 # Associção entre duas variáveis
 
 ## Gráficos\newline Duas variáveis

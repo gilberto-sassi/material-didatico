@@ -334,7 +334,7 @@ Estatística}
 % 	\maketitle
 %  \end{frame}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, interior hidden, borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, sharp corners, enhanced, frame hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, enhanced, breakable, interior hidden, sharp corners, borderline west={3pt}{0pt}{shadecolor}, frame hidden]}{\end{tcolorbox}}\fi
 
 \hypertarget{sobre-o-curso}{%
 \section{Sobre o curso}\label{sobre-o-curso}}
@@ -5962,6 +5962,227 @@ dados:
 \end{itemize}
 \end{frame}
 
+\hypertarget{gruxe1fico-quantil-quantil}{%
+\section{Gráfico quantil-quantil}\label{gruxe1fico-quantil-quantil}}
+
+\begin{frame}{Gráfico quantil-quantil}
+\protect\hypertarget{gruxe1fico-quantil-quantil-1}{}
+\textbf{Objetivo:} checar se duas variáveis quantitativas tem a mesma
+distribuição.
+
+\regrafina
+
+\begin{itemize}
+\tightlist
+\item
+  Considere duas variáveis quantitativas \(X\) e \(Y\) com
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(X\quad\): \(x_1, \dots, x_n\);
+  \item
+    \(Y\quad\): \(y_1, \dots, y_m\).
+  \end{itemize}
+\item
+  Considere os quantis de \(X\) e \(Y\):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(x_{(1)}, \dots, x_{(n)}\);
+  \item
+    \(y_{(1)}, \dots, y_{(m)}\).
+  \end{itemize}
+\item
+  Se \(m=n\), cada par \((x_(j), y_{(j)}), \forall j=1, \dots, n\)
+  desenhamos um ponto no plano cartesiano.
+\item
+  Se \(m<n\), cada par
+  \((q_{(\frac{j}{m})}, x_{(m)}), \forall j=1, \dots,m\) desenhamos um
+  ponto no plano cartesiano onde \(q_{(\frac{j}{m})}\) é o quantil de
+  ordem \(\frac{j}{m}\) na variável \(X\).
+\item
+  Se os pontos estiverem \emph{aproximadamente} sobre a reta \(y=x\),
+  então \(X\) e \(Y\) tem a mesma distribuição.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Gráfico quantil-quantil\newline Exemplo}
+\protect\hypertarget{gruxe1fico-quantil-quantilexemplo}{}
+Vamos comparar a altura de 150 crianças de duas escolas privadas de uma
+região nobre de salvador: escola \(A\) e escola \(B\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_escola\_a }\OtherTok{\textless{}{-}} \FunctionTok{read\_xlsx}\NormalTok{(}\StringTok{"dados/brutos/escola\_a.xlsx"}\NormalTok{)}
+\NormalTok{df\_escola\_b }\OtherTok{\textless{}{-}} \FunctionTok{read\_xlsx}\NormalTok{(}\StringTok{"dados/brutos/escola\_b.xlsx"}\NormalTok{)}
+
+\NormalTok{estat\_ordem\_a }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(df\_escola\_a}\SpecialCharTok{$}\NormalTok{escola\_a)}
+\NormalTok{estat\_ordem\_b }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(df\_escola\_b}\SpecialCharTok{$}\NormalTok{escola\_b)}
+
+\FunctionTok{tibble}\NormalTok{(}\AttributeTok{escola\_a =}\NormalTok{ estat\_ordem\_a, }\AttributeTok{escola\_b =}\NormalTok{ estat\_ordem\_b) }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(escola\_a, escola\_b)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_abline}\NormalTok{(}\AttributeTok{intercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{slope =} \DecValTok{1}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}\NormalTok{,}
+              \AttributeTok{color =} \StringTok{"blue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Escola A"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Escola B"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}
+\begin{figure}
+
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-120-1.pdf}
+
+}
+
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Gráfico quantil-quantil\newline Exemplo}
+\protect\hypertarget{gruxe1fico-quantil-quantilexemplo-1}{}
+Vamos comparar a altura de 150 crianças de duas escolas:
+
+\begin{itemize}
+\tightlist
+\item
+  escola \(A\): escola privada de uma região nobre;
+\item
+  escola \(C\): escola pública de uma região periférica.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_escola\_a }\OtherTok{\textless{}{-}} \FunctionTok{read\_xlsx}\NormalTok{(}\StringTok{"dados/brutos/escola\_a.xlsx"}\NormalTok{)}
+\NormalTok{df\_escola\_c }\OtherTok{\textless{}{-}} \FunctionTok{read\_xlsx}\NormalTok{(}\StringTok{"dados/brutos/escola\_c.xlsx"}\NormalTok{)}
+
+\NormalTok{estat\_ordem\_a }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(df\_escola\_a}\SpecialCharTok{$}\NormalTok{escola\_a)}
+\NormalTok{estat\_ordem\_c }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(df\_escola\_c}\SpecialCharTok{$}\NormalTok{escola\_c)}
+
+\FunctionTok{tibble}\NormalTok{(}\AttributeTok{escola\_a =}\NormalTok{ estat\_ordem\_a, }\AttributeTok{escola\_c =}\NormalTok{ estat\_ordem\_c) }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(escola\_a, escola\_c)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_abline}\NormalTok{(}\AttributeTok{intercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{slope =} \DecValTok{1}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}\NormalTok{,}
+              \AttributeTok{color =} \StringTok{"blue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Escola A"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Escola C"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}
+\begin{figure}
+
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-122-1.pdf}
+
+}
+
+\end{figure}
+\end{frame}
+
+\begin{frame}{Gráfico quantil-quantil\newline checando normalidade}
+\protect\hypertarget{gruxe1fico-quantil-quantilchecando-normalidade}{}
+\begin{itemize}
+\tightlist
+\item
+  Seja \(X\) uma variável quantitativa com amostra \(x_1, \dots, x_n\);
+\item
+  Considere as estatísticas de ordem: \(x_{(1)}, \dots, x_{(n)}\);
+\item
+  Considere os valores padronizados:
+  \(z_{(j)} = \frac{x_{(i)} - \bar{x}}{s}, \forall i=1, \dots, n\);
+\item
+  Considere os quantis da distribuição normal:
+  \(q_{(i)} = \Phi^{-1} \left( \frac{i-0.5}{n} \right), \forall i=1, \dots, n\);
+\item
+  Para cada par \((x_{(i)}, q_{(i)}), \forall i=1, \dots,n\), desenhamos
+  um ponto no plano cartesiano;
+\item
+  Se os pontos estiverem sobre a reta \(y=x\), temos indícios que \(X\)
+  tem distribuição normal.
+\end{itemize}
+
+Este gráfico também é chamado
+\textcolor{titulo}{gráfico de probabilidade normal}.
+\end{frame}
+
+\begin{frame}[fragile]{Gráfico de probabilidade normal}
+\protect\hypertarget{gruxe1fico-de-probabilidade-normal}{}
+Vamos checar se a variável \texttt{largura\_sepala} no conjunto de dados
+\texttt{iris.xlsx} tem distribuição normal.
+
+Vamos usar o pacote
+\href{https://aloy.github.io/qqplotr/}{\texttt{qqplotr}} que é uma
+extensão do pacote
+\href{https://ggplot2.tidyverse.org/index.html}{\texttt{ggplot2}}.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{stat\_qq\_point} inclui os pontos no plano cartesiano;
+\item
+  \texttt{stat\_qq\_line} inclui a reta \(y=x\);
+\item
+  \texttt{stat\_qq\_band(bandType\ =\ "ts")} inclui uma faixa ao
+  gráfico. Os pontos precisam estar dentro desta faixa (intervalo de
+  confiança) para indicar a normalidade.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(qqplotr)}
+
+\FunctionTok{ggplot}\NormalTok{(}
+\NormalTok{  dados\_iris,}
+  \FunctionTok{aes}\NormalTok{(}\AttributeTok{sample =}\NormalTok{ largura\_sepala)}
+\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{stat\_qq\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"blue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{stat\_qq\_line}\NormalTok{(}\AttributeTok{size =} \FloatTok{1.5}\NormalTok{, }\AttributeTok{color =} \StringTok{"purple"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{stat\_qq\_band}\NormalTok{(}\AttributeTok{bandType =} \StringTok{"ts"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"red"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.25}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{x =} \StringTok{"Quantis teóricos da distribuição normal"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Quantis amostrais"}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}
+\begin{figure}
+
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-124-1.pdf}
+
+}
+
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Gráfico quantil-quantil\newline Exercício}
+\protect\hypertarget{gruxe1fico-quantil-quantilexercuxedcio}{}
+\begin{itemize}
+\tightlist
+\item
+  Verifique se \texttt{nu\_nota\_mt} e \texttt{nu\_nota\_lc} do conjunto
+  de dados \texttt{amostra\_enem\_salvador.xlsx} tem a mesma
+  distribuição usando histograma, \emph{violin plot}, \emph{lv plot} e
+  gráfico quantil-quantil;
+\item
+  Verifique se \texttt{nu\_nota\_mt} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx} tem distribuição normal usando
+  histograma e gráfico quantil-quantil;
+\item
+  Verifique se \texttt{nu\_nota\_lc} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx} tem distribuição normal usando
+  histograma e gráfico quantil-quantil.
+\end{itemize}
+\end{frame}
+
 \hypertarget{associuxe7uxe3o-entre-duas-variuxe1veis}{%
 \section{Associção entre duas
 variáveis}\label{associuxe7uxe3o-entre-duas-variuxe1veis}}
@@ -5972,7 +6193,7 @@ variáveis}\label{associuxe7uxe3o-entre-duas-variuxe1veis}}
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.75\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-119-1.pdf}
+{\centering \includegraphics[width=0.75\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-125-1.pdf}
 
 }
 
@@ -5997,7 +6218,7 @@ variáveis}\label{associuxe7uxe3o-entre-duas-variuxe1veis}}
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-121-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-127-1.pdf}
 
 }
 
@@ -6081,7 +6302,7 @@ Vamos checar a associação entre \texttt{fundacao\_tipo} e
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-123-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-129-1.pdf}
 
 }
 
@@ -6117,7 +6338,7 @@ duas variáveis qualitativas.
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-125-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-131-1.pdf}
 
 }
 
@@ -6160,7 +6381,7 @@ caixa.
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-127-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-133-1.pdf}
 
 }
 

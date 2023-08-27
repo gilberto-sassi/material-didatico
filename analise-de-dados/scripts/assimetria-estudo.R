@@ -64,3 +64,25 @@ tabela <- function(tamanhos, f, g = 0.90, n = 10000) {
   df
 }
 tabela(tamanhos, kurtosis)
+
+# escolas -----------------------------------------------------------------
+
+set.seed(12345)
+
+tam <- 150
+
+df_a <- tibble(escola_a = round(rnorm(tam, mean = 160, sd = 10), 2))
+write_xlsx(df_a, "slides/dados/brutos/escola_a.xlsx")
+write_csv(df_a, "dados/brutos/escola_a.csv")
+write_xlsx(df_a, "dados/brutos/escola_a.xlsx")
+
+df_b <- tibble(escola_b = round(rnorm(tam, mean = 160, sd = 10), 2))
+write_xlsx(df_b, "slides/dados/brutos/escola_b.xlsx")
+write_csv(df_b, "dados/brutos/escola_b.csv")
+write_xlsx(df_b, "dados/brutos/escola_b.xlsx")
+
+df_c <- tibble(escola_c = round(rnorm(tam, mean = 140, sd = 10), 2))
+write_xlsx(df_c, "slides/dados/brutos/escola_c.xlsx")
+write_csv(df_c, "dados/brutos/escola_c.csv")
+write_xlsx(df_c, "dados/brutos/escola_c.xlsx")
+
