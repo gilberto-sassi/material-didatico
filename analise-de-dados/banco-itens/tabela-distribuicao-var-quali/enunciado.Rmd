@@ -1,0 +1,89 @@
+```{r dados, include=FALSE, message=FALSE} 
+if (!require(pacman)) install.packages(pacman)
+library(pacman)
+p_load(readxl, writexl, readODS)
+p_load(ggthemes)
+p_load(glue)
+p_load(statBasics)
+p_load(exams)
+p_load(Boom)
+p_load(tidyverse)
+options(scipen = 999) # prevent scientific notation
+
+
+# número de categorias
+n_cat <- 5
+
+# tamanho da amostra
+tam <- sample(1000:5000, 1)
+
+# hiperparâmetro da dirichlet
+hiper <- rexp(n_cat, 0.5)
+
+# probabilidades
+prob <- rdirichlet(1, hiper)
+
+# categorias
+categorias <- LETTERS[1:n_cat]
+
+# amostra
+amostra <- sample(categorias, tam, replace = TRUE, prob)
+
+# data.frame
+tab <- tibble(x = amostra)
+
+write_xlsx(tab, "dados.xlsx")
+
+# solução
+sol <- c(
+    categorias |> map_dbl(~ sum(.x == amostra)),
+    categorias |> map_dbl(~ round(mean(.x == amostra) * 100, 2))
+)
+names(sol) <- NULL
+
+#formatação
+f <- \(x) format(x, decimal.mark = ",")
+```
+
+Question
+========
+
+Construa a tabela de distribuição de frequências (com duas casas decimais) para variável qualitativa **X** com categorias: `r categorias |> paste(collapse = ", ")`. A amostra para este exercícios está salva em [`dados.xlsx`](dados.xlsx).
+
+|X|Frequência (absoluta)|Porcentagem|
+|:---|:---|:----|
+|A|\#\#ANSWER1\#\#|\#\#ANSWER6\#\#%|
+|B|\#\#ANSWER2\#\#|\#\#ANSWER7\#\#%|
+|C|\#\#ANSWER3\#\#|\#\#ANSWER8\#\#%|
+|D|\#\#ANSWER4\#\#|\#\#ANSWER9\#\#%|
+|E|\#\#ANSWER5\#\#|\#\#ANSWER10\#\#%|
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+
+Solution
+========
+
+|X|Frequência (absoluta)|Porcentagem|
+|:---|:---|:----|
+|A|`r f(sol[1])`|`r f(sol[6])`|
+|B|`r f(sol[2])`|`r f(sol[7])`|
+|C|`r f(sol[3])`|`r f(sol[8])`|
+|D|`r f(sol[4])`|`r f(sol[9])`|
+|E|`r f(sol[5])`|`r f(sol[10])`|
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+
+Meta-information
+================
+exname: tabelaVarQuali
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste0(collapse = "|")`
+exsolution: `r paste0(sol, collapse = "|")`
+extol: 0.05

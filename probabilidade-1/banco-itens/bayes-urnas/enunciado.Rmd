@@ -1,0 +1,65 @@
+```{r dados, include=FALSE, message=FALSE} 
+if (!require(pacman)) install.packages(pacman)
+library(pacman)
+p_load(readxl, writexl, readODS)
+p_load(ggthemes)
+p_load(glue)
+p_load(statBasics)
+p_load(exams)
+p_load(Boom)
+p_load(tidyverse)
+options(scipen = 999) # prevent scientific notation
+
+
+# número de urnas
+n_urnas <- 3
+
+# probabilidades
+prob_urnas <- rdirichlet(1, rep(1, n_urnas)) |> round(4)
+
+# bolas na urna: Preta, Vermelha e Branca
+urna_1 <- c(sample.int(5, 3, replace = TRUE))
+urna_2 <- c(sample.int(5, 3, replace = TRUE))
+urna_3 <- c(sample.int(5, 3, replace = TRUE))
+
+# Probabilidade (equiprobabilidade)
+prob_urna_1 <- urna_1 / sum(urna_1)
+prob_urna_2 <- urna_2 / sum(urna_2)
+prob_urna_3 <- urna_3 / sum(urna_3)
+
+# solução
+sol <- prob_urnas[2] * prob_urna_2[2] /
+    (prob_urnas[1] * prob_urna_1[2] +
+    prob_urnas[2] * prob_urna_2[2] +
+    prob_urnas[3] * prob_urna_3[2])
+sol <- round(sol, 2)
+
+#formatação
+f <- \(x) format(x, decimal.mark = ",")
+```
+
+Question
+========
+
+Considere o experimento aleatório que consiste em duas etapas:
+
+* sortear uma urna entre possibilidades: U~1~ (com probabilidade de ser sorteada igual a `r f(prob_urnas[1])`), U~2~ (com probabilidade de ser sorteada igual a `r f(prob_urnas[2])`), e U~3~ (com probabilidade de ser sorteada igual a `r f(prob_urnas[3])`).
+* sortear uma bola vermelha desta urna sorteada.
+
+A urna U~1~ tem `r urna_1[1]` bolas brancas, `r urna_1[2]` bolas vermelhas e `r urna_1[3]` bolas pretas. A urna U~2~ tem `r urna_2[1]` bolas brancas, `r urna_2[2]` bolas vermelhas e `r urna_2[3]` bolas pretas. A urna U~3~ tem `r urna_3[1]` bolas brancas, `r urna_3[2]` bolas vermelhas e `r urna_3[3]` bolas pretas. 
+
+Se bola sorteada é vermelha, qual a probabilidade da urna U~2~ ter sido escolhida?
+
+
+Solution
+========
+
+Dado que a bola vermelha foi sorteada, a probabilidade da urna U~2~ ter sido escolhida é `r f(sol)`.
+
+
+Meta-information
+================
+exname: bayes
+extype: num
+exsolution: `r sol`
+extol: 0.05

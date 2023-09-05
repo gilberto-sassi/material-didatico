@@ -1,0 +1,71 @@
+```{r dados, include=FALSE, message=FALSE, echo=FALSE} 
+if (!require(pacman)) install.packages(pacman)
+library(pacman)
+p_load(readxl, writexl, readODS)
+p_load(ggthemes)
+p_load(glue)
+p_load(statBasics)
+p_load(exams)
+p_load(Boom)
+p_load(gt)
+p_load(tidyverse)
+options(scipen = 999) # prevent scientific notation
+
+
+# número de categorias
+n_cat <- sample(5:8, 1)
+
+# tamanho da amostra
+tam <- sample(1000:5000, 1)
+
+# probabilidades
+prob <- rdirichlet(1, rep(1, n_cat))
+
+# categorias
+categorias <- LETTERS[1:n_cat]
+
+# amostra
+amostra <- sample(categorias, tam, replace = TRUE, prob)
+
+# evento
+evento <- sample(categorias, 2, replace = FALSE)
+
+# solução
+sol <- evento |>
+    map_dbl(~ mean(.x == amostra)) |>
+    sum() |>
+    round(2)
+
+#formatação
+f <- \(x) format(x, decimal.mark = ",")
+```
+
+Question
+========
+
+Considere o experimento aleatório com espaço amostral dados por {`r paste(categorias, collapse = ", ")`}. Uma estudante muito paciente realizou este experimento aleatório `r tam` vezes, e anotou quantas vezes cada ponto amostral foi resultado do experimento aleatório como mostrado na tabela abaixo. Usando a abordagem frequentista de calcular probabilidade, qual a probabilidade do evento {`r paste(evento, collapse = ", ")`}
+
+```{r}
+#| echo: false
+df <- tibble(
+    Categorias = categorias,
+    `Frequência` = categorias |>
+        map_dbl(~ sum(.x == amostra))
+)
+knitr::kable(
+    df,
+    caption = "Quantidade de vezes que cada ponto amostral foi resultado do experimento aleatório"
+)
+```
+
+Solution
+========
+A probabilidade do evento {`r paste(evento, collapse = ", ")`} é aproximadamente `r f(sol)`.
+
+
+Meta-information
+================
+exname: probFrequentista
+extype: num
+exsolution: `r sol`
+extol: 0.05

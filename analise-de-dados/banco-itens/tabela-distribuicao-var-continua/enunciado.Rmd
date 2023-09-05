@@ -1,0 +1,213 @@
+```{r dados, include=FALSE, message=FALSE} 
+if (!require(pacman)) install.packages(pacman)
+library(pacman)
+p_load(readxl, writexl, readODS)
+p_load(ggthemes)
+p_load(glue)
+p_load(statBasics)
+p_load(exams)
+p_load(Boom)
+p_load(tidyverse)
+options(scipen = 999) # prevent scientific notation
+
+# tamanho da amostra
+tam <- sample(1000:5000, 1)
+
+# amostra
+amostra <- seq_len(tam) |>
+    map_dbl(\(k) {
+        while(T) {
+            valor <- rnorm(1, 500, 100)
+            if (0 <= valor & valor <= 1000) return(valor)
+        }
+    })
+
+# data.frame
+tab <- tibble(x = amostra)
+
+write_xlsx(tab, "dados.xlsx")
+
+# solução
+sol <- c(
+    seq(from = 0, to = 900, by = 100),
+    seq(from = 100, to = 1000, by = 100),
+    c(
+        sum(0 <= amostra & amostra < 100),
+        sum(100 <= amostra & amostra < 200),
+        sum(200 <= amostra & amostra < 300),
+        sum(300 <= amostra & amostra < 400),
+        sum(400 <= amostra & amostra < 500),
+        sum(500 <= amostra & amostra < 600),
+        sum(600 <= amostra & amostra < 700),
+        sum(700 <= amostra & amostra < 800),
+        sum(800 <= amostra & amostra < 900),
+        sum(900 <= amostra & amostra <= 1000)
+    ),
+    c(
+        mean(0 <= amostra & amostra < 100),
+        mean(100 <= amostra & amostra < 200),
+        mean(200 <= amostra & amostra < 300),
+        mean(300 <= amostra & amostra < 400),
+        mean(400 <= amostra & amostra < 500),
+        mean(500 <= amostra & amostra < 600),
+        mean(600 <= amostra & amostra < 700),
+        mean(700 <= amostra & amostra < 800),
+        mean(800 <= amostra & amostra < 900),
+        mean(900 <= amostra & amostra <= 1000)
+    ) * 100
+) |> round(2)
+names(sol) <- NULL
+
+#formatação
+f <- \(x) format(x, decimal.mark = ",")
+```
+
+Question
+========
+
+Construa a tabela de distribuição de frequências (com duas casas decimais) para variável quantitativa contínua **X**, com intervalos de tamanho 100 (começando em 0 e terminando 1000). A amostra para este exercícios está salva em [`dados.xlsx`](dados.xlsx).
+
+
+<table border="1">
+<thead>
+  <tr>
+    <th >X</th>
+    <th >Frequência (absoluta)</th>
+    <th >Porcentagem</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td >[\#\#ANSWER1\#\#, \#\#ANSWER11\#\#)</td>
+    <td >\#\#ANSWER21\#\#</td>
+    <td >\#\#ANSWER31\#\#%</td>
+  </tr>
+  <tr>
+    <td >[\#\#ANSWER2\#\#, \#\#ANSWER12\#\#)</td>
+    <td >\#\#ANSWER22\#\#</td>
+    <td >\#\#ANSWER32\#\#%</td>
+  </tr>
+  <tr>
+    <td >[\#\#ANSWER3\#\#, \#\#ANSWER13\#\#)</td>
+    <td >\#\#ANSWER23\#\#</td>
+    <td >\#\#ANSWER33\#\#%</td>
+  </tr>
+  <tr>
+    <td >[\#\#ANSWER4\#\#, \#\#ANSWER14\#\#)</td>
+    <td >\#\#ANSWER24\#\#</td>
+    <td >\#\#ANSWER34\#\#%</td>
+  </tr>
+  <tr>
+    <td >[\#\#ANSWER5\#\#, \#\#ANSWER15\#\#)</td>
+    <td >\#\#ANSWER25\#\#</td>
+    <td >\#\#ANSWER35\#\#%</td>
+  </tr>
+  <tr>
+    <td >[\#\#ANSWER6\#\#, \#\#ANSWER16\#\#)</td>
+    <td >\#\#ANSWER26\#\#</td>
+    <td >\#\#ANSWER36\#\#%</td>
+  </tr>
+  <tr>
+    <td >[\#\#ANSWER7\#\#, \#\#ANSWER17\#\#)</td>
+    <td >\#\#ANSWER27\#\#</td>
+    <td >\#\#ANSWER37\#\#%</td>
+  </tr>
+  <tr>
+    <td >[\#\#ANSWER8\#\#, \#\#ANSWER18\#\#)</td>
+    <td >\#\#ANSWER28\#\#</td>
+    <td >\#\#ANSWER38\#\#%</td>
+  </tr>
+  <tr>
+    <td >[\#\#ANSWER9\#\#, \#\#ANSWER19\#\#)</td>
+    <td >\#\#ANSWER29\#\#</td>
+    <td >\#\#ANSWER39\#\#%</td>
+  </tr>
+  <tr>
+    <td >[\#\#ANSWER10\#\#, \#\#ANSWER20\#\#]</td>
+    <td >\#\#ANSWER30\#\#</td>
+    <td >\#\#ANSWER40\#\#%</td>
+  </tr>
+</tbody>
+</table>
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+
+Solution
+========
+
+<table border="1">
+<thead>
+  <tr>
+    <th >X</th>
+    <th >Frequência (absoluta)</th>
+    <th >Porcentagem</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td >[`r f(sol[1])`, `r f(sol[11])`)</td>
+    <td >`r f(sol[21])`</td>
+    <td >`r f(sol[31])`%</td>
+  </tr>
+  <tr>
+    <td >[`r f(sol[2])`, `r f(sol[12])`)</td>
+    <td >`r f(sol[22])`</td>
+    <td >`r f(sol[32])`%</td>
+  </tr>
+  <tr>
+    <td >[`r f(sol[3])`, `r f(sol[13])`)</td>
+    <td >`r f(sol[23])`</td>
+    <td >`r f(sol[33])`%</td>
+  </tr>
+  <tr>
+    <td >[`r f(sol[4])`, `r f(sol[14])`)</td>
+    <td >`r f(sol[24])`</td>
+    <td >`r f(sol[34])`%</td>
+  </tr>
+  <tr>
+    <td >[`r f(sol[5])`, `r f(sol[15])`)</td>
+    <td >`r f(sol[25])`</td>
+    <td >`r f(sol[35])`%</td>
+  </tr>
+  <tr>
+    <td >[`r f(sol[6])`, `r f(sol[16])`)</td>
+    <td >`r f(sol[26])`</td>
+    <td >`r f(sol[36])`%</td>
+  </tr>
+  <tr>
+    <td >[`r f(sol[7])`, `r f(sol[17])`)</td>
+    <td >`r f(sol[27])`</td>
+    <td >`r f(sol[37])`%</td>
+  </tr>
+  <tr>
+    <td >[`r f(sol[8])`, `r f(sol[18])`)</td>
+    <td >`r f(sol[28])`</td>
+    <td >`r f(sol[38])`%</td>
+  </tr>
+  <tr>
+    <td >[`r f(sol[9])`, `r f(sol[19])`)</td>
+    <td >`r f(sol[29])`</td>
+    <td >`r f(sol[39])`%</td>
+  </tr>
+  <tr>
+    <td >[`r f(sol[10])`, `r f(sol[20])`)</td>
+    <td >`r f(sol[30])`</td>
+    <td >`r f(sol[40])`%</td>
+  </tr>
+</tbody>
+</table>
+```{r solutionlist, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+
+Meta-information
+================
+exname: tabelaVarQuali
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste0(collapse = "|")`
+exsolution: `r paste0(sol, collapse = "|")`
+extol: 0.05

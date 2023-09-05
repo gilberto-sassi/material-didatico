@@ -1,0 +1,54 @@
+```{r dados, include=FALSE, message=FALSE} 
+if (!require(pacman)) install.packages(pacman)
+library(pacman)
+p_load(readxl, writexl, readODS)
+p_load(ggthemes)
+p_load(glue)
+p_load(statBasics)
+p_load(exams)
+p_load(tidyverse)
+options(scipen = 999) # prevent scientific notation
+
+
+# média
+media <- 25
+
+# random sample of integer values
+amostra <- seq_len(100) |>
+    map_dbl(\(k) {
+        while(TRUE) {
+            valor <- rpois(1, media)
+            if (valor >= 17) return(valor)
+        } 
+    })
+
+# solução
+proporcao <- (mean(amostra <= 22) * 100) |> round(2) # correct
+```
+
+Question
+========
+Considere o seguinte gráfico de barras para a variável quantitativa discreta _Idade_ para 100 alunos da disciplina _Estatística Básica_:
+
+```{r grafico, echo=FALSE, fig.cap=" "}
+df <- tibble(X = amostra)
+ggplot(df, aes(x = X)) +
+    geom_bar(fill = "blue") +
+    scale_y_continuous(breaks = seq(from = 1, to = max(as.vector(table(amostra))), by = 1)) +
+    scale_x_continuous(breaks = seq(from = min(amostra), to = max(amostra), by = 1)) +
+    theme_calc() +
+    labs(title = "Gráfico de Barras para a variável Idade.", x = "Idade", y = "Frequência Absoluta")
+```
+
+Qual a porcentagem de alunos com 22 ou menos anos?
+
+Solution
+========
+A proporção de estudantes com 22 ou menos anos é igual a  `r proporcao`. 
+
+Meta-information
+================
+exname: proporcao
+extype: num
+exsolution: `r proporcao`
+extol: `r proporcao * 0.10`
