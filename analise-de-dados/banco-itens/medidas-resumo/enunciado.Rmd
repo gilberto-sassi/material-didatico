@@ -1,0 +1,93 @@
+```{r}
+#| label: gerando os dados
+#| echo: false
+
+library(pacman)
+
+p_load(
+    exams, readxl, writexl, tidyverse, Boom
+)
+
+options(scipen = 999) #prevent scientific notation
+
+# probabilidade de cada categoria
+prob_cat <- rdirichlet(1, rexp(5, 0.5))
+
+# média da população
+media_pop <- sample(100:200, 1)
+
+# desvio padrão da população
+dp_pop <- runif(1, 2, 5)
+
+# tamanho da amostra
+tam <- sample(1500:2000, 1)
+
+# amostra
+amostra_cont <- rnorm(tam, mean = media_pop, sd = dp_pop) |>
+    round(2)
+amostra_cat <- sample(
+    LETTERS[1:5],
+    tam,
+    replace = TRUE,
+    prob = prob_cat
+)
+write_xlsx(tibble(x = amostra_cont, y = amostra_cat), "dados.xlsx")
+
+# solução
+moda <- \(x) names(which.max(table(amostra_cat)))
+sol <- list(
+    "media" = mean(amostra_cont) |> round(2),
+    "mediana" = median(amostra_cont) |> round(2),
+    "variancia" = var(amostra_cont) |> round(2),
+    "dp" = sd(amostra_cont) |> round(2),
+    "desvio_medio" = abs(amostra_cont - mean(amostra_cont)) |>
+        mean() |> round(2),
+    "moda" = moda(amostra_cat)
+)
+
+# formatação
+f <- \(x) format(
+    x,
+    decimal.mark = ",",
+    big.mark = "."
+)
+```
+
+Question
+========
+
+Considere o [conjunto de dados](dados.xlsx) com duas variáveis, onde X é uma variável quantitativa contínua e Y é uma variável qualitativa. Calcule a média, mediana, variância, desvio padrão e o desvio médio para X. Qual a moda da variável qualitativa Y? 
+
+**Use duas casas decimais.**
+
+
+Questionlist
+------------
+
+* Média de X:
+* Mediana de X:
+* Variância de X:
+* Desvio padrão de X:
+* Desvio médio de X:
+* Moda de Y:
+
+Solution
+========
+
+Solutionlist
+------------
+
+* Média de X: `r f(sol[['media']])`.
+* Mediana de X: `r f(sol[['mediana']])`.
+* Variância de X: `r f(sol[['variancia']])`.
+* Desvio padrão de X: `r f(sol[['dp']])`.
+* Desvio médio de X: `r f(sol[['desvio_medio']])`.
+* Moda de Y: `r sol[['moda']]`.
+
+Meta-information
+================
+exname: medidaResumo
+extype: cloze
+exclozetype: num|num|num|num|num|string
+exsolution: `r sol[['media']]`|`r sol[['mediana']]`|`r sol[['variancia']]`|`r sol[['dp']]`|`r sol[['desvio_medio']]`|`r sol[['moda']]`
+extol: 0.05
