@@ -1,0 +1,65 @@
+```{r dados, include=FALSE, message=FALSE, echo=FALSE} 
+if (!require(pacman)) install.packages(pacman)
+library(pacman)
+p_load(readxl, writexl, readODS)
+p_load(ggthemes)
+p_load(glue)
+p_load(statBasics)
+p_load(exams)
+p_load(Boom)
+p_load(gt)
+p_load(tidyverse)
+options(scipen = 999) # prevent scientific notation
+
+
+# palavras
+palavras <- c(
+    "IME-UFBA",
+    "IL-UFBA",
+    "STI-UFBA",
+    "ICS-UFBA",
+    "FD-UFBA",
+    "EMVZ-UFBA",
+    "versus",
+    "poema",
+    "prato",
+    "garfo",
+    "talher",
+    "sopa",
+    "dor",
+    "dores",
+    "coluna",
+    "anel",
+    "josefa",
+    "onus",
+    "bonus",
+    "onibus"
+)
+
+# palavra do exercício
+palavra <- sample(palavras, 1)
+
+# solução
+sol <- factorial(nchar(palavra)) / factorial(nchar(palavra) - 3)
+
+#formatação
+f <- \(x) format(x, decimal.mark = ",")
+```
+
+Question
+========
+
+Quantas palavras com três caracteres podemos formar os caracteres de **`r palavra`**?
+
+
+Solution
+========
+Podemos formar `r sol` palavras com três caracteres a partir da palavra **`r palavra`**.
+
+
+Meta-information
+================
+exname: permutacao
+extype: num
+exsolution: `r sol`
+extol: 0.0005

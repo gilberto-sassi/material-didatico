@@ -1,0 +1,50 @@
+```{r dados, include=FALSE, message=FALSE, echo=FALSE} 
+if (!require(pacman)) install.packages(pacman)
+library(pacman)
+p_load(readxl, writexl, readODS)
+p_load(ggthemes)
+p_load(glue)
+p_load(statBasics)
+p_load(exams)
+p_load(Boom)
+p_load(gt)
+p_load(tidyverse)
+options(scipen = 999) # prevent scientific notation
+
+
+# quantidade de pessoas
+n_pessoas <- sample(40:50, 1)
+
+# tamanho da turma 1
+turma_1 <- sample(15:30, 1)
+
+# solução
+sol <- choose(n_pessoas, turma_1)
+
+#formatação
+f <- \(x) format(x, decimal.mark = ",", big.mark = ".")
+```
+
+Question
+========
+
+O colegiado do Bacharelado em Estatística precisa criar duas turmas de introdução a programação devido a grande quantidade de matriculados: `r n_pessoas`. Se uma duas turmas precisam ter `r turma_1` estudantes por causa da quantidade de computadores no laboratório 1, de quantas formas podemos distribuir as/os estudantes nestas duas turmas?
+
+**Dica:**
+
+1. Use a função `choose` da linguagem `R`.
+1. Use a função `comb` do pacote `numpy` na linguagem `python`.
+1. Use a função `combin` do google planilhas.
+
+
+Solution
+========
+Podemos distribuir as/os estudantes em duas turmas, sendo uma destas turmas com `r turma_1` estudantes, de `r f(sol)` formas. 
+
+
+Meta-information
+================
+exname: combinatoria
+extype: num
+exsolution: `r sol`
+extol: 0.0005
