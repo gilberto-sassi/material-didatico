@@ -334,7 +334,7 @@ Estatística}
 % 	\maketitle
 %  \end{frame}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, frame hidden, borderline west={3pt}{0pt}{shadecolor}, sharp corners, boxrule=0pt, enhanced, interior hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[enhanced, sharp corners, breakable, boxrule=0pt, interior hidden, frame hidden, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
 
 \hypertarget{sobre-o-curso}{%
 \section{Sobre o curso}\label{sobre-o-curso}}
@@ -3652,7 +3652,7 @@ por categorias de uma variável qualitativa.
 \item
   \(100 \cdot p\%\) das observações \(x_i\) satisfazem \(x_i \leq q(p)\)
 \item
-  \(100 \cdot (1-p)\%\) das observações satisfazem \(x_i \geq q(1-p)\)
+  \(100 \cdot (1-p)\%\) das observações satisfazem \(x_i \geq q(p)\)
 \end{itemize}
 
 \regrafina
@@ -4039,7 +4039,7 @@ Adequado com normalidade.
 \begin{itemize}
 \tightlist
 \item
-  \(m=frac{p}{4}+\frac{3}{8}\);
+  \(m=\frac{p}{4}+\frac{3}{8}\);
 \item
   \(j=\lfloor p\cdot n + m \rfloor\);
 \end{itemize}
@@ -4314,22 +4314,22 @@ Sixteenths (16 avos) &
 \(D\) & 2 & \(\frac{1}{16}\) \\
 thirty-seconds (32 avos) &
 \(\frac{\lfloor \text{profundidade das 16 avos} \rfloor + 1}{2}\) &
-\(D\) & 2 & \(\frac{1}{32}\) \\
+\(C\) & 2 & \(\frac{1}{32}\) \\
 thirty-fourths (64 avos) &
 \(\frac{\lfloor \text{profundidade das 32 avos} \rfloor + 1}{2}\) &
-\(C\) & 2 & \(\frac{1}{64}\) \\
+\(B\) & 2 & \(\frac{1}{64}\) \\
 thirty-fourths (128 avos) &
 \(\frac{\lfloor \text{profundidade das 64 avos} \rfloor + 1}{2}\) &
-\(B\) & 2 & \(\frac{1}{128}\) \\
+\(A\) & 2 & \(\frac{1}{128}\) \\
 thirty-fourths (256 avos) &
 \(\frac{\lfloor \text{profundidade das 128 avos} \rfloor + 1}{2}\) &
-\(B\) & 2 & \(\frac{1}{256}\) \\
+\(Z\) & 2 & \(\frac{1}{256}\) \\
 thirty-fourths (512 avos) &
 \(\frac{\lfloor \text{profundidade das 256 avos} \rfloor + 1}{2}\) &
-\(B\) & 2 & \(\frac{1}{512}\) \\
+\(Y\) & 2 & \(\frac{1}{512}\) \\
 thirty-fourths (1024 avos) &
 \(\frac{\lfloor \text{profundidade das 512 avos} \rfloor + 1}{2}\) &
-\(B\) & 2 & \(\frac{1}{1024}\) \\
+\(X\) & 2 & \(\frac{1}{1024}\) \\
 \bottomrule\noalign{}
 \end{longtable}
 
