@@ -1,0 +1,2192 @@
+---
+title: |
+  Introdução à linguagem `R`
+author: |
+  Profa. Carolina & Prof. Gilberto
+institute: |
+  **Departamento de Estatística**\newline Instituto de Matemática e Estatística\newline Universidade Federal da Bahia
+fontsize: 10pt
+lang: pt-br
+bibliography: refs.bib
+biblio-style: apa
+format: 
+  beamer:
+    fig_caption: true
+    theme: "Pittsburgh"
+    colortheme: "spruce"
+    logo: logo_menor.png
+    slide_level: 2
+    fonttheme: default
+    highlight: "arrow"
+    keep_tex: true
+    colorlinks: true
+    linkcolor: titulo
+    urlcolor: titulo
+    filecolor: magenta
+    include-in-header: header.tex
+    include-before-body: before_body.tex
+pdf-engine: pdflatex
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(glue)
+library(readxl)
+library(writexl)
+library(janitor)
+library(gt)
+library(ggthemes)
+library(readODS)
+library(patchwork)
+library(statBasics)
+library(MASS)
+library(tidyverse)
+
+knitr::opts_chunk$set(
+  results = "markup",
+  # cache = TRUE,
+  echo = TRUE
+)
+```
+
+## Preparando o ambiente
+
+\textbf{\large Durante o curso}
+
+* Usaremos nas aulas: [posit.cloud](https://posit.cloud/).
+* Recomendamos instalar e usar `R` com versão pelo menos `4.1`: [cran.r-project.org](https://cran.r-project.org).
+* usaremos o _framework_ [`tidyverse`](https://www.tidyverse.org):
+  * Instalação: `install.packages("tidyverse")`
+
+\rule{\textwidth}{0.5pt}
+
+\textbf{\large Na sua casa}
+
+* **IDE** recomendadas: [_RStudio_](https://www.rstudio.com/products/rstudio/download/preview/) e [_VSCode_](https://code.visualstudio.com).
+  * Caso você queira usar o [_VSCode_](https://code.visualstudio.com), instale a extensão da linguagem `R`: [`REditorSupport`](https://marketplace.visualstudio.com/items?itemName=REditorSupport.r).
+* Outras linguagens interessantes: [`python`](https://www.python.org) e [`julia`](https://julialang.org).
+  * [`python`](https://www.python.org): linguagem interpretada de próposito geral, contemporânea do `R`,  simples e fácil de aprender.
+  * [`julia`](https://julialang.org): linguagem interpretada para análise de dados, lançada em 2012, promete simplicidade e velocidade.
+
+# A linguagem `R`:\newline\newline\ uma introdução
+ 
+## O começo de tudo 
+
+**O precursor do `R`: `S`.**
+
+* `R` é uma linguagem derivada do `S`.
+* `S` foi desenvolvido em `fortran` por **John Chambers** em _1976_ no **Bell Labs**.
+* `S` foi desenvolvido para ser um ambiente de análise estatística.
+* Filosofia do `S`: permitir que usuários possam analisar dados usando estatística com pouco conhecimento de programação.
+
+**História do `R`**
+
+* Em _1991_, **Ross Ihaka** e **Robert Gentleman** criaram o `R` na **Nova Zelândia**.
+* Em _1996_, **Ross** e **Robert** liberam o `R` sob a licença "GNU General License", o que tornou o `R` um software livre.
+* Em _1997_, **The Core Group** é criado para melhorar e controlar o código fonte do `R`.
+
+## Porque usar `R` 
+
+* Constante melhoramento e atualização.
+* Portabilidade (roda em praticamente todos os sistemas operacionais).
+* Grande comunidade de desenvolvedores que adicionam novas capacidades ao R através de pacotes.
+* Gráficos de maneira relativamente simples.
+* Interatividade.
+* Um grande comunidade de usuários (especialmente útil para resolução de problemas).
+
+## Onde estudar fora de aula?
+
+**Livros **
+
+Recomendo principalmente o livro [`R` for Data Science](https://r4ds.had.co.nz).
+
+\vspace{0.5cm}
+
+* **Nível Iniciante:** [R Tutorial na W3Schools](https://www.w3schools.com/r/default.asp).
+* **Nível Iniciante:** [Hands-On Programming with `R`](https://rstudio-education.github.io/hopr/).
+* **Nível Iniciante:** [`R` for Data Science](https://r4ds.had.co.nz).
+* **Nível Intermediário:** [Advanced `R`](https://adv-r.hadley.nz/).
+
+\regrafina
+
+**Livros em português**
+
+* **Nível _cheguei agora aqui_:** [zen do R](https://curso-r.github.io/zen-do-r/index.html).
+* **Nível Avançado:** [Advanced `R`](https://adv-r.hadley.nz).
+* **Nível Iniciante:** [material.curso-r.com](http://material.curso-r.com/).
+* **Nível Iniciante:** [ecoR](http://ecor.ib.usp.br/doku.php).
+* **Nível Iniciante:** [analises-ecologicas.com](https://analises-ecologicas.com/).
+
+---
+
+**Plataformas de ensino on-line**
+
+* **Datacamp:** [datacamp.com](https://www.datacamp.com/)
+* **Dataquest:** [dataquest.io](https://www.dataquest.io/)
+
+## O que você pode fazer quando estiver em apuros?
+
+* consultar a documentação do `R`: 
+```{r}
+#| echo: true
+#| eval: false
+help(mean)
+?mean
+```
+
+* Peça ajuda a um programador mais experiente.
+
+```r
+sqrt("Gilberto")
+```
+
+* Pesquise por `Como resolver o erro: Error in sqrt("Gilberto"): non-numeric argument to mathematical function`, nas seguintes plataformas:
+  * Consulte o erro no [chatgpt](https://chat.openai.com/).
+  * Consulte o erro [pt.stackoverflow.com](https://pt.stackoverflow.com/).
+  * Consulte [Rstudio community](https://community.rstudio.com/).
+  * Use ferramentas de busca como o [google](https://www.google.com.br/) e [duckduckgo.com](https://duckduckgo.com/).
+
+
+## Operações básicas 
+
+**Soma**
+
+```{r}
+1 + 1
+```
+
+**Substração**
+
+```{r}
+2 - 1
+```
+
+**Divisão**
+
+```{r}
+3 / 2
+```
+
+**Potenciação**
+
+```{r}
+2^3
+```
+
+## Operações básicas\newline Exercício
+
+Qual o resultado das seguintes operações?
+
+1. `5.32 + 7.99`
+1. `5.55 - 10`
+1. `3.33 * 5.12`
+1. `1 / 4.55`
+1. `5^1.23`
+
+## Funções na linguagem `R`
+
+**Função:** é uma ação e tem os seguinte componentes na ordem:
+
+* _nome da função_
+* _parênteses_
+* _argumentos posicionais_
+* _argumentos nomeados_
+
+\footnotesize
+
+$$
+\overbrace{\texttt{nome\_funcao}}^{\text{\textit{nome da função}}} \overbrace{(}^{\text{\textit{parênteses}}} \overbrace{\texttt{valor1},\quad \texttt{valor2}}^{\text{\textit{argumentos posicionais}}},\quad \overbrace{\texttt{nome1 = valor3},\quad \texttt{nome2 = valor4}}^{\text{\textit{argumentos nomeados}}} \overbrace{)}^{\text{\textit{parênteses}}}
+$$
+
+\normalsize
+
+**example:**
+
+```r
+read_xlsx('data/raw/casas.xlsx', sheet=1)
+```
+
+## Funções na linguagem `R`\newline Exercício
+
+* Obtenha ajuda para `mean` usando a função `help`.
+* Calcule o logaritmo de 10 na base 3 usando a função `log`.
+* Leia o conjunto de dados `amostra_enem_salvador.xlsx` usando a função `read_xlsx` do pacote `readxl`.
+
+## Estrutura de dados no `R`
+
+* **Tipo de dados:** caracter (`character`), número real (`double`), número inteiro (`integer`), número complexo (`complex`) e lógico (`logical`).
+* **Estrutura de dados:** atomic `vector` (a estrutura de dados mais básicA no `R`), `matrix`, `array`, `list` e `data.frame` (`tibble` no `tidyverse`).
+* **Estrutura de dados Homogênea:** `vector`, `matrix` e `array`.
+* **Estrutura de dados Heterôgenea:** `list` e `data.frame` (`tibble` no `tidyverse`).
+
+## Tipo de dados no `R` 
+
+**Número inteiro**
+
+```{r}
+class(1L)
+```
+
+**Número real**
+
+```{r}
+class(1.2)
+```
+
+**Número complexo**
+
+```{r}
+class(1 + 1i)
+```
+
+
+## Tipo de dados no `R` 
+
+**Número lógico ou valor booleano**
+
+```{r}
+class(TRUE)
+```
+
+**Caracter ou *string***
+
+```{r}
+class("Gilberto")
+```
+
+
+## Estrutura de dados homogênea
+
+**Vetor**
+
+* Agrupamento de valores de mesmo tipo em um único objeto.
+* Criação de vetor: 
+  - `c(...)`;
+  - `vector('<tipo de dados>', <comprimento do vetor>)`;
+  - `seq(from = a, to = b, by = c)`;
+  - `seq_along(<vetor>)` - vetor de números inteiros com o mesmo trabalho de `<vetor>`;
+  - `seq_len(<número inteiro>)` - vetor de números inteiros com o tamanho `<número inteiro>`;
+  - `<número inicial>:<número final>` - sequência de números inteiros entre `<número inicial>` e `<número final>`
+* Podemos checar o `tipo de dados` de um vetor com a função `class`.
+
+---
+
+**Vetor de caracteres**
+
+```{r}
+nomes  <- c("Gilberto", "Sassi")
+class(nomes)
+nomes
+```
+
+```{r}
+texto_vazio <- vector("character", 3)
+class(texto_vazio)
+texto_vazio
+```
+
+
+## Estrutura de dados homogênea 
+
+**Vetor de números reais**
+
+```{r}
+vetor_real  <- c(0.2, 1.35)
+class(vetor_real)
+vetor_real
+```
+
+
+```{r}
+vetor_real <- vector("double", 3)
+vetor_real
+```
+
+```{r}
+vetor_real <- seq(from = 1, to = 3.5, by = 0.5)
+vetor_real
+```
+
+
+## Estrutura de dados homogênea 
+
+**Vetor de números inteiros**
+
+```{r}
+vetor_inteiro  <- c(1L, 2L)
+class(vetor_inteiro)
+vetor_inteiro
+```
+
+```{r}
+vetor_inteiro <- vector("integer", 3)
+vetor_inteiro
+```
+
+```{r}
+vetor_inteiro <- 1:4
+vetor_inteiro
+```
+
+---
+
+
+```{r}
+vetor_real  <- seq_along(nomes)
+class(vetor_real)
+vetor_real
+```
+
+```{r}
+vetor_real <- seq_len(5)
+class(vetor_real)
+vetor_real
+```
+
+
+## Estrutura de dados homogênea 
+
+**Vetor lógico**
+
+```{r}
+vetor_logico  <- c(TRUE, FALSE)
+class(vetor_logico)
+vetor_logico
+```
+
+```{r}
+vetor_logico <- vector("logical", 3)
+vetor_logico
+```
+
+## Estrutura de dados homogênea\newline Exercício
+
+Crie os seguintes vetores:
+
+1. $\begin{pmatrix} 0,1 & 0,2 & 0,3 & 0,4 & 0,5  \end{pmatrix}$
+1. $\begin{pmatrix} TRUE & TRUE & FALSE \end{pmatrix}$
+1. $\begin{pmatrix} "Marx" & "Engels" & "Lênin" \end{pmatrix}$
+1. $\begin{pmatrix} 1 & 2 & 3 \end{pmatrix}$
+
+## Estrutura de dados homogênea
+
+**Operações com vetores númericos (`double`, `integer` e `complex`).**
+
+* Operações básicas (operação, substração, multiplicação e divisão ) realizada em cada elemento do vetor.
+* _Slicing_: extrair parte de um vetor (não precisa ser vetor numérico).
+
+**_Slicing_**
+
+```{r}
+vetor <- c("a", "b", "c", "d", "e", "f", "g", "h", "i")
+# selecionado todos os elementos entre o primeiro e o quinta
+vetor[1:5] 
+```
+
+**Adição (vetores númericos)**
+
+```{r}
+vetor_1 <- 1:5
+vetor_2 <- 6:10
+vetor_1 + vetor_2
+```
+
+## Estrutura de dados homogênea 
+
+\small
+
+**Substração (vetores numéricos)**
+
+```{r}
+vetor_1 <- 1:5
+vetor_2 <- 6:10
+vetor_2 - vetor_1
+```
+
+**Multiplicação (vetores numéricos)**
+
+```{r}
+vetor_1 <- 1:5
+vetor_2 <- 6:10
+vetor_2 * vetor_1
+```
+
+**Divisão (vetores numéricos)**
+
+```{r}
+vetor_1 <- 1:5
+vetor_2 <- 6:10
+vetor_2 / vetor_1
+```
+
+\normalsize
+
+## Estrutura de dados homogênea\newline Exercício
+
+Realize as seguintes operações envolvendo vetores:
+
+1. $\begin{pmatrix} 1 & 2 & 3 \end{pmatrix} + \begin{pmatrix} 0,1 & 0,05 & 0,33 \end{pmatrix}$
+1. $\begin{pmatrix} 1 & 2 & 3 \end{pmatrix} - \begin{pmatrix} 0,1 & 0,05 & 0,33 \end{pmatrix}$
+1. $\begin{pmatrix} 1 & 2 & 3 \end{pmatrix} * \begin{pmatrix} 0,1 & 0,05 & 0,33 \end{pmatrix}$
+1. $\begin{pmatrix} 1 & 2 & 3 \end{pmatrix} / \begin{pmatrix} 0,1 & 0,05 & 0,33 \end{pmatrix}$
+
+## Fatores (`factor`)
+
+Podemos fixar o conjunto de valores possíveis de uma variável qualitativa (e especificar uma ordem implícita) usando `factor`.
+
+Principais vantagens:
+
+* Evita os erros de digitação.
+* Introduz uma ordenação que pode ser útil para construir gráficos e tabelas.
+* Necessário para funções de modelagem estatística (que não veremos neste curso).
+
+\destaque{Vamos usar o pacote \texttt{forcats}.}
+
+## Fatores
+
+Função `fct` do pacote `forcats`: transforma uma variável qualitativa (`chr`) em fator (`fct`).
+
+* `x`: primeiro vetor de texto;
+* `levels`: valores possíveis da variável qualitativa, onde a ordem de inputação é a ordem implícita. Se não fornecida, `fct` usará a ordem de aparição.
+
+## Fatores
+
+Vamos transformar a variável `especie` em fator.
+
+```{r}
+dados_iris <- read_xlsx("dados/brutos/iris.xlsx")
+
+niveis <- c("setosa", "versicolor", "virginica")
+dados_iris <- mutate(
+  dados_iris,
+  especies = fct(especies, levels = niveis)
+)
+glimpse(dados_iris)
+```
+
+## Fatores\newline Exercício
+
+Para o conjunto de dados `amostra_enem_salvador.xlsx`, transforme as variáveis `tp_escola` e `tp_cor_raca` em fatores usando a função `fct`.
+
+
+
+## Estrutura de dados homogênea
+
+**Matriz**
+
+* Agrupamento de valores de mesmo tipo em um único objeto de dimensão 2.
+* Criação de matriz:
+  - `matrix(..., nrow = <integer>, ncol = <integer>, byrow = TRUE)` - preenche a matriz a partir das linhas se `byrow = TRUE`;
+  - `diag(<vector>)` - diagonal principal igual a `<vetor>` e outros elementos zero;
+  - `rbind()` - especificação das linhas da matriz;
+  - `cbind()` - especificação das colunas da matriz.
+
+---
+
+**Matriz de caracteres**
+
+```{r}
+matriz_texto <- rbind(c("a", "b"), c("c", "d"))
+matriz_texto
+```
+
+
+
+**Matriz de números reais**
+
+```{r}
+matriz_real <- matrix(seq(from = 0, to = 1.5, by = 0.5),
+                      nrow = 2, byrow = TRUE)
+matriz_real
+```
+
+## Estrutura de dados homogênea 
+
+**Matriz de inteiros**
+
+```{r}
+matriz_inteiro <- cbind(c(1L, 2L), c(3L, 4L))
+matriz_inteiro
+```
+
+**Matriz de valores lógicos**
+
+```{r}
+matriz_logico <- matrix(c(TRUE, F, F, T), nrow = 2)
+matriz_logico
+```
+
+## Estrutura de dados homogênea
+
+**Array**
+
+* Agrupamento de valores de mesmo tipo em um único objeto em duas ou mais dimensões.
+* Criação de array: `array(..., dim = <vector of integers>)`.
+
+```{r}
+#| echo: true
+#| eval: false
+dados_matriz_1 <- 10:13
+dados_matriz_2  <- 14:17
+resultado <- array(c(dados_matriz_1, dados_matriz_2),
+                  dim = c(2, 2, 2))
+resultado
+```
+
+---
+
+```{r}
+#| echo: false
+#| eval: true
+dados_matriz_1 <- 10:13
+dados_matriz_2  <- 14:17
+resultado <- array(c(dados_matriz_1, dados_matriz_2), dim = c(2, 2, 2))
+resultado
+```
+
+
+## Estrutura de dados homogênea 
+
+**Operações com matrizes númericas (`double`, `integer` e `complex`).**
+
+* Operações básicas (operação, substração, multiplicação e divisão) realizada em cada elemento das matrizes.
+* Outras operações:
+  - [Multiplicação de matrizes](https://pt.wikipedia.org/wiki/Produto_de_matrizes);
+  - [Inversão de matrizes](https://pt.wikipedia.org/wiki/Matriz_inversa);
+  - [Matriz transposta](https://pt.wikipedia.org/wiki/Matriz_transposta);
+  - [Determinante](https://pt.wikipedia.org/wiki/Determinante);
+  - [Solução de sistema de equações lineares](https://pt.wikipedia.org/wiki/Sistema_de_equações_lineares).
+
+## Operações com matrizes
+
+**Matrizes**
+
+```{r}
+matriz_a <- rbind(c(1, 2), c(0, 3))
+matriz_b <- matrix(runif(4), ncol = 2)
+```
+
+\regrafina
+
+\small
+
+**Soma**
+
+```{r}
+matriz_soma <- matriz_a + matriz_b
+matriz_soma
+```
+
+**Subtração**
+
+```{r}
+matriz_menos <- matriz_a - matriz_b
+matriz_menos
+```
+
+\normalsize
+
+## Operações com matrizes
+
+**Produto de Hadamard**
+
+* Multiplicação de matrizes, elemento por elemento.
+* Para detalhes consulte [produto de Hadamard](https://en.wikipedia.org/wiki/Hadamard_product_(matrices)).
+
+```{r}
+matriz_hadamard <- matriz_a * matriz_b
+matriz_hadamard
+```
+
+\regrafina
+
+[**Multiplicação de matrizes**](https://pt.wikipedia.org/wiki/Matriz_inversa)
+
+```{r}
+matriz_multiplicacao <- matriz_a %*% matriz_b
+matriz_multiplicacao
+```
+
+## Operações com matrizes 
+
+\small
+
+[**Matriz inversa**](https://pt.wikipedia.org/wiki/Matriz_inversa)
+
+```{r}
+matriz_inversa <- solve(matriz_a)
+matriz_inversa
+matriz_a %*% matriz_inversa
+```
+
+
+[**Matriz transposta**](https://pt.wikipedia.org/wiki/Matriz_transposta)
+
+```{r}
+matriz_transposta <- t(matriz_a)
+matriz_transposta
+```
+
+\normalsize
+
+## Operações com matrizes 
+
+\small
+
+[**Determinante**](https://pt.wikipedia.org/wiki/Determinante)
+
+```{r}
+det(matriz_a)
+```
+
+[**Solução de sistema de equações lineares**](https://pt.wikipedia.org/wiki/Sistema_de_equações_lineares)
+
+```{r}
+b <- c(1, 2)
+solve(matriz_a, b)
+```
+
+**Matriz inversa generalizada**
+
+$G$ é a matriz inversa generalizada de $A$ se $A \cdot G \cdot A = A$. Para detalhes vide [matriz inversa generalizada](https://en.wikipedia.org/wiki/Generalized_inverse).
+
+```{r}
+library(MASS) # ginv é uma função do pacote MASS
+ginv(matriz_a)
+```
+
+\normalsize
+
+## Operações com matrizes
+
+**Outras operações com matrizes.**
+
+|Operador ou função|Descrição|
+|:--------------:|:-----------:|
+|`A %o% B`| [produto diádico $A\cdot B^T$](https://pt.wikipedia.org/wiki/Produto_diádico)|
+|`crossprod(A, B)`|[$A\cdot B^T$](https://pt.wikipedia.org/wiki/Produto_diádico)|
+|`crossprod(A)`|[$A\cdot A^T$](https://pt.wikipedia.org/wiki/Produto_diádico)|
+|`diag(x)`|retorna uma matrix diagonal com diagonal igual a `x`|
+|`diag(A)`|retorna um vetor com a diagona de $A$|
+|`diag(k)`|retorna uma matriz diagona de ordem $k$|
+
+## Estrutura de dados homogênea\newline Exercício
+
+Realize as seguinte operações envolvendo as matrizes:
+
+1. $\begin{pmatrix} 1 & 0\\ 2 & 0,5 \end{pmatrix} + \begin{pmatrix} 0,1 & 0\\ 0 & 0,5 \end{pmatrix}$
+1. $\begin{pmatrix} 1 & 0\\ 2 & 0,5 \end{pmatrix} - \begin{pmatrix} 0,1 & 0\\ 0 & 0,5 \end{pmatrix}$
+1. Multiplicação de matriz: $\begin{pmatrix} 1 & 0\\ 2 & 0,5 \end{pmatrix} \cdot \begin{pmatrix} 0,1 & 0\\ 0 & 0,5 \end{pmatrix}$ 
+1. Divisão elemento a elemento:  $\begin{pmatrix} 1 & 0\\ 2 & 0,5 \end{pmatrix} / \begin{pmatrix} 0,1 & 0\\ 0 & 0,5 \end{pmatrix}$
+1. Resolva o seguinte sistema de equações: $\begin{cases} x + 2 y = 21 \\ x - 2y = 1 \end{cases}$.
+1. Encontre a matriz inversa de $\begin{pmatrix} 1 & 2 \\ 1 & -2 \end{pmatrix}$.
+
+
+## Estrutura de Dados Heterogênea 
+
+**Lista**
+
+* Agrupamento de valores de tipos diversos e estrutura de dados 
+* Criação de listas: `list(...)` e `vector("list", <comprimento da lista>)`
+
+```{r}
+#| echo: true
+#| eval: false
+lista_info <- list(pedido_id = 8001406,
+          nome = "Fulano",
+          sobrenome = "de Tal",
+          cpf = "12345678900",
+          itens = list(list(descricao = "Ferrari",
+                            frete = 0,
+                            valor = 500000),
+                        list(descricao = "Dolly", frete = 1.5,
+                              valor = 3.90)))
+lista_info
+```
+
+---
+
+\scriptsize
+
+```{r}
+#| echo: false
+#| eval: true
+lista_info <- list(pedido_id = 8001406,
+          nome = "Fulano",
+          sobrenome = "de Tal",
+          cpf = "12345678900",
+          itens = list(list(descricao = "Ferrari",
+                            frete = 0,
+                            valor = 500000),
+                      list(descricao = "Dolly", frete = 1.5, valor = 3.90)))
+lista_info
+```
+
+\normalsize
+
+## Estrutura de dados heterogênea\newline Exercício
+
+Crie uma lista, chamada `informacoes_pessoais` com os seguintes campos:
+
+* `nome`: seu nome
+* `idade`: sua idade
+* `informacao_profissional`: uma lista com os seguintes campos:
+  * `matricula`: escolaridade
+  * `origem`: variável qualitativa com a sua cidade de origem.
+* `matriz`: inclua uma matriz de números reais de dimensão $2\times 2$
+
+## Operação com listas
+
+* _slicing_ - `[]` - extrai parte da lista (valor retornado é uma lista).
+* Acessando $k$-ésimo valor da lista: `lista[[k]]`.
+* Acessando um valor da lista pela chave (nome do campo): `lista$cpf`.
+* Concatenação de listas: `c()`.
+
+\regrafina
+
+**_Slicing_**
+
+```{r}
+lista_info[c(2, 4)]
+```
+
+**Acessando elemento pela posição**
+
+```{r}
+lista_info[[2]]
+```
+
+---
+
+**Acessando elemento pela chave**
+
+```{r}
+lista_info$nome
+```
+
+**Concatenação de listas**
+
+```{r}
+lista_1 <- list(1, 2)
+lista_2 <- list("Gilberto", "Sassi")
+lista_concatenada <- c(lista_1, lista_2)
+lista_concatenada
+```
+
+## Estrutura de dados heterogênea\newline Exercício
+
+Recupe e imprima as seguintes informações da lista `informacoes_pessoais`:
+
+* os três primeiros campos de `informacoes_pessoais`
+* os nomes dos campos de `informacoes_pessoais`
+* campo `nome` de `informacoes_pessoais`
+* o terceiro campo de `informacoes_pessoais`
+
+
+## Estrutura de Dados Heterogênea 
+
+**Tidy data**
+
+* Dados em formato de tabela.
+* Cada coluna é uma variável e cada linha é uma observação.
+
+\regrafina
+
+**`tibble` (data frame)**
+
+* Estrutura de dados tabular.
+* Assumimos que os dados estão **tidy**.
+* Criação de `tibble`: `tibble(...)` e `tribble(....)`.
+* `glimpse` mostra as informações do `tibble`.
+
+---
+
+```{r}
+library(tidyverse) # carregando o framework tidyverse
+data_frame <- tibble(
+  nome = c("Marx", "Engels", "Rosa", "Lênin", "Olga Benário"),
+  idade = c(22, 23, 21, 24, 30)
+)
+glimpse(data_frame)
+```
+
+## Valores especiais em `R` 
+
+|Valores especiais|Descrição|Função para identificar|
+|:-------------|:---------------|--------------------:|
+|`NA`|Valor faltante.|`is.na()`|
+|`NaN`|Resultado do cálculo indefinido.|`is.nan()`|
+|`Inf`|Valor que excede o valor máximo que sua máquina aguenta.|`is.inf()`|
+|`NULL`|Valor indefinido de expressões e funções (diferente de `NaN` e `NA`)|`is.null()`|
+
+
+## Operações básicas em um `tibble`
+
+|Função|Descrição|
+|:---------|:------------|
+|`head()`|Mostra as primeiras linhas de um `tibble`|
+|`tail()`|Mostra as últimas linhas de um `tibble`|
+|`glimpse()`|Impressão de informações básicas dos dados|
+|`add_case()`|Adiciona uma nova observação|
+|`add_row()`|Adiciona uma nova observação|
+
+---
+
+```{r}
+head(data_frame, n=2)
+```
+
+```{r}
+tail(data_frame, n=2)
+```
+
+
+## Estrutura de dados heterogênea\newline Exercício
+
+Realize as seguintes operações no _dataset_ `iris` (disponível no `R`):
+
+* imprima um resumo sobre o _dataset_ `iris`.
+* pegue as 5 primeiras linhas de `iris`.
+* pegue as 5 últimas linhas de `iris`.
+* crie _na mão_ o seguinte conjunto de dados:
+
+```{r}
+#| echo: false
+df_equipe <- tibble(
+  nomes = c("Fidel Castro", "Ernesto 'Che' Guevara", "Célia Sánchez"),
+  origem = c("Cuba", "Cuba", "Cuba")
+)
+knitr::kable(df_equipe)
+```
+
+# Organização é fundamental
+
+## Guia de estilo no `R`
+
+O nome de um objeto precisa ter um _significado_. 
+
+O nome deve indicar e deixar claro o que este objeto é ou faz.
+
+* Use a convenção do `R`:
+  * Use apenas letras minúsculas, números e _underscore_ (comece sempre com letras minúsculas).
+  * Nomes de objetos precisam ser substantivos e precisam descrever o que este objeto é ou faz (seja conciso, direto e significativo).
+  * Evite ao máximo os nomes que já são usados ( _buit-in_ ) do `R`.Por exemplo: `c`.
+  * Coloque espaço depois da vírgula.
+  * Não coloque espaço antes nem depois de parênteses. Exceção: Coloque um espaço `()` antes e depois de `if`, `for` ou `while`, e coloque um espaço depois de `()`.
+  * Coloque espaço entre operadores básicos: `+`, `-`, `*`, `==` e outros. Exceção: `^`.
+
+## Estrutura de diretórios
+
+Mantenha uma estrutura (organização) consistente de diretórios em seus projetos.
+
+* Sugestão de estrutura:
+  - `dados`: diretório para armazenar seus conjuntos de dados.
+    + `brutos`: dados brutos.
+    + `processados`: dados processados.
+  - `scripts`: código fonte do seu projeto.
+  - `figuras`: figuras criadas no seu projeto.
+  - `output`: outros arquivos que não são figuras.
+  - `legado`: arquivos da versão anterior do projeto.
+  - `notas`: notas de reuniões e afins.
+  - `relatorio` (ou `artigos`): documento final de seu projeto.
+  - `documentos`: livros, artigos e qualquer coisa que são referências em seu projeto.  
+
+Para mais detalhes, consulte esse guia do [curso-r](https://curso-r.com): [diretórios e `.Rproj`](https://curso-r.github.io/zen-do-r/rproj-dir.html).
+
+# Importação e exportação de dados
+
+## Lendo dados no `R` 
+
+\normalsize
+
+**Leitura de arquivos no formato `xlsx` ou `xls`**
+
+* **Pacote:** `readxl`
+* Parêmetros das funções `read_xls` (arquivos `.xls`) e `read_xlsx` (arquivos `.xlsx`):
+  - `path`: caminho até o arquivo.
+  - `sheet`: especifica a planilha do arquivo que será lida.
+  - `range`: especifica uma área de uma planilha para leitura. Por exemplo: `B3:E15`.
+  - `col_names`: Argumento lógico com valor padrão igual a `TRUE`. Indica se a primeira linha tem o nome das variáveis.
+  
+Para mais detalhes, consulte a documentação: [documentação de `read_xl`](https://readxl.tidyverse.org).
+
+## Lendo dados no `R` 
+
+**Leitura de arquivos no formato `xlsx` ou `xls`**
+
+\small
+
+```{r}
+library(tidyverse)
+library(readxl)
+dados_iris <- read_xlsx("dados/brutos/iris.xlsx")
+dados_iris <- clean_names(dados_iris)
+
+glimpse(dados_iris)
+```
+
+\normalsize
+
+## Lendo dados no `R`\newline Exercício
+
+Leia o _dataset_ `dados_leitura.xlsx` usando o pacote `readxl`. 
+
+## Lendo dados no `R` 
+
+\small
+
+**As formatações dos arquivos `csv`**
+
+* `csv`: _comma separated values_ (valores separados por coluna). O _separador_ varia em diferentes sistemas de medidas.
+
+\regrafina
+
+* No sistema métrico:
+  * As casas decimais são separadas por `,`
+  * O agrupamento de milhar é marcada por `.`
+  * As colunas dos arquivos de texto são separadas por `;`
+
+\regrafina
+
+* No sistema imperial inglês (UK e USA):
+  * As casas decimais são separadas por `.`
+  * O agrupamento de milhar é marcada por `,`
+  * As colunas dos arquivos de texto são separadas por `,`
+
+***Preste atenção em como o seus dados estão armazenados!***
+
+\normalsize
+
+---
+
+**Leitura de arquivos no formato `csv`**
+
+
+* **Pacote:** `readr` do `tidyverse` (instale com o comando `install.packages('readr')`).
+* Parêmetros das funções `read_csv` (sistema imperial inglês) e `read_csv2` (sistema métrico):
+  * `path`: caminho até o arquivo.
+
+Para mais detalhes, consulte a documentação oficial do _tidyverse_: [documentação de `read_r`](https://readr.tidyverse.org).
+
+## Lendo dados no `R`
+
+**Leitura de arquivos no formato `csv`**
+
+\scriptsize
+
+```{r, message=FALSE}
+dados_mtcarros <- read_csv2("dados/brutos/mtcarros.csv")
+dados_mtcarros <- clean_names(dados_mtcarros)
+glimpse(dados_mtcarros)
+```
+
+\normalsize
+
+## Lendo dados no `R`\newline Exercício
+
+Leia o _dataset_ `dados_leitura.csv` usando o pacote `readr`. 
+
+## Lendo dados no `R` 
+
+**Leitura de arquivos no formato `ods`**
+
+* **Pacote:** `readODS`  (instale com o comando `install.packages('readODS')`).
+* Parêmetros das funções `read_ods`:
+* `path`: caminho até o arquivo.
+  * `sheet`: especifica a planilha do arquivo que será lida.
+  * `range`: especifica uma área de uma planilha para leitura. Por exemplo: `B3:E15`.
+  * `col_names`: Argumento lógico com valor padrão igual a `TRUE`. Indica se a primeira linha tem o nome das variáveis.
+
+Para mais detalhes, consulte a documentação do _readODS_: [documentação de `readODS`](https://github.com/chainsawriot/readODS).
+
+## Lendo dados no `R` 
+
+**Leitura de arquivos no formato `ods`**
+
+```{r}
+library(readODS)
+dados_dentes <- read_ods("dados/brutos/crescimento_dentes.ods")
+dados_dentes <- clean_names(dados_dentes)
+
+glimpse(dados_dentes)
+```
+
+## Lendo dados no `R`\newline Exercício
+
+Leia o _dataset_ `dados_leitura.ods` usando o pacote `readODS`. 
+
+## Exportando dados no `R`
+
+\small
+
+**Salvar no formato `.csv` (sistema métrico)**
+
+`write_csv2` é parte do pacote `readr`.
+
+```{r}
+#| eval: false
+write_csv2(dados_dentes, file = "dados/processados/nome.csv")
+```
+
+\rule{\textwidth}{0.5pt}
+
+**Salvar no formato `.xlsx` **
+
+`write_xlsx` é parte do pacote `writexl`.
+
+```{r}
+#| eval: false
+write_xlsx(dados_dentes, path = "dados/processados/nome.xlsx")
+```
+
+\rule{\textwidth}{0.5pt}
+
+**Salvar no formato `ods`**
+
+`write_ods` é parte do pacote `readODS`.
+
+```{r}
+#| eval: false
+write_ods(dados_toothgrowth, path = "dados/processados/nome.ods")
+```
+
+\normalsize
+
+## Salvando dados no `R`\newline Exercício
+
+1. Salve o objeto `milhas` do pacote `dados` como `milhas.ods` na pasta `output` do seu projeto.
+1. Salve o objeto `diamante` do pacote `dados` como `diamante.csv` na pasta `output` do seu projeto.
+1. Salve o objeto `velho_fiel` do pacote `dados` como `velho_fiel.xlsx` na pasta `output` do seu projeto.
+
+# O operador pipe\newline\ `|>`
+
+## `|>` 
+
+ O valor resultante da expressão do lado esquerdo vira primeiro argumento da função do lado direito. 
+
+ **Principal vantagem:** simplifica a leitura e a documentação de funções compostas.
+
+ \regrafina
+
+Executar
+
+```r
+f(x, y)
+```
+
+é exatamente a mesma coisa que executar
+
+```r
+x |> f(y)
+```
+
+---
+
+```r
+log(sqrt(sum(x^2)))
+```
+
+é exatamente a mesma coisa que executar
+
+```r
+x^2 |> sum() |> sqrt() |> log()
+```
+
+
+## `|>` \newline _Fazendo_ um bolo
+
+Exemplo adaptado de [6.1 O operador pipe](https://livro.curso-r.com/6-1-o-operador-pipe.html).
+
+\regrafina
+
+Para cozinhar o bolo precisamos usar as seguintes funções:
+
+* `acrescente(lugar, algo)`
+* `misture(algo)`
+* `asse(algo)`
+
+## `|>` \newline _Fazendo_ um bolo
+
+
+
+* Passo 1:
+```r
+acrescente(
+  "tigela vazia",
+  "farinha"
+)
+```
+* Passo2:
+```r
+acrescente(
+  acrescente(
+    "tigela vazia",
+    "farinha"
+  ),
+  "ovos"
+)
+```
+
+---
+
+* Passo3:
+```r
+acrescente(
+  acrescente(
+    acrescente(
+      "tigela vazia",
+      "farinha"
+    ),
+    "ovos"
+  ),
+  "leite"
+)
+```
+
+---
+
+* Passo4:
+```r
+acrescente(
+  acrescente(
+    acrescente(
+      acrescente(
+        "tigela vazia",
+        "farinha"
+      ),
+      "ovos"
+    ),
+    "leite"
+  ),
+  "fermento"
+)
+```
+
+---
+
+* Passo 5:
+```r
+misture(
+  acrescente(
+    acrescente(
+      acrescente(
+        acrescente(
+          "tigela vazia",
+          "farinha"
+        ),
+        "ovos"
+      ),
+      "leite"
+    ),
+    "fermento"
+  )
+)
+```
+
+---
+
+* Passo 6:
+```r
+asse(
+  misture(
+    acrescente(
+      acrescente(
+        acrescente(
+          acrescente(
+            "tigela vazia",
+            "farinha"
+          ),
+          "ovos"
+        ),
+        "leite"
+      ),
+      "fermento"
+    )
+  )
+)
+```
+
+---
+
+Usando o operador `|>`.
+
+\vspace{0.5cm}
+
+```r
+acrescente("tigela vazia", "farinha") |>
+  acrescente("ovos") |>
+  acrescente("leite") |>
+  acrescente("fermento") |>
+  misture() |>
+  asse()
+```
+
+# Função
+
+##  Função
+
+* Evita repetição do mesmo código na análise de dados.
+* Se você um mesmo pedaço de código, fica mais simples a atualização deste pedaço de código.
+* Evita erros ao fazermos `ctrl+c` e `ctrl+v`.
+* Facilita a reutilização de código em outros projetos.
+
+\regrafina
+
+\destaque{Se você fizer \texttt{ctrl+c} e \texttt{ctrl+v} duas ou mais vezes, escreva uma função!}
+
+Esta seção foi adaptada do livro [R for Data Science](https://r4ds.hadley.nz/functions).
+
+## Função\newline motivação
+
+Considere a medida de assimetria descrita por
+
+\small
+
+```r
+assimetria = (quantile(x, 0.95) - 2 * median(x) + quantile(x, 0.05)) /
+      (quantile(x, 0.95) - quantile(x, 0.05))
+```
+
+\normalsize
+
+* `assimetria < 0` se e somente se `x` tem assimetria à esquerda ou negativa;
+* `assimetria > 0` se e somente se `x` tem assimetria à direita ou positiva;
+* `assimetria == 0` se e somente se `x` tem simetria.
+
+Vamos calcular essa medida para cada variável quantitativa do conjunto de dados `iris2.xlsx`.
+
+---
+
+\small
+
+```{r}
+dados_iris <- read_csv2("dados/brutos/iris2.csv")
+
+df_assimetria <- dados_iris |>
+  summarise(
+    ass_larg_sep = (quantile(larg_sep, 0.95) - 2 * median(larg_sep) +
+                    quantile(larg_sep, 0.05)) /
+      (quantile(larg_sep, 0.95) - quantile(larg_sep, 0.05)),
+    ass_comp_sep = (quantile(comp_sep, 0.95) - 2 * median(comp_sep) +
+                    quantile(comp_sep, 0.05)) /
+      (quantile(comp_sep, 0.95) - quantile(comp_sep, 0.05)),
+    ass_larg_pet = (quantile(larg_pet, 0.95) - 2 * median(larg_pet) +
+                    quantile(larg_pet, 0.05)) /
+      (quantile(larg_pet, 0.95) - quantile(larg_pet, 0.05)),
+    ass_comp_pet = (quantile(comp_pet, 0.95) - 2 * median(comp_pet) +
+                    quantile(comp_pet, 0.05)) /
+      (quantile(comp_pet, 0.95) - quantile(comp_pet, 0.05))
+  )
+```
+
+\normalsize
+
+---
+
+```{r}
+df_assimetria
+```
+
+Largura de pétala tem assimetria à esquerda ou negativa.
+
+\regrafina
+
+Repetimos quatro vezes o cálculo da medida de assimetria.
+
+\destaque{precisamos criar uma função!}
+
+## Função
+
+Uma função é composta por três partes:
+
+* `nome`: nome para o pedaço de código;
+* `argumentos`: informações necessárias para execução do pedaço de código;
+* `corpo`: pedaço de código.
+
+Em `corpo`, geralmente incluímos a função `return(<objeto>)`.
+
+Se a função não tiver `return(<objeto>)`, valor da última linha será retornado.
+
+\regrafina
+
+Escrevemos uma função da seguinte forma:
+
+
+\footnotesize
+
+```r
+nome <- function(arg1, arg2, arg3 = <valor padrão>, arg4 = <valor padrão>) {
+  corpo
+}
+```
+
+\normalsize
+
+## Função
+
+Vamos reescrever o código do cálculo de assimetria.
+
+\scriptsize
+
+```{r}
+dados_iris <- read_csv2("dados/brutos/iris2.csv")
+
+ass <- function(x) {
+  q_lower <- quantile(x, 0.05)
+  q_upper <- quantile(x, 0.95)
+  m <- median(x)
+  
+  (q_upper - 2 * m + q_lower) / (q_upper - q_lower)
+}
+
+df_assimetria <- dados_iris |>
+  summarise(
+    ass_larg_sep = ass(larg_sep), ass_comp_sep = ass(comp_sep),
+    ass_larg_pet = ass(larg_pet), ass_comp_pet = ass(comp_pet)
+  )
+df_assimetria
+```
+
+\normalsize
+
+## Função
+
+Se mudassemos o coeficiente de assimetria para:
+
+\small
+
+```r
+assimetria = (quantile(x, 0.99) - 2 * median(x) + quantile(x, 0.01)) /
+      (quantile(x, 0.99) - quantile(x, 0.01))
+```
+
+\regrafina
+
+\scriptsize
+
+```{r}
+dados_iris <- read_csv2("dados/brutos/iris2.csv")
+
+ass <- function(x) {
+  q_lower <- quantile(x, 0.01)
+  q_upper <- quantile(x, 0.99)
+  m <- median(x)
+  
+  (q_upper - 2 * m + q_lower) / (q_upper - q_lower)
+}
+
+df_assimetria <- dados_iris |>
+  summarise(
+    ass_larg_sep = ass(larg_sep), ass_comp_sep = ass(comp_sep),
+    ass_larg_pet = ass(larg_pet), ass_comp_pet = ass(comp_pet)
+  )
+df_assimetria
+```
+
+\normalsize
+
+## Função\newline Exercício
+
+Para `amostra_enem_salvador.xlsx`, use o seguinte código
+```r
+((x - min(x)) * 10) / (max(x) - min(x))
+```
+para repadronizar (de 0 a 10) as seguintes variáveis: `nu_nota_cn`, `nu_nota_ch`, `nu_nota_lc`, `nu_nota_mt`, `nu_nota_comp1`, `nu_nota_comp2`, `nu_nota_comp3`, `nu_nota_comp4`, `nu_nota_comp5`, e `nu_nota_redacao`.
+
+# Controle de fluxo
+
+## Controle de fluxo
+
+Controle de fluxo para vetores, listas e matrizes.
+
+* `if else`;
+* `for`;
+* `while`;
+* `case_when`;
+* `sapply`, `apply` e `vapply`;
+* família de funções `map_*`, onde `*` é `chr`, `dbl`, `int`, `df` e `lgl`.
+
+
+## Controle de fluxo\newline `if else` e `for`
+
+
+### `if else`
+
+```r
+if (<expressao>) {
+  <bloco de código>
+} else if (<expressao>) {
+  <bloco de código>
+} else if (<expressao>) {
+  <bloco de código>
+} else {
+  <bloco de código>
+}
+```
+
+\regrafina
+
+### `for`
+
+```r
+for (k in <vetor or lista>) {
+  <bloco de código>
+}
+```
+
+## Controle de fluxo\newline `if else` e `for`
+
+Considere a variável aleatória discreta com função de probabilidade dada por:
+
+|x|f(x)|
+|:---:|:---:|
+|1|0,4|
+|3|0,25|
+|10|0,35|
+
+Gere uma amostra aleatória com 1000 observações de $X$.
+
+---
+
+```{r}
+amostra_x <- vector("integer", 1000)
+for (k in 1:1000) {
+  valor_aleatorio <- runif(1)
+  if (valor_aleatorio <= 0.4) {
+    amostra_x[k] <- 1
+  } else if (0.4 < valor_aleatorio & valor_aleatorio <= 0.65) {
+    amostra_x[k] <- 3
+  } else {
+    amostra_x[k] <- 10
+  }
+}
+
+table(amostra_x) / 1000
+```
+
+## Controle de fluxo\newline `if else` e `while`
+
+### `while`
+
+```r
+while (<expressão lógica>) {
+  <bloco de código>
+}
+```
+
+\regrafina
+
+* Para sair de um laço `for`, usamos `break`.
+* Para o restando do bloco de código e ir para o próximo passo laço, usamos `continue`.
+
+## Controle de fluxo\newline `if else` e `while`
+
+Considere $X \sim N(2, 4)$ truncado com valor $0$ e $4$: $X \mid 0 \leq X \leq 4$.
+
+Gere uma amostra aleatória com 1000 observações de $X$.
+
+```{r}
+amostra_x <- vector("double", 1000)
+for (k in seq_len(1000)) {
+  while (TRUE) {
+    valor_aleatorio <- rnorm(1, 2, 2)
+    if (between(valor_aleatorio, 0, 4)) {
+      amostra_x[k] <- valor_aleatorio
+      break
+    }
+  }
+}
+summary(amostra_x)
+```
+
+## Controle de fluxo\newline `sapply`, `lapply` e `vapply`
+
+Versão mais rápida e mais simples de ler do seguinte código:
+
+```{r}
+#| eval: false
+resultado <- vector("double", length(sequencia))
+for (k in sequencia) {
+  resultado[k] <- funcao(k)
+}
+```
+
+\regrafina
+
+### `sapply`
+
+* `sapply` cria um vetor se `funcao` retorna um escalar;
+* `sapply` cria uma matriz se `funcao` retorna um vetor.
+
+```{r}
+#| eval: false
+resultado <- sapply(sequencia, funcao)
+```
+
+### `lapply`
+
+`lapply` cria uma lista.
+
+```{r}
+#| eval: false
+resultado <- lapply(sequencia, funcao)
+```
+
+
+---
+
+### `vapply`
+
+Precisamos apresentar um modelo de valor retornado de `funcao`. Este modelo pode um escalar, um vetor ou uma matriz (neste caso `resultado` será um `array`).
+
+```{r}
+#| eval: false
+resultado <- vapply(sequencia, funcao, modelo)
+```
+
+\regrafina
+
+### Função anônima
+
+É comum criamos uma função _simples_ para usar apenas uma vez com `sapply`, `lapply` e `vapply`.
+
+Neste caso podemos criar uma função anônima: 
+
+```r
+\(x) <código>
+```
+
+ou 
+
+```r
+\(x) {
+  <bloco de código>
+}
+```
+
+## Controle de fluxo\newline `sapply`, `lapply` e `vapply`
+
+### Exemplo
+
+Vamos padronizar as variáveis do conjunto de dados `mtcarros.xlsx`.
+
+```{r}
+#| message: false
+dados_carros <- read_csv2("dados/brutos/mtcarros.csv")
+m_carros <- dados_carros |>
+  select(where(is.numeric)) |>
+  sapply(\(x) (x - mean(x)) / sd(x))
+class(m_carros)
+dim(m_carros)
+```
+
+---
+
+### Exemplo
+
+Suponha que queremos calcular a média, a mediana e o desvio padrão para as variáveis `milhas_por_galao`, `cilindros` e `velocidade` do conjunto de dados `mtcarros.xlsx`
+
+\small
+
+```{r}
+sumario <- dados_carros |>
+  select(milhas_por_galao, cilindros, velocidade) |> 
+  vapply(
+    \(x) c("Média" = mean(x), "Mediana" = median(x), "DP" = sd(x)),
+    c(0,0,0)
+  )
+class(sumario)
+sumario
+```
+
+\normalsize
+
+## Controle de fluxo\newline `sapply`, `lapply` e `vapply`
+
+### Exemplo
+
+```{r}
+medias_carros <- dados_carros |>
+  select(milhas_por_galao, cilindros, velocidade) |>
+  lapply(\(coluna) mean(coluna))
+class(medias_carros)
+medias_carros
+```
+
+## Controle de fluxo\newline `sapply`, `lapply` e `vapply`\newline\newline Exercício
+
+* Calcule a média, a mediana, e o desvio padrão para as notas do conjunto de dados `amostra_enem_salvador.xlsx` (variáveis que começam com `nu_nota_`). Use `sapply`.
+* Crie um `array`  com a média, a mediana, mínimo e o máximo para largura e comprimento das pétalas e sépalas do conjunto de dados `iris.xlsx`. Use `vapply`.
+* Crie uma lista com a moda das variáveis `tp_sexo`, `tp_cor_raca` e `tp_escola` do conjunto de dados `amostra_enem_salvador.xlsx`. Use `lapply`.
+
+## Controle de fluxo\newline `map_*`
+
+Equivalente das funções `sapply`, `lapply` e `vapply` do _framework_ `tidyverse`.
+
+Principais melhorias: consistências na família `map_` e documentação (explicita o valor retornado).
+
+* `map(sequencia, funcao)`: equivalente a `lapply`;
+* `map_chr(sequencia, funcao)`: produz um vetor de _strings_:
+  * equivalente a `vapply(sequencia, funcao, 'texto')`;
+  * `funcao` retorna um escalar do tipo `character`;
+* `map_dbl(sequencia, funcao)`: produz um vetor de números reais:
+  * equivalente a `vapply(sequencia, funcao, 1.11)`;
+  * `funcao` retorna um escalar do tipo `numeric`;
+
+---
+
+* `map_int(sequencia, funcao)`: produz um vetor de números inteiros:
+  * equivalente a `vapply(sequencia, funcao, 1.11)`;
+  * `funcao` retorna um escalar do tipo `integer`;
+* `map_lgl(sequencia, funcao)`: produz um vetor de valores lógicos:
+  * equivalente a `vapply(sequencia, funcao, TRUE)`;
+  * `funcao` retorna um escalar do tipo `logical`;
+* `map_df(tibble, funcao)`: produz um `tibble`:
+  * `funcao` retorna um vetor com o tamanho `nrow(tibble)`.
+
+
+## Controle de fluxo\newline `map_*`
+
+### Exemplo
+
+Vamos calcular o quantil de ordem 60% para as variáveis do conjunto de dados `mtcarros.xlsx`
+
+\small
+
+```{r}
+dados_carros <- read_excel("dados/brutos/mtcarros.xlsx")
+medias_carros <- dados_carros |>
+  select(where(is.numeric)) |>
+  map_dbl(\(variavel) quantile(variavel, 0.60))
+class(medias_carros)
+medias_carros
+```
+
+\normalsize
+
+## Controle de fluxo\newline `map_*`
+
+### Exemplo
+
+Padronize as variáveis quantitativas do conjunto de dados `mtcarros.xlsx`.
+
+```{r}
+#| eval: false
+dados_carros <- read_excel("dados/brutos/mtcarros.xlsx")
+df_carros_padronizada <- dados_carros |>
+  select(where(is.numeric)) |>
+  map_df(\(variavel) (variavel - mean(variavel)) / sd(variavel))
+glimpse(df_carros_padronizada)
+
+```
+
+---
+
+```{r}
+#| echo: false
+dados_carros <- read_excel("dados/brutos/mtcarros.xlsx")
+df_carros_padronizada <- dados_carros |>
+  select(where(is.numeric)) |>
+  map_df(\(variavel) (variavel - mean(variavel)) / sd(variavel))
+glimpse(df_carros_padronizada)
+
+```
+
+# Transformações nos dados
+
+## Transformações nos dados
+
+\destaque{Objetivo:} Transformações em um objeto `tibble`.
+
+Transformações que veremos neste curso:
+
+1. seleção de observações (linhas);
+1. seleção de variáveis (colunas);
+1. criação de novas colunas;
+1. ordenação de linhas;
+1. transposição de linhas para colunas;
+1. transposição de colunas para linhas.
+
+Vamos usar o conjunto de dados `voos.xlsx` que todos os voos que decolaram no horários na cidade de Nova Iorque nos EUA.
+
+---
+
+No _framwework_ `tidyverse` (especialmente no pacote `dplyr`), temos que 
+
+1. O primeiro argumento é sempre um `data frame` (objeto da classe `tibble`);
+1. Os outros argumentos tipicamente descrecem quais colunas para realizar as operações, e essas colunas são indicadas pelo nome sem aspas;
+1. O resultado sempre é sempre um `data frame` (objeto da classe `tibble`);
+1. Chama-se de _verbo_ funções que agem sobre base de dados;
+1. Para resolver problemas reais, combinamos vários _verbos_ usando operador `|>`.
+1. Os _verbos_ são classificados em quarto categorias: **linhas**, **colunas**, **grupos** e **tabelas**.
+
+
+## Transformações nos dados\newline \textbf{linhas}
+
+
+Principais _verbos_:
+
+* `filter()`: seleciona linhas baseadas de condições envolvendo colunas;
+* `arrange()`: ordena linhas de acordo com alguma(s) coluna(s);
+* `distinct()`: remove linhas com repetições segundo algumas(s) coluna(s).
+
+## Transformações nos dados\newline `filter()`
+
+Usamos operadores lógicos para selecionar linhas segundo alguma condições envolvendo colunas:
+
+* desigualdades: `>`, `<`, `<=`, `>=`, `==`, `!=`;
+* combinações de expressões lógicas: `&` (e), `|` (ou);
+* checa se valor está em um vetor: `%in%`. Exemplo, `'Gilberto' %in% equipe` retorna `TRUE`;
+
+\regrafina
+
+Vamos selecionar os voos que sairam de Nova York no feriado de ano novo.
+
+```{r}
+#| eval: false
+df_voos <- read_excel('dados/brutos/voos.xlsx')
+
+df_voos_ano_novo <- df_voos |>
+  filter(mes == 1 & dia == 1)
+glimpse(df_voos_ano_novo)
+```
+
+---
+
+\small
+
+```{r}
+#| echo: false
+df_voos <- read_excel('dados/brutos/voos.xlsx')
+
+df_voos_ano_novo <- df_voos |>
+  filter(mes == 1 & dia == 1)
+glimpse(df_voos_ano_novo)
+```
+
+\normalsize
+
+## Transformações nos dados\newline `arrange()`
+
+* Se mais de uma coluna é usada, as colunas adicionais são usadas para desempatar a ordenação.
+* Para ordenar em ordem decrescente (maior ao menor), use a função `desc()`.
+
+```{r}
+#| eval: false
+df_voos_ordenado <- df_voos |>
+  arrange(mes, desc(dia), desc(horario_saida))
+head(df_voos_ordenado, 5)
+```
+
+---
+
+```{r}
+#| echo: false
+df_voos_ordenado <- df_voos |>
+  arrange(mes, desc(dia), desc(horario_saida))
+head(df_voos_ordenado, 5)
+```
+
+## Transformações nos dados\newline `distinct()`
+
+* Remove linhas repetidas.
+* A primeira ocorrência das linhas repetidas será mantida, e todas as outras ocorrências serão descartadas.
+
+\regrafina
+
+**Exemplo:**
+
+```{r}
+coordenadores <- tribble(
+  ~nome, ~email, ~funcao,
+  "Gilberto", "gilberto.sassi@ufba.br", "coordenador",
+  "Gilberto", "gilberto.sassi@ufba.br", "professor",
+  "Gilberto", "gilberto.sassi@ufba.br", "professor",
+  "Carolina", "carolina.paraiba@ufba.br", "coordenadora",
+  "Carolina", "carolina.paraiba@ufba.br", "professora",
+  "Carolina", "carolina.paraiba@ufba.br", "professora"
+)
+```
+
+---
+
+Tiramos a repetição das linhas.
+
+```{r}
+distinct(coordenadores)
+```
+
+---
+
+Tiramos a repetição por e-mail.
+
+```{r}
+distinct(coordenadores, email, .keep_all = TRUE)
+```
+
+## Transformações nos dados\newline Exercício
+
+Para o conjunto de dados `amostra_enem_salvador.xlsx`, realiza as seguintes operações:
+
+* selecione todas/os candidatas/os que são `pardas`, `pretas` e `indígenas` (`tp_cor_raca`);
+* ordene as/os candidatas/os pela nota em matemática (`nu_nota_mt`).
+
+## Transformações nos dados\newline \textbf{colunas}
+
+Principais _verbos_:
+
+* `mutate()`: adiciona uma nova coluna ao `data.frame`;
+* `select()`: selecionar colunas de um `data.frmae`;
+* `rename()`: atualize os nomes das colunas de um `data.frame`;
+* `relocate()`: mude a ordem das colunas.
+
+## Transformações nos dados\newline `mutate()`
+
+`mutate` adiciona a coluna a direita da última coluna. Podemos usar os seguintes argumentos nomeados:
+
+* `.before`: número inteiro positivo (indicado a posição da coluna) ou o nome da coluna. A nova coluna será incluído a esquerda.
+* `.after`: número inteiro positivo (indicado a posição da coluna) ou o nome da coluna. A nova coluna será incluído a direita.
+
+```{r}
+df_voos <- df_voos |>
+  mutate(velocidade = distancia / tempo_voo, .before = "ano")
+```
+
+---
+
+```{r}
+head(df_voos, n=5)
+```
+
+## Transformações nos dados\newline `select()`
+
+Seleção de colunas pelo nome e/ou por _atalhos_.
+
+\regrafina
+
+Seleção por nomes das colunas.
+
+```{r}
+df_select <- df_voos |> 
+  select(ano, mes, dia)
+glimpse(df_select)
+```
+
+
+---
+
+Seleção de todas as colunas entre duas variáveis.
+
+```{r}
+df_select <- df_voos |> 
+  select(ano:voo)
+glimpse(df_select)
+```
+
+
+---
+
+Seleção de todas as colunas segundo uma função.
+
+```{r}
+df_select <- df_voos |> 
+  select(where(is.character))
+glimpse(df_select)
+```
+
+---
+
+Seleção de todas as colunas que começam com alguma _string_.
+
+```{r}
+df_select <- dados_iris |> 
+  select(starts_with("largura"))
+glimpse(df_select)
+```
+
+
+---
+
+Seleção de todas as colunas que terminam com alguma _string_.
+
+```{r}
+df_select <- df_voos |>
+  select(ends_with("_chegada"))
+glimpse(df_select)
+```
+
+---
+
+Seleção de todas as colunas que contém alguma _string_.
+
+```{r}
+df_select <- df_voos |>
+  select(contains("chegada"))
+glimpse(df_select)
+
+```
+
+
+---
+
+Seleção de todas as colunas em sequencia.
+
+```{r}
+dados_billboard <- read_excel("dados/brutos/billboard_eua_2000.xlsx")
+df_select <- dados_billboard |>
+  select(num_range("semana_", 1:6))
+glimpse(df_select)
+```
+
+## Transformações nos dados\newline `rename()`
+
+Renome as colunas de um `data.frame`.
+
+O padrão de renomeação é: `<nome novo> = <nome velho>`.
+
+
+```{r}
+#| eval: false
+df_iris <- dados_iris |>
+  rename(
+    "sepala_comprimento" = "comprimento_sepala",
+    "sepala_largura" = "largura_sepala",
+    "petala_comprimento" = "comprimento_petala",
+    "petala_largura" = "largura_petala"
+  )
+glimpse(df_iris)
+```
+
+---
+
+```{r}
+#| echo: false
+dados_iris <- read_excel("dados/brutos/iris.xlsx")
+df_iris <- dados_iris |>
+  rename(
+    "sepala_comprimento" = "comprimento_sepala",
+    "sepala_largura" = "largura_sepala",
+    "petala_comprimento" = "comprimento_petala",
+    "petala_largura" = "largura_petala"
+  )
+glimpse(df_iris)
+```
+
+## Transformações nos dados\newline `relocate()`
+
+Move as colunas pelo `data.frame`. Por padrão, as colunas listas vão para a extrema esqueda do `data.frame`, mas pode usar os argumentos `.before` e `.after`:
+
+* `.before`: número inteiro positivo (indicado a posição da coluna) ou o nome da coluna. As colunas serão incluídas a esquerda.
+* `.after`: número inteiro positivo (indicado a posição da coluna) ou o nome da coluna. As colunas serão incluídas a direita.
+
+
+---
+
+```{r}
+dados_mtcarros <- dados_mtcarros |>
+  relocate(marchas, carburadores, .before = "cilindros")
+glimpse(dados_mtcarros)
+```
+
+
+## Transformações nos dados\newline Exercício
+
+Para o conjunto de dados `amostra_enem_salvador.xlsx`, realize as seguinte operações:
+
+* transforme a variável `tp_cor_raca` em fator, e agrupe os valores `parda` e `preta` em `negra`;
+* selecione as colunas: `tp_cor_raca`, `tp_escola` e `nu_nota_mt`;
+* renomeie as colunas da seguinte forma:
+  * `tp_cor_raca` por `raca`;
+  * `tp_escola` por `tipo_escola`;
+  * `nu_nota_mt` por `nota_matematica`;
+* coloque `tipo_escola` como a primeira coluna.
+  
+## Transformações nos dados\newline \textbf{grupos}
+
+* `group_by`: transforma um `tibble` em um `tibble` agrupado por uma ou mais colunas. Todas as operações serão realizadas por este agrupamento;
+* `slice_*` (* pode ser `min`, `max`, `sample`, `tail`, e `head`): extrai uma ou algumas linhas de cada grupo;
+* `summarize`: calcula medidas de resumo por grupos;
+* `ungroup`: remove o agrupamento.
+
+## Transformações nos dados\newline `group_by()`
+
+Prepara um conjunto de dados para realizar operações em grupos (usando a função `summarise`).
+
+\footnotesize
+
+```{r}
+dados_mtcarros_grupos <- group_by(dados_mtcarros, marchas, carburadores)
+glimpse(dados_mtcarros_grupos)
+```
+
+\normalsize
+
+## Transformações nos dados\newline `slice_*()`
+
+Pega parte do `data.frame` respeitamento o agrupamento estabelecido por `group_by`.
+
+* `df |> slice_head(n = 1)` pega as `n` primeiras linhas de cada grupo.
+* `df |> slice_tail(n = 1)` pega as `n` últimas linhas de cada grupo.
+* `df |> slice_min(x, n = 1)` pega as linhas com os menores valores de `x` em cada grupo.
+* `df |> slice_max(x, n = 1)` pega as linhas com os maiores valores de `x` em cada grupo.
+* `df |> slice_sample(n = 1)` pega aleatoriamente `n` linhas de cada grupo.
+
+---
+
+```{r}
+dados_iris |>
+  group_by(especies) |>
+  slice_sample(n = 2)
+```
+
+## Transformações nos dados\newline `summarise()`
+
+Calcula medidas de resumo por cada grupo.
+
+### Caso 1: apenas uma variável
+
+Retorna um `data.frame` sem agrupamento.
+
+```{r}
+#| eval: false
+df_voos |>
+  group_by(mes) |>
+  summarise(freq = n())
+```
+
+---
+
+```{r}
+#| echo: false
+df_voos |>
+  group_by(mes) |>
+  summarise(freq = n())
+```
+
+---
+
+### Caso 2: duas ou mais variáveis
+
+Neste caso, `summarise` retorna um `data.frame` com agrupamentos que são controlados pelo argumento `.groups`:
+
+* se `.groups = "drop_last"`: o agrupamento da última variável é retirado. Este é o comportamento padrão (para compatibilidade com versões antigas do tidyverse).
+* se `.groups = "keep"`: os agrupamentos de todas as variáveis são mantidas.
+* se `.groups = "drop"`: os agrupamentos de todas as variáveis são retiradas. (Geralmente, usamos este).
+* se `.groups = "rowwise"`: os agrupamentos são mantidos para que linha tenha o seu próprio grupo.
+
+---
+
+Usando `.groups = "drop_last"`.
+
+```{r}
+dados_mtcarros |>
+  group_by(marchas, forma) |>
+  summarise(peso_medio = mean(peso, na.rm = TRUE))
+```
+
+----
+
+Usando `.groups = "keep"`.
+
+```{r}
+dados_mtcarros |>
+  group_by(marchas, forma) |>
+  summarise(peso_medio = mean(peso, na.rm = TRUE),
+            .groups = "keep")
+```
+
+---
+
+Usando `.groups = "drop"`.
+
+```{r}
+dados_mtcarros |>
+  group_by(marchas, forma) |>
+  summarise(peso_medio = mean(peso, na.rm = TRUE),
+            .groups = "drop")
+```
+
+
+## Transformações nos dados\newline Exercício
+
+Para o conjunto de dados `amostra_enem_salvador.xlsx`, realize as seguinte operações:
+
+* selecione as colunas `tp_cor_raca`, `tp_escola` e `nu_nota_mt`;
+* agrupe o conjunto de dados por `tp_cor_raca` e `tp_escola`;
+* pegue dois elementos de cada grupo;
+* conte o número de pessoas em cada grupo e calcule a mediana.
+
+## Transformações nos dados\newline \textbf{tabelas}
+
+União de **conjunto de dados**.
+
+* chaves (primárias e estrangeiras);
+* adicionando novas colunas de outros conjuntos de dados: `left_join()`, `inner_join()`, `right_join()`, `full_join()`, `semi_join()`, e `anti_join()`;
+* filtragem: `semi_join()` e `anti_join()`.
+
+
+## Transformações nos dados\newline \textbf{chaves}
+
+\destaque{chave primária}: variável ou conjunto de variáveis (colunas) determinam unicamente uma observação (uma linha);
+
+\destaque{chave estrangeira}: variável ou conjunto de variáveis (colunas) que corresponde a uma chave primária de outro conjunto de dados;
+
+Geralmente **chaves primárias** e **chaves estrangeiras** têm o mesmo nome (para facilitar nossa vida);
+
+\destaque{Verifique se cada valor da chave idenfica no máximo uma observação.}
+
+## Transformações nos dados\newline `*_join()`
+
+* `left_join(x, y, join_by(key_x == key_y)):` mantêm todas as linhas de `x` (com as colunas de `y`);
+* `inner_join(x, y, join_by(key_x == key_y)):` mantêm todas as linhas que estão em `x` e `y` (com as linhas de `y`);
+* `right_join(x, y, join_by(key_x == key_y)):` mantêm todas as linhas de `y` (com as colunas de `x`);
+* `full_join(x, y, join_by(key_x == key_y)):` mantêm todas as linhas de `x` e `y` (com as colunas de `x` e `y`);
+* `semi_join(x, y, join_by(key_x == key_y)):` mantêm as linhas de `x` que estão em `y` (mantem as apenas as colunas de `x`);
+* `anti_join(x, y, join_by(key_x == key_y)):` mantêm as linhas de `x` que **não** estão em `y` (mantem as apenas as colunas de `x`).
+
+---
+
+\include{figuras/join.tex}
+
+## Transformações nos dados\newline `*_join()`
+
+Em `voos.xlsx` temos o código da companhia aérea, mas não tem o nome.
+
+O nome da companhia aérea está na coluna `nome` em `companhia_aerea.xlsx`.
+
+\regrafina
+
+\scriptsize
+
+```{r}
+#| eval: false
+df_companhias_aereas <- read_excel("dados/brutos/companhias_aereas.xlsx")
+df_voos2 <- df_voos |>
+  left_join(df_companhias_aereas, join_by(companhia_aerea == companhia_aerea))
+glimpse(df_voos2)
+```
+
+---
+
+\scriptsize
+
+```{r}
+#| echo: false
+df_companhias_aereas <- read_excel("dados/brutos/companhias_aereas.xlsx")
+df_voos2 <- df_voos |>
+  left_join(df_companhias_aereas, join_by(companhia_aerea == companhia_aerea))
+glimpse(df_voos2)
+```
+
+\normalsize
+
+## Transformações nos dados\newline Exercício
+
+Adicione as condições climáticas (`clima.csv`) a cada voo no conjunto de dados `voos.xlsx`. Use como chave `data_hora` e `origem`.\newline (Dica: use `left_join`).
+
+Depois selecione os voos de algumas companhias aéreas que estão em `companhias_especiais.csv`. Use como chave `companhia_aerea`.\newline (Dica: use `semi_join`).
+
