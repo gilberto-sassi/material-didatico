@@ -1,0 +1,86 @@
+```{r}
+#| label: gerando os dados
+#| echo: false
+
+library(pacman)
+
+p_load(
+    exams, readxl, writexl, tidyverse, Boom
+)
+
+options(scipen = 999) #prevent scientific notation
+
+# sample size
+tam <- sample(2000:5000, 1)
+
+# média da população
+media_pop <- runif(1, 200, 250) |> round(2)
+
+# desvio padrão da população
+dp_pop <- runif(1, 2, 4) |> round(2)
+
+# amostra
+amostra <- rnorm(tam, media_pop, dp_pop)
+
+
+write_xlsx(tibble(x = amostra), "dados.xlsx")
+
+# quantil pequeno
+p_small <- runif(1, 0.1, 0.2) |> round(2)
+
+# quantil grande
+p_big <- runif(1, 0.8, 0.9) |> round(2)
+
+# solução
+sol <- c(
+    "q1" = quantile(amostra, probs = 0.25, names = FALSE),
+    "q2" = quantile(amostra, probs = 0.5, names = FALSE),
+    "q3" = quantile(amostra, probs = 0.75, names = FALSE),
+    "p_small" = quantile(amostra, probs = p_small, names = FALSE),
+    "p_big" = quantile(amostra, probs = p_big, names = FALSE)
+)
+
+# formatação
+f <- \(x) format(
+    x,
+    decimal.mark = ",",
+    big.mark = "."
+)
+```
+
+Question
+========
+
+Considere o [conjunto de dados](dados.xlsx) com uma variável quantitativa contínua X. Calcule a os seguintes quantis: 
+
+**Use duas casas decimais.**
+
+
+Questionlist
+------------
+
+* q~1~:
+* q~2~:
+* q~3~:
+* q(`r f(p_small)`):
+* q(`r f(p_big)`):
+
+Solution
+========
+
+Solutionlist
+------------
+
+* q~1~:
+* q~2~:
+* q~3~:
+* q(`r f(p_small)`):
+* q(`r f(p_big)`):
+
+Meta-information
+================
+exname: quantis
+extype: cloze
+exclozetype: num|num|num|num|num
+exsolution: `r sol['q1']`|`r sol['q2']`|`r sol['q3']`|`r sol['p_small']`|`r sol['p_big']`
+extol: 0.05

@@ -1,0 +1,95 @@
+```{r dgp, include = FALSE}
+library(pacman)
+p_load(
+    exams,
+    readxl,
+    writexl,
+    Boom,
+    gt,
+    tidyverse
+)
+
+options(scipen = 999) #prevent scientific notation
+
+# tamanho do suporte
+tam <- sample(5:10, 1)
+
+# função de probabilidade
+while (TRUE) {
+    fp <- rdirichlet(1, rexp(tam, 0.5)) |> round(4)
+    if (!near(min(fp), 0)) break
+}
+
+# suporte
+suporte <- sample.int(1000, tam, replace = FALSE)
+
+# conjunto B
+lower_a <- runif(1, (min(suporte) + max(suporte)) / 2, max(suporte)) |> round(2)
+upper_b <- runif(1, min(suporte), (min(suporte) + max(suporte)) / 2) |> round(2)
+
+# dados
+dados <- tibble(suporte, fp) |>
+    arrange(suporte)
+
+# Solução
+sumario_b <- dados |>
+    filter(suporte <= upper_b) |>
+    summarise(resposta = sum(fp))
+sumario_a <- dados |>
+    filter(suporte > lower_a) |>
+    summarise(resposta = sum(fp))
+
+sol <- c(
+    "a" = sumario_a$resposta,
+    "b" = sumario_b$resposta
+) |> round(2)
+
+f <- \(x) format(
+    x,
+    big.mark = ".",
+    decimal.mark = ","
+)
+```
+
+Question
+========
+
+Seja X uma variável aleatória discreta com suporte e função de probabilidade dada pela tabela abaixo. 
+
+```{r}
+#| echo: false
+gt(dados) |>
+    tab_header(title = "Suporte e função de probabilidade de X.") |>
+    cols_label(
+        suporte = md("**Suporte**"),
+        fp = md("**Função de probabilidade**")
+    ) |>
+    fmt_number(
+        columns = fp,
+        decimals = 5,
+        sep_mark = ".",
+        dec_mark = ","
+    )
+```
+
+Calcule as seguintes probabilidades.
+
+* P(X > `r f(lower_a)`): \#\#ANSWER1\#\#
+* P(X &#8804; `r f(upper_b)`): \#\#ANSWER2\#\#
+
+
+Solution
+========
+
+* P(X > `r f(lower_a)`): `r f(sol["a"])`.
+* P(X &#8804; `r f(upper_b)`): `r f(sol["b"])`.
+
+
+
+Meta-information
+================
+exname: vaDiscreta
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste0(collapse = "|")`
+exsolution: `r paste0(sol, collapse = "|")`
+extol: 0.05

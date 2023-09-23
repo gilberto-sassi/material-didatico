@@ -1,0 +1,43 @@
+```{r dados, include=FALSE, message=FALSE, echo=FALSE} 
+if (!require(pacman)) install.packages(pacman)
+library(pacman)
+p_load(readxl, writexl, readODS)
+p_load(ggthemes)
+p_load(glue)
+p_load(statBasics)
+p_load(exams)
+p_load(Boom)
+p_load(gt)
+p_load(tidyverse)
+options(scipen = 9999) # prevent scientific notation
+
+# turmas
+turmas <- sample.int(10, 3, replace = FALSE)
+
+# solução
+sol <- factorial(sum(turmas)) / (factorial(turmas[1]) * factorial(turmas[2]) * factorial(turmas[3]))
+
+#formatação
+f <- \(x) format(
+    x,
+    big.mark = ".",
+    decimal.mark = ","
+)
+```
+
+Question
+========
+
+Suponha que `r sum(turmas)` estudantes se matricularam no componente curricular **Probabilidade 1 - MAT223**. De quantas formas o Colegiado do Bacharelado em Estatística pode distribuir as/os `r sum(turmas)` em três turmas A, B e C com `r turmas[1]`, `r turmas[2]` e `r turmas[3]` estudantes, respectivamente?
+
+
+Solution
+========
+Podemos formar `r f(sol)` turmas com três turmas A, B e C com `r turmas[1]`, `r turmas[2]` e `r turmas[3]`, respectivamente.
+
+Meta-information
+================
+exname: coeficienteMultinomial
+extype: num
+exsolution: `r sol`
+extol: 0.0005

@@ -1,0 +1,94 @@
+```{r}
+#| label: gerando os dados
+#| echo: false
+
+library(pacman)
+
+p_load(
+    exams, readxl, writexl, tidyverse, Boom, lettervalue
+)
+
+options(scipen = 999) #prevent scientific notation
+
+# sample size
+tam <- sample(2000:5000, 1)
+
+# média da população
+media_pop <- runif(1, 200, 250) |> round(2)
+
+# desvio padrão da população
+dp_pop <- runif(1, 2, 4) |> round(2)
+
+# amostra
+amostra <- rnorm(tam, media_pop, dp_pop) |> round(2)
+
+write_xlsx(tibble(x = amostra), "dados.xlsx")
+
+# solução
+ajuste <- letter_value(amostra, level = 4)
+sol <- c(
+    "Mediana" = ajuste$lv_data_frame$lv_lower[1],
+    "Min" = ajuste$lv_data_frame$lv_lower[5],
+    "Max" = ajuste$lv_data_frame$lv_upper[5],
+    "F_inferior" = ajuste$lv_data_frame$lv_lower[2],
+    "F_superior" = ajuste$lv_data_frame$lv_upper[2],
+    "E_inferior" = ajuste$lv_data_frame$lv_lower[3],
+    "E_superior" = ajuste$lv_data_frame$lv_upper[3],
+    "D_inferior" = ajuste$lv_data_frame$lv_lower[4],
+    "D_superior" = ajuste$lv_data_frame$lv_upper[4]
+)
+
+# formatação
+f <- \(x) format(
+    x,
+    decimal.mark = ",",
+    big.mark = "."
+)
+```
+
+Question
+========
+
+Considere o [conjunto de dados](dados.xlsx) com uma variável quantitativa contínua X. Calcule os seguintes valores de letra: 
+
+**Use duas casas decimais.**
+
+
+Questionlist
+------------
+
+
+* Mediana: 
+* Mínimo:
+* Máximo:
+* F (inferior): 
+* F (superior): 
+* E (inferior): 
+* E (superior): 
+* D (inferior): 
+* D (superior): 
+
+
+Solution
+========
+
+Solutionlist
+------------
+
+* Mediana: `r f(sol["Mediana"])`
+* Mínimo: `r f(sol["Min"])`
+* Máximo: `r f(sol["Max"])`
+* F (inferior): `r f(sol["F_inferior"])`
+* F (superior): `r f(sol["F_superior"])`
+* E (inferior): `r f(sol["E_inferior"])`
+* E (superior): `r f(sol["E_superior"])`
+* D (inferior): `r f(sol["D_inferior"])`
+* D (superior): `r f(sol["D_superior"])`
+
+Meta-information
+================
+exname: valores_letra
+extype: cloze
+exclozetype: `r paste(rep("num", length(sol)), collapse = "|")`
+exsolution: `r paste(sol, collapse = "|")`
+extol: 0.05
