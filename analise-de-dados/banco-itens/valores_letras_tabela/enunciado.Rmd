@@ -1,0 +1,224 @@
+```{r}
+#| label: gerando os dados
+#| echo: false
+
+library(pacman)
+
+p_load(
+    exams, readxl, writexl, lettervalue, tidyverse
+)
+
+options(scipen = 999) #prevent scientific notation
+
+# média da população
+media_pop <- sample(100:200, 1)
+
+# desvio padrão da população
+dp_pop <- runif(1, 2, 5)
+
+# tamanho da amostra
+tam <- sample(1500:2000, 1)
+
+# amostra
+amostra <- rnorm(tam, mean = media_pop, sd = dp_pop) |>
+    round(2)
+write_xlsx(tibble(X = amostra), "dados.xlsx")
+
+# solução
+lv <- letter_value(amostra, level = 9)$lv_data_frame
+sol_str <- lv$letter
+sol_num <- c(
+    lv$depth, lv$lv_lower, lv$lv_upper
+)
+sol <- c(sol_str, sol_num)
+
+# formatação
+f <- \(x) format(
+    x,
+    decimal.mark = ",",
+    big.mark = "."
+)
+```
+
+Question
+========
+
+Considere o [conjunto de dados](dados.xlsx) onde X é uma variável quantitativa contínua. Preencha a seguinte tabela usando valores de letra:
+
+**Use duas casas decimais.**
+
+<table border="1">
+<thead>
+  <tr>
+    <th >Letra</th>
+    <th >Profundidade</th>
+    <th >Valor de letra (inferior)</th>
+    <th >Valor de letra (superior)</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td >\#\#ANSWER1\#\#</td>
+    <td >\#\#ANSWER11\#\#</td>
+    <td >\#\#ANSWER21\#\#</td>
+    <td >\#\#ANSWER31\#\#</td>
+  </tr>
+  <tr>
+    <td >\#\#ANSWER2\#\#</td>
+    <td >\#\#ANSWER12\#\#</td>
+    <td >\#\#ANSWER22\#\#</td>
+    <td >\#\#ANSWER32\#\#</td>
+  </tr>
+  <tr>
+    <td >\#\#ANSWER3\#\#</td>
+    <td >\#\#ANSWER13\#\#</td>
+    <td >\#\#ANSWER23\#\#</td>
+    <td >\#\#ANSWER33\#\#</td>
+  </tr>
+  <tr>
+    <td >\#\#ANSWER4\#\#</td>
+    <td >\#\#ANSWER14\#\#</td>
+    <td >\#\#ANSWER24\#\#</td>
+    <td >\#\#ANSWER34\#\#</td>
+  </tr>
+  <tr>
+    <td >\#\#ANSWER5\#\#</td>
+    <td >\#\#ANSWER15\#\#</td>
+    <td >\#\#ANSWER25\#\#</td>
+    <td >\#\#ANSWER35\#\#</td>
+  </tr>
+  <tr>
+    <td >\#\#ANSWER6\#\#</td>
+    <td >\#\#ANSWER16\#\#</td>
+    <td >\#\#ANSWER26\#\#</td>
+    <td >\#\#ANSWER36\#\#</td>
+  </tr>
+  <tr>
+    <td >\#\#ANSWER7\#\#</td>
+    <td >\#\#ANSWER17\#\#</td>
+    <td >\#\#ANSWER27\#\#</td>
+    <td >\#\#ANSWER37\#\#</td>
+  </tr>
+  <tr>
+    <td >\#\#ANSWER8\#\#</td>
+    <td >\#\#ANSWER18\#\#</td>
+    <td >\#\#ANSWER28\#\#</td>
+    <td >\#\#ANSWER38\#\#</td>
+  </tr>
+  <tr>
+    <td >\#\#ANSWER9\#\#</td>
+    <td >\#\#ANSWER19\#\#</td>
+    <td >\#\#ANSWER29\#\#</td>
+    <td >\#\#ANSWER39\#\#</td>
+  </tr>
+  <tr>
+    <td >\#\#ANSWER10\#\#</td>
+    <td >\#\#ANSWER20\#\#</td>
+    <td >\#\#ANSWER30\#\#</td>
+    <td >\#\#ANSWER40\#\#</td>
+  </tr>
+</tbody>
+</table>
+
+
+```{r}
+#| label: questionlist
+#| echo: false
+#| results: asis
+
+answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+Solution
+========
+
+<table border="1">
+<thead>
+  <tr>
+    <th>Letra</th>
+    <th>Profundidade</th>
+    <th>Valor de letra (inferior)</th>
+    <th>Valor de letra (superior)</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>`r sol[1]`</td>
+    <td>`r sol[11]`</td>
+    <td>`r sol[21]`</td>
+    <td>`r sol[31]`</td>
+  </tr>
+  <tr>
+    <td>`r sol[2]`</td>
+    <td>`r sol[12]`</td>
+    <td>`r sol[22]`</td>
+    <td>`r sol[31]`</td>
+  </tr>
+  <tr>
+    <td>`r sol[3]`</td>
+    <td>`r sol[13]`</td>
+    <td>`r sol[23]`</td>
+    <td>`r sol[33]`</td>
+  </tr>
+  <tr>
+    <td>`r sol[4]`</td>
+    <td>`r sol[14]`</td>
+    <td>`r sol[24]`</td>
+    <td>`r sol[34]`</td>
+  </tr>
+  <tr>
+    <td>`r sol[5]`</td>
+    <td>`r sol[15]`</td>
+    <td>`r sol[25]`</td>
+    <td>`r sol[35]`</td>
+  </tr>
+  <tr>
+    <td>`r sol[6]`</td>
+    <td>`r sol[16]`</td>
+    <td>`r sol[26]`</td>
+    <td>`r sol[36]`</td>
+  </tr>
+  <tr>
+    <td>`r sol[7]`</td>
+    <td>`r sol[17]`</td>
+    <td>`r sol[27]`</td>
+    <td>`r sol[37]`</td>
+  </tr>
+  <tr>
+    <td>`r sol[8]`</td>
+    <td>`r sol[18]`</td>
+    <td>`r sol[28]`</td>
+    <td>`r sol[38]`</td>
+  </tr>
+  <tr>
+    <td>`r sol[9]`</td>
+    <td>`r sol[19]`</td>
+    <td>`r sol[29]`</td>
+    <td>`r sol[39]`</td>
+  </tr>
+  <tr>
+    <td>`r sol[10]`</td>
+    <td>`r sol[20]`</td>
+    <td>`r sol[30]`</td>
+    <td>`r sol[40]`</td>
+  </tr>
+</tbody>
+</table>
+
+
+```{r}
+#| label: solutionlist
+#| echo: false
+#| results: asis
+
+
+answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+Meta-information
+================
+exname: valoresLetraTabela
+extype: cloze
+exclozetype: `r paste(rep("string", length(sol_str)), collapse = "|")`|`r paste(rep("num", length(sol_num)), collapse = "|")`
+exsolution: `r paste(sol_str, collapse="|")`|`r paste(sol_num, collapse="|")`
+extol: 0.05

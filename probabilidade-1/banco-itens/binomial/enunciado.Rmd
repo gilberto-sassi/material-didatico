@@ -1,0 +1,78 @@
+```{r}
+#| label: dados
+#| echo: false
+
+library(pacman)
+
+p_load(
+    exams,
+    readxl,
+    writexl,
+    tidyverse
+)
+
+options(scipen = 999) #prevent scientific notation
+
+# número de tentativas
+n_tentativas <- sample(50:100, 1)
+
+# probabilidade de sucesso
+p <- runif(1, min = 0.2, max = 0.8) |> round(2)
+
+# letra a)
+x_a <- runif(1, min = 0, max = n_tentativas / 2)
+
+# letra b)
+x_b <- runif(1, min = n_tentativas / 2, max = n_tentativas)
+
+# letra c)
+n_conj <- sample.int(floor(n_tentativas / 2), 1)
+conj_c <- sample(0:n_tentativas, n_conj) |> sort()
+
+# Solução
+suporte <- 0:n_tentativas
+sol <- c(
+    "a" = dbinom(suporte[suporte < x_a], n_tentativas, p) |> sum(),
+    "b" = dbinom(suporte[suporte >= x_b], n_tentativas, p) |> sum(),
+    "c" = dbinom(conj_c, n_tentativas, p) |> sum()
+) |> round(2)
+
+f <- \(x) format(
+    x,
+    big.mark = ".",
+    decimal.mark = ","
+)
+```
+
+Question
+========
+
+Seja X uma variável aleatória discreta onde X &#8764; b(`r n_tentativas`; `r f(p)`). 
+
+Calcule as seguintes probabilidades.
+
+Questionlist
+------------
+
+* P(X < `r f(x_a)`): 
+* P(X &ge; `r f(x_b)`): 
+* P(X &#8714; {`r paste(conj_c, collapse = ", ")`}):
+
+Solution
+========
+
+Solutionlist
+-------------
+
+* P(X < `r f(x_a)`): `r f(sol["a"])`.
+* P(X &ge; `r f(x_b)`): `r f(sol["b"])`.
+* P(X &#8714; {`r paste(conj_c, collapse = ", ")`}): `r f(sol["c"])`.
+
+
+Meta-information
+================
+exname: binomial
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste0(collapse = "|")`
+exsolution: `r paste0(sol, collapse = "|")`
+extol: 0.05

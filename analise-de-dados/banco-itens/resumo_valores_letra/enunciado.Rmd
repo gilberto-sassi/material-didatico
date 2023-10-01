@@ -1,0 +1,96 @@
+```{r}
+#| label: gerando os dados
+#| echo: false
+
+library(pacman)
+
+p_load(
+    exams, readxl, writexl, lettervalue, tidyverse
+)
+
+options(scipen = 999) #prevent scientific notation
+
+# média da população
+media_pop <- sample(100:200, 1)
+
+# desvio padrão da população
+dp_pop <- runif(1, 2, 5)
+
+# tamanho da amostra
+tam <- sample(1500:2000, 1)
+
+# amostra
+amostra <- rnorm(tam, mean = media_pop, sd = dp_pop) |>
+    round(2)
+
+# solução
+ajuste <- letter_value(amostra)
+sumario <- summary(ajuste)
+sol <- c(
+    "mediana" = sumario$median,
+    "trimédia" = sumario$trimean,
+    "dq" = sumario$f_spread,
+    "pseudo_sigma" = sumario$f_spread / 1.349,
+    "pseudo_var" = (sumario$f_spread / 1.349)^2,
+    "tam" = length(amostra),
+    "min" = min(amostra),
+    "max" = max(amostra)
+) |> round(3)
+
+# formatação
+f <- \(x) format(
+    x,
+    decimal.mark = ",",
+    big.mark = "."
+)
+```
+
+Question
+========
+
+Seja X uma variável quantitativa contínua. Calcule a mediana, trimédia, a diferença de quartis (ou intervalo interquartil ou intervalo interquartílico), _F-pseudo-sigma_, _F-pseudo-variância_, o mínimo, o máximo, e o tamanho da amostra usando o diagrama de 5 números:
+
+```{r}
+#| echo: false
+
+ajuste
+```
+
+**Use duas casas decimais.**
+
+
+Questionlist
+------------
+
+* Mediana:
+* Trimédia:
+* Diferença de quartis (ou intervalo interquartil ou intervalo interquartílico):
+* F-pseudo-sigma:
+* F-pseudo-variância:
+* Tamanho da amostra:
+* Mínimo:
+* Máximo:
+
+
+Solution
+========
+
+Solutionlist
+------------
+
+* Mediana: `r f(sol['mediana'])`.
+* Trimédia: `r f(sol['trimédia'])`.
+* Diferença de quartis (ou intervalo interquartil ou intervalo interquartílico): `r f(sol['dq'])`.
+* F-pseudo-sigma: `r f(sol['pseudo_sigma'])`.
+* F-pseudo-variância: `r f(sol['pseudo_var'])`.
+* Tamanho da amostra: `r f(sol['tam'])`.
+* Mínimo: `r f(sol['min'])`.
+* Máximo: `r f(sol['max'])`.
+
+Meta-information
+================
+exname: resumoValoresLetra
+extype: cloze
+exclozetype: `r paste(rep("num", length(sol)), collapse = "|")`
+exsolution: `r paste(sol, collapse = "|")`
+extol: 0.05
