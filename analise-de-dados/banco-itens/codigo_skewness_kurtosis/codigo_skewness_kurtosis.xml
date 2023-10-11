@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/codigo_skewness_kurtosis/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> Q1 : banco-itens_codigo_skewness_kurtosis_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Escolha a opção correta para cada item:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Pacote da linguagem <code>R</code> para desenhar um diagrama de caixa.</li>
+<li>Pacote da linguagem <code>R</code> para calcular assemetria usando momentos.</li>
+<li>Pacote da linguagem <code>R</code> para calcular curtose usando momentos.</li>
+<li>Pacote da linguagem <code>R</code> para calcular o coeficiente de Bowley.</li>
+<li>Pacote da linguagem <code>R</code> para desenhar o diagrama de resumo de 9 números.</li>
+</ol>
+<ol type = "a">
+<li> {1:MULTICHOICE:=<code>ggplot2</code>~<code>dplyr</code>~<code>e1071</code>~<code>e7110</code>~<code>KbMvtSkew</code>~<code>KbMutSkew</code>~<code>KbMvtSKew</code>~<code>lettervalue</code>~<code>letter_value</code>~Trabalhadores do mundo uni-vos.~De cada qual, segundo sua capacidade; a cada qual, segundo essas necessidades.} </li>
+<li> {1:MULTICHOICE:<code>ggplot2</code>~<code>dplyr</code>~=<code>e1071</code>~<code>e7110</code>~<code>KbMvtSkew</code>~<code>KbMutSkew</code>~<code>KbMvtSKew</code>~<code>lettervalue</code>~<code>letter_value</code>~Trabalhadores do mundo uni-vos.~De cada qual, segundo sua capacidade; a cada qual, segundo essas necessidades.} </li>
+<li> {1:MULTICHOICE:<code>ggplot2</code>~<code>dplyr</code>~=<code>e1071</code>~<code>e7110</code>~<code>KbMvtSkew</code>~<code>KbMutSkew</code>~<code>KbMvtSKew</code>~<code>lettervalue</code>~<code>letter_value</code>~Trabalhadores do mundo uni-vos.~De cada qual, segundo sua capacidade; a cada qual, segundo essas necessidades.} </li>
+<li> {1:MULTICHOICE:<code>ggplot2</code>~<code>dplyr</code>~<code>e1071</code>~<code>e7110</code>~=<code>KbMvtSkew</code>~<code>KbMutSkew</code>~<code>KbMvtSKew</code>~<code>lettervalue</code>~<code>letter_value</code>~Trabalhadores do mundo uni-vos.~De cada qual, segundo sua capacidade; a cada qual, segundo essas necessidades.} </li>
+<li> {1:MULTICHOICE:<code>ggplot2</code>~<code>dplyr</code>~<code>e1071</code>~<code>e7110</code>~<code>KbMvtSkew</code>~<code>KbMutSkew</code>~<code>KbMvtSKew</code>~=<code>lettervalue</code>~<code>letter_value</code>~Trabalhadores do mundo uni-vos.~De cada qual, segundo sua capacidade; a cada qual, segundo essas necessidades.} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> <code>ggplot2</code> /  /  /  /  /  /  /  /  /  /  </li>
+<li> <code>e1071</code> /  /  /  /  /  /  /  /  /  /  </li>
+<li> <code>e1071</code> /  /  /  /  /  /  /  /  /  /  </li>
+<li> <code>KbMvtSkew</code> /  /  /  /  /  /  /  /  /  /  </li>
+<li> <code>lettervalue</code> /  /  /  /  /  /  /  /  /  /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>5</defaultgrade>
+</question>
+
+</quiz>

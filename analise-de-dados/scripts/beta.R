@@ -51,3 +51,11 @@ y <- dbeta(x, shape1 = 1.5, shape2 = 1)
 f(x, y)
 
 # unimodal
+y <- dbeta(x, shape1 = 3, shape2 = 1.5)
+f(x, y)
+
+y <- dbeta(x, shape1 = 1.5, shape2 = 3)
+f(x, y)
+
+y <- dbeta(x, shape1 = 3, shape2 = 3)
+f(x, y)

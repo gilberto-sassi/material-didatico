@@ -1,0 +1,102 @@
+```{r}
+#| label: Gerando os dados da questão
+#| echo: false
+
+library(pacman)
+
+p_load(
+    readxl, writexl, janitor, lettervalue, ggthemes,
+    glue,
+    e1071, KbMvtSkew, exams, tidyverse
+)
+
+# opções
+opcoes <- c(
+    "boxplot" = "`ggplot2`",
+    "`dplyr`",
+    "skewness_kurtosis" = "`e1071`",
+    "`e7110`",
+    "bowley" = "`KbMvtSkew`",
+    "`KbMutSkew`",
+    "`KbMvtSKew`",
+    "valores_letra" = "`lettervalue`",
+    "`letter_value`",
+    "Trabalhadores do mundo uni-vos.",
+    "De cada qual, segundo sua capacidade; a cada qual, segundo essas necessidades."
+)
+n_opcoes <- length(opcoes)
+
+# solução
+sol <- c(
+    letra_a = paste(ifelse(names(opcoes) == "boxplot", 1, 0), collapse = ""),
+    letra_b = paste(ifelse(names(opcoes) == "skewness_kurtosis", 1, 0),
+                collapse = ""),
+    letra_c = paste(ifelse(names(opcoes) == "skewness_kurtosis", 1, 0),
+                    collapse = ""),
+    letra_d = paste(ifelse(names(opcoes) == "bowley", 1, 0), collapse = ""),
+    letra_e = paste(ifelse(names(opcoes) == "valores_letra", 1, 0),
+                    collapse = "")
+)
+
+make_list <- \(x) for(k in seq_along(x)) print(glue("* {x[k]}"))
+
+# formatação
+f <- \(x) format(
+    x,
+    decimal.mark = ",",
+    big.mark = "."
+)
+
+```
+
+Question
+========
+
+Escolha a opção correta para cada item:
+
+a. Pacote da linguagem `R` para desenhar um diagrama de caixa.
+a. Pacote da linguagem `R` para calcular assemetria usando momentos.
+a. Pacote da linguagem `R` para calcular curtose usando momentos.
+a. Pacote da linguagem `R` para calcular o coeficiente de Bowley.
+a. Pacote da linguagem `R` para desenhar o diagrama de resumo de 9 números.
+
+Questionlist
+------------
+
+```{r}
+#| echo: false
+#| results: asis
+
+make_list(rep(opcoes, 5))
+
+```
+
+
+Solution
+========
+
+Solutionlist
+------------
+
+```{r}
+#| echo: false
+#| results: asis
+
+lista <- c(opcoes["boxplot"], rep("", n_opcoes - 1)) |>
+    c(opcoes["skewness_kurtosis"], rep("", n_opcoes - 1)) |>
+    c(opcoes["skewness_kurtosis"], rep("", n_opcoes - 1)) |>
+    c(opcoes["bowley"], rep("", n_opcoes - 1)) |>
+    c(opcoes["valores_letra"], rep("", n_opcoes - 1))
+
+make_list(lista)
+```
+
+
+
+Meta-information
+================
+exname: boxplot
+extype: cloze
+exclozetype: `r paste(rep("schoice", 5), collapse="|")`
+exsolution: `r paste(sol, collapse="|")`
+extol: 0.05

@@ -1,0 +1,88 @@
+```{r}
+#| label: Gerando os dados da questão
+#| echo: false
+
+library(pacman)
+
+p_load(
+    readxl, writexl, janitor, lettervalue, ggthemes, e1071, KbMvtSkew, tidyverse
+)
+
+# tamanho da amostra
+tam  <- 1000
+
+# amostra
+escolha <- sample(c(1, 2, 3), 1)
+amostra <- (case_when(
+    escolha == 1 ~ rbeta(tam, 1, 15),
+    escolha == 2 ~ rbeta(tam, 15, 1),
+    escolha == 3 ~ rbeta(tam, 12, 12)
+) * 100) |> round(2)
+
+# salvando o conjunto de dados.
+write_xlsx(tibble(x = amostra), "dados.xlsx")
+
+momento <- \(x, r = 2) mean((x - mean(x))^r)
+
+# solução
+sol <- c(
+    m_2 = momento(amostra),
+    m_3 = momento(amostra, r = 3),
+    m_4 = momento(amostra, r = 4),
+    g_1 = skewness(amostra, type = 1),
+    G_1 = skewness(amostra, type = 2),
+    b_1 = skewness(amostra, type = 3),
+    g_2 = kurtosis(amostra, type = 1),
+    G_2 = kurtosis(amostra, type = 2),
+    b_2 = kurtosis(amostra, type = 3)
+) |> round(4)
+
+# formatação
+f <- \(x) format(
+    round(x, 2),
+    decimal.mark = ",",
+    big.mark = "."
+)
+
+```
+
+Question
+========
+Considere a amostra em [`dados.xlsx`](dados.xlsx) da variável quantitativa contínua X. Calcule:
+
+ 
+Questionlist
+------------
+
+* m~2~:
+* m~3~:
+* m~4~:
+* g~1~:
+* G~1~:
+* b~1~:
+* g~2~:
+* G~2~:
+* b~2~:
+
+Solution
+========
+Solutionlist
+------------
+
+* m~2~: `r f(sol["m_2"])`.
+* m~3~: `r f(sol["m_3"])`.
+* m~4~: `r f(sol["m_4"])`.
+* g~1~: `r f(sol["g_1"])`.
+* G~1~: `r f(sol["G_1"])`.
+* b~1~: `r f(sol["b_1"])`.
+* g~2~: `r f(sol["g_2"])`.
+* G~2~: `r f(sol["G_2"])`.
+* b~2~: `r f(sol["b_2"])`.
+
+Meta-information
+================
+exname: momentos_assimetria_kutorse
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste(collapse = "|")`
+exsolution: `r paste(sol, collapse = "|")`
+extol: 0.05

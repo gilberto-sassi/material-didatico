@@ -1,0 +1,93 @@
+```{r}
+#| label: dados
+#| echo: false
+
+library(pacman)
+
+p_load(
+    exams,
+    readxl,
+    writexl,
+    tidyverse
+)
+
+options(scipen = 999) #prevent scientific notation
+
+# parâmetros
+a <- rexp(1, 0.75)
+b <- rexp(1, 0.75)
+
+# letra a)
+sequencia <- seq(from = floor(qbeta(0.01, shape1 = a, shape2 = b)), to = ceiling(qbeta(0.99, shape1 = a, shape2 = b)), by = 1)
+n_conj <- min(sample.int(length(sequencia), 1), 10)
+conj <- sample(sequencia, n_conj) |> sort()
+
+# letra b)
+x_b <- runif(1,
+    qbeta(0.5, shape1 = a, shape2 = b),
+    qbeta(0.75, shape1 = a, shape2 = b)
+) |> round(2)
+
+# letra c)
+x_c <- runif(1,
+    qbeta(0.25, shape1 = a, shape2 = b),
+    qbeta(0.5, shape1 = a, shape2 = b)
+) |> round(2)
+
+# letra d)
+x_d1 <- runif(1,
+    qbeta(0.1, shape1 = a, shape2 = b), qbeta(0.25, shape1 = a, shape2 = b)) |>
+    round(2)
+x_d2 <- runif(1,
+    qbeta(0.75, shape1 = a, shape2 = b), qbeta(0.9, shape1 = a, shape2 = b)) |>
+    round(2)
+
+# Solução
+sol <- c(
+    "a" = 0,
+    "b" = 1 - pbeta(x_b, shape1 = a, shape2 = b),
+    "c" = pbeta(x_c, shape1 = a, shape2 = b),
+    "d" = pbeta(x_d2, shape1 = a, shape2 = b) - pbeta(x_d1, shape1 = a, shape2 = b)
+) |> round(4)
+
+f <- \(x) format(
+    round(x, 2),
+    big.mark = ".",
+    decimal.mark = ","
+)
+```
+
+Question
+========
+
+Seja X uma variável aleatória contínua onde X &sim; &Beta;(`r f(a)`; `r f(b)`). 
+
+Calcule as seguintes probabilidades.
+
+Questionlist
+------------
+
+* P(X &isin; {`r paste0(conj, collapse=", ")`}): 
+* P(X &ge; `r f(x_b)`): 
+* P(X &le; `r f(x_c)`)
+* P(`r f(x_d1)` < X < `r f(x_d2)`):
+
+Solution
+========
+
+Solutionlist
+-------------
+
+* P(X &isin; {`r paste0(conj, collapse=", ")`}): 0.
+* P(X &ge; `r f(x_b)`): `r f(sol[2])`.
+* P(X &le; `r f(x_c)`): `r f(sol[3])`.
+* P(`r f(x_d1)` < X < `r f(x_d2)`): `r f(sol[4])`.
+
+
+Meta-information
+================
+exname: gama
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste0(collapse = "|")`
+exsolution: `r paste0(sol, collapse = "|")`
+extol: 0.05
