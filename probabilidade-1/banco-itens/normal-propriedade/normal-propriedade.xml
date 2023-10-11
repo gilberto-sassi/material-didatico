@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/normal-propriedade/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q1 : banco-itens_normal-propriedade_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Marque todas as alternativas corretas.</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> <strong>CORRETA</strong>. Se X tem distribuição normal padrão, a função densidade de probabilidade é par. </li>
+<li> <strong>CORRETA</strong>. Se X ∼ N(μ σ<sup>2</sup>), no <code>Python</code> calculamos P(X ≤ x) usando <em>scipy.stats.norm.cdf(x, μ, σ<sup>2</sup>)</em>. </li>
+<li> <strong>FALSA</strong>. A distribuição normal tem assimetria à direita ou positiva. </li>
+<li> <strong>CORRETA</strong>. A distribuição normal é simétrica em torno da média. </li>
+<li> <strong>CORRETA</strong>. σ<sup>2</sup> é a variância da população. </li>
+<li> <strong>CORRETA</strong>. Se X ∼ N(μ σ<sup>2</sup>), no google planilhas calculamos P(X ≤ x) usando <em>norm.dist(x; μ; σ)</em>. </li>
+<li> <strong>CORRETA</strong>. μ é a média da população. </li>
+<li> <strong>FALSA</strong>. P( X = x) = 0. </li>
+<li> <strong>FALSA</strong>. A distribuição normal tem assimetria à direita ou positiva. </li>
+<li> <strong>CORRETA</strong>. P( X = x) = 0. </li>
+<li> <strong>CORRETA</strong>. Se X tem distribuição normal padrão, μ = 0 e σ<sup>2</sup> = 1. </li>
+<li> <strong>CORRETA</strong>. Se X ∼ N(μ, σ<sup>2</sup>), no <code>R</code> calculamos P(X ≤ x) usando <em>pnorm(x, μ, σ<sup>2</sup>)</em>. </li>
+<li> <strong>FALSA</strong>. P(a &lt; X ≤ b) = P(a &lt; X &lt; b). </li>
+<li> <strong>CORRETA</strong>. P(a &lt; X ≤ b) = P(a &lt; X &lt; b). </li>
+<li> <strong>FALSA</strong>. σ é o desvio padrão da população. </li>
+<li> <strong>FALSA</strong>. Se X tem distribuição normal padrão, a função densidade de probabilidade é par. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>false</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="10" format="html">
+<text><![CDATA[<p>
+Se X tem distribuição normal padrão, a função densidade de probabilidade é par.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<strong>CORRETA</strong>. Se X tem distribuição normal padrão, a função densidade de probabilidade é par.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="10" format="html">
+<text><![CDATA[<p>
+Se X ∼ N(μ σ<sup>2</sup>), no <code>Python</code> calculamos P(X ≤ x) usando <em>scipy.stats.norm.cdf(x, μ, σ<sup>2</sup>)</em>.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<strong>CORRETA</strong>. Se X ∼ N(μ σ<sup>2</sup>), no <code>Python</code> calculamos P(X ≤ x) usando <em>scipy.stats.norm.cdf(x, μ, σ<sup>2</sup>)</em>.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-16.66667" format="html">
+<text><![CDATA[<p>
+A distribuição normal tem assimetria à esquerda ou negativa.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<strong>FALSA</strong>. A distribuição normal tem assimetria à direita ou positiva.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="10" format="html">
+<text><![CDATA[<p>
+A distribuição normal é simétrica em torno da média.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<strong>CORRETA</strong>. A distribuição normal é simétrica em torno da média.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="10" format="html">
+<text><![CDATA[<p>
+σ<sup>2</sup> é a variância da população.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<strong>CORRETA</strong>. σ<sup>2</sup> é a variância da população.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="10" format="html">
+<text><![CDATA[<p>
+Se X ∼ N(μ σ<sup>2</sup>), no google planilhas calculamos P(X ≤ x) usando <em>norm.dist(x; μ; σ)</em>.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<strong>CORRETA</strong>. Se X ∼ N(μ σ<sup>2</sup>), no google planilhas calculamos P(X ≤ x) usando <em>norm.dist(x; μ; σ)</em>.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="10" format="html">
+<text><![CDATA[<p>
+μ é a média da população.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<strong>CORRETA</strong>. μ é a média da população.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-16.66667" format="html">
+<text><![CDATA[<p>
+P( X = x) &gt; 0.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<strong>FALSA</strong>. P( X = x) = 0.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-16.66667" format="html">
+<text><![CDATA[<p>
+A distribuição normal tem assimetria à direita ou positiva.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<strong>FALSA</strong>. A distribuição normal tem assimetria à direita ou positiva.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="10" format="html">
+<text><![CDATA[<p>
+P( X = x) = 0.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<strong>CORRETA</strong>. P( X = x) = 0.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="10" format="html">
+<text><![CDATA[<p>
+Se X tem distribuição normal padrão, μ = 0 e σ<sup>2</sup> = 1.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<strong>CORRETA</strong>. Se X tem distribuição normal padrão, μ = 0 e σ<sup>2</sup> = 1.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="10" format="html">
+<text><![CDATA[<p>
+Se X ∼ N(μ, σ<sup>2</sup>), no <code>R</code> calculamos P(X ≤ x) usando <em>pnorm(x, μ, σ<sup>2</sup>)</em>.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<strong>CORRETA</strong>. Se X ∼ N(μ, σ<sup>2</sup>), no <code>R</code> calculamos P(X ≤ x) usando <em>pnorm(x, μ, σ<sup>2</sup>)</em>.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-16.66667" format="html">
+<text><![CDATA[<p>
+P(a &lt; X ≤ b) &gt; P(a &lt; X &lt; b).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<strong>FALSA</strong>. P(a &lt; X ≤ b) = P(a &lt; X &lt; b).
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="10" format="html">
+<text><![CDATA[<p>
+P(a &lt; X ≤ b) = P(a &lt; X &lt; b).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<strong>CORRETA</strong>. P(a &lt; X ≤ b) = P(a &lt; X &lt; b).
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-16.66667" format="html">
+<text><![CDATA[<p>
+σ é o desvio médio da população.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<strong>FALSA</strong>. σ é o desvio padrão da população.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-16.66667" format="html">
+<text><![CDATA[<p>
+Se X tem distribuição normal padrão, a função densidade de probabilidade é ímpar.
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<strong>FALSA</strong>. Se X tem distribuição normal padrão, a função densidade de probabilidade é par.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+</quiz>

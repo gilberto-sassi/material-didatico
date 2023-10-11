@@ -1,0 +1,51 @@
+Question
+========
+Marque todas as alternativas corretas.
+  
+Answerlist
+----------
+* A distribuição normal é simétrica em torno da média.
+* A distribuição normal tem assimetria à direita ou positiva.
+* A distribuição normal tem assimetria à esquerda ou negativa.
+* &mu; é a média da população.
+* &sigma;^2^ é a variância da população.
+* &sigma; é o desvio médio da população.
+* Se X tem distribuição normal padrão, a função densidade de probabilidade é par.
+* Se X tem distribuição normal padrão, a função densidade de probabilidade é ímpar.
+* Se X tem distribuição normal padrão, &mu; = 0 e &sigma;^2^ = 1.
+* Se X &sim; N(&mu;, &sigma;^2^), no `R` calculamos P(X &le; x) usando _pnorm(x, &mu;, &sigma;^2^)_.
+* Se X &sim; N(&mu; &sigma;^2^), no `Python` calculamos P(X &le; x) usando _scipy.stats.norm.cdf(x, &mu;, &sigma;^2^)_.
+* Se X &sim; N(&mu; &sigma;^2^), no google planilhas calculamos P(X &le; x) usando _norm.dist(x; &mu;; &sigma;)_.
+* P( X = x) = 0.
+* P( X = x) > 0.
+* P(a < X &le; b) > P(a < X < b).
+* P(a < X &le; b) = P(a < X < b).
+
+
+Solution
+========
+Answerlist
+----------
+* **CORRETA**. A distribuição normal é simétrica em torno da média.
+* **FALSA**. A distribuição normal tem assimetria à direita ou positiva.
+* **FALSA**. A distribuição normal tem assimetria à direita ou positiva.
+* **CORRETA**. &mu; é a média da população.
+* **CORRETA**. &sigma;^2^ é a variância da população.
+* **FALSA**. &sigma; é o desvio padrão da população.
+* **CORRETA**. Se X tem distribuição normal padrão, a função densidade de probabilidade é par.
+* **FALSA**. Se X tem distribuição normal padrão, a função densidade de probabilidade é par.
+* **CORRETA**. Se X tem distribuição normal padrão, &mu; = 0 e &sigma;^2^ = 1.
+* **CORRETA**. Se X &sim; N(&mu;, &sigma;^2^), no `R` calculamos P(X &le; x) usando _pnorm(x, &mu;, &sigma;^2^)_.
+* **CORRETA**. Se X &sim; N(&mu; &sigma;^2^), no `Python` calculamos P(X &le; x) usando _scipy.stats.norm.cdf(x, &mu;, &sigma;^2^)_.
+* **CORRETA**. Se X &sim; N(&mu; &sigma;^2^), no google planilhas calculamos P(X &le; x) usando _norm.dist(x; &mu;; &sigma;)_.
+* **CORRETA**. P( X = x) = 0.
+* **FALSA**. P( X = x) = 0.
+* **FALSA**. P(a < X &le; b) = P(a < X < b).
+* **CORRETA**. P(a < X &le; b) = P(a < X < b).
+
+Meta-information
+================
+exname: assuntos
+extype: mchoice
+exsolution: 1001101011111001
+exshuffle: TRUE

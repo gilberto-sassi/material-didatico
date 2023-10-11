@@ -2431,7 +2431,7 @@ Para o conjunto de dados `enem_amostra_salvador.xlsx`, construa:
 ### Medidas de dispersão
 
 * F-spread: $d_F = F_U - F_L$, onde $F_U$ é o terceiro quartil e $F_L$ é o primeiro quartil;
-* F-pseudo sigma: $\frac{d_F}{1,379}$.
+* F-pseudo sigma: $\frac{d_F}{1,349}$.
 
 ### Pontos exteriores
 

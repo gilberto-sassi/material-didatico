@@ -1,0 +1,141 @@
+```{r}
+#| label: Gerando os dados da questão
+#| echo: false
+
+library(pacman)
+
+p_load(
+    readxl, writexl, janitor, lettervalue, tidyverse
+)
+
+# tamanho da amostra
+tam  <- 1000
+
+# amostra
+escolha <- sample(c(1, 2, 3), 1)
+amostra <- (case_when(
+    escolha == 1 ~ rbeta(tam, 1, 15),
+    escolha == 2 ~ rbeta(tam, 15, 1),
+    escolha == 3 ~ rbeta(tam, 12, 12)
+) * 100) |> round(2)
+
+# ajuste
+ajuste <- letter_value(amostra)
+
+# sumario
+sumario <- summary(ajuste)
+
+
+# solução
+q1  <-  ajuste$lv_data_frame$lv_lower[2]
+q3  <-  ajuste$lv_data_frame$lv_upper[2]
+mediana  <-  ajuste$lv_data_frame$lv_lower[1]
+B <- round((q3 - 2 * mediana + q1) / (q3 - q1), 2)
+sol <- list(
+    pontos_exteriores = ifelse(
+        is.character(sumario$outliers[[1]]),
+        "01", "10"
+    ),
+    mediana = ajuste$lv_data_frame$lv_lower[1],
+    q1 = q1,
+    q3 = q3,
+    B = round((q3 - 2 * mediana + q1) / (q3 - q1), 2),
+    assimetria = case_when(
+        -0.07 <= B & B <= 0.07 ~ "100",
+        B > 0.07 ~ "010",
+        B < -0.07 ~ "001"
+    ),
+    sigma = (q3 - q1) / 1.349,
+    var = ((q3 - q1) / 1.349)^2,
+    trimedia = 0.25 * q1 + 0.5 * mediana + 0.25 * q3,
+    LI = q1 - 1.5 * (q3 - q1),
+    LS = q3 + 1.5 * (q3 - q1),
+    min = ajuste$lv_data_frame$lv_lower[3],
+    max = ajuste$lv_data_frame$lv_upper[3],
+    tamanho = tam
+)
+
+opcao <- list(
+    pontos_exteriores = case_when(
+        sol[["pontos_exteriores"]] == "01" ~ "A amostra de X não tem pontos exteriores.",
+        sol[["pontos_exteriores"]] == "10" ~ "A amostra de X tem pontos exteriores."
+    ),
+    assimetria = case_when(
+        sol[["assimetria"]] == "100" ~ "A amostra de X tem simetria.",
+        sol[["assimetria"]] == "010" ~ "A amostra de X tem assimetria à direita ou positiva.",
+        sol[["assimetria"]] == "001" ~ "A amostra de X tem assimetria à esquerda ou negativa."
+    )
+)
+
+# formatação
+f <- \(x) format(
+    x,
+    decimal.mark = ",",
+    big.mark = "."
+)
+
+```
+
+Question
+========
+Considere X uma variável aleatória contínua. Para esta variável aleatória, o resumo de cinco números:
+
+```{r}
+#| echo: false
+ajuste
+```
+  
+Questionlist
+------------
+
+* A amostra de X tem pontos exteriores.
+* A amostra de X não tem pontos exteriores.
+* Mediana: 
+* Primeiro quartil:
+* Terceiro quartil:
+* Coeficiente de Bowley:
+* A amostra de X tem simetria.
+* A amostra de X tem assimetria à direita ou positiva.
+* A amostra de X tem assimetria à esquerda ou negativa.
+* F-pseudo-sigma:
+* F-pseudo-variância:
+* Trimédia:
+* LI:
+* LS:
+* Mínimo:
+* Máximo:
+* Tamanho da amostra:
+
+
+
+Solution
+========
+Solutionlist
+------------
+
+* `r opcao$pontos_exteriores`
+* 
+* Mediana: `r sol[["mediana"]]`.
+* Primeiro quartil: `r sol[["q1"]]`.
+* Terceiro quartil: `r sol[["q3"]]`.
+* Coeficiente de Bowley: `r sol[["B"]]`.
+* `r opcao$assimetria`
+* 
+* 
+* F-pseudo-sigma: `r sol[["sigma"]]`.
+* F-pseudo-variância: `r sol[["var"]]`.
+* Trimédia: `r sol[["trimedia"]]`.
+* LI: `r sol[["LI"]]`.
+* LS: `r sol[["LS"]]`.
+* Mínimo: `r sol[["min"]]`.
+* Máximo: `r sol[["max"]]`.
+* Tamanho da amostra: `r sol[["tamanho"]]`.
+
+
+Meta-information
+================
+exname: pontosExterioresResumo5Numeros
+extype: cloze
+exclozetype: schoice|num|num|num|num|schoice|num|num|num|num|num|num|num|num
+exsolution: `r sol[["pontos_exteriores"]]`|`r sol[["mediana"]]`|`r sol[["q1"]]`|`r sol[["q3"]]`|`r sol[["B"]]`|`r sol[["assimetria"]]`|`r sol[["sigma"]]`|`r sol[["var"]]`|`r sol[["trimedia"]]`|`r sol[["LI"]]`|`r sol[["LS"]]`|`r sol[["min"]]`|`r sol[["max"]]`|`r sol[["tamanho"]]`
+extol: 0.05
