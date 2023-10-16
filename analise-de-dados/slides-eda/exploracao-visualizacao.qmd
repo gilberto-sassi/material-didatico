@@ -28,22 +28,23 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE, cache = TRUE,
                     fig.align = "center", out.width="50%")
 #rmarkdown::find_pandoc(dir = "/home/gilberto/.local/bin", version = "2.13")
-library(glue)
-library(readxl)
-library(writexl)
-library(janitor)
-library(dplyr)
-library(gt)
-library(ggthemes)
-library(statBasics)
-library(MASS)
-library(readODS)
-library(dados)
-library(patchwork)
-library(aplpack)
-library(rlang)
-library(KbMvtSkew)
-library(tidyverse)
+library(pacman)
+p_load(glue)
+p_load(readxl)
+p_load(writexl)
+p_load(janitor)
+p_load(dplyr)
+p_load(gt)
+p_load(ggthemes)
+p_load(statBasics)
+p_load(MASS)
+p_load(readODS)
+p_load(dados)
+p_load(patchwork)
+p_load(aplpack)
+p_load(rlang)
+p_load(KbMvtSkew)
+p_load(tidyverse)
 
 
 ```
@@ -2971,8 +2972,8 @@ Para o conjunto de dados `amostra_enem_salvador.xlsx`, cheque a assimetria de `n
 Idea: mede a chance de aparecer _pontos exteriores_ ao amostrador valores desta variável na população, usando a distribuição normal como padrão.
 
 * uma variável com normalidade tem curtose igual a 0. Dizemos que a variável é mesocúrtica (de mesocurtose);
-* se a variável que tem mais chance de aparecer _pontos exteriores_, então a curtose é negativa e dizemos que a variável é lepcúrtica (de leptocurtose);
-* se a variável que menos chance de aparecer _pontos exterioes_, então a curtose é positiva e dizemos que a variável é platicúrtica (de platicurtose).
+* se a variável que tem menos chance de aparecer _pontos exteriores_, então a curtose é negativa e dizemos que a variável é lepcúrtica (de leptocurtose);
+* se a variável que mais chance de aparecer _pontos exterioes_, então a curtose é positiva e dizemos que a variável é platicúrtica (de platicurtose).
 
 Medimos a curtose usando uma função do quarto momento amostral:
 $$
