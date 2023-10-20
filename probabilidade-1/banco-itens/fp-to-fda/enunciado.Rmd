@@ -1,0 +1,95 @@
+```{r dgp, include = FALSE}
+library(pacman)
+
+p_load(exams)
+p_load(magrittr)
+p_load(readxl)
+p_load(writexl)
+p_load(knitr)
+p_load(statBasics)
+p_load(gt)
+p_load(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+# proporção de sucesso
+p <- runif(1, min = 0.25, 0.75) |> round(2)
+
+# número de casos
+size <- 5
+
+# função de probabilidade
+fp <- dbinom(0:size, size, prob = p) |>
+    round(6)
+
+# suporte da variável aleatória discreta
+suporte <- sample(0:50, size + 1, replace = FALSE) |> sort()
+
+# Solução
+sol <- c(
+    c(0, cumsum(fp)),
+    as.vector(matrix(suporte, ncol = 1) %x% matrix(1, nrow = 2))
+)
+
+modelo <- tibble(suporte, fp)
+```
+
+Question
+========
+
+Seja X uma variável aleatória discreta com suporte e função de probabilidade dada pela tabela abaixo. 
+
+```{r}
+#| echo: false
+gt(modelo) |>
+    tab_header(
+        title = "Suporte e função de probabilidade da variável aleatória discreta X."
+    ) |>
+  cols_label(
+    suporte = md("**x**"),
+    fp = md("**f(x)**")
+  ) |>
+  fmt_number(
+    columns = fp,
+    decimals = 6,
+    sep_mark = ".",
+    dec_mark = ","
+  )
+```
+
+Então, a função de distribuição acumulada é descrita (com duas casas decimais) por:
+
+* se x < \#\#ANSWER8\#\#, então F(x) = \#\#ANSWER1\#\#
+* se \#\#ANSWER9\#\# &#10877; x < \#\#ANSWER10\#\#, F(x) = \#\#ANSWER2\#\#
+* se \#\#ANSWER11\#\# &#10877; x < \#\#ANSWER12\#\#, F(x) = \#\#ANSWER3\#\#
+* se \#\#ANSWER13\#\# &#10877; x < \#\#ANSWER14\#\#, F(x) = \#\#ANSWER4\#\#
+* se \#\#ANSWER15\#\# &#10877; x < \#\#ANSWER16\#\#, F(x) = \#\#ANSWER5\#\#
+* se \#\#ANSWER17\#\# &#10877; x < \#\#ANSWER18\#\#, F(x) = \#\#ANSWER6\#\#
+* se x &#10878; \#\#ANSWER19\#\#, F(x) = \#\#ANSWER7\#\#
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+
+Solution
+========
+* se x < `r suporte[1]`, então F(x) = `r format(sol[1] |> round(2), decimal.mark = ",")`
+* se `r suporte[1]` &#10877; x < `r suporte[2]`, F(x) = `r format(sol[2] |> round(2), decimal.mark = ",")`
+* se `r suporte[2]` &#10877; x < `r suporte[3]`, F(x) = `r format(sol[3] |> round(2), decimal.mark = ",")`
+* se `r suporte[3]` &#10877; x < `r suporte[4]`, F(x) = `r format(sol[4] |> round(2), decimal.mark = ",")`
+* se `r suporte[4]` &#10877; x < `r suporte[5]`, F(x) = `r format(sol[5] |> round(2), decimal.mark = ",")`
+* se `r suporte[5]` &#10877; x < `r suporte[6]`, F(x) = `r format(sol[6] |> round(2), decimal.mark = ",")`
+* se x &#10878; `r suporte[6]`, F(x) = `r format(sol[7] |> round(2), decimal.mark = ",")`
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+Meta-information
+================
+exname: fd2fda
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste0(collapse = "|")`
+exsolution: `r paste0(sol, collapse = "|")`
+extol: 0.05

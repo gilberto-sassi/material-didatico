@@ -1,0 +1,94 @@
+```{r dgp, include = FALSE}
+library(pacman)
+
+p_load(exams)
+p_load(magrittr)
+p_load(readxl)
+p_load(writexl)
+p_load(knitr)
+p_load(statBasics)
+p_load(gt)
+p_load(tidyverse)
+options(scipen = 999) #prevent scientific notation
+
+# proporção de sucesso
+p <- runif(1, min = 0.25, 0.75) |> round(2)
+
+# número de casos
+size <- 5
+
+# função de probabilidade
+fp <- dbinom(0:size, size, prob = p) |>
+    round(6)
+
+# suporte da variável aleatória discreta
+suporte <- sample(0:50, size + 1, replace = FALSE) |> sort()
+
+# questão
+fda <- c(0, cumsum(fp)) |> round(5)
+
+# Solução
+sol <- c(
+    suporte,
+    fp |> round(2)
+)
+
+modelo <- tibble(suporte, fp)
+
+fomt <- \(x) format(x, decimal.mark = ",")
+```
+
+Question
+========
+
+Seja X uma variável aleatória discreta função de distribuição acumulada descrita por: 
+
+* se x < `r fomt(suporte[1])`, então F(x) = `r fomt(fda[1])`
+* se `r fomt(suporte[1])` &#10877; x < `r fomt(suporte[2])`, F(x) = `r fomt(fda[2])`
+* se `r fomt(suporte[2])` &#10877; x < `r fomt(suporte[3])`, F(x) = `r fomt(fda[3])`
+* se `r fomt(suporte[3])` &#10877; x < `r fomt(suporte[4])`, F(x) = `r fomt(fda[4])`
+* se `r fomt(suporte[4])` &#10877; x < `r fomt(suporte[5])`, F(x) = `r fomt(fda[5])`
+* se `r fomt(suporte[5])` &#10877; x < `r fomt(suporte[6])`, F(x) = `r fomt(fda[6])`
+* se x &#10878; `r fomt(suporte[6])`, F(x) = `r fomt(fda[7])`
+
+Então é o suporte e a função de probabilidade (com duas casas decimais) é dada por:
+
+|x|f(x)|
+|:---:|:-----:|
+|\#\#ANSWER1\#\#|\#\#ANSWER7\#\#|
+|\#\#ANSWER2\#\#|\#\#ANSWER8\#\#|
+|\#\#ANSWER3\#\#|\#\#ANSWER9\#\#|
+|\#\#ANSWER4\#\#|\#\#ANSWER10\#\#|
+|\#\#ANSWER5\#\#|\#\#ANSWER11\#\#|
+|\#\#ANSWER6\#\#|\#\#ANSWER12\#\#|
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+
+Solution
+========
+O suporte e a função de probabilidade é dada pela seguinte tabela abaixo.
+
+|x|f(x)|
+|:---:|:-----:|
+|`r format(suporte[1], decimal.mark = ",")`|`r format(fp[1] |> round(2), decimal.mark = ",")`|
+|`r format(suporte[2], decimal.mark = ",")`|`r format(fp[2] |> round(2), decimal.mark = ",")`|
+|`r format(suporte[3], decimal.mark = ",")`|`r format(fp[3] |> round(2), decimal.mark = ",")`|
+|`r format(suporte[4], decimal.mark = ",")`|`r format(fp[4] |> round(2), decimal.mark = ",")`|
+|`r format(suporte[5], decimal.mark = ",")`|`r format(fp[5] |> round(2), decimal.mark = ",")`|
+|`r format(suporte[6], decimal.mark = ",")`|`r format(fp[6] |> round(2), decimal.mark = ",")`|
+
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+Meta-information
+================
+exname: fda2fp
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste0(collapse = "|")`
+exsolution: `r paste0(sol, collapse = "|")`
+extol: 0.05
