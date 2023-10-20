@@ -1,0 +1,91 @@
+```{r}
+#| label: Gerando os dados da questão
+#| message: false
+#| warning: false
+#| echo: false
+
+library(pacman)
+
+p_load(
+    readxl, writexl, janitor, lettervalue, ggthemes,
+    glue,
+    e1071, KbMvtSkew, exams, tidyverse
+)
+
+# opções
+opcoes <- c(
+    "lvplot" = "`lvplot`",
+    "`dplyr`",
+    "violin" = "`ggplot2`",
+    "`e7110`",
+    "`KbMvtSkew`",
+    "`lettervalue`",
+    "`letter_value`",
+    "Trabalhadores do mundo uni-vos.",
+    "De cada qual, segundo sua capacidade; a cada qual, segundo essas necessidades."
+)
+n_opcoes <- length(opcoes)
+
+# solução
+sol <- c(
+    letra_a = paste(ifelse(names(opcoes) == "lvplot", 1, 0), collapse = ""),
+    letra_b = paste(ifelse(names(opcoes) == "violin", 1, 0), collapse = "")
+)
+
+make_list <- \(x) for(k in seq_along(x)) print(glue("* {x[k]}"))
+
+# formatação
+f <- \(x) format(
+    x,
+    decimal.mark = ",",
+    big.mark = "."
+)
+
+```
+
+Question
+========
+
+Escolha a opção correta para cada item:
+
+a. Pacote da linguagem `R` para desenhar um _gráfico de valores de letra (`lvplot`)_.
+a. Pacote da linguagem `R` para desenhar um _gráfico de violino (`geom_violin`)_.
+
+
+Questionlist
+------------
+
+```{r}
+#| echo: false
+#| results: asis
+
+make_list(rep(opcoes, 2))
+
+```
+
+
+Solution
+========
+
+Solutionlist
+------------
+
+```{r}
+#| echo: false
+#| results: asis
+
+lista <- c(opcoes["lvplot"], rep("", n_opcoes - 1)) |>
+    c(opcoes["violin"], rep("", n_opcoes - 1))
+
+make_list(lista)
+```
+
+
+
+Meta-information
+================
+exname: boxplot
+extype: cloze
+exclozetype: `r paste(rep("schoice", 2), collapse="|")`
+exsolution: `r paste(sol, collapse="|")`
+extol: 0.05
