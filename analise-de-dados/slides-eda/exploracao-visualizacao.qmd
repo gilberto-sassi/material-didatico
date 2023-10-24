@@ -3236,6 +3236,14 @@ ggplot(dados_iris, aes(x = especies, y = comprimento_petala)) +
 
 # LV plot
 
+## LV plot
+
+A ideia é generalizar o diagrama de caixa. 
+
+Em _lv plot_, podemos usar mais valores de letra.
+
+
+
 # Ramos-e-folhas
 
 ## Ramos-e-folhas
