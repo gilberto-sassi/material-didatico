@@ -46,6 +46,8 @@ p_load(rlang)
 p_load(mvtnorm)
 p_load(qqplotr)
 p_load(KbMvtSkew)
+p_load(ggthemes)
+p_load(lvplot)
 p_load(tidyverse)
 
 
@@ -3237,6 +3239,77 @@ ggplot(dados_iris, aes(x = especies, y = comprimento_petala)) +
 
 
 # LV plot
+
+## LV plot
+
+* **Ideia:** generalização do diagrama de caixa.
+* Podemos usar mais valores de letra além de $M$ (mediana) e $F$ (primeiro e terceiro quartis).
+* Podemos observar a forma (distribuição) semelhante ao `geom_violin`.
+* Menos valores são marcados com pontos exteriores.
+
+\regrafina
+
+```{r}
+#| echo: false
+#| fig.cap: "`geom_lv` versus `geom_boxplot`."
+df <- tibble(x = rexp(1000))
+
+lv <- ggplot(df) +
+  geom_lv(aes(x = "", y = x)) +
+  labs(x = "geom_lv", y = "") +
+  scale_y_continuous(breaks = NULL) +
+  theme_minimal() + 
+  theme(axis.title = element_text(size = 20)) +
+  coord_flip()
+dc <- ggplot(df) +
+  geom_boxplot(aes(x = "", y = x)) +
+  labs(x = "geom_boxplot", y = "") +
+  scale_y_continuous(breaks = NULL) +
+  theme_minimal() +
+  theme(axis.title = element_text(size = 20)) +
+  coord_flip()
+
+lv / dc
+```
+
+## LV plot
+
+Precisamos determinar:
+
+a. Quantos valores de letra incluir no `geom_lv`?
+a. Qual a largura de cada uma das caixas em `geom_lv`?
+
+\regrafina
+
+\destaque{Quantos valores de letra incluir no \texttt{geom\_lv}?}
+
+**Regra 5-8 -** inclui de 5 a 8 valores como pontos exteriores:
+$$k = \lfloor \log_2(n) -2 \rfloor.$$
+
+**Proporção constante -** inclui $p\cdot 100\%$ dos valores da amostra serão marcados como pontos exteriores: 
+$$k_p = \lfloor \log_2(n) \rfloor - \lfloor \log_2(n \cdot p) \rfloor.$$
+
+---
+
+**Confiabilidade -** inclui o valor de letra de nível $i$ se os intervalos de confiança com coeficiente de confiança $1-\alpha$ para os valores de letra de níveis $i$ e $i+1$ não tem intersecção (veja @lvplot par maiores detalhes):
+$$k_{1-\alpha} = \lfloor \log_2(n) \rfloor - \lfloor \log_2(2\cdot z_{1-\frac{\alpha}{2}}^2) \rfloor.$$
+Este é o método usado por padrão pelo pacote `lvplot`.
+
+**Erro máximo -** inclui o valor de letra de nível $i$ se o desvio padrão estiver abaixo de um limite estabelecido. O desvio padrão de nível $i$ é dado por
+$$DP(LV_i) \approx s \sqrt{\frac{\frac{1}{2^i}\left(1 - \frac{1}{2^i}\right)}{n}}\phi\left(\Phi^{-1}\left(\frac{1}{2^i}\right)\right),$$
+onde $LV_i$ é o valor de letra de nível $i$, $\phi$ é a função densidade de probabilidade da distribuição normal padrão e $\Phi$ é a função de distribuição acumulada da distribuição normal padrão.
+
+----
+
+\destaque{Quantos valores de letra incluir no \texttt{geom\_lv}?}
+
+* **linear -** largura da caixa é inversamente proporcional ao nível do valor de letra (ou seja, as larguras das caixas diminuem sucessivamente de forma linear). Este é o método usado por padrão pelo pacote `lvplot`.
+* **área -** a largura da caixa é inversamente proporcional a $2^{i+1}\lvert LV_i - LV_{i+1} \rvert$ (a área da caixa tem aproximadamente a $\frac{1}{2^{i+1}}$).
+* **height -** a largura da caixa é aproximadamente $\frac{1}{2^i}$.
+
+## LV plot
+
+
 
 # Ramos-e-folhas
 
