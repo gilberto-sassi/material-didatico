@@ -234,6 +234,8 @@
 \usepackage{booktabs}
 \usepackage{caption}
 \usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{array}
 \makeatletter
 \makeatother
 \makeatletter
@@ -334,7 +336,7 @@ Estatística}
 % 	\maketitle
 %  \end{frame}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, breakable, enhanced, frame hidden, sharp corners, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, sharp corners, enhanced, interior hidden, frame hidden, borderline west={3pt}{0pt}{shadecolor}, breakable]}{\end{tcolorbox}}\fi
 
 \hypertarget{sobre-o-curso}{%
 \section{Sobre o curso}\label{sobre-o-curso}}
@@ -1354,8 +1356,8 @@ Realize as seguintes operações envolvendo vetores:
 
 \begin{verbatim}
           [,1]     [,2]
-[1,] 1.3894060 2.507339
-[2,] 0.5311459 3.082473
+[1,] 1.2832783 2.678966
+[2,] 0.9676014 3.515805
 \end{verbatim}
 
 \textbf{Subtração}
@@ -1369,8 +1371,8 @@ Realize as seguintes operações envolvendo vetores:
 
 \begin{verbatim}
            [,1]     [,2]
-[1,]  0.6105940 1.492661
-[2,] -0.5311459 2.917527
+[1,]  0.7167217 1.321034
+[2,] -0.9676014 2.484195
 \end{verbatim}
 
 \normalsize
@@ -1398,9 +1400,9 @@ Realize as seguintes operações envolvendo vetores:
 \end{Shaded}
 
 \begin{verbatim}
-         [,1]      [,2]
-[1,] 0.389406 1.0146771
-[2,] 0.000000 0.2474188
+          [,1]     [,2]
+[1,] 0.2832783 1.357931
+[2,] 0.0000000 1.547416
 \end{verbatim}
 
 \regrafina
@@ -1416,9 +1418,9 @@ de matrizes}}
 \end{Shaded}
 
 \begin{verbatim}
-         [,1]      [,2]
-[1,] 1.451698 0.6722844
-[2,] 1.593438 0.2474188
+         [,1]     [,2]
+[1,] 2.218481 1.710576
+[2,] 2.902804 1.547416
 \end{verbatim}
 \end{frame}
 
@@ -1512,7 +1514,7 @@ generalizada}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(MASS) }\CommentTok{\# ginv é uma função do pacote MASS}
+\FunctionTok{p\_load}\NormalTok{(MASS) }\CommentTok{\# ginv é uma função do pacote MASS}
 \FunctionTok{ginv}\NormalTok{(matriz\_a)}
 \end{Highlighting}
 \end{Shaded}
@@ -1816,7 +1818,7 @@ Recupe e imprima as seguintes informações da lista
 \begin{frame}[fragile]
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(tidyverse) }\CommentTok{\# carregando o framework tidyverse}
+\FunctionTok{p\_load}\NormalTok{(tidyverse) }\CommentTok{\# carregando o framework tidyverse}
 \NormalTok{data\_frame }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
   \AttributeTok{nome =} \FunctionTok{c}\NormalTok{(}\StringTok{"Marx"}\NormalTok{, }\StringTok{"Engels"}\NormalTok{, }\StringTok{"Rosa"}\NormalTok{, }\StringTok{"Lênin"}\NormalTok{, }\StringTok{"Olga Benário"}\NormalTok{),}
   \AttributeTok{idade =} \FunctionTok{c}\NormalTok{(}\DecValTok{22}\NormalTok{, }\DecValTok{23}\NormalTok{, }\DecValTok{21}\NormalTok{, }\DecValTok{24}\NormalTok{, }\DecValTok{30}\NormalTok{)}
@@ -2065,8 +2067,8 @@ Para mais detalhes, consulte a documentação:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(tidyverse)}
-\FunctionTok{library}\NormalTok{(readxl)}
+\FunctionTok{p\_load}\NormalTok{(tidyverse)}
+\FunctionTok{p\_load}\NormalTok{(readxl)}
 \NormalTok{dados\_iris }\OtherTok{\textless{}{-}} \FunctionTok{read\_xlsx}\NormalTok{(}\StringTok{"dados/brutos/iris.xlsx"}\NormalTok{)}
 \NormalTok{dados\_iris }\OtherTok{\textless{}{-}} \FunctionTok{clean\_names}\NormalTok{(dados\_iris)}
 
@@ -2248,7 +2250,7 @@ Para mais detalhes, consulte a documentação do \emph{readODS}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(readODS)}
+\FunctionTok{p\_load}\NormalTok{(readODS)}
 \NormalTok{dados\_dentes }\OtherTok{\textless{}{-}} \FunctionTok{read\_ods}\NormalTok{(}\StringTok{"dados/brutos/crescimento\_dentes.ods"}\NormalTok{)}
 \NormalTok{dados\_dentes }\OtherTok{\textless{}{-}} \FunctionTok{clean\_names}\NormalTok{(dados\_dentes)}
 
@@ -4598,7 +4600,7 @@ Esta é a razão para usarmos
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(lettervalue)}
+\FunctionTok{p\_load}\NormalTok{(lettervalue)}
 \FunctionTok{letter\_value}\NormalTok{(dados\_iris}\SpecialCharTok{$}\NormalTok{comprimento\_sepala, }\AttributeTok{level =} \DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -4715,7 +4717,7 @@ objeto \texttt{lv}.
 # A tibble: 1 x 6
   trimean median f_spread f_pseudo_sigma f_pseudo_variance outliers  
     <dbl>  <dbl>    <dbl>          <dbl>             <dbl> <list>    
-1     460    425      370           268.            71990. <dbl [11]>
+1     460    425      370           274.            75228. <dbl [11]>
 \end{verbatim}
 
 \normalsize
@@ -5050,7 +5052,7 @@ Vamos usar o conjunto de dados \texttt{rivers} que tem o comprimento dos
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(KbMvtSkew)}
+\FunctionTok{p\_load}\NormalTok{(KbMvtSkew)}
 \FunctionTok{BowleySkew}\NormalTok{(rivers)}
 \end{Highlighting}
 \end{Shaded}
@@ -5242,7 +5244,7 @@ podemos escolher entre \(g_1\), \(G_1\) e \(b_1\):
 \protect\hypertarget{medidas-de-assimetria-1}{}
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(e1071)}
+\FunctionTok{p\_load}\NormalTok{(e1071)}
 \CommentTok{\# coeficiente de Bowley}
 \FunctionTok{BowleySkew}\NormalTok{(rivers)}
 \end{Highlighting}
@@ -5481,7 +5483,7 @@ estimar a curtose. Com o argumento \texttt{type}, podemos escolher entre
 \protect\hypertarget{medida-de-curtose-2}{}
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(e1071)}
+\FunctionTok{p\_load}\NormalTok{(e1071)}
 
 \CommentTok{\# g\_2}
 \FunctionTok{kurtosis}\NormalTok{(rivers, }\AttributeTok{type =} \DecValTok{1}\NormalTok{)}
@@ -5689,6 +5691,18 @@ dos valores.}
 
 \hypertarget{lv-plot}{%
 \section{LV plot}\label{lv-plot}}
+
+\begin{frame}{LV plot}
+\protect\hypertarget{lv-plot-1}{}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Ideia:} generalização do diagrama de caixa.
+\item
+  Podemos incluir mais valores de letra além de \(M\) (mediana) e \(F\)
+  (primeiro e terceiro quartis).
+\end{itemize}
+\end{frame}
 
 \hypertarget{ramos-e-folhas}{%
 \section{Ramos-e-folhas}\label{ramos-e-folhas}}
@@ -6135,7 +6149,7 @@ extensão do pacote
 \begin{frame}[fragile]
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(qqplotr)}
+\FunctionTok{p\_load}\NormalTok{(qqplotr)}
 
 \FunctionTok{ggplot}\NormalTok{(}
 \NormalTok{  dados\_iris,}
@@ -6556,7 +6570,7 @@ Vamos usar um exemplo para ensinar como usar o pacote \texttt{gt}.
 } \\ 
 \toprule
 especies & m\_petala & dp\_petala & q1\_petala & q2\_petala & q3\_petala & cv\_petala \\ 
-\midrule
+\midrule\addlinespace[2.5pt]
 setosa & 1.462 & 0.1736640 & 1.4 & 1.50 & 1.575 & 11.878522 \\ 
 versicolor & 4.260 & 0.4699110 & 4.0 & 4.35 & 4.600 & 11.030774 \\ 
 virginica & 5.552 & 0.5518947 & 5.1 & 5.55 & 5.875 & 9.940466 \\ 
@@ -6604,13 +6618,14 @@ de linhas.
 } \\ 
 \toprule
 especies & m\_petala & dp\_petala & q1\_petala & q2\_petala & q3\_petala & cv\_petala \\ 
-\midrule
+\midrule\addlinespace[2.5pt]
 \multicolumn{7}{l}{\emph{Espécies principais}} \\ 
-\midrule
+\midrule\addlinespace[2.5pt]
 setosa & 1.462 & 0.1736640 & 1.4 & 1.50 & 1.575 & 11.878522 \\ 
 virginica & 5.552 & 0.5518947 & 5.1 & 5.55 & 5.875 & 9.940466 \\ 
-\midrule
+\midrule\addlinespace[2.5pt]
 \multicolumn{7}{l}{\vspace*{-5mm}} \\ 
+\midrule\addlinespace[2.5pt]
 versicolor & 4.260 & 0.4699110 & 4.0 & 4.35 & 4.600 & 11.030774 \\ 
 \bottomrule
 \end{longtable*}
@@ -6669,13 +6684,14 @@ com o texto ``negras'' no objeto \texttt{gt\_tab}.
  &  & \multicolumn{2}{c}{Dispersão} & \multicolumn{3}{c}{Quantis} \\ 
 \cmidrule(lr){3-4} \cmidrule(lr){5-7}
 especies & m\_petala & dp\_petala & cv\_petala & q1\_petala & q2\_petala & q3\_petala \\ 
-\midrule
+\midrule\addlinespace[2.5pt]
 \multicolumn{7}{l}{\emph{Espécies principais}} \\ 
-\midrule
+\midrule\addlinespace[2.5pt]
 setosa & 1.462 & 0.1736640 & 11.878522 & 1.4 & 1.50 & 1.575 \\ 
 virginica & 5.552 & 0.5518947 & 9.940466 & 5.1 & 5.55 & 5.875 \\ 
-\midrule
+\midrule\addlinespace[2.5pt]
 \multicolumn{7}{l}{\vspace*{-5mm}} \\ 
+\midrule\addlinespace[2.5pt]
 versicolor & 4.260 & 0.4699110 & 11.030774 & 4.0 & 4.35 & 4.600 \\ 
 \bottomrule
 \end{longtable*}
@@ -6740,13 +6756,14 @@ quartil e terceiro quartil com o texto ``Quartis'' no objeto
  & \multicolumn{2}{c}{Dispersão} & \multicolumn{3}{c}{Quantis} &  \\ 
 \cmidrule(lr){2-3} \cmidrule(lr){4-6}
 especies & dp\_petala & cv\_petala & q1\_petala & q2\_petala & q3\_petala & m\_petala \\ 
-\midrule
+\midrule\addlinespace[2.5pt]
 \multicolumn{7}{l}{\emph{Espécies principais}} \\ 
-\midrule
+\midrule\addlinespace[2.5pt]
 setosa & 0.1736640 & 11.878522 & 1.4 & 1.50 & 1.575 & 1.462 \\ 
 virginica & 0.5518947 & 9.940466 & 5.1 & 5.55 & 5.875 & 5.552 \\ 
-\midrule
+\midrule\addlinespace[2.5pt]
 \multicolumn{7}{l}{\vspace*{-5mm}} \\ 
+\midrule\addlinespace[2.5pt]
 versicolor & 0.4699110 & 11.030774 & 4.0 & 4.35 & 4.600 & 4.260 \\ 
 \bottomrule
 \end{longtable*}
@@ -6798,13 +6815,14 @@ Deixe as colunas de \texttt{gt\_tab} na seguinte ordem: \emph{raça},
  & \multicolumn{2}{c}{Dispersão} & \multicolumn{3}{c}{Quantis} &  \\ 
 \cmidrule(lr){2-3} \cmidrule(lr){4-6}
 \textbf{Espécies} & Desvio padrão & CV & \emph{Q1} & \emph{Q2} & \emph{Q3} & Média \\ 
-\midrule
+\midrule\addlinespace[2.5pt]
 \multicolumn{7}{l}{\emph{Espécies principais}} \\ 
-\midrule
+\midrule\addlinespace[2.5pt]
 setosa & 0.1736640 & 11.878522 & 1.4 & 1.50 & 1.575 & 1.462 \\ 
 virginica & 0.5518947 & 9.940466 & 5.1 & 5.55 & 5.875 & 5.552 \\ 
-\midrule
+\midrule\addlinespace[2.5pt]
 \multicolumn{7}{l}{\vspace*{-5mm}} \\ 
+\midrule\addlinespace[2.5pt]
 versicolor & 0.4699110 & 11.030774 & 4.0 & 4.35 & 4.600 & 4.260 \\ 
 \bottomrule
 \end{longtable*}
@@ -6861,13 +6879,14 @@ colunas.
  & \multicolumn{2}{c}{Dispersão} & \multicolumn{3}{c}{Quantis} &  \\ 
 \cmidrule(lr){2-3} \cmidrule(lr){4-6}
 \textbf{Espécies} & Desvio padrão & CV & \emph{Q1} & \emph{Q2} & \emph{Q3} & Média \\ 
-\midrule
+\midrule\addlinespace[2.5pt]
 \multicolumn{7}{l}{\emph{Espécies principais}} \\ 
-\midrule
+\midrule\addlinespace[2.5pt]
 setosa & $0,17$ & $11,88$ \% & $1,40$ & $1,50$ & $1,58$ & $1,46$ \\ 
 virginica & $0,55$ & $9,94$ \% & $5,10$ & $5,55$ & $5,88$ & $5,55$ \\ 
-\midrule
+\midrule\addlinespace[2.5pt]
 \multicolumn{7}{l}{\vspace*{-5mm}} \\ 
+\midrule\addlinespace[2.5pt]
 versicolor & $0,47$ & $11,03$ \% & $4,00$ & $4,35$ & $4,60$ & $4,26$ \\ 
 \bottomrule
 \end{longtable*}
