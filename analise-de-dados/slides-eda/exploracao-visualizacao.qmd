@@ -3237,6 +3237,12 @@ ggplot(dados_iris, aes(x = especies, y = comprimento_petala)) +
   labs(x = "Espécies", y = "Comprimento de pétala")
 ```
 
+## Violin plot
+
+Para o conjunto de dados `amostra_enem_salvador.xlsx`:
+
+* Construa o _Violin plot_ para a variável `nu_nota_mt`.
+* Construa o _Violin plot_ para a variável `nu_nota_mt` por `tp_cor_raca`.
 
 # LV plot
 
@@ -3309,6 +3315,10 @@ onde $LV_i$ é o valor de letra de nível $i$, $\phi$ é a função densidade de
 
 ## LV plot
 
+Para o conjunto de dados `amostra_enem_salvador.xlsx`:
+
+* Construa o _lv plot_ para a variável `nu_nota_mt`.
+* Construa o _lv plot_ para a variável `nu_nota_mt` por `tp_cor_raca`.
 
 
 # Ramos-e-folhas
@@ -4176,3 +4186,5 @@ No objeto `gt_tab`, para as colunas numéricas coloque "`,`" para o separador de
 # Bibliografia 
 
 ## Referências
+
+\small

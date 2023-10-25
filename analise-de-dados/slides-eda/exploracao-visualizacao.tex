@@ -335,7 +335,7 @@ Estatística}
 % 	\maketitle
 %  \end{frame}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, boxrule=0pt, sharp corners, breakable, enhanced, interior hidden, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, sharp corners, breakable, borderline west={3pt}{0pt}{shadecolor}, enhanced, boxrule=0pt, frame hidden]}{\end{tcolorbox}}\fi
 
 \hypertarget{sobre-o-curso}{%
 \section{Sobre o curso}\label{sobre-o-curso}}
@@ -5688,6 +5688,20 @@ dos valores.}
 \end{figure}
 \end{frame}
 
+\begin{frame}[fragile]{Violin plot}
+\protect\hypertarget{violin-plot-4}{}
+Para o conjunto de dados \texttt{amostra\_enem\_salvador.xlsx}:
+
+\begin{itemize}
+\tightlist
+\item
+  Construa o \emph{Violin plot} para a variável \texttt{nu\_nota\_mt}.
+\item
+  Construa o \emph{Violin plot} para a variável \texttt{nu\_nota\_mt}
+  por \texttt{tp\_cor\_raca}.
+\end{itemize}
+\end{frame}
+
 \hypertarget{lv-plot}{%
 \section{LV plot}\label{lv-plot}}
 
@@ -5779,6 +5793,20 @@ função de distribuição acumulada da distribuição normal padrão.
 \item
   \textbf{height -} a largura da caixa é aproximadamente
   \(\frac{1}{2^i}\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{LV plot}
+\protect\hypertarget{lv-plot-3}{}
+Para o conjunto de dados \texttt{amostra\_enem\_salvador.xlsx}:
+
+\begin{itemize}
+\tightlist
+\item
+  Construa o \emph{lv plot} para a variável \texttt{nu\_nota\_mt}.
+\item
+  Construa o \emph{lv plot} para a variável \texttt{nu\_nota\_mt} por
+  \texttt{tp\_cor\_raca}.
 \end{itemize}
 \end{frame}
 
@@ -6980,6 +7008,8 @@ agrupador de milhar.
 
 \begin{frame}{Referências}
 \protect\hypertarget{referuxeancias}{}
+\small
+
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
 \leavevmode\vadjust pre{\hypertarget{ref-doane2011measuring}{}}%
