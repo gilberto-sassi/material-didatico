@@ -1,0 +1,124 @@
+```{r}
+#| label: Gerando os dados da questão
+#| message: false
+#| warning: false
+#| echo: false
+
+library(pacman)
+
+p_load(
+    readxl, writexl, janitor, lettervalue, ggthemes,
+    glue, lvplot,
+    e1071, KbMvtSkew, exams, tidyverse
+)
+
+# opções
+opcoes <- c(
+    "fda" = "`st`.`nome do módulo`.`cdf`",
+    "fp ou fdp" = "`st`.`nome do módulo`.`pmf` ou `st`.`nome do módulo`.`pdf`",
+    "binom" = "`st.binom.cdf(x, n, p)`",
+    "norm" = "`st.norm.cdf(x, `&mu;, &sigma;`)`",
+    "poisson" = "`st.poisson.cdf(x, `&lambda;`)`",
+    "gamma" = "`st.gamma.cdf(x`, &alpha;, &beta;`)`",
+    "exp" = "`st.expon.cdf(x, `1 / &lambda;`)`",
+    "unif" = "`st.uniform.cdf(x, `&alpha;, &beta;`)`",
+    "beta" = "`st.beta.cdf(x, `a=&alpha;, b=&beta;`)`",
+    "lognorm" = "`norm.cdf(log(x), log(`&alpha;`)`, &beta;`)`",
+    "Trabalhadores do mundo uni-vos.",
+    "De cada qual, segundo sua capacidade; a cada qual, segundo essas necessidades."
+)
+n_opcoes <- length(opcoes)
+
+# solução
+sol <- c(
+    letra_a = paste(ifelse(names(opcoes) == "fda", 1, 0), collapse = ""),
+    letra_b = paste(ifelse(names(opcoes) == "fp ou fdp", 1, 0), collapse = ""),
+    letra_c = paste(ifelse(names(opcoes) == "binom", 1, 0), collapse = ""),
+    letra_d = paste(ifelse(names(opcoes) == "norm", 1, 0), collapse = ""),
+    letra_e = paste(ifelse(names(opcoes) == "poisson", 1, 0), collapse = ""),
+    letra_f = paste(ifelse(names(opcoes) == "gamma", 1, 0), collapse = ""),
+    letra_g = paste(ifelse(names(opcoes) == "exp", 1, 0), collapse = ""),
+    letra_h = paste(ifelse(names(opcoes) == "unif", 1, 0), collapse = ""),
+    letra_i = paste(ifelse(names(opcoes) == "beta", 1, 0), collapse = ""),
+    letra_j = paste(ifelse(names(opcoes) == "lognorm", 1, 0), collapse = "")
+)
+
+make_list <- \(x) for(k in seq_along(x)) print(glue("* {x[k]}"))
+
+# formatação
+f <- \(x) format(
+    x,
+    decimal.mark = ",",
+    big.mark = "."
+)
+
+```
+
+Question
+========
+
+Suponha que você tenha importado o móduglo `stats` do pacote `scipy` com o seguinte código:
+
+```python
+import scipy.stats as st
+```
+
+Para cada umas das distribuuições, escolha o código adequado para calcular a FDA na Linguagem `python` e o pacote `scipy`:
+
+a. Função de distribuição acumulada.
+b. Função de probabilidade ou função densidade de probabilidade.
+c. X &sim; b(n, p).
+d. X &sim; N(&mu;, &sigma;).
+e. X &sim; P(&lambda;).
+f. X &sim; &Gamma;(&alpha;, &beta;).
+g. X &sim; Exp(&lambda;).
+h. X &sim; U(&alpha;, &beta;).
+i. X &sim; B(&alpha;, &beta;).
+j. X &sim; Lognormal(&alpha;, &beta;).
+
+
+Questionlist
+------------
+
+```{r}
+#| echo: false
+#| results: asis
+
+make_list(rep(opcoes, length(sol)))
+
+```
+
+
+Solution
+========
+
+Solutionlist
+------------
+
+```{r}
+#| echo: false
+#| results: asis
+
+lista <- c(opcoes["fda"], rep("", n_opcoes - 1)) |>
+    c(opcoes["fp ou fdp"], rep("", n_opcoes - 1)) |>
+    c(opcoes["binom"], rep("", n_opcoes - 1)) |>
+    c(opcoes["norm"], rep("", n_opcoes - 1)) |>
+    c(opcoes["poisson"], rep("", n_opcoes - 1)) |>
+    c(opcoes["gamma"], rep("", n_opcoes - 1)) |>
+    c(opcoes["exp"], rep("", n_opcoes - 1)) |>
+    c(opcoes["unif"], rep("", n_opcoes - 1)) |>
+    c(opcoes["beta"], rep("", n_opcoes - 1)) |>
+    c(opcoes["lognorm"], rep("", n_opcoes - 1))
+
+make_list(lista)
+```
+
+
+
+Meta-information
+================
+exname: boxplot
+extype: cloze
+exclozetype: `r paste(rep("schoice", length(sol)), collapse="|")`
+exsolution: `r paste(sol, collapse="|")`
+extol: 0.05

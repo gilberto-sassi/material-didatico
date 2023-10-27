@@ -1,0 +1,43 @@
+```{r}
+#| label: Gerando dados aleatórios para a questão.
+#| echo: false
+
+# binomial
+tam <- sample(50:100, 1)
+p <- runif(1, 0.25, 0.75) |> round(2)
+x_binom <- runif(1, 0.25, 0.75) |> qbinom(tam, p)
+
+# normal
+media_norm <- runif(1, 10, 15) |> round(2)
+dp_norm <- runif(1, 2, 3) |> round(2)
+x_norm <- runif(1, 0.25, 0.75) |> qnorm(media_norm, dp_norm)
+
+#
+```
+
+Question
+========
+Calcule as seguintes probabilidades usando função de distribuição acumulada:
+  
+Questionlist
+------------
+
+* Qual foi a primeira capital do Brasil?
+* Qual a área (em milhões de km^2^ do Brasil)?
+
+Solution
+========
+
+Solutionlist
+------------
+
+* A primeira capital do Brasil foi Salvador. 
+* A área do Brasil é de 8,5 milhões de km^2^
+
+Meta-information
+================
+exname: BR
+extype: cloze
+exclozetype: string|num
+exsolution: salvador|8.5
+extol: 0.5

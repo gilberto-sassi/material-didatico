@@ -2,9 +2,9 @@ pacman::p_load(
     glue, exams
 )
 
-path <- "banco-itens/ramos-folhas-resumo"
+path <- "banco-itens/codigo-python"
 exams2moodle(glue("{path}/enunciado.Rmd"),
-                    n = 1000,
+                    n = 1,
                     verbose = TRUE,
                     dir = glue("{path}"),
-                    name = "ramos-e-folhas-resumo")
+                    name = "codigo-python-fda")

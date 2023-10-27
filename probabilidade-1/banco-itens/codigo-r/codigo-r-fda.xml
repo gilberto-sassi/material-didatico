@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/codigo-r-fda/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> Q1 : banco-itens_codigo-r_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Para cada umas das distribuuições, escolha o código adequado para calcular a FDA na Linguagem <code>R</code>:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Função de distribuição acumulada.</li>
+<li>Função de probabilidade ou função densidade de probabilidade.</li>
+<li>X ∼ b(n, p).</li>
+<li>X ∼ N(μ, σ).</li>
+<li>X ∼ P(λ).</li>
+<li>X ∼ Γ(α, β).</li>
+<li>X ∼ Exp(λ).</li>
+<li>X ∼ U(α, β).</li>
+<li>X ∼ B(α, β).</li>
+<li>X ∼ Lognormal(α, β).</li>
+</ol>
+<ol type = "a">
+<li> {1:MULTICHOICE:=<code>p</code> + <code>nome base</code>~<code>d</code> + <code>nome base</code>~<code>pbinom(x, n, p)</code>~<code>pnorm(x,</code>μ, σ<code>)</code>~<code>ppois(x,</code>λ<code>)</code>~<code>pgamma(x</code>, α, β<code>)</code>~<code>pexp(x,</code>λ<code>)</code>~<code>punif(x,</code>α, β<code>)</code>~<code>pbeta(x,</code>α, β<code>)</code>~<code>plnorm(x, log(</code>α<code>)</code>, β<code>)</code>~Trabalhadores do mundo uni-vos.~De cada qual, segundo sua capacidade; a cada qual, segundo essas necessidades.} </li>
+<li> {1:MULTICHOICE:<code>p</code> + <code>nome base</code>~=<code>d</code> + <code>nome base</code>~<code>pbinom(x, n, p)</code>~<code>pnorm(x,</code>μ, σ<code>)</code>~<code>ppois(x,</code>λ<code>)</code>~<code>pgamma(x</code>, α, β<code>)</code>~<code>pexp(x,</code>λ<code>)</code>~<code>punif(x,</code>α, β<code>)</code>~<code>pbeta(x,</code>α, β<code>)</code>~<code>plnorm(x, log(</code>α<code>)</code>, β<code>)</code>~Trabalhadores do mundo uni-vos.~De cada qual, segundo sua capacidade; a cada qual, segundo essas necessidades.} </li>
+<li> {1:MULTICHOICE:<code>p</code> + <code>nome base</code>~<code>d</code> + <code>nome base</code>~=<code>pbinom(x, n, p)</code>~<code>pnorm(x,</code>μ, σ<code>)</code>~<code>ppois(x,</code>λ<code>)</code>~<code>pgamma(x</code>, α, β<code>)</code>~<code>pexp(x,</code>λ<code>)</code>~<code>punif(x,</code>α, β<code>)</code>~<code>pbeta(x,</code>α, β<code>)</code>~<code>plnorm(x, log(</code>α<code>)</code>, β<code>)</code>~Trabalhadores do mundo uni-vos.~De cada qual, segundo sua capacidade; a cada qual, segundo essas necessidades.} </li>
+<li> {1:MULTICHOICE:<code>p</code> + <code>nome base</code>~<code>d</code> + <code>nome base</code>~<code>pbinom(x, n, p)</code>~=<code>pnorm(x,</code>μ, σ<code>)</code>~<code>ppois(x,</code>λ<code>)</code>~<code>pgamma(x</code>, α, β<code>)</code>~<code>pexp(x,</code>λ<code>)</code>~<code>punif(x,</code>α, β<code>)</code>~<code>pbeta(x,</code>α, β<code>)</code>~<code>plnorm(x, log(</code>α<code>)</code>, β<code>)</code>~Trabalhadores do mundo uni-vos.~De cada qual, segundo sua capacidade; a cada qual, segundo essas necessidades.} </li>
+<li> {1:MULTICHOICE:<code>p</code> + <code>nome base</code>~<code>d</code> + <code>nome base</code>~<code>pbinom(x, n, p)</code>~<code>pnorm(x,</code>μ, σ<code>)</code>~=<code>ppois(x,</code>λ<code>)</code>~<code>pgamma(x</code>, α, β<code>)</code>~<code>pexp(x,</code>λ<code>)</code>~<code>punif(x,</code>α, β<code>)</code>~<code>pbeta(x,</code>α, β<code>)</code>~<code>plnorm(x, log(</code>α<code>)</code>, β<code>)</code>~Trabalhadores do mundo uni-vos.~De cada qual, segundo sua capacidade; a cada qual, segundo essas necessidades.} </li>
+<li> {1:MULTICHOICE:<code>p</code> + <code>nome base</code>~<code>d</code> + <code>nome base</code>~<code>pbinom(x, n, p)</code>~<code>pnorm(x,</code>μ, σ<code>)</code>~<code>ppois(x,</code>λ<code>)</code>~=<code>pgamma(x</code>, α, β<code>)</code>~<code>pexp(x,</code>λ<code>)</code>~<code>punif(x,</code>α, β<code>)</code>~<code>pbeta(x,</code>α, β<code>)</code>~<code>plnorm(x, log(</code>α<code>)</code>, β<code>)</code>~Trabalhadores do mundo uni-vos.~De cada qual, segundo sua capacidade; a cada qual, segundo essas necessidades.} </li>
+<li> {1:MULTICHOICE:<code>p</code> + <code>nome base</code>~<code>d</code> + <code>nome base</code>~<code>pbinom(x, n, p)</code>~<code>pnorm(x,</code>μ, σ<code>)</code>~<code>ppois(x,</code>λ<code>)</code>~<code>pgamma(x</code>, α, β<code>)</code>~=<code>pexp(x,</code>λ<code>)</code>~<code>punif(x,</code>α, β<code>)</code>~<code>pbeta(x,</code>α, β<code>)</code>~<code>plnorm(x, log(</code>α<code>)</code>, β<code>)</code>~Trabalhadores do mundo uni-vos.~De cada qual, segundo sua capacidade; a cada qual, segundo essas necessidades.} </li>
+<li> {1:MULTICHOICE:<code>p</code> + <code>nome base</code>~<code>d</code> + <code>nome base</code>~<code>pbinom(x, n, p)</code>~<code>pnorm(x,</code>μ, σ<code>)</code>~<code>ppois(x,</code>λ<code>)</code>~<code>pgamma(x</code>, α, β<code>)</code>~<code>pexp(x,</code>λ<code>)</code>~=<code>punif(x,</code>α, β<code>)</code>~<code>pbeta(x,</code>α, β<code>)</code>~<code>plnorm(x, log(</code>α<code>)</code>, β<code>)</code>~Trabalhadores do mundo uni-vos.~De cada qual, segundo sua capacidade; a cada qual, segundo essas necessidades.} </li>
+<li> {1:MULTICHOICE:<code>p</code> + <code>nome base</code>~<code>d</code> + <code>nome base</code>~<code>pbinom(x, n, p)</code>~<code>pnorm(x,</code>μ, σ<code>)</code>~<code>ppois(x,</code>λ<code>)</code>~<code>pgamma(x</code>, α, β<code>)</code>~<code>pexp(x,</code>λ<code>)</code>~<code>punif(x,</code>α, β<code>)</code>~=<code>pbeta(x,</code>α, β<code>)</code>~<code>plnorm(x, log(</code>α<code>)</code>, β<code>)</code>~Trabalhadores do mundo uni-vos.~De cada qual, segundo sua capacidade; a cada qual, segundo essas necessidades.} </li>
+<li> {1:MULTICHOICE:<code>p</code> + <code>nome base</code>~<code>d</code> + <code>nome base</code>~<code>pbinom(x, n, p)</code>~<code>pnorm(x,</code>μ, σ<code>)</code>~<code>ppois(x,</code>λ<code>)</code>~<code>pgamma(x</code>, α, β<code>)</code>~<code>pexp(x,</code>λ<code>)</code>~<code>punif(x,</code>α, β<code>)</code>~<code>pbeta(x,</code>α, β<code>)</code>~=<code>plnorm(x, log(</code>α<code>)</code>, β<code>)</code>~Trabalhadores do mundo uni-vos.~De cada qual, segundo sua capacidade; a cada qual, segundo essas necessidades.} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> <code>p</code> + <code>nome base</code> /  /  /  /  /  /  /  /  /  /  /  </li>
+<li> <code>d</code> + <code>nome base</code> /  /  /  /  /  /  /  /  /  /  /  </li>
+<li> <code>pbinom(x, n, p)</code> /  /  /  /  /  /  /  /  /  /  /  </li>
+<li> <code>pnorm(x,</code>μ, σ<code>)</code> /  /  /  /  /  /  /  /  /  /  /  </li>
+<li> <code>ppois(x,</code>λ<code>)</code> /  /  /  /  /  /  /  /  /  /  /  </li>
+<li> <code>pgamma(x</code>, α, β<code>)</code> /  /  /  /  /  /  /  /  /  /  /  </li>
+<li> <code>pexp(x,</code>λ<code>)</code> /  /  /  /  /  /  /  /  /  /  /  </li>
+<li> <code>punif(x,</code>α, β<code>)</code> /  /  /  /  /  /  /  /  /  /  /  </li>
+<li> <code>pbeta(x,</code>α, β<code>)</code> /  /  /  /  /  /  /  /  /  /  /  </li>
+<li> <code>plnorm(x, log(</code>α<code>)</code>, β<code>)</code> /  /  /  /  /  /  /  /  /  /  /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>10</defaultgrade>
+</question>
+
+</quiz>
