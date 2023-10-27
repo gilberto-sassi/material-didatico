@@ -1,0 +1,130 @@
+```{r}
+#| label: Gerando os dados da questão
+#| echo: false
+
+library(pacman)
+
+p_load(
+    readxl, writexl, janitor, lettervalue, ggthemes,
+    e1071,
+    aplpack,
+    tidyverse
+)
+
+# tamanho da amostra
+tam  <- 30
+
+# amostra
+escolha <- sample(c(1, 2, 3), 1)
+amostra <- (case_when(
+    escolha == 1 ~ rbeta(tam, 1, 15),
+    escolha == 2 ~ rbeta(tam, 15, 1),
+    escolha == 3 ~ rbeta(tam, 12, 12)
+) * 100) |> round(1)
+
+# solução
+momentos <- \(x, r = 2) mean((x - mean(x))^r)
+q1  <-  quantile(amostra, probs = 1 / 4)
+q3  <-  quantile(amostra, probs = 3 / 4)
+mediana  <-  quantile(amostra, probs = 2 / 4)
+B <- round((q3 - 2 * mediana + q1) / (q3 - q1), 2)
+LI <- q1 - 1.5 * (q3 - q1)
+LS <- q3 + 1.5 * (q3 - q1)
+sol <- list(
+    pontos_exteriores = ifelse(
+        min(amostra) < LI | max(amostra) > LS,
+        "10", "01"
+    ),
+    mediana = mediana,
+    m2 = momentos(amostra),
+    m3 = momentos(amostra, r = 3),
+    m4 = momentos(amostra, r = 4),
+    q1 = q1,
+    q3 = q3,
+    B = round((q3 - 2 * mediana + q1) / (q3 - q1), 2),
+    G1 = skewness(amostra, type = 2),
+    G2 = kurtosis(amostra, type = 2),
+    dp = sd(amostra),
+    var = var(amostra),
+    LI = q1 - 1.5 * (q3 - q1),
+    LS = q3 + 1.5 * (q3 - q1)
+)
+sol_num <- sol[2:length(sol)] |> unlist()
+
+opcao <- list(
+    pontos_exteriores = case_when(
+        sol[["pontos_exteriores"]] == "01" ~ "A amostra de X não tem pontos exteriores.",
+        sol[["pontos_exteriores"]] == "10" ~ "A amostra de X tem pontos exteriores."
+    )
+)
+
+# formatação
+f <- \(x) format(
+    x,
+    decimal.mark = ",",
+    big.mark = "."
+)
+
+```
+
+Question
+========
+Considere X uma variável aleatória contínua. Para esta variável aleatória, temos o seguinte diagrama de ramos e folhas:
+
+```{r}
+#| echo: false
+#| results: markup
+#| fig.cap: ""
+
+stem.leaf(amostra)
+```
+  
+Questionlist
+------------
+
+* A amostra de X tem pontos exteriores.
+* A amostra de X não tem pontos exteriores.
+* Mediana: 
+* m~2~:
+* m~3~:
+* m~4~:
+* Primeiro quartil:
+* Terceiro quartil:
+* Coeficiente de Bowley:
+* G~1~:
+* G~2~:
+* Desvio padrão:
+* Variância:
+* LI:
+* LS:
+
+
+Solution
+========
+Solutionlist
+------------
+
+* `r opcao$pontos_exteriores`
+* 
+* Mediana: `r f(sol[["mediana"]])`.
+* m~2~: `r f(sol[["m2"]])`.
+* m~3~: `r f(sol[["m3"]])`.
+* m~4~: `r f(sol[["m4"]])`.
+* Primeiro quartil: `r f(sol[["q1"]])`.
+* Terceiro quartil: `r f(sol[["q3"]])`.
+* Coeficiente de Bowley: `r f(sol[["B"]])`.
+* G~1~: `r f(sol[["G1"]])`.
+* G~2~: `r f(sol[["G2"]])`.
+* Desvio padrão: `r f(sol[["dp"]])`.
+* Variância: `r f(sol[["var"]])`.
+* LI: `r f(sol[["LI"]])`.
+* LS: `r f(sol[["LS"]])`.
+
+
+Meta-information
+================
+exname: boxplot
+extype: cloze
+exclozetype: schoice|`r rep("num", length(sol_num)) |> paste(collapse = "|")`
+exsolution: `r sol[["pontos_exteriores"]]`|`r paste(sol_num, collapse = "|")`
+extol: 0.05

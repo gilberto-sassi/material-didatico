@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/ramos-e-folhas-resumo/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R1 Q1 : banco-itens_ramos-folhas-resumo_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Considere X uma variável aleatória contínua. Para esta variável aleatória, temos o seguinte diagrama de ramos e folhas:</p>
+<pre><code>## 1 | 2: represents 1.2
+##  leaf unit: 0.1
+##             n: 30
+##    5     0 | 02346
+##   12     1 | 0111258
+##   (4)    2 | 3448
+##   14     3 | 00
+##   12     4 | 37
+##   10     5 | 238
+##    7     6 | 79
+##          7 | 
+##    5     8 | 5
+##          9 | 
+##    4    10 | 44
+##    2    11 | 7
+## HI: 15.6</code></pre>
+<ol type = "a">
+<li> {1:MULTICHOICE:=A amostra de X tem pontos exteriores.~A amostra de X não tem pontos exteriores.} </li>
+<li> Mediana: {1:NUMERICAL:=2.6:0.05} </li>
+<li> m<sub>2</sub>: {1:NUMERICAL:=15.0611222222222:0.05} </li>
+<li> m<sub>3</sub>: {1:NUMERICAL:=72.9837939259259:0.05} </li>
+<li> m<sub>4</sub>: {1:NUMERICAL:=880.598382110741:0.05} </li>
+<li> Primeiro quartil: {1:NUMERICAL:=1.1:0.05} </li>
+<li> Terceiro quartil: {1:NUMERICAL:=5.675:0.05} </li>
+<li> Coeficiente de Bowley: {1:NUMERICAL:=0.34:0.05} </li>
+<li> G<sub>1</sub>: {1:NUMERICAL:=1.31535212654197:0.05} </li>
+<li> G<sub>2</sub>: {1:NUMERICAL:=1.27907376628204:0.05} </li>
+<li> Desvio padrão: {1:NUMERICAL:=3.94721056752333:0.05} </li>
+<li> Variância: {1:NUMERICAL:=15.5804712643678:0.05} </li>
+<li> LI: {1:NUMERICAL:=-5.7625:0.05} </li>
+<li> LS: {1:NUMERICAL:=12.5375:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> A amostra de X tem pontos exteriores. /  </li>
+<li> Mediana: 2,6. </li>
+<li> m<sub>2</sub>: 15,06112. </li>
+<li> m<sub>3</sub>: 72,98379. </li>
+<li> m<sub>4</sub>: 880,5984. </li>
+<li> Primeiro quartil: 1,1. </li>
+<li> Terceiro quartil: 5,675. </li>
+<li> Coeficiente de Bowley: 0,34. </li>
+<li> G<sub>1</sub>: 1,315352. </li>
+<li> G<sub>2</sub>: 1,279074. </li>
+<li> Desvio padrão: 3,947211. </li>
+<li> Variância: 15,58047. </li>
+<li> LI: -5,7625. </li>
+<li> LS: 12,5375. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>14</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R2 Q1 : banco-itens_ramos-folhas-resumo_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Considere X uma variável aleatória contínua. Para esta variável aleatória, temos o seguinte diagrama de ramos e folhas:</p>
+<pre><code>## 1 | 2: represents 1.2
+##  leaf unit: 0.1
+##             n: 30
+## LO: 79.4 83.1 83.5
+##    6     91 | 179
+##    9     92 | 579
+##   11     93 | 89
+##   12     94 | 5
+##          95 | 
+##   (3)    96 | 357
+##   (3)    97 | 799
+##   12     98 | 1235899
+##    5     99 | 00359</code></pre>
+<ol type = "a">
+<li> {1:MULTICHOICE:=A amostra de X tem pontos exteriores.~A amostra de X não tem pontos exteriores.} </li>
+<li> Mediana: {1:NUMERICAL:=97.2:0.05} </li>
+<li> m<sub>2</sub>: {1:NUMERICAL:=26.1771555555556:0.05} </li>
+<li> m<sub>3</sub>: {1:NUMERICAL:=-212.967955259259:0.05} </li>
+<li> m<sub>4</sub>: {1:NUMERICAL:=3360.93994194963:0.05} </li>
+<li> Primeiro quartil: {1:NUMERICAL:=92.75:0.05} </li>
+<li> Terceiro quartil: {1:NUMERICAL:=98.725:0.05} </li>
+<li> Coeficiente de Bowley: {1:NUMERICAL:=-0.49:0.05} </li>
+<li> G<sub>1</sub>: {1:NUMERICAL:=-1.67506697183122:0.05} </li>
+<li> G<sub>2</sub>: {1:NUMERICAL:=2.49518489137758:0.05} </li>
+<li> Desvio padrão: {1:NUMERICAL:=5.20382706207211:0.05} </li>
+<li> Variância: {1:NUMERICAL:=27.079816091954:0.05} </li>
+<li> LI: {1:NUMERICAL:=83.7875:0.05} </li>
+<li> LS: {1:NUMERICAL:=107.6875:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> A amostra de X tem pontos exteriores. /  </li>
+<li> Mediana: 97,2. </li>
+<li> m<sub>2</sub>: 26,17716. </li>
+<li> m<sub>3</sub>: -212,968. </li>
+<li> m<sub>4</sub>: 3.360,94. </li>
+<li> Primeiro quartil: 92,75. </li>
+<li> Terceiro quartil: 98,725. </li>
+<li> Coeficiente de Bowley: -0,49. </li>
+<li> G<sub>1</sub>: -1,675067. </li>
+<li> G<sub>2</sub>: 2,495185. </li>
+<li> Desvio padrão: 5,203827. </li>
+<li> Variância: 27,07982. </li>
+<li> LI: 83,7875. </li>
+<li> LS: 107,6875. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>14</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R3 Q1 : banco-itens_ramos-folhas-resumo_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Considere X uma variável aleatória contínua. Para esta variável aleatória, temos o seguinte diagrama de ramos e folhas:</p>
+<pre><code>## 1 | 2: represents 12
+##  leaf unit: 1
+##             n: 30
+##    1    3* | 2
+##    3    3. | 77
+##   10    4* | 0113344
+##   (6)   4. | 677899
+##   14    5* | 033344
+##    8    5. | 6789
+##    4    6* | 004
+##         6. | 
+##    1    7* | 2</code></pre>
+<ol type = "a">
+<li> {1:MULTICHOICE:A amostra de X tem pontos exteriores.~=A amostra de X não tem pontos exteriores.} </li>
+<li> Mediana: {1:NUMERICAL:=49.35:0.05} </li>
+<li> m<sub>2</sub>: {1:NUMERICAL:=77.1647222222222:0.05} </li>
+<li> m<sub>3</sub>: {1:NUMERICAL:=206.044874074075:0.05} </li>
+<li> m<sub>4</sub>: {1:NUMERICAL:=16887.4624869907:0.05} </li>
+<li> Primeiro quartil: {1:NUMERICAL:=43.6:0.05} </li>
+<li> Terceiro quartil: {1:NUMERICAL:=55.95:0.05} </li>
+<li> Coeficiente de Bowley: {1:NUMERICAL:=0.07:0.05} </li>
+<li> G<sub>1</sub>: {1:NUMERICAL:=0.320210238434375:0.05} </li>
+<li> G<sub>2</sub>: {1:NUMERICAL:=0.0352973531738348:0.05} </li>
+<li> Desvio padrão: {1:NUMERICAL:=8.93451591932342:0.05} </li>
+<li> Variância: {1:NUMERICAL:=79.8255747126437:0.05} </li>
+<li> LI: {1:NUMERICAL:=25.075:0.05} </li>
+<li> LS: {1:NUMERICAL:=74.475:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> A amostra de X não tem pontos exteriores. /  </li>
+<li> Mediana: 49,35. </li>
+<li> m<sub>2</sub>: 77,16472. </li>
+<li> m<sub>3</sub>: 206,0449. </li>
+<li> m<sub>4</sub>: 16.887,46. </li>
+<li> Primeiro quartil: 43,6. </li>
+<li> Terceiro quartil: 55,95. </li>
+<li> Coeficiente de Bowley: 0,07. </li>
+<li> G<sub>1</sub>: 0,3202102. </li>
+<li> G<sub>2</sub>: 0,03529735. </li>
+<li> Desvio padrão: 8,934516. </li>
+<li> Variância: 79,82557. </li>
+<li> LI: 25,075. </li>
+<li> LS: 74,475. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>14</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R4 Q1 : banco-itens_ramos-folhas-resumo_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Considere X uma variável aleatória contínua. Para esta variável aleatória, temos o seguinte diagrama de ramos e folhas:</p>
+<pre><code>## 1 | 2: represents 1.2
+##  leaf unit: 0.1
+##             n: 30
+## LO: 78.9 79.2
+##    3     89 | 2
+##    4     90 | 1
+##    6     91 | 18
+##    8     92 | 24
+##   11     93 | 045
+##   12     94 | 0
+##   (3)    95 | 378
+##   (3)    96 | 149
+##   12     97 | 1128
+##    8     98 | 359
+##    5     99 | 00345</code></pre>
+<ol type = "a">
+<li> {1:MULTICHOICE:=A amostra de X tem pontos exteriores.~A amostra de X não tem pontos exteriores.} </li>
+<li> Mediana: {1:NUMERICAL:=95.95:0.05} </li>
+<li> m<sub>2</sub>: {1:NUMERICAL:=25.5956555555555:0.05} </li>
+<li> m<sub>3</sub>: {1:NUMERICAL:=-230.77440474074:0.05} </li>
+<li> m<sub>4</sub>: {1:NUMERICAL:=4005.00304926629:0.05} </li>
+<li> Primeiro quartil: {1:NUMERICAL:=92.55:0.05} </li>
+<li> Terceiro quartil: {1:NUMERICAL:=98.175:0.05} </li>
+<li> Coeficiente de Bowley: {1:NUMERICAL:=-0.21:0.05} </li>
+<li> G<sub>1</sub>: {1:NUMERICAL:=-1.8773266643207:0.05} </li>
+<li> G<sub>2</sub>: {1:NUMERICAL:=3.93226021333569:0.05} </li>
+<li> Desvio padrão: {1:NUMERICAL:=5.14570348619274:0.05} </li>
+<li> Variância: {1:NUMERICAL:=26.4782643678161:0.05} </li>
+<li> LI: {1:NUMERICAL:=84.1125:0.05} </li>
+<li> LS: {1:NUMERICAL:=106.6125:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> A amostra de X tem pontos exteriores. /  </li>
+<li> Mediana: 95,95. </li>
+<li> m<sub>2</sub>: 25,59566. </li>
+<li> m<sub>3</sub>: -230,7744. </li>
+<li> m<sub>4</sub>: 4.005,003. </li>
+<li> Primeiro quartil: 92,55. </li>
+<li> Terceiro quartil: 98,175. </li>
+<li> Coeficiente de Bowley: -0,21. </li>
+<li> G<sub>1</sub>: -1,877327. </li>
+<li> G<sub>2</sub>: 3,93226. </li>
+<li> Desvio padrão: 5,145703. </li>
+<li> Variância: 26,47826. </li>
+<li> LI: 84,1125. </li>
+<li> LS: 106,6125. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>14</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R5 Q1 : banco-itens_ramos-folhas-resumo_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Considere X uma variável aleatória contínua. Para esta variável aleatória, temos o seguinte diagrama de ramos e folhas:</p>
+<pre><code>## 1 | 2: represents 12
+##  leaf unit: 1
+##             n: 30
+##    9    0* | 000000111
+##   (7)    t | 2222233
+##   14     f | 45
+##   12     s | 677
+##    9    0. | 8889
+##         1* | 
+##    5     t | 2
+##    4     f | 4
+## HI: 23 31.4 36.8</code></pre>
+<ol type = "a">
+<li> {1:MULTICHOICE:=A amostra de X tem pontos exteriores.~A amostra de X não tem pontos exteriores.} </li>
+<li> Mediana: {1:NUMERICAL:=3.55:0.05} </li>
+<li> m<sub>2</sub>: {1:NUMERICAL:=77.1915555555556:0.05} </li>
+<li> m<sub>3</sub>: {1:NUMERICAL:=1423.44154074074:0.05} </li>
+<li> m<sub>4</sub>: {1:NUMERICAL:=40758.2893496296:0.05} </li>
+<li> Primeiro quartil: {1:NUMERICAL:=1.825:0.05} </li>
+<li> Terceiro quartil: {1:NUMERICAL:=8.625:0.05} </li>
+<li> Coeficiente de Bowley: {1:NUMERICAL:=0.49:0.05} </li>
+<li> G<sub>1</sub>: {1:NUMERICAL:=2.21098879423734:0.05} </li>
+<li> G<sub>2</sub>: {1:NUMERICAL:=4.79688740274682:0.05} </li>
+<li> Desvio padrão: {1:NUMERICAL:=8.93606923279656:0.05} </li>
+<li> Variância: {1:NUMERICAL:=79.8533333333333:0.05} </li>
+<li> LI: {1:NUMERICAL:=-8.375:0.05} </li>
+<li> LS: {1:NUMERICAL:=18.825:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> A amostra de X tem pontos exteriores. /  </li>
+<li> Mediana: 3,55. </li>
+<li> m<sub>2</sub>: 77,19156. </li>
+<li> m<sub>3</sub>: 1.423,442. </li>
+<li> m<sub>4</sub>: 40.758,29. </li>
+<li> Primeiro quartil: 1,825. </li>
+<li> Terceiro quartil: 8,625. </li>
+<li> Coeficiente de Bowley: 0,49. </li>
+<li> G<sub>1</sub>: 2,210989. </li>
+<li> G<sub>2</sub>: 4,796887. </li>
+<li> Desvio padrão: 8,936069. </li>
+<li> Variância: 79,85333. </li>
+<li> LI: -8,375. </li>
+<li> LS: 18,825. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>14</defaultgrade>
+</question>
+
+</quiz>

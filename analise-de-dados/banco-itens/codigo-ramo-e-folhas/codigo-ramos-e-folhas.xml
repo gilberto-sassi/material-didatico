@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/codigo-ramos-e-folhas/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> Q1 : banco-itens_codigo-ramo-e-folhas_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Sobre ramos-e-folhas, responda (sem espaços) as seguintes questões abaixo:</p>
+<ol type = "a">
+<li> Qual é o pacote que usamos para desenhar o diagrama de ramos-e-folhas? {1:SHORTANSWER:%100%aplpack} </li>
+<li> Qual é a função que usamos para desenhar a desenha o diagrama de ramos-e-folhas? {1:SHORTANSWER:%100%stem.leaf} </li>
+<li> Qual é a função que usamos para comparar dois grupos usando o diagrama de ramoas e folhas? {1:SHORTANSWER:%100%stem.leaf.backback} </li>
+<li> {1:MULTICHOICE:=Usamos o diagrama de ramos-e-folhas para amostras satizafazendo 0 ≤ tamanho da amostra ≤ 300.~Usamos o diagrama de ramos-e-folhas para grandes amostras.~Sempre recomenda-se usar o diagrama de ramos-e-folhas.} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> Usamos o pacote <code>aplpack</code> para desenhar o diagrama de ramos-e-folhas. </li>
+<li> Usamos a função <code>stem.leaf</code> para desenhar o diagrama de ramos-e-folhas. </li>
+<li> Usamos a função <code>stem.leaf.backback</code> para desenhar o diagrama de ramos-e-folhas. </li>
+<li> Usamos o diagrama de ramos-e-folhas para amostras satizafazendo 0 ≤ tamanho da amostra ≤ 300. /  /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>4</defaultgrade>
+</question>
+
+</quiz>

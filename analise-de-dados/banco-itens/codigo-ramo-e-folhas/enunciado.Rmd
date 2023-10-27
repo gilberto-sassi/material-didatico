@@ -1,0 +1,32 @@
+Question
+========
+Sobre ramos-e-folhas, responda (sem espaços) as seguintes questões abaixo:
+  
+Questionlist
+------------
+
+* Qual é o pacote que usamos para desenhar o diagrama de ramos-e-folhas?
+* Qual é a função que usamos para desenhar a desenha o diagrama de ramos-e-folhas?
+* Qual é a função que usamos para comparar dois grupos usando o diagrama de ramoas e folhas?
+* Usamos o diagrama de ramos-e-folhas para amostras satizafazendo 0 &le; tamanho da amostra &le; 300.
+* Usamos o diagrama de ramos-e-folhas para grandes amostras.
+* Sempre recomenda-se usar o diagrama de ramos-e-folhas.
+
+Solution
+========
+Solutionlist
+------------
+
+* Usamos o pacote `aplpack` para desenhar o diagrama de ramos-e-folhas. 
+* Usamos a função `stem.leaf` para desenhar o diagrama de ramos-e-folhas.
+* Usamos a função `stem.leaf.backback` para desenhar o diagrama de ramos-e-folhas.
+* Usamos o diagrama de ramos-e-folhas para amostras satizafazendo 0 &le; tamanho da amostra &le; 300.
+*
+*
+
+Meta-information
+================
+exname: ramos-e-folhas
+extype: cloze
+exclozetype: string|string|string|schoice
+exsolution: aplpack|stem.leaf|stem.leaf.backback|100
