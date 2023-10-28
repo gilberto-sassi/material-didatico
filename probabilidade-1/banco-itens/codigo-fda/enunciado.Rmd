@@ -6,24 +6,113 @@
 tam <- sample(50:100, 1)
 p <- runif(1, 0.25, 0.75) |> round(2)
 x_binom <- runif(1, 0.25, 0.75) |> qbinom(tam, p)
+a_binom <- runif(1, 0.1, 0.2) |> qbinom(tam, p)
+b_binom <- runif(1, 0.8, 0.9) |> qbinom(tam, p)
 
 # normal
 media_norm <- runif(1, 10, 15) |> round(2)
 dp_norm <- runif(1, 2, 3) |> round(2)
 x_norm <- runif(1, 0.25, 0.75) |> qnorm(media_norm, dp_norm)
+a_norm <- runif(1, 0.1, 0.2) |> qnorm(media_norm, dp_norm)
+b_norm <- runif(1, 0.8, 0.9) |> qnorm(media_norm, dp_norm)
 
-#
+# Poisson
+media_pois  <- runif(1, 10, 15)
+x_pois <- runif(1, 0.25, 0.75) |> qpois(media_pois)
+a_pois <- runif(1, 0.1, 0.2) |> qpois(media_pois)
+b_pois <- runif(1, 0.8, 0.9) |> qpois(media_pois)
+
+# Gamma
+alfa <- pexp(1, 10)
+beta <- pexp(1, 10)
+x_gamma <- runif(1, 0.25, 0.75) |> qgamma(alfa, beta)
+a_gamma <- runif(1, 0.1, 0.2) |> qgamma(alfa, beta)
+b_gamma <- runif(1, 0.8, 0.9) |> qgamma(alfa, beta)
+
+
+# Exponencial
+taxa <- 1 / pexp(1, 10)
+x_exp <- runif(1, 0.25, 0.75) |> qexp(taxa)
+a_exp <- runif(1, 0.1, 0.2) |> qexp(taxa)
+b_exp <- runif(1, 0.7, 0.8) |> qexp(taxa)
+
+
+# Uniforme
+min_unif <- runif(1, 5, 10)
+max_unif <- runif(1, 15, 20)
+x_unif <- runif(1, 0.25, 0.75) |> qunif(min_unif, max_unif)
+a_unif <- runif(1, 0.1, 0.2) |> qunif(min_unif, max_unif)
+b_unif <- runif(1, 0.7, 0.8) |> qunif(min_unif, max_unif)
+
+# beta
+shape_1 <- rexp(1, 0.1)
+shape_2 <- rexp(1, 0.1)
+x_beta <- runif(1, 0.25, 0.75) |> qbeta(shape_1, shape_2)
+a_beta <- runif(1, 0.1, 0.2) |> qbeta(shape_1, shape_2)
+b_beta <- runif(1, 0.7, 0.8) |> qbeta(shape_1, shape_2)
+
+# lognormal
+alpha_ln <- rexp(1, 1)
+beta_ln <- rexp(1, 1)
+x_ln <- runif(1, 0.25, 0.75) |> qlnorm(alpha_ln, beta_ln)
+a_ln <- runif(1, 0.1, 0.2) |> qlnorm(alpha_ln, beta_ln)
+b_ln <- runif(1, 0.7, 0.8) |> qlnorm(alpha_ln, beta_ln)
+
+# solução
+sol <- c(
+    "binom_fda" = pbinom(x_binom, tam, p),
+    "binom_desigualdade" = pbinom(b_binom, tam, p) - pbinom(a_binom, tam, p),
+    "normal_fda" = pnorm(x_norm, media_norm, dp_norm),
+    "normal_desigualdade" = pnorm(b_norm, media_norm, dp_norm) - pnorm(a_norm, media_norm, dp_norm),
+    "poisson_fda" = ppois(x_pois, media_pois),
+    "poisson_desigualdade" = ppois(b_pois, media_pois) - ppois(a_pois, media_pois),
+    "gamma_fda" = pgamma(x_gamma, alfa, beta),
+    "gamma_desigualdade" = pgamma(b_gamma, alfa, beta) - pgamma(a_gamma, alfa, beta),
+    "exp_fda" = pexp(x_exp, taxa),
+    "exp_desigualdade" = pexp(b_exp, taxa) - pexp(a_exp, taxa),
+    "unif_fda" = punif(x_unif, min_unif, max_unif),
+    "unif_desigualdade" = punif(b_unif, min_unif, max_unif) - punif(a_unif, min_unif, max_unif),
+    "beta_fda" = pbeta(x_beta, shape_1, shape_2),
+    "beta_desigualdade" = pbeta(b_beta, shape_1, shape_2) - pbeta(a_beta, shape_1, shape_2),
+    "lnormal_fda" = plnorm(x_ln, alpha_ln, beta_ln),
+    "lnormal_desigualdade" = plnorm(b_ln, alpha_ln, beta_ln) - plnorm(a_ln, alpha_ln, beta_ln)
+) |>
+    round(4)
+
+f <- \(x) format(
+    x,
+    digits = 4,
+    decimal.mark = ",",
+    big.mark = "."
+)
 ```
 
 Question
 ========
+
 Calcule as seguintes probabilidades usando função de distribuição acumulada:
   
 Questionlist
 ------------
 
-* Qual foi a primeira capital do Brasil?
-* Qual a área (em milhões de km^2^ do Brasil)?
+* X &sim; b(`r tam`; `r f(p)`), então P(X &le; `r f(x_binom)`): 
+* X &sim; b(`r tam`; `r f(p)`), então P(`r f(a_binom)` < X &le; `r f(b_binom)`): 
+* X &sim; N(`r f(media_norm)`; `r f(dp_norm)`), então P(X &le; `r f(x_norm)`):
+* X &sim; N(`r f(media_norm)`; `r f(dp_norm)`), então P(`r f(a_norm)` < X &le; `r f(b_norm)`):
+* X &sim; P(`r f(media_pois)`), então P(X &le; `r f(x_pois)`):
+* X &sim; P(`r f(media_pois)`), então P(`r f(a_pois)` < X &le; `r f(b_pois)`):
+* X &sim; &Gamma;(`r f(alfa)`, `r f(beta)`), então P(X &le; `r f(x_gamma)`):
+* X &sim; &Gamma;(`r f(alfa)`, `r f(beta)`), então P(`r f(a_gamma)` < X &le; `r f(b_gamma)`):
+* X &sim; Exp(`r f(taxa)`), então P(X &le; `r f(x_exp)`):
+* X &sim; Exp(`r f(taxa)`), então P(`r f(a_exp)` < X &le; `r f(b_exp)`):
+* X &sim; U(`r f(min_unif)`; `r f(max_unif)`), então P(X &le; `r f(x_unif)`):
+* X &sim; U(`r f(min_unif)`; `r f(max_unif)`), então P(`r f(a_unif)` < X &le; `r f(b_unif)`):
+* X &sim; B(`r f(shape_1)`; `r f(shape_2)`), então P(X &le; `r f(x_beta)`):
+* X &sim; B(`r f(shape_1)`; `r f(shape_2)`), então P(`r f(a_beta)` < X &le; `r f(b_beta)`):
+* X &sim; Lognormal(`r f(alpha_ln)`; `r f(beta_ln)`), então P(X &le; `r f(x_ln)`):
+* X &sim; Lognormal(`r f(alpha_ln)`; `r f(beta_ln)`), então P(`r f(a_ln)` < X &le; `r f(b_ln)`):
+
+
 
 Solution
 ========
@@ -31,13 +120,27 @@ Solution
 Solutionlist
 ------------
 
-* A primeira capital do Brasil foi Salvador. 
-* A área do Brasil é de 8,5 milhões de km^2^
+* X &sim; b(`r tam`; `r f(p)`), então P(X &le; `r f(x_binom)`): `r f(sol['binom_fda'])`.
+* X &sim; b(`r tam`; `r f(p)`), então P(`r f(a_binom)` < X &le; `r f(b_binom)`): `r f(sol['binom_desigualdade'])`.
+* X &sim; N(`r f(media_norm)`; `r f(dp_norm)`), então P(X &le; `r f(x_norm)`): `r f(sol['normal_fda'])`.
+* X &sim; N(`r f(media_norm)`; `r f(dp_norm)`), então P(`r f(a_norm)` < X &le; `r f(b_norm)`):`r f(sol['normal_desigualdade'])`.
+* X &sim; P(`r f(media_pois)`), então P(X &le; `r f(x_pois)`): `r f(sol['poisson_fda'])`.
+* X &sim; P(`r f(media_pois)`), então P(`r f(a_pois)` < X &le; `r f(b_pois)`): `r f(sol['poisson_desigualdade'])`.
+* X &sim; &Gamma;(`r f(alfa)`, `r f(beta)`), então P(X &le; `r x_gamma`): `r f(sol['gamma_fda'])`.
+* X &sim; &Gamma;(`r f(alfa)`, `r f(beta)`), então P(`r a_gamma` < X &le; `r b_gamma`): `r f(sol['gamma_desigualdade'])`.
+* X &sim; Exp(`r f(taxa)`), então P(X &le; `r f(x_exp)`): `r f(sol['exp_fda'])`.
+* X &sim; Exp(`r f(taxa)`), então P(`r f(a_exp)` < X &le; `r f(b_exp)`): `r f(sol['exp_desigualdade'])`.
+* X &sim; U(`r f(min_unif)`; `r f(max_unif)`), então P(X &le; `r f(x_unif)`): `r f(sol['unif_fda'])`.
+* X &sim; U(`r f(min_unif)`; `r f(max_unif)`), então P(`r f(a_unif)` < X &le; `r f(b_unif)`): `r f(sol['unif_desigualdade'])`.
+* X &sim; B(`r f(shape_1)`; `r f(shape_2)`), então P(X &le; `r f(x_beta)`): `r f(sol['beta_fda'])`.
+* X &sim; B(`r f(shape_1)`; `r f(shape_2)`), então P(`r f(a_beta)` < X &le; `r f(b_beta)`): `r f(sol['beta_desigualdade'])`.
+* X &sim; Lognormal(`r f(alpha_ln)`; `r f(beta_ln)`), então P(X &le; `r f(x_ln)`): `r f(sol['lnormal_fda'])`.
+* X &sim; Lognormal(`r f(alpha_ln)`; `r f(beta_ln)`), então P(`r f(a_ln)` < X &le; `r f(b_ln)`): `r f(sol['lnormal_desigualdade'])`.
 
 Meta-information
 ================
-exname: BR
+exname: codigo-fda
 extype: cloze
-exclozetype: string|num
-exsolution: salvador|8.5
+exclozetype: `r rep("num", length(sol)) |> paste(collapse = "|")`
+exsolution: `r paste(sol, collapse = "|")`
 extol: 0.5
