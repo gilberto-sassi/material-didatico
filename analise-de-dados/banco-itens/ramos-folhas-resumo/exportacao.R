@@ -4,7 +4,7 @@ pacman::p_load(
 
 path <- "banco-itens/ramos-folhas-resumo"
 exams2moodle(glue("{path}/enunciado.Rmd"),
-                    n = 1000,
+                    n = 500,
                     verbose = TRUE,
                     dir = glue("{path}"),
                     name = "ramos-e-folhas-resumo")

@@ -20,7 +20,7 @@ amostra <- (case_when(
     escolha == 1 ~ rbeta(tam, 1, 15),
     escolha == 2 ~ rbeta(tam, 15, 1),
     escolha == 3 ~ rbeta(tam, 12, 12)
-) * 100) |> round(1)
+) * 10) |> round(1)
 
 # solução
 momentos <- \(x, r = 2) mean((x - mean(x))^r)
@@ -75,6 +75,7 @@ Considere X uma variável aleatória contínua. Para esta variável aleatória, 
 #| echo: false
 #| results: markup
 #| fig.cap: ""
+#| comment: ""
 
 stem.leaf(amostra)
 ```
