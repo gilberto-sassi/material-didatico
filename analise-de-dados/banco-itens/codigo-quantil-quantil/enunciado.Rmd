@@ -1,0 +1,28 @@
+Question
+========
+Sobre o gráfico de probabilidade normal, responda (sem espaços) as seguintes questões abaixo:
+  
+Questionlist
+------------
+
+* Qual é o pacote que usamos para desenhar o gráfico de probabilidade normal?
+* Qual é a função que usamos para desenhar a desenha o gráfico de probabilidade normal (apenas os pontos)?
+* Qual é a função que usamos para desenhar a reta y=x no gráfico de probabilidade normal?
+* Qual é a função que usamos para desenhar a banda de confiança no gráfico de probabilidade normal?
+
+Solution
+========
+Solutionlist
+------------
+
+* Usamos o pacote `qqplotr` para desenhar o gráfico de probabilidade normal. 
+* Usamos a função `stat_qq_point` para desenhar o gráfico de probabilidade normal (apenas os pontos).
+* Usamos a função `stat_qq_line` para desenhar a reta y=x no gráfico de probabilidade normal.
+* Usamos a função `stat_qq_band` para desenhar a banda de confiança no gráfico de probabilidade normal.
+
+Meta-information
+================
+exname: ramos-e-folhas
+extype: cloze
+exclozetype: string|string|string|string
+exsolution: qqplotr|stat_qq_point|stat_qq_line|stat_qq_band

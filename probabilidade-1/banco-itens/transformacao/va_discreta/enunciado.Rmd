@@ -1,0 +1,118 @@
+```{r}
+#| label: Gerando os dados da questão
+#| echo: false
+
+library(pacman)
+
+p_load(
+    readxl, writexl, janitor, lettervalue, ggthemes,
+    glue,
+    exams,
+    Boom,
+    gt,
+    knitr,
+    tidyverse
+)
+
+# formatação
+f <- \(x) format(
+    x,
+    decimal.mark = ",",
+    big.mark = "."
+)
+
+n <- sample(5:10, 1)
+suporte_x <- seq(from = -n, to = n, by = 1)
+
+fp_x <- rdirichlet(1, length(suporte_x) |> rexp(0.1)) |> round(3)
+while (min(fp_x) < 0.01 | !near(sum(fp_x), 1)) {
+    fp_x <- rdirichlet(1, length(suporte_x) |> rexp(0.1)) |>
+        round(4)
+}
+
+potencia <- sample(seq(from = 2, to = 6, by = 2), 1)
+
+suporte_y <- 0:n |> map_dbl(~ .x^potencia)
+fp_y <- c(fp_x[n + 1], map_dbl(1:n, ~ fp_x[.x] + fp_x[n + 1 + .x]))
+
+sol <- c(suporte_y, fp_y)
+```
+
+Question
+========
+
+Seja X uma variável aleatória discreta com o seguinte suporte e função de probabilidade:
+
+```{r}
+#| echo: false
+
+tibble(suporte_x, fp_x) |>
+    gt() |>
+    tab_header(title = "Suporte e função de probabilidade de X.") |>
+    fmt_number(
+        columns = fp_x,
+        decimals = 3,
+        dec_mark = ",",
+        sep_mark = "."
+    ) |>
+    cols_label(
+        suporte_x = md("**Suporte**"),
+        fp_x = md("**Função de probabilidade**")
+    )
+```
+
+
+Qual o suporte e a função de probabilidade de X^`r potencia`^?
+
+```{r}
+#| echo: false
+#| results: asis
+
+tab <- tibble(
+    suporte_y = seq_len(n + 1) |> map_chr(~ glue("\\#\\#ANSWER{.x}\\#\\#")),
+    fp_y = seq_len(n + 1) |> map_chr(~ glue("\\#\\#ANSWER{n + 1 + .x}\\#\\#"))
+)
+kable(tab, col.names = c("&chi;~Y~", "f~Y~(y)"))
+```
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+
+Solution
+========
+
+O suporte e a função de probabilidade de Y é:
+
+```{r}
+#| echo: false
+#| results: asis
+
+tab <- tibble(suporte_y, fp_y)
+gt(tab) |>
+    tab_header(title = "Suporte e função de probabilidade de Y.") |>
+    fmt_number(
+        columns = fp_y,
+        decimals = 4,
+        dec_mark = ",",
+        sep_mark = "."
+    ) |>
+    cols_label(
+        suporte_y = html("<strong>&chi;<sub>Y</sub></strong>"),
+        fp_y = html("<strong>f<sub>Y</sub>(y)</strong>")
+    )
+```
+
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+Meta-information
+================
+exname: transformacao_discreta
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste0(collapse = "|")`
+exsolution: `r paste0(sol, collapse = "|")`
+extol: 0.005

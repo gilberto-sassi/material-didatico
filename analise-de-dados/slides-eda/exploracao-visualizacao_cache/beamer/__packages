@@ -28,3 +28,5 @@ mvtnorm
 qqplotr
 pacman
 lvplot
+scales
+DescTools

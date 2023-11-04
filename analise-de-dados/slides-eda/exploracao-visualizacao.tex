@@ -170,7 +170,7 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
-\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amsthm}
@@ -179,6 +179,7 @@
 % \usepackage[utf8]{inputenc}
 % \usepackage[T1]{fontenc}
 \usepackage{graphicx}
+\usepackage{colortbl}
 % \usepackage{subfigure}
 \usepackage{enumerate}
 % \usepackage{times}
@@ -231,7 +232,6 @@
 %PE - Curso - Introducao a Estatistica usando o R Aplicacao em Analise Laboratoriais
 % \title[\texttt{R} para Ciência de Dados]{\LARGE{\texttt{R} para Ciência de Dados: \\\texttt{rmarkdown} e \texttt{quarto}}}
 % \institute[IME-UFBA]{\Large{Instituto de Matemática e Estatística\\ Universidade Federal da Bahia}\\ \vspace{1cm} \large{Profa Carolina \& Prof Gilberto}}
-\usepackage{amsmath}
 \usepackage{booktabs}
 \usepackage{caption}
 \usepackage{longtable}
@@ -319,7 +319,6 @@
 \date{}
 \institute{Departamento de Estatística\newline Instituto de Matemática e
 Estatística}
-\logo{\includegraphics{logo\_menor.png}}
 
 \begin{document}
 \frame{\titlepage}
@@ -335,7 +334,7 @@ Estatística}
 % 	\maketitle
 %  \end{frame}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, sharp corners, breakable, borderline west={3pt}{0pt}{shadecolor}, enhanced, boxrule=0pt, frame hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, interior hidden, frame hidden, sharp corners, breakable, enhanced]}{\end{tcolorbox}}\fi
 
 \hypertarget{sobre-o-curso}{%
 \section{Sobre o curso}\label{sobre-o-curso}}
@@ -6307,8 +6306,8 @@ extensão do pacote
 \section{Associção entre duas
 variáveis}\label{associuxe7uxe3o-entre-duas-variuxe1veis}}
 
-\begin{frame}{Gráficos\newline Duas variáveis}
-\protect\hypertarget{gruxe1ficosduas-variuxe1veis}{}
+\begin{frame}{Gráficos\newline Duas variáveis quantitativas}
+\protect\hypertarget{gruxe1ficosduas-variuxe1veis-quantitativas}{}
 \textbf{Ideia}: estudar a associação entre duas variáveis quantitativas.
 
 \begin{figure}
@@ -6393,9 +6392,135 @@ Suponha que \(A_i\) tenha porcentagem \(100 \cdot f_i \cdot \%\). Então,
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Associação entre duas variáveis
+qualitativas\newline Exemplo de associação}
+\protect\hypertarget{associauxe7uxe3o-entre-duas-variuxe1veis-qualitativasexemplo-de-associauxe7uxe3o}{}
+Um pesquisador interessado em estudar a associação entre Câncer e o
+tabagismo coletou uma amostra com 300 indivíduos e obteve a tabela de
+distribuição de frequência conforme Tabela \ref{tab_associacao}. Você
+diria que as duas variáveis estão associadas?
+
+\begin{table}[htbp]
+    \centering
+    \caption{Tabela de contingência entre Câncer e Tabagismo.}
+    \label{tab_associacao}
+    \begin{tabular}{l|cc|l}
+        \toprule[0.05cm]
+        & \multicolumn{2}{|c|}{Câncer} & \\ \cmidrule{2-3}
+        Tabagismo & Não & Sim & Total\\ \midrule[0.05cm]
+        Não-Fumante & 200 & 0 & 200 \\
+        Fumante & 0 & 100 & 100\\ \midrule[0.05cm]
+        Total & 200 & 100 & 300\\ \bottomrule[0.05cm]
+    \end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}
+Precisamos de uma referência e podemos calcular a frequência relativa ao
+total das colunas ou total das linhas. Neste exemplo, vamos usar o total
+das linhas.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Tabela de contingência com frequência relativa ao total das linhas.}
+    
+    \scalebox{0.80}{
+    \begin{tabular}{l|ll|l}
+        \toprule[0.05cm]
+        & \multicolumn{2}{|c|}{Câncer (Y)} & \\ \cmidrule{2-3}
+        Tabagismo (X) & Não & Sim & Total\\ \midrule[0.05cm]
+        Não-Fumante & $\frac{200}{200}\cdot 100 = 100\%$ & {\color{brown} $\frac{0}{200}\cdot 100 = 0\%$} & $\frac{200}{200}\cdot 100= 100\%$ \\
+        Fumante & $\frac{0}{100}\cdot 100 = 0\%$  & {\color{blue} $\frac{100}{100}\cdot 100= 100\%$} &  $\frac{100}{100}\cdot 100=100\%$ \\ \midrule[0.05cm]
+        Total & $\frac{200}{300}\cdot 100= 66,67\%$ & {\color{red} $\frac{100}{300}\cdot 100 = 33,33\%$}  & $\frac{300}{300}\cdot 100= 100\%$ \\ \bottomrule[0.05cm]
+    \end{tabular}
+    }
+\end{table}
+
+Note que a probabilidade de um indivíduo ter câncer é
+\textcolor{red}{  $33,33\%$}, mas
+
+\begin{itemize}
+    \item Se o valor de $Y$ é igual ``Não-Fumante'', então a probabilidade do indivíduo ter câncer é {\color{brown} $0\%$};
+    \item Se o valor de $Y$ é igual ``Fumante'', então a probabilidade do indvíduo ter câncer é {\color{blue} $100\%$}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{figure}
+
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/associação de variáveis qualitativas-1.pdf}
+
+}
+
+\end{figure}
+\end{frame}
+
+\begin{frame}{Associação entre duas variáveis
+qualitativas\newline Exemplo de ausência de associação}
+\protect\hypertarget{associauxe7uxe3o-entre-duas-variuxe1veis-qualitativasexemplo-de-ausuxeancia-de-associauxe7uxe3o}{}
+Um pesquisador está interessado em estudar a associação entre Gênero e
+Tabagismo. Para isso, ele coletou uma amostra de 300 de elementos da
+população e obteve a tabela contingência na Tabela
+\ref{tab-nao-associacao}.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Tabela de contingência entre Gênero e Tabagismo.}
+    \label{tab-nao-associacao}
+    \begin{tabular}{l|cc|l}
+        \toprule[0.05cm]
+        & \multicolumn{2}{|c|}{Gênero} & \\ \cmidrule{2-3}
+        Tabagismo & Homem & Mulher & Total\\ \midrule[0.05cm]
+        Não-Fumante & 80 & 40 & 120\\
+        Fumante & 120 & 60 & 180\\ \midrule[0.05cm]
+        Total & 200 & 100 & 300\\ \bottomrule[0.05cm]
+    \end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}
+Precisamos de uma referência e podemos calcular a frequência relativa ao
+total das colunas ou total das linhas. Neste exemplo, vamos usar o total
+das colunas.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Tabela de distribuição de frequência relativa ao total das colunas.}
+    
+    \scalebox{0.80}{
+    \begin{tabular}{l|ll|l}
+        \toprule[0.05cm]
+        & \multicolumn{2}{|c|}{Gênero (Y)} & \\ \cmidrule{2-3}
+        Tabagismo (X) & Homem & Mulher & Total\\ \midrule[0.05cm]
+        Não-Fumante & {\color{brown} $\frac{80}{200}\cdot 100 = 40\%$} &  {\color{blue}$\frac{40}{100}\cdot 100 = 40\%$} & {\color{red}$\frac{120}{300}\cdot 100= 40\%$} \\
+        Fumante & $\frac{120}{200}\cdot 100 = 60\%$  &  $\frac{60}{100}\cdot 100= 60\%$ &  $\frac{180}{300}\cdot 100=60\%$ \\ \midrule[0.05cm]
+        Total & $\frac{200}{200}\cdot 100= 100\%$ &  $\frac{100}{100}\cdot 100 = 100\%$  & $\frac{300}{300}\cdot 100= 100\%$ \\ \bottomrule[0.05cm]
+    \end{tabular}
+    }
+\end{table}
+
+Note que a probabilidade de um indivíduo ser Fumante é
+\textcolor{red}{$40\%$}, mas
+
+\begin{itemize}
+    \item Se o valor de $Y$ é igual Homem, então a probabilidade do indvíduo ser Fumante é {\color{brown} $40\%$};
+    \item Se o valor de $Y$ é igual Mulher, então a probabilidade do indvíduo ser Fumante é {\color{blue} $40\%$}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{figure}
+
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/sem associação-1.pdf}
+
+}
+
+\end{figure}
+\end{frame}
+
 \begin{frame}[fragile]{Associação entre duas variáveis
-qualitativas\newline Gráfico de barras}
-\protect\hypertarget{associauxe7uxe3o-entre-duas-variuxe1veis-qualitativasgruxe1fico-de-barras}{}
+qualitativas\newline Exemplo}
+\protect\hypertarget{associauxe7uxe3o-entre-duas-variuxe1veis-qualitativasexemplo}{}
 Vamos checar a associação entre \texttt{fundacao\_tipo} e
 \texttt{geral\_condicao}.
 
@@ -6411,7 +6536,7 @@ Vamos checar a associação entre \texttt{fundacao\_tipo} e
           \AttributeTok{position =} \StringTok{"fill"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Tipo de fundação da casa"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Porcentagem"}\NormalTok{,}
       \AttributeTok{fill =} \StringTok{"Condição geral"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{percent) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{label\_percent}\NormalTok{()) }\SpecialCharTok{+}
   \FunctionTok{theme\_minimal}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -6422,7 +6547,7 @@ Vamos checar a associação entre \texttt{fundacao\_tipo} e
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-130-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-132-1.pdf}
 
 }
 
@@ -6431,7 +6556,7 @@ Vamos checar a associação entre \texttt{fundacao\_tipo} e
 
 \begin{frame}[fragile]{Associação entre duas variáveis
 qualitativas\newline Gráfico de barras}
-\protect\hypertarget{associauxe7uxe3o-entre-duas-variuxe1veis-qualitativasgruxe1fico-de-barras-1}{}
+\protect\hypertarget{associauxe7uxe3o-entre-duas-variuxe1veis-qualitativasgruxe1fico-de-barras}{}
 Podemos agrupar as barras por grupos para analisar a associação entre
 duas variáveis qualitativas.
 
@@ -6445,9 +6570,8 @@ duas variáveis qualitativas.
 \FunctionTok{ggplot}\NormalTok{(dados\_casas) }\SpecialCharTok{+}
   \FunctionTok{geom\_bar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ fundacao\_tipo, }\AttributeTok{fill =}\NormalTok{ geral\_condicao),}
           \AttributeTok{position =} \StringTok{"dodge"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Tipo de fundação da casa"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Porcentagem"}\NormalTok{,}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Tipo de fundação da casa"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Frequência"}\NormalTok{,}
       \AttributeTok{fill =} \StringTok{"Condição geral"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{percent) }\SpecialCharTok{+}
   \FunctionTok{theme\_minimal}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -6458,7 +6582,7 @@ duas variáveis qualitativas.
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-132-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-134-1.pdf}
 
 }
 
@@ -6483,17 +6607,491 @@ qualitativas\newline Gráfico de barras\newline Exercício}
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Comparação de medianas usando Diagrama de caixa}
-\protect\hypertarget{comparauxe7uxe3o-de-medianas-usando-diagrama-de-caixa}{}
-Podemos comparar medianas de diferentes grupos usando o diagrama de
-caixa.
+\begin{frame}{Associação entre duas variáveis
+qualitativas\newline Medidas de associação}
+\protect\hypertarget{associauxe7uxe3o-entre-duas-variuxe1veis-qualitativasmedidas-de-associauxe7uxe3o}{}
+\textbf{Propriedade quando duas variáveis qualitativas não estão
+associadas.}
+
+\begin{table}[htbp]
+    \centering
+    \begin{minipage}{0.45\linewidth}
+        \centering
+        \caption{Tabela de contingência:  frequência observada.}
+        \scalebox{0.65}{
+        \begin{tabular}{l|cc|l}
+            \toprule[0.05cm]
+            & \multicolumn{2}{|c|}{Gênero} & \\ \cmidrule{2-3}
+            Tabagismo & Homem & Mulher & Total\\ \midrule[0.05cm]
+            Não-Fumante & 80 & 40 & 120\\
+            Fumante & 120 & 60 & 180\\ \midrule[0.05cm]
+            Total & 200 & 100 & 300\\ \bottomrule[0.05cm]
+        \end{tabular}
+        }
+    \end{minipage}  
+    \begin{minipage}{0.45\linewidth}
+        \centering
+        \caption{Tabela de contingência: frequência esperada.}
+        \scalebox{0.65}{
+        \begin{tabular}{l|cc|l}
+            \toprule[0.05cm]
+            & \multicolumn{2}{|c|}{Gênero} & \\ \cmidrule{2-3}
+            Tabagismo & Homem & Mulher & Total\\ \midrule[0.05cm]
+            Não-Fumante & $\frac{{\color{blue}200}\cdot {\color{brown} 120}}{{\color{red} 300}}= 80$ & $\frac{{\color{blue} 100} \cdot {\color{brown} 120}}{{\color{red} 300}}= 40$ & {\color{brown} 120}\\
+            Fumante & $\frac{{\color{blue} 200} \cdot {\color{brown} 180}}{{\color{red} 300}}= 120$ & $\frac{{\color{blue} 100} \cdot {\color{brown} 180}}{{\color{red} 300}} =60$ & {\color{brown} 180}\\ \midrule[0.05cm]
+            Total & {\color{blue} 200} & {\color{blue} 100} & {\color{red} 300}\\ \bottomrule[0.05cm]
+        \end{tabular}
+        }
+    \end{minipage}
+\end{table}
+
+\textcolor{red}{\textbf{Propriedade importante:}}
+\textcolor{red}{No contexto de não associação, as tabelas de distribuição de frequência observada e a tabela de distribuição de frequência esperada são iguais.}
+\end{frame}
+
+\begin{frame}{Associação entre duas variáveis
+qualitativas\newline Medidas de associação}
+\protect\hypertarget{associauxe7uxe3o-entre-duas-variuxe1veis-qualitativasmedidas-de-associauxe7uxe3o-1}{}
+\scriptsize
+
+Considere duas variáveis qualitativas \(X\) e \(Y\) com valores
+possíveis:
+
+\begin{itemize}
+    \item $X: A_1, A_2, \cdots, A_r$;
+    \item $Y: B_1, B_2, \cdots, B_s$;
+\end{itemize}
+
+com tabela de contingência conforme tabela abaixo
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{c|cccc|c}
+        \toprule[0.05cm]
+        & \multicolumn{4}{|c|}{$Y$} & \\ \cmidrule[0.05cm]{2-5}
+        $X$ & $B_1$ & $B_2$ & $\cdots$ & $B_s$ & Total\\ \midrule[0.05cm]
+        $A_1$ & $n_{11}$ & $n_{12}$ & $\cdots$ & $n_{1s}$ & $n_{1.}$\\
+        $A_2$ & $n_{21}$ & $n_{22}$ & $\cdots$ & $n_{2s}$ & $n_{2.}$\\
+        $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$ & $\vdots$\\
+        $A_r$ & $n_{r1}$ & $n_{r2}$ & $\cdots$ & $n_{rs}$ & $n_{r.} $\\ \midrule[0.05cm]
+        Total & $n_{.1}$ & $n_{.2}$ & $\cdots$ & $n_{.s}$ & $n_{..}$\\
+        \bottomrule[0.05cm]
+    \end{tabular}
+\end{table}
+
+em que
+
+\begin{itemize}
+    \item $n_{i.} = n_{i1}+n_{i2}+\cdots+n_{is}, \quad i =1,2, \cdots, r$;
+    \item $n_{.j} = n_{1j}+n_{2j}+\cdots+n_{rj}, \quad j =1,2, \cdots, s$;
+    \item $n_{..}$ é o tamanho da amostra.
+\end{itemize}
+
+\normalsize
+\end{frame}
+
+\begin{frame}
+Se \(X\) e \(Y\) não estão associadas, temos que
+\(n^\star_{ij}=n_{ij}, \quad i=1,\dots, r,j=1,\dots, s\). Note que se,
+
+\begin{itemize}
+    \item Se as distâncias $\dfrac{(n_{ij}-n^\star_{ij})^2}{n^\star{ij}}$ forem pequenas, então as duas variáveis \textbf{não} estão associadas;
+    \item Se as distâncias $\dfrac{(n_{ij}-n^\star_{ij})^2}{n^\star{ij}}$ forem grandes, então as duas variáveis estão associadas;
+\end{itemize}
+
+então calculamos uma medida chamada qui-quadrado \begin{align*}
+\chi^2 &= \dfrac{(n_{11} - n^\star_{11})^2}{n^\star_{11}} + \dfrac{(n_{12} - n^\star_{12})^2}{n^\star_{12}} + \cdots + \dfrac{(n_{1s} - n^\star_{1s})^2}{n^\star_{1s}} + \\
+&+ \dfrac{(n_{21} - n^\star_{21})^2}{n^\star_{21}} + \dfrac{(n_{22} - n^\star_{22})^2}{n^\star_{22}} + \cdots + \dfrac{(n_{2s} - n^\star_{2s})^2}{n^\star_{2s}} + \\
+&\vdots\\
+&+\dfrac{(n_{r1} - n^\star_{r1})^2}{n^\star_{r1}} + \dfrac{(n_{r2} - n^\star_{r2})^2}{n^\star_{r2}} + \cdots + \dfrac{(n_{rs} - n^\star_{rs})^2}{n^\star_{rs}},
+\end{align*}
+\end{frame}
+
+\begin{frame}[fragile]
+\(\chi^2\) é medida não-negativa, por isso usamos uma padronização entre
+0 e 1.
+
+Seja \(k=\min\{\text{número de linhas}, \text{número de colunas}\}\) (de
+tabelas de contingência), e \(n\) é o tamanho da amostra.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Coeficiente de contingência modificada:}
+  \(C=\sqrt{\frac{k \cdot \chi^2}{(k-1)\cdot (n + \chi^2)}}\).
+\item
+  \textbf{Coeficiente V de Cramer:}
+  \(C=\sqrt{\frac{\chi^2}{k\cdot \chi^2}}\).
+\end{itemize}
+
+\regrafina
+
+Usamos o pacote
+\href{http://andrisignorell.github.io/DescTools/}{\texttt{DescTools}}
+para calcular essas medidas.
+
+\begin{enumerate}
+\tightlist
+\item
+  Para calcular o Coeficiente de Contingência Modificada:
+  \texttt{ContCoef(x,\ y)}.
+\item
+  Para calcular o Coeficiente V de Cramer: \texttt{CramerV(x,\ y)}.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Associação entre duas variáveis
+qualitativas\newline Medidas de associação\newline Exemplo}
+\protect\hypertarget{associauxe7uxe3o-entre-duas-variuxe1veis-qualitativasmedidas-de-associauxe7uxe3oexemplo}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados\_casas }\OtherTok{\textless{}{-}} \FunctionTok{read\_xlsx}\NormalTok{(}\StringTok{"dados/brutos/casas.xlsx"}\NormalTok{)}
+
+\NormalTok{dados\_casas }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{summarise}\NormalTok{(}
+    \AttributeTok{cont\_coef =} \FunctionTok{ContCoef}\NormalTok{(fundacao\_tipo, geral\_condicao),}
+    \AttributeTok{cramer\_v =} \FunctionTok{CramerV}\NormalTok{(fundacao\_tipo, geral\_condicao),}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1 x 2
+  cont_coef cramer_v
+      <dbl>    <dbl>
+1     0.501    0.259
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Associação entre duas variáveis
+qualitativas\newline Medidas de associação\newline Exercício}
+\protect\hypertarget{associauxe7uxe3o-entre-duas-variuxe1veis-qualitativasmedidas-de-associauxe7uxe3oexercuxedcio}{}
+\begin{itemize}
+\tightlist
+\item
+  Verifique se existe associação entre as variáveis \texttt{q006} e
+  \texttt{tp\_cor\_raca} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx} calculando \emph{Coeficiente de
+  Contingência Modificada}.
+\item
+  Verifique se existe associação entre as variáveis \texttt{q006} e
+  \texttt{tp\_sexo} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx} calculando \emph{Coeficiente V
+  de Cramer}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Associação entre variáveis qualitativas ordinais}
+\protect\hypertarget{associauxe7uxe3o-entre-variuxe1veis-qualitativas-ordinais}{}
+Sejam \(X\) e \(Y\) duas variáveis qualitativas ordinais valores
+possíveis:
+
+\begin{itemize}
+\tightlist
+\item
+  valores possíveis de \(X\): \(A_1, \dots, A_n\) com
+  \(A_1 < A_2 < \cdots < A_n\);
+\item
+  valores possíveis de \(Y\): \(B_1, \dots, B_n\) com
+  \(B_1 < B_2 < \cdots < B_n\).
+\end{itemize}
+
+\regrafina
+
+Associação entre \(X\) e \(Y\):
+
+\begin{itemize}
+\tightlist
+\item
+  \(X\) e \(Y\) estão \textbf{positivamente associadas}, se o nível de
+  \(Y\) \emph{aumenta} quando o nível de \(X\) \emph{aumenta} e
+  vice-versa;
+\item
+  \(X\) e \(Y\) estão \textbf{negativamente associadas}, se o nível de
+  \(Y\) \emph{diminui} quando o nível de \(X\) \emph{aumenta} e
+  vice-versa.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Associação entre variáveis qualitativas
+ordinais\newline Medida de associação}
+\protect\hypertarget{associauxe7uxe3o-entre-variuxe1veis-qualitativas-ordinaismedida-de-associauxe7uxe3o}{}
+Suponha que temos duas variáveis qualitativas ordinais:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{escolaridade}: \texttt{ensino\ fundamental},
+  \texttt{ensino\ médio} e \texttt{ensino\ superior} com
+  \texttt{ensino\ fundamental} \textless{} \texttt{ensino\ médio}
+  \textless{} \texttt{ensino\ superior};
+\item
+  \texttt{classe\_social}: \texttt{A}, \texttt{B}, \texttt{C} e
+  \texttt{D} com \texttt{D} \textless{} \texttt{C} \textless{}
+  \texttt{B} \textless{} \texttt{A}.
+\end{itemize}
+
+\regrafina
+
+Dizemos
+
+\begin{itemize}
+\tightlist
+\item
+  que duas observações são concordantes se elas se posicionam em
+  posições concordantes nas duas variáveis.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Exemplo: considere duas observações (João e Joaquim)
+
+    \begin{itemize}
+    \tightlist
+    \item
+      João: \texttt{escola\ =\ ensino\ fundamental} e
+      \texttt{classe\_social\ =\ D}
+    \item
+      Joaquim: \texttt{escola\ =\ ensino\ médio} e
+      \texttt{classe\_social\ =\ C}
+    \end{itemize}
+  \end{itemize}
+\item
+  que duas observações são concordantes se elas se posicionam em
+  posições discordantes nas duas variáveis.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Exemplo: considere duas observações (João e Josué)
+
+    \begin{itemize}
+    \tightlist
+    \item
+      João: \texttt{escola\ =\ ensino\ fundamental} e
+      \texttt{classe\_social\ =\ C}
+    \item
+      Josué: \texttt{escola\ =\ ensino\ médio} e
+      \texttt{classe\_social\ =\ D}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Associação entre variáveis qualitativas
+ordinais\newline Medida de associação}
+\protect\hypertarget{associauxe7uxe3o-entre-variuxe1veis-qualitativas-ordinaismedida-de-associauxe7uxe3o-1}{}
+\begin{itemize}
+\tightlist
+\item
+  Se a maioria dos pares de observações são concordantes, então \(X\) e
+  \(Y\) são positivamente associadas.
+\item
+  Se a maioria dos pares de observações são discordantes, então \(X\) e
+  \(Y\) são negativamente associadas.
+\item
+  Se temos mesmo a quantidade de pares concordantes e discordantes,
+  então \(X\) e \(Y\) então não estão associadas.
+\end{itemize}
+
+\regrafina
+
+Sejam:
+
+\begin{itemize}
+\tightlist
+\item
+  \(n_c\) - número de pares de observações concordantes;
+\item
+  \(n_d\) - número de pares de observações disconcordantes.
+\end{itemize}
+
+Então:
+
+\[
+\gamma = \frac{n_c - n_d}{n_c + n_d}.
+\] \(\gamma\) é chamado de \emph{Coeficiente Gama de Goodman-Kruskal}.
+\end{frame}
+
+\begin{frame}{Associação entre variáveis qualitativas
+ordinais\newline Medida de associação}
+\protect\hypertarget{associauxe7uxe3o-entre-variuxe1veis-qualitativas-ordinaismedida-de-associauxe7uxe3o-2}{}
+\begin{itemize}
+\tightlist
+\item
+  \(\gamma >0\) se, e somente se, \(X\) e \(Y\) estão positivamente
+  associadas;
+\item
+  \(\gamma <0\) se, e somente se, \(X\) e \(Y\) estão negativamente
+  associadas;
+\item
+  \(\gamma \approx 0\) se, e somente se, \(X\) e \(Y\) não estão
+  associadas.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Associação entre variáveis qualitativas
+ordinais\newline Medida de associação}
+\protect\hypertarget{associauxe7uxe3o-entre-variuxe1veis-qualitativas-ordinaismedida-de-associauxe7uxe3o-3}{}
+Como calcular \(\gamma\) usando a tabela de contingência? Suponha que
+temos duas variáveis qualitativas ordinais:
+
+\begin{itemize}
+\tightlist
+\item
+  \(X\): \(A_1\), \(A_2\), \(A_3\), \(A_4\) e \(A_5\) com
+  \(A_1 < A_2 < A_3 < A_4 <A_5\);
+\item
+  \(Y\): \(B_1\), \(B_2\), \(B_3\), \(B_4\) e \(B_5\) com
+  \(B_1 < B_2 < B_3 < B_4 <B_5\).
+\end{itemize}
+
+\regrafina
+
+Número de pares de observações concordantes com observações com
+\(X=A_2\) e \(Y=B_3\):
+\(n_{23}\cdot (n_{34} + n_{35} + n_{44} + n_{45} + n_{54} + n_{55})\).
+
+\begin{table}
+\begin{tabular}{c|ccccc}
+\toprule
+\multicolumn{1}{c}{\multirow{2}{*}{$X$}} & \multicolumn{5}{c}{$Y$}  \\ \cmidrule{2-6}
+\multicolumn{1}{c}{}                   & $B_1$ & $B_2$ & $B_3$ & $B_4$ & $B_5$ \\ \midrule
+$A_1$                                     & $n_{11}$   &  $n_{12}$  & $n_{13}$   &  $n_{14}$  & $n_{15}$   \\
+$A_2$                                     & $n_{21}$   &  $n_{22}$  & \cellcolor{gray} $n_{23}$   &  $n_{24}$  & $n_{25}$   \\
+$A_3$                                     & $n_{31}$   &  $n_{32}$  & $n_{33}$   & \cellcolor{LimeGreen}  $n_{34}$  & \cellcolor{LimeGreen} $n_{35}$   \\
+$A_4$                                     & $n_{41}$   &  $n_{42}$  & $n_{43}$   & \cellcolor{LimeGreen}  $n_{44}$  & \cellcolor{LimeGreen} $n_{45}$   \\
+$A_5$                                     & $n_{51}$   &  $n_{52}$  & $n_{53}$   & \cellcolor{LimeGreen}  $n_{54}$  & \cellcolor{LimeGreen} $n_{55}$   \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}
+Número de pares de observações disconcordantes com observações com
+\(X=A_2\) e \(Y=B_3\):
+\(n_{23}\cdot (n_{31} + n_{32} + n_{41} + n_{42} + n_{51} + n_{52})\).
+
+\begin{table}
+\begin{tabular}{c|ccccc}
+\toprule
+\multicolumn{1}{c}{\multirow{2}{*}{$X$}} & \multicolumn{5}{c}{$Y$}  \\ \cmidrule{2-6}
+\multicolumn{1}{c}{}                   & $B_1$ & $B_2$ & $B_3$ & $B_4$ & $B_5$ \\ \midrule
+$A_1$                                     & $n_{11}$   &  $n_{12}$  & $n_{13}$   &  $n_{14}$  & $n_{15}$   \\
+$A_2$                                     & $n_{21}$   &  $n_{22}$  & \cellcolor{gray} $n_{23}$   &  $n_{24}$  & $n_{25}$   \\
+$A_3$                                     & \cellcolor{WildStrawberry} $n_{31}$   & \cellcolor{WildStrawberry}  $n_{32}$  & $n_{33}$   &  $n_{34}$  & $n_{35}$   \\
+$A_4$                                     & \cellcolor{WildStrawberry} $n_{41}$   &  \cellcolor{WildStrawberry} $n_{42}$  & $n_{43}$   &  $n_{44}$  & $n_{45}$   \\
+$A_5$                                     & \cellcolor{WildStrawberry} $n_{51}$   & \cellcolor{WildStrawberry}  $n_{52}$  & $n_{53}$   &  $n_{54}$  & $n_{55}$   \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Fazemos essas contagens em todas as células para obter \(n_c\) e
+\(n_d\).
+\end{frame}
+
+\begin{frame}[fragile]{Associação entre variáveis qualitativas
+ordinais\newline Medida de associação}
+\protect\hypertarget{associauxe7uxe3o-entre-variuxe1veis-qualitativas-ordinaismedida-de-associauxe7uxe3o-4}{}
+Usamos o pacote \texttt{DescTools}:
+
+\begin{itemize}
+\tightlist
+\item
+  A função \texttt{GoodmanKruskalGamma(x,\ y)} calcula o Coeficiente de
+  Goodman-Kruskal entre \texttt{x} e \texttt{y}.
+\end{itemize}
+
+\textbf{\texttt{x} e \texttt{y} precisam ser fatores (para indicar a
+ordem das variáveis qualitativas ordinais).}
+
+Use a função \texttt{fct} do pacote \texttt{forcats} para criar
+transformar um vetor de caracteres em um fator.
+\end{frame}
+
+\begin{frame}[fragile]{Associação entre variáveis qualitativas
+ordinais\newline Medida de associação\newline Exemplo}
+\protect\hypertarget{associauxe7uxe3o-entre-variuxe1veis-qualitativas-ordinaismedida-de-associauxe7uxe3oexemplo}{}
+Vamos usar um conjunto de dados de respostas ao Questionário de
+dezesseis fatores de personalidade (16PF), e checar as variáveis
+qualitativas ordinais \(A1\) e \(A2\) estão associadas.
+
+As perguntas deste questionário podem se consultadas em:
+\texttt{dicionario\_psicologia.html}.
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_16f }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv2}\NormalTok{(}\StringTok{"dados/brutos/psicologia.csv"}\NormalTok{)}
+
+\CommentTok{\# A1 e A2 precisam ser fatores}
+\NormalTok{df\_16f }\OtherTok{\textless{}{-}}\NormalTok{ df\_16f }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{A1 =} \FunctionTok{fct}\NormalTok{(}\FunctionTok{as.character}\NormalTok{(A1), }\AttributeTok{levels =} \FunctionTok{paste}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)),}
+    \AttributeTok{A2 =} \FunctionTok{fct}\NormalTok{(}\FunctionTok{as.character}\NormalTok{(A2), }\AttributeTok{levels =} \FunctionTok{paste}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{5}\NormalTok{))}
+\NormalTok{  )}
+
+\NormalTok{df\_16f }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{gk =} \FunctionTok{GoodmanKruskalGamma}\NormalTok{(A1, A2))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1 x 1
+     gk
+  <dbl>
+1 0.564
+\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(dados\_iris) }\SpecialCharTok{+}
+\FunctionTok{GoodmanKruskalGamma}\NormalTok{(df\_16f}\SpecialCharTok{$}\NormalTok{A1, df\_16f}\SpecialCharTok{$}\NormalTok{A2, }\AttributeTok{conf.level =} \FloatTok{0.95}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+    gamma    lwr.ci    upr.ci 
+0.5638367 0.5548132 0.5728602 
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Associação entre variáveis qualitativas
+ordinais\newline Medida de associação\newline Exercício}
+\protect\hypertarget{associauxe7uxe3o-entre-variuxe1veis-qualitativas-ordinaismedida-de-associauxe7uxe3oexercuxedcio}{}
+\begin{itemize}
+\tightlist
+\item
+  Verifique se existe associação entre as variáveis \texttt{q006} e
+  \texttt{q001} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx} calculando \emph{Coeficiente
+  Gama de Goodman-Kruskal}.
+\item
+  Verifique se existe associação entre as variáveis \texttt{q006} e
+  \texttt{q002} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx} calculando \emph{Coeficiente
+  Gama de Goodman-Kruskal}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Associação entre uma variável qualitativa e uma
+variável quantitativa}
+\protect\hypertarget{associauxe7uxe3o-entre-uma-variuxe1vel-qualitativa-e-uma-variuxe1vel-quantitativa}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{boxplot }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(dados\_iris) }\SpecialCharTok{+}
   \FunctionTok{geom\_boxplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ especies, }\AttributeTok{y =}\NormalTok{ comprimento\_sepala)) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Espécies"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Comprimento de Sépala"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Espécies"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Comprimento de Sépala"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Diagrama de caixa"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme\_minimal}\NormalTok{()}
+\NormalTok{violino }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(dados\_iris) }\SpecialCharTok{+}
+  \FunctionTok{geom\_violin}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ especies, }\AttributeTok{y =}\NormalTok{ comprimento\_sepala)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Espécies"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Comprimento de Sépala"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Violino"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\NormalTok{lv }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(dados\_iris) }\SpecialCharTok{+}
+  \FunctionTok{geom\_lv}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ especies, }\AttributeTok{y =}\NormalTok{ comprimento\_sepala)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Espécies"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Comprimento de Sépala"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Valores de letra"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\NormalTok{boxplot }\SpecialCharTok{+}\NormalTok{ violino }\SpecialCharTok{+}\NormalTok{ lv}
 \end{Highlighting}
 \end{Shaded}
 \end{frame}
@@ -6501,16 +7099,16 @@ caixa.
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-134-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-138-1.pdf}
 
 }
 
 \end{figure}
 \end{frame}
 
-\begin{frame}[fragile]{Comparação de medianas usando Diagrama de
-caixa\newline Exercício}
-\protect\hypertarget{comparauxe7uxe3o-de-medianas-usando-diagrama-de-caixaexercuxedcio}{}
+\begin{frame}[fragile]{Associação entre uma variável qualitativa e uma
+variável quantitativa\newline Exercício}
+\protect\hypertarget{associauxe7uxe3o-entre-uma-variuxe1vel-qualitativa-e-uma-variuxe1vel-quantitativaexercuxedcio}{}
 \begin{itemize}
 \tightlist
 \item

@@ -1,0 +1,194 @@
+```{r}
+#| label: gerando os dados
+#| echo: false
+
+library(pacman)
+
+p_load(
+    exams, readxl, writexl, Boom,
+    KbMvtSkew, e1071, lettervalue,
+    tidyverse
+)
+
+# formatação
+f <- \(x) format(
+    x,
+    decimal.mark = ",",
+    big.mark = "."
+)
+
+options(scipen = 999) #prevent scientific notation
+
+# população 1
+tamanho <- sample(500:2000, 1)
+media <- runif(1, 5, 10) |> round(2)
+dp <- runif(1, 2, 4) |> round(2)
+taxa <- runif(1, 0.1, 0.5) |> round(2)
+amostra1 <- tibble(
+    x = rnorm(tamanho, media, dp) |> round(2),
+    y = rexp(tamanho, taxa) |> round(2)
+)
+
+# população 2
+tamanho <- sample(500:2000, 1)
+media <- runif(1, 5, 10) |> round(2)
+dp <- runif(1, 2, 4) |> round(2)
+amostra2 <- tibble(
+    x = rnorm(tamanho, media, dp) |> round(2),
+    y = rnorm(tamanho, media, dp) |> round(2)
+)
+
+# população 3
+tamanho <- sample(500:2000, 1)
+taxa <- runif(1, 0.1, 0.5) |> round(2)
+amostra3 <- tibble(
+    x = rexp(tamanho, taxa) |> round(2),
+    y = rexp(tamanho, taxa) |> round(2)
+)
+
+# população 4
+tamanho <- sample(500:2000, 1)
+a <- runif(1, 5, 10) |> round(2)
+b <- runif(1, 25, 30) |> round(2)
+taxa <- runif(1, 0.1, 0.5) |> round(2)
+amostra4 <- tibble(
+    x = runif(tamanho, a, b) |> round(2),
+    y = rexp(tamanho, taxa) |> round(2)
+)
+
+# opção correta
+k <- sample(1:4, 1)
+if (k == 1) {
+  amostra <- amostra1
+} else if (k == 2) {
+  amostra <- amostra2
+} else if (k == 3) {
+  amostra <- amostra3
+} else if (k == 4) {
+  amostra <- amostra4
+}
+
+write_xlsx(amostra, "dados.xlsx")
+
+# letra a)
+opcao_qq <- case_match(
+    k,
+    1 ~ "X e Y não tem a mesma distribuição.",
+    2 ~ "X e Y tem a mesma distribuição",
+    3 ~ "X e Y tem a mesma distribuição",
+    4 ~ "X e Y não tem a mesma distribuição."
+)
+sol_qq <- case_match(
+    k,
+    1 ~ "01",
+    2 ~ "10",
+    3 ~ "10",
+    4 ~ "01"
+)
+
+# letra b)
+opcao_letra_b <- case_match(
+    k,
+    1 ~ "X tem distribuição normal.",
+    2 ~ "X tem distribuição normal.",
+    3 ~ "X não tem distribuição normal.",
+    4 ~ "X não tem distribuição normal."
+)
+sol_letra_b <- case_match(
+    k,
+    1 ~ "10",
+    2 ~ "10",
+    3 ~ "01",
+    4 ~ "01"
+)
+
+# letra c)
+opcao_letra_c <- case_match(
+    k,
+    1 ~ "Y não tem distribuição normal.",
+    2 ~ "Y tem distribuição normal.",
+    3 ~ "Y não tem distribuição normal.",
+    4 ~ "Y não tem distribuição normal."
+)
+sol_letra_c <- case_match(
+    k,
+    1 ~ "01",
+    2 ~ "10",
+    3 ~ "01",
+    4 ~ "01"
+)
+
+
+# outras letras
+sol <- c(
+    "media_x" = mean(amostra$x),
+    "media_y" = mean(amostra$y),
+    "dp_x" = sd(amostra$x),
+    "dp_y" = sd(amostra$y),
+    "B_x" = BowleySkew(amostra$x),
+    "B_y" = BowleySkew(amostra$y),
+    "G1_x" = skewness(amostra$x, type = 2),
+    "G1_y" = skewness(amostra$y, type = 2),
+    "G2_x" = kurtosis(amostra$x, type = 2),
+    "G2_y" = kurtosis(amostra$y, type = 2)
+) |> round(4)
+```
+
+Question
+========
+
+Considere o [conjunto de dados](dados.xlsx) com duas variáveis quantitativas contínuas. Desenhe o gráfico quantil-quantil para X e Y, desenhe o gráfico de probabilidade normal para X, desenhe o gráfico de probabilidade normal para Y, e responda as questões abaixo.
+
+
+Questionlist
+------------
+
+* X e Y tem a mesma distribuição.
+* X e Y **não** tem a mesma distribuição.
+* X tem distribuição normal.
+* X **não** tem distribuição normal.
+* Y tem distribuição normal.
+* Y **não** tem distribuição normal.
+* Média de X:
+* Média de Y:
+* Desvio padrão de X:
+* Desvio padrão de Y:
+* Coeficiente de Bowley de X:
+* Coeficiente de Bowley de Y:
+* Assimetria (G~1~) de X:
+* Assimetria (G~1~) de Y:
+* Curtose (G~2~) de X:
+* Curtose (G~2~) de Y:
+
+
+Solution
+========
+
+Solutionlist
+------------
+
+* `r opcao_qq`
+* 
+* `r opcao_letra_b`
+*
+* `r opcao_letra_c`
+*
+* Média de X: `r sol['media_x']`. 
+* Média de Y: `r sol['media_x']`.
+* Desvio padrão de X: `r sol['dp_x']`.
+* Desvio padrão de Y: `r sol['dp_y']`.
+* Coeficiente de Bowley de X: `r sol['B_x']`.
+* Coeficiente de Bowley de Y: `r sol['B_y']`.
+* Assimetria (G~1~) de X: `r sol['G1_x']`.
+* Assimetria (G~1~) de Y: `r sol['G1_y']`.
+* Curtose (G~2~) de X: `r sol['G2_x']`..
+* Curtose (G~2~) de Y: `r sol['G2_y']`.
+
+
+Meta-information
+================
+exname: analise_qq
+extype: cloze
+exclozetype: schoice|schoice|schoice|`r rep("num", length(sol)) |> paste(collapse = "|")`
+exsolution: `r sol_qq`|`r sol_letra_b`|`r sol_letra_c`|`r paste(sol, collapse="|")`
+extol: 0.05

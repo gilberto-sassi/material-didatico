@@ -1,0 +1,82 @@
+```{r}
+#| label: Gerando os dados da questão
+#| echo: false
+
+library(pacman)
+
+p_load(
+    readxl, writexl, janitor, lettervalue, ggthemes,
+    glue,
+    exams,
+    tidyverse
+)
+
+# formatação
+f <- \(x) format(
+    x,
+    decimal.mark = ",",
+    big.mark = "."
+)
+
+g <- vector("character", 3)
+t <- vector("character", 3)
+
+# opção 1)
+n <- round(rexp(1, 0.1) + 2, 2)
+g[1] <- glue("x^{f(n)}^")
+t[1] <- glue("Y&sim;B({f(1/n)}; 1)")
+
+# opção 2)
+a <- runif(1, 5, 10) |> round(2)
+b <- runif(1, 15, 20) |> round(2)
+g[2] <- glue("{f(b-a)}&#183;x+{f(a)}")
+t[2] <- glue("Y&sim;U({f(a)}; {f(b)})")
+
+# opção 3)
+const <- round(1 / rexp(1, 0.1), 2)
+g[3] <- glue("-{f(const)}&#183;ln(x)")
+t[3] <- glue("Y &sim;Exp({f(1/const)})")
+
+k <- sample(c(1, 2, 3), 1)
+
+feedback <- 1:3 |>
+    map_chr(~ ifelse(.x == k,
+        glue("Verdadeiro, pois {t[k]}."),
+        glue("Falso, pois {t[k]}.")
+    )) |>
+    c(glue("Falso, pois {t[k]}."))
+
+sol <- 1:3 |>
+    map_chr(~ ifelse(.x == k, "1", "0")) |>
+    c("0") |>
+    paste(collapse = "")
+```
+
+Question
+========
+
+Seja X uma variável aleatória contínua com X &sim; U(0;1), e considere a função g(x)=`r g[k]`. Qual a distribuição de probabilidade de Y=g(X)?
+
+Answerlist
+----------
+
+* `r t[1]`
+* `r t[2]`
+* `r t[3]`
+* Não é possível determinar a distribuição de probabilidade g(X).
+
+Solution
+========
+
+```{r}
+#| echo: false
+#| results: asis
+answerlist(feedback, markup = "markdown")
+```
+
+Meta-information
+================
+exname: transformacao_continua
+extype: schoice
+exsolution: `r sol`
+exshuffle: TRUE

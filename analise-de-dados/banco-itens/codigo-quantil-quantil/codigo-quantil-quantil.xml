@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/codigo-quantil-quantil/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> Q1 : banco-itens_codigo-quantil-quantil_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Sobre o gráfico de probabilidade normal, responda (sem espaços) as seguintes questões abaixo:</p>
+<ol type = "a">
+<li> Qual é o pacote que usamos para desenhar o gráfico de probabilidade normal? {1:SHORTANSWER:%100%qqplotr} </li>
+<li> Qual é a função que usamos para desenhar a desenha o gráfico de probabilidade normal (apenas os pontos)? {1:SHORTANSWER:%100%stat_qq_point} </li>
+<li> Qual é a função que usamos para desenhar a reta y=x no gráfico de probabilidade normal? {1:SHORTANSWER:%100%stat_qq_line} </li>
+<li> Qual é a função que usamos para desenhar a banda de confiança no gráfico de probabilidade normal? {1:SHORTANSWER:%100%stat_qq_band} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> Usamos o pacote <code>qqplotr</code> para desenhar o gráfico de probabilidade normal. </li>
+<li> Usamos a função <code>stat_qq_point</code> para desenhar o gráfico de probabilidade normal (apenas os pontos). </li>
+<li> Usamos a função <code>stat_qq_line</code> para desenhar a reta y=x no gráfico de probabilidade normal. </li>
+<li> Usamos a função <code>stat_qq_band</code> para desenhar a banda de confiança no gráfico de probabilidade normal. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>4</defaultgrade>
+</question>
+
+</quiz>
