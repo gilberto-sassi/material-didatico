@@ -33,7 +33,7 @@ while (min(fp_x) < 0.01 | !near(sum(fp_x), 1)) {
 potencia <- sample(seq(from = 2, to = 6, by = 2), 1)
 
 suporte_y <- 0:n |> map_dbl(~ .x^potencia)
-fp_y <- c(fp_x[n + 1], map_dbl(1:n, ~ fp_x[.x] + fp_x[n + 1 + .x]))
+fp_y <- c(fp_x[n + 1], map_dbl(1:n, ~ fp_x[n + 1 - .x] + fp_x[n + 1 + .x]))
 
 sol <- c(suporte_y, fp_y)
 ```

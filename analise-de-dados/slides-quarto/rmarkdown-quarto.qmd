@@ -942,9 +942,7 @@ Para produzir documento, use o seguinte código `R`
 ```r
 render(
   "filename.Rmd",
-  render_options = list(
-    params = list(nome = "Um nome", data = "01/01/1900")
-  )
+  params = list(nome = "Um nome", data = "01/01/1900")
 )
 ```
 

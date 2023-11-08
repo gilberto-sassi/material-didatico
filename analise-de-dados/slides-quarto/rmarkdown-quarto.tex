@@ -312,7 +312,7 @@ Estatística}
 % 	\maketitle
 %  \end{frame}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, boxrule=0pt, interior hidden, frame hidden, enhanced, borderline west={3pt}{0pt}{shadecolor}, sharp corners]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, enhanced, interior hidden, borderline west={3pt}{0pt}{shadecolor}, sharp corners, boxrule=0pt, frame hidden]}{\end{tcolorbox}}\fi
 
 \begin{frame}[fragile]{Preparando o ambiente}
 \protect\hypertarget{preparando-o-ambiente}{}
@@ -1913,9 +1913,7 @@ Para produzir documento, use o seguinte código \texttt{R}
 \begin{Highlighting}[]
 \FunctionTok{render}\NormalTok{(}
   \StringTok{"filename.Rmd"}\NormalTok{,}
-  \AttributeTok{render\_options =} \FunctionTok{list}\NormalTok{(}
-    \AttributeTok{params =} \FunctionTok{list}\NormalTok{(}\AttributeTok{nome =} \StringTok{"Um nome"}\NormalTok{, }\AttributeTok{data =} \StringTok{"01/01/1900"}\NormalTok{)}
-\NormalTok{  )}
+  \AttributeTok{params =} \FunctionTok{list}\NormalTok{(}\AttributeTok{nome =} \StringTok{"Um nome"}\NormalTok{, }\AttributeTok{data =} \StringTok{"01/01/1900"}\NormalTok{)}
 \NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
