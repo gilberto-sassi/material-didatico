@@ -21,8 +21,8 @@ tam <- sample(5:10, 1)
 
 # função de probabilidade
 while (TRUE) {
-    fp <- rdirichlet(1, rexp(tam, 0.5)) |> round(4)
-    if (!near(min(fp), 0) && near(sum(fp), 1)) break
+    fp <- rdirichlet(1, rexp(tam, 0.5)) |> round(5)
+    if (min(fp) > 0.001 && near(sum(fp), 1)) break
 }
 
 # FDA
@@ -79,22 +79,27 @@ Question
 ========
 Considere a variável aleatória discreta X com a seguinte Função de Distribuiçã Acumulada:
 
+<hr>
+
 ```{r}
 #| echo: false
 #| results: asis
+#| comment: ""
 
 n <- length(suporte)
 
 # primeira linha da fda
-print(glue("0, se x < {suporte[1]}"))
+print(glue("0, se x < {suporte[1]},\n\n"))
 
-for (k in 2:(n - 1)) {
-    print(glue("{f(fda[k])}, se {suporte[k-1]} &le; x < {suporte[k]}"))
+for (k in 2:n) {
+    print(glue("{f(fda[k-1])}, se {suporte[k-1]} &le; x < {suporte[k]},\n\n"))
 }
 
 # ultilma linha da FDA
-print(glue("1, se x >= {suporte[n]}"))
+print(glue("1, se x >= {suporte[n]}."))
 ```
+
+<hr>
 
 Calcule:
 
