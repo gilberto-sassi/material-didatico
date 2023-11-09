@@ -1,0 +1,128 @@
+```{r}
+#| label: moda-quantil
+#| echo: false
+
+library(pacman)
+
+p_load(
+    exams,
+    readxl,
+    writexl,
+    Boom,
+    gt,
+    glue,
+    tidyverse
+)
+
+options(scipen = 999) #prevent scientific notation
+
+# tamanho do suporte
+tam <- sample(5:10, 1)
+
+# função de probabilidade
+while (TRUE) {
+    fp <- rdirichlet(1, rexp(tam, 0.5)) |> round(4)
+    if (!near(min(fp), 0) && near(sum(fp), 1)) break
+}
+
+# FDA
+fda <- cumsum(fp)
+
+# suporte
+suporte <- sample.int(1000, tam, replace = FALSE) |> sort()
+
+# quantil
+quantil <- function(p) {
+    for (k in seq_along(suporte)) {
+        if (fda[k] >= p) {
+            return(suporte[k])
+        }
+    }
+}
+
+# letra a) moda
+moda <- suporte[which.max(fp)]
+
+# letra b) primeiro quartil
+q1 <- quantil(0.25)
+
+# letra c) mediana
+q2 <- quantil(0.5)
+
+# letra d) terceiro
+q3 <- quantil(0.75)
+
+# letra e) quantil de ordem 10%
+q_01 <- quantil(0.1)
+
+# letra f) quantil de ordem 90%
+q_09 <- quantil(0.9)
+
+# solução
+sol <- c(
+    "moda" = moda, 
+    "q1" = q1, 
+    "mediana" = q2,
+    "q3" = q3,
+    "letra_e" = q_01,
+    "letra_f" = q_09
+)
+
+f <- \(x) format(
+    x,
+    big.mark = ".",
+    decimal.mark = ","
+)
+```
+
+Question
+========
+Considere a variável aleatória discreta X com a seguinte Função de Distribuiçã Acumulada:
+
+```{r}
+#| echo: false
+#| results: asis
+
+n <- length(suporte)
+
+# primeira linha da fda
+print(glue("0, se x < {suporte[1]}"))
+
+for (k in 2:(n - 1)) {
+    print(glue("{f(fda[k])}, se {suporte[k-1]} &le; x < {suporte[k]}"))
+}
+
+# ultilma linha da FDA
+print(glue("1, se x >= {suporte[n]}"))
+```
+
+Calcule:
+
+Questionlist
+------------
+* moda:
+* primeiro quartil:
+* mediana:
+* terceiro quartil:
+* o quantil de ordem 10%:
+* valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X:
+
+
+Solution
+========
+Solutionlist
+------------
+* moda: `r sol['moda']`.
+* primeiro quartil: `r sol['q1']`.
+* mediana: `r sol['mediana']`.
+* terceiro quartil: `r sol['q3']`.
+* o quantil de ordem 10%: `r sol['letra_e']`.
+* valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: `r sol['letra_f']`.
+
+Meta-information
+================
+exname: moda_quantil_va_discreta
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste(collapse = "|")`
+exsolution: `r sol |> paste(collapse = "|")`
+extol: 0.05

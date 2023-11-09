@@ -32,7 +32,6 @@ evento <- sample(categorias, 2, replace = FALSE)
 
 # solução
 sol <- evento |>
-    map_dbl(~ mean(.x == amostra)) |>
     sum() |>
     round(2)
 
