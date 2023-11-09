@@ -1,0 +1,21 @@
+language:
+  label:
+    fig: "Figura "
+    tab: "Tabela "
+    eq: "Equação "
+    thm: "Teorema "
+    lem: "Lema "
+    cor: "Corolário "
+    prp: "Proposição "
+    cnj: "Conjuntura "
+    def: "Definição "
+    exm: "Exemplo "
+    exr: "Exercício "
+    hyp: "Hipótese "
+    proof: "Prova. "
+    remark: "Observação. "
+    solution: "Solução. "
+  ui:
+    edit: Edit
+    chapter_name: ""
+    appendix_name: ""

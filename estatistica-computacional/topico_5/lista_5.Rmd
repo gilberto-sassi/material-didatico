@@ -1,0 +1,23 @@
+---
+title: "Lista 5"
+author: "Gilberto Sassi"
+date: "Primeiro semestre de 2021."
+classdocument: article
+output: 
+    bookdown::pdf_document2:
+        toc: false
+        number_sections: true
+        includes:
+            in_header: "../assets/cabecalho.tex"
+---
+
+1. Implemente uma função na linguagem `R`  que gera números aleatórios para a distribuição normal com média $\mu$ e desvio padrão $\sigma$.
+1. Implemente uma função na linguagem `R` que geral números aleatórios para uma variável aleatória com suporte finito, usando o método da transformação inversa.
+1. Implemente uma função na linguagem `R` que gera número aleatórios para uma variável aleatória com suporte finito, usando o método da aceitação-rejeição.
+1. Implemente uma função na linguagem `R` que gera números aleatórios para a distribuição uniforme contínua $U(a, b)$.
+1. Implemente uma função na linguagem `R` que gera números aleatórios para distribuição gama $\Gamma(\alpha, \beta)$, para qualquer $\alpha>0$.
+1. Implemente uma função na linguagem `R` que gera números aleatórios para a distribuição poison $Poison(\lambda)$.
+1. Implemente uma função na linguagem `R` que gera números aleatórios para a distribuição binomail $b(n, p)$.
+1. Implemente uma função na linguagem `R` que gera números aleatórios para distribuição normal multivariada usando a função implementada no _exercício 1)_.
+1. Compare o tempo de execução de cada uma das funções implementadas nesta lista.
+

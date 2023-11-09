@@ -1,0 +1,7 @@
+slides>slide:not(.nobackground):after {
+  content: '';
+}
+
+.pequeno {
+  font-size: 0.6em !important;
+}

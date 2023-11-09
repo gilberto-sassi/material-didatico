@@ -1,0 +1,727 @@
+---
+title: "Estatística Computacional"
+subtitle: "Universidade Federal da Bahia"
+author: "Gilberto Pereira Sassi"
+date: "Tópico 3"
+output:
+  bookdown::ioslides_presentation2:
+    transition: "faster"
+    logo: "https://i.postimg.cc/ZRypsc2c/logo.jpg"
+    widescreen: true
+    css: "estilo.css"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align="center")
+library(readxl)
+library(writexl)
+library(ggthemes)
+library(codetools)
+library(glue)
+library(lvplot)
+library(tidyverse)
+```
+
+## Pacotes que iremos usar na semana 4
+
+```{r}
+library(readxl)
+library(readODS)
+library(openxlsx)
+library(ggthemes)
+library(lvplot)
+library(glue)
+library(codetools)
+library(tidyverse)
+```
+
+# Linguagem `R` e  `tidyverse`  <br><br><br> um pouco de programação
+
+## `pivot_longer` e `pivot_wider`: pacote `tidyr`
+
+* **`tidyr`:** transformar e modificar uma `tibble` para transformar em um `tidy data`. 
+
+#### `tidy data`
+
+1. Cada coluna é uma variável
+1. Cada linha é uma observação
+1. Cada célula é um único valor
+
+Para mais detalhes sobre `tidy data`, vide [`tidy data`](https://tidyr.tidyverse.org/articles/tidy-data.html)
+
+#### `pivot_longer` e `pivot_wider`
+
+* Transforma as colunas `names:values` em várias colunas
+* Transforma várias colunas em colunas `names:values`
+
+Para mais detalhes, vide a [documentação oficial do pacote `tidyr`](https://tidyr.tidyverse.org/)
+
+## `pivot_longer` e `pivot_wider`: pacote `tidyr` {.smaller}
+
+* **`religiao_renda.csv`:** conjunto de dados sobre religião e renda. Disponível em [dados sobre religião e renda](https://www.pewforum.org/religious-landscape-study/).
+
+#### `pivot_longer`
+
+```{r, message=F}
+dados <- read_csv2('data/raw/religiao_renda.csv')
+
+tab <- dados |> 
+  pivot_longer(-religion, names_to = 'Renda', values_to = "Frequência")
+head(tab, n = 4)
+
+write_xlsx(tab, 'data/processed/exemplo_pivot_longer.xlsx')
+```
+
+## `pivot_longer` e `pivot_wider`: pacote `tidyr` {.smaller}
+
+* **`peixe_descoberto`:** conjunto de dados sobre a visualização de um peixe em uma estação de monitoramento. Disponível em [dados sobre peixes descobertos](https://fishsciences.github.io/post/visualizing-fish-encounter-histories/).
+
+#### `pivot_longer`
+
+```{r}
+dados <- read_xlsx('data/raw/peixe_descoberto.xlsx')
+
+tab <- dados |> 
+  pivot_wider(names_from = 'fish', values_from = 'seen', names_glue = "peixe_id_{fish}")
+head(tab, n = 2)
+
+write_xlsx(tab, 'data/processed/exemplo_pivot_wider.xlsx')
+```
+
+## Função 
+
+* Útil para evitar repetição de código
+* Usamos para otimização de funções em estatística (por exemplo, achar ponto de máximo da função de verossimilhança)
+
+#### Sintaxe básica
+
+```r
+<nome da função> <- function(<parâmetros>){
+  corpo da função
+  último valor da última expressão avaliada é retornada
+}
+```
+
+#### Funções úteis
+
+* `body()`: retorna o corpo da função
+* `formals()`: retorna uma lista com os parâmetros e os valores padronizados
+* `environment()`: retorna a estrutura de dados associada com a criação da função
+
+## Função {.smaller}
+
+#### Regra de escopo
+
+* **Regra de escopo:** regras para de como avaliar um objeto em `R`
+  * primeiro o `R` busca o objeto dentro do _escopo da função_ (ou seja, verifica se o objeto foi criado dentro do corpo da função)
+  * se o objeto não existe dentro do _escopo da função_
+  * **importante:** evite o uso de funções que são definidas globalmente dentro de funções!
+
+#### Exemplo
+
+Variável definida localmente dentro de uma função com o mesmo nome de um objeto global.
+
+```{r}
+x <- 10
+f <- function() {
+  x <- 1
+  x
+}
+f()
+```
+
+## Função 
+
+#### Exemplo
+
+Função criada dentro de outra função.
+
+```{r}
+f <- function() {
+  y <- 2
+  function(x) c('x' = x, 'y' = y)
+}
+y <- 1
+h <- f()
+h(3)
+```
+
+## Função 
+
+#### Exemplo
+
+Podemos descobrir se uma função depende definidos globalmente com a função `findGlobals` definida em `codetools`.
+
+```{r}
+x <- 1
+f <- function(y) x + y
+
+# checando se uma função depende de objetos definidos globalmente
+codetools::findGlobals(f)
+```
+
+## Função
+
+#### _shorthand_ (a partir da versão 4.1)
+
+```r
+z <- \(x) {
+  <body function>
+}
+```
+ou
+
+```r
+z <- \(x) <expression>
+```
+
+## Função {.smaller}
+
+#### Valor padrão e organização dos parâmetros 
+
+
+```{r}
+z <- function(x, translado = 0) {
+  y <- x + translado
+  round((y - mean(y)) / sd(y), 2)
+}
+z(1:5)
+z(1:5, 0)
+```
+
+----
+
+```{r}
+z(1:5, translado = 0)
+z(translado = 0, 1:5)
+```
+
+## Função {.smaller}
+
+#### Parâmetro ellipsis
+
+* **`...`:** parâmetros adicionais (pode ser um ou mais parâmetros) 
+* Pontos transformar `...` in lista para acessar os valores
+
+```{r}
+z <- function(x, translado = 0, ...) {
+  y <- x + translado
+  argumentos <- list(...)
+  print(argumentos)
+  m <- mean(x, ...)
+  s <- sd(x, ...)
+  round((x - m) / s, 2)
+}
+x <- c(NA, 1:5, NA)
+z(x, translado = 0, na.rm = TRUE)
+```
+
+## Função {.smaller}
+
+#### Função anônima
+
+* **Função anônima:** objeto função sem qualquer identificação (usado principalmente com as funções `*apply` e `map*`)
+
+```{r}
+library(numDeriv)
+grad(\(x) sum(x^2), 1:4)
+hessian(\(x) sum(x^2), 1:6)
+```
+
+## Operadores lógicos {.smaller}
+
+* **Valores lógicos:** `TRUE(T)` ou `FALSE(F)`
+
+* _Negação_: `!`
+
+```{r}
+!F
+```
+
+* _E_: `&`
+
+```{r}
+F & T
+```
+
+* _Igualdade_: `==`
+
+```{r}
+1 == 2
+```
+
+----
+
+* _Ou_: `|`
+
+```{r}
+F | T
+```
+
+
+* _Ou exclusivo_: `xor`
+
+```{r}
+xor(F, T)
+xor(T, T)
+```
+
+----
+
+* `any()` retorna `TRUE` se algum elemento de um vetor lógico
+
+```{r}
+any(c(T, T, T))
+any(c(F, T, T))
+any(c(F, F, F))
+```
+
+----
+
+* `all()` retorna `TRUE` se todos os elementos de um vetor lógico
+
+```{r}
+all(c(T, T, T))
+all(c(F, T, T))
+all(c(F, F, F))
+```
+
+----
+
+* **near()**  função do pacote `dplyr` para comparar tipo de dados `double`
+
+```{r}
+sqrt(2)^2 == 2
+near(sqrt(2)^2, 2)
+```
+
+* **all.equal()** retorna `TRUE` se todos os valores de dois vetores são iguais
+
+```{r}
+all.equal(c(1,1), c(1,1) + 1e-4, tol = 1e-3)
+```
+
+----
+
+```{r}
+all.equal(c(1,1), c(1,1) + 1e-3, tol = 1e-3)
+all.equal(c(1,1), c(1,1) + 1e-2, tol = 1e-3)
+```
+
+## Função {.smaller}
+
+#### Mensagens aos usuários
+
+* `stop()`: para a execução e exibe uma mensagem de erro ao usuário
+* `warning()`: exibe mensagem de atenção ao usuário
+* `message()`: exibe mensagem úteis ao usuário
+
+```{r}
+fracao <- function(x) {
+  message('Olá, eu criei essa função!!!')
+
+  # problema com divisão por zero
+  if (near(x, 0)) {
+    stop("Proibido divisão por zero!")
+  }
+  
+  # problema com valores muito pequenos
+  if (abs(x) < 1e-4){
+    warning("Valor muito pequeno.")
+  }
+  
+  1 / x
+}
+```
+
+-----
+
+```{r, error = TRUE}
+fracao(0.5)
+fracao(0)
+```
+
+----
+
+```{r, error = TRUE}
+fracao(1e-5)
+```
+
+## Lidando com mensagens de erro {.smaller}
+
+* `possibly()` se acontecer retorno uma valor padrão
+* `quietly()` Se acontecer um erro, a execução para imediatamente. Quando funciona, retorna uma lista com os seguintes componentes `result`, `output`, `warnings` e `messages`.
+* `safely()` retorna uma lista com os componentes `result` e `error`.
+
+```{r, echo=F}
+fracao <- function(x) {
+  # problema com divisão por zero
+  if (near(x, 0)) {
+    stop("Proibido divisão por zero!")
+  }
+  
+  # problema com valores muito pequenos
+  if (abs(x) < 1e-4){
+    warning("Valor muito pequeno.")
+  }
+  
+  1 / x
+}
+```
+
+```{r}
+possibly_fracao <- possibly(fracao,
+                            otherwise = NA,
+                            quiet = TRUE)
+possibly_fracao(0)
+possibly_fracao(1)
+```
+
+## Lidando com mensagens de erro {.smaller}
+
+```{r, echo=F}
+fracao <- function(x) {
+  message("Olá, sou eu de novo!")
+
+  # problema com divisão por zero
+  if (near(x, 0)) {
+    stop("Proibido divisão por zero!")
+  }
+  
+  # problema com valores muito pequenos
+  if (abs(x) < 1e-4){
+    warning("Valor muito pequeno.")
+  }
+  
+  1 / x
+}
+```
+
+
+```{r, error=TRUE}
+quietly_fracao <- quietly(fracao)
+quietly_fracao(0)
+quietly_fracao(1)
+
+```
+
+## Lidando com mensagens de erro {.smaller}
+
+
+```{r, error=TRUE}
+safely_fracao <- safely(fracao, otherwise = NA, quiet = TRUE)
+safely_fracao(0)
+safely_fracao(1)
+
+```
+
+## Controle de fluxo {.smaller}
+
+* **Principais de fluxo:** `if-else`, `ifelse`, `for` e `while`
+* `if (<expressão>) {}`: executa as expressões em `{}` se o valor em `<expressão>` é `TRUE`
+
+```{r}
+if (TRUE) {
+  print("Olá")
+  print("Mundo")
+}
+```
+
+* `if-else`: Executa o corpo de `if` se a expressão em `if` é `TRUE`, caso contrário o corpo de `else`
+
+```{r}
+x <- FALSE
+if (x) {
+  print("Aqui temos TRUE.")
+} else {
+  print("Aqui temos FALSE.")
+}
+```
+
+## Controle de fluxo {.smaller}
+
+#### `ifelse`
+
+`ifelse(<expressão condicional>, <expressão 1>, <expressão 2>)`. `<expressão condicional>` retorna um vetor lógico. Versão vetorizada de `if-else`.
+
+```{r}
+x <- c(T, T, F)
+ifelse(x, 'Isto é Verdadeiro', 'Isto é Falso')
+```
+
+####  `for`
+
+`for(k in <vetor ou lista>) {}` repete os comandos do corpo `for` para cada elemento de `<vetor ou lista>`
+
+```{r}
+for(i in c(1, 4, 11)) {
+  glue("Elemento: {i}.") |> print()
+}
+```
+
+## Controle de fluxo {.smaller}
+
+* `while(<expressão>) {}` repete os comandos do corpo `while` enquanto `<expressão>` for `TRUE`
+
+```{r, echo=F}
+set.seed(11235)
+```
+
+```{r}
+x <- 'continue'
+while(x == 'continue') {
+  print("Estamos aqui com 'continue'")
+  x <- sample(c('continue', 'pare'), 1)
+}
+```
+
+## Controle de fluxo {.smaller}
+
+* `break` sai do loop imediatamente
+
+```{r, echo=F}
+set.seed(11235)
+```
+
+
+```{r}
+while(TRUE) {
+  print("Estamos continuando.")
+  x <- sample(c('continue', 'pare'), 1)
+  if (x == 'pare') {
+    print("Eu vou parar.")
+    break
+  }
+}
+```
+
+## Controle de fluxo {.smaller}
+
+* `next` volta ao início no corpo do laço
+
+```{r, echo=F}
+set.seed(11235)
+```
+
+```{r}
+for(k in 1:5) {
+  if(near(k, 3)) {
+    next
+  }
+  glue("k == {k}") |> print()
+}
+```
+
+## Controle de fluxo {.smaller}
+
+* `repeat {}`: repete os comandos do corpor `repeat`. Precisamos usar `break` para sair do laço
+
+```{r, echo=F}
+set.seed(11235)
+```
+
+```{r}
+repeat{
+  x <- sample.int(3, 1)
+  if(near(x, 2)) break
+  print(x)
+}
+```
+
+## Programação funcional com `map*` e `*apply`
+
+* `map*` do pacote `purrr` e as funções `*apply`(abreviação de laço)
+  * laços podem ser lentos, e `map*` e `*apply` são geralmente mais rápidos
+  * facilita a documentação do código
+* `apply(x, MARGIN, FUN,...)` retorna um vetor ou matrix (se `FUN` retornar um vetor) e retorna uma lista (se `FUN` retornar uma lista). `apply` computa `FUN` em cada linha de x se `MARGIN == 1`, ou computa `FUN` em cada coluna de x se `MARGIN == 2`.
+  * `x`: uma matriz ou data frame;
+  * `MARGIN`: `1` para calcular `FUN` em cada linhas; `2` para calcular `FUN` em cada coluna
+  * `...`: argumentos adicionais de `FUN`
+
+## Programação funcional com `map*` e `*apply`
+
+```{r}
+dados <- read_xlsx('data/raw/iris.xlsx')
+
+matriz <- dados |> 
+  dplyr::select(-Species) |> 
+  apply(2, \(x, ...) {
+    c(`Média` = mean(x, ...), `Desvio padrão` = sd(x, ...))
+  }, na.rm = T)
+class(matriz)
+matriz
+```
+
+## Programação funcional com `map*` e `*apply` {.smaller}
+
+* `sapply(x, FUN,...)` retorna um vetor ou matriz. `sapply` computa `FUN` para cada coluna (ou elemento) de `x`.
+  * `x`: vetor, lista, matriz ou data frame;
+  *  `FUN`: uma função;
+  * `...`: argumentos adicionais para `FUN`;
+
+```{r}
+dados <- read_xlsx('data/raw/iris.xlsx')
+
+matriz <- dados |> 
+  dplyr::select(-Species) |> 
+  sapply(\(x, ...){
+    c(`Média` = mean(x, ...), `Desvio padrão` = sd(x, ...))
+  }, na.rm = T)
+matriz
+```
+
+## Programação funcional com `map*` e `*apply` {.smaller}
+
+* `vapply(x, FUN, FUN.VALUE, ...)` similar a `sapply`, mas geralmente mais rápido. `vapply` computa `FUN` em  coluna (ou elmento) de `x` e precisamos especificar o tipo de dados retornado.
+  * `x`: vector, matriz, lista ou data frame;
+  *  `FUN`: uma função;
+  * `FUN.VALUE`: vetor especificando os valores que são retornados por FUN;
+  * `...`: argumentos adicionais para `FUN`;
+
+```{r}
+dados <- read_xlsx('data/raw/iris.xlsx')
+
+matriz <- dados |> 
+  dplyr::select(-Species) |> 
+  vapply(\(x, ...) {
+    c(`Média` = mean(x, ...), `Desvio padrão` = sd(x, ...))
+  }, FUN.VALUE = c(double(1), double(1)), na.rm = T)
+matriz
+```
+
+## Programação funcional com `map*` e `*apply` {.smaller}
+
+* `lapply(x, FUN,...)` retorna uma lista. `lapply` computa `FUN` para cada coluna (ou elemento) de `x`.
+  *  `x`: vetor, lista,  matriz ou data frame;
+  *  `FUN`: uma função;
+  * `...`: argumentos adicionais para `FUN`;
+
+```{r}
+dados <- read_xlsx('data/raw/iris.xlsx')
+
+lista <- dados |> 
+  dplyr::select(Sepal.Length, Petal.Length) |> 
+  lapply(\(x, ...) {
+    c(`Média` = mean(x, ...), `Desvio padrão` = sd(x, ...))
+  }, na.rm = T)
+lista
+
+```
+
+## Programação funcional com `map*` e `*apply` {.smaller}
+
+* **Pacote `purrr`:** faz quase a mesma coisa que `*apply`, mas a ideia é simplificar, padronizar e documentar para programação funcional. Também permite o uso de funções.
+* Na lista abaixo, `FUN` precisa retornar apenas um número e `x` é um vetor, matriz, lista ou data frame:
+  * `map(x, FUN, ...)` retorna uma lista;
+  * `map_df(x, FUN, ...)` retorna um data frame;
+  * `map_dbl(x, FUN, ...)` retorna um vetor de `double`;
+  * `map_chr(x, FUN, ...)` retorna um vetor de `character`;
+  * `map_int(x, FUN, ...)` retorna um vetor de `integer`;
+  * `map_lgl(x, FUN, ...)` retorna um vetor de `logical`;
+
+----
+
+```{r}
+dados <- read_xlsx('data/raw/iris.xlsx')
+
+dados |> dplyr::select(ends_with('Length')) |> map_dbl(~ sd(.x))
+
+dados |> dplyr::select(ends_with('Length')) |> map(\(x) sd(x))
+
+```
+
+----
+
+```{r}
+dados <- read_xlsx('data/raw/iris.xlsx')
+
+dados |> dplyr::select(ends_with('Length')) |> map_df(~ c(sd(.x), mean(.x), median(.x)))
+
+```
+
+## Manipulação de conjunto de dados: `dplyr` {.smaller}
+
+* **mutate** atualiza ou cria novas variáveis em um conjunto de dados.
+
+```{r}
+dados <- read_xlsx('data/raw/iris.xlsx')
+
+k <- ceiling(1 + log2(nrow(dados))) # regra de Sturge
+
+novo_dados <- dados |> 
+  mutate(comprimento_sepala_faixa = cut(Sepal.Length, breaks = k, include.lowest = TRUE,
+                                        right = FALSE, digits = 2))
+
+glimpse(novo_dados)
+```
+
+## Manipulação de conjunto de dados: `dplyr` {.smaller}
+
+* **arrange** ordenar o data frame por alguma coluna.
+
+```{r, message=FALSE}
+dados <- read_csv2('data/raw/mtcars.csv')
+
+head(dados, n = 3)
+
+novo_dados <- dados |> 
+  arrange(desc(cyl)) # sem desc ordena em ordem crescente
+head(novo_dados, n = 3)
+```
+
+## Manipulação de conjunto de dados: `dplyr` {.smaller}
+
+* **filter** filtra as linhas de um data frame.
+
+```{r}
+dados <- read_xlsx('data/raw/iris.xlsx')
+nrow(dados)
+
+novo_dados <- dados |> 
+  filter(Species == 'vetosa')
+
+glimpse(dados)
+```
+
+## Manipulação de conjunto de dados: `dplyr` {.smaller}
+
+* **rename** atualiza os nomes das variáveis. 
+
+**Atenção para sintaxe!!!**
+```r
+rename(<data-frame>, <novo nome> = <velho nome>)
+# ou
+<data-frame> |> rename(<novo nome> = <velho nome>)
+```
+
+```{r}
+dados <- read_xlsx('data/raw/iris.xlsx')
+colnames(dados)
+
+novo_dados <- dados |> 
+  rename(comprimento_sepala = Sepal.Length, comprimento_petala = Petal.Length,
+        largura_sepala = Sepal.Width, largura_petala = Petal.Width,
+        especies = Species)
+colnames(novo_dados)
+```
+
+## Manipulação de conjunto de dados: `dplyr` {.smaller}
+
+* **rename** atualiza os nomes das variáveis. 
+
+**Atenção para sintaxe!!!**
+```r
+mutate(<data-frame>, <nome da variavel> = recode(<nome da variavel>, <velho nome> = <novo nome>))
+# ou
+<data-frame> |> mutate(<nome da variavel> = recode(<nome da variavel>, <velho nome> = <novo nome>))
+```
+
+```{r}
+dados <- read_xlsx('data/raw/iris.xlsx')
+
+novo_dados <- dados |>
+  filter(Species %in% 'setosa') |> 
+  mutate(especies = recode(Species, "setosa" = "NovoNome"))
+
+head(novo_dados, n = 3)
+```

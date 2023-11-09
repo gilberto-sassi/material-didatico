@@ -3630,7 +3630,7 @@ ggplot(
 
 # Associção entre duas variáveis
 
-## Gráficos\newline Duas variáveis quantitativas
+## Associação entre duas variáveis quantitativas
 
 **Ideia**: estudar a associação entre duas variáveis quantitativas.
 
@@ -3668,7 +3668,7 @@ g1 + g2 + g3
 ```
 
 
-## Gráfico de dispersão
+## Associação entre duas variáveis quantitativas\newline gráfico de dispersão
 
 ```{r}
 #| eval: false
@@ -3697,11 +3697,129 @@ ggplot(dados_iris) +
   theme_minimal()
 ```
 
-## Gráfico de dispersão\newline Exercício
 
-Para o conjunto de dados `amostra_enem_salvador.xlsx`, construa o gráfico de dispersão entre as variáveis `nu_nota_mt` e `nu_nota_cn`. 
+## Associação entre duas variáveis quantitativas\newline exercício
+
+* Para o conjunto de dados `amostra_enem_salvador.xlsx`, calcule o coeficiente de correlação linear  entre as variáveis `nu_nota_mt` e `nu_nota_cn`. 
+* Para o conjunto de dados `amostra_enem_salvador.xlsx`, calcule o coeficiente de correlação linear  entre as variáveis `nu_nota_mt` e `nu_nota_lc`. 
 
 Inclua o argumento nomeado `alpha = 0.1` na função `geom_point` para incluir opacidade no gráfico de dispersão. Isso ajuda quando temos amostra de tamanho médio e grande.
+
+## Associação entre duas variáveis quantitativas\newline coeficiente de correlação linear de Pearson
+
+Suponha que temos uma amostra duas variáveis quantitativas:
+
+* $X:\quad x_1,\dots, x_n$
+* $Y:\quad y_1,\dots, y_n$
+
+Ao padronizarmos os valores de $X$ e $Y$, os seguintes comportamentos vão ocorrer:
+
+* A maioria dos pontos vão estar no primeiro e no terceiro quadrantes do plano cartesiano se, e somente se, $X$ e $Y$ estão positivamente associados.
+* A maioria dos pontos vão estar no segundo e no quadrante quadrantes do plano cartesiano se, e somente se, $X$ e $Y$ estão negativamente associados.
+* Os pontos vão estar igualmente distribuídos nos quadrantes do plano cartesiano se, e somente se, $X$ e $Y$ não estão associados.
+
+---
+
+```{r}
+#| echo: false
+#| out.width: 100%
+#| fig.cap: Comportamento do gráfico de dispersão para as variáveis quantitativas padronizadas na presença de associação positiva, associção negativa e sem associação.
+
+# tamanho das amostras
+tamanho <- 1000
+media <- c(0, 0)
+
+rho <- 0.95
+amostra <- rmvnorm(tamanho, media, rbind(c(1, rho), c(rho, 1)))
+df_positivo <- tibble(
+  x = amostra[, 1],
+  y = amostra[, 2],
+)
+positivo <- ggplot(df_positivo, aes(x, y)) +
+  geom_point() +
+  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = 0) +
+  lims(x = c(-5, 5), y = c(-5, 5)) +
+  labs(title = "Associação positiva") +
+  theme_minimal()
+
+rho <- -0.95
+amostra <- rmvnorm(tamanho, media, rbind(c(1, rho), c(rho, 1)))
+df_negativo <- tibble(
+  x = amostra[, 1],
+  y = amostra[, 2],
+)
+negativo <- ggplot(df_negativo, aes(x, y)) +
+  geom_point() +
+  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = 0) +
+  lims(x = c(-5, 5), y = c(-5, 5)) +
+  labs(title = "Associação negativa") +
+  theme_minimal()
+
+rho <- 0
+amostra <- rmvnorm(tamanho, media, rbind(c(1, rho), c(rho, 1)))
+df_nulo <- tibble(
+  x = amostra[, 1],
+  y = amostra[, 2],
+)
+nulo <- ggplot(df_nulo, aes(x, y)) +
+  geom_point() +
+  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = 0) +
+  lims(x = c(-5, 5), y = c(-5, 5)) +
+  labs(title = "Sem associação") +
+  theme_minimal()
+
+positivo + negativo + nulo
+```
+
+## Associação entre duas variáveis quantitativas\newline coeficiente de correlação linear de Pearson
+
+Note que:
+
+* $X$ e $Y$ são positivamente associadas:
+  a. A maioria dos pontos estão no primeiro e no terceiro quadrantes
+  a. A maioria das multiplicações das coordenadas são positivas
+* $X$ e $Y$ são positivamente associadas:
+  a. A maioria dos pontos estão no segundo e no quadrante quadrantes
+  a. A maioria das multiplicações das coordenadas são negativas
+* $X$ e $Y$ não são associadas:
+  a. Os pontos estão igualmente distribuídos nos quadrantes
+  a. As multiplicações das coordenadas estão divididas entre positivas e negativas
+
+\regrafina
+
+**Ideia:** pegar a média das multiplicações das coordenadas:
+$$
+r = \frac{\left( \frac{x_1 - \bar{x}}{s_x} \right)\cdot \left( \frac{y_1 - \bar{y}}{s_y} \right) + \cdots + \left( \frac{x_n - \bar{x}}{s_x} \right)\cdot \left( \frac{y_n - \bar{y}}{s_y} \right)}{n},
+$$
+onde $s_x$ é o desvio padrão de $X$ e $s_y$ é o desvio padrão de $Y$.
+
+---
+
+\footnotesize
+
+Para calcular o coeficiente de correção linear de Pearson, usamos as funções `cor` e `cor.test` (não é necessário instalar pacote).
+
+```{r}
+dados_iris |> 
+  summarise(correlacao = cor(comprimento_petala, comprimento_sepala))
+```
+
+\regrafina
+
+```{r}
+cor.test(dados_iris$comprimento_sepala, dados_iris$comprimento_petala)
+```
+
+\normalsize
+
+## Associação entre duas variáveis quantitativas\newline coeficiente de correlação linear de Pearson\newline Exercício
+
+* Para o conjunto de dados `amostra_enem_salvador.xlsx`, calcule o coeficiente de correlação linear  entre as variáveis `nu_nota_mt` e `nu_nota_cn`. 
+* Para o conjunto de dados `amostra_enem_salvador.xlsx`, calcule o coeficiente de correlação linear  entre as variáveis `nu_nota_mt` e `nu_nota_lc`. 
+
 
 ## Associação entre duas variáveis qualitativas
 
@@ -4262,6 +4380,8 @@ boxplot + violino + lv
 * Para o conjunto de dados `amostra_enem_salvador.xlsx`, compare a variável `nu_nota_mt` por raça (`tp_cor_raca`).
 * Para o conjunto de dados `amostra_enem_salvador.xlsx`, compare a variável `nu_nota_cn` por raça (`tp_cor_raca`).
 * Coloque os dois gráficos acima lado a lado usando o pacote `patchwork`.
+
+# Números índices
 
 # Customizando tabelas\newline\ usando o pacote `gt`
 

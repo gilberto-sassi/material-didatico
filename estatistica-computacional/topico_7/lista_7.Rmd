@@ -1,0 +1,27 @@
+---
+title: "Lista 7"
+author: "Gilberto Sassi"
+date: "Primeiro semestre de 2021."
+classdocument: article
+output: 
+    bookdown::pdf_document2:
+        toc: false
+        number_sections: false
+        includes:
+            in_header: "../assets/cabecalho.tex"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+rmarkdown::find_pandoc(dir = "/home/gilberto/.local/bin", version = "2.13")
+```
+
+**Nos exercícios abaixo, use métodos de monte carlo na sua resolução.**
+
+1. Suponha que um pesquisador coletou uma amostra com 100 trabalhadores na cidade de Savaldor  e mediu o tempo gasto no trajeto _casa_ ao _trabalho_ usando o sistema de transporte público. Este pesquisador assumiu que esta variável _tempo_ tem distribuição normal com variância igual a 25 minutos, e encontrou $\bar{x} = 47,2$ minutos. Existe evidência para afirmar que $\mu > 45$ ao nível de signifiância $5\%$?
+1. Considere o problema do exercício anterior. Desenhe um gráfico com eixo-y igual a probabilidade do erro tipo II e com eixo-x igual a $\mu$. 
+1. No primeiro exercício, qual seria decisão se usássemos o nível de significância $10\%$?
+1. No primeiro exercício, qual seria a sua decisão se o tamanho da amostra fosse $n=50, 100, 150$ ao nível de significância $10\%$? Repita o exercício 2 para $n=50, 100, 150$ e o que acontece com estas curvas?
+1. Para o conjunto de dados `carros.xlsx`, qual o valor-p no teste de hipóteses bilateral com $H_0: \mu = 15$ ao nível de significância $1\%$, em que $\mu$ é a velocidade média populacional dos carros? Assuma que `vel` tem distribuição normal.
+1. Para o conjunto de dados `empresa.xlsx`, existe evidência de que média salarial dos funcionários é maior que 10 salários mínimos ao nível de signifiância $5\%$? Assuma que $Salario$ tem distribuição normal.
+1. Para o conjunto de dados `iris.ods`, existe evidência de que o desvio padrão do comprimento de sépala é maior que $0,1$ centímetros? Use o procedimento de Neymann-Peason e nível de significância igual a $5\%$. Assuma a normalidade do comprimento de sépala. 
+1. Para o conjunto de dados `mtcars.csv`, existe evidência de que o desvio padrão da variável `mpg` (milhar por galão) é maior que 5 ao nível de significância $1\%$? Use o procedimento de Neymann-Pearsoon, e assuma a normalidade da variável `mpg`. 

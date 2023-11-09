@@ -1,0 +1,389 @@
+---
+title: "Estatística Computacional"
+subtitle: "Universidade Federal da Bahia"
+author: "Gilberto Pereira Sassi"
+date: "Tópico 4"
+output:
+  bookdown::ioslides_presentation2:
+    includes:
+    fig_caption: true
+    transition: "faster"
+    logo: "https://i.postimg.cc/ZRypsc2c/logo.jpg"
+    widescreen: true
+    css: "estilo.css"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = "center")
+library(readxl)
+library(writexl)
+library(ggthemes)
+library(glue)
+library(lvplot)
+library(tidyverse)
+```
+
+## Pacotes que iremos usar na semana 6
+
+```{r}
+library(readxl)
+library(readODS)
+library(writexl)
+library(ggthemes)
+library(lvplot)
+library(glue)
+library(tidyverse)
+```
+
+# Geração de documentos no `R`  <br><br><br> `rmarkdown` <br> ([`bookdown`](https://bookdown.org/yihui/bookdown/), [`blogdown`](https://bookdown.org/yihui/blogdown/), [`pkgdown`](https://pkgdown.r-lib.org/))
+
+## Sobre o `markdown` 
+
+* Criado em 2004 por [John Gruber](https://daringfireball.net/projects/markdown/)
+* Criado originalmente para fomatar textos em web
+* **Filosofia:** fácil de escrever, fácil de ler o código e permitir edição em forma de prosa – foco no conteúdo e não nos detalhes da linguagem (como pode ser o caso do `HTML`)
+* **Inspiração:** formatação permitida ao escrever e-mails
+* **Principais vantagens:**
+  * portável
+  * permite estilizar arquivos de texto e não depende de versões de programas como `power point` da `Microsoft`
+  * extremamente popular e usados em diversos aplicativos como [notion.so](https://www.notion.so/pt-br), [Hugo -- _Static Site Generator(SSG)_](https://gohugo.io/) e [Gatsby -- _SSG_](https://www.gatsbyjs.com/)
+
+## `markdown` na linguagem `R` {.smaller}
+
+* **`rmarkdown`**: permite gerar documentos de alta qualidade incluindo automaticamente tabelas, gráficos e sintaxe de forma simples usando `markdown`, além disso podemos incluir fórmulas matemáticas usando código latex. Permite gerar documentos no formato `.docx`, `.html`, `.ppt`, `apresentação beamer` e `.pdf` (usando código latex). Referências:
+  * **introdução ao `rmarkdown`**: [`rmarkdown`](https://rmarkdown.rstudio.com/lesson-1.html)
+  * **referência ao `rmarkdown`**: [documentação `rmarkdown`](https://bookdown.org/yihui/rmarkdown/)
+* **`pkgdown`**: extensão do pacote `rmarkdown` que permite criar um site com  a documentação de pacotes no `R`. Referências:
+  * **referência ao `pkgdown`**: [documentação `pkgdown`](https://pkgdown.r-lib.org/)
+* **`blogdown`**: extensão do pacote `rmarkdown` que usa o SSG [Hugo](https://gohugo.io/) que permite usar a linguagem `R` para criar blogs e websites
+  * **referências ao `blogdown`** [documentação `blogdown`](https://bookdown.org/yihui/blogdown/)
+* **`bookdown`**: extensão do pacote `rmarkdown` que permite construir artigos e livros acadêmicos.
+  * **referência ao `bookdown`**: [documentação `bookdown`](https://bookdown.org/yihui/bookdown/)
+
+Aqui vamos focar apenas no `rmarkdown`.
+
+## `markdown`: sintaxe básica {.smaller}
+
+Para detalhes da linguagem `markdown`, consulte [documentação markdown](https://www.markdownguide.org/getting-started/).
+
+##### Definindo seções, subseções e afins
+
+|`markdown`|`html`|`latex`|
+|:-------|:-----|:------|
+|`# texto`|`<h1>texto</h1>`|`\section{texto}`|
+|`## texto`|`<h2>texto</h2>`|`\subsection{texto}`|
+|`### texto`|`<h3>texto</h3>`|`\subsubsection{texto}`|
+|`#### texto`|`<h4>texto</h4>`|`\paragraph{texto}`|
+|`##### texto`|`<h5>texto</h5>`|`\subparagh{texto}`|
+|`###### texto`|`<h6>texto</h6>`||
+Table: Tabela _de-para_ entre `markdown`, `HTML` e `latex`.
+
+## `markdown`: sintaxe básica {.smaller}
+
+#### formatação de texto
+
+* **texto em negrito**: `**texto em negrito**` ou `__texto em negrito__`
+* _texto em itálico_: `_texto em itálico_` ou `*texto em itálico*`
+* ***texto em itálico e negrito***: `***texto em itálico e negrito***` ou `_**texto em itálico e negrito**_`
+* `código inline`: `` `código inline` `` (crase)
+* citação em bloco (equivalente a `<blockquote></blockquote>`)
+```html
+> ###### Texto
+> 
+> Uma citação qualquer.
+>
+>> Gilberto Pereira Sassi
+```
+
+> ###### Texto
+> 
+> Uma citação qualquer.
+>
+>> Gilberto Pereira Sassi
+
+## `markdown`: sintaxe básica {.smaller}
+
+#### listas
+
+* **listas não ordenadas**: equivalente a `\begin{itemize} \end{itemize}` no latex e a tag `<ul></ul>`. Podemos usar `*`, `+` e `-`
+
+<div class="columns-2">
+
+<div class="centered">
+
+<div class="green">
+
+#### Sintaxe `markdown`
+
+</div>
+
+```
+* primeiro item 
+* segundo item 
+```
+</div>
+
+<div class="centered">
+
+<div class="green">
+
+#### Resultado
+
+</div>
+
+
+* primeiro item 
+* segundo item 
+
+</div>
+
+</div>
+
+* **listas ordenadas**: equivalente a `\begin{enumerate} \end{enumerate}` no latex e a tag `<ol></ol>`. Podemos usar `1.`, `i.` e `a.`
+
+<div class="columns-2">
+
+<div class="centered">
+
+<div class="green">
+
+#### Sintaxe `markdown`
+
+</div>
+
+```
+1. primeiro item 
+1. segundo item 
+```
+</div>
+
+<div class="centered">
+
+<div class="green">
+
+#### Resultado
+
+</div>
+
+
+1. primeiro item 
+1. segundo item 
+
+</div>
+
+</div>
+
+## `markdown`: sintaxe básica {.smaller}
+
+#### Listas incrementais em apresentações:
+
+* lista não ordenada incremental: `>-`
+* lista ordenada incremental: `1.`
+
+#### endereços eletrônicos, imagem e quebra de linha
+
+ _`\href{}` é uma função do pacote `hyperref` do latex._
+
+|`markdown`|`html`|`latex`|
+|:---------|:------|:------|
+|`![texto alternativo](/caminho/até/arquivo.png)`|`<img src="/caminho/até/arquivo.png" alt="texto alternativo"/>`|`\includegraphic[]{}`|
+|`<email@exemplo.com>`|`<a href="mailto:email@exemplo.com">email@exemplo.com</a>`|`\href{mailto:email@exemplo.com}{email@exemplo.com}`|
+|`<br>`|`<br>`|`\\*`|
+|`[texto](https://endereço/index.html)`|`<a href="https://endereço/index.html"> texto </a>`|`\href{https://endereço/index.html}{texto}`|
+
+## `markdown`: sintaxe básica {.smaller}
+
+#### Tabela
+
+* cabeçalho de tabela é separado por três ou mais hífens `----` e as colunas são separadas por pipe `|`
+  * Alinhamentos: `:----` alinhamento à esquerda; `-----:` alinhamento à direita; `:------:` alinhamento ao centro
+
+<div class="columns-2">
+
+<div>
+<div class="green">
+
+#### Sintaxe `markdown`
+
+</div>
+
+```
+|coluna 1|coluna 2|coluna 3|
+|:----|:----:|------:|
+|texto 1|texto 2|texto 3|
+```
+
+</div>
+
+<div class="centered">
+<div class="green">
+
+#### Resultado
+
+</div>
+
+|coluna 1|coluna 2|coluna 3|
+|:----|:----:|------:|
+|texto 1|texto 2|texto 3|
+
+
+</div>
+
+</div>
+
+#### Subescrito, superescrito, _riscado_ e link para seções
+
+* Rótulo para seções: considere `### Seção 1 {#rotulo-secao-1}`. Podemos referenciar esta seção com `[seção 1](#rotulo-secao-1)`
+* Texto sobrescrito `^texto^`. **Exemplo:** `` x^2^ ``. **Resultado:** x^2^ 
+* Texto subescrito `~texto~`. **Exemplo:** `` H~2~O ``. **Resultado:** H~2~O
+* Texto _riscado_ `~~texto~~`. **Exemplo:** ``~~exemplo~~``. **Resultado:** ~~exemplo~~
+* Nota de rodapé (não funciona para latex-beamer): `^[nota de rodapé]` 
+
+## `markdown` no `R`: `rmarkdown` {.smaller}
+
+* **Objetivo:** simplificar a elaboração de relatórios, artigos e livros
+* Principais vantagens:
+  * Documentos facilmente reprodutível
+  * Código fácil de ler (`markdown`)
+  * Permite gerar documentos dinamicamente com o argumento `params`
+* O código fonte dos documentos em `rmarkdown` tem extensão `.Rmd` inclui as seguintes partes:
+  * Cabeçaho `YAML`: primeira parte do documento delimitada por três hífens, e include as formatações do documento
+  * `chunk`: lugar onde colocamos o nosso código `R` com a seguinte sintaxe:
+````markdown
+`r ''````{r}
+1 + 1
+log2(10)
+```
+````
+  * `inline chunk`: permite colocar código `R` no meio de uma linha.  `` `r
+  1 + 1` ``
+  * texto escrito e formatado usando `markdown`
+  * Equações usando código latex
+
+## YAML (Yeat Another Markup Language) {.smaller}
+
+* O cabeçalho `YAML` começa na primeira linha e está demilitada entre `---` e `---`
+
+```yaml
+---
+yaml header
+---
+```
+
+* Opções de `.Rmd` no cabeçalho `YAML`:
+  * `title`: string indicando o título do documento
+  * `date`: string indicando a data de criação do documento
+  * `font-size`: tamanho da fonte
+  * `bibliography`: arquivo bibtex `.bib` com as referências
+  * `biblio-style`: estilo bibtex
+  * `output`: formato do documento gerado. Os mais usados: `bookdown::pdf_document2`, `bookdown::word_document2`, `bookdown::beamer_presentation2` e `bookdown::ioslides_presentation2`
+
+## YAML (Yeat Another Markup Language) {.smaller}
+
+### Opções para `output`
+
+* `highlight`: coloração e destaque do código. Valores possíveis: _tango_, _pygments_, _kate_, _monochrome_, _espresso_, _zenburn_, and _haddock_
+* `fig_caption`: `true` ou `false`. `true` indica que as figuras serão numeradas
+* `toc`: `true` ou `false`. `true` indica que o documento terá sumário
+* `toc_depth`: qual a profundidade para incluir no sumário. Por ex: se `toc_depth: 3`, então o `rmarkdown` inclui no sumário todos os textos em `#`, `##` e `###`
+
+#### Apenas para beamer
+
+* `theme`: tema para apresentação em beamer. Consulte a matriz de temas no endereço eletrônico: [matriz de temas](https://hartwork.org/beamer-theme-matrix/)
+* `colortheme` : cor do tema para apresentação em beamer. Consulte a matriz de temas no endereço eletrônico: [matriz de temas](https://hartwork.org/beamer-theme-matrix/)
+
+#### Apens para `.docx`
+
+* `reference_docx`: documento `.docx` que serve de template para o `rmarkdown`
+
+## YAML (Yeat Another Markup Language) 
+
+### Opções para `output`
+
+#### opções para arquivos gerados pelo latex
+
+* `includes`:
+  * `in_header`: inclui código entre ` \documentclass[]{}` e `\begin{document}`
+  * `before_body`: inclui código imediatamente **depois** do `\begin{document}`
+  * `after_body`: inclui código imediatamente **antes** do `\end{document}`
+* `keep_text`: `true` ou `false`. `true` indica que o código latex será salvo em arquivo separado 
+
+----
+
+#### opções apenas `bookdown::pdf_document2`
+
+* `documentclass`: tipo de documento – por exemplo `article`, `memoir` ou `IEEEtran`
+* `classoptions`: opções para o comando `\documentclass[opções]{}` – por exemplo `oneside`
+
+## Fórmulas matemáticas: `rmarkdown` {.smaller}
+
+
+* fórmulas _inline_: envolva as fórmulas em código latex com `\( \)` ou `$ $`. **Exemplo:** `\(\frac{x}{y}\)`. **Resultado:** \(\frac{x}{y}\).
+* fórmula centralizada: envolva as fórmulas em código latex com `$$ $$` (ou use `\begin{equation}` `\end{equation}`)
+
+#### Trechos de código latex que você pode vir a usar
+
+* fração: `\frac{x}{y}`. **Exemplo:** `\(\frac{x}{y}\)`. **Resultado:** \(\frac{x}{y}\)
+* somatório: `\sum_{k=a}^{b}`. **Exemplo:** `\(\sum_{k=a}^{b}x_k\)`. **Resultado:** \(\sum_{k=a}^{b} x_k\)
+* potenciação: `x^a`. **Exemplo:** `x^a`. **Resultado:** \(x^a\)
+* subescrito: `y_a`. **Exemplo:** `y_a`. **Resultado:** \(y_a\)
+* integração: `\int_{a}^{b} `. **Exemplo:** `\int_{a}^{b} f(u)du`. **Resultado:** \(\int_{a}^{b}f(u) du\)
+* Para mais fórmulas, consulte: [referência latex](https://en.wikibooks.org/wiki/LaTeX/Mathematics)
+* Você usar o aplicativo `destexify`: [detexify](http://detexify.kirelabs.org/classify.html)
+
+## Parâmetros para bloco de códigos (ou `chunk`) {.smaller}
+
+* Bloco de código: começa com três crases e termina com três crases
+  * O `rmarkdown` usa `label` para salvar localmente figuras e arquivos temporarios dentro do projeto
+````markdown
+`r ''````{r label, <opções>}
+bloco de códigos
+```
+````
+
+* `eval`: parâmetro lógico. `TRUE` indica que o código não será processado
+* `echo`: parâmetro lógico. `TRUE` indica que o código do _chunk_ será incluído no documento 
+* `error`: parâmetro lógico. `TRUE` indica que o código (com erro de programação) será incluído no documento e a mensagem de erro também será incluída no documento
+*  `message`: parâmetro lógico. `FALSE` indica que mensagens geradas pelo código não serão incluídas no documento
+* `warnings`: parâmetro lógico. `FALSE` indica que mensagens de `warnings` geradas pelo código não serão incluídas no documento
+* `cache`: parâmetro lógico. `TRUE` indica que o `rmarkdown` vai salvar o resultado do processamento em uma pasta dentro do projeto para evitar o processamento desse código toda vez que você construir o documento com `rmarkdown::render()` (ou `crtl+shift+k` no _rmarkdown_)
+
+## Parâmetros para bloco de códigos (ou `chunk`) 
+
+* `fig.align`: alinhamento da figura. Uma das opções: `left`, `right` ou `center`
+* `fig.cap`: legenda da figura
+* `out.height`: altura da figura (sugiro usar porcentagem)
+* `out.width`: largura da figura (sugiro usar porcentagem)
+
+## Referência cruzada (usando `bookdown`)
+
+#### Equações (não funciona bem com arquivos `.html`)
+
+* Colocamos `(\#eq:label)` dentro de `\begin{equation} \end{equation}` ou `\begin{align} \end{align}`
+* Para referenciar no texto, use `\@ref(eq:label)`
+
+#### Figuras 
+
+* Cabeçalho no `chunk`: `{r label, fig.cap = "Legenda dafigura."}`
+* Para referência no texto, use `\@ref(fig:label)`
+
+#### Teoremas, definições e afins
+
+* Criamos um `chunk` substituindo o `r` por algum `ambiente` no cabeçalho: `{ambiente, label = "label", name = "Nome do ambiente"}`
+* Para referencia no texto, use `\@ref(prefixo:label)`
+
+## Referência cruzada (usando `bookdown`) {.smaller}
+
+#### Teoremas, definições e afins
+
+|`ambiente`|Nome impresso no texto|`prefixo` para usar em `\@ref()`|
+|:-------|:--------|:---------:|
+|`theorem`|Teorema|`thm`|
+|`lemma`|Lema|`lem`|
+|`corollary`|Corolário|`cor`|
+|`proposition`|Propósito|`prp`|
+|`conjecture`|Conjuntura|`cnj`|
+|`definition`|Definição|`def`|
+|`example`|Exemplo|`exm`|
+|`exercise`|Exercício|`exr`|
+

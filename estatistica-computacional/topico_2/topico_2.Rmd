@@ -1,0 +1,305 @@
+---
+title: "Estatística Computacional"
+subtitle: "Universidade Federal da Bahia"
+author: "Gilberto Pereira Sassi"
+date: "Tópico 2"
+output:
+  bookdown::ioslides_presentation2:
+    transition: "faster"
+    logo: "https://i.postimg.cc/ZRypsc2c/logo.jpg"
+    widescreen: true
+    css: "assets/estilo.css"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align="center")
+library(readxl)
+library(writexl)
+library(ggthemes)
+library(lvplot)
+library(tidyverse)
+```
+
+## Pacotes que iremos usar na semana 3
+
+```{r}
+library(readxl)
+library(readODS)
+library(writexl)
+library(ggthemes)
+library(lvplot)
+library(tidyverse)
+```
+
+# Estatística Descritiva no `R`<br/><br/><br/> gráficos e tabelas 
+
+## Tabela de Distribuição de Frequências {.smaller} 
+
+#### Tabela de Distribuição de Frequências
+
+* `X`: variável qualitativa ou variável quantitativa discreta
+
+|$X$|Frequência|Frequência relativa|Porcentagem|
+|:------:|:------------:|:-------:|:-----------:|
+|$B_1$|$n_1$|$f_1 = \frac{n_1}{n_1+\cdots+n_k}$|$p_1 = f_1 \cdot 100$|
+|$B_2$|$n_2$|$f_2 = \frac{n_2}{n_1+\cdots+n_k}$|$p_2 = f_2 \cdot 100$|
+|$\vdots$|$\vdots$|$\vdots$|$\vdots$|
+|$B_k$|$n_k$|$f_k = \frac{n_k}{n_1+\cdots+n_k}$|$p_k = f_k \cdot 100$|
+Table: Tabela de distribuição de Frequências.
+
+Em que os valores possíveis de `X` são $B_1, \dots, B_k$, $n_i$ é a frequência da categoria $B_i$, $i=1, \dots, k$, $f_i$ é a frequência relativa da categoria $B_i$, $i=1, \dots, k$, e $p_i$ é a porcentagem da categoria $B_i$, $i=1, \dots, k$.
+
+## Estatística Descritiva no `R` {.smaller}
+
+#### Tabela de Distribuição de Frequências
+
+```{r}
+dados_iris <- read_xlsx("data/raw/iris.xlsx")
+
+tab <- dados_iris |> 
+  group_by(Species) |> 
+  summarise(`Frequência` = n()) |> 
+  mutate(`Frequência relativa` = `Frequência` / sum(`Frequência`),
+         Porcentagem = `Frequência relativa` * 100)
+tab
+write_ods(tab, "data/processed/tabela_frequencias_especies.ods")
+write_xlsx(tab, "data/processed/tabela_frequencias_especies.xlsx")
+```
+
+## Gráficos no `tidyverse` 
+
+* **Pacote:** `ggplot` 
+* Permite gráficos personalizados com uma sintaxe simples e rápida, e iterativa _por camadas_
+* Começamos com um camada com os dados `ggplot(dados)`, e vamos adicionando as camadas de anotações, e sumários estatísticos
+* Usa a _gramática de gráficos_ proposta por Leland Wilkinson: [Grammar of Graphics](https://www.springer.com/gp/book/9780387245447)
+* Ideia desta gramática: delinear os atributos estéticos das figuras geométricas (incluindo transformações nos dados e mudança no sistema de coordenadas)
+
+* Para mais detalhes, você pode consultar [`ggplot2`: elegant graphics for data analysis](https://ggplot2-book.org) e [documentação do `ggplot2`](https://ggplot2.tidyverse.org)
+
+## Gráficos no `tidyverse` 
+
+#### Estrutura básica de `ggplot2`:
+
+```{r, eval=FALSE}
+ggplot(data = <data possible tibble>) +
+  <Geom functions>(mapping = aes(<MAPPINGS>)) +
+  <outras camadas>
+```
+
+Você pode usar diversos temas e extensões que a comunidade cria e criou para melhorar a aparência e facilitar a construção de `ggplot2`.
+
+* Lista com extensões do `ggplot`: [extensões do `ggplots`](https://exts.ggplot2.tidyverse.org/gallery/)
+
+Eu já usei as seguinte extensões:
+
+* Temas adicionais para o pacote `ggplot2`: [`ggthemes`](https://github.com/jrnold/ggthemes)
+* Gráfico de matriz de correlação: [`ggcorrplot`](https://rpkgs.datanovia.com/ggcorrplot/)
+* Gráfico quantil-quantil: [`qqplotr`](https://github.com/aloy/qqplotr)
+
+
+## Gráficos no `tidyverse` 
+
+#### Gráfico de Barras no `ggplot2`
+
+* **função:** `geom_bar()`. Para porcentagem: `geom_bar(x = <variável no eixo x>, y = ..prop.. * 100)`.
+* Argumentos adicionais:  
+  * **`fill`**: mudar a cor do preenchimento das figuras geométricas
+  * **`color`**: mudar a cor da figura geométrica
+
+#### Rótulos dos eixos
+
+* **Mudar os rótulos:** `labs(x = <rótulo do eixo x>, y = <rótulo do eixo y>)`
+* **Trocar o eixo-x pelo eixo-y:** `coord_flip()`
+
+-----
+
+```{r, out.width="55%"}
+ggplot(dados_iris) +
+  geom_bar(mapping = aes(x = Species, y = ..prop.. * 100, group = 1),
+  fill = "blue", color = "red") +
+  labs(x = "Espécies", y = "Porcentagem") +
+  theme_gdocs() +
+  coord_flip()
+```
+
+## Tabela de Distribuição de Frequências 
+
+#### Tabela de Distribuição de Frequências
+
+* `X`: variável quantitativa contínua
+
+|`X`|Frequência|Frequência relativa|Porcentagem|
+|:-----:|:-------:|:-------:|:---------:|
+|$[l_0, l_1)$| $n_1$|$f_1 = \frac{n_1}{n_1 + \dots + n_k}$|$p_1 = f_1 \cdot 100$|
+|$[l_1, l_2)$| $n_2$|$f_2 = \frac{n_2}{n_1 + \dots + n_k}$|$p_2 = f_2 \cdot 100$|
+|$\vdots$| $\vdots$|$\vdots$|$\vdots$|
+|$[l_{k-1}, l_k]$| $n_k$|$f_k = \frac{n_k}{n_1 + \dots + n_k}$|$p_k = f_k \cdot 100$|
+Table: Tabela de Distribuição de Frequências para a variável quantitativa contínua.
+
+-----
+
+Em que $\min = l_0 \leq l_1 \leq \cdots \leq l_{k-1} \leq l_k = \max$ ($\min$ é o menor valor do suporte da variável `X` e $\max$ é o maior valor do suporte da variável `X`), $n_i$ é número de valores de `X` entre $l_{i-1}$ e $l_i$, e $l_0, l_1, \dots, l_k$ quebram o suporte da variável `X` (_breakpoints_). 
+
+$l_0, l_1, \cdots, l_k$ são escolhidos de acordo com a teoria por trás da análise de dados (ou pelo regulador). Se você está em uma nova área, use $l_0, l_1, \cdots, l_k$ igualmente espaçados, e use a [regra de Sturges](https://onlinelibrary.wiley.com/doi/10.1002/wics.35) para determinar o valor de $k$: $k = 1 + \log2(n)$ onde $n$ é tamanho da amostra. Se $1 + \log2(n)$ não é um número inteiro, usamos $k = \lceil 1 + \log2(n) \rceil$.
+
+
+## Tabela de Distribuição de Frequências {.smaller} 
+
+#### Tabela de Distribuição de Frequências
+
+
+```{r, out.width="40%"}
+k <- ceiling(1 + log2(nrow(dados_iris))) # regra de Sturges
+
+dados_iris <- dados_iris |> 
+  mutate(sepal_length_intervalo = cut(Sepal.Length, breaks = k, include.lowest = T, right = F))
+
+tab <- dados_iris |> 
+  group_by(sepal_length_intervalo) |> 
+  summarise(`Frequência` = n()) |> 
+  mutate(`Frequência relativa` = `Frequência` / sum(`Frequência`),
+        Porcentagem = `Frequência relativa` * 100)
+head(tab, n = 3)
+
+write_ods(tab, "data/processed/tabela_frequencias_sepal_length.ods")
+write_xlsx(tab, "data/processed/tabela_frequencias_sepal_length.xlsx")
+```
+
+
+## Gráficos no `tidyverse`  {.smaller}
+
+#### Histograma no `ggplot2`
+
+* **função:** `geom_histogram()`. Para densidade de frequência: `geom_bar(x = <variável no eixo x>, y = ..density..)`. É necessário fornecer ou _bins_ ou _breaks_:
+  * Se _bins_ é fornecido como um númeo inteiro, esta função cria faixas de tamanhos iguais para calcular a densidade de frequências
+  * Se _breaks_ é fornecido como um vetor
+* Argumentos adicionais:  
+  * **`fill`**: mudar a cor do preenchimento das figuras geométricas
+  * **`color`**: mudar a cor da figura geométrica
+
+#### Rótulos dos eixos
+
+* **Mudar os rótulos:** `labs(x = <rótulo do eixo x>, y = <rótulo do eixo y>)`
+* **Trocar o eixo-x pelo eixo-y:** `coord_flip()`
+
+----
+
+```{r, out.width="40%"}
+k <- ceiling(1 + log2(nrow(dados_iris))) # regra de Sturges
+
+dados_iris <- dados_iris |> 
+  mutate(sepal_length_intervalo = cut(Sepal.Length, breaks = k, include.lowest = T,
+                                      right = F))
+
+ggplot(dados_iris) +
+  geom_histogram(aes(x = Sepal.Length, y = ..density..),
+                bins = k, closed = 'left', fill = "blue", color = "red") +
+  theme_gdocs() +
+  labs(x = "Comprimento da Sépala", y = "Densidade de Frequência")
+```
+
+## Gráficos no `tidyverse`  {.smaller}
+
+#### Diagrama de caixa (boxplot) no `ggplot2`
+
+* **função:** `geom_boxplot()`. É necessário fornecer a variável _y_:
+* Argumentos adicionais:  
+  * **`fill`**: mudar a cor do preenchimento das figuras geométricas
+  * **`color`**: mudar a cor da figura geométrica
+
+#### Rótulos dos eixos
+
+* **Mudar os rótulos:** `labs(x = <rótulo do eixo x>, y = <rótulo do eixo y>)`
+* **Trocar o eixo-x pelo eixo-y:** `coord_flip()`
+
+-----
+
+```{r}
+ggplot(dados_iris) +
+  geom_boxplot(aes(x = Species, y = Sepal.Length), fill = "blue", color = "red") +
+  labs(x = "Espécie", y = "Comprimento de sépala") +
+  theme_gdocs()
+```
+
+## Medidas de resumo {.smaller}
+
+* Usamos a função `summarise` do pacote `dplyr`
+* Usamos a função `group_by` do pacote `dplyr` (medidas de resumo por categoria)
+
+```{r}
+tab <- dados_iris |> 
+  group_by(Species) |> 
+  summarise(`Média` = mean(Sepal.Length), `Variância` = var(Sepal.Length), 
+            `Desvio Padrão` = sd(Sepal.Length), Mediana = median(Sepal.Length),
+            q1 = quantile(Sepal.Length, probs = 0.25),
+            q3 = quantile(Sepal.Length, probs = 0.75))
+
+tab
+
+write_ods(tab, 'data/processed/medidas_resumo_sepal_length.ods')
+write_xlsx(tab, 'data/processed/medidas_resumo_sepal_length.xlsx')
+```
+
+## Tabela de contingência {.smaller}
+
+* `empresa.xlsx`: conjunto de dados com informações socio-econômicas de `36` funcionários de uma determinada empresa. Este conjunto de dados é um exemplo didátivo do livro [`Estatística Bussab` de Bussab e Morettin](https://www.saraiva.com.br/estatistica-basica-9-ed-2017-9748081/p). Este conjunto de dados pode ser baixado na página pessoal de Pedro Morettin: [Pedro Morettin](http://www.ime.usp.br/~pam/dados.RData).
+
+```{r}
+dados_funcionarios <- read_xlsx("data/raw/empresa.xlsx")
+
+tab <- dados_funcionarios |> 
+  group_by(`Estado Civil`, `Grau de Escolaridade`) |> 
+  summarise(`Frequência` = n(), .groups = 'rowwise') |> 
+  pivot_wider(names_from = `Grau de Escolaridade`, values_from = `Frequência`)
+tab
+
+write_ods(tab, "data/processed/contingencia_estado_civil_escolaridade.ods")
+write_xlsx(tab, "data/processed/contingencia_estado_civil_escolaridade.xlsx")
+```
+
+## Gráfico de barras (duas variáveis) {.smaller}
+
+```{r, out.width="60%"}
+ggplot(dados_funcionarios) +
+  geom_bar(aes(x = `Estado Civil`, fill = Procedencia), position = 'fill') +
+  labs(x = "Estado civil", y = "Porcentagem", fill = "Procedência") +
+  scale_y_continuous(breaks = c(0, 0.25, 0.5, 0.75, 1),
+                    labels = c(0, 25, 50, 75, 100)) +
+  theme_gdocs()
+```
+
+## Gráfico de dispersão (duas variáveis) 
+
+```{r, out.width="60%"}
+ggplot(dados_iris) +
+  geom_point(aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
+  labs(x = "Comprimento de sépala", y = "Comprimento de pétala",
+      color = "Espécies") +
+  theme_gdocs()
+```
+
+##  Gráfico _violin_ {.smaller}
+
+* Generalização do diagrama de caixa. Para mais detalhes, consulte: [`geom_violin`](https://ggplot2.tidyverse.org/reference/geom_violin.html)
+
+
+```{r, out.width="60%"}
+ggplot(dados_iris) +
+  geom_violin(aes(x = Species, y = Sepal.Length, fill = Species),
+              show.legend = FALSE) +
+  labs(x = "Espécies", y = "Comprimento de sépala") +
+  theme_gdocs()
+```
+
+##  Gráfico _lvplot_ {.smaller}
+
+* Generalização do diagrama de caixa. Para mais detalhes, consulte: [`lvplot`](https://doi.org/10.1080/10618600.2017.1305277)
+* **Pacote:** `lvplot`
+
+```{r, out.width="55%"}
+ggplot(dados_iris) +
+  geom_lv(aes(x = Species, y = Sepal.Length, fill = Species),
+              show.legend = FALSE) +
+  labs(x = "Espécies", y = "Comprimento de sépala") +
+  theme_gdocs()
+```

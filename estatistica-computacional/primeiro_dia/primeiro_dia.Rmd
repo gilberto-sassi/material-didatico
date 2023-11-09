@@ -1,0 +1,92 @@
+---
+title: "Estatística Computacional A"
+subtitle: "Universidade Federal da Bahia"
+author: "Gilberto Pereira Sassi"
+date: "Contrato Didático"
+output:
+  bookdown::ioslides_presentation2:
+    transition: "faster"
+    logo: "assets/logo.jpeg"
+    widescreen: true
+    css: "assets/estilo.css"
+---
+
+## Atividades síncronas {.smaller}
+
+### Sala de aula
+
+Encontro síncrono com o professor e moderador deste curso: no caso, eu, Gilberto.
+
+* Dúvida + explicação de conceitos.
+* Tolerância de 15 minutos. 
+* Usaremos o recurso _bigBlueButton_ do Ambiente Virtual de Aprendizagem. As aulas serão gravadas e as gravações ficarão disponíveis no AVA.
+* Não tenho acesso as gravações do AVA. Por causa dos cortes orçamentários, o AVA está experimentando dificuldades e pode ocontecer atrasos na disponibilização das gravações.
+
+### Sala de atendimento
+
+Encontro síncrono para eu te ouvir, conversar e te atender.
+
+* Estes encontros serão gravados e ficarão disponíveis no AVA.
+* Tolerância de 15 minutos. Se não aparecer ninguém, fecharei a sala. 
+* Sinta-se a vontade para discutir nota de prova, nota de atividades semanais, e qualquer outro assunto que você quiser.
+
+## Atívidades assíncronas {.smaller}
+
+As atividades assíncronas valem um total de **seis pontos**.
+
+### Atividade semanal
+
+* Vamos decidir juntos quanto esta atividade vale!
+* Toda semana uma atividade para você entregar no AVA.
+* **Atividades entregues via e-mail não serão corrigidas**.
+
+### Fórum 
+
+* Vamos decidir juntos quanto essa atividade vale!
+* Nota final pela participação (Vamos decidir no primeiro dia de aula).
+* Dúvidas, material de estudo e qualquer outro assunto que você julgar relevante. 
+
+## Atividades assíncronas 
+
+### Trabalho final 
+
+* Vamos decidir junto quanto vale essa atividade.
+* Relatório para entregar no dia 05/08/2021. Este relatório tem no máximo cinco páginas!
+* Vamos analisar dados reais: **ENEM 2019**
+* Grupos de cinco discentes, e cada grupo analisará uma amostra de mil candidatos de uma capital. 
+* Grupos criados aleatoriamente pelo AVA.
+* Cada grupo tem um fórum e uma sala do recurso _bigBlueButton_ separadas (apenas o moderador do curso, eu, e as discentes do grupo terão acesso a este fórum e sala)
+* **Entregas via e-mail não serão corrigidas**.
+
+## Avaliação {.smaller}
+
+### Atividades síncronas: **seis pontos**
+
+* Duas provas -- duração de 168 horas no AVA.
+* **Primeira prova (P1)**: 10/10/2021.
+* **Segunda prova (P2)**: 05/12/2021.
+* **Nota das atividades síncronas**: \(NS = \frac{P_1 + P_2}{2}\).
+
+### Atividades assíncronas: **seis pontos**
+
+* **Atividade semana (AS)**: _a definir_
+* **Trabalho final (TF)**: _a definir_
+* **Fórum (F)**: _a definir_
+* **Nota das atividades assíncronas (NA)**: \(NA = AS + TF + F\)
+
+## Avaliação
+
+### Nota final
+
+* **Nota final**: \(NF = NA + NS\).
+* **Aprovação**: \(NF \geq 5\).
+
+## _Don't panic_
+
+* Não vamos cobrar presença nas atividades síncronas.
+* Caso $NF<5$, essa reprovação não vai aparecer no seu histórico escolar.
+* Caso $NF<5$, essa reprovação não vai afetar o seu Coeficiente de Rendimento.
+* Fique calmo, permaneça calmo e se concentre em aprender.
+* O importante é participar. 
+* **Dica**: a prova será construída com  exercícios da lista de exercícios!
+* **Lembre-se**: caso $NF<5$, você vai estar mais preparado para ser aprovado na disciplina **Métodos Estatísticos** quando as atividades presenciais retornar na UFBA.

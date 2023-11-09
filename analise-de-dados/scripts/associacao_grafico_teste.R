@@ -3,6 +3,7 @@ library(pacman)
 p_load(
   readxl, writexl, e1071, lettervalue, KbMvtSkew,
   scales, patchwork,
+  mvtnorm,
   dados,
   janitor,
   psycho,
@@ -139,3 +140,56 @@ ggplot(salvador) +
 
 summary(lm(nu_nota_mt ~ tp_cor_raca, data = salvador))$adj.r.squared
 r2(salvador, tp_cor_raca, nu_nota_mt)
+
+
+# correlacao --------------------------------------------------------------
+
+# tamanho das amostras
+tamanho <- 1000
+media <- c(0, 0)
+
+rho <- 0.95
+amostra <- rmvnorm(tamanho, media, rbind(c(1, rho), c(rho, 1)))
+df_positivo <- tibble(
+  x = amostra[, 1],
+  y = amostra[, 2],
+)
+positivo <- ggplot(df_positivo, aes(x, y)) +
+  geom_point() +
+  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = 0) +
+  lims(x = c(-5, 5), y = c(-5, 5)) +
+  labs(title = "Associação positiva") +
+  theme_minimal()
+
+rho <- -0.95
+amostra <- rmvnorm(tamanho, media, rbind(c(1, rho), c(rho, 1)))
+df_negativo <- tibble(
+  x = amostra[, 1],
+  y = amostra[, 2],
+)
+negativo <- ggplot(df_negativo, aes(x, y)) +
+  geom_point() +
+  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = 0) +
+  lims(x = c(-5, 5), y = c(-5, 5)) +
+  labs(title = "Associação negativa") +
+  theme_minimal()
+negativo
+
+rho <- 0
+amostra <- rmvnorm(tamanho, media, rbind(c(1, rho), c(rho, 1)))
+df_nulo <- tibble(
+  x = amostra[, 1],
+  y = amostra[, 2],
+)
+nulo <- ggplot(df_nulo, aes(x, y)) +
+  geom_point() +
+  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = 0) +
+  lims(x = c(-5, 5), y = c(-5, 5)) +
+  labs(title = "Sem associação.") +
+  theme_minimal()
+nulo
+
+positivo + negativo + nulo

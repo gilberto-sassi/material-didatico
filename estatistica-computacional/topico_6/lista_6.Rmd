@@ -1,0 +1,20 @@
+---
+title: "Lista 6"
+author: "Gilberto Sassi"
+date: "Primeiro semestre de 2021."
+classdocument: article
+output: 
+    bookdown::pdf_document2:
+        toc: false
+        number_sections: false
+        includes:
+            in_header: "../assets/cabecalho.tex"
+---
+
+1. Seja $X_1, \dots, X_n \sim Bernoulli(p)$ e seja $Y_1, \dots, Y_m \sim Bernoulli(q)$. Encontre o estimator _plug-in_ da probabilidade de sucesso e o erro padrão deste estimador. Encontre o estimador _plug-in_ de $p-q$ e o erro padrão deste estimador. Encontre um intervalo de confiança com coeficiente de confiança $\gamma = 90\%$.
+1. Gere 100 observações da distribuição normal padrão. Construa um intervalo de confiança para função de distribuição acumulada. Repita este processo 1000 vezes e verifique quantas vezes o intervalo de confiança contém a verdadeira função de distribuição acumulada. Repita esse processo para distribuição Cauchy e distribuição t-Student com 5 graus de liberdade.
+1. Seja $X_1, \dots, X_n \sim F$ e considere a função de distribuição acumulada empírica. Para cada $x$, use  o teorema do limite central para encontrar a distribuição limite de $F_n(x)$.
+1. Para $x$ e $y$ com $x \neq y$, calcule $Cov(F_n(x), F_n(y)$.
+1. Seja $X_1, \dots, X_n \sim F$ e considere $F_n$ a função de distribuição empírica. Seja $a < b$ dois números fixos e defina $\theta = T(F) = F(b) - F(a)$, e seja $\hat\theta = T(F_n) = F_n(b) - F_n(a)$. Encontre o erro padrão de $\hat\theta$, e encontre um intervalo de confiança com coeficiente de confiança $\gamma = 1 - \alpha$ para $\theta$.
+1. Considere os dados de um estudo de tempo de vida de pacientes com _Câncer de Pulmão_ do pacote `survival`. Este conjunto de dados tem quatro variáveis: `tempo` -- tempo até a morte em dias; `idade` -- idade do paciente; `genero` -- gênero que o paciente se identifica; `calorias` -- calorias diárias consumidas pelo paciente. Estime o tempo de sobrevida de um paciente com câncer de pulmão, e use o teorema do limite central para calcular o erro padrão da estimativa. Adicionalmente, construa um intervalo de confiança com coeficiente de confiança $\gamma = 95\%$ para o tempo médio de sobrevida. Estime o tempo mediano de sobrevida. Os dados para este exercício está disponível em [https://gilberto-sassi.netlify.app/files/2sem2021/datasets/cancer_pulmao.csv](https://gilberto-sassi.netlify.app/files/2sem2021/datasets/cancer_pulmao.csv), e em [https://gilberto-sassi.netlify.app/files/2sem2021/datasets/cancer_pulmao.xlsx](https://gilberto-sassi.netlify.app/files/2sem2021/datasets/cancer_pulmao.xlsx).
+1. 100 pessoas tomaram um antiobiótico padrão para tratar uma infecção e outras 100 pessoas tomaram um novo antibiótico. No primeiro grupo, 90 pessoas se recuperaram, e no segundo grupo 85 pessoas se recuperaram. Seja $p_1$ a probabilidade de recuperação sob o tratamento com o antiobiótico padrão e $p_2$ a probabilidade recuperação sob o tratamento com o novo antiobiótico. Estamos interessados em estudar o funcional estatístico $\theta = p_1 - p_2$. Forneça uma estimativa pontual para $\theta$, o erro padrão desta estimativa, um intervalo de confiança com confiente de confiança $95\%$ e outro intervalo de confiança com coeficiente de confiança $99\%$.

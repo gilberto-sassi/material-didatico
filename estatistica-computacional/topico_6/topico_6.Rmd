@@ -1,0 +1,235 @@
+---
+title: "Estatística Computacional"
+subtitle: "Universidade Federal da Bahia"
+author: "Gilberto Pereira Sassi"
+date: "Tópico 6"
+output:
+  bookdown::ioslides_presentation2:
+    transition: "faster"
+    logo: "https://i.postimg.cc/ZRypsc2c/logo.jpg"
+    widescreen: true
+    css: "assets/estilo.css"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readxl)
+library(writexl)
+library(tidyverse)
+```
+
+# Funcção de Distribuição Acumulada _empírica_
+
+## FDA empírica
+
+```{definition, label="fda", name="FDA empírica."}
+A _função de distribuição empírica_ é dada por
+$$
+\hat{F}_n(x) = \frac{\sum_{i=1}^{n} I(X_i \leq x)}{n},
+$$
+em que $I(X_i \leq x) = \begin{cases} 1,& X_i \leq x,\\ 0,& X_i > x. \end{cases}$
+```
+
+```{theorem, label = "convergenceFDA", name = "Convergência em probabilidade."}
+Seja $X_1, \dots, X_n \overset{iid}{\sim} F(\cdot)$. Para todo $x$, temos que
+<ul>
+    <li>$\hat{F}_n(x) \overset{P}{\rightarrow} F(x)$</li>
+    <li>$E(F_n(x)) = F(x)$</li>
+    <li>$Var(F_n(x)) = \frac{F(x)\cdot (1 - F(x))}{n}$</li>
+    <li>$EQM = \frac{F(x)\cdot (1 - F(x))}{n} \rightarrow 0$</li>
+</ul>
+```
+
+## FDA empírica
+
+```{r, eval=FALSE}
+fda_empirica <- function(amostra) {
+  \(x) seq_along(x) |> map_dbl(\(i) (amostra <= x[i]) |> mean())
+}
+
+amostra <- rnorm(100)
+fda <- fda_empirica(amostra)
+x <- seq(from = -5, to = 5, length.out = 1000)
+dados <- tibble(x = x, y = fda(x))
+
+ggplot(dados) +
+  theme_minimal() +
+  geom_line(aes(x = x, y = y)) +
+  labs(x = "X", y = "FDA empírica")
+```
+
+## FDA empírica
+
+```{r, echo=FALSE, fig.align='center'}
+fda_empirica <- function(amostra) {
+  \(x) seq_along(x) |> map_dbl(\(i) (amostra <= x[i]) |> mean())
+}
+
+amostra <- rnorm(100)
+fda <- fda_empirica(amostra)
+x <- seq(from = -5, to = 5, length.out = 1000)
+dados <- tibble(x = x, y = fda(x))
+
+ggplot(dados) +
+  theme_minimal() +
+  geom_line(aes(x = x, y = y)) +
+  labs(x = "X", y = "FDA empírica")
+```
+
+## Desigualdades e convergência 
+
+```{theorem, label="glivenko", name="Teorema de Glivenko-Cantelli"}
+Seja $X_1, \dots, X_n \overset{idd}{\sim} F(\cdot)$, então 
+$$
+\sup_{n} \lvert F_n(x) - F(x) \rvert \overset{a.s.}{\longrightarrow} 0.
+$$
+```
+
+```{theorem, label="desigualdade", name="Desigualdade de Dvoretzky-Kiefer-Wolfowitz."}
+Seja $X_1, \dots, X_n \overset{iid}{\sim} F(\cdot)$, então para $\epsilon>0$ temos que 
+$$
+P(\sup_{x} \lvert F_n(x) - F(x) \rvert > \epsilon) \leq 2^{-2\cdot n \epsilon^2}.
+$$
+```
+
+## Intervalo de confiança {.smaller}
+
+Note que 
+$$
+P(\sup_{x} \lvert F_n(x) - F(x) \rvert > \epsilon) + P(\sup_{x} \lvert F_n(x) - F(x) \rvert \leq \epsilon) = 1
+$$
+e, usando a desigualdade de Dvoretzky-Kiefer-Wolfowitz, temos que 
+$$
+\begin{split}
+P(\sup_{x} \lvert F_n(x) - F(x) \rvert \leq \epsilon) &= 1 - P(\sup_{x} \lvert F_n(x) - F(x) \rvert > \epsilon),\\
+&\geq 1 - 2^{-2 \cdot n \epsilon^2},\\
+[\sup_{x} \lvert F_n(x) - F(x) \rvert \leq \epsilon] &\subset [\lvert F_n(x) - F(x) \rvert \leq \epsilon],
+\end{split}
+$$
+logo
+$$
+1 - 2^{2 n \epsilon^2} \leq P(\sup_{x} \lvert F_n(x) - F(x) \rvert \leq \epsilon) \leq P( \lvert F_n(x) - F(x) \rvert \leq \epsilon).
+$$
+Para $n$ fixo e nível de significância $\alpha$, considere $1-\alpha = 1 - 2^{2 n \epsilon_n^2}$ e, consequentemente, $\epsilon_n = \sqrt{\frac{\log_2(\alpha)}{-2n}}$
+
+## Intervalo de confiança {.smaller}
+
+
+Para $\alpha$ e $n$ fixos, considere $\epsilon_n = \sqrt{\frac{\log_2(\alpha)}{-2n}}$. Então, o intervalo de confiança para $F(x)$ é dado por 
+$$
+-\epsilon_n + F_n(x) \leq F(x) \leq \epsilon_n + F_n(x),
+$$
+ou seja, 
+$$
+IC(F(x), 1- \alpha) = \left( \max\left( -\sqrt{\frac{\log_2(\alpha)}{-2n}} + F_n(x);0 \right); \min\left( \sqrt{\frac{\log_2(\alpha)}{-2n}} + F_n(x); 1 \right) \right).
+$$
+
+## Intervalo de confiança {.smaller}
+
+```{r, eval=FALSE}
+fda_empirica_2 <- function(amostra, sig_level = 0.05) {
+   \(x) {
+     Fn <- seq_along(x) |> map_dbl(\(i) (amostra <= x[i]) |> mean())
+     en <- sqrt(log2(sig_level) / (-2 * length(amostra)))
+     list(est = Fn,
+          lower = Fn |> map_dbl(\(Fn) max(Fn - en, 0)),
+          upper = Fn |> map_dbl(\(Fn) min(Fn + en, 1)))
+   }
+}
+amostra <- rnorm(100)
+fda <- fda_empirica_2(amostra)
+x <- seq(from = -5, to = 5, by = 0.01)
+y <- fda(x)
+dados <- tibble(x = x, est = y$est, lower_ic = y$lower, upper_ci = y$upper,
+                fda = pnorm(x))
+ggplot(dados, mapping = aes(x = x)) +
+  theme_minimal() +
+  geom_line(aes(y = est), color = "blue") +
+  geom_line(aes(y = fda), color = "red") +
+  geom_ribbon(aes(ymin = lower_ic, ymax = upper_ci), alpha = 0.5)
+```
+
+## Intervalo de confiança {.smaller}
+
+```{r, echo=FALSE, fig.align="center"}
+fda_empirica_2 <- function(amostra, sig_level = 0.05) {
+   \(x) {
+     Fn <- seq_along(x) |> map_dbl(\(i) (amostra <= x[i]) |> mean())
+     en <- sqrt(log2(sig_level) / (-2 * length(amostra)))
+     list(est = Fn,
+          lower = Fn |> map_dbl(\(Fn) max(Fn - en, 0)),
+          upper = Fn |> map_dbl(\(Fn) min(Fn + en, 1)))
+   }
+}
+amostra <- rnorm(100)
+fda <- fda_empirica_2(amostra)
+x <- seq(from = -5, to = 5, by = 0.01)
+y <- fda(x)
+dados <- tibble(x = x, est = y$est, lower_ic = y$lower, upper_ci = y$upper,
+                fda = pnorm(x))
+ggplot(dados, mapping = aes(x = x)) +
+  theme_minimal() +
+  geom_line(aes(y = est), color = "blue") +
+  geom_line(aes(y = fda), color = "red") +
+  geom_ribbon(aes(ymin = lower_ic, ymax = upper_ci), alpha = 0.5) +
+  labs(x = "X", y = "FDA empírica")
+```
+
+## Funcional estatístico
+
+```{definition, label="funcional", name="Funcional estatística."}
+Funcional estatístico é uma função $T:P \rightarrow \mathbb{R}$, em que $P$ é o conjunto das função de distribuição de probabilidade. 
+```
+
+```{example, name="Média e variância."}
+Alguns exemplos de funcionais estatísticos:
+<ul>
+  <li>**Média:** $\mu = \int x dF(x)$</li>
+  <li>**Variância:** $\sigma^2 = \int (x - \mu)^2 dF(x)$</li>
+</ul>
+```
+
+```{definition, label="plugin", name="Estimador plug-in"}
+O estimador _plug-in_ de um funcional estatístico $\theta = T(F)$ é dado por $\hat{\theta} = T(F_n)$, em que $F_n$ é a função de distribuição acumulada empírica.
+```
+
+```{definition, name="Funcional linear"}
+Se existe uma função $r:\mathbb{R} \rightarrow \mathbb{R}$ tal que $T(F) = \int r(x) dF(x)$, em que $T(F)$ é um funcional estatístico, então $T(F)$ é chamado de **funcional linear**.
+```
+
+## Funcional estatístico 
+
+```{theorem}
+O estimador _plug-in_ para um funcional linear dado por $\theta = T(F) = \int r(x) dF(x)$ é dado por
+$$
+\hat\theta = T(F_n) = \int r(x) dF_n(x) = \frac{1}{n} \sum_{i=1}^{n} r(X_i).
+$$
+```
+
+## Funcional estatístico {.smaller}
+
+### Exemplos
+
+```{example, name="Média."}
+$\hat\mu = \int x d_Fn(x)= \frac{1}{n} \sum_{i=1}^{n} X_i$
+```
+
+```{r}
+amostra <- rnorm(1000)
+media_hat <- seq_along(amostra) |>
+  map_dbl(\(i) amostra[i] / length(amostra)) |>
+  sum()
+media_hat
+```
+
+```{example, name="Variância"}
+$\hat\sigma^2 = \int (x - \mu)² dF_n(x) = \frac{1}{n} \sum_{i=1}^{n} (X_i - \mu)^2$
+```
+
+```{r}
+amostra <- rnorm(1000, mean = 1)
+var_hat <- seq_along(amostra) |> 
+  map_dbl(\(i) (amostra[i] - 1)^2 / length(amostra)) |> 
+  sum()
+var_hat
+```

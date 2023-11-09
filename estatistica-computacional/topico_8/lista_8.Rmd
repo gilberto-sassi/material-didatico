@@ -1,0 +1,41 @@
+---
+title: "Lista 8"
+author: "Gilberto Sassi"
+date: "Primeiro semestre de 2021."
+classdocument: article
+output: 
+    bookdown::pdf_document2:
+        toc: false
+        number_sections: false
+        includes:
+            in_header: "../assets/cabecalho.tex"
+---
+
+```{r setup, include=FALSE, message=FALSE}
+rmarkdown::find_pandoc(dir = "/home/gilberto/.local/bin", version = "2.13")
+```
+
+**Nos exercícios abaixo, use _bootstrap_, _jackknife_ e _validação cruzada_.**
+
+1. Considere a amostra de mil candidatos no ENEM em sua edição de 2019 na cidade de Palmas cujas informações estão no conjunto de dados `equipe_sample__Palmas.csv`. Construa um intervalo de confiança usando _bootstrap_ para média, mediana e desvio padrão usando coeficiente de confiança $1\%$ para a nota em matemática dos candidatos (`NU_NOTA_MT`).
+1. Responda cada uma das perguntas abaixo ao nível de significância $5\%$
+    i. A nota média  de matemática do ENEM em palmas (`NU_NOTA_MT`) é maior que 500?
+    i. A nota mediana de matemática do ENEM em palmas (`NU_NOTA_MT`) é maior que 500?
+    i. O desvio padrão da nota de matemática do ENEM em palmas (`NU_NOTA_MT`) é maior que 100?
+1. Para o conjunto de dados `carros.xlsx`, qual o valor-p no teste de hipóteses bilateral com $H_0: \mu = 15$ ao nível de significância $1\%$, em que $\mu$ é a velocidade média populacional dos carros? 
+1. Para o conjunto de dados `carros.xlsx`, use o procedimento de Neyman-Pearson para o teste de hipóteses bilateral com $H_0: \mu = 15$ ao nível de significância $1\%$, em que $\mu$ é a velocidade média populacional dos carros.
+1. Para o conjunto de dados `empresa.xlsx`, construa o intervalo de confiança para o número de filhos dos funcionários com coeficiente de confiança $99\%$.
+1. Para o conjunto de dados `empresa.xsx`, construa o intervalo de confiança para a média salarial em salários mínimos com coeficiente de confiança $95\%$. Baseando sua resposta neste intervalo de confiança, a média salarial é maior que 10 salários mínimos?
+1. Para o conjunto de dados `iris.ods`, existe evidência de que o desvio padrão do comprimento de sépala é maior que $0,1$ centímetros? Use o procedimento de Neymann-Peason e nível de significância igual a $5\%$. 
+1. Para o conjunto de dados `mtcars.csv`, existe evidência de que o desvio padrão da variável `mpg` (milhar por galão) é maior que 5 ao nível de significância $1\%$? Use o procedimento de Neymann-Pearson.
+1. Para as seguintes variáveis calcule o primeiro e o terceiro quartis e o seus repectivos desvios padrões e vícios usando _jackknife_:
+    i. `NU_NOTA_MT` do conjunto de dados `equipe_sample__Palmas.csv`;
+    i. `vel` do conjunto de dados `carros.xlsx`;
+    i. `salario` do conjunto de dados `empresa.xlsx`;
+    i. `comprimento_sepala` do conjunto de dados `iris.ods`;
+    i. `mpg` do conjunto de dados `mtcars.csv`.
+1. Para o conjunto de dados `marketing.csv`, decida entre os seguintes modelos usando _validação cruzada com $K=1$_:
+    i. **Modelo 1:** $venda \sim 1 + gasto + \epsilon$;
+    i. **modelo 2:** $\log(venda) \sim 1 + gasto + \epsilon$;
+    i. **Modelo 3:** $venda \sim 1 + gasto + gasto^2 + \epsilon$;
+    i. **Modelo 4:** $\log(venda) \sim 1 + gasto + gasto^2 + \epsilon$;

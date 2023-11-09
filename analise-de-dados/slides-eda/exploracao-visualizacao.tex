@@ -334,7 +334,7 @@ Estatística}
 % 	\maketitle
 %  \end{frame}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, interior hidden, frame hidden, sharp corners, breakable, enhanced]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, enhanced, frame hidden, breakable, interior hidden]}{\end{tcolorbox}}\fi
 
 \hypertarget{sobre-o-curso}{%
 \section{Sobre o curso}\label{sobre-o-curso}}
@@ -1354,8 +1354,8 @@ Realize as seguintes operações envolvendo vetores:
 
 \begin{verbatim}
           [,1]     [,2]
-[1,] 1.2832783 2.678966
-[2,] 0.9676014 3.515805
+[1,] 1.2547510 2.667904
+[2,] 0.8904791 3.099431
 \end{verbatim}
 
 \textbf{Subtração}
@@ -1369,8 +1369,8 @@ Realize as seguintes operações envolvendo vetores:
 
 \begin{verbatim}
            [,1]     [,2]
-[1,]  0.7167217 1.321034
-[2,] -0.9676014 2.484195
+[1,]  0.7452490 1.332096
+[2,] -0.8904791 2.900569
 \end{verbatim}
 
 \normalsize
@@ -1398,9 +1398,9 @@ Realize as seguintes operações envolvendo vetores:
 \end{Shaded}
 
 \begin{verbatim}
-          [,1]     [,2]
-[1,] 0.2832783 1.357931
-[2,] 0.0000000 1.547416
+         [,1]      [,2]
+[1,] 0.254751 1.3358077
+[2,] 0.000000 0.2982922
 \end{verbatim}
 
 \regrafina
@@ -1416,9 +1416,9 @@ de matrizes}}
 \end{Shaded}
 
 \begin{verbatim}
-         [,1]     [,2]
-[1,] 2.218481 1.710576
-[2,] 2.902804 1.547416
+         [,1]      [,2]
+[1,] 2.035709 0.8667653
+[2,] 2.671437 0.2982922
 \end{verbatim}
 \end{frame}
 
@@ -4715,7 +4715,7 @@ objeto \texttt{lv}.
 # A tibble: 1 x 6
   trimean median f_spread f_pseudo_sigma f_pseudo_variance outliers  
     <dbl>  <dbl>    <dbl>          <dbl>             <dbl> <list>    
-1     460    425      370           274.            75228. <dbl [11]>
+1     460    425      370           268.            71990. <dbl [11]>
 \end{verbatim}
 
 \normalsize
@@ -6306,8 +6306,8 @@ extensão do pacote
 \section{Associção entre duas
 variáveis}\label{associuxe7uxe3o-entre-duas-variuxe1veis}}
 
-\begin{frame}{Gráficos\newline Duas variáveis quantitativas}
-\protect\hypertarget{gruxe1ficosduas-variuxe1veis-quantitativas}{}
+\begin{frame}{Associação entre duas variáveis quantitativas}
+\protect\hypertarget{associauxe7uxe3o-entre-duas-variuxe1veis-quantitativas}{}
 \textbf{Ideia}: estudar a associação entre duas variáveis quantitativas.
 
 \begin{figure}
@@ -6319,8 +6319,9 @@ variáveis}\label{associuxe7uxe3o-entre-duas-variuxe1veis}}
 \end{figure}
 \end{frame}
 
-\begin{frame}[fragile]{Gráfico de dispersão}
-\protect\hypertarget{gruxe1fico-de-dispersuxe3o}{}
+\begin{frame}[fragile]{Associação entre duas variáveis
+quantitativas\newline gráfico de dispersão}
+\protect\hypertarget{associauxe7uxe3o-entre-duas-variuxe1veis-quantitativasgruxe1fico-de-dispersuxe3o}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{ggplot}\NormalTok{(dados\_iris) }\SpecialCharTok{+}
@@ -6344,15 +6345,184 @@ variáveis}\label{associuxe7uxe3o-entre-duas-variuxe1veis}}
 \end{figure}
 \end{frame}
 
-\begin{frame}[fragile]{Gráfico de dispersão\newline Exercício}
-\protect\hypertarget{gruxe1fico-de-dispersuxe3oexercuxedcio}{}
-Para o conjunto de dados \texttt{amostra\_enem\_salvador.xlsx}, construa
-o gráfico de dispersão entre as variáveis \texttt{nu\_nota\_mt} e
-\texttt{nu\_nota\_cn}.
+\begin{frame}[fragile]{Associação entre duas variáveis
+quantitativas\newline exercício}
+\protect\hypertarget{associauxe7uxe3o-entre-duas-variuxe1veis-quantitativasexercuxedcio}{}
+\begin{itemize}
+\tightlist
+\item
+  Para o conjunto de dados \texttt{amostra\_enem\_salvador.xlsx},
+  calcule o coeficiente de correlação linear entre as variáveis
+  \texttt{nu\_nota\_mt} e \texttt{nu\_nota\_cn}.
+\item
+  Para o conjunto de dados \texttt{amostra\_enem\_salvador.xlsx},
+  calcule o coeficiente de correlação linear entre as variáveis
+  \texttt{nu\_nota\_mt} e \texttt{nu\_nota\_lc}.
+\end{itemize}
 
 Inclua o argumento nomeado \texttt{alpha\ =\ 0.1} na função
 \texttt{geom\_point} para incluir opacidade no gráfico de dispersão.
 Isso ajuda quando temos amostra de tamanho médio e grande.
+\end{frame}
+
+\begin{frame}{Associação entre duas variáveis
+quantitativas\newline coeficiente de correlação linear de Pearson}
+\protect\hypertarget{associauxe7uxe3o-entre-duas-variuxe1veis-quantitativascoeficiente-de-correlauxe7uxe3o-linear-de-pearson}{}
+Suponha que temos uma amostra duas variáveis quantitativas:
+
+\begin{itemize}
+\tightlist
+\item
+  \(X:\quad x_1,\dots, x_n\)
+\item
+  \(Y:\quad y_1,\dots, y_n\)
+\end{itemize}
+
+Ao padronizarmos os valores de \(X\) e \(Y\), os seguintes
+comportamentos vão ocorrer:
+
+\begin{itemize}
+\tightlist
+\item
+  A maioria dos pontos vão estar no primeiro e no terceiro quadrantes do
+  plano cartesiano se, e somente se, \(X\) e \(Y\) estão positivamente
+  associados.
+\item
+  A maioria dos pontos vão estar no segundo e no quadrante quadrantes do
+  plano cartesiano se, e somente se, \(X\) e \(Y\) estão negativamente
+  associados.
+\item
+  Os pontos vão estar igualmente distribuídos nos quadrantes do plano
+  cartesiano se, e somente se, \(X\) e \(Y\) não estão associados.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{figure}
+
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-129-1.pdf}
+
+}
+
+\caption{Comportamento do gráfico de dispersão para as variáveis
+quantitativas padronizadas na presença de associação positiva, associção
+negativa e sem associação.}
+
+\end{figure}
+\end{frame}
+
+\begin{frame}{Associação entre duas variáveis
+quantitativas\newline coeficiente de correlação linear de Pearson}
+\protect\hypertarget{associauxe7uxe3o-entre-duas-variuxe1veis-quantitativascoeficiente-de-correlauxe7uxe3o-linear-de-pearson-1}{}
+Note que:
+
+\begin{itemize}
+\tightlist
+\item
+  \(X\) e \(Y\) são positivamente associadas:
+
+  \begin{enumerate}
+  [a.]
+  \tightlist
+  \item
+    A maioria dos pontos estão no primeiro e no terceiro quadrantes
+  \item
+    A maioria das multiplicações das coordenadas são positivas
+  \end{enumerate}
+\item
+  \(X\) e \(Y\) são positivamente associadas:
+
+  \begin{enumerate}
+  [a.]
+  \tightlist
+  \item
+    A maioria dos pontos estão no segundo e no quadrante quadrantes
+  \item
+    A maioria das multiplicações das coordenadas são negativas
+  \end{enumerate}
+\item
+  \(X\) e \(Y\) não são associadas:
+
+  \begin{enumerate}
+  [a.]
+  \tightlist
+  \item
+    Os pontos estão igualmente distribuídos nos quadrantes
+  \item
+    As multiplicações das coordenadas estão divididas entre positivas e
+    negativas
+  \end{enumerate}
+\end{itemize}
+
+\regrafina
+
+\textbf{Ideia:} pegar a média das multiplicações das coordenadas: \[
+r = \frac{\left( \frac{x_1 - \bar{x}}{s_x} \right)\cdot \left( \frac{y_1 - \bar{y}}{s_y} \right) + \cdots + \left( \frac{x_n - \bar{x}}{s_x} \right)\cdot \left( \frac{y_n - \bar{y}}{s_y} \right)}{n},
+\] onde \(s_x\) é o desvio padrão de \(X\) e \(s_y\) é o desvio padrão
+de \(Y\).
+\end{frame}
+
+\begin{frame}[fragile]
+\footnotesize
+
+Para calcular o coeficiente de correção linear de Pearson, usamos as
+funções \texttt{cor} e \texttt{cor.test} (não é necessário instalar
+pacote).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados\_iris }\SpecialCharTok{|\textgreater{}} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{correlacao =} \FunctionTok{cor}\NormalTok{(comprimento\_petala, comprimento\_sepala))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1 x 1
+  correlacao
+       <dbl>
+1      0.872
+\end{verbatim}
+
+\regrafina
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor.test}\NormalTok{(dados\_iris}\SpecialCharTok{$}\NormalTok{comprimento\_sepala, dados\_iris}\SpecialCharTok{$}\NormalTok{comprimento\_petala)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+    Pearson's product-moment correlation
+
+data:  dados_iris$comprimento_sepala and dados_iris$comprimento_petala
+t = 21.646, df = 148, p-value < 2.2e-16
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.8270363 0.9055080
+sample estimates:
+      cor 
+0.8717538 
+\end{verbatim}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]{Associação entre duas variáveis
+quantitativas\newline coeficiente de correlação linear de
+Pearson\newline Exercício}
+\protect\hypertarget{associauxe7uxe3o-entre-duas-variuxe1veis-quantitativascoeficiente-de-correlauxe7uxe3o-linear-de-pearsonexercuxedcio}{}
+\begin{itemize}
+\tightlist
+\item
+  Para o conjunto de dados \texttt{amostra\_enem\_salvador.xlsx},
+  calcule o coeficiente de correlação linear entre as variáveis
+  \texttt{nu\_nota\_mt} e \texttt{nu\_nota\_cn}.
+\item
+  Para o conjunto de dados \texttt{amostra\_enem\_salvador.xlsx},
+  calcule o coeficiente de correlação linear entre as variáveis
+  \texttt{nu\_nota\_mt} e \texttt{nu\_nota\_lc}.
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Associação entre duas variáveis qualitativas}
@@ -6547,7 +6717,7 @@ Vamos checar a associação entre \texttt{fundacao\_tipo} e
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-132-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-135-1.pdf}
 
 }
 
@@ -6582,7 +6752,7 @@ duas variáveis qualitativas.
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-134-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-137-1.pdf}
 
 }
 
@@ -7099,7 +7269,7 @@ variável quantitativa}
 \begin{frame}
 \begin{figure}
 
-{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-138-1.pdf}
+{\centering \includegraphics[width=1\textwidth,height=\textheight]{exploracao-visualizacao_files/figure-beamer/unnamed-chunk-141-1.pdf}
 
 }
 
@@ -7124,6 +7294,9 @@ variável quantitativa\newline Exercício}
   \texttt{patchwork}.
 \end{itemize}
 \end{frame}
+
+\hypertarget{nuxfameros-uxedndices}{%
+\section{Números índices}\label{nuxfameros-uxedndices}}
 
 \hypertarget{customizando-tabelas-usando-o-pacote-gt}{%
 \section{\texorpdfstring{Customizando tabelas\newline~usando o pacote
