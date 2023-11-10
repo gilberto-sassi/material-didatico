@@ -76,17 +76,17 @@ q_01[3] <- qexp(0.1, taxa)
 q_09[3] <- qexp(0.9, taxa)
 
 # opção 4)
-media_pop <- runif(1, -30, -1)
-dp_pop <- runif(1, 5, 10)
+media_pop <- runif(1, -30, -1) |> round(2)
+s2_pop <- runif(1, 5, 10) |> round(2)
 f4 <- glue("
-F(x) = &#8747;~-&#8734;~^x^ (2&#183; &pi;&#183; {f(dp_pop)})^-0,5^ exp(-0,5&#183; {f(dp_pop)}^-1^ (u {ifelse(media_pop < 0, '+', '-')} {f(ifelse(media_pop < 0, abs(media_pop), media_pop))}))du.
+F(x) = &#8747;~-&#8734;~^x^ (2&#183; &pi;&#183; {f(s2_pop)})^-0,5^ exp(-0,5&#183; {f(s2_pop)}^-1^ (u {ifelse(media_pop < 0, '+', '-')} {f(ifelse(media_pop < 0, abs(media_pop), media_pop))}))du.
 ")
 moda[4] <- media_pop
-q1[4] <- qnorm(0.25, media_pop, sqrt(dp_pop))
-q2[4] <- qnorm(0.5, media_pop, sqrt(dp_pop))
-q3[4] <- qnorm(0.75, media_pop, sqrt(dp_pop))
-q_01[4] <- qnorm(0.1, media_pop, sqrt(dp_pop))
-q_09[4] <- qnorm(0.9, media_pop, sqrt(dp_pop))
+q1[4] <- qnorm(0.25, media_pop, sqrt(s2_pop))
+q2[4] <- qnorm(0.5, media_pop, sqrt(s2_pop))
+q3[4] <- qnorm(0.75, media_pop, sqrt(s2_pop))
+q_01[4] <- qnorm(0.1, media_pop, sqrt(s2_pop))
+q_09[4] <- qnorm(0.9, media_pop, sqrt(s2_pop))
 
 
 FDA <- c(f1, f2, f3, f4)
