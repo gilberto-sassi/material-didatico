@@ -1,0 +1,148 @@
+```{r}
+#| label: dados-gerados
+#| echo: false
+
+library(pacman)
+
+p_load(
+    writexl, janitor,
+    glue,
+    ggthemes,
+    tidyverse
+)
+
+# formatação
+f <- \(x) format(
+    x,
+    big.mark = ".",
+    decimal.mark = ","
+)
+
+moda <- vector("numeric", 4)
+q1 <- vector("numeric", 4)
+q2 <- vector("numeric", 4)
+q3 <- vector("numeric", 4)
+q_01 <- vector("numeric", 4)
+q_09 <- vector("numeric", 4)
+
+# opção 1)
+x0_op1 <- runif(1, 2, 4) |> round(2)
+x1_op1 <- runif(1, 5, 10) |> round(2)
+area <- (x1_op1^3 - x0_op1^3) / 3
+f1 <- glue("
+F(x) = 0, se x < {f(x0_op1)},
+
+F(x) = (x^3^ - {f(x0_op1)}^3^) &#183; (3 &#183; {f(area)})^-1^, se {f(x0_op1)} &le; x < {f(x1_op1)},
+
+F(x) = 1, se x &ge; {f(x1_op1)}.
+")
+p <- 1 / 3
+moda[1] <- x1_op1
+q1[1] <- (3 * area * 0.25 + x0_op1^3)^p
+    q2[1] <- (3 * area * 0.5 + x0_op1^3)^p
+q3[1] <- (3 * area * 0.75 + x0_op1^3)^p
+q_01[1] <- (3 * area * 0.1 + x0_op1^3)^p
+q_09[1] <- (3 * area * 0.9 + x0_op1^3)^p
+
+# opção 2)
+x0_op2 <- runif(1, 2, 4) |> round(2)
+x1_op2 <- runif(1, 5, 10) |> round(2)
+f2 <- glue("
+F(x) = 0, se x < {f(x0_op2)}
+
+F(x) = (x - {f(x0_op2)}) &#183; ({f(x1_op2)} - {f(x0_op2)})^-1^, se {f(x0_op2)} &le; x < {f(x1_op2)},
+
+F(x) = 1, se x &ge; {f(x0_op2)}.
+")
+moda[2] <- x1_op2
+q1[2] <- (x1_op2 - x0_op2) * 0.25 + x0_op2
+q2[2] <- (x1_op2 - x0_op2) * 0.5 + x0_op2
+q3[2] <- (x1_op2 - x0_op2) * 0.75 + x0_op2
+q_01[2] <- (x1_op2 - x0_op2) * 0.1 + x0_op2
+q_09[2] <- (x1_op2 - x0_op2) * 0.9 + x0_op2
+
+# opção 3)
+taxa <- runif(1, 2, 6) |> round(2)
+f3 <- glue("
+F(x) = 0, se x &le; 0,
+
+F(x) = 1 - exp(-{f(taxa)}&#183; x), se x > 0.
+")
+moda[3] <- 0
+q1[3] <- qexp(0.25, taxa)
+q2[3] <- qexp(0.5, taxa)
+q3[3] <- qexp(0.75, taxa)
+q_01[3] <- qexp(0.1, taxa)
+q_09[3] <- qexp(0.9, taxa)
+
+# opção 4)
+media_pop <- runif(1, -30, -1)
+dp_pop <- runif(1, 5, 10)
+f4 <- glue("
+F(x) = &#8747;~-&#8734;~^x^ (2&#183; &pi;&#183; {f(dp_pop)})^-0,5^ exp(-0,5&#183; {f(dp_pop)}^-1^ (u {ifelse(media_pop < 0, '+', '-')} {f(ifelse(media_pop < 0, abs(media_pop), media_pop))}))du.
+")
+moda[4] <- media_pop
+q1[4] <- qnorm(0.25, media_pop, sqrt(dp_pop))
+q2[4] <- qnorm(0.5, media_pop, sqrt(dp_pop))
+q3[4] <- qnorm(0.75, media_pop, sqrt(dp_pop))
+q_01[4] <- qnorm(0.1, media_pop, sqrt(dp_pop))
+q_09[4] <- qnorm(0.9, media_pop, sqrt(dp_pop))
+
+
+FDA <- c(f1, f2, f3, f4)
+
+opcao <- sample.int(4, 1)
+opcao <- 1
+sol <- c(
+    "moda" = moda[opcao],
+    "q1" = q1[opcao],
+    "q2" = q2[opcao],
+    "q3" = q3[opcao],
+    "q_01" = q_01[opcao],
+    "q_09" = q_09[opcao]
+)
+```
+
+Question
+========
+Considere X uma variável aleatória contínua com Função de Distribuição acumulada dada por:
+
+
+```{r}
+#| echo: false
+#| results: asis
+
+cat(FDA[opcao])
+```
+
+<hr>
+ Calcule:
+
+Questionlist
+------------
+* moda:
+* primeiro quartil:
+* mediana:
+* terceiro quartil:
+* o quantil de ordem 10%:
+* valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X:
+
+
+Solution
+========
+Solutionlist
+------------
+* moda: `r f(sol['moda'])`.
+* primeiro quartil: `r f(sol['q1'])`.
+* mediana: `r f(sol['q2'])`.
+* terceiro quartil: `r f(sol['q3'])`.
+* o quantil de ordem 10%: `r f(sol['q_01'])`.
+* valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: `r f(sol['q_09'])`.
+
+Meta-information
+================
+exname: moda_quantil_va_discreta
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste(collapse = "|")`
+exsolution: `r sol |> paste(collapse = "|")`
+extol: 0.05

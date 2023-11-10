@@ -79,7 +79,6 @@ Question
 ========
 Considere a variável aleatória discreta X com a seguinte Função de Distribuiçã Acumulada:
 
-<hr>
 
 ```{r}
 #| echo: false
@@ -89,14 +88,14 @@ Considere a variável aleatória discreta X com a seguinte Função de Distribui
 n <- length(suporte)
 
 # primeira linha da fda
-print(glue("0, se x < {suporte[1]},\n\n"))
+print(glue("F(x) = 0, se x < {suporte[1]},\n\n"))
 
 for (k in 2:n) {
-    print(glue("{f(fda[k-1])}, se {suporte[k-1]} &le; x < {suporte[k]},\n\n"))
+    print(glue("F(x) = {f(fda[k-1])}, se {suporte[k-1]} &le; x < {suporte[k]},\n\n"))
 }
 
 # ultilma linha da FDA
-print(glue("1, se x >= {suporte[n]}."))
+print(glue("F(x) = 1, se x >= {suporte[n]}."))
 ```
 
 <hr>
@@ -117,12 +116,12 @@ Solution
 ========
 Solutionlist
 ------------
-* moda: `r sol['moda']`.
-* primeiro quartil: `r sol['q1']`.
-* mediana: `r sol['mediana']`.
-* terceiro quartil: `r sol['q3']`.
-* o quantil de ordem 10%: `r sol['letra_e']`.
-* valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: `r sol['letra_f']`.
+* moda: `r f(sol['moda'])`.
+* primeiro quartil: `r f(sol['q1'])`.
+* mediana: `r f(sol['mediana'])`.
+* terceiro quartil: `r f(sol['q3'])`.
+* o quantil de ordem 10%: `r f(sol['letra_e'])`.
+* valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: `r f(sol['letra_f'])`.
 
 Meta-information
 ================
