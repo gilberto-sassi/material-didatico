@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/moda-quantil-va-continua-teste/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R1 Q1 : probabilidade-1_banco-itens_moda-quantil-va-continua_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Considere X uma variável aleatória contínua com Função de Distribuição acumulada dada por:</p>
+<p>F(x) = 0, se x &lt; 2,23,</p>
+<p>F(x) = (x<sup>3</sup> - 2,23<sup>3</sup>) · (3 · 169,543)<sup>-1</sup>, se 2,23 ≤ x &lt; 8,04,</p>
+<p>F(x) = 1, se x ≥ 8,04.</p>
+<hr>
+<p>Calcule:</p>
+<ol type = "a">
+<li> moda: {1:NUMERICAL:=8.04:0.05} </li>
+<li> primeiro quartil: {1:NUMERICAL:=5.17072792659157:0.05} </li>
+<li> mediana: {1:NUMERICAL:=6.42642085186756:0.05} </li>
+<li> terceiro quartil: {1:NUMERICAL:=7.32210252286992:0.05} </li>
+<li> o quantil de ordem 10%: {1:NUMERICAL:=3.95687967770754:0.05} </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=7.76866441025695:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> moda: 8,04. </li>
+<li> primeiro quartil: 5,170728. </li>
+<li> mediana: 6,426421. </li>
+<li> terceiro quartil: 7,322103. </li>
+<li> o quantil de ordem 10%: 3,95688. </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 7,768664. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>6</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R2 Q1 : probabilidade-1_banco-itens_moda-quantil-va-continua_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Considere X uma variável aleatória contínua com Função de Distribuição acumulada dada por:</p>
+<p>F(x) = 0, se x &lt; 2,42,</p>
+<p>F(x) = (x<sup>3</sup> - 2,42<sup>3</sup>) · (3 · 66,91644)<sup>-1</sup>, se 2,42 ≤ x &lt; 5,99,</p>
+<p>F(x) = 1, se x ≥ 5,99.</p>
+<hr>
+<p>Calcule:</p>
+<ol type = "a">
+<li> moda: {1:NUMERICAL:=5.99:0.05} </li>
+<li> primeiro quartil: {1:NUMERICAL:=4.00748215706327:0.05} </li>
+<li> mediana: {1:NUMERICAL:=4.85655249953275:0.05} </li>
+<li> terceiro quartil: {1:NUMERICAL:=5.48186280342735:0.05} </li>
+<li> o quantil de ordem 10%: {1:NUMERICAL:=3.24745106967618:0.05} </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=5.79737165790515:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> moda: 5,99. </li>
+<li> primeiro quartil: 4,007482. </li>
+<li> mediana: 4,856552. </li>
+<li> terceiro quartil: 5,481863. </li>
+<li> o quantil de ordem 10%: 3,247451. </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 5,797372. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>6</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R3 Q1 : probabilidade-1_banco-itens_moda-quantil-va-continua_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Considere X uma variável aleatória contínua com Função de Distribuição acumulada dada por:</p>
+<p>F(x) = 0, se x &lt; 2,35,</p>
+<p>F(x) = (x<sup>3</sup> - 2,35<sup>3</sup>) · (3 · 242,7466)<sup>-1</sup>, se 2,35 ≤ x &lt; 9,05,</p>
+<p>F(x) = 1, se x ≥ 9,05.</p>
+<hr>
+<p>Calcule:</p>
+<ol type = "a">
+<li> moda: {1:NUMERICAL:=9.05:0.05} </li>
+<li> primeiro quartil: {1:NUMERICAL:=5.79926479483981:0.05} </li>
+<li> mediana: {1:NUMERICAL:=7.22466942928657:0.05} </li>
+<li> terceiro quartil: {1:NUMERICAL:=8.23843589477977:0.05} </li>
+<li> o quantil de ordem 10%: {1:NUMERICAL:=4.41061229699804:0.05} </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=8.74334143766353:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> moda: 9,05. </li>
+<li> primeiro quartil: 5,799265. </li>
+<li> mediana: 7,224669. </li>
+<li> terceiro quartil: 8,238436. </li>
+<li> o quantil de ordem 10%: 4,410612. </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 8,743341. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>6</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R4 Q1 : probabilidade-1_banco-itens_moda-quantil-va-continua_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Considere X uma variável aleatória contínua com Função de Distribuição acumulada dada por:</p>
+<p>F(x) = 0, se x &lt; 3,97,</p>
+<p>F(x) = (x<sup>3</sup> - 3,97<sup>3</sup>) · (3 · 168,3643)<sup>-1</sup>, se 3,97 ≤ x &lt; 8,28,</p>
+<p>F(x) = 1, se x ≥ 8,28.</p>
+<hr>
+<p>Calcule:</p>
+<ol type = "a">
+<li> moda: {1:NUMERICAL:=8.28:0.05} </li>
+<li> primeiro quartil: {1:NUMERICAL:=5.73721385978591:0.05} </li>
+<li> mediana: {1:NUMERICAL:=6.80493559280717:0.05} </li>
+<li> terceiro quartil: {1:NUMERICAL:=7.61390780484443:0.05} </li>
+<li> o quantil de ordem 10%: {1:NUMERICAL:=4.83572948928867:0.05} </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=8.0267555951136:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> moda: 8,28. </li>
+<li> primeiro quartil: 5,737214. </li>
+<li> mediana: 6,804936. </li>
+<li> terceiro quartil: 7,613908. </li>
+<li> o quantil de ordem 10%: 4,835729. </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 8,026756. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>6</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R5 Q1 : probabilidade-1_banco-itens_moda-quantil-va-continua_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Considere X uma variável aleatória contínua com Função de Distribuição acumulada dada por:</p>
+<p>F(x) = 0, se x &lt; 2,86,</p>
+<p>F(x) = (x<sup>3</sup> - 2,86<sup>3</sup>) · (3 · 181,4233)<sup>-1</sup>, se 2,86 ≤ x &lt; 8,28,</p>
+<p>F(x) = 1, se x ≥ 8,28.</p>
+<hr>
+<p>Calcule:</p>
+<ol type = "a">
+<li> moda: {1:NUMERICAL:=8.28:0.05} </li>
+<li> primeiro quartil: {1:NUMERICAL:=5.42273371896061:0.05} </li>
+<li> mediana: {1:NUMERICAL:=6.66090399462135:0.05} </li>
+<li> terceiro quartil: {1:NUMERICAL:=7.55716950064807:0.05} </li>
+<li> o quantil de ordem 10%: {1:NUMERICAL:=4.26938129602052:0.05} </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=8.00643525122136:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> moda: 8,28. </li>
+<li> primeiro quartil: 5,422734. </li>
+<li> mediana: 6,660904. </li>
+<li> terceiro quartil: 7,55717. </li>
+<li> o quantil de ordem 10%: 4,269381. </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 8,006435. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>6</defaultgrade>
+</question>
+
+</quiz>
