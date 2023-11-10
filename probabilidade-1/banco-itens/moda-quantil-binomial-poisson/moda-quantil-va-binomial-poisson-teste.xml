@@ -16,15 +16,111 @@
 <questiontext format="html">
 <text><![CDATA[
 <p>
-<p>Seja X ∼ b(85; 0,46) e Y ∼ P(13,78). Encontre:</p>
+<p>Seja X ∼ b(90; 0,73) e Y ∼ P(15,8). Encontre:</p>
 <p>Calcule:</p>
 <ol type = "a">
-<li> moda (maior valor se tiver mais de uma) de X: {1:NUMERICAL:=39:0.05} </li>
-<li> primeiro quartil de X: {1:NUMERICAL:=36:0.05} </li>
-<li> mediana de X: {1:NUMERICAL:=39:0.05} </li>
-<li> terceiro quartil de X: {1:NUMERICAL:=42:0.05} </li>
-<li> o quantil de ordem 10% de X: {1:NUMERICAL:=33:0.05} </li>
-<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=45:0.05} </li>
+<li> moda (maior valor se tiver mais de uma) de X: {1:NUMERICAL:=66:0.05} </li>
+<li> primeiro quartil de X: {1:NUMERICAL:=63:0.05} </li>
+<li> mediana de X: {1:NUMERICAL:=66:0.05} </li>
+<li> terceiro quartil de X: {1:NUMERICAL:=69:0.05} </li>
+<li> o quantil de ordem 10% de X: {1:NUMERICAL:=60:0.05} </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=71:0.05} </li>
+<li> moda (maior valor se tiver mais de uma) de Y: {1:NUMERICAL:=15:0.05} </li>
+<li> primeiro quartil de Y: {1:NUMERICAL:=13:0.05} </li>
+<li> mediana de Y: {1:NUMERICAL:=16:0.05} </li>
+<li> terceiro quartil de Y: {1:NUMERICAL:=18:0.05} </li>
+<li> o quantil de ordem 10% de Y: {1:NUMERICAL:=11:0.05} </li>
+<li> valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: {1:NUMERICAL:=21:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> moda (maior valor se tiver mais de uma) de X: 66. </li>
+<li> primeiro quartil de X: 63. </li>
+<li> mediana de X: 66. </li>
+<li> terceiro quartil de X: 69. </li>
+<li> o quantil de ordem 10% de X: 60. </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 71. </li>
+<li> moda (maior valor se tiver mais de uma) de Y: 15. </li>
+<li> primeiro quartil de Y: 13. </li>
+<li> mediana de Y: 16. </li>
+<li> terceiro quartil de Y: 18. </li>
+<li> o quantil de ordem 10% de Y: 11. </li>
+<li> valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: 21. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>12</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R2 Q1 : probabilidade-1_banco-itens_moda-quantil-binomial-poisson_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X ∼ b(69; 0,62) e Y ∼ P(10,52). Encontre:</p>
+<p>Calcule:</p>
+<ol type = "a">
+<li> moda (maior valor se tiver mais de uma) de X: {1:NUMERICAL:=43:0.05} </li>
+<li> primeiro quartil de X: {1:NUMERICAL:=40:0.05} </li>
+<li> mediana de X: {1:NUMERICAL:=43:0.05} </li>
+<li> terceiro quartil de X: {1:NUMERICAL:=46:0.05} </li>
+<li> o quantil de ordem 10% de X: {1:NUMERICAL:=38:0.05} </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=48:0.05} </li>
+<li> moda (maior valor se tiver mais de uma) de Y: {1:NUMERICAL:=10:0.05} </li>
+<li> primeiro quartil de Y: {1:NUMERICAL:=8:0.05} </li>
+<li> mediana de Y: {1:NUMERICAL:=10:0.05} </li>
+<li> terceiro quartil de Y: {1:NUMERICAL:=13:0.05} </li>
+<li> o quantil de ordem 10% de Y: {1:NUMERICAL:=6:0.05} </li>
+<li> valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: {1:NUMERICAL:=15:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> moda (maior valor se tiver mais de uma) de X: 43. </li>
+<li> primeiro quartil de X: 40. </li>
+<li> mediana de X: 43. </li>
+<li> terceiro quartil de X: 46. </li>
+<li> o quantil de ordem 10% de X: 38. </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 48. </li>
+<li> moda (maior valor se tiver mais de uma) de Y: 10. </li>
+<li> primeiro quartil de Y: 8. </li>
+<li> mediana de Y: 10. </li>
+<li> terceiro quartil de Y: 13. </li>
+<li> o quantil de ordem 10% de Y: 6. </li>
+<li> valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: 15. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>12</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R3 Q1 : probabilidade-1_banco-itens_moda-quantil-binomial-poisson_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X ∼ b(51; 0,21) e Y ∼ P(13,71). Encontre:</p>
+<p>Calcule:</p>
+<ol type = "a">
+<li> moda (maior valor se tiver mais de uma) de X: {1:NUMERICAL:=10:0.05} </li>
+<li> primeiro quartil de X: {1:NUMERICAL:=9:0.05} </li>
+<li> mediana de X: {1:NUMERICAL:=11:0.05} </li>
+<li> terceiro quartil de X: {1:NUMERICAL:=13:0.05} </li>
+<li> o quantil de ordem 10% de X: {1:NUMERICAL:=7:0.05} </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=14:0.05} </li>
 <li> moda (maior valor se tiver mais de uma) de Y: {1:NUMERICAL:=13:0.05} </li>
 <li> primeiro quartil de Y: {1:NUMERICAL:=11:0.05} </li>
 <li> mediana de Y: {1:NUMERICAL:=14:0.05} </li>
@@ -37,12 +133,12 @@
 <generalfeedback format="html">
 <text><![CDATA[<p>
 <ol type = "a">
-<li> moda (maior valor se tiver mais de uma) de X: 39. </li>
-<li> primeiro quartil de X: 36. </li>
-<li> mediana de X: 39. </li>
-<li> terceiro quartil de X: 42. </li>
-<li> o quantil de ordem 10% de X: 33. </li>
-<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 45. </li>
+<li> moda (maior valor se tiver mais de uma) de X: 10. </li>
+<li> primeiro quartil de X: 9. </li>
+<li> mediana de X: 11. </li>
+<li> terceiro quartil de X: 13. </li>
+<li> o quantil de ordem 10% de X: 7. </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 14. </li>
 <li> moda (maior valor se tiver mais de uma) de Y: 13. </li>
 <li> primeiro quartil de Y: 11. </li>
 <li> mediana de Y: 14. </li>
@@ -59,140 +155,44 @@
 
 <question type="cloze">
 <name>
-<text> R2 Q1 : probabilidade-1_banco-itens_moda-quantil-binomial-poisson_enunciado </text>
-</name>
-<questiontext format="html">
-<text><![CDATA[
-<p>
-<p>Seja X ∼ b(95; 0,71) e Y ∼ P(12,34). Encontre:</p>
-<p>Calcule:</p>
-<ol type = "a">
-<li> moda (maior valor se tiver mais de uma) de X: {1:NUMERICAL:=68:0.05} </li>
-<li> primeiro quartil de X: {1:NUMERICAL:=65:0.05} </li>
-<li> mediana de X: {1:NUMERICAL:=68:0.05} </li>
-<li> terceiro quartil de X: {1:NUMERICAL:=70:0.05} </li>
-<li> o quantil de ordem 10% de X: {1:NUMERICAL:=62:0.05} </li>
-<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=73:0.05} </li>
-<li> moda (maior valor se tiver mais de uma) de Y: {1:NUMERICAL:=12:0.05} </li>
-<li> primeiro quartil de Y: {1:NUMERICAL:=10:0.05} </li>
-<li> mediana de Y: {1:NUMERICAL:=12:0.05} </li>
-<li> terceiro quartil de Y: {1:NUMERICAL:=15:0.05} </li>
-<li> o quantil de ordem 10% de Y: {1:NUMERICAL:=8:0.05} </li>
-<li> valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: {1:NUMERICAL:=17:0.05} </li>
-</ol>
-</p>]]></text>
-</questiontext>
-<generalfeedback format="html">
-<text><![CDATA[<p>
-<ol type = "a">
-<li> moda (maior valor se tiver mais de uma) de X: 68. </li>
-<li> primeiro quartil de X: 65. </li>
-<li> mediana de X: 68. </li>
-<li> terceiro quartil de X: 70. </li>
-<li> o quantil de ordem 10% de X: 62. </li>
-<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 73. </li>
-<li> moda (maior valor se tiver mais de uma) de Y: 12. </li>
-<li> primeiro quartil de Y: 10. </li>
-<li> mediana de Y: 12. </li>
-<li> terceiro quartil de Y: 15. </li>
-<li> o quantil de ordem 10% de Y: 8. </li>
-<li> valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: 17. </li>
-</ol>
-</p>]]></text>
-</generalfeedback>
-<penalty>0</penalty>
-<defaultgrade>12</defaultgrade>
-</question>
-
-
-<question type="cloze">
-<name>
-<text> R3 Q1 : probabilidade-1_banco-itens_moda-quantil-binomial-poisson_enunciado </text>
-</name>
-<questiontext format="html">
-<text><![CDATA[
-<p>
-<p>Seja X ∼ b(83; 0,43) e Y ∼ P(18,28). Encontre:</p>
-<p>Calcule:</p>
-<ol type = "a">
-<li> moda (maior valor se tiver mais de uma) de X: {1:NUMERICAL:=36:0.05} </li>
-<li> primeiro quartil de X: {1:NUMERICAL:=33:0.05} </li>
-<li> mediana de X: {1:NUMERICAL:=36:0.05} </li>
-<li> terceiro quartil de X: {1:NUMERICAL:=39:0.05} </li>
-<li> o quantil de ordem 10% de X: {1:NUMERICAL:=30:0.05} </li>
-<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=41:0.05} </li>
-<li> moda (maior valor se tiver mais de uma) de Y: {1:NUMERICAL:=18:0.05} </li>
-<li> primeiro quartil de Y: {1:NUMERICAL:=15:0.05} </li>
-<li> mediana de Y: {1:NUMERICAL:=18:0.05} </li>
-<li> terceiro quartil de Y: {1:NUMERICAL:=21:0.05} </li>
-<li> o quantil de ordem 10% de Y: {1:NUMERICAL:=13:0.05} </li>
-<li> valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: {1:NUMERICAL:=24:0.05} </li>
-</ol>
-</p>]]></text>
-</questiontext>
-<generalfeedback format="html">
-<text><![CDATA[<p>
-<ol type = "a">
-<li> moda (maior valor se tiver mais de uma) de X: 36. </li>
-<li> primeiro quartil de X: 33. </li>
-<li> mediana de X: 36. </li>
-<li> terceiro quartil de X: 39. </li>
-<li> o quantil de ordem 10% de X: 30. </li>
-<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 41. </li>
-<li> moda (maior valor se tiver mais de uma) de Y: 18. </li>
-<li> primeiro quartil de Y: 15. </li>
-<li> mediana de Y: 18. </li>
-<li> terceiro quartil de Y: 21. </li>
-<li> o quantil de ordem 10% de Y: 13. </li>
-<li> valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: 24. </li>
-</ol>
-</p>]]></text>
-</generalfeedback>
-<penalty>0</penalty>
-<defaultgrade>12</defaultgrade>
-</question>
-
-
-<question type="cloze">
-<name>
 <text> R4 Q1 : probabilidade-1_banco-itens_moda-quantil-binomial-poisson_enunciado </text>
 </name>
 <questiontext format="html">
 <text><![CDATA[
 <p>
-<p>Seja X ∼ b(98; 0,67) e Y ∼ P(18,93). Encontre:</p>
+<p>Seja X ∼ b(98; 0,53) e Y ∼ P(11,14). Encontre:</p>
 <p>Calcule:</p>
 <ol type = "a">
-<li> moda (maior valor se tiver mais de uma) de X: {1:NUMERICAL:=66:0.05} </li>
-<li> primeiro quartil de X: {1:NUMERICAL:=63:0.05} </li>
-<li> mediana de X: {1:NUMERICAL:=66:0.05} </li>
-<li> terceiro quartil de X: {1:NUMERICAL:=69:0.05} </li>
-<li> o quantil de ordem 10% de X: {1:NUMERICAL:=60:0.05} </li>
-<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=72:0.05} </li>
-<li> moda (maior valor se tiver mais de uma) de Y: {1:NUMERICAL:=18:0.05} </li>
-<li> primeiro quartil de Y: {1:NUMERICAL:=16:0.05} </li>
-<li> mediana de Y: {1:NUMERICAL:=19:0.05} </li>
-<li> terceiro quartil de Y: {1:NUMERICAL:=22:0.05} </li>
-<li> o quantil de ordem 10% de Y: {1:NUMERICAL:=13:0.05} </li>
-<li> valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: {1:NUMERICAL:=25:0.05} </li>
+<li> moda (maior valor se tiver mais de uma) de X: {1:NUMERICAL:=52:0.05} </li>
+<li> primeiro quartil de X: {1:NUMERICAL:=49:0.05} </li>
+<li> mediana de X: {1:NUMERICAL:=52:0.05} </li>
+<li> terceiro quartil de X: {1:NUMERICAL:=55:0.05} </li>
+<li> o quantil de ordem 10% de X: {1:NUMERICAL:=46:0.05} </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=58:0.05} </li>
+<li> moda (maior valor se tiver mais de uma) de Y: {1:NUMERICAL:=11:0.05} </li>
+<li> primeiro quartil de Y: {1:NUMERICAL:=9:0.05} </li>
+<li> mediana de Y: {1:NUMERICAL:=11:0.05} </li>
+<li> terceiro quartil de Y: {1:NUMERICAL:=13:0.05} </li>
+<li> o quantil de ordem 10% de Y: {1:NUMERICAL:=7:0.05} </li>
+<li> valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: {1:NUMERICAL:=16:0.05} </li>
 </ol>
 </p>]]></text>
 </questiontext>
 <generalfeedback format="html">
 <text><![CDATA[<p>
 <ol type = "a">
-<li> moda (maior valor se tiver mais de uma) de X: 66. </li>
-<li> primeiro quartil de X: 63. </li>
-<li> mediana de X: 66. </li>
-<li> terceiro quartil de X: 69. </li>
-<li> o quantil de ordem 10% de X: 60. </li>
-<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 72. </li>
-<li> moda (maior valor se tiver mais de uma) de Y: 18. </li>
-<li> primeiro quartil de Y: 16. </li>
-<li> mediana de Y: 19. </li>
-<li> terceiro quartil de Y: 22. </li>
-<li> o quantil de ordem 10% de Y: 13. </li>
-<li> valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: 25. </li>
+<li> moda (maior valor se tiver mais de uma) de X: 52. </li>
+<li> primeiro quartil de X: 49. </li>
+<li> mediana de X: 52. </li>
+<li> terceiro quartil de X: 55. </li>
+<li> o quantil de ordem 10% de X: 46. </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 58. </li>
+<li> moda (maior valor se tiver mais de uma) de Y: 11. </li>
+<li> primeiro quartil de Y: 9. </li>
+<li> mediana de Y: 11. </li>
+<li> terceiro quartil de Y: 13. </li>
+<li> o quantil de ordem 10% de Y: 7. </li>
+<li> valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: 16. </li>
 </ol>
 </p>]]></text>
 </generalfeedback>
@@ -208,39 +208,39 @@
 <questiontext format="html">
 <text><![CDATA[
 <p>
-<p>Seja X ∼ b(50; 0,33) e Y ∼ P(13,52). Encontre:</p>
+<p>Seja X ∼ b(87; 0,23) e Y ∼ P(16,98). Encontre:</p>
 <p>Calcule:</p>
 <ol type = "a">
-<li> moda (maior valor se tiver mais de uma) de X: {1:NUMERICAL:=16:0.05} </li>
-<li> primeiro quartil de X: {1:NUMERICAL:=14:0.05} </li>
-<li> mediana de X: {1:NUMERICAL:=16:0.05} </li>
-<li> terceiro quartil de X: {1:NUMERICAL:=19:0.05} </li>
-<li> o quantil de ordem 10% de X: {1:NUMERICAL:=12:0.05} </li>
-<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=21:0.05} </li>
-<li> moda (maior valor se tiver mais de uma) de Y: {1:NUMERICAL:=13:0.05} </li>
-<li> primeiro quartil de Y: {1:NUMERICAL:=11:0.05} </li>
-<li> mediana de Y: {1:NUMERICAL:=13:0.05} </li>
-<li> terceiro quartil de Y: {1:NUMERICAL:=16:0.05} </li>
-<li> o quantil de ordem 10% de Y: {1:NUMERICAL:=9:0.05} </li>
-<li> valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: {1:NUMERICAL:=18:0.05} </li>
+<li> moda (maior valor se tiver mais de uma) de X: {1:NUMERICAL:=20:0.05} </li>
+<li> primeiro quartil de X: {1:NUMERICAL:=17:0.05} </li>
+<li> mediana de X: {1:NUMERICAL:=20:0.05} </li>
+<li> terceiro quartil de X: {1:NUMERICAL:=23:0.05} </li>
+<li> o quantil de ordem 10% de X: {1:NUMERICAL:=15:0.05} </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=25:0.05} </li>
+<li> moda (maior valor se tiver mais de uma) de Y: {1:NUMERICAL:=16:0.05} </li>
+<li> primeiro quartil de Y: {1:NUMERICAL:=14:0.05} </li>
+<li> mediana de Y: {1:NUMERICAL:=17:0.05} </li>
+<li> terceiro quartil de Y: {1:NUMERICAL:=20:0.05} </li>
+<li> o quantil de ordem 10% de Y: {1:NUMERICAL:=12:0.05} </li>
+<li> valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: {1:NUMERICAL:=22:0.05} </li>
 </ol>
 </p>]]></text>
 </questiontext>
 <generalfeedback format="html">
 <text><![CDATA[<p>
 <ol type = "a">
-<li> moda (maior valor se tiver mais de uma) de X: 16. </li>
-<li> primeiro quartil de X: 14. </li>
-<li> mediana de X: 16. </li>
-<li> terceiro quartil de X: 19. </li>
-<li> o quantil de ordem 10% de X: 12. </li>
-<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 21. </li>
-<li> moda (maior valor se tiver mais de uma) de Y: 13. </li>
-<li> primeiro quartil de Y: 11. </li>
-<li> mediana de Y: 13. </li>
-<li> terceiro quartil de Y: 16. </li>
-<li> o quantil de ordem 10% de Y: 9. </li>
-<li> valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: 18. </li>
+<li> moda (maior valor se tiver mais de uma) de X: 20. </li>
+<li> primeiro quartil de X: 17. </li>
+<li> mediana de X: 20. </li>
+<li> terceiro quartil de X: 23. </li>
+<li> o quantil de ordem 10% de X: 15. </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 25. </li>
+<li> moda (maior valor se tiver mais de uma) de Y: 16. </li>
+<li> primeiro quartil de Y: 14. </li>
+<li> mediana de Y: 17. </li>
+<li> terceiro quartil de Y: 20. </li>
+<li> o quantil de ordem 10% de Y: 12. </li>
+<li> valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: 22. </li>
 </ol>
 </p>]]></text>
 </generalfeedback>
