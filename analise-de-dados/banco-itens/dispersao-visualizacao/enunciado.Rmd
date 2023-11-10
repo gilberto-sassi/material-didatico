@@ -1,0 +1,6 @@
+```{r}
+#| echo: false
+#| label: gerando dados
+
+
+```

@@ -17,30 +17,30 @@
 <text><![CDATA[
 <p>
 <p>Considere X uma variável aleatória contínua com Função de Distribuição acumulada dada por:</p>
-<p>F(x) = 0, se x &lt; 3,03,</p>
-<p>F(x) = (x<sup>3</sup> - 3,03<sup>3</sup>) · (3 · 75,27267)<sup>-1</sup>, se 3,03 ≤ x &lt; 6,33,</p>
-<p>F(x) = 1, se x ≥ 6,33.</p>
+<p>F(x) = 0, se x &lt; 3,02</p>
+<p>F(x) = (x - 3,02) · (9,58 - 3,02)<sup>-1</sup>, se 3,02 ≤ x &lt; 9,58,</p>
+<p>F(x) = 1, se x ≥ 3,02.</p>
 <hr>
 <p>Calcule:</p>
 <ol type = "a">
-<li> moda (se for mais de um valor, pegue o maior): {1:NUMERICAL:=6.33:0.05} </li>
-<li> primeiro quartil: {1:NUMERICAL:=4.38425206333206:0.05} </li>
-<li> mediana: {1:NUMERICAL:=5.20146817517797:0.05} </li>
-<li> terceiro quartil: {1:NUMERICAL:=5.82043558754933:0.05} </li>
-<li> o quantil de ordem 10%: {1:NUMERICAL:=3.6938277419284:0.05} </li>
-<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=6.13627349057247:0.05} </li>
+<li> moda (se for mais de um valor, pegue o maior): {1:NUMERICAL:=9.58:0.05} </li>
+<li> primeiro quartil: {1:NUMERICAL:=4.66:0.05} </li>
+<li> mediana: {1:NUMERICAL:=6.3:0.05} </li>
+<li> terceiro quartil: {1:NUMERICAL:=7.94:0.05} </li>
+<li> o quantil de ordem 10%: {1:NUMERICAL:=3.676:0.05} </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=8.924:0.05} </li>
 </ol>
 </p>]]></text>
 </questiontext>
 <generalfeedback format="html">
 <text><![CDATA[<p>
 <ol type = "a">
-<li> moda (se for mais de um valor, pegue o maior): 6,33. </li>
-<li> primeiro quartil: 4,384252. </li>
-<li> mediana: 5,201468. </li>
-<li> terceiro quartil: 5,820436. </li>
-<li> o quantil de ordem 10%: 3,693828. </li>
-<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 6,136273. </li>
+<li> moda (se for mais de um valor, pegue o maior): 9,58. </li>
+<li> primeiro quartil: 4,66. </li>
+<li> mediana: 6,3. </li>
+<li> terceiro quartil: 7,94. </li>
+<li> o quantil de ordem 10%: 3,676. </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 8,924. </li>
 </ol>
 </p>]]></text>
 </generalfeedback>
@@ -57,30 +57,29 @@
 <text><![CDATA[
 <p>
 <p>Considere X uma variável aleatória contínua com Função de Distribuição acumulada dada por:</p>
-<p>F(x) = 0, se x &lt; 2,04,</p>
-<p>F(x) = (x<sup>3</sup> - 2,04<sup>3</sup>) · (3 · 158,4157)<sup>-1</sup>, se 2,04 ≤ x &lt; 7,85,</p>
-<p>F(x) = 1, se x ≥ 7,85.</p>
+<p>F(x) = 0, se x ≤ 0,</p>
+<p>F(x) = 1 - exp(-4,98· x), se x &gt; 0.</p>
 <hr>
 <p>Calcule:</p>
 <ol type = "a">
-<li> moda (se for mais de um valor, pegue o maior): {1:NUMERICAL:=7.85:0.05} </li>
-<li> primeiro quartil: {1:NUMERICAL:=5.03049897425043:0.05} </li>
-<li> mediana: {1:NUMERICAL:=6.26678703729229:0.05} </li>
-<li> terceiro quartil: {1:NUMERICAL:=7.14607922193511:0.05} </li>
-<li> o quantil de ordem 10%: {1:NUMERICAL:=3.82618936001353:0.05} </li>
-<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=7.58401493001153:0.05} </li>
+<li> moda (se for mais de um valor, pegue o maior): {1:NUMERICAL:=0:0.05} </li>
+<li> primeiro quartil: {1:NUMERICAL:=0.0577674844280684:0.05} </li>
+<li> mediana: {1:NUMERICAL:=0.13918618083533:0.05} </li>
+<li> terceiro quartil: {1:NUMERICAL:=0.278372361670661:0.05} </li>
+<li> o quantil de ordem 10%: {1:NUMERICAL:=0.0211567300517723:0.05} </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=0.462366484536957:0.05} </li>
 </ol>
 </p>]]></text>
 </questiontext>
 <generalfeedback format="html">
 <text><![CDATA[<p>
 <ol type = "a">
-<li> moda (se for mais de um valor, pegue o maior): 7,85. </li>
-<li> primeiro quartil: 5,030499. </li>
-<li> mediana: 6,266787. </li>
-<li> terceiro quartil: 7,146079. </li>
-<li> o quantil de ordem 10%: 3,826189. </li>
-<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 7,584015. </li>
+<li> moda (se for mais de um valor, pegue o maior): 0. </li>
+<li> primeiro quartil: 0,05776748. </li>
+<li> mediana: 0,1391862. </li>
+<li> terceiro quartil: 0,2783724. </li>
+<li> o quantil de ordem 10%: 0,02115673. </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 0,4623665. </li>
 </ol>
 </p>]]></text>
 </generalfeedback>
@@ -97,30 +96,30 @@
 <text><![CDATA[
 <p>
 <p>Considere X uma variável aleatória contínua com Função de Distribuição acumulada dada por:</p>
-<p>F(x) = 0, se x &lt; 3,34,</p>
-<p>F(x) = (x<sup>3</sup> - 3,34<sup>3</sup>) · (3 · 29,49727)<sup>-1</sup>, se 3,34 ≤ x &lt; 5,01,</p>
-<p>F(x) = 1, se x ≥ 5,01.</p>
+<p>F(x) = 0, se x &lt; 3,98</p>
+<p>F(x) = (x - 3,98) · (8,6 - 3,98)<sup>-1</sup>, se 3,98 ≤ x &lt; 8,6,</p>
+<p>F(x) = 1, se x ≥ 3,98.</p>
 <hr>
 <p>Calcule:</p>
 <ol type = "a">
-<li> moda (se for mais de um valor, pegue o maior): {1:NUMERICAL:=5.01:0.05} </li>
-<li> primeiro quartil: {1:NUMERICAL:=3.90139448817664:0.05} </li>
-<li> mediana: {1:NUMERICAL:=4.33573257504567:0.05} </li>
-<li> terceiro quartil: {1:NUMERICAL:=4.69706398416545:0.05} </li>
-<li> o quantil de ordem 10%: {1:NUMERICAL:=3.58587271226163:0.05} </li>
-<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=4.88961177380214:0.05} </li>
+<li> moda (se for mais de um valor, pegue o maior): {1:NUMERICAL:=8.6:0.05} </li>
+<li> primeiro quartil: {1:NUMERICAL:=5.135:0.05} </li>
+<li> mediana: {1:NUMERICAL:=6.29:0.05} </li>
+<li> terceiro quartil: {1:NUMERICAL:=7.445:0.05} </li>
+<li> o quantil de ordem 10%: {1:NUMERICAL:=4.442:0.05} </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=8.138:0.05} </li>
 </ol>
 </p>]]></text>
 </questiontext>
 <generalfeedback format="html">
 <text><![CDATA[<p>
 <ol type = "a">
-<li> moda (se for mais de um valor, pegue o maior): 5,01. </li>
-<li> primeiro quartil: 3,901394. </li>
-<li> mediana: 4,335733. </li>
-<li> terceiro quartil: 4,697064. </li>
-<li> o quantil de ordem 10%: 3,585873. </li>
-<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 4,889612. </li>
+<li> moda (se for mais de um valor, pegue o maior): 8,6. </li>
+<li> primeiro quartil: 5,135. </li>
+<li> mediana: 6,29. </li>
+<li> terceiro quartil: 7,445. </li>
+<li> o quantil de ordem 10%: 4,442. </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 8,138. </li>
 </ol>
 </p>]]></text>
 </generalfeedback>
@@ -137,30 +136,28 @@
 <text><![CDATA[
 <p>
 <p>Considere X uma variável aleatória contínua com Função de Distribuição acumulada dada por:</p>
-<p>F(x) = 0, se x &lt; 2,27,</p>
-<p>F(x) = (x<sup>3</sup> - 2,27<sup>3</sup>) · (3 · 106,5589)<sup>-1</sup>, se 2,27 ≤ x &lt; 6,92,</p>
-<p>F(x) = 1, se x ≥ 6,92.</p>
+<p>F(x) = ∫<sub>-∞</sub><sup>x</sup> (2· π· 5,823833)<sup>-0,5</sup> exp(-0,5· 5,823833<sup>-1</sup> (u + 7,80257))du.</p>
 <hr>
 <p>Calcule:</p>
 <ol type = "a">
-<li> moda (se for mais de um valor, pegue o maior): {1:NUMERICAL:=6.92:0.05} </li>
-<li> primeiro quartil: {1:NUMERICAL:=4.50807249373434:0.05} </li>
-<li> mediana: {1:NUMERICAL:=5.55628685083678:0.05} </li>
-<li> terceiro quartil: {1:NUMERICAL:=6.31180022985091:0.05} </li>
-<li> o quantil de ordem 10%: {1:NUMERICAL:=3.52135954660414:0.05} </li>
-<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=6.6899098695445:0.05} </li>
+<li> moda (se for mais de um valor, pegue o maior): {1:NUMERICAL:=-7.80256973858923:0.05} </li>
+<li> primeiro quartil: {1:NUMERICAL:=-9.43029019750546:0.05} </li>
+<li> mediana: {1:NUMERICAL:=-7.80256973858923:0.05} </li>
+<li> terceiro quartil: {1:NUMERICAL:=-6.17484927967299:0.05} </li>
+<li> o quantil de ordem 10%: {1:NUMERICAL:=-10.895289385977:0.05} </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=-4.70985009120148:0.05} </li>
 </ol>
 </p>]]></text>
 </questiontext>
 <generalfeedback format="html">
 <text><![CDATA[<p>
 <ol type = "a">
-<li> moda (se for mais de um valor, pegue o maior): 6,92. </li>
-<li> primeiro quartil: 4,508072. </li>
-<li> mediana: 5,556287. </li>
-<li> terceiro quartil: 6,3118. </li>
-<li> o quantil de ordem 10%: 3,52136. </li>
-<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 6,68991. </li>
+<li> moda (se for mais de um valor, pegue o maior): -7,80257. </li>
+<li> primeiro quartil: -9,43029. </li>
+<li> mediana: -7,80257. </li>
+<li> terceiro quartil: -6,174849. </li>
+<li> o quantil de ordem 10%: -10,89529. </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: -4,70985. </li>
 </ol>
 </p>]]></text>
 </generalfeedback>
@@ -177,30 +174,28 @@
 <text><![CDATA[
 <p>
 <p>Considere X uma variável aleatória contínua com Função de Distribuição acumulada dada por:</p>
-<p>F(x) = 0, se x &lt; 3,34,</p>
-<p>F(x) = (x<sup>3</sup> - 3,34<sup>3</sup>) · (3 · 221,7786)<sup>-1</sup>, se 3,34 ≤ x &lt; 8,89,</p>
-<p>F(x) = 1, se x ≥ 8,89.</p>
+<p>F(x) = ∫<sub>-∞</sub><sup>x</sup> (2· π· 9,660325)<sup>-0,5</sup> exp(-0,5· 9,660325<sup>-1</sup> (u + 22,19081))du.</p>
 <hr>
 <p>Calcule:</p>
 <ol type = "a">
-<li> moda (se for mais de um valor, pegue o maior): {1:NUMERICAL:=8.89:0.05} </li>
-<li> primeiro quartil: {1:NUMERICAL:=5.88285379321313:0.05} </li>
-<li> mediana: {1:NUMERICAL:=7.17858565533866:0.05} </li>
-<li> terceiro quartil: {1:NUMERICAL:=8.12441676097444:0.05} </li>
-<li> o quantil de ordem 10%: {1:NUMERICAL:=4.69955134543365:0.05} </li>
-<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=8.60002615144382:0.05} </li>
+<li> moda (se for mais de um valor, pegue o maior): {1:NUMERICAL:=-22.1908056356478:0.05} </li>
+<li> primeiro quartil: {1:NUMERICAL:=-24.2871914915412:0.05} </li>
+<li> mediana: {1:NUMERICAL:=-22.1908056356478:0.05} </li>
+<li> terceiro quartil: {1:NUMERICAL:=-20.0944197797545:0.05} </li>
+<li> o quantil de ordem 10%: {1:NUMERICAL:=-26.1740041569369:0.05} </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=-18.2076071143588:0.05} </li>
 </ol>
 </p>]]></text>
 </questiontext>
 <generalfeedback format="html">
 <text><![CDATA[<p>
 <ol type = "a">
-<li> moda (se for mais de um valor, pegue o maior): 8,89. </li>
-<li> primeiro quartil: 5,882854. </li>
-<li> mediana: 7,178586. </li>
-<li> terceiro quartil: 8,124417. </li>
-<li> o quantil de ordem 10%: 4,699551. </li>
-<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 8,600026. </li>
+<li> moda (se for mais de um valor, pegue o maior): -22,19081. </li>
+<li> primeiro quartil: -24,28719. </li>
+<li> mediana: -22,19081. </li>
+<li> terceiro quartil: -20,09442. </li>
+<li> o quantil de ordem 10%: -26,174. </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: -18,20761. </li>
 </ol>
 </p>]]></text>
 </generalfeedback>

@@ -92,7 +92,7 @@ q_09[4] <- qnorm(0.9, media_pop, sqrt(dp_pop))
 FDA <- c(f1, f2, f3, f4)
 
 opcao <- sample.int(4, 1)
-opcao <- 1
+# opcao <- 1
 sol <- c(
     "moda" = moda[opcao],
     "q1" = q1[opcao],
