@@ -2,5 +2,206 @@
 #| echo: false
 #| label: gerando dados
 
+library(pacman)
+
+p_load(
+    writexl, ggthemes, mvtnorm,
+    patchwork,
+    tidyverse
+)
+
+runif <- \(x, min, max) stats::runif(x, min, max) |> round(2)
+
+# tamanho da amostra
+tam <- 150
+
+inferior <- vector("numeric", 5)
+superior <- vector("numeric", 5)
+estimativa <- vector("numeric", 5)
+
+dados <- vector("list", 5)
+
+# opção 1) positiva e forte
+media_x_opcao1 <- runif(1, 10, 20)
+s_x_opcao1 <- runif(1, 5, 10)
+media_y_opcao1 <- runif(1, 10, 20)
+s_y_opcao1 <- runif(1, 5, 10)
+rho_opcao1 <- 0.95
+matriz_opcao1 <- mvtnorm::rmvnorm(
+    tam, 
+    c(media_x_opcao1, media_y_opcao1),
+    sigma = rbind(
+        c(s_x_opcao1^2, s_x_opcao1 * s_y_opcao1 * rho_opcao1),
+        c(s_x_opcao1 * s_y_opcao1 * rho_opcao1, s_y_opcao1^2)
+    )
+)
+dados[[1]] <- matriz_opcao1
+ajuste_opcao1 <- cor.test(matriz_opcao1[, 1], matriz_opcao1[, 2])
+inferior[1] <- ajuste_opcao1$conf.int[1]
+inferior[1] <- ajuste_opcao1$conf.int[2]
+estimativa[1] <- ajuste_opcao1$estimate
+
+# opção 2) positiva e moderada
+media_x_opcao2 <- runif(1, 10, 20)
+s_x_opcao2 <- runif(1, 5, 10)
+media_y_opcao2 <- runif(1, 10, 20)
+s_y_opcao2 <- runif(1, 5, 10)
+rho_opcao2 <- 0.5
+matriz_opcao2 <- mvtnorm::rmvnorm(
+    tam, 
+    c(media_x_opcao2, media_y_opcao2),
+    sigma = rbind(
+        c(s_x_opcao2^2, s_x_opcao2 * s_y_opcao2 * rho_opcao2),
+        c(s_x_opcao2 * s_y_opcao2 * rho_opcao2, s_y_opcao2^2),
+    )
+)
+dados[[2]] <- matriz_opcao2
+ajuste_opcao2 <- cor.test(matriz_opcao2[, 1], matriz_opcao2[, 2])
+inferior[2] <- ajuste_opcao2$conf.int[1]
+inferior[2] <- ajuste_opcao2$conf.int[2]
+estimativa[2] <- ajuste_opcao2$estimate
+
+
+# opção 3) negativa e forte
+media_x_opcao2 <- runif(1, 10, 20)
+s_x_opcao2 <- runif(1, 5, 10)
+media_y_opcao2 <- runif(1, 10, 20)
+s_y_opcao2 <- runif(1, 5, 10)
+rho_opcao2 <- -0.95
+matriz_opcao2 <- mvtnorm::rmvnorm(
+    tam, 
+    c(media_x_opcao2, media_y_opcao2),
+    sigma = rbind(
+        c(s_x_opcao2^2, s_x_opcao2 * s_y_opcao2 * rho_opcao2),
+        c(s_x_opcao2 * s_y_opcao2 * rho_opcao2, s_y_opcao2^2),
+    )
+)
+dados[[3]] <- matriz_opcao3
+ajuste_opcao3 <- cor.test(matriz_opcao3[, 1], matriz_opcao3[, 2])
+inferior[3] <- ajuste_opcao3$conf.int[1]
+inferior[3] <- ajuste_opcao3$conf.int[2]
+estimativa[3] <- ajuste_opcao3$estimate
+
+
+# opção 4) negativa e moderada
+media_x_opcao3 <- runif(1, 10, 20)
+s_x_opcao3 <- runif(1, 5, 10)
+media_y_opcao3 <- runif(1, 10, 20)
+s_y_opcao3 <- runif(1, 5, 10)
+rho_opcao3 <- -0.5
+matriz_opcao3 <- mvtnorm::rmvnorm(
+    tam, 
+    c(media_x_opcao3, media_y_opcao3),
+    sigma = rbind(
+        c(s_x_opcao3^2, s_x_opcao3 * s_y_opcao3 * rho_opcao3),
+        c(s_x_opcao3 * s_y_opcao3 * rho_opcao3, s_y_opcao3^2),
+    )
+)
+dados[[4]] <- matriz_opcao4
+ajuste_opcao4 <- cor.test(matriz_opcao4[, 1], matriz_opcao4[, 2])
+inferior[4] <- ajuste_opcao4$conf.int[1]
+inferior[4] <- ajuste_opcao4$conf.int[2]
+estimativa[4] <- ajuste_opcao4$estimate
+
+
+# opção 5) sem associação
+media_x_opcao3 <- runif(1, 10, 20)
+s_x_opcao3 <- runif(1, 5, 10)
+media_y_opcao3 <- runif(1, 10, 20)
+s_y_opcao3 <- runif(1, 5, 10)
+rho_opcao3 <- 0
+matriz_opcao3 <- mvtnorm::rmvnorm(
+    tam, 
+    c(media_x_opcao3, media_y_opcao3),
+    sigma = rbind(
+        c(s_x_opcao3^2, s_x_opcao3 * s_y_opcao3 * rho_opcao3),
+        c(s_x_opcao3 * s_y_opcao3 * rho_opcao3, s_y_opcao3^2),
+    )
+)
+dados[[5]] <- matriz_opcao5
+ajuste_opcao5 <- cor.test(matriz_opcao5[, 1], matriz_opcao5[, 2])
+inferior[5] <- ajuste_opcao5$conf.int[1]
+inferior[5] <- ajuste_opcao5$conf.int[2]
+estimativa[5] <- ajuste_opcao5$estimate
+
+opcoes <- sample(1:5, 3)
+
+opcoes_txt <- opcoes |>
+    map_chr(\(opcao) {
+        case_match(
+            c(1, 2) ~ "X e Y estão linear e positivamente associadados.",
+            c(3, 4) ~ "X e Y estão linear e negativamente associadados.",
+            5 ~ "X e Y não estão linearmente associados."
+        )
+    })
+
+sol <- opcoes |>
+    map_chr(\(opcao) {
+        case_match(
+            opcao,
+            c(1, 2) ~ "1000",
+            c(3, 4) ~ "0100",
+            5 ~ "0010"
+        )
+    })
 
 ```
+
+Question
+========
+
+Para os gráficos de dipersão das Figuras (a), (b) e (c)  se X e Y estão linearmente associados.
+
+
+```{r}
+#| echo: false
+#| out.width: 100%
+
+figura <- function(opcao) {
+    df <- tibble(
+        x = dados[[opcao]][, 1],
+        y = dados[[opcao]][, 2]
+    )
+    g <- ggplot(df) +
+        geom_point(aes(x, y)) +
+        theme_minimal()
+    return(g)
+}
+
+figura(opcoes[1]) + figura(opcoes[2]) + figura(opcoes[3])
+```
+
+Questionlist
+------------
+* X e Y estão linear e positivamente associados.
+* X e Y estão linear e negativamente associados.
+* X e Y não estão linearmente associados.
+* Não é possível determinar se X e Y estão linearmente associados.
+* X e Y estão linear e positivamente associados.
+* X e Y estão linear e negativamente associados.
+* X e Y não estão linearmente associados.
+* Não é possível determinar se X e Y estão linearmente associados.
+* X e Y estão linear e positivamente associados.
+* X e Y estão linear e negativamente associados.
+* X e Y não estão linearmente associados.
+* Não é possível determinar se X e Y estão linearmente associados.
+
+
+Solution
+========
+Solutionlist
+------------
+* moda (se for mais de um valor, pegue o maior): `r f(sol['moda'])`.
+* primeiro quartil: `r f(sol['q1'])`.
+* mediana: `r f(sol['q2'])`.
+* terceiro quartil: `r f(sol['q3'])`.
+* o quantil de ordem 10%: `r f(sol['q_01'])`.
+* valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: `r f(sol['q_09'])`.
+
+Meta-information
+================
+exname: moda_quantil_va_discreta
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste(collapse = "|")`
+exsolution: `r sol |> paste(collapse = "|")`
+extol: 0.05
