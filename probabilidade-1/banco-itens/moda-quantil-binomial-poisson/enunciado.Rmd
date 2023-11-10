@@ -1,0 +1,89 @@
+```{r}
+#| label: moda-quantil-binomial-poisson
+#| echo: false
+
+library(pacman)
+
+p_load(
+    readxl, writexl, janitor,
+    tidyverse
+)
+
+# binomial
+casos <- sample(50:100, 1)
+p_sucesso <- runif(1, 0.2, 0.8) |> round(2)
+
+# poisson
+media_pop <- runif(1, 10, 20) |> round(2)
+
+# solução
+sol <- c(
+    "moda_binomial" = floor((casos + 1) * p_sucesso),
+    "q1_binomial" = qbinom(0.25, casos, p_sucesso),
+    "q2_binomial" = qbinom(0.5, casos, p_sucesso),
+    "q3_binomial" = qbinom(0.75, casos, p_sucesso),
+    "q_01_binomial" = qbinom(0.1, casos, p_sucesso),
+    "q_09_binomial" = qbinom(0.9, casos, p_sucesso),
+    "moda_poisson" = floor(media_pop),
+    "q1_poisson" = qpois(0.25, media_pop),
+    "q2_poisson" = qpois(0.5, media_pop),
+    "q3_poisson" = qpois(0.75, media_pop),
+    "q_01_poisson" = qpois(0.1, media_pop),
+    "q_09_poisson" = qpois(0.9, media_pop)
+)
+
+f <- \(x) format(
+    x,
+    big.mark = ".",
+    decimal.mark = ","
+)
+```
+
+Question
+========
+
+Seja X &sim; b(`r casos`; `r f(p_sucesso)`) e Y &sim; P(`r f(media_pop)`). Encontre:
+
+
+Calcule:
+
+Questionlist
+------------
+* moda (maior valor se tiver mais de uma) de X:
+* primeiro quartil de X:
+* mediana de X:
+* terceiro quartil de X:
+* o quantil de ordem 10% de X:
+* valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X:
+* moda (maior valor se tiver mais de uma) de Y:
+* primeiro quartil de Y:
+* mediana de Y:
+* terceiro quartil de Y:
+* o quantil de ordem 10% de Y:
+* valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y:
+
+
+Solution
+========
+Solutionlist
+------------
+* moda (maior valor se tiver mais de uma) de X: `r sol['moda_binomial']`.
+* primeiro quartil de X: `r sol['q1_binomial']`.
+* mediana de X: `r sol['q2_binomial']`.
+* terceiro quartil de X: `r sol['q3_binomial']`.
+* o quantil de ordem 10% de X: `r sol['q_01_binomial']`.
+* valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: `r sol['q_09_binomial']`.
+* moda (maior valor se tiver mais de uma) de Y: `r sol['moda_poisson']`.
+* primeiro quartil de Y: `r sol['q1_poisson']`.
+* mediana de Y: `r sol['q2_poisson']`.
+* terceiro quartil de Y: `r sol['q3_poisson']`.
+* o quantil de ordem 10% de Y: `r sol['q_01_poisson']`.
+* valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: `r sol['q_09_poisson']`.
+
+Meta-information
+================
+exname: moda_quantil_va_discreta
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste(collapse = "|")`
+exsolution: `r sol |> paste(collapse = "|")`
+extol: 0.05
