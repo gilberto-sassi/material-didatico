@@ -120,7 +120,7 @@ cat(FDA[opcao])
 
 Questionlist
 ------------
-* moda:
+* moda (se for mais de um valor, pegue o maior):
 * primeiro quartil:
 * mediana:
 * terceiro quartil:
@@ -132,7 +132,7 @@ Solution
 ========
 Solutionlist
 ------------
-* moda: `r f(sol['moda'])`.
+* moda (se for mais de um valor, pegue o maior): `r f(sol['moda'])`.
 * primeiro quartil: `r f(sol['q1'])`.
 * mediana: `r f(sol['q2'])`.
 * terceiro quartil: `r f(sol['q3'])`.
