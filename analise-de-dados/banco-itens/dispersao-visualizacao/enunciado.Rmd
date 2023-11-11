@@ -46,13 +46,13 @@ media_x_opcao2 <- runif(1, 10, 20)
 s_x_opcao2 <- runif(1, 5, 10)
 media_y_opcao2 <- runif(1, 10, 20)
 s_y_opcao2 <- runif(1, 5, 10)
-rho_opcao2 <- 0.5
+rho_opcao2 <- 0.7
 matriz_opcao2 <- mvtnorm::rmvnorm(
     tam, 
     c(media_x_opcao2, media_y_opcao2),
     sigma = rbind(
         c(s_x_opcao2^2, s_x_opcao2 * s_y_opcao2 * rho_opcao2),
-        c(s_x_opcao2 * s_y_opcao2 * rho_opcao2, s_y_opcao2^2),
+        c(s_x_opcao2 * s_y_opcao2 * rho_opcao2, s_y_opcao2^2)
     )
 )
 dados[[2]] <- matriz_opcao2
@@ -63,17 +63,17 @@ estimativa[2] <- ajuste_opcao2$estimate
 
 
 # opção 3) negativa e forte
-media_x_opcao2 <- runif(1, 10, 20)
-s_x_opcao2 <- runif(1, 5, 10)
-media_y_opcao2 <- runif(1, 10, 20)
-s_y_opcao2 <- runif(1, 5, 10)
-rho_opcao2 <- -0.95
-matriz_opcao2 <- mvtnorm::rmvnorm(
+media_x_opcao3 <- runif(1, 10, 20)
+s_x_opcao3 <- runif(1, 5, 10)
+media_y_opcao3 <- runif(1, 10, 20)
+s_y_opcao3 <- runif(1, 5, 10)
+rho_opcao3 <- -0.95
+matriz_opcao3 <- mvtnorm::rmvnorm(
     tam, 
-    c(media_x_opcao2, media_y_opcao2),
+    c(media_x_opcao3, media_y_opcao3),
     sigma = rbind(
-        c(s_x_opcao2^2, s_x_opcao2 * s_y_opcao2 * rho_opcao2),
-        c(s_x_opcao2 * s_y_opcao2 * rho_opcao2, s_y_opcao2^2),
+        c(s_x_opcao3^2, s_x_opcao3 * s_y_opcao3 * rho_opcao3),
+        c(s_x_opcao3 * s_y_opcao3 * rho_opcao3, s_y_opcao3^2)
     )
 )
 dados[[3]] <- matriz_opcao3
@@ -84,17 +84,17 @@ estimativa[3] <- ajuste_opcao3$estimate
 
 
 # opção 4) negativa e moderada
-media_x_opcao3 <- runif(1, 10, 20)
-s_x_opcao3 <- runif(1, 5, 10)
-media_y_opcao3 <- runif(1, 10, 20)
-s_y_opcao3 <- runif(1, 5, 10)
-rho_opcao3 <- -0.5
-matriz_opcao3 <- mvtnorm::rmvnorm(
+media_x_opcao4 <- runif(1, 10, 20)
+s_x_opcao4 <- runif(1, 5, 10)
+media_y_opcao4 <- runif(1, 10, 20)
+s_y_opcao4 <- runif(1, 5, 10)
+rho_opcao4 <- -0.7
+matriz_opcao4 <- mvtnorm::rmvnorm(
     tam, 
-    c(media_x_opcao3, media_y_opcao3),
+    c(media_x_opcao4, media_y_opcao4),
     sigma = rbind(
-        c(s_x_opcao3^2, s_x_opcao3 * s_y_opcao3 * rho_opcao3),
-        c(s_x_opcao3 * s_y_opcao3 * rho_opcao3, s_y_opcao3^2),
+        c(s_x_opcao4^2, s_x_opcao4 * s_y_opcao4 * rho_opcao4),
+        c(s_x_opcao4 * s_y_opcao4 * rho_opcao4, s_y_opcao4^2)
     )
 )
 dados[[4]] <- matriz_opcao4
@@ -105,17 +105,17 @@ estimativa[4] <- ajuste_opcao4$estimate
 
 
 # opção 5) sem associação
-media_x_opcao3 <- runif(1, 10, 20)
-s_x_opcao3 <- runif(1, 5, 10)
-media_y_opcao3 <- runif(1, 10, 20)
-s_y_opcao3 <- runif(1, 5, 10)
-rho_opcao3 <- 0
-matriz_opcao3 <- mvtnorm::rmvnorm(
+media_x_opcao5 <- runif(1, 10, 20)
+s_x_opcao5 <- runif(1, 5, 10)
+media_y_opcao5 <- runif(1, 10, 20)
+s_y_opcao5 <- runif(1, 5, 10)
+rho_opcao5 <- 0
+matriz_opcao5 <- mvtnorm::rmvnorm(
     tam, 
-    c(media_x_opcao3, media_y_opcao3),
+    c(media_x_opcao5, media_y_opcao5),
     sigma = rbind(
-        c(s_x_opcao3^2, s_x_opcao3 * s_y_opcao3 * rho_opcao3),
-        c(s_x_opcao3 * s_y_opcao3 * rho_opcao3, s_y_opcao3^2),
+        c(s_x_opcao5^2, s_x_opcao5 * s_y_opcao5 * rho_opcao5),
+        c(s_x_opcao5 * s_y_opcao5 * rho_opcao5, s_y_opcao5^2)
     )
 )
 dados[[5]] <- matriz_opcao5
@@ -129,6 +129,7 @@ opcoes <- sample(1:5, 3)
 opcoes_txt <- opcoes |>
     map_chr(\(opcao) {
         case_match(
+            opcao,
             c(1, 2) ~ "X e Y estão linear e positivamente associadados.",
             c(3, 4) ~ "X e Y estão linear e negativamente associadados.",
             5 ~ "X e Y não estão linearmente associados."
@@ -155,20 +156,25 @@ Para os gráficos de dipersão das Figuras (a), (b) e (c)  se X e Y estão linea
 
 ```{r}
 #| echo: false
+#| fig.cap: ""
+#| label: figura
 #| out.width: 100%
 
-figura <- function(opcao) {
+figura <- function(opcao, rotulo) {
     df <- tibble(
         x = dados[[opcao]][, 1],
         y = dados[[opcao]][, 2]
     )
     g <- ggplot(df) +
         geom_point(aes(x, y)) +
+        labs(title = rotulo) +
         theme_minimal()
     return(g)
 }
 
-figura(opcoes[1]) + figura(opcoes[2]) + figura(opcoes[3])
+figura(opcoes[1], "Figura (a).") +
+    figura(opcoes[2], "Figura (b).") +
+    figura(opcoes[3], "Figura (c).")
 ```
 
 Questionlist
@@ -191,17 +197,24 @@ Solution
 ========
 Solutionlist
 ------------
-* moda (se for mais de um valor, pegue o maior): `r f(sol['moda'])`.
-* primeiro quartil: `r f(sol['q1'])`.
-* mediana: `r f(sol['q2'])`.
-* terceiro quartil: `r f(sol['q3'])`.
-* o quantil de ordem 10%: `r f(sol['q_01'])`.
-* valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: `r f(sol['q_09'])`.
+* `r opcoes_txt[1]`
+*
+*
+*
+* `r opcoes_txt[2]`
+*
+*
+*
+* `r opcoes_txt[3]`
+*
+*
+*
+
 
 Meta-information
 ================
-exname: moda_quantil_va_discreta
+exname: grafico_dispersao
 extype: cloze
-exclozetype: `r rep("num", length(sol)) |> paste(collapse = "|")`
+exclozetype: `r rep("schoice", length(sol)) |> paste(collapse = "|")`
 exsolution: `r sol |> paste(collapse = "|")`
 extol: 0.05
