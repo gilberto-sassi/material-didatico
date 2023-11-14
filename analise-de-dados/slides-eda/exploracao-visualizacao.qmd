@@ -4162,7 +4162,7 @@ $\chi^2$ é medida não-negativa, por isso usamos uma padronização entre 0 e 1
 Seja $k=\min\{\text{número de linhas}, \text{número de colunas}\}$ (de tabelas de contingência), e $n$ é o tamanho da amostra.
 
 * **Coeficiente de contingência modificada:** $C=\sqrt{\frac{k \cdot \chi^2}{(k-1)\cdot (n + \chi^2)}}$.
-* **Coeficiente V de Cramer:** $C=\sqrt{\frac{\chi^2}{k\cdot \chi^2}}$.
+* **Coeficiente V de Cramer:** $C=\sqrt{\frac{\chi^2}{k\cdot n}}$.
 
 \regrafina
 
