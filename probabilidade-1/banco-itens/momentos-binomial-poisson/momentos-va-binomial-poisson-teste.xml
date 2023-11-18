@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/momentos-va-binomial-poisson-teste/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R1 Q1 : banco-itens_momentos-binomial-poisson_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X ∼ b(51; 0,31) e Y ∼ P(11,52). Encontre:</p>
+<p>Calcule:</p>
+<ol type = "a">
+<li> E(X): {1:NUMERICAL:=15.81:0.05} </li>
+<li> E(X<sup>2</sup>): {1:NUMERICAL:=260.865:0.05} </li>
+<li> E(X · (X-1)): {1:NUMERICAL:=245.055:0.05} </li>
+<li> σ<sup>2</sup>(x): {1:NUMERICAL:=10.9089:0.05} </li>
+<li> σ(x): {1:NUMERICAL:=3.30286239495381:0.05} </li>
+<li> E(Y): {1:NUMERICAL:=11.52:0.05} </li>
+<li> E(Y<sup>2</sup>): {1:NUMERICAL:=144.2304:0.05} </li>
+<li> E(Y · (Y-1)): {1:NUMERICAL:=132.7104:0.05} </li>
+<li> σ<sup>2</sup>(Y): {1:NUMERICAL:=11.52:0.05} </li>
+<li> σ(Y): {1:NUMERICAL:=3.39411254969543:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> E(X): 15,81. </li>
+<li> E(X<sup>2</sup>): 260,865. </li>
+<li> E(X · (X-1)): 245,055. </li>
+<li> σ<sup>2</sup>(x): 10,9089. </li>
+<li> σ(x): 3,302862. </li>
+<li> E(Y): 11,52. </li>
+<li> E(Y<sup>2</sup>): 144,2304. </li>
+<li> E(Y · (Y-1)): 132,7104. </li>
+<li> σ<sup>2</sup>(Y): 11,52. </li>
+<li> σ(Y): 3,394113. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>10</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R2 Q1 : banco-itens_momentos-binomial-poisson_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X ∼ b(88; 0,43) e Y ∼ P(19,43). Encontre:</p>
+<p>Calcule:</p>
+<ol type = "a">
+<li> E(X): {1:NUMERICAL:=37.84:0.05} </li>
+<li> E(X<sup>2</sup>): {1:NUMERICAL:=1453.4344:0.05} </li>
+<li> E(X · (X-1)): {1:NUMERICAL:=1415.5944:0.05} </li>
+<li> σ<sup>2</sup>(x): {1:NUMERICAL:=21.5688:0.05} </li>
+<li> σ(x): {1:NUMERICAL:=4.64422221690565:0.05} </li>
+<li> E(Y): {1:NUMERICAL:=19.43:0.05} </li>
+<li> E(Y<sup>2</sup>): {1:NUMERICAL:=396.9549:0.05} </li>
+<li> E(Y · (Y-1)): {1:NUMERICAL:=377.5249:0.05} </li>
+<li> σ<sup>2</sup>(Y): {1:NUMERICAL:=19.43:0.05} </li>
+<li> σ(Y): {1:NUMERICAL:=4.40794736810684:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> E(X): 37,84. </li>
+<li> E(X<sup>2</sup>): 1.453,434. </li>
+<li> E(X · (X-1)): 1.415,594. </li>
+<li> σ<sup>2</sup>(x): 21,5688. </li>
+<li> σ(x): 4,644222. </li>
+<li> E(Y): 19,43. </li>
+<li> E(Y<sup>2</sup>): 396,9549. </li>
+<li> E(Y · (Y-1)): 377,5249. </li>
+<li> σ<sup>2</sup>(Y): 19,43. </li>
+<li> σ(Y): 4,407947. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>10</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R3 Q1 : banco-itens_momentos-binomial-poisson_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X ∼ b(52; 0,3) e Y ∼ P(11,52). Encontre:</p>
+<p>Calcule:</p>
+<ol type = "a">
+<li> E(X): {1:NUMERICAL:=15.6:0.05} </li>
+<li> E(X<sup>2</sup>): {1:NUMERICAL:=254.28:0.05} </li>
+<li> E(X · (X-1)): {1:NUMERICAL:=238.68:0.05} </li>
+<li> σ<sup>2</sup>(x): {1:NUMERICAL:=10.92:0.05} </li>
+<li> σ(x): {1:NUMERICAL:=3.30454232837166:0.05} </li>
+<li> E(Y): {1:NUMERICAL:=11.52:0.05} </li>
+<li> E(Y<sup>2</sup>): {1:NUMERICAL:=144.2304:0.05} </li>
+<li> E(Y · (Y-1)): {1:NUMERICAL:=132.7104:0.05} </li>
+<li> σ<sup>2</sup>(Y): {1:NUMERICAL:=11.52:0.05} </li>
+<li> σ(Y): {1:NUMERICAL:=3.39411254969543:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> E(X): 15,6. </li>
+<li> E(X<sup>2</sup>): 254,28. </li>
+<li> E(X · (X-1)): 238,68. </li>
+<li> σ<sup>2</sup>(x): 10,92. </li>
+<li> σ(x): 3,304542. </li>
+<li> E(Y): 11,52. </li>
+<li> E(Y<sup>2</sup>): 144,2304. </li>
+<li> E(Y · (Y-1)): 132,7104. </li>
+<li> σ<sup>2</sup>(Y): 11,52. </li>
+<li> σ(Y): 3,394113. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>10</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R4 Q1 : banco-itens_momentos-binomial-poisson_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X ∼ b(93; 0,74) e Y ∼ P(19,78). Encontre:</p>
+<p>Calcule:</p>
+<ol type = "a">
+<li> E(X): {1:NUMERICAL:=68.82:0.05} </li>
+<li> E(X<sup>2</sup>): {1:NUMERICAL:=4754.0856:0.05} </li>
+<li> E(X · (X-1)): {1:NUMERICAL:=4685.2656:0.05} </li>
+<li> σ<sup>2</sup>(x): {1:NUMERICAL:=17.8932:0.05} </li>
+<li> σ(x): {1:NUMERICAL:=4.23003546084427:0.05} </li>
+<li> E(Y): {1:NUMERICAL:=19.78:0.05} </li>
+<li> E(Y<sup>2</sup>): {1:NUMERICAL:=411.0284:0.05} </li>
+<li> E(Y · (Y-1)): {1:NUMERICAL:=391.2484:0.05} </li>
+<li> σ<sup>2</sup>(Y): {1:NUMERICAL:=19.78:0.05} </li>
+<li> σ(Y): {1:NUMERICAL:=4.44747119158742:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> E(X): 68,82. </li>
+<li> E(X<sup>2</sup>): 4.754,086. </li>
+<li> E(X · (X-1)): 4.685,266. </li>
+<li> σ<sup>2</sup>(x): 17,8932. </li>
+<li> σ(x): 4,230035. </li>
+<li> E(Y): 19,78. </li>
+<li> E(Y<sup>2</sup>): 411,0284. </li>
+<li> E(Y · (Y-1)): 391,2484. </li>
+<li> σ<sup>2</sup>(Y): 19,78. </li>
+<li> σ(Y): 4,447471. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>10</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R5 Q1 : banco-itens_momentos-binomial-poisson_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X ∼ b(82; 0,67) e Y ∼ P(10,79). Encontre:</p>
+<p>Calcule:</p>
+<ol type = "a">
+<li> E(X): {1:NUMERICAL:=54.94:0.05} </li>
+<li> E(X<sup>2</sup>): {1:NUMERICAL:=3036.5338:0.05} </li>
+<li> E(X · (X-1)): {1:NUMERICAL:=2981.5938:0.05} </li>
+<li> σ<sup>2</sup>(x): {1:NUMERICAL:=18.1302:0.05} </li>
+<li> σ(x): {1:NUMERICAL:=4.2579572567136:0.05} </li>
+<li> E(Y): {1:NUMERICAL:=10.79:0.05} </li>
+<li> E(Y<sup>2</sup>): {1:NUMERICAL:=127.2141:0.05} </li>
+<li> E(Y · (Y-1)): {1:NUMERICAL:=116.4241:0.05} </li>
+<li> σ<sup>2</sup>(Y): {1:NUMERICAL:=10.79:0.05} </li>
+<li> σ(Y): {1:NUMERICAL:=3.28481354113137:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> E(X): 54,94. </li>
+<li> E(X<sup>2</sup>): 3.036,534. </li>
+<li> E(X · (X-1)): 2.981,594. </li>
+<li> σ<sup>2</sup>(x): 18,1302. </li>
+<li> σ(x): 4,257957. </li>
+<li> E(Y): 10,79. </li>
+<li> E(Y<sup>2</sup>): 127,2141. </li>
+<li> E(Y · (Y-1)): 116,4241. </li>
+<li> σ<sup>2</sup>(Y): 10,79. </li>
+<li> σ(Y): 3,284814. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>10</defaultgrade>
+</question>
+
+</quiz>

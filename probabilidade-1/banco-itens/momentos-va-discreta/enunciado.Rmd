@@ -1,0 +1,118 @@
+```{r}
+#| label: moda-quantil
+#| echo: false
+
+library(pacman)
+
+p_load(
+    exams,
+    readxl,
+    writexl,
+    dirmult,
+    gt,
+    glue,
+    tidyverse
+)
+
+options(scipen = 999) #prevent scientific notation
+
+# tamanho do suporte
+tam <- sample(5:10, 1)
+
+# função de probabilidade
+rdirichlet <- \(x, alpha) dirmult::rdirichlet(1, alpha) |> as.vector()
+while (TRUE) {
+    fp <- rdirichlet(1, rexp(tam, 0.5)) |> round(5)
+    if (min(fp) > 0.001 && near(sum(fp), 1)) break
+}
+
+# FDA
+fda <- cumsum(fp)
+
+# suporte
+suporte <- sample.int(1000, tam, replace = FALSE) |> sort()
+
+# letra a) E(X)
+media <- sum(suporte * fp)
+
+# letra b) Var(X)
+s2 <- sum((media - suporte)^2 * fp)
+
+# letra c) segundo momento
+m2 <- sum(suporte^2 * fp)
+
+# letra d) segundo momento fatorial
+fat_2 <- sum(suporte * (suporte - 1) * fp)
+
+# letra e) desvio padrao
+s <- sqrt(s2)
+
+# solução
+sol <- c(
+    "media" = media,
+    "m2" = m2,
+    "fat_2" = fat_2,
+    "s2" = s2,
+    "s" = s
+)
+
+f <- \(x) format(
+    x,
+    big.mark = ".",
+    decimal.mark = ","
+)
+```
+
+Question
+========
+Considere a variável aleatória discreta X com a seguinte Função de Distribuiçã Acumulada:
+
+
+```{r}
+#| echo: false
+#| results: asis
+#| comment: ""
+
+n <- length(suporte)
+
+# primeira linha da fda
+print(glue("F(x) = 0, se x < {suporte[1]},\n\n"))
+
+for (k in 2:n) {
+    print(glue("F(x) = {f(fda[k-1])}, se {suporte[k-1]} &le; x < {suporte[k]},\n\n"))
+}
+
+# ultilma linha da FDA
+print(glue("F(x) = 1, se x >= {suporte[n]}."))
+```
+
+<hr>
+
+Calcule:
+
+Questionlist
+------------
+* E(X):
+* E(X^2^):
+* E(X &#183; (X-1)):
+* &sigma;^2^(x):
+* &sigma;(x):
+
+
+Solution
+========
+Solutionlist
+------------
+* E(X): `r f(sol[1])`.
+* E(X^2^): `r f(sol[2])`.
+* E(X &#183; (X-1)): `r f(sol[3])`.
+* &sigma;^2^(x): `r f(sol[4])`.
+* &sigma;(x): `r f(sol[5])`.
+
+Meta-information
+================
+exname: moda_quantil_va_discreta
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste(collapse = "|")`
+exsolution: `r sol |> paste(collapse = "|")`
+extol: 0.05

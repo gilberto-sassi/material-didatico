@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/momentos-va-continua-teste/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R1 Q1 : banco-itens_momentos-va-continua_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Considere X uma variável aleatória contínua com Função de Distribuição acumulada dada por:</p>
+<p>F(x) = 0, se x &lt; 3,71,</p>
+<p>F(x) = (x<sup>3</sup> - 3,71<sup>3</sup>) · (3 · 92,95819)<sup>-1</sup>, se 3,71 ≤ x &lt; 6,91,</p>
+<p>F(x) = 1, se x ≥ 6,91.</p>
+<hr>
+<p>Calcule:</p>
+<ol type = "a">
+<li> E(X): {1:NUMERICAL:=5.62196477728194:0.05} </li>
+<li> E(X<sup>2</sup>): {1:NUMERICAL:=32.3825527477874:0.05} </li>
+<li> E(X · (X-1)): {1:NUMERICAL:=26.7605879705055:0.05} </li>
+<li> σ<sup>2</sup>(x): {1:NUMERICAL:=0.776064790788592:0.05} </li>
+<li> σ(x): {1:NUMERICAL:=0.880945396031214:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> E(X): 5,621965. </li>
+<li> E(X<sup>2</sup>): 32,38255. </li>
+<li> E(X · (X-1)): 26,76059. </li>
+<li> σ<sup>2</sup>(x): 0,7760648. </li>
+<li> σ(x): 0,8809454. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>5</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R2 Q1 : banco-itens_momentos-va-continua_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Considere X uma variável aleatória contínua com Função de Distribuição acumulada dada por:</p>
+<p>F(x) = 0, se x &lt; 3,91,</p>
+<p>F(x) = (x<sup>3</sup> - 3,91<sup>3</sup>) · (3 · 25,07641)<sup>-1</sup>, se 3,91 ≤ x &lt; 5,13,</p>
+<p>F(x) = 1, se x ≥ 5,13.</p>
+<hr>
+<p>Calcule:</p>
+<ol type = "a">
+<li> E(X): {1:NUMERICAL:=4.57455082682892:0.05} </li>
+<li> E(X<sup>2</sup>): {1:NUMERICAL:=21.0481715796268:0.05} </li>
+<li> E(X · (X-1)): {1:NUMERICAL:=16.4736207527979:0.05} </li>
+<li> σ<sup>2</sup>(x): {1:NUMERICAL:=0.121656312385579:0.05} </li>
+<li> σ(x): {1:NUMERICAL:=0.34879264955784:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> E(X): 4,574551. </li>
+<li> E(X<sup>2</sup>): 21,04817. </li>
+<li> E(X · (X-1)): 16,47362. </li>
+<li> σ<sup>2</sup>(x): 0,1216563. </li>
+<li> σ(x): 0,3487926. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>5</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R3 Q1 : banco-itens_momentos-va-continua_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Considere X uma variável aleatória contínua com Função de Distribuição acumulada dada por:</p>
+<p>F(x) = ∫<sub>-∞</sub><sup>x</sup> (2· π· 6,32)<sup>-0,5</sup> exp(-0,5· 6,32<sup>-1</sup> (u + 28,17))du.</p>
+<hr>
+<p>Calcule:</p>
+<ol type = "a">
+<li> E(X): {1:NUMERICAL:=-28.17:0.05} </li>
+<li> E(X<sup>2</sup>): {1:NUMERICAL:=799.8689:0.05} </li>
+<li> E(X · (X-1)): {1:NUMERICAL:=828.0389:0.05} </li>
+<li> σ<sup>2</sup>(x): {1:NUMERICAL:=6.32:0.05} </li>
+<li> σ(x): {1:NUMERICAL:=2.51396101799531:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> E(X): -28,17. </li>
+<li> E(X<sup>2</sup>): 799,8689. </li>
+<li> E(X · (X-1)): 828,0389. </li>
+<li> σ<sup>2</sup>(x): 6,32. </li>
+<li> σ(x): 2,513961. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>5</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R4 Q1 : banco-itens_momentos-va-continua_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Considere X uma variável aleatória contínua com Função de Distribuição acumulada dada por:</p>
+<p>F(x) = ∫<sub>-∞</sub><sup>x</sup> (2· π· 5,65)<sup>-0,5</sup> exp(-0,5· 5,65<sup>-1</sup> (u + 24,05))du.</p>
+<hr>
+<p>Calcule:</p>
+<ol type = "a">
+<li> E(X): {1:NUMERICAL:=-24.05:0.05} </li>
+<li> E(X<sup>2</sup>): {1:NUMERICAL:=584.0525:0.05} </li>
+<li> E(X · (X-1)): {1:NUMERICAL:=608.1025:0.05} </li>
+<li> σ<sup>2</sup>(x): {1:NUMERICAL:=5.65:0.05} </li>
+<li> σ(x): {1:NUMERICAL:=2.37697286480094:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> E(X): -24,05. </li>
+<li> E(X<sup>2</sup>): 584,0525. </li>
+<li> E(X · (X-1)): 608,1025. </li>
+<li> σ<sup>2</sup>(x): 5,65. </li>
+<li> σ(x): 2,376973. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>5</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R5 Q1 : banco-itens_momentos-va-continua_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Considere X uma variável aleatória contínua com Função de Distribuição acumulada dada por:</p>
+<p>F(x) = ∫<sub>-∞</sub><sup>x</sup> (2· π· 6,91)<sup>-0,5</sup> exp(-0,5· 6,91<sup>-1</sup> (u + 4,26))du.</p>
+<hr>
+<p>Calcule:</p>
+<ol type = "a">
+<li> E(X): {1:NUMERICAL:=-4.26:0.05} </li>
+<li> E(X<sup>2</sup>): {1:NUMERICAL:=25.0576:0.05} </li>
+<li> E(X · (X-1)): {1:NUMERICAL:=29.3176:0.05} </li>
+<li> σ<sup>2</sup>(x): {1:NUMERICAL:=6.91:0.05} </li>
+<li> σ(x): {1:NUMERICAL:=2.62868788561898:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> E(X): -4,26. </li>
+<li> E(X<sup>2</sup>): 25,0576. </li>
+<li> E(X · (X-1)): 29,3176. </li>
+<li> σ<sup>2</sup>(x): 6,91. </li>
+<li> σ(x): 2,628688. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>5</defaultgrade>
+</question>
+
+</quiz>

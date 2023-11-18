@@ -1,0 +1,283 @@
+```{r}
+#| echo: false
+#| label: gerando-dados
+
+library(pacman)
+
+p_load(
+    readxl, writexl, janitor, mvtnorm, DescTools, knitr, tidyverse
+)
+
+# formatação
+f <- \(x) format(
+    x,
+    decimal.mark = ",",
+    big.mark = "."
+)
+
+# número de linhas e colunas
+nlinha <- sample(2:4, 1)
+ncol <- sample(2:4, 1)
+
+# tamanho da amostra
+tam <- sample(500:1000, 1)
+
+# variável qualitativa
+quali <- function(x, n = nlinha, base = "A") {
+    x |>
+        map_chr(\(u) {
+            for (k in 1:(n - 1)) {
+                if (u <= qnorm(k / n)) {
+                    return(str_interp("${base}_${k}"))
+                }
+            }
+            return(str_interp("${base}_${n}"))
+        })
+}
+
+# opção 1)
+rho_opcao1 <- 0.95
+matriz_opcao1 <- rmvnorm(
+    tam,
+    c(0, 0),
+    rbind(c(1, rho_opcao1), c(rho_opcao1, 1))
+)
+X1 <- quali(matriz_opcao1[, 1], nlinha, "A")
+Y1 <- quali(matriz_opcao1[, 2], ncol, "B")
+tab_opcao1 <- tabyl(tibble(X = X1, Y =  Y1), X, Y)
+
+# opção 2)
+rho_opcao2 <- -0.95
+matriz_opcao2 <- rmvnorm(
+    tam,
+    c(0, 0),
+    rbind(c(1, rho_opcao2), c(rho_opcao2, 1))
+)
+X2 <- quali(matriz_opcao1[, 1], nlinha, "A")
+Y2 <- quali(matriz_opcao1[, 2], ncol, "B")
+tab_opcao2 <- tabyl(tibble(X = X2, Y =  Y2), X, Y)
+
+# opção 3)
+rho_opcao3 <- 0.5
+matriz_opcao3 <- rmvnorm(
+    tam,
+    c(0, 0),
+    rbind(c(1, rho_opcao3), c(rho_opcao3, 1))
+)
+X3 <- quali(matriz_opcao1[, 1], nlinha, "A")
+Y3 <- quali(matriz_opcao1[, 2], ncol, "B")
+tab_opcao3 <- tabyl(tibble(X = X3, Y =  Y3), X, Y)
+
+# opção 4)
+rho_opcao4 <- -0.5
+matriz_opcao4 <- rmvnorm(
+    tam,
+    c(0, 0),
+    rbind(c(1, rho_opcao4), c(rho_opcao4, 1))
+)
+X4 <- quali(matriz_opcao1[, 1], nlinha, "A")
+Y4 <- quali(matriz_opcao1[, 2], ncol, "B")
+tab_opcao4 <- tabyl(tibble(X = X4, Y =  Y4), X, Y)
+
+# opção 5)
+matriz_opcao5 <- rmvnorm(
+    tam,
+    c(0, 0),
+    rbind(c(1, 0), c(0, 1))
+)
+X5 <- quali(matriz_opcao1[, 1], nlinha, "A")
+Y5 <- quali(matriz_opcao1[, 2], ncol, "B")
+tab_opcao5 <- tabyl(tibble(X = X5, Y =  Y5), X, Y)
+
+# sorteio da opção
+opcao <- sample(1:5, 1)
+tabela <- case_match(
+    opcao,
+    1 ~ list(tab_opcao1),
+    2 ~ list(tab_opcao2),
+    3 ~ list(tab_opcao3),
+    4 ~ list(tab_opcao4),
+    5 ~ list(tab_opcao5)
+)[[1]]
+matriz  <- case_match(
+    opcao,
+    1 ~ list(matriz_opcao1),
+    2 ~ list(matriz_opcao2),
+    3 ~ list(matriz_opcao3),
+    4 ~ list(matriz_opcao4),
+    5 ~ list(matriz_opcao5)
+)[[1]]
+vars <- case_match(
+    opcao,
+    1 ~ list(cbind("X" = X1, "Y" = Y1)),
+    2 ~ list(cbind("X" = X2, "Y" = Y2)),
+    3 ~ list(cbind("X" = X3, "Y" = Y3)),
+    4 ~ list(cbind("X" = X4, "Y" = Y4)),
+    5 ~ list(cbind("X" = X5, "Y" = Y5)),
+)[[1]]
+dados <- case_match(
+    opcao,
+    1 ~ list(tibble(X = X1, Y = Y1)),
+    2 ~ list(tibble(X = X2, Y = Y2)),
+    3 ~ list(tibble(X = X3, Y = Y3)),
+    4 ~ list(tibble(X = X4, Y = Y4)),
+    5 ~ list(tibble(X = X5, Y = Y5)),
+)[[1]]
+
+# salvando os dados
+write_xlsx(dados, "dados.xlsx")
+
+# tabelas e qui-quadrado
+ajuste <- chisq.test(tabela)
+
+# solução
+sol <- c(
+    unlist(ajuste$observed[, 2:(ncol + 1)]),
+    unlist(ajuste$expected[, 2:(ncol + 1)]),
+    ajuste$statistic,
+    ContCoef(vars[, "X"], vars[, "Y"]),
+    CramerV(vars[, "X"], vars[, "Y"])
+)
+names(sol) <- NULL
+```
+
+Question
+========
+
+Sejam X e Y duas variáveis qualitativas e uma amostra com `r tam` observações está disponível em [dados.xlsx](dados.xlsx).
+
+<hr>
+
+A tabela de contingência esperada é dada por:
+
+```{r}
+#| echo: false
+#| results: asis
+
+matriz <- paste0("\\#\\#ANSWER", 1:(nlinha * ncol), "\\#\\#") |>
+    matrix(nrow = nlinha, ncol = ncol)
+row.names(matriz) <- paste0("A~", 1:nlinha, "~")
+kable(
+    matriz,
+    row.names = TRUE,
+    col.names = paste0("B~", 1:ncol, "~"),
+    scientific = FALSE,
+    table.attr = "border=\"1\"",
+    format = "html"
+)
+```
+
+
+<hr>
+
+A tabela de contingência esperada é dada por:
+
+```{r}
+#| echo: false
+#| results: asis
+
+matriz <- paste0("\\#\\#ANSWER", (nlinha * ncol + 1):(2 * nlinha * ncol), "\\#\\#") |>
+    matrix(nrow = nlinha, ncol = ncol)
+row.names(matriz) <- paste0("A~", 1:nlinha, "~")
+kable(
+    matriz,
+    row.names = TRUE,
+    col.names = paste0("B~", 1:ncol, "~"),
+    scientific = FALSE,
+    table.attr = "border=\"1\"",
+    format = "html"
+)
+```
+
+<hr>
+
+&chi;^2^: `r paste0("\\#\\#ANSWER", 2 * nlinha * ncol + 1, "\\#\\#")`.
+
+Coeficiente de contigência modificada: `r paste0("\\#\\#ANSWER", 2 * nlinha * ncol + 2, "\\#\\#")`.
+
+Coeficiente V de Cramer: `r paste0("\\#\\#ANSWER", 2 * nlinha * ncol + 3, "\\#\\#")`.
+
+<hr>
+
+```{r}
+#| echo: false
+#| results: asis
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+Solution
+========
+
+A tabela de contingência observada é dada por:
+
+```{r}
+#| echo: false
+#| results: asis
+
+matriz <- sol[1:(nlinha * ncol)] |>
+    matrix(nrow = nlinha, ncol = ncol)
+row.names(matriz) <- paste0("A~", 1:nlinha, "~")
+kable(
+    matriz,
+    row.names = TRUE,
+    col.names = paste0("B~", 1:ncol, "~"),
+    digits = 4,
+    scientific = FALSE,
+    table.attr = "border=\"1\"",
+    format.args = list(
+        decimal.mark = ",",
+        big.mark = "."
+    ),
+    format = "html"
+)
+```
+
+<hr>
+
+A tabela de contingência esperada é dada por:
+
+```{r}
+#| echo: false
+#| results: asis
+
+matriz <- sol[(nlinha * ncol + 1):(2 * nlinha * ncol)] |>
+    matrix(nrow = nlinha, ncol = ncol)
+row.names(matriz) <- paste0("A~", 1:nlinha, "~")
+kable(
+    matriz,
+    row.names = TRUE,
+    col.names = paste0("B~", 1:ncol, "~"),
+    digits = 4,
+    scientific = FALSE,
+    table.attr = "border=\"1\"",
+    format.args = list(
+        decimal.mark = ",",
+        big.mark = "."
+    ),
+    format = "html"
+)
+```
+
+<hr>
+
+
+&chi;^2^: `r f(sol[2 * nlinha * ncol + 1])`.
+
+Coeficiente de contigência modificada: `r f(sol[2 * nlinha * ncol + 2])`.
+
+Coeficiente V de Cramer: `r f(sol[2 * nlinha * ncol + 3])`.
+
+
+```{r}
+#| echo: false
+#| results: asis
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+Meta-information
+================
+exname: associacao_qualitativa_dados
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste0(collapse = "|")`
+exsolution: `r sol |> paste0(collapse = "|")`
+extol: 0.05

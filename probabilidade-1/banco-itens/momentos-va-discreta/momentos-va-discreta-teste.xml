@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/momentos-va-discreta-teste/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R1 Q1 : banco-itens_momentos-va-discreta_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Considere a variável aleatória discreta X com a seguinte Função de Distribuiçã Acumulada:</p>
+<p>F(x) = 0, se x &lt; 33,</p>
+<p>F(x) = 0,46909, se 33 ≤ x &lt; 78,</p>
+<p>F(x) = 0,67995, se 78 ≤ x &lt; 274,</p>
+<p>F(x) = 0,68411, se 274 ≤ x &lt; 303,</p>
+<p>F(x) = 0,69545, se 303 ≤ x &lt; 629,</p>
+<p>F(x) = 0,73685, se 629 ≤ x &lt; 749,</p>
+<p>F(x) = 0,74032, se 749 ≤ x &lt; 896,</p>
+<p>F(x) = 0,76362, se 896 ≤ x &lt; 926,</p>
+<p>F(x) = 0,88035, se 926 ≤ x &lt; 927,</p>
+<p>F(x) = 1, se x &gt;= 927.</p>
+<hr>
+<p>Calcule:</p>
+<ol type = "a">
+<li> E(X): {1:NUMERICAL:=305.02687:0.05} </li>
+<li> E(X<sup>2</sup>): {1:NUMERICAL:=243090.85347:0.05} </li>
+<li> E(X · (X-1)): {1:NUMERICAL:=242785.8266:0.05} </li>
+<li> σ<sup>2</sup>(x): {1:NUMERICAL:=150049.462048003:0.05} </li>
+<li> σ(x): {1:NUMERICAL:=387.362184586987:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> E(X): 305,0269. </li>
+<li> E(X<sup>2</sup>): 243.090,9. </li>
+<li> E(X · (X-1)): 242.785,8. </li>
+<li> σ<sup>2</sup>(x): 150.049,5. </li>
+<li> σ(x): 387,3622. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>5</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R2 Q1 : banco-itens_momentos-va-discreta_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Considere a variável aleatória discreta X com a seguinte Função de Distribuiçã Acumulada:</p>
+<p>F(x) = 0, se x &lt; 268,</p>
+<p>F(x) = 0,15686, se 268 ≤ x &lt; 278,</p>
+<p>F(x) = 0,46639, se 278 ≤ x &lt; 491,</p>
+<p>F(x) = 0,54977, se 491 ≤ x &lt; 906,</p>
+<p>F(x) = 0,64576, se 906 ≤ x &lt; 919,</p>
+<p>F(x) = 0,97182, se 919 ≤ x &lt; 1000,</p>
+<p>F(x) = 1, se x &gt;= 1000.</p>
+<hr>
+<p>Calcule:</p>
+<ol type = "a">
+<li> E(X): {1:NUMERICAL:=583.82348:0.05} </li>
+<li> E(X<sup>2</sup>): {1:NUMERICAL:=437638.97024:0.05} </li>
+<li> E(X · (X-1)): {1:NUMERICAL:=437055.14676:0.05} </li>
+<li> σ<sup>2</sup>(x): {1:NUMERICAL:=96789.1144406896:0.05} </li>
+<li> σ(x): {1:NUMERICAL:=311.109489473866:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> E(X): 583,8235. </li>
+<li> E(X<sup>2</sup>): 437.639. </li>
+<li> E(X · (X-1)): 437.055,1. </li>
+<li> σ<sup>2</sup>(x): 96.789,11. </li>
+<li> σ(x): 311,1095. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>5</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R3 Q1 : banco-itens_momentos-va-discreta_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Considere a variável aleatória discreta X com a seguinte Função de Distribuiçã Acumulada:</p>
+<p>F(x) = 0, se x &lt; 128,</p>
+<p>F(x) = 0,04939, se 128 ≤ x &lt; 218,</p>
+<p>F(x) = 0,05928, se 218 ≤ x &lt; 269,</p>
+<p>F(x) = 0,2041, se 269 ≤ x &lt; 366,</p>
+<p>F(x) = 0,27015, se 366 ≤ x &lt; 385,</p>
+<p>F(x) = 0,36432, se 385 ≤ x &lt; 450,</p>
+<p>F(x) = 0,36735, se 450 ≤ x &lt; 649,</p>
+<p>F(x) = 0,38862, se 649 ≤ x &lt; 796,</p>
+<p>F(x) = 0,40692, se 796 ≤ x &lt; 824,</p>
+<p>F(x) = 0,81587, se 824 ≤ x &lt; 832,</p>
+<p>F(x) = 1, se x &gt;= 832.</p>
+<hr>
+<p>Calcule:</p>
+<ol type = "a">
+<li> E(X): {1:NUMERICAL:=627.76976:0.05} </li>
+<li> E(X<sup>2</sup>): {1:NUMERICAL:=460858.81358:0.05} </li>
+<li> E(X · (X-1)): {1:NUMERICAL:=460231.04382:0.05} </li>
+<li> σ<sup>2</sup>(x): {1:NUMERICAL:=66763.9420095424:0.05} </li>
+<li> σ(x): {1:NUMERICAL:=258.387193973584:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> E(X): 627,7698. </li>
+<li> E(X<sup>2</sup>): 460.858,8. </li>
+<li> E(X · (X-1)): 460.231. </li>
+<li> σ<sup>2</sup>(x): 66.763,94. </li>
+<li> σ(x): 258,3872. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>5</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R4 Q1 : banco-itens_momentos-va-discreta_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Considere a variável aleatória discreta X com a seguinte Função de Distribuiçã Acumulada:</p>
+<p>F(x) = 0, se x &lt; 152,</p>
+<p>F(x) = 0,01223, se 152 ≤ x &lt; 304,</p>
+<p>F(x) = 0,36828, se 304 ≤ x &lt; 398,</p>
+<p>F(x) = 0,50316, se 398 ≤ x &lt; 524,</p>
+<p>F(x) = 0,80369, se 524 ≤ x &lt; 917,</p>
+<p>F(x) = 1, se x &gt;= 917.</p>
+<hr>
+<p>Calcule:</p>
+<ol type = "a">
+<li> E(X): {1:NUMERICAL:=501.27439:0.05} </li>
+<li> E(X<sup>2</sup>): {1:NUMERICAL:=302146.05511:0.05} </li>
+<li> E(X · (X-1)): {1:NUMERICAL:=301644.78072:0.05} </li>
+<li> σ<sup>2</sup>(x): {1:NUMERICAL:=50870.0410401279:0.05} </li>
+<li> σ(x): {1:NUMERICAL:=225.543878303376:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> E(X): 501,2744. </li>
+<li> E(X<sup>2</sup>): 302.146,1. </li>
+<li> E(X · (X-1)): 301.644,8. </li>
+<li> σ<sup>2</sup>(x): 50.870,04. </li>
+<li> σ(x): 225,5439. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>5</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R5 Q1 : banco-itens_momentos-va-discreta_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Considere a variável aleatória discreta X com a seguinte Função de Distribuiçã Acumulada:</p>
+<p>F(x) = 0, se x &lt; 140,</p>
+<p>F(x) = 0,08163, se 140 ≤ x &lt; 170,</p>
+<p>F(x) = 0,08796, se 170 ≤ x &lt; 220,</p>
+<p>F(x) = 0,14409, se 220 ≤ x &lt; 325,</p>
+<p>F(x) = 0,24285, se 325 ≤ x &lt; 437,</p>
+<p>F(x) = 0,70576, se 437 ≤ x &lt; 480,</p>
+<p>F(x) = 0,80194, se 480 ≤ x &lt; 661,</p>
+<p>F(x) = 0,83297, se 661 ≤ x &lt; 673,</p>
+<p>F(x) = 0,84292, se 673 ≤ x &lt; 729,</p>
+<p>F(x) = 1, se x &gt;= 729.</p>
+<hr>
+<p>Calcule:</p>
+<ol type = "a">
+<li> E(X): {1:NUMERICAL:=447.12647:0.05} </li>
+<li> E(X<sup>2</sup>): {1:NUMERICAL:=227035.48825:0.05} </li>
+<li> E(X · (X-1)): {1:NUMERICAL:=226588.36178:0.05} </li>
+<li> σ<sup>2</sup>(x): {1:NUMERICAL:=27113.4080753391:0.05} </li>
+<li> σ(x): {1:NUMERICAL:=164.661495424216:0.05} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> E(X): 447,1265. </li>
+<li> E(X<sup>2</sup>): 227.035,5. </li>
+<li> E(X · (X-1)): 226.588,4. </li>
+<li> σ<sup>2</sup>(x): 27.113,41. </li>
+<li> σ(x): 164,6615. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>5</defaultgrade>
+</question>
+
+</quiz>

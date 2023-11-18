@@ -8,6 +8,13 @@ p_load(
     readxl, writexl, janitor, mvtnorm, DescTools, knitr, tidyverse
 )
 
+# formatação
+f <- \(x) format(
+    x,
+    decimal.mark = ",",
+    big.mark = "."
+)
+
 # número de linhas e colunas
 nlinha <- sample(2:4, 1)
 ncol <- sample(2:4, 1)
@@ -131,8 +138,8 @@ Question
 
 Sejam X e Y duas variáveis qualitativas com:
 
-* X: `r paste0("A_", 1:nlinha)`;
-* Y: `r paste0("B_", 1:ncol)`;
+* X: `r paste0("A~", 1:nlinha, "~")`;
+* Y: `r paste0("B~", 1:ncol, "~")`.
 
 e com a seguinte tabela de contingência _observada_:
 
@@ -140,10 +147,15 @@ e com a seguinte tabela de contingência _observada_:
 #| echo: false
 #| results: asis
 
-table(vars[, "X"], vars[, "Y"]) |>
+tabela <- table(vars[, "X"], vars[, "Y"])
+rownames(tabela) <- paste0("A~", 1:nlinha, "~")
+tabela |>
     kable(
-        col.names = paste("B_", 1:ncol),
-        format = "pipe"
+        row.names = TRUE,
+        col.names = paste0("B~", 1:ncol, "~"),
+        scientific = FALSE,
+        table.attr = "border=\"1\"",
+        format = "html"
     )
 ```
 
@@ -157,14 +169,79 @@ A tabela de contingência esperada é dada por:
 
 matriz <- paste0("\\#\\#ANSWER", 1:(nlinha * ncol), "\\#\\#") |>
     matrix(nrow = nlinha, ncol = ncol)
-row.names(matriz) <- paste0("A_", 1:nlinha)
+row.names(matriz) <- paste0("A~", 1:nlinha, "~")
 kable(
     matriz,
     row.names = TRUE,
-    col.names = paste0("B_", 1:ncol),
+    col.names = paste0("B~", 1:ncol, "~"),
+    scientific = FALSE,
+    table.attr = "border=\"1\"",
     format = "html"
 )
 ```
 
 <hr>
 
+&chi;^2^: `r paste0("\\#\\#ANSWER", nlinha * ncol + 1, "\\#\\#")`.
+
+Coeficiente de contigência modificada: `r paste0("\\#\\#ANSWER", nlinha * ncol + 2, "\\#\\#")`.
+
+Coeficiente V de Cramer: `r paste0("\\#\\#ANSWER", nlinha * ncol + 3, "\\#\\#")`.
+
+<hr>
+
+```{r}
+#| echo: false
+#| results: asis
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+Solution
+========
+
+A tabela de contingência esperada é dada por:
+
+```{r}
+#| echo: false
+#| results: asis
+
+matriz <- sol[1:(nlinha * ncol)] |>
+    matrix(nrow = nlinha, ncol = ncol)
+row.names(matriz) <- paste0("A~", 1:nlinha, "~")
+kable(
+    matriz,
+    row.names = TRUE,
+    col.names = paste0("B~", 1:ncol, "~"),
+    digits = 4,
+    scientific = FALSE,
+    table.attr = "border=\"1\"",
+    format.args = list(
+        decimal.mark = ",",
+        big.mark = "."
+    ),
+    format = "html"
+)
+```
+
+<hr>
+
+&chi;^2^: `r f(sol[nlinha * ncol + 1])`.
+
+Coeficiente de contigência modificada: `r f(sol[nlinha * ncol + 2])`.
+
+Coeficiente V de Cramer: `r f(sol[nlinha * ncol + 3])`.
+
+
+```{r}
+#| echo: false
+#| results: asis
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+Meta-information
+================
+exname: associacao_qualitativa_tabela
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste0(collapse = "|")`
+exsolution: `r sol |> paste0(collapse = "|")`
+extol: 0.05

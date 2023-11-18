@@ -334,7 +334,7 @@ Estatística}
 % 	\maketitle
 %  \end{frame}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[enhanced, interior hidden, sharp corners, borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, breakable, frame hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[enhanced, frame hidden, breakable, boxrule=0pt, sharp corners, borderline west={3pt}{0pt}{shadecolor}, interior hidden]}{\end{tcolorbox}}\fi
 
 \hypertarget{sobre-o-curso}{%
 \section{Sobre o curso}\label{sobre-o-curso}}
@@ -6877,7 +6877,7 @@ então calculamos uma medida chamada qui-quadrado \begin{align*}
 \end{align*}
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}
 \(\chi^2\) é medida não-negativa, por isso usamos uma padronização entre
 0 e 1.
 
@@ -6888,14 +6888,21 @@ tabelas de contingência), e \(n\) é o tamanho da amostra.
 \tightlist
 \item
   \textbf{Coeficiente de contingência modificada:}
-  \(C=\sqrt{\frac{k \cdot \chi^2}{(k-1)\cdot (n + \chi^2)}}\).
+  \(C=\sqrt{\frac{\chi^2}{n + \chi^2}}\).
 \item
   \textbf{Coeficiente V de Cramer:}
-  \(C=\sqrt{\frac{\chi^2}{k\cdot n}}\).
+  \(C=\sqrt{\frac{\chi^2}{(k-1)\cdot n}}\).
+\item
+  \textbf{Coeficiente Phi}: \(\Phi = \sqrt{\frac{\chi^2}{n}}\).
+\item
+  \textbf{Coeficiente T de Tschuprow}:
+  \(T = \sqrt{\frac{\chi^2}{n \cdot (i - 1) \cdot (j-1)}}\), onde \(i\)
+  é o número de linhas e \(j\) é o número de colunas da tabela de
+  contingência (sem os totais).
 \end{itemize}
+\end{frame}
 
-\regrafina
-
+\begin{frame}[fragile]
 Usamos o pacote
 \href{http://andrisignorell.github.io/DescTools/}{\texttt{DescTools}}
 para calcular essas medidas.
@@ -6907,6 +6914,10 @@ para calcular essas medidas.
   \texttt{ContCoef(x,\ y)}.
 \item
   Para calcular o Coeficiente V de Cramer: \texttt{CramerV(x,\ y)}.
+\item
+  Para calcular o Coeficiente Phi: \texttt{Phi(x,\ y)}.
+\item
+  Para calcular o T de Tschuprow: \texttt{TschuprowT(x,\ y)}.
 \end{enumerate}
 \end{frame}
 
@@ -6921,15 +6932,17 @@ qualitativas\newline Medidas de associação\newline Exemplo}
   \FunctionTok{summarise}\NormalTok{(}
     \AttributeTok{cont\_coef =} \FunctionTok{ContCoef}\NormalTok{(fundacao\_tipo, geral\_condicao),}
     \AttributeTok{cramer\_v =} \FunctionTok{CramerV}\NormalTok{(fundacao\_tipo, geral\_condicao),}
+    \AttributeTok{phi =} \FunctionTok{Phi}\NormalTok{(fundacao\_tipo, geral\_condicao),}
+    \AttributeTok{t\_tschuprow =} \FunctionTok{TschuprowT}\NormalTok{(fundacao\_tipo, geral\_condicao)}
 \NormalTok{  )}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-# A tibble: 1 x 2
-  cont_coef cramer_v
-      <dbl>    <dbl>
-1     0.501    0.259
+# A tibble: 1 x 4
+  cont_coef cramer_v   phi t_tschuprow
+      <dbl>    <dbl> <dbl>       <dbl>
+1     0.501    0.259 0.578       0.230
 \end{verbatim}
 \end{frame}
 
@@ -6948,6 +6961,16 @@ qualitativas\newline Medidas de associação\newline Exercício}
   \texttt{tp\_sexo} do conjunto de dados
   \texttt{amostra\_enem\_salvador.xlsx} calculando \emph{Coeficiente V
   de Cramer}.
+\item
+  Verifique se existe associação entre as variáveis \texttt{q006} e
+  \texttt{tp\_sexo} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx} calculando \emph{Coeficiente
+  Phi}.
+\item
+  Verifique se existe associação entre as variáveis \texttt{q006} e
+  \texttt{tp\_sexo} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx} calculando \emph{Coeficiente T
+  de Tschuprow}.
 \end{itemize}
 \end{frame}
 

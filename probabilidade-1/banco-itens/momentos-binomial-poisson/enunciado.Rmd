@@ -1,0 +1,82 @@
+```{r}
+#| label: moda-quantil-binomial-poisson
+#| echo: false
+
+library(pacman)
+
+p_load(
+    readxl, writexl, janitor,
+    tidyverse
+)
+
+# binomial
+casos <- sample(50:100, 1)
+p_sucesso <- runif(1, 0.2, 0.8) |> round(2)
+
+# poisson
+media_pop <- runif(1, 10, 20) |> round(2)
+
+# solução
+sol <- c(
+    "media_binomial" = casos * p_sucesso,
+    "m2_binomial" = casos * p_sucesso* (1 - p_sucesso) + (casos * p_sucesso)^2,
+    "fat_2_binomial" = casos * p_sucesso* (1 - p_sucesso) + (casos * p_sucesso)^2 - casos * p_sucesso,
+    "s2_binomial" = casos * p_sucesso * (1 - p_sucesso),
+    "s_binomial" = sqrt(casos * p_sucesso * (1 - p_sucesso)),
+    "media_poisson" = media_pop,
+    "m2_poisson" = media_pop + media_pop^2,
+    "fat_2_poisson" = media_pop^2,
+    "s2_poisson" = media_pop,
+    "s_poisson" = sqrt(media_pop) 
+)
+
+f <- \(x) format(
+    x,
+    big.mark = ".",
+    decimal.mark = ","
+)
+```
+
+Question
+========
+
+Seja X &sim; b(`r casos`; `r f(p_sucesso)`) e Y &sim; P(`r f(media_pop)`). Encontre:
+
+
+Calcule:
+
+Questionlist
+------------
+* E(X):
+* E(X^2^):
+* E(X &#183; (X-1)):
+* &sigma;^2^(x):
+* &sigma;(x):
+* E(Y):
+* E(Y^2^):
+* E(Y &#183; (Y-1)):
+* &sigma;^2^(Y):
+* &sigma;(Y):
+
+Solution
+========
+Solutionlist
+------------
+* E(X): `r f(sol[1])`.
+* E(X^2^): `r f(sol[2])`.
+* E(X &#183; (X-1)): `r f(sol[3])`.
+* &sigma;^2^(x): `r f(sol[4])`.
+* &sigma;(x): `r f(sol[5])`.
+* E(Y): `r f(sol[6])`.
+* E(Y^2^): `r f(sol[7])`.
+* E(Y &#183; (Y-1)): `r f(sol[8])`.
+* &sigma;^2^(Y): `r f(sol[9])`.
+* &sigma;(Y): `r f(sol[10])`.
+
+Meta-information
+================
+exname: momentos_binomial_poisson
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste(collapse = "|")`
+exsolution: `r sol |> paste(collapse = "|")`
+extol: 0.05

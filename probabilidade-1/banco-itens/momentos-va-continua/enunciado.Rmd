@@ -1,0 +1,140 @@
+```{r}
+#| label: dados-gerados
+#| echo: false
+
+library(pacman)
+
+p_load(
+    writexl, janitor,
+    glue,
+    ggthemes,
+    tidyverse
+)
+
+# formatação
+f <- \(x) format(
+    x,
+    big.mark = ".",
+    decimal.mark = ","
+)
+
+media <- vector("numeric", 4)
+m2 <- vector("numeric", 4)
+fat_2 <- vector("numeric", 4)
+s2 <- vector("numeric", 4)
+s <- vector("numeric", 4)
+
+
+# opção 1)
+x0_op1 <- runif(1, 2, 4) |> round(2)
+x1_op1 <- runif(1, 5, 10) |> round(2)
+area <- (x1_op1^3 - x0_op1^3) / 3
+f1 <- glue("
+F(x) = 0, se x < {f(x0_op1)},
+
+F(x) = (x^3^ - {f(x0_op1)}^3^) &#183; (3 &#183; {f(area)})^-1^, se {f(x0_op1)} &le; x < {f(x1_op1)},
+
+F(x) = 1, se x &ge; {f(x1_op1)}.
+")
+media[1] <- (x1_op1^4 - x0_op1^4) / (4 * area)
+m2[1] <- (x1_op1^5 - x0_op1^5) / (5 * area)
+fat_2[1] <- m2[1] - media[1]
+s2[1] <- m2[1] - media[1]^2
+s[1] <- sqrt(s2[1])
+
+# opção 2)
+x0_op2 <- runif(1, 2, 4) |> round(2)
+x1_op2 <- runif(1, 5, 10) |> round(2)
+f2 <- glue("
+F(x) = 0, se x < {f(x0_op2)}
+
+F(x) = (x - {f(x0_op2)}) &#183; ({f(x1_op2)} - {f(x0_op2)})^-1^, se {f(x0_op2)} &le; x < {f(x1_op2)},
+
+F(x) = 1, se x &ge; {f(x0_op2)}.
+")
+media[2] <- (x0_op2 + x1_op2) / 2
+s2[2] <- (x1_op2 - x0_op2)^2 / 12
+m2[2] <- s2[2] + media[2]^2
+fat_2[2] <- m2[2] - media[2]
+s[2] <- sqrt(s2[2])
+
+# opção 3)
+taxa <- runif(1, 2, 6) |> round(2)
+f3 <- glue("
+F(x) = 0, se x &le; 0,
+
+F(x) = 1 - exp(-{f(taxa)}&#183; x), se x > 0.
+")
+media[3] <- 1 / taxa
+s2[3] <- 1 / taxa^2
+m2[3] <- s2[3] + media[3]^2
+fat_2[3] <- m2[3] - media[3]
+s[3] <- sqrt(s2[3])
+
+# opção 4)
+media_pop <- runif(1, -30, -1) |> round(2)
+s2_pop <- runif(1, 5, 10) |> round(2)
+f4 <- glue("
+F(x) = &#8747;~-&#8734;~^x^ (2&#183; &pi;&#183; {f(s2_pop)})^-0,5^ exp(-0,5&#183; {f(s2_pop)}^-1^ (u {ifelse(media_pop < 0, '+', '-')} {f(ifelse(media_pop < 0, abs(media_pop), media_pop))}))du.
+")
+media[4] <- media_pop
+s2[4] <- s2_pop
+m2[4] <- s2[4] + media[4]^2
+fat_2[4] <- m2[4] - media[4]
+s[4] <- sqrt(s2[4])
+
+
+FDA <- c(f1, f2, f3, f4)
+
+opcao <- sample.int(4, 1)
+# opcao <- 1
+sol <- c(
+    "media" = media[opcao],
+    "m2" = m2[opcao],
+    "fat_2" = fat_2[opcao],
+    "s2" = s2[opcao],
+    "s" = s[opcao]
+)
+```
+
+Question
+========
+Considere X uma variável aleatória contínua com Função de Distribuição acumulada dada por:
+
+
+```{r}
+#| echo: false
+#| results: asis
+
+cat(FDA[opcao])
+```
+
+<hr>
+ Calcule:
+
+Questionlist
+------------
+* E(X):
+* E(X^2^):
+* E(X &#183; (X-1)):
+* &sigma;^2^(x):
+* &sigma;(x):
+
+
+Solution
+========
+Solutionlist
+------------
+* E(X): `r f(sol[1])`.
+* E(X^2^): `r f(sol[2])`.
+* E(X &#183; (X-1)): `r f(sol[3])`.
+* &sigma;^2^(x): `r f(sol[4])`.
+* &sigma;(x): `r f(sol[5])`.
+
+Meta-information
+================
+exname: momentos_va_continua
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste(collapse = "|")`
+exsolution: `r sol |> paste(collapse = "|")`
+extol: 0.05

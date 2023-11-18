@@ -1,0 +1,1348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/associacao_quali_tab_esperada-teste/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R1 Q1 : banco-itens_associacao_quali_tab_esperada_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Sejam X e Y duas variáveis qualitativas com:</p>
+<ul>
+<li>X: A<sub>1</sub>, A<sub>2</sub>;</li>
+<li>Y: B<sub>1</sub>, B<sub>2</sub>, B<sub>3</sub>, B<sub>4</sub>.</li>
+</ul>
+<p>e com a seguinte tabela de contingência <em>observada</em>:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+B<sub>1</sub>
+</th>
+<th style="text-align:right;">
+B<sub>2</sub>
+</th>
+<th style="text-align:right;">
+B<sub>3</sub>
+</th>
+<th style="text-align:right;">
+B<sub>4</sub>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A<sub>1</sub>
+</td>
+<td style="text-align:right;">
+127
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>2</sub>
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:right;">
+157
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>A tabela de contingência esperada é dada por:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+B<sub>1</sub>
+</th>
+<th style="text-align:left;">
+B<sub>2</sub>
+</th>
+<th style="text-align:left;">
+B<sub>3</sub>
+</th>
+<th style="text-align:left;">
+B<sub>4</sub>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A<sub>1</sub>
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=59.5457875457875:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=60.4835164835165:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=62.3589743589744:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=73.6117216117216:0.05}
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>2</sub>
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=67.4542124542125:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=68.5164835164835:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=70.6410256410256:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=83.3882783882784:0.05}
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>χ<sup>2</sup>:  {1:NUMERICAL:=378.643110043051:0.05}.</p>
+<p>Coeficiente de contigência modificada:  {1:NUMERICAL:=0.639923354496991:0.05}.</p>
+<p>Coeficiente V de Cramer:  {1:NUMERICAL:=0.832757797639504:0.05}.</p>
+<hr>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>A tabela de contingência esperada é dada por:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+B<sub>1</sub>
+</th>
+<th style="text-align:right;">
+B<sub>2</sub>
+</th>
+<th style="text-align:right;">
+B<sub>3</sub>
+</th>
+<th style="text-align:right;">
+B<sub>4</sub>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A<sub>1</sub>
+</td>
+<td style="text-align:right;">
+59,5458
+</td>
+<td style="text-align:right;">
+60,4835
+</td>
+<td style="text-align:right;">
+62,359
+</td>
+<td style="text-align:right;">
+73,6117
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>2</sub>
+</td>
+<td style="text-align:right;">
+67,4542
+</td>
+<td style="text-align:right;">
+68,5165
+</td>
+<td style="text-align:right;">
+70,641
+</td>
+<td style="text-align:right;">
+83,3883
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>χ<sup>2</sup>: 378,6431.</p>
+<p>Coeficiente de contigência modificada: 0,6399234.</p>
+<p>Coeficiente V de Cramer: 0,8327578.</p>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>11</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R2 Q1 : banco-itens_associacao_quali_tab_esperada_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Sejam X e Y duas variáveis qualitativas com:</p>
+<ul>
+<li>X: A<sub>1</sub>, A<sub>2</sub>, A<sub>3</sub>, A<sub>4</sub>;</li>
+<li>Y: B<sub>1</sub>, B<sub>2</sub>, B<sub>3</sub>, B<sub>4</sub>.</li>
+</ul>
+<p>e com a seguinte tabela de contingência <em>observada</em>:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+B<sub>1</sub>
+</th>
+<th style="text-align:right;">
+B<sub>2</sub>
+</th>
+<th style="text-align:right;">
+B<sub>3</sub>
+</th>
+<th style="text-align:right;">
+B<sub>4</sub>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A<sub>1</sub>
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>2</sub>
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>3</sub>
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+91
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>4</sub>
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+102
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>A tabela de contingência esperada é dada por:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+B<sub>1</sub>
+</th>
+<th style="text-align:left;">
+B<sub>2</sub>
+</th>
+<th style="text-align:left;">
+B<sub>3</sub>
+</th>
+<th style="text-align:left;">
+B<sub>4</sub>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A<sub>1</sub>
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=32.4431137724551:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=26.6586826347305:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=34.9580838323353:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=31.940119760479:0.05}
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>2</sub>
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=29.3532934131737:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=24.1197604790419:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=31.6287425149701:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=28.8982035928144:0.05}
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>3</sub>
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=36.562874251497:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=30.0439121756487:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=39.3972055888224:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=35.9960079840319:0.05}
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>4</sub>
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=30.6407185628743:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=25.1776447105788:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=33.0159680638723:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=30.1656686626747:0.05}
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>χ<sup>2</sup>:  {1:NUMERICAL:=672.096902047649:0.05}.</p>
+<p>Coeficiente de contigência modificada:  {1:NUMERICAL:=0.756918295725737:0.05}.</p>
+<p>Coeficiente V de Cramer:  {1:NUMERICAL:=0.66870790397857:0.05}.</p>
+<hr>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>A tabela de contingência esperada é dada por:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+B<sub>1</sub>
+</th>
+<th style="text-align:right;">
+B<sub>2</sub>
+</th>
+<th style="text-align:right;">
+B<sub>3</sub>
+</th>
+<th style="text-align:right;">
+B<sub>4</sub>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A<sub>1</sub>
+</td>
+<td style="text-align:right;">
+32,4431
+</td>
+<td style="text-align:right;">
+26,6587
+</td>
+<td style="text-align:right;">
+34,9581
+</td>
+<td style="text-align:right;">
+31,9401
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>2</sub>
+</td>
+<td style="text-align:right;">
+29,3533
+</td>
+<td style="text-align:right;">
+24,1198
+</td>
+<td style="text-align:right;">
+31,6287
+</td>
+<td style="text-align:right;">
+28,8982
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>3</sub>
+</td>
+<td style="text-align:right;">
+36,5629
+</td>
+<td style="text-align:right;">
+30,0439
+</td>
+<td style="text-align:right;">
+39,3972
+</td>
+<td style="text-align:right;">
+35,9960
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>4</sub>
+</td>
+<td style="text-align:right;">
+30,6407
+</td>
+<td style="text-align:right;">
+25,1776
+</td>
+<td style="text-align:right;">
+33,0160
+</td>
+<td style="text-align:right;">
+30,1657
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>χ<sup>2</sup>: 672,0969.</p>
+<p>Coeficiente de contigência modificada: 0,7569183.</p>
+<p>Coeficiente V de Cramer: 0,6687079.</p>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>19</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R3 Q1 : banco-itens_associacao_quali_tab_esperada_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Sejam X e Y duas variáveis qualitativas com:</p>
+<ul>
+<li>X: A<sub>1</sub>, A<sub>2</sub>, A<sub>3</sub>;</li>
+<li>Y: B<sub>1</sub>, B<sub>2</sub>.</li>
+</ul>
+<p>e com a seguinte tabela de contingência <em>observada</em>:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+B<sub>1</sub>
+</th>
+<th style="text-align:right;">
+B<sub>2</sub>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A<sub>1</sub>
+</td>
+<td style="text-align:right;">
+305
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>2</sub>
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+169
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>3</sub>
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+295
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>A tabela de contingência esperada é dada por:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+B<sub>1</sub>
+</th>
+<th style="text-align:left;">
+B<sub>2</sub>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A<sub>1</sub>
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=154.164705882353:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=153.835294117647:0.05}
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>2</sub>
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=164.675935828877:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=164.324064171123:0.05}
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>3</sub>
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=149.15935828877:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=148.84064171123:0.05}
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>χ<sup>2</sup>:  {1:NUMERICAL:=582.483485860748:0.05}.</p>
+<p>Coeficiente de contigência modificada:  {1:NUMERICAL:=0.619554936598169:0.05}.</p>
+<p>Coeficiente V de Cramer:  {1:NUMERICAL:=0.789288914292731:0.05}.</p>
+<hr>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>A tabela de contingência esperada é dada por:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+B<sub>1</sub>
+</th>
+<th style="text-align:right;">
+B<sub>2</sub>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A<sub>1</sub>
+</td>
+<td style="text-align:right;">
+154,1647
+</td>
+<td style="text-align:right;">
+153,8353
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>2</sub>
+</td>
+<td style="text-align:right;">
+164,6759
+</td>
+<td style="text-align:right;">
+164,3241
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>3</sub>
+</td>
+<td style="text-align:right;">
+149,1594
+</td>
+<td style="text-align:right;">
+148,8406
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>χ<sup>2</sup>: 582,4835.</p>
+<p>Coeficiente de contigência modificada: 0,6195549.</p>
+<p>Coeficiente V de Cramer: 0,7892889.</p>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>9</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R4 Q1 : banco-itens_associacao_quali_tab_esperada_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Sejam X e Y duas variáveis qualitativas com:</p>
+<ul>
+<li>X: A<sub>1</sub>, A<sub>2</sub>, A<sub>3</sub>, A<sub>4</sub>;</li>
+<li>Y: B<sub>1</sub>, B<sub>2</sub>, B<sub>3</sub>, B<sub>4</sub>.</li>
+</ul>
+<p>e com a seguinte tabela de contingência <em>observada</em>:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+B<sub>1</sub>
+</th>
+<th style="text-align:right;">
+B<sub>2</sub>
+</th>
+<th style="text-align:right;">
+B<sub>3</sub>
+</th>
+<th style="text-align:right;">
+B<sub>4</sub>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A<sub>1</sub>
+</td>
+<td style="text-align:right;">
+192
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>2</sub>
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>3</sub>
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+54
+</td>
+<td style="text-align:right;">
+134
+</td>
+<td style="text-align:right;">
+36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>4</sub>
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+185
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>A tabela de contingência esperada é dada por:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+B<sub>1</sub>
+</th>
+<th style="text-align:left;">
+B<sub>2</sub>
+</th>
+<th style="text-align:left;">
+B<sub>3</sub>
+</th>
+<th style="text-align:left;">
+B<sub>4</sub>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A<sub>1</sub>
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=55.9322033898305:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=52.7005649717514:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=56.4293785310734:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=54.9378531073446:0.05}
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>2</sub>
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=53.8983050847458:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=50.7841807909605:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=54.3774011299435:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=52.9401129943503:0.05}
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>3</sub>
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=56.9491525423729:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=53.6587570621469:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=57.4553672316384:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=55.9367231638418:0.05}
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>4</sub>
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=58.2203389830508:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=54.8564971751412:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=58.7378531073446:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=57.1853107344633:0.05}
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>χ<sup>2</sup>:  {1:NUMERICAL:=1209.91583524638:0.05}.</p>
+<p>Coeficiente de contigência modificada:  {1:NUMERICAL:=0.759966223494862:0.05}.</p>
+<p>Coeficiente V de Cramer:  {1:NUMERICAL:=0.675064573948685:0.05}.</p>
+<hr>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>A tabela de contingência esperada é dada por:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+B<sub>1</sub>
+</th>
+<th style="text-align:right;">
+B<sub>2</sub>
+</th>
+<th style="text-align:right;">
+B<sub>3</sub>
+</th>
+<th style="text-align:right;">
+B<sub>4</sub>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A<sub>1</sub>
+</td>
+<td style="text-align:right;">
+55,9322
+</td>
+<td style="text-align:right;">
+52,7006
+</td>
+<td style="text-align:right;">
+56,4294
+</td>
+<td style="text-align:right;">
+54,9379
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>2</sub>
+</td>
+<td style="text-align:right;">
+53,8983
+</td>
+<td style="text-align:right;">
+50,7842
+</td>
+<td style="text-align:right;">
+54,3774
+</td>
+<td style="text-align:right;">
+52,9401
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>3</sub>
+</td>
+<td style="text-align:right;">
+56,9492
+</td>
+<td style="text-align:right;">
+53,6588
+</td>
+<td style="text-align:right;">
+57,4554
+</td>
+<td style="text-align:right;">
+55,9367
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>4</sub>
+</td>
+<td style="text-align:right;">
+58,2203
+</td>
+<td style="text-align:right;">
+54,8565
+</td>
+<td style="text-align:right;">
+58,7379
+</td>
+<td style="text-align:right;">
+57,1853
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>χ<sup>2</sup>: 1.209,916.</p>
+<p>Coeficiente de contigência modificada: 0,7599662.</p>
+<p>Coeficiente V de Cramer: 0,6750646.</p>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>19</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R5 Q1 : banco-itens_associacao_quali_tab_esperada_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Sejam X e Y duas variáveis qualitativas com:</p>
+<ul>
+<li>X: A<sub>1</sub>, A<sub>2</sub>, A<sub>3</sub>;</li>
+<li>Y: B<sub>1</sub>, B<sub>2</sub>, B<sub>3</sub>, B<sub>4</sub>.</li>
+</ul>
+<p>e com a seguinte tabela de contingência <em>observada</em>:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+B<sub>1</sub>
+</th>
+<th style="text-align:right;">
+B<sub>2</sub>
+</th>
+<th style="text-align:right;">
+B<sub>3</sub>
+</th>
+<th style="text-align:right;">
+B<sub>4</sub>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A<sub>1</sub>
+</td>
+<td style="text-align:right;">
+179
+</td>
+<td style="text-align:right;">
+72
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>2</sub>
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+99
+</td>
+<td style="text-align:right;">
+105
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>3</sub>
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+179
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>A tabela de contingência esperada é dada por:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+B<sub>1</sub>
+</th>
+<th style="text-align:left;">
+B<sub>2</sub>
+</th>
+<th style="text-align:left;">
+B<sub>3</sub>
+</th>
+<th style="text-align:left;">
+B<sub>4</sub>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A<sub>1</sub>
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=65.9289617486339:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=61.7650273224044:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=60.0300546448087:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=66.275956284153:0.05}
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>2</sub>
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=58.9207650273224:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=55.1994535519126:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=53.6489071038251:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=59.2308743169399:0.05}
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>3</sub>
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=65.1502732240437:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=61.0355191256831:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=59.3210382513661:0.05}
+</td>
+<td style="text-align:left;">
+ {1:NUMERICAL:=65.4931693989071:0.05}
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>χ<sup>2</sup>:  {1:NUMERICAL:=786.869395675427:0.05}.</p>
+<p>Coeficiente de contigência modificada:  {1:NUMERICAL:=0.719765641439513:0.05}.</p>
+<p>Coeficiente V de Cramer:  {1:NUMERICAL:=0.733129657977845:0.05}.</p>
+<hr>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>A tabela de contingência esperada é dada por:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+B<sub>1</sub>
+</th>
+<th style="text-align:right;">
+B<sub>2</sub>
+</th>
+<th style="text-align:right;">
+B<sub>3</sub>
+</th>
+<th style="text-align:right;">
+B<sub>4</sub>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A<sub>1</sub>
+</td>
+<td style="text-align:right;">
+65,9290
+</td>
+<td style="text-align:right;">
+61,7650
+</td>
+<td style="text-align:right;">
+60,0301
+</td>
+<td style="text-align:right;">
+66,2760
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>2</sub>
+</td>
+<td style="text-align:right;">
+58,9208
+</td>
+<td style="text-align:right;">
+55,1995
+</td>
+<td style="text-align:right;">
+53,6489
+</td>
+<td style="text-align:right;">
+59,2309
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A<sub>3</sub>
+</td>
+<td style="text-align:right;">
+65,1503
+</td>
+<td style="text-align:right;">
+61,0355
+</td>
+<td style="text-align:right;">
+59,3210
+</td>
+<td style="text-align:right;">
+65,4932
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>χ<sup>2</sup>: 786,8694.</p>
+<p>Coeficiente de contigência modificada: 0,7197656.</p>
+<p>Coeficiente V de Cramer: 0,7331297.</p>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>15</defaultgrade>
+</question>
+
+</quiz>
