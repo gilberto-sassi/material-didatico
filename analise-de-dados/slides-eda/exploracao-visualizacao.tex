@@ -334,7 +334,7 @@ Estatística}
 % 	\maketitle
 %  \end{frame}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[enhanced, frame hidden, breakable, boxrule=0pt, sharp corners, borderline west={3pt}{0pt}{shadecolor}, interior hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, interior hidden, borderline west={3pt}{0pt}{shadecolor}, frame hidden, enhanced, breakable, sharp corners]}{\end{tcolorbox}}\fi
 
 \hypertarget{sobre-o-curso}{%
 \section{Sobre o curso}\label{sobre-o-curso}}
@@ -6887,8 +6887,11 @@ tabelas de contingência), e \(n\) é o tamanho da amostra.
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Coeficiente de contingência modificada:}
+  \textbf{Coeficiente de contingência (sem correção):}
   \(C=\sqrt{\frac{\chi^2}{n + \chi^2}}\).
+\item
+  \textbf{Coeficiente de contingência modificada (com correção):}
+  \(C=\sqrt{\frac{k \cdot \chi^2}{(k-1)\cdot (n + \chi^2)}}\).
 \item
   \textbf{Coeficiente V de Cramer:}
   \(C=\sqrt{\frac{\chi^2}{(k-1)\cdot n}}\).
@@ -6910,8 +6913,10 @@ para calcular essas medidas.
 \begin{enumerate}
 \tightlist
 \item
-  Para calcular o Coeficiente de Contingência Modificada:
-  \texttt{ContCoef(x,\ y)}.
+  Para calcular o Coeficiente de Contingência \texttt{ContCoef(x,\ y)}.
+\item
+  Para calcular o Coeficiente de Contingência
+  \texttt{ContCoef(x,\ y,\ correct\ =\ TRUE)}.
 \item
   Para calcular o Coeficiente V de Cramer: \texttt{CramerV(x,\ y)}.
 \item
@@ -6931,6 +6936,7 @@ qualitativas\newline Medidas de associação\newline Exemplo}
 \NormalTok{dados\_casas }\SpecialCharTok{|\textgreater{}} 
   \FunctionTok{summarise}\NormalTok{(}
     \AttributeTok{cont\_coef =} \FunctionTok{ContCoef}\NormalTok{(fundacao\_tipo, geral\_condicao),}
+    \AttributeTok{cont\_coef\_modificada =} \FunctionTok{ContCoef}\NormalTok{(fundacao\_tipo, geral\_condicao, }\AttributeTok{correct =} \ConstantTok{TRUE}\NormalTok{),}
     \AttributeTok{cramer\_v =} \FunctionTok{CramerV}\NormalTok{(fundacao\_tipo, geral\_condicao),}
     \AttributeTok{phi =} \FunctionTok{Phi}\NormalTok{(fundacao\_tipo, geral\_condicao),}
     \AttributeTok{t\_tschuprow =} \FunctionTok{TschuprowT}\NormalTok{(fundacao\_tipo, geral\_condicao)}
@@ -6939,10 +6945,10 @@ qualitativas\newline Medidas de associação\newline Exemplo}
 \end{Shaded}
 
 \begin{verbatim}
-# A tibble: 1 x 4
-  cont_coef cramer_v   phi t_tschuprow
-      <dbl>    <dbl> <dbl>       <dbl>
-1     0.501    0.259 0.578       0.230
+# A tibble: 1 x 5
+  cont_coef cont_coef_modificada cramer_v   phi t_tschuprow
+      <dbl>                <dbl>    <dbl> <dbl>       <dbl>
+1     0.501                0.549    0.259 0.578       0.230
 \end{verbatim}
 \end{frame}
 
@@ -6951,6 +6957,11 @@ qualitativas\newline Medidas de associação\newline Exercício}
 \protect\hypertarget{associauxe7uxe3o-entre-duas-variuxe1veis-qualitativasmedidas-de-associauxe7uxe3oexercuxedcio}{}
 \begin{itemize}
 \tightlist
+\item
+  Verifique se existe associação entre as variáveis \texttt{q006} e
+  \texttt{tp\_cor\_raca} do conjunto de dados
+  \texttt{amostra\_enem\_salvador.xlsx} calculando \emph{Coeficiente de
+  Contingência}.
 \item
   Verifique se existe associação entre as variáveis \texttt{q006} e
   \texttt{tp\_cor\_raca} do conjunto de dados

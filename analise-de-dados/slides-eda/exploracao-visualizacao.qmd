@@ -4161,7 +4161,8 @@ $\chi^2$ é medida não-negativa, por isso usamos uma padronização entre 0 e 1
 
 Seja $k=\min\{\text{número de linhas}, \text{número de colunas}\}$ (de tabelas de contingência), e $n$ é o tamanho da amostra.
 
-* **Coeficiente de contingência modificada:** $C=\sqrt{\frac{\chi^2}{n + \chi^2}}$.
+* **Coeficiente de contingência (sem correção):** $C=\sqrt{\frac{\chi^2}{n + \chi^2}}$.
+* **Coeficiente de contingência modificada (com correção):** $C=\sqrt{\frac{k \cdot \chi^2}{(k-1)\cdot (n + \chi^2)}}$.
 * **Coeficiente V de Cramer:** $C=\sqrt{\frac{\chi^2}{(k-1)\cdot n}}$.
 * **Coeficiente Phi**: $\Phi = \sqrt{\frac{\chi^2}{n}}$.
 * **Coeficiente T de Tschuprow**: $T = \sqrt{\frac{\chi^2}{n \cdot (i - 1)  \cdot (j-1)}}$, onde $i$ é o número de linhas e $j$ é o número de colunas da tabela de contingência (sem os totais).
@@ -4170,7 +4171,8 @@ Seja $k=\min\{\text{número de linhas}, \text{número de colunas}\}$ (de tabelas
 
 Usamos o pacote [`DescTools`](http://andrisignorell.github.io/DescTools/) para calcular essas medidas.
 
-1. Para calcular o Coeficiente de Contingência Modificada: `ContCoef(x, y)`.
+1. Para calcular o Coeficiente de Contingência  `ContCoef(x, y)`.
+1. Para calcular o Coeficiente de Contingência  `ContCoef(x, y, correct = TRUE)`.
 1. Para calcular o Coeficiente V de Cramer: `CramerV(x, y)`.
 1. Para calcular o Coeficiente Phi: `Phi(x, y)`.
 1. Para calcular o T de Tschuprow: `TschuprowT(x, y)`.
@@ -4183,6 +4185,7 @@ dados_casas <- read_xlsx("dados/brutos/casas.xlsx")
 dados_casas |> 
   summarise(
     cont_coef = ContCoef(fundacao_tipo, geral_condicao),
+    cont_coef_modificada = ContCoef(fundacao_tipo, geral_condicao, correct = TRUE),
     cramer_v = CramerV(fundacao_tipo, geral_condicao),
     phi = Phi(fundacao_tipo, geral_condicao),
     t_tschuprow = TschuprowT(fundacao_tipo, geral_condicao)
@@ -4192,6 +4195,7 @@ dados_casas |>
 
 ## Associação entre duas variáveis qualitativas\newline Medidas de associação\newline Exercício
 
+* Verifique se existe associação entre as variáveis `q006` e `tp_cor_raca` do conjunto de dados `amostra_enem_salvador.xlsx` calculando _Coeficiente de Contingência_.
 * Verifique se existe associação entre as variáveis `q006` e `tp_cor_raca` do conjunto de dados `amostra_enem_salvador.xlsx` calculando _Coeficiente de Contingência Modificada_.
 * Verifique se existe associação entre as variáveis `q006` e `tp_sexo` do conjunto de dados `amostra_enem_salvador.xlsx` calculando _Coeficiente V de Cramer_.
 * Verifique se existe associação entre as variáveis `q006` e `tp_sexo` do conjunto de dados `amostra_enem_salvador.xlsx` calculando _Coeficiente Phi_.
