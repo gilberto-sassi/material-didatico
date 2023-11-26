@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/binom-momentos-teste/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R1 Q1 : banco-itens_binom-momentos_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X uma variável aleatória discreta com distribuição binomial com 226 casos e probabilidade sucesso 0,52. Determine:</p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 112):  {1:NUMERICAL:=0.251830409979835:0.05}</li>
+<li>P(116 &lt; X ≤ 120):  {1:NUMERICAL:=0.208248109707536:0.05}</li>
+<li>P(X &gt; 127):  {1:NUMERICAL:=0.0917851025392602:0.05}</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=117.52:0.05}</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=13749.84:0.05}</li>
+<li>Segundo momento central:  {1:NUMERICAL:=56.4096:0.05}</li>
+<li>Função geradora de momentos: {1:MULTICHOICE:λ·(λ -i·t)✶✶-1~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~λ·(λ - ln(t))✶✶-1~exp(λ·exp(t)-λ)~(p·exp(i·t)+1-p)✶✶n~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~exp(λ·t-λ)~exp(λ·exp(i·t)-λ)~λ·(λ - t)✶✶-1~=(p·exp(t)+1-p)✶✶n~(p·t+1-p)✶✶n~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)}</li>
+<li>Função característica: {1:MULTICHOICE:exp(μ·t + 0,5·σ✶✶2·t✶✶2)~λ·(λ - ln(t))✶✶-1~=(p·exp(i·t)+1-p)✶✶n~(p·exp(t)+1-p)✶✶n~λ·(λ - t)✶✶-1~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~exp(λ·exp(i·t)-λ)~exp(λ·t-λ)~(p·t+1-p)✶✶n~λ·(λ -i·t)✶✶-1~exp(λ·exp(t)-λ)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)}</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:exp(λ·exp(t)-λ)~λ·(λ - t)✶✶-1~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~exp(λ·t-λ)~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~(p·exp(i·t)+1-p)✶✶n~λ·(λ -i·t)✶✶-1~λ·(λ - ln(t))✶✶-1~=(p·t+1-p)✶✶n~exp(λ·exp(i·t)-λ)~(p·exp(t)+1-p)✶✶n}</li>
+</ol>
+<p><strong>Pelas limitações do AVA, x✶✶a representa x<sup>a</sup> nos itens acima.</strong></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 112): 0,2518304.</li>
+<li>P(116 &lt; X ≤ 120): 0,2082481.</li>
+<li>P(X &gt; 127): 0,0917851.</li>
+<li>Primeiro momento fatorial: 117,52.</li>
+<li>Segundo momento fatorial: 13.749,84.</li>
+<li>Segundo momento central: 56,4096.</li>
+<li>Função geradora de momentos: (p·exp(t)+1-p)✶✶n.</li>
+<li>Função característica: (p·exp(i·t)+1-p)✶✶n.</li>
+<li>Função geradora de momentos fatoriais: (p·t+1-p)✶✶n.</li>
+</ol>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  / (p·exp(t)+1-p)✶✶n /  /  /  /  /  /  /  /  /  /  </li>
+<li> (p·exp(i·t)+1-p)✶✶n /  /  /  /  /  /  /  /  /  /  /  </li>
+<li>  /  /  /  /  / (p·t+1-p)✶✶n /  /  /  /  /  /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>9</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R2 Q1 : banco-itens_binom-momentos_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X uma variável aleatória discreta com distribuição binomial com 105 casos e probabilidade sucesso 0,7. Determine:</p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 70):  {1:NUMERICAL:=0.258801765293106:0.05}</li>
+<li>P(71 &lt; X ≤ 76):  {1:NUMERICAL:=0.404728736288869:0.05}</li>
+<li>P(X &gt; 79):  {1:NUMERICAL:=0.0988259334474916:0.05}</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=73.5:0.05}</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=5350.8:0.05}</li>
+<li>Segundo momento central:  {1:NUMERICAL:=22.05:0.05}</li>
+<li>Função geradora de momentos: {1:MULTICHOICE:exp(λ·exp(i·t)-λ)~exp(λ·t-λ)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~λ·(λ -i·t)✶✶-1~(p·exp(i·t)+1-p)✶✶n~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~(p·t+1-p)✶✶n~λ·(λ - ln(t))✶✶-1~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~=(p·exp(t)+1-p)✶✶n~exp(λ·exp(t)-λ)~λ·(λ - t)✶✶-1}</li>
+<li>Função característica: {1:MULTICHOICE:exp(λ·exp(t)-λ)~(p·exp(t)+1-p)✶✶n~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~exp(λ·exp(i·t)-λ)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~λ·(λ - t)✶✶-1~(p·t+1-p)✶✶n~λ·(λ - ln(t))✶✶-1~exp(λ·t-λ)~=(p·exp(i·t)+1-p)✶✶n~λ·(λ -i·t)✶✶-1}</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:(p·exp(t)+1-p)✶✶n~exp(λ·t-λ)~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~(p·exp(i·t)+1-p)✶✶n~=(p·t+1-p)✶✶n~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~exp(λ·exp(t)-λ)~λ·(λ -i·t)✶✶-1~λ·(λ - t)✶✶-1~exp(λ·exp(i·t)-λ)~λ·(λ - ln(t))✶✶-1}</li>
+</ol>
+<p><strong>Pelas limitações do AVA, x✶✶a representa x<sup>a</sup> nos itens acima.</strong></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 70): 0,2588018.</li>
+<li>P(71 &lt; X ≤ 76): 0,4047287.</li>
+<li>P(X &gt; 79): 0,09882593.</li>
+<li>Primeiro momento fatorial: 73,5.</li>
+<li>Segundo momento fatorial: 5.350,8.</li>
+<li>Segundo momento central: 22,05.</li>
+<li>Função geradora de momentos: (p·exp(t)+1-p)✶✶n.</li>
+<li>Função característica: (p·exp(i·t)+1-p)✶✶n.</li>
+<li>Função geradora de momentos fatoriais: (p·t+1-p)✶✶n.</li>
+</ol>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  /  /  /  /  /  /  /  / (p·exp(t)+1-p)✶✶n /  /  /  </li>
+<li>  /  / (p·exp(i·t)+1-p)✶✶n /  /  /  /  /  /  /  /  /  </li>
+<li>  /  / (p·t+1-p)✶✶n /  /  /  /  /  /  /  /  /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>9</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R3 Q1 : banco-itens_binom-momentos_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X uma variável aleatória discreta com distribuição binomial com 216 casos e probabilidade sucesso 0,68. Determine:</p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 138):  {1:NUMERICAL:=0.111522373884328:0.05}</li>
+<li>P(143 &lt; X ≤ 152):  {1:NUMERICAL:=0.484263928941186:0.05}</li>
+<li>P(X &gt; 153):  {1:NUMERICAL:=0.167252887153234:0.05}</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=146.88:0.05}</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=21473.856:0.05}</li>
+<li>Segundo momento central:  {1:NUMERICAL:=47.0016:0.05}</li>
+<li>Função geradora de momentos: {1:MULTICHOICE:λ·(λ -i·t)✶✶-1~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~λ·(λ - ln(t))✶✶-1~exp(λ·exp(t)-λ)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~exp(λ·t-λ)~(p·exp(i·t)+1-p)✶✶n~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~λ·(λ - t)✶✶-1~=(p·exp(t)+1-p)✶✶n~(p·t+1-p)✶✶n~exp(λ·exp(i·t)-λ)}</li>
+<li>Função característica: {1:MULTICHOICE:exp(λ·exp(i·t)-λ)~exp(λ·t-λ)~λ·(λ - t)✶✶-1~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~(p·exp(t)+1-p)✶✶n~(p·t+1-p)✶✶n~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~exp(λ·exp(t)-λ)~λ·(λ - ln(t))✶✶-1~=(p·exp(i·t)+1-p)✶✶n~λ·(λ -i·t)✶✶-1}</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~(p·exp(i·t)+1-p)✶✶n~exp(λ·exp(i·t)-λ)~=(p·t+1-p)✶✶n~exp(λ·exp(t)-λ)~λ·(λ - ln(t))✶✶-1~(p·exp(t)+1-p)✶✶n~exp(λ·t-λ)~λ·(λ -i·t)✶✶-1~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~λ·(λ - t)✶✶-1}</li>
+</ol>
+<p><strong>Pelas limitações do AVA, x✶✶a representa x<sup>a</sup> nos itens acima.</strong></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 138): 0,1115224.</li>
+<li>P(143 &lt; X ≤ 152): 0,4842639.</li>
+<li>P(X &gt; 153): 0,1672529.</li>
+<li>Primeiro momento fatorial: 146,88.</li>
+<li>Segundo momento fatorial: 21.473,86.</li>
+<li>Segundo momento central: 47,0016.</li>
+<li>Função geradora de momentos: (p·exp(t)+1-p)✶✶n.</li>
+<li>Função característica: (p·exp(i·t)+1-p)✶✶n.</li>
+<li>Função geradora de momentos fatoriais: (p·t+1-p)✶✶n.</li>
+</ol>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  /  /  /  /  /  /  / (p·exp(t)+1-p)✶✶n /  /  /  /  </li>
+<li>  /  /  /  /  /  /  / (p·exp(i·t)+1-p)✶✶n /  /  /  /  </li>
+<li>  /  /  /  /  /  /  /  /  /  / (p·t+1-p)✶✶n /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>9</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R4 Q1 : banco-itens_binom-momentos_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X uma variável aleatória discreta com distribuição binomial com 176 casos e probabilidade sucesso 0,4. Determine:</p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 64):  {1:NUMERICAL:=0.182247327978456:0.05}</li>
+<li>P(68 &lt; X ≤ 73):  {1:NUMERICAL:=0.297798094286725:0.05}</li>
+<li>P(X &gt; 76):  {1:NUMERICAL:=0.173823105431573:0.05}</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=70.4:0.05}</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=4928:0.05}</li>
+<li>Segundo momento central:  {1:NUMERICAL:=42.24:0.05}</li>
+<li>Função geradora de momentos: {1:MULTICHOICE:exp(λ·exp(t)-λ)~λ·(λ - t)✶✶-1~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~exp(λ·exp(i·t)-λ)~λ·(λ -i·t)✶✶-1~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~exp(λ·t-λ)~(p·t+1-p)✶✶n~=(p·exp(t)+1-p)✶✶n~(p·exp(i·t)+1-p)✶✶n~λ·(λ - ln(t))✶✶-1}</li>
+<li>Função característica: {1:MULTICHOICE:(p·exp(t)+1-p)✶✶n~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~(p·t+1-p)✶✶n~λ·(λ - t)✶✶-1~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~λ·(λ - ln(t))✶✶-1~=(p·exp(i·t)+1-p)✶✶n~exp(λ·exp(t)-λ)~exp(λ·exp(i·t)-λ)~exp(λ·t-λ)~λ·(λ -i·t)✶✶-1}</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:exp(λ·exp(i·t)-λ)~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~λ·(λ -i·t)✶✶-1~λ·(λ - ln(t))✶✶-1~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~λ·(λ - t)✶✶-1~(p·exp(i·t)+1-p)✶✶n~exp(λ·exp(t)-λ)~exp(λ·t-λ)~=(p·t+1-p)✶✶n~(p·exp(t)+1-p)✶✶n~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)}</li>
+</ol>
+<p><strong>Pelas limitações do AVA, x✶✶a representa x<sup>a</sup> nos itens acima.</strong></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 64): 0,1822473.</li>
+<li>P(68 &lt; X ≤ 73): 0,2977981.</li>
+<li>P(X &gt; 76): 0,1738231.</li>
+<li>Primeiro momento fatorial: 70,4.</li>
+<li>Segundo momento fatorial: 4.928.</li>
+<li>Segundo momento central: 42,24.</li>
+<li>Função geradora de momentos: (p·exp(t)+1-p)✶✶n.</li>
+<li>Função característica: (p·exp(i·t)+1-p)✶✶n.</li>
+<li>Função geradora de momentos fatoriais: (p·t+1-p)✶✶n.</li>
+</ol>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  /  /  /  /  /  / (p·exp(t)+1-p)✶✶n /  /  /  /  /  </li>
+<li>  / (p·exp(i·t)+1-p)✶✶n /  /  /  /  /  /  /  /  /  /  </li>
+<li>  / (p·t+1-p)✶✶n /  /  /  /  /  /  /  /  /  /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>9</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R5 Q1 : banco-itens_binom-momentos_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X uma variável aleatória discreta com distribuição binomial com 217 casos e probabilidade sucesso 0,63. Determine:</p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 132):  {1:NUMERICAL:=0.275666248360848:0.05}</li>
+<li>P(132 &lt; X ≤ 141):  {1:NUMERICAL:=0.472908624489671:0.05}</li>
+<li>P(X &gt; 142):  {1:NUMERICAL:=0.208411663989031:0.05}</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=136.71:0.05}</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=18603.4968:0.05}</li>
+<li>Segundo momento central:  {1:NUMERICAL:=50.5827:0.05}</li>
+<li>Função geradora de momentos: {1:MULTICHOICE:exp(λ·exp(t)-λ)~exp(λ·exp(i·t)-λ)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~=(p·exp(t)+1-p)✶✶n~(p·t+1-p)✶✶n~(p·exp(i·t)+1-p)✶✶n~exp(λ·t-λ)~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~λ·(λ -i·t)✶✶-1~λ·(λ - t)✶✶-1~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~λ·(λ - ln(t))✶✶-1}</li>
+<li>Função característica: {1:MULTICHOICE:exp(λ·t-λ)~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~exp(λ·exp(i·t)-λ)~(p·t+1-p)✶✶n~exp(λ·exp(t)-λ)~λ·(λ -i·t)✶✶-1~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~λ·(λ - ln(t))✶✶-1~(p·exp(t)+1-p)✶✶n~=(p·exp(i·t)+1-p)✶✶n~λ·(λ - t)✶✶-1}</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:(p·exp(t)+1-p)✶✶n~exp(λ·exp(t)-λ)~λ·(λ -i·t)✶✶-1~exp(λ·t-λ)~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~=(p·t+1-p)✶✶n~exp(λ·exp(i·t)-λ)~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~λ·(λ - ln(t))✶✶-1~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~λ·(λ - t)✶✶-1~(p·exp(i·t)+1-p)✶✶n}</li>
+</ol>
+<p><strong>Pelas limitações do AVA, x✶✶a representa x<sup>a</sup> nos itens acima.</strong></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 132): 0,2756662.</li>
+<li>P(132 &lt; X ≤ 141): 0,4729086.</li>
+<li>P(X &gt; 142): 0,2084117.</li>
+<li>Primeiro momento fatorial: 136,71.</li>
+<li>Segundo momento fatorial: 18.603,5.</li>
+<li>Segundo momento central: 50,5827.</li>
+<li>Função geradora de momentos: (p·exp(t)+1-p)✶✶n.</li>
+<li>Função característica: (p·exp(i·t)+1-p)✶✶n.</li>
+<li>Função geradora de momentos fatoriais: (p·t+1-p)✶✶n.</li>
+</ol>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  /  /  /  /  /  /  /  /  /  / (p·exp(t)+1-p)✶✶n /  </li>
+<li>  / (p·exp(i·t)+1-p)✶✶n /  /  /  /  /  /  /  /  /  /  </li>
+<li>  /  /  /  / (p·t+1-p)✶✶n /  /  /  /  /  /  /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>9</defaultgrade>
+</question>
+
+</quiz>

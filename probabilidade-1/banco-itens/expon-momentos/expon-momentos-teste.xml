@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/expon-momentos-teste/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R1 Q1 : banco-itens_expon-momentos_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X uma variável aleatória contínua com distribuição Exponencial com tempo médio igual a 11,01 . Determine:</p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 1,36):  {1:NUMERICAL:=0.116199631227885:0.05}</li>
+<li>P(4,39 &lt; X ≤ 13,23):  {1:NUMERICAL:=0.370470749307858:0.05}</li>
+<li>P(X &gt; 17,48):  {1:NUMERICAL:=0.204405892437256:0.05}</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=11.01:0.05}</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=231.4302:0.05}</li>
+<li>Segundo momento central:  {1:NUMERICAL:=121.2201:0.05}</li>
+<li>Função geradora de momentos: {1:MULTICHOICE:t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~λ·(λ - ln(t))✶✶-1~λ·(λ -i·t)✶✶-1~=λ·(λ - t)✶✶-1~exp(λ·exp(t)-λ)~(p·exp(t)+1-p)✶✶n~exp(λ·t-λ)~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~(p·exp(i·t)+1-p)✶✶n~exp(λ·exp(i·t)-λ)~(p·t+1-p)✶✶n}</li>
+<li>Função característica: {1:MULTICHOICE:exp(λ·exp(t)-λ)~=λ·(λ -i·t)✶✶-1~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~exp(λ·t-λ)~(p·exp(t)+1-p)✶✶n~exp(λ·exp(i·t)-λ)~(p·t+1-p)✶✶n~λ·(λ - t)✶✶-1~λ·(λ - ln(t))✶✶-1~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~(p·exp(i·t)+1-p)✶✶n~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)}</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:=λ·(λ - ln(t))✶✶-1~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~(p·exp(t)+1-p)✶✶n~(p·t+1-p)✶✶n~λ·(λ -i·t)✶✶-1~(p·exp(i·t)+1-p)✶✶n~exp(λ·t-λ)~exp(λ·exp(t)-λ)~λ·(λ - t)✶✶-1~exp(λ·exp(i·t)-λ)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)}</li>
+</ol>
+<p><strong>Pelas limitações do AVA, x✶✶a representa x<sup>a</sup> nos itens acima.</strong></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 1,36): 0,1161996.</li>
+<li>P(4,39 &lt; X ≤ 13,23): 0,3704707.</li>
+<li>P(X &gt; 17,48): 0,2044059.</li>
+<li>Primeiro momento fatorial: 11,01.</li>
+<li>Segundo momento fatorial: 231,4302.</li>
+<li>Segundo momento central: 121,2201.</li>
+<li>Função geradora de momentos: λ·(λ - t)✶✶-1.</li>
+<li>Função característica: λ·(λ -i·t)✶✶-1.</li>
+<li>Função geradora de momentos fatoriais: λ·(λ - ln(t))✶✶-1.</li>
+</ol>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  /  /  /  /  /  /  /  / λ·(λ - t)✶✶-1 /  /  /  </li>
+<li>  /  / λ·(λ -i·t)✶✶-1 /  /  /  /  /  /  /  /  /  </li>
+<li>  / λ·(λ - ln(t))✶✶-1 /  /  /  /  /  /  /  /  /  /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>9</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R2 Q1 : banco-itens_expon-momentos_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X uma variável aleatória contínua com distribuição Exponencial com tempo médio igual a 13,2 . Determine:</p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 2,11):  {1:NUMERICAL:=0.147727088556732:0.05}</li>
+<li>P(5,14 &lt; X ≤ 17,74):  {1:NUMERICAL:=0.416651151924068:0.05}</li>
+<li>P(X &gt; 22,04):  {1:NUMERICAL:=0.188304118848081:0.05}</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=13.2:0.05}</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=335.28:0.05}</li>
+<li>Segundo momento central:  {1:NUMERICAL:=174.24:0.05}</li>
+<li>Função geradora de momentos: {1:MULTICHOICE:t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~exp(λ·exp(t)-λ)~λ·(λ -i·t)✶✶-1~(p·exp(t)+1-p)✶✶n~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~exp(λ·exp(i·t)-λ)~(p·t+1-p)✶✶n~exp(λ·t-λ)~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~=λ·(λ - t)✶✶-1~λ·(λ - ln(t))✶✶-1~(p·exp(i·t)+1-p)✶✶n}</li>
+<li>Função característica: {1:MULTICHOICE:exp(λ·exp(t)-λ)~(p·t+1-p)✶✶n~exp(λ·t-λ)~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~(p·exp(i·t)+1-p)✶✶n~λ·(λ - t)✶✶-1~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~λ·(λ - ln(t))✶✶-1~(p·exp(t)+1-p)✶✶n~exp(λ·exp(i·t)-λ)~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~=λ·(λ -i·t)✶✶-1}</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:(p·exp(t)+1-p)✶✶n~(p·t+1-p)✶✶n~=λ·(λ - ln(t))✶✶-1~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~exp(λ·exp(i·t)-λ)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~λ·(λ - t)✶✶-1~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~(p·exp(i·t)+1-p)✶✶n~exp(λ·exp(t)-λ)~λ·(λ -i·t)✶✶-1~exp(λ·t-λ)}</li>
+</ol>
+<p><strong>Pelas limitações do AVA, x✶✶a representa x<sup>a</sup> nos itens acima.</strong></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 2,11): 0,1477271.</li>
+<li>P(5,14 &lt; X ≤ 17,74): 0,4166512.</li>
+<li>P(X &gt; 22,04): 0,1883041.</li>
+<li>Primeiro momento fatorial: 13,2.</li>
+<li>Segundo momento fatorial: 335,28.</li>
+<li>Segundo momento central: 174,24.</li>
+<li>Função geradora de momentos: λ·(λ - t)✶✶-1.</li>
+<li>Função característica: λ·(λ -i·t)✶✶-1.</li>
+<li>Função geradora de momentos fatoriais: λ·(λ - ln(t))✶✶-1.</li>
+</ol>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  /  /  /  /  /  /  /  / λ·(λ - t)✶✶-1 /  /  /  </li>
+<li>  /  /  / λ·(λ -i·t)✶✶-1 /  /  /  /  /  /  /  /  </li>
+<li>  /  /  /  /  /  /  / λ·(λ - ln(t))✶✶-1 /  /  /  /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>9</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R3 Q1 : banco-itens_expon-momentos_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X uma variável aleatória contínua com distribuição Exponencial com tempo médio igual a 13,21 . Determine:</p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 3,2):  {1:NUMERICAL:=0.215132783703595:0.05}</li>
+<li>P(4,56 &lt; X ≤ 15,61):  {1:NUMERICAL:=0.401320878425223:0.05}</li>
+<li>P(X &gt; 24,42):  {1:NUMERICAL:=0.15745752402823:0.05}</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=13.21:0.05}</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=335.7982:0.05}</li>
+<li>Segundo momento central:  {1:NUMERICAL:=174.5041:0.05}</li>
+<li>Função geradora de momentos: {1:MULTICHOICE:=λ·(λ - t)✶✶-1~λ·(λ - ln(t))✶✶-1~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~exp(λ·exp(t)-λ)~(p·exp(t)+1-p)✶✶n~λ·(λ -i·t)✶✶-1~(p·exp(i·t)+1-p)✶✶n~exp(λ·exp(i·t)-λ)~(p·t+1-p)✶✶n~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~exp(λ·t-λ)~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)}</li>
+<li>Função característica: {1:MULTICHOICE:=λ·(λ -i·t)✶✶-1~exp(λ·t-λ)~(p·exp(t)+1-p)✶✶n~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~λ·(λ - ln(t))✶✶-1~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~λ·(λ - t)✶✶-1~(p·t+1-p)✶✶n~(p·exp(i·t)+1-p)✶✶n~exp(λ·exp(i·t)-λ)~exp(λ·exp(t)-λ)}</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:λ·(λ -i·t)✶✶-1~exp(λ·exp(i·t)-λ)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~=λ·(λ - ln(t))✶✶-1~λ·(λ - t)✶✶-1~(p·exp(t)+1-p)✶✶n~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~(p·exp(i·t)+1-p)✶✶n~(p·t+1-p)✶✶n~exp(λ·t-λ)~exp(λ·exp(t)-λ)~exp(μ·t + 0,5·σ✶✶2·t✶✶2)}</li>
+</ol>
+<p><strong>Pelas limitações do AVA, x✶✶a representa x<sup>a</sup> nos itens acima.</strong></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 3,2): 0,2151328.</li>
+<li>P(4,56 &lt; X ≤ 15,61): 0,4013209.</li>
+<li>P(X &gt; 24,42): 0,1574575.</li>
+<li>Primeiro momento fatorial: 13,21.</li>
+<li>Segundo momento fatorial: 335,7982.</li>
+<li>Segundo momento central: 174,5041.</li>
+<li>Função geradora de momentos: λ·(λ - t)✶✶-1.</li>
+<li>Função característica: λ·(λ -i·t)✶✶-1.</li>
+<li>Função geradora de momentos fatoriais: λ·(λ - ln(t))✶✶-1.</li>
+</ol>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  /  / λ·(λ - t)✶✶-1 /  /  /  /  /  /  /  /  /  </li>
+<li>  /  /  /  / λ·(λ -i·t)✶✶-1 /  /  /  /  /  /  /  </li>
+<li>  /  /  /  /  /  /  /  /  /  /  / λ·(λ - ln(t))✶✶-1 </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>9</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R4 Q1 : banco-itens_expon-momentos_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X uma variável aleatória contínua com distribuição Exponencial com tempo médio igual a 12,48 . Determine:</p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 2,13):  {1:NUMERICAL:=0.156902843661539:0.05}</li>
+<li>P(5,51 &lt; X ≤ 17,23):  {1:NUMERICAL:=0.391641573581855:0.05}</li>
+<li>P(X &gt; 17,68):  {1:NUMERICAL:=0.242521074635649:0.05}</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=12.48:0.05}</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=299.0208:0.05}</li>
+<li>Segundo momento central:  {1:NUMERICAL:=155.7504:0.05}</li>
+<li>Função geradora de momentos: {1:MULTICHOICE:exp(μ·t + 0,5·σ✶✶2·t✶✶2)~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~exp(λ·exp(i·t)-λ)~(p·exp(t)+1-p)✶✶n~(p·t+1-p)✶✶n~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~(p·exp(i·t)+1-p)✶✶n~exp(λ·exp(t)-λ)~exp(λ·t-λ)~λ·(λ - ln(t))✶✶-1~λ·(λ -i·t)✶✶-1~=λ·(λ - t)✶✶-1}</li>
+<li>Função característica: {1:MULTICHOICE:t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~exp(λ·exp(t)-λ)~λ·(λ - ln(t))✶✶-1~=λ·(λ -i·t)✶✶-1~(p·t+1-p)✶✶n~λ·(λ - t)✶✶-1~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~exp(λ·t-λ)~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~(p·exp(t)+1-p)✶✶n~(p·exp(i·t)+1-p)✶✶n~exp(λ·exp(i·t)-λ)}</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:exp(μ·t + 0,5·σ✶✶2·t✶✶2)~(p·exp(t)+1-p)✶✶n~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~λ·(λ - t)✶✶-1~exp(λ·exp(i·t)-λ)~exp(λ·exp(t)-λ)~(p·t+1-p)✶✶n~(p·exp(i·t)+1-p)✶✶n~=λ·(λ - ln(t))✶✶-1~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~λ·(λ -i·t)✶✶-1~exp(λ·t-λ)}</li>
+</ol>
+<p><strong>Pelas limitações do AVA, x✶✶a representa x<sup>a</sup> nos itens acima.</strong></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 2,13): 0,1569028.</li>
+<li>P(5,51 &lt; X ≤ 17,23): 0,3916416.</li>
+<li>P(X &gt; 17,68): 0,2425211.</li>
+<li>Primeiro momento fatorial: 12,48.</li>
+<li>Segundo momento fatorial: 299,0208.</li>
+<li>Segundo momento central: 155,7504.</li>
+<li>Função geradora de momentos: λ·(λ - t)✶✶-1.</li>
+<li>Função característica: λ·(λ -i·t)✶✶-1.</li>
+<li>Função geradora de momentos fatoriais: λ·(λ - ln(t))✶✶-1.</li>
+</ol>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li> λ·(λ - t)✶✶-1 /  /  /  /  /  /  /  /  /  /  /  </li>
+<li>  /  /  /  /  /  /  /  / λ·(λ -i·t)✶✶-1 /  /  /  </li>
+<li> λ·(λ - ln(t))✶✶-1 /  /  /  /  /  /  /  /  /  /  /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>9</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R5 Q1 : banco-itens_expon-momentos_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X uma variável aleatória contínua com distribuição Exponencial com tempo médio igual a 12,2 . Determine:</p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 2,26):  {1:NUMERICAL:=0.169100060928352:0.05}</li>
+<li>P(4,02 &lt; X ≤ 18,82):  {1:NUMERICAL:=0.505457862284538:0.05}</li>
+<li>P(X &gt; 18,92):  {1:NUMERICAL:=0.212074071358944:0.05}</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=12.2:0.05}</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=285.48:0.05}</li>
+<li>Segundo momento central:  {1:NUMERICAL:=148.84:0.05}</li>
+<li>Função geradora de momentos: {1:MULTICHOICE:exp(λ·t-λ)~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~exp(λ·exp(t)-λ)~=λ·(λ - t)✶✶-1~(p·exp(i·t)+1-p)✶✶n~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~(p·exp(t)+1-p)✶✶n~exp(λ·exp(i·t)-λ)~λ·(λ -i·t)✶✶-1~(p·t+1-p)✶✶n~λ·(λ - ln(t))✶✶-1}</li>
+<li>Função característica: {1:MULTICHOICE:exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~=λ·(λ -i·t)✶✶-1~(p·exp(t)+1-p)✶✶n~(p·t+1-p)✶✶n~λ·(λ - t)✶✶-1~(p·exp(i·t)+1-p)✶✶n~λ·(λ - ln(t))✶✶-1~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~exp(λ·exp(i·t)-λ)~exp(λ·t-λ)~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~exp(λ·exp(t)-λ)}</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:exp(μ·t + 0,5·σ✶✶2·t✶✶2)~(p·t+1-p)✶✶n~exp(λ·exp(i·t)-λ)~exp(λ·t-λ)~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~λ·(λ - t)✶✶-1~(p·exp(t)+1-p)✶✶n~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~λ·(λ -i·t)✶✶-1~(p·exp(i·t)+1-p)✶✶n~exp(λ·exp(t)-λ)~=λ·(λ - ln(t))✶✶-1}</li>
+</ol>
+<p><strong>Pelas limitações do AVA, x✶✶a representa x<sup>a</sup> nos itens acima.</strong></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 2,26): 0,1691001.</li>
+<li>P(4,02 &lt; X ≤ 18,82): 0,5054579.</li>
+<li>P(X &gt; 18,92): 0,2120741.</li>
+<li>Primeiro momento fatorial: 12,2.</li>
+<li>Segundo momento fatorial: 285,48.</li>
+<li>Segundo momento central: 148,84.</li>
+<li>Função geradora de momentos: λ·(λ - t)✶✶-1.</li>
+<li>Função característica: λ·(λ -i·t)✶✶-1.</li>
+<li>Função geradora de momentos fatoriais: λ·(λ - ln(t))✶✶-1.</li>
+</ol>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  /  /  /  /  /  / λ·(λ - t)✶✶-1 /  /  /  /  /  </li>
+<li>  /  /  /  /  /  /  /  /  /  / λ·(λ -i·t)✶✶-1 /  </li>
+<li> λ·(λ - ln(t))✶✶-1 /  /  /  /  /  /  /  /  /  /  /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>9</defaultgrade>
+</question>
+
+</quiz>

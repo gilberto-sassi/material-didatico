@@ -1,0 +1,167 @@
+```{r}
+#| echo: false
+#| label: gerando-dados
+
+library(pacman)
+
+p_load(
+    readxl, writexl, janitor,
+    glue,
+    exams,
+    tidyverse
+)
+
+# formatação
+f <- \(x) format(
+    x,
+    big.mark = ".",
+    decimal.mark = ","
+)
+
+options(scipen = 999) #prevent scientific notation
+
+# média populacional
+media <- runif(1, 10, 15) |> round(2)
+
+# a e b
+a <- qpois(
+    runif(1, 0.1, 0.25),
+    media
+) |> round(2)
+b <- qpois(
+    runif(1, 0.2, 0.4),
+    media
+) |> round(2)
+ce <- qpois(
+    runif(1, 0.6, 0.8),
+    media
+) |> round(2)
+d <- qpois(
+    runif(1, 0.75, 0.9),
+    media
+) |> round(2)
+
+# solução (num)
+sol <- c(
+    "LE" = ppois(a, media),
+    "desigualdade" = ppois(ce, media) - ppois(b, media),
+    "GE" = 1 - ppois(d, media),
+    "media" = media,
+    "segunda_momento_fatorial" = media^2,
+    "s2" = media
+)
+
+# make a list
+make_list <- \(v) {
+    for(k in seq_along(v)) {
+        print(glue("* {v[k]}"))
+    }
+}
+
+# opcoes
+opcoes <- c(
+    "normal_momento" = "exp(&mu;&#183;t + 0,5&#183;&sigma;&#10038;&#10038;2&#183;t&#10038;&#10038;2)",
+    "normal_caracteristica" = "exp(i&#183;t&#183;&mu; - 0,5&#183;&sigma;&#10038;&#10038;2&#183;t&#10038;&#10038;2)",
+    "normal_fatorial" = "t&#10038;&#10038;&mu;&#183;exp(0,5&#183;&sigma;&#10038;&#10038;2&#183;t&#10038;&#10038;2)",
+    "binom_momento" = "(p&#183;exp(t)+1-p)&#10038;&#10038;n",
+    "binom_caracteristica" = "(p&#183;exp(i&#183;t)+1-p)&#10038;&#10038;n",
+    "binom_fatorial" = "(p&#183;t+1-p)&#10038;&#10038;n",
+    "poisson_momento" = "exp(&lambda;&#183;exp(t)-&lambda;)",
+    "poisson_caracteristica" = "exp(&lambda;&#183;exp(i&#183;t)-&lambda;)",
+    "poisson_fatorial" = "exp(&lambda;&#183;t-&lambda;)",
+    "exp_momento" = "&lambda;&#183;(&lambda; - t)&#10038;&#10038;-1",
+    "exp_caracteristica" = "&lambda;&#183;(&lambda; -i&#183;t)&#10038;&#10038;-1",
+    "exp_fatorial" = "&lambda;&#183;(&lambda; - ln(t))&#10038;&#10038;-1"
+)
+
+# sol_opcoes
+# momento
+opcoes_momento <- c(
+    opcoes["poisson_momento"],
+    rep("", length(opcoes) - 1)
+)
+sol_momento <- names(opcoes) |>
+    map_chr(~ ifelse(.x == "poisson_momento", "1", "0")) |>
+    paste0(collapse = "")
+# caracteristica
+opcoes_caracteristica <- c(
+    opcoes["poisson_caracteristica"],
+    rep("", length(opcoes) - 1)
+)
+sol_caracteristica <- names(opcoes) |>
+    map_chr(~ ifelse(.x == "poisson_caracteristica", "1", "0")) |>
+    paste0(collapse = "")
+# fatorial
+opcoes_fatorial <- c(
+    opcoes["poisson_fatorial"],
+    rep("", length(opcoes) - 1)
+)
+sol_fatorial <- names(opcoes) |>
+    map_chr(~ ifelse(.x == "poisson_fatorial", "1", "0")) |>
+    paste0(collapse = "")
+
+
+```
+
+Question
+========
+Seja X uma variável aleatória discreta com distribuição Poisson com um número médio de ocorrências no intervalo de tempo limitado e fechado igual `r f(media)` . Determine:
+  
+i. P(X < `r f(a)`): \#\#ANSWER1\#\#
+i. P(`r f(b)` < X &le; `r f(ce)`): \#\#ANSWER2\#\#
+i. P(X > `r f(d)`): \#\#ANSWER3\#\#
+i. Primeiro momento fatorial: \#\#ANSWER4\#\#
+i. Segundo momento fatorial: \#\#ANSWER5\#\#
+i. Segundo momento central: \#\#ANSWER6\#\#
+i. Função geradora de momentos: \#\#ANSWER7\#\#
+i. Função característica: \#\#ANSWER8\#\#
+i. Função geradora de momentos fatoriais: \#\#ANSWER9\#\#
+
+
+**Pelas limitações do AVA, x&#10038;&#10038;a representa x^a^ nos itens acima.**
+
+Questionlist
+------------
+```{r}
+#| echo: false
+#| results: asis
+
+make_list(rep("", length(sol)))
+make_list(opcoes)
+make_list(opcoes)
+make_list(opcoes)
+```
+
+Solution
+========
+
+i. P(X < `r f(a)`): `r f(sol[1])`.
+i. P(`r f(b)` < X &le; `r f(ce)`): `r f(sol[2])`. 
+i. P(X > `r f(d)`):  `r f(sol[3])`.
+i. Primeiro momento fatorial: `r f(sol[4])`.
+i. Segundo momento fatorial: `r f(sol[5])`.
+i. Segundo momento central: `r f(sol[6])`.
+i. Função geradora de momentos: `r opcoes["poisson_momento"]`.
+i. Função característica: `r opcoes["poisson_caracteristica"]`.
+i. Função geradora de momentos fatoriais: `r opcoes["poisson_fatorial"]`.
+
+Solutionlist
+------------
+```{r}
+#| echo: false
+#| results: asis
+
+make_list(rep("", length(sol)))
+make_list(opcoes_momento)
+make_list(opcoes_caracteristica)
+make_list(opcoes_fatorial)
+```
+
+Meta-information
+================
+exname: momentosPoisson
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste(collapse = "|")`|schoice|schoice|schoice
+exsolution: `r sol |> paste(collapse = "|")`|`r sol_momento`|`r sol_caracteristica`|`r sol_fatorial`
+exshuffle: TRUE
+extol: 0.05

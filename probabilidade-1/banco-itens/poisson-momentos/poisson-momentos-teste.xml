@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/poisson-momentos-teste/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R1 Q1 : banco-itens_poisson-momentos_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X uma variável aleatória discreta com distribuição Poisson com um número médio de ocorrências no intervalo de tempo limitado e fechado igual 13,16 . Determine:</p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 10):  {1:NUMERICAL:=0.238196709976657:0.05}</li>
+<li>P(11 &lt; X ≤ 15):  {1:NUMERICAL:=0.412150324613165:0.05}</li>
+<li>P(X &gt; 16):  {1:NUMERICAL:=0.176218883885281:0.05}</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=13.16:0.05}</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=173.1856:0.05}</li>
+<li>Segundo momento central:  {1:NUMERICAL:=13.16:0.05}</li>
+<li>Função geradora de momentos: {1:MULTICHOICE:exp(λ·exp(i·t)-λ)~λ·(λ -i·t)✶✶-1~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~(p·t+1-p)✶✶n~=exp(λ·exp(t)-λ)~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~exp(λ·t-λ)~λ·(λ - ln(t))✶✶-1~λ·(λ - t)✶✶-1~(p·exp(i·t)+1-p)✶✶n~(p·exp(t)+1-p)✶✶n}</li>
+<li>Função característica: {1:MULTICHOICE:exp(λ·t-λ)~λ·(λ -i·t)✶✶-1~exp(λ·exp(t)-λ)~(p·t+1-p)✶✶n~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~=exp(λ·exp(i·t)-λ)~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~λ·(λ - t)✶✶-1~λ·(λ - ln(t))✶✶-1~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~(p·exp(t)+1-p)✶✶n~(p·exp(i·t)+1-p)✶✶n}</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:(p·exp(t)+1-p)✶✶n~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~(p·exp(i·t)+1-p)✶✶n~exp(λ·exp(t)-λ)~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~λ·(λ -i·t)✶✶-1~λ·(λ - ln(t))✶✶-1~λ·(λ - t)✶✶-1~(p·t+1-p)✶✶n~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~exp(λ·exp(i·t)-λ)~=exp(λ·t-λ)}</li>
+</ol>
+<p><strong>Pelas limitações do AVA, x✶✶a representa x<sup>a</sup> nos itens acima.</strong></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 10): 0,2381967.</li>
+<li>P(11 &lt; X ≤ 15): 0,4121503.</li>
+<li>P(X &gt; 16): 0,1762189.</li>
+<li>Primeiro momento fatorial: 13,16.</li>
+<li>Segundo momento fatorial: 173,1856.</li>
+<li>Segundo momento central: 13,16.</li>
+<li>Função geradora de momentos: exp(λ·exp(t)-λ).</li>
+<li>Função característica: exp(λ·exp(i·t)-λ).</li>
+<li>Função geradora de momentos fatoriais: exp(λ·t-λ).</li>
+</ol>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  /  / exp(λ·exp(t)-λ) /  /  /  /  /  /  /  /  /  </li>
+<li>  /  /  /  /  /  / exp(λ·exp(i·t)-λ) /  /  /  /  /  </li>
+<li>  / exp(λ·t-λ) /  /  /  /  /  /  /  /  /  /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>9</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R2 Q1 : banco-itens_poisson-momentos_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X uma variável aleatória discreta com distribuição Poisson com um número médio de ocorrências no intervalo de tempo limitado e fechado igual 13,23 . Determine:</p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 9):  {1:NUMERICAL:=0.151151286208475:0.05}</li>
+<li>P(11 &lt; X ≤ 15):  {1:NUMERICAL:=0.412664539573634:0.05}</li>
+<li>P(X &gt; 16):  {1:NUMERICAL:=0.181473112061868:0.05}</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=13.23:0.05}</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=175.0329:0.05}</li>
+<li>Segundo momento central:  {1:NUMERICAL:=13.23:0.05}</li>
+<li>Função geradora de momentos: {1:MULTICHOICE:λ·(λ -i·t)✶✶-1~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~λ·(λ - t)✶✶-1~(p·exp(i·t)+1-p)✶✶n~=exp(λ·exp(t)-λ)~exp(λ·t-λ)~exp(λ·exp(i·t)-λ)~(p·exp(t)+1-p)✶✶n~λ·(λ - ln(t))✶✶-1~(p·t+1-p)✶✶n}</li>
+<li>Função característica: {1:MULTICHOICE:λ·(λ - t)✶✶-1~exp(λ·t-λ)~(p·exp(i·t)+1-p)✶✶n~λ·(λ -i·t)✶✶-1~λ·(λ - ln(t))✶✶-1~(p·exp(t)+1-p)✶✶n~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~exp(λ·exp(t)-λ)~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~(p·t+1-p)✶✶n~=exp(λ·exp(i·t)-λ)}</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:exp(λ·exp(t)-λ)~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~=exp(λ·t-λ)~λ·(λ - t)✶✶-1~λ·(λ -i·t)✶✶-1~(p·t+1-p)✶✶n~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~(p·exp(i·t)+1-p)✶✶n~(p·exp(t)+1-p)✶✶n~exp(λ·exp(i·t)-λ)~λ·(λ - ln(t))✶✶-1}</li>
+</ol>
+<p><strong>Pelas limitações do AVA, x✶✶a representa x<sup>a</sup> nos itens acima.</strong></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 9): 0,1511513.</li>
+<li>P(11 &lt; X ≤ 15): 0,4126645.</li>
+<li>P(X &gt; 16): 0,1814731.</li>
+<li>Primeiro momento fatorial: 13,23.</li>
+<li>Segundo momento fatorial: 175,0329.</li>
+<li>Segundo momento central: 13,23.</li>
+<li>Função geradora de momentos: exp(λ·exp(t)-λ).</li>
+<li>Função característica: exp(λ·exp(i·t)-λ).</li>
+<li>Função geradora de momentos fatoriais: exp(λ·t-λ).</li>
+</ol>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  /  /  / exp(λ·exp(t)-λ) /  /  /  /  /  /  /  /  </li>
+<li>  /  /  /  /  /  / exp(λ·exp(i·t)-λ) /  /  /  /  /  </li>
+<li>  / exp(λ·t-λ) /  /  /  /  /  /  /  /  /  /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>9</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R3 Q1 : banco-itens_poisson-momentos_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X uma variável aleatória discreta com distribuição Poisson com um número médio de ocorrências no intervalo de tempo limitado e fechado igual 11,69 . Determine:</p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 9):  {1:NUMERICAL:=0.270523140122325:0.05}</li>
+<li>P(10 &lt; X ≤ 13):  {1:NUMERICAL:=0.333251233488549:0.05}</li>
+<li>P(X &gt; 16):  {1:NUMERICAL:=0.085328516898214:0.05}</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=11.69:0.05}</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=136.6561:0.05}</li>
+<li>Segundo momento central:  {1:NUMERICAL:=11.69:0.05}</li>
+<li>Função geradora de momentos: {1:MULTICHOICE:λ·(λ -i·t)✶✶-1~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~(p·exp(i·t)+1-p)✶✶n~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~exp(λ·t-λ)~(p·t+1-p)✶✶n~λ·(λ - t)✶✶-1~λ·(λ - ln(t))✶✶-1~=exp(λ·exp(t)-λ)~exp(λ·exp(i·t)-λ)~(p·exp(t)+1-p)✶✶n}</li>
+<li>Função característica: {1:MULTICHOICE:exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~exp(λ·exp(t)-λ)~(p·exp(t)+1-p)✶✶n~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~λ·(λ -i·t)✶✶-1~=exp(λ·exp(i·t)-λ)~(p·exp(i·t)+1-p)✶✶n~(p·t+1-p)✶✶n~λ·(λ - t)✶✶-1~λ·(λ - ln(t))✶✶-1~exp(λ·t-λ)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)}</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~λ·(λ -i·t)✶✶-1~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~exp(λ·exp(i·t)-λ)~λ·(λ - ln(t))✶✶-1~(p·exp(t)+1-p)✶✶n~=exp(λ·t-λ)~(p·exp(i·t)+1-p)✶✶n~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~λ·(λ - t)✶✶-1~exp(λ·exp(t)-λ)~(p·t+1-p)✶✶n}</li>
+</ol>
+<p><strong>Pelas limitações do AVA, x✶✶a representa x<sup>a</sup> nos itens acima.</strong></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 9): 0,2705231.</li>
+<li>P(10 &lt; X ≤ 13): 0,3332512.</li>
+<li>P(X &gt; 16): 0,08532852.</li>
+<li>Primeiro momento fatorial: 11,69.</li>
+<li>Segundo momento fatorial: 136,6561.</li>
+<li>Segundo momento central: 11,69.</li>
+<li>Função geradora de momentos: exp(λ·exp(t)-λ).</li>
+<li>Função característica: exp(λ·exp(i·t)-λ).</li>
+<li>Função geradora de momentos fatoriais: exp(λ·t-λ).</li>
+</ol>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  / exp(λ·exp(t)-λ) /  /  /  /  /  /  /  /  /  /  </li>
+<li>  /  /  / exp(λ·exp(i·t)-λ) /  /  /  /  /  /  /  /  </li>
+<li>  /  / exp(λ·t-λ) /  /  /  /  /  /  /  /  /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>9</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R4 Q1 : banco-itens_poisson-momentos_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X uma variável aleatória discreta com distribuição Poisson com um número médio de ocorrências no intervalo de tempo limitado e fechado igual 13,1 . Determine:</p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 9):  {1:NUMERICAL:=0.159307638259022:0.05}</li>
+<li>P(12 &lt; X ≤ 14):  {1:NUMERICAL:=0.212730651132952:0.05}</li>
+<li>P(X &gt; 17):  {1:NUMERICAL:=0.115116710435321:0.05}</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=13.1:0.05}</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=171.61:0.05}</li>
+<li>Segundo momento central:  {1:NUMERICAL:=13.1:0.05}</li>
+<li>Função geradora de momentos: {1:MULTICHOICE:exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~λ·(λ - t)✶✶-1~(p·t+1-p)✶✶n~(p·exp(t)+1-p)✶✶n~λ·(λ - ln(t))✶✶-1~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~λ·(λ -i·t)✶✶-1~=exp(λ·exp(t)-λ)~exp(λ·exp(i·t)-λ)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~exp(λ·t-λ)~(p·exp(i·t)+1-p)✶✶n}</li>
+<li>Função característica: {1:MULTICHOICE:λ·(λ -i·t)✶✶-1~exp(λ·t-λ)~=exp(λ·exp(i·t)-λ)~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~(p·exp(i·t)+1-p)✶✶n~(p·t+1-p)✶✶n~(p·exp(t)+1-p)✶✶n~λ·(λ - t)✶✶-1~exp(λ·exp(t)-λ)~λ·(λ - ln(t))✶✶-1~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)}</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:(p·t+1-p)✶✶n~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~exp(λ·exp(i·t)-λ)~(p·exp(t)+1-p)✶✶n~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~=exp(λ·t-λ)~λ·(λ - ln(t))✶✶-1~λ·(λ -i·t)✶✶-1~λ·(λ - t)✶✶-1~exp(λ·exp(t)-λ)~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~(p·exp(i·t)+1-p)✶✶n}</li>
+</ol>
+<p><strong>Pelas limitações do AVA, x✶✶a representa x<sup>a</sup> nos itens acima.</strong></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 9): 0,1593076.</li>
+<li>P(12 &lt; X ≤ 14): 0,2127307.</li>
+<li>P(X &gt; 17): 0,1151167.</li>
+<li>Primeiro momento fatorial: 13,1.</li>
+<li>Segundo momento fatorial: 171,61.</li>
+<li>Segundo momento central: 13,1.</li>
+<li>Função geradora de momentos: exp(λ·exp(t)-λ).</li>
+<li>Função característica: exp(λ·exp(i·t)-λ).</li>
+<li>Função geradora de momentos fatoriais: exp(λ·t-λ).</li>
+</ol>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  /  /  /  /  / exp(λ·exp(t)-λ) /  /  /  /  /  /  </li>
+<li>  /  /  / exp(λ·exp(i·t)-λ) /  /  /  /  /  /  /  /  </li>
+<li>  /  /  /  /  /  /  /  /  /  / exp(λ·t-λ) /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>9</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R5 Q1 : banco-itens_poisson-momentos_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X uma variável aleatória discreta com distribuição Poisson com um número médio de ocorrências no intervalo de tempo limitado e fechado igual 11,38 . Determine:</p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 8):  {1:NUMERICAL:=0.199981905025753:0.05}</li>
+<li>P(9 &lt; X ≤ 12):  {1:NUMERICAL:=0.345754460548563:0.05}</li>
+<li>P(X &gt; 14):  {1:NUMERICAL:=0.175003831517634:0.05}</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=11.38:0.05}</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=129.5044:0.05}</li>
+<li>Segundo momento central:  {1:NUMERICAL:=11.38:0.05}</li>
+<li>Função geradora de momentos: {1:MULTICHOICE:(p·t+1-p)✶✶n~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~=exp(λ·exp(t)-λ)~(p·exp(i·t)+1-p)✶✶n~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~exp(λ·t-λ)~λ·(λ - ln(t))✶✶-1~exp(λ·exp(i·t)-λ)~λ·(λ -i·t)✶✶-1~λ·(λ - t)✶✶-1~(p·exp(t)+1-p)✶✶n~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)}</li>
+<li>Função característica: {1:MULTICHOICE:exp(λ·t-λ)~λ·(λ - ln(t))✶✶-1~(p·exp(t)+1-p)✶✶n~(p·t+1-p)✶✶n~exp(λ·exp(t)-λ)~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~λ·(λ -i·t)✶✶-1~λ·(λ - t)✶✶-1~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~=exp(λ·exp(i·t)-λ)~(p·exp(i·t)+1-p)✶✶n~exp(μ·t + 0,5·σ✶✶2·t✶✶2)}</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:exp(μ·t + 0,5·σ✶✶2·t✶✶2)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~λ·(λ - t)✶✶-1~exp(λ·exp(i·t)-λ)~λ·(λ -i·t)✶✶-1~(p·exp(t)+1-p)✶✶n~exp(λ·exp(t)-λ)~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~=exp(λ·t-λ)~(p·exp(i·t)+1-p)✶✶n~λ·(λ - ln(t))✶✶-1~(p·t+1-p)✶✶n}</li>
+</ol>
+<p><strong>Pelas limitações do AVA, x✶✶a representa x<sup>a</sup> nos itens acima.</strong></p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol style="list-style-type: lower-roman">
+<li>P(X &lt; 8): 0,1999819.</li>
+<li>P(9 &lt; X ≤ 12): 0,3457545.</li>
+<li>P(X &gt; 14): 0,1750038.</li>
+<li>Primeiro momento fatorial: 11,38.</li>
+<li>Segundo momento fatorial: 129,5044.</li>
+<li>Segundo momento central: 11,38.</li>
+<li>Função geradora de momentos: exp(λ·exp(t)-λ).</li>
+<li>Função característica: exp(λ·exp(i·t)-λ).</li>
+<li>Função geradora de momentos fatoriais: exp(λ·t-λ).</li>
+</ol>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  /  /  /  / exp(λ·exp(t)-λ) /  /  /  /  /  /  /  </li>
+<li>  /  /  /  /  /  /  /  /  /  /  / exp(λ·exp(i·t)-λ) </li>
+<li> exp(λ·t-λ) /  /  /  /  /  /  /  /  /  /  /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>9</defaultgrade>
+</question>
+
+</quiz>

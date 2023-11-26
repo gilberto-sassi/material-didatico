@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/goodman-kruskal-table-teste/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R1 Q1 : banco-itens_goodman-kruskal-table_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X1 e X2 duas variáveis qualitativas com valores A e B onde A &lt; B. Suponha que a tabela de contingência para estas duas variáveis seja dada por:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+A
+</th>
+<th style="text-align:right;">
+B
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+831
+</td>
+<td style="text-align:right;">
+848
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+783
+</td>
+<td style="text-align:right;">
+844
+</td>
+</tr>
+</tbody>
+</table>
+<p>Determine:</p>
+<ol type = "a">
+<li> Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal: {1:SHORTANSWER:%100%DescTools~%100%desctools} </li>
+<li> Função que podemos usar para calcular o coeficiente de Goodman-Kruskal: {1:SHORTANSWER:%100%GoodmanKruskalGamma~%100%goodmankruskalgamma} </li>
+<li> Número de pares concordantes: {1:NUMERICAL:=701364:0.5} </li>
+<li> Número de pares discordantes: {1:NUMERICAL:=663984:0.5} </li>
+<li> Coeficiente de Goodman-Kruskal: {1:NUMERICAL:=0.0273776355918052:0.5} </li>
+<li> Menor valor do intervalo de confiança com coeficiente 95% do coeficiente de Goodman-Kruskal: {1:NUMERICAL:=-0.0407809989126181:0.5} </li>
+<li> Maior valor do intervalo de confiança com coeficiente 95% do coeficiente de Goodman-Kruskal: {1:NUMERICAL:=0.0955362700962285:0.5} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal: DescTools. </li>
+<li> Função que podemos usar para calcular o coeficiente de Goodman-Kruskal: GoodmanKruskalGamma. </li>
+<li> Número de pares concordantes: 701.364. </li>
+<li> Número de pares discordantes: 663.984. </li>
+<li> Coeficiente de Goodman-Kruskal: 0,02737764. </li>
+<li> Menor valor do intervalo de confiança com coeficiente 95% do coeficiente de Goodman-Kruskal: -0,040781. </li>
+<li> Maior valor do intervalo de confiança com coeficiente 95% do coeficiente de Goodman-Kruskal: 0,09553627. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>7</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R2 Q1 : banco-itens_goodman-kruskal-table_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X1 e X2 duas variáveis qualitativas com valores A e B onde A &lt; B. Suponha que a tabela de contingência para estas duas variáveis seja dada por:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+A
+</th>
+<th style="text-align:right;">
+B
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+263
+</td>
+<td style="text-align:right;">
+1492
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+1509
+</td>
+<td style="text-align:right;">
+297
+</td>
+</tr>
+</tbody>
+</table>
+<p>Determine:</p>
+<ol type = "a">
+<li> Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal: {1:SHORTANSWER:%100%DescTools~%100%desctools} </li>
+<li> Função que podemos usar para calcular o coeficiente de Goodman-Kruskal: {1:SHORTANSWER:%100%GoodmanKruskalGamma~%100%goodmankruskalgamma} </li>
+<li> Número de pares concordantes: {1:NUMERICAL:=78111:0.5} </li>
+<li> Número de pares discordantes: {1:NUMERICAL:=2251428:0.5} </li>
+<li> Coeficiente de Goodman-Kruskal: {1:NUMERICAL:=-0.932938662971515:0.5} </li>
+<li> Menor valor do intervalo de confiança com coeficiente 95% do coeficiente de Goodman-Kruskal: {1:NUMERICAL:=-0.944651833260547:0.5} </li>
+<li> Maior valor do intervalo de confiança com coeficiente 95% do coeficiente de Goodman-Kruskal: {1:NUMERICAL:=-0.921225492682483:0.5} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal: DescTools. </li>
+<li> Função que podemos usar para calcular o coeficiente de Goodman-Kruskal: GoodmanKruskalGamma. </li>
+<li> Número de pares concordantes: 78.111. </li>
+<li> Número de pares discordantes: 2.251.428. </li>
+<li> Coeficiente de Goodman-Kruskal: -0,9329387. </li>
+<li> Menor valor do intervalo de confiança com coeficiente 95% do coeficiente de Goodman-Kruskal: -0,9446518. </li>
+<li> Maior valor do intervalo de confiança com coeficiente 95% do coeficiente de Goodman-Kruskal: -0,9212255. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>7</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R3 Q1 : banco-itens_goodman-kruskal-table_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X1 e X2 duas variáveis qualitativas com valores A e B onde A &lt; B. Suponha que a tabela de contingência para estas duas variáveis seja dada por:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+A
+</th>
+<th style="text-align:right;">
+B
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1276
+</td>
+<td style="text-align:right;">
+178
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+162
+</td>
+<td style="text-align:right;">
+1259
+</td>
+</tr>
+</tbody>
+</table>
+<p>Determine:</p>
+<ol type = "a">
+<li> Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal: {1:SHORTANSWER:%100%DescTools~%100%desctools} </li>
+<li> Função que podemos usar para calcular o coeficiente de Goodman-Kruskal: {1:SHORTANSWER:%100%GoodmanKruskalGamma~%100%goodmankruskalgamma} </li>
+<li> Número de pares concordantes: {1:NUMERICAL:=1606484:0.5} </li>
+<li> Número de pares discordantes: {1:NUMERICAL:=28836:0.5} </li>
+<li> Coeficiente de Goodman-Kruskal: {1:NUMERICAL:=0.964733507814984:0.5} </li>
+<li> Menor valor do intervalo de confiança com coeficiente 95% do coeficiente de Goodman-Kruskal: {1:NUMERICAL:=0.956882413756783:0.5} </li>
+<li> Maior valor do intervalo de confiança com coeficiente 95% do coeficiente de Goodman-Kruskal: {1:NUMERICAL:=0.972584601873185:0.5} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal: DescTools. </li>
+<li> Função que podemos usar para calcular o coeficiente de Goodman-Kruskal: GoodmanKruskalGamma. </li>
+<li> Número de pares concordantes: 1.606.484. </li>
+<li> Número de pares discordantes: 28.836. </li>
+<li> Coeficiente de Goodman-Kruskal: 0,9647335. </li>
+<li> Menor valor do intervalo de confiança com coeficiente 95% do coeficiente de Goodman-Kruskal: 0,9568824. </li>
+<li> Maior valor do intervalo de confiança com coeficiente 95% do coeficiente de Goodman-Kruskal: 0,9725846. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>7</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R4 Q1 : banco-itens_goodman-kruskal-table_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X1 e X2 duas variáveis qualitativas com valores A e B onde A &lt; B. Suponha que a tabela de contingência para estas duas variáveis seja dada por:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+A
+</th>
+<th style="text-align:right;">
+B
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1131
+</td>
+<td style="text-align:right;">
+1153
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+1181
+</td>
+<td style="text-align:right;">
+1145
+</td>
+</tr>
+</tbody>
+</table>
+<p>Determine:</p>
+<ol type = "a">
+<li> Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal: {1:SHORTANSWER:%100%DescTools~%100%desctools} </li>
+<li> Função que podemos usar para calcular o coeficiente de Goodman-Kruskal: {1:SHORTANSWER:%100%GoodmanKruskalGamma~%100%goodmankruskalgamma} </li>
+<li> Número de pares concordantes: {1:NUMERICAL:=1294995:0.5} </li>
+<li> Número de pares discordantes: {1:NUMERICAL:=1361693:0.5} </li>
+<li> Coeficiente de Goodman-Kruskal: {1:NUMERICAL:=-0.0251056955126082:0.5} </li>
+<li> Menor valor do intervalo de confiança com coeficiente 95% do coeficiente de Goodman-Kruskal: {1:NUMERICAL:=-0.0828099412893089:0.5} </li>
+<li> Maior valor do intervalo de confiança com coeficiente 95% do coeficiente de Goodman-Kruskal: {1:NUMERICAL:=0.0325985502640925:0.5} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal: DescTools. </li>
+<li> Função que podemos usar para calcular o coeficiente de Goodman-Kruskal: GoodmanKruskalGamma. </li>
+<li> Número de pares concordantes: 1.294.995. </li>
+<li> Número de pares discordantes: 1.361.693. </li>
+<li> Coeficiente de Goodman-Kruskal: -0,0251057. </li>
+<li> Menor valor do intervalo de confiança com coeficiente 95% do coeficiente de Goodman-Kruskal: -0,08280994. </li>
+<li> Maior valor do intervalo de confiança com coeficiente 95% do coeficiente de Goodman-Kruskal: 0,03259855. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>7</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R5 Q1 : banco-itens_goodman-kruskal-table_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X1 e X2 duas variáveis qualitativas com valores A e B onde A &lt; B. Suponha que a tabela de contingência para estas duas variáveis seja dada por:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+A
+</th>
+<th style="text-align:right;">
+B
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+716
+</td>
+<td style="text-align:right;">
+772
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+738
+</td>
+<td style="text-align:right;">
+790
+</td>
+</tr>
+</tbody>
+</table>
+<p>Determine:</p>
+<ol type = "a">
+<li> Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal: {1:SHORTANSWER:%100%DescTools~%100%desctools} </li>
+<li> Função que podemos usar para calcular o coeficiente de Goodman-Kruskal: {1:SHORTANSWER:%100%GoodmanKruskalGamma~%100%goodmankruskalgamma} </li>
+<li> Número de pares concordantes: {1:NUMERICAL:=565640:0.5} </li>
+<li> Número de pares discordantes: {1:NUMERICAL:=569736:0.5} </li>
+<li> Coeficiente de Goodman-Kruskal: {1:NUMERICAL:=-0.00360761545074055:0.5} </li>
+<li> Menor valor do intervalo de confiança com coeficiente 95% do coeficiente de Goodman-Kruskal: {1:NUMERICAL:=-0.0750366930341279:0.5} </li>
+<li> Maior valor do intervalo de confiança com coeficiente 95% do coeficiente de Goodman-Kruskal: {1:NUMERICAL:=0.0678214621326468:0.5} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal: DescTools. </li>
+<li> Função que podemos usar para calcular o coeficiente de Goodman-Kruskal: GoodmanKruskalGamma. </li>
+<li> Número de pares concordantes: 565.640. </li>
+<li> Número de pares discordantes: 569.736. </li>
+<li> Coeficiente de Goodman-Kruskal: -0,003607615. </li>
+<li> Menor valor do intervalo de confiança com coeficiente 95% do coeficiente de Goodman-Kruskal: -0,07503669. </li>
+<li> Maior valor do intervalo de confiança com coeficiente 95% do coeficiente de Goodman-Kruskal: 0,06782146. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>7</defaultgrade>
+</question>
+
+</quiz>
