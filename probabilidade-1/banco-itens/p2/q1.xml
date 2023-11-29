@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+      <text>$course$/top/Padrão para MAT236-030000</text>
+    </category>
+    <info format="moodle_auto_format">
+      <text>A categoria padrão para as questões compartilhadas no contexto 'MAT236-030000'.</text>
+    </info>
+    <idnumber></idnumber>
+  </question>
+
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+      <text>$course$/top/Padrão para MAT236-030000/q1</text>
+    </category>
+    <info format="html">
+      <text><![CDATA[<p>Primeira questão da segunda prova de probabilidade 1 envolvendo calculo de momentos e desigualdades.</p>]]></text>
+    </info>
+    <idnumber></idnumber>
+  </question>
+
+<!-- question: 23393137  -->
+  <question type="essay">
+    <name>
+      <text>Media, variância e desigualdade de probabilidade.</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Seja <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=X" alt="X" /> uma variável aleatória discreta com suporte <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Cchi%3D%5C%7B-c%2Cc%5C%7D" alt="\chi=\{-c,c\}" /> onde <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=c" alt="c" /> é uma constante positiva. e função de probabilidade dada por</p>
+<p><img class="latex" style="display: block; margin-left: auto; margin-right: auto;" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=f(x)%20%3D%20%5Cbegin%7Bcases%7D%0A0%2C5%2C%26%20%5Ctext%7Bse%20%7Dx%3D-c%2C%5C%5C%0A0%2C5%2C%26%20%5Ctext%7Bse%20%7Dx%3Dc%2C%5C%5C%0A0%2C%26%20x%5Cnot%5Cin%20%5Cchi.%0A%5Cend%7Bcases%7D" alt="f(x) = \begin{cases}
+0,5,&amp; \text{se }x=-c,\\
+0,5,&amp; \text{se }x=c,\\
+0,&amp; x\not\in \chi.
+\end{cases}" /></p>
+<p>Calcule <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=E(X)" alt="E(X)" />, <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Csigma%5E2(X)" alt="\sigma^2(X)" /> e cheque que <img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=P(%5C%7CX%20-%20E(x)%5C%7C%5Cleq%20c)%20%3D%20%5Cfrac%7B%5Csigma%5E2(X)%7D%7Bc%5E2%7D" alt="P(\|X - E(x)\|\leq c) = \frac{\sigma^2(X)}{c^2}" />.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <responseformat>editor</responseformat>
+    <responserequired>0</responserequired>
+    <responsefieldlines>40</responsefieldlines>
+    <attachments>1</attachments>
+    <attachmentsrequired>1</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+  </question>
+
+</quiz>

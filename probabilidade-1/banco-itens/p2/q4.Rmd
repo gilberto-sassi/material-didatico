@@ -1,0 +1,134 @@
+```{r}
+#| echo: false
+#| message: false
+#| label: dados-aleatorios
+
+if (!require(pacman)) {
+    install.packages("pacman")
+    library(pacman)
+}
+
+p_load(
+    readxl, writexl, janitor,
+    glue,
+    exams,
+    tidyverse
+)
+
+# formatação
+f <- \(x) format(
+    x,
+    big.mark = ".",
+    decimal.mark = ","
+)
+
+options(scipen = 999) #prevent scientific notation
+
+# make a list
+make_list <- \(v) {
+    for(k in seq_along(v)) {
+        print(glue("* {v[k]}"))
+    }
+}
+
+# 2 * variância
+constante <- runif(1, 0.3, 0.8) |> round(2)
+
+# opcoes
+opcoes <- c(
+    "normal_momento" = glue("exp({f(constante)}t&#10038;&#10038;2)"),
+    "normal_caracteristica" = glue("exp(- {f(constante)} &#183;t&#10038;&#10038;2)"),
+    "normal_fatorial" = glue("exp({f(constante)}&#183;t&#10038;&#10038;2)"),
+    "binom_momento" = glue("({f(constante)}&#183;exp(t)+1-{f(constante)})&#10038;&#10038;{sample(1000:2000, 1)}"),
+    "binom_caracteristica" = glue("({f(constante)}&#183;exp(i&#183;t)+1-{f(constante)})&#10038;&#10038;{sample(1000:2000, 1)}"),
+    "binom_fatorial" = glue("({f(constante)}&#183;t+1-{f(constante)})&#10038;&#10038;{sample(1000:2000, 1)}"),
+    "poisson_momento" = glue("exp({f(constante)}&#183;exp(t)-{f(constante)})"),
+    "poisson_caracteristica" = glue("exp({f(constante)}&#183;exp(i&#183;t)-{f(constante)})"),
+    "poisson_fatorial" = glue("exp({f(constante)}&#183;t-{f(constante)})"),
+    "exp_momento" = glue("{f(constante)}&#183;({f(constante)} - t)&#10038;&#10038;-1"),
+    "exp_caracteristica" = glue("{f(constante)}&#183;({f(constante)} -i&#183;t)&#10038;&#10038;-1"),
+    "exp_fatorial" = glue("{f(constante)}&#183;({f(constante)} - ln(t))&#10038;&#10038;-1"),
+    "caracteristica" = glue("2&#183;(2-exp(i&#183;t))&#10038;&#10038;-1"),
+    "fgm" = glue("2&#183;(2-exp(t))&#10038;&#10038;-1"),
+    "fatorial" = glue("2&#183;(2-t)&#10038;&#10038;-1")
+)
+
+# solução
+sol <- c(
+    0,
+    2 * constante,
+    0,
+    2 * constante,
+    0,
+    2 * constante
+)
+
+# solução letra a)
+sol_momento <- names(opcoes) |>
+    map_chr(~ ifelse(.x == "normal_momento", "1", "0")) |>
+    paste(collapse = "")
+
+# solução letra a)
+sol_fatorial <- names(opcoes) |>
+    map_chr(~ ifelse(.x == "normal_fatorial", "1", "0")) |>
+    paste(collapse = "")
+```
+
+Question
+========
+Seja X uma variável aleatória contínua com função característica dada por &varphi;(t) = exp(- `r f(constante)` &#183;t<sup>2</sup>). Determine:
+
+* Primeiro momento: \#\#ANSWER1\#\#.
+* Segundo momento: \#\#ANSWER2\#\#.
+* Primeiro momento central: \#\#ANSWER3\#\#.
+* Segundo momento central: \#\#ANSWER4\#\#.
+* Primeiro momento fatorial: \#\#ANSWER5\#\#.
+* Segundo momento fatorial: \#\#ANSWER6\#\#.
+* Função geradora de momento: \#\#ANSWER7\#\#.
+* Função geradora de momentos fatoriais: \#\#ANSWER8\#\#.
+
+Questionlist
+------------
+```{r}
+#| echo: false
+#| results: asis
+
+make_list(rep("", 6))
+make_list(opcoes)
+make_list(opcoes)
+```
+
+Solution
+========
+* Primeiro momento: `r f(sol[1])`.
+* Segundo momento: `r f(sol[2])`.
+* Primeiro momento central: `r f(sol[3])`.
+* Segundo momento central: `r f(sol[4])`.
+* Primeiro momento fatorial: `r f(sol[5])`.
+* Segundo momento fatorial: `r f(sol[6])`.
+* Função geradora de momento: `r opcoes["normal_momento"]`.
+* Função geradora de momentos fatoriais: `r opcoes["normal_fatorial"]`.
+
+
+Solutionlist
+------------
+```{r}
+#| echo: false
+#| results: asis
+make_list(rep("", 6))
+make_list(c(
+    opcoes["normal_momento"], rep("", 14)
+))
+make_list(c(
+    opcoes["normal_fatorial"], rep("", 14)
+))
+```
+
+Meta-information
+================
+exname: q4
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste(collapse="|")`|schoice|schoice
+exsolution: `r sol |> paste(collapse="|")`|`r sol_momento`|`r sol_fatorial`
+exshuffle: TRUE
+extol: 0.05

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/q2/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> Q1 : banco-itens_p2_q2 </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X uma variável aleatória discreta com suporte χ= {0, 1, 2,…} e função probabilidade dada por: f(j) = 0,5·2<sup>-j</sup> se j ∈ χ e f(x) = 0 se x ∉ χ.</p>
+<ul>
+<li>Primeiro momento:  {1:NUMERICAL:=0.5:0.05}.</li>
+<li>Segundo momento:  {1:NUMERICAL:=1:0.05}.</li>
+<li>Primeiro momento central:  {1:NUMERICAL:=0:0.05}.</li>
+<li>Segundo momento central:  {1:NUMERICAL:=0.75:0.05}.</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=0.5:0.05}.</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=0.5:0.05}.</li>
+<li>Função característica: {1:MULTICHOICE:exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~exp(λ·exp(i·t)-λ)~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~=2·(2-exp(i·t))✶✶-1~exp(λ·t-λ)~(p·exp(i·t)+1-p)✶✶n~(p·exp(t)+1-p)✶✶n~2·(2-exp(t))✶✶-1~exp(λ·exp(t)-λ)~λ·(λ -i·t)✶✶-1~(p·t+1-p)✶✶n~2·(2-t)✶✶-1~λ·(λ - t)✶✶-1~λ·(λ - ln(t))✶✶-1}.</li>
+<li>Função geradora de momento: {1:MULTICHOICE:exp(μ·t + 0,5·σ✶✶2·t✶✶2)~2·(2-exp(i·t))✶✶-1~λ·(λ - t)✶✶-1~2·(2-t)✶✶-1~(p·exp(i·t)+1-p)✶✶n~(p·exp(t)+1-p)✶✶n~exp(λ·exp(i·t)-λ)~(p·t+1-p)✶✶n~λ·(λ -i·t)✶✶-1~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~=2·(2-exp(t))✶✶-1~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~λ·(λ - ln(t))✶✶-1~exp(λ·t-λ)~exp(λ·exp(t)-λ)}.</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:exp(λ·exp(t)-λ)~exp(λ·exp(i·t)-λ)~λ·(λ -i·t)✶✶-1~λ·(λ - t)✶✶-1~exp(μ·t + 0,5·σ✶✶2·t✶✶2)~exp(i·t·μ - 0,5·σ✶✶2·t✶✶2)~t✶✶μ·exp(0,5·σ✶✶2·t✶✶2)~2·(2-exp(t))✶✶-1~exp(λ·t-λ)~(p·exp(i·t)+1-p)✶✶n~(p·exp(t)+1-p)✶✶n~2·(2-exp(i·t))✶✶-1~λ·(λ - ln(t))✶✶-1~(p·t+1-p)✶✶n~=2·(2-t)✶✶-1}.</li>
+</ul>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li>Primeiro momento: 0,5.</li>
+<li>Segundo momento: 1.</li>
+<li>Primeiro momento central: 0.</li>
+<li>Segundo momento central: 0,75.</li>
+<li>Primeiro momento fatorial: 0,5.</li>
+<li>Segundo momento fatorial: 0,5.</li>
+<li>Função característica: 2·(2-exp(i·t))✶✶-1.</li>
+<li>Função geradora de momento: 2·(2-exp(t))✶✶-1.</li>
+<li>Função geradora de momentos fatoriais: 2·(2-t)✶✶-1.</li>
+</ul>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  /  / 2·(2-exp(i·t))✶✶-1 /  /  /  /  /  /  /  /  /  /  /  /  </li>
+<li> 2·(2-exp(t))✶✶-1 /  /  /  /  /  /  /  /  /  /  /  /  /  /  </li>
+<li>  /  /  /  / 2·(2-t)✶✶-1 /  /  /  /  /  /  /  /  /  /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>9</defaultgrade>
+</question>
+
+</quiz>

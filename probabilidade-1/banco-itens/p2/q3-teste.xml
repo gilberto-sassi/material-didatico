@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/q3-teste/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R1 Q1 : banco-itens_p2_q3 </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X uma variável aleatória discreta com função característica dada por ϕ(t) = exp(0,42·exp(i·t)-0,42). Determine:</p>
+<ul>
+<li>Primeiro momento:  {1:NUMERICAL:=0.42:0.05}.</li>
+<li>Segundo momento:  {1:NUMERICAL:=0.5964:0.05}.</li>
+<li>Primeiro momento central:  {1:NUMERICAL:=0:0.05}.</li>
+<li>Segundo momento central:  {1:NUMERICAL:=0.42:0.05}.</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=0.42:0.05}.</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=0.1764:0.05}.</li>
+<li>Função geradora de momento: {1:MULTICHOICE:exp((0,42·exp(i·t)-(0,42)~(0,42·t+1-0,42)✶✶1382~(0,42·exp(i·t)+1-0,42)✶✶1187~(0,42·((0,42 - t)✶✶-1~exp(i·t·0,42 - 0,42 ·t✶✶2)~=exp(0,42·exp(t)-0,42)~exp(0,42·t + 0,42t✶✶2)~2·(2-exp(t))✶✶-1~(0,42·exp(t)+1-0,42)✶✶1464~exp((0,42·t-(0,42)~(0,42·((0,42 - ln(t))✶✶-1~(0,42·((0,42 -i·t)✶✶-1~2·(2-t)✶✶-1~2·(2-exp(i·t))✶✶-1~exp(0,42·t✶✶2)}.</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:(0,42·((0,42 -i·t)✶✶-1~(0,42·((0,42 - t)✶✶-1~2·(2-exp(t))✶✶-1~=exp((0,42·t-(0,42)~2·(2-exp(i·t))✶✶-1~(0,42·((0,42 - ln(t))✶✶-1~exp(0,42·t + 0,42t✶✶2)~exp(i·t·0,42 - 0,42 ·t✶✶2)~(0,42·t+1-0,42)✶✶1382~exp(0,42·exp(t)-0,42)~(0,42·exp(i·t)+1-0,42)✶✶1187~2·(2-t)✶✶-1~exp((0,42·exp(i·t)-(0,42)~(0,42·exp(t)+1-0,42)✶✶1464~exp(0,42·t✶✶2)}.</li>
+</ul>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li>Primeiro momento: 0,42.</li>
+<li>Segundo momento: 0,5964.</li>
+<li>Primeiro momento central: 0.</li>
+<li>Segundo momento central: 0,42.</li>
+<li>Primeiro momento fatorial: 0,42.</li>
+<li>Segundo momento fatorial: 0,1764.</li>
+<li>Função geradora de momento: exp(0,42·exp(t)-0,42).</li>
+<li>Função geradora de momentos fatoriais: exp((0,42·t-(0,42).</li>
+</ul>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  /  /  /  /  /  / exp(0,42·exp(t)-0,42) /  /  /  /  /  /  /  /  </li>
+<li>  /  /  /  /  /  / exp((0,42·t-(0,42) /  /  /  /  /  /  /  /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>8</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R2 Q1 : banco-itens_p2_q3 </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X uma variável aleatória discreta com função característica dada por ϕ(t) = exp(0,35·exp(i·t)-0,35). Determine:</p>
+<ul>
+<li>Primeiro momento:  {1:NUMERICAL:=0.35:0.05}.</li>
+<li>Segundo momento:  {1:NUMERICAL:=0.4725:0.05}.</li>
+<li>Primeiro momento central:  {1:NUMERICAL:=0:0.05}.</li>
+<li>Segundo momento central:  {1:NUMERICAL:=0.35:0.05}.</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=0.35:0.05}.</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=0.1225:0.05}.</li>
+<li>Função geradora de momento: {1:MULTICHOICE:exp((0,35·exp(i·t)-(0,35)~2·(2-exp(i·t))✶✶-1~(0,35·exp(i·t)+1-0,35)✶✶1502~2·(2-t)✶✶-1~exp(i·t·0,35 - 0,35 ·t✶✶2)~2·(2-exp(t))✶✶-1~exp((0,35·t-(0,35)~=exp(0,35·exp(t)-0,35)~exp(0,35·t + 0,35t✶✶2)~(0,35·exp(t)+1-0,35)✶✶1672~(0,35·((0,35 -i·t)✶✶-1~(0,35·((0,35 - ln(t))✶✶-1~(0,35·t+1-0,35)✶✶1387~exp(0,35·t✶✶2)~(0,35·((0,35 - t)✶✶-1}.</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:exp(0,35·t✶✶2)~(0,35·exp(i·t)+1-0,35)✶✶1502~exp((0,35·exp(i·t)-(0,35)~exp(0,35·t + 0,35t✶✶2)~exp(i·t·0,35 - 0,35 ·t✶✶2)~2·(2-exp(i·t))✶✶-1~2·(2-exp(t))✶✶-1~2·(2-t)✶✶-1~(0,35·((0,35 -i·t)✶✶-1~(0,35·t+1-0,35)✶✶1387~(0,35·exp(t)+1-0,35)✶✶1672~exp(0,35·exp(t)-0,35)~(0,35·((0,35 - ln(t))✶✶-1~=exp((0,35·t-(0,35)~(0,35·((0,35 - t)✶✶-1}.</li>
+</ul>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li>Primeiro momento: 0,35.</li>
+<li>Segundo momento: 0,4725.</li>
+<li>Primeiro momento central: 0.</li>
+<li>Segundo momento central: 0,35.</li>
+<li>Primeiro momento fatorial: 0,35.</li>
+<li>Segundo momento fatorial: 0,1225.</li>
+<li>Função geradora de momento: exp(0,35·exp(t)-0,35).</li>
+<li>Função geradora de momentos fatoriais: exp((0,35·t-(0,35).</li>
+</ul>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  /  /  /  /  /  /  /  / exp(0,35·exp(t)-0,35) /  /  /  /  /  /  </li>
+<li>  /  /  / exp((0,35·t-(0,35) /  /  /  /  /  /  /  /  /  /  /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>8</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R3 Q1 : banco-itens_p2_q3 </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X uma variável aleatória discreta com função característica dada por ϕ(t) = exp(0,4·exp(i·t)-0,4). Determine:</p>
+<ul>
+<li>Primeiro momento:  {1:NUMERICAL:=0.4:0.05}.</li>
+<li>Segundo momento:  {1:NUMERICAL:=0.56:0.05}.</li>
+<li>Primeiro momento central:  {1:NUMERICAL:=0:0.05}.</li>
+<li>Segundo momento central:  {1:NUMERICAL:=0.4:0.05}.</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=0.4:0.05}.</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=0.16:0.05}.</li>
+<li>Função geradora de momento: {1:MULTICHOICE:exp(0,4·t✶✶2)~=exp(0,4·exp(t)-0,4)~exp((0,4·exp(i·t)-(0,4)~(0,4·exp(i·t)+1-0,4)✶✶1962~exp(i·t·0,4 - 0,4 ·t✶✶2)~2·(2-exp(i·t))✶✶-1~(0,4·((0,4 -i·t)✶✶-1~(0,4·exp(t)+1-0,4)✶✶1509~2·(2-t)✶✶-1~(0,4·((0,4 - ln(t))✶✶-1~(0,4·((0,4 - t)✶✶-1~exp(0,4·t + 0,4t✶✶2)~2·(2-exp(t))✶✶-1~(0,4·t+1-0,4)✶✶1904~exp((0,4·t-(0,4)}.</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:2·(2-t)✶✶-1~=exp((0,4·t-(0,4)~(0,4·exp(i·t)+1-0,4)✶✶1962~(0,4·((0,4 - ln(t))✶✶-1~exp(0,4·t✶✶2)~(0,4·((0,4 - t)✶✶-1~exp((0,4·exp(i·t)-(0,4)~2·(2-exp(t))✶✶-1~(0,4·exp(t)+1-0,4)✶✶1509~(0,4·t+1-0,4)✶✶1904~exp(0,4·t + 0,4t✶✶2)~exp(0,4·exp(t)-0,4)~2·(2-exp(i·t))✶✶-1~exp(i·t·0,4 - 0,4 ·t✶✶2)~(0,4·((0,4 -i·t)✶✶-1}.</li>
+</ul>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li>Primeiro momento: 0,4.</li>
+<li>Segundo momento: 0,56.</li>
+<li>Primeiro momento central: 0.</li>
+<li>Segundo momento central: 0,4.</li>
+<li>Primeiro momento fatorial: 0,4.</li>
+<li>Segundo momento fatorial: 0,16.</li>
+<li>Função geradora de momento: exp(0,4·exp(t)-0,4).</li>
+<li>Função geradora de momentos fatoriais: exp((0,4·t-(0,4).</li>
+</ul>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  /  /  /  /  /  /  /  /  /  /  / exp(0,4·exp(t)-0,4) /  /  /  </li>
+<li>  /  /  /  /  /  /  /  /  /  / exp((0,4·t-(0,4) /  /  /  /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>8</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R4 Q1 : banco-itens_p2_q3 </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X uma variável aleatória discreta com função característica dada por ϕ(t) = exp(0,66·exp(i·t)-0,66). Determine:</p>
+<ul>
+<li>Primeiro momento:  {1:NUMERICAL:=0.66:0.05}.</li>
+<li>Segundo momento:  {1:NUMERICAL:=1.0956:0.05}.</li>
+<li>Primeiro momento central:  {1:NUMERICAL:=0:0.05}.</li>
+<li>Segundo momento central:  {1:NUMERICAL:=0.66:0.05}.</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=0.66:0.05}.</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=0.4356:0.05}.</li>
+<li>Função geradora de momento: {1:MULTICHOICE:(0,66·((0,66 - ln(t))✶✶-1~exp((0,66·t-(0,66)~(0,66·((0,66 -i·t)✶✶-1~2·(2-exp(t))✶✶-1~(0,66·((0,66 - t)✶✶-1~exp(i·t·0,66 - 0,66 ·t✶✶2)~=exp(0,66·exp(t)-0,66)~exp(0,66·t + 0,66t✶✶2)~2·(2-exp(i·t))✶✶-1~(0,66·exp(i·t)+1-0,66)✶✶1536~exp((0,66·exp(i·t)-(0,66)~exp(0,66·t✶✶2)~(0,66·exp(t)+1-0,66)✶✶1469~(0,66·t+1-0,66)✶✶1406~2·(2-t)✶✶-1}.</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:2·(2-exp(i·t))✶✶-1~2·(2-t)✶✶-1~exp(0,66·exp(t)-0,66)~(0,66·((0,66 - t)✶✶-1~exp(0,66·t✶✶2)~exp((0,66·exp(i·t)-(0,66)~exp(0,66·t + 0,66t✶✶2)~(0,66·((0,66 - ln(t))✶✶-1~exp(i·t·0,66 - 0,66 ·t✶✶2)~2·(2-exp(t))✶✶-1~(0,66·exp(i·t)+1-0,66)✶✶1536~(0,66·((0,66 -i·t)✶✶-1~(0,66·t+1-0,66)✶✶1406~=exp((0,66·t-(0,66)~(0,66·exp(t)+1-0,66)✶✶1469}.</li>
+</ul>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li>Primeiro momento: 0,66.</li>
+<li>Segundo momento: 1,0956.</li>
+<li>Primeiro momento central: 0.</li>
+<li>Segundo momento central: 0,66.</li>
+<li>Primeiro momento fatorial: 0,66.</li>
+<li>Segundo momento fatorial: 0,4356.</li>
+<li>Função geradora de momento: exp(0,66·exp(t)-0,66).</li>
+<li>Função geradora de momentos fatoriais: exp((0,66·t-(0,66).</li>
+</ul>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  /  /  /  /  /  /  / exp(0,66·exp(t)-0,66) /  /  /  /  /  /  /  </li>
+<li>  /  /  /  /  /  / exp((0,66·t-(0,66) /  /  /  /  /  /  /  /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>8</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R5 Q1 : banco-itens_p2_q3 </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Seja X uma variável aleatória discreta com função característica dada por ϕ(t) = exp(0,34·exp(i·t)-0,34). Determine:</p>
+<ul>
+<li>Primeiro momento:  {1:NUMERICAL:=0.34:0.05}.</li>
+<li>Segundo momento:  {1:NUMERICAL:=0.4556:0.05}.</li>
+<li>Primeiro momento central:  {1:NUMERICAL:=0:0.05}.</li>
+<li>Segundo momento central:  {1:NUMERICAL:=0.34:0.05}.</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=0.34:0.05}.</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=0.1156:0.05}.</li>
+<li>Função geradora de momento: {1:MULTICHOICE:=exp(0,34·exp(t)-0,34)~(0,34·exp(i·t)+1-0,34)✶✶1882~(0,34·exp(t)+1-0,34)✶✶1133~(0,34·((0,34 - t)✶✶-1~2·(2-t)✶✶-1~exp(0,34·t✶✶2)~2·(2-exp(i·t))✶✶-1~exp((0,34·t-(0,34)~exp(0,34·t + 0,34t✶✶2)~2·(2-exp(t))✶✶-1~(0,34·((0,34 -i·t)✶✶-1~exp(i·t·0,34 - 0,34 ·t✶✶2)~exp((0,34·exp(i·t)-(0,34)~(0,34·t+1-0,34)✶✶1975~(0,34·((0,34 - ln(t))✶✶-1}.</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:exp(i·t·0,34 - 0,34 ·t✶✶2)~exp((0,34·exp(i·t)-(0,34)~=exp((0,34·t-(0,34)~2·(2-t)✶✶-1~2·(2-exp(i·t))✶✶-1~exp(0,34·t + 0,34t✶✶2)~(0,34·exp(i·t)+1-0,34)✶✶1882~(0,34·((0,34 -i·t)✶✶-1~(0,34·((0,34 - ln(t))✶✶-1~(0,34·exp(t)+1-0,34)✶✶1133~2·(2-exp(t))✶✶-1~exp(0,34·exp(t)-0,34)~(0,34·((0,34 - t)✶✶-1~exp(0,34·t✶✶2)~(0,34·t+1-0,34)✶✶1975}.</li>
+</ul>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li>Primeiro momento: 0,34.</li>
+<li>Segundo momento: 0,4556.</li>
+<li>Primeiro momento central: 0.</li>
+<li>Segundo momento central: 0,34.</li>
+<li>Primeiro momento fatorial: 0,34.</li>
+<li>Segundo momento fatorial: 0,1156.</li>
+<li>Função geradora de momento: exp(0,34·exp(t)-0,34).</li>
+<li>Função geradora de momentos fatoriais: exp((0,34·t-(0,34).</li>
+</ul>
+<ol type = "a">
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  </li>
+<li>  /  /  /  /  /  /  /  / exp(0,34·exp(t)-0,34) /  /  /  /  /  /  </li>
+<li>  /  /  /  /  / exp((0,34·t-(0,34) /  /  /  /  /  /  /  /  /  </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>8</defaultgrade>
+</question>
+
+</quiz>

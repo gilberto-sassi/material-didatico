@@ -1,0 +1,138 @@
+```{r}
+#| echo: false
+#| label: dados
+
+library(pacman)
+
+p_load(
+    readxl, writexl, janitor,
+    glue,
+    exams,
+    tidyverse
+)
+
+# formatação
+f <- \(x) format(
+    x,
+    big.mark = ".",
+    decimal.mark = ","
+)
+
+options(scipen = 999) #prevent scientific notation
+
+# make a list
+make_list <- \(v) {
+    for(k in seq_along(v)) {
+        print(glue("* {v[k]}"))
+    }
+}
+
+# opcoes
+opcoes <- c(
+    "normal_momento" = "exp(&mu;&#183;t + 0,5&#183;&sigma;&#10038;&#10038;2&#183;t&#10038;&#10038;2)",
+    "normal_caracteristica" = "exp(i&#183;t&#183;&mu; - 0,5&#183;&sigma;&#10038;&#10038;2&#183;t&#10038;&#10038;2)",
+    "normal_fatorial" = "t&#10038;&#10038;&mu;&#183;exp(0,5&#183;&sigma;&#10038;&#10038;2&#183;t&#10038;&#10038;2)",
+    "binom_momento" = "(p&#183;exp(t)+1-p)&#10038;&#10038;n",
+    "binom_caracteristica" = "(p&#183;exp(i&#183;t)+1-p)&#10038;&#10038;n",
+    "binom_fatorial" = "(p&#183;t+1-p)&#10038;&#10038;n",
+    "poisson_momento" = "exp(&lambda;&#183;exp(t)-&lambda;)",
+    "poisson_caracteristica" = "exp(&lambda;&#183;exp(i&#183;t)-&lambda;)",
+    "poisson_fatorial" = "exp(&lambda;&#183;t-&lambda;)",
+    "exp_momento" = "&lambda;&#183;(&lambda; - t)&#10038;&#10038;-1",
+    "exp_caracteristica" = "&lambda;&#183;(&lambda; -i&#183;t)&#10038;&#10038;-1",
+    "exp_fatorial" = "&lambda;&#183;(&lambda; - ln(t))&#10038;&#10038;-1",
+    "caracteristica" = "2&#183;(2-exp(i&#183;t))&#10038;&#10038;-1",
+    "fgm" = "2&#183;(2-exp(t))&#10038;&#10038;-1",
+    "fatorial" = "2&#183;(2-t)&#10038;&#10038;-1"
+)
+
+# solução
+sol <- c(
+    "m1" = 0.5,
+    "m2" = 1,
+    "mc1" = 0,
+    "mc2" = 0.75,
+    "mf1" = 0.5,
+    "mf2" = 0.5
+)
+
+# solução letra a)
+sol_caracteristica <- names(opcoes) |>
+    map_chr(~ ifelse(.x == "caracteristica", "1", "0")) |>
+    paste(collapse = "")
+
+# solução letra b)
+sol_fgm <- names(opcoes) |>
+    map_chr(~ ifelse(.x == "fgm", "1", "0")) |>
+    paste(collapse = "")
+
+# solução letra b)
+sol_fatorial <- names(opcoes) |>
+    map_chr(~ ifelse(.x == "fatorial", "1", "0")) |>
+    paste(collapse = "")
+```
+
+Question
+========
+Seja X uma variável aleatória discreta com suporte &chi;= {0, 1, 2,...} e função probabilidade dada por: f(j) = 0,5&#183;2^-j^ se j &isin; &chi; e f(x) = 0 se x &notin; &chi;.
+  
+* Primeiro momento: \#\#ANSWER1\#\#.
+* Segundo momento: \#\#ANSWER2\#\#.
+* Primeiro momento central: \#\#ANSWER3\#\#.
+* Segundo momento central: \#\#ANSWER4\#\#.
+* Primeiro momento fatorial: \#\#ANSWER5\#\#.
+* Segundo momento fatorial: \#\#ANSWER6\#\#.
+* Função característica: \#\#ANSWER7\#\#.
+* Função geradora de momento: \#\#ANSWER8\#\#.
+* Função geradora de momentos fatoriais: \#\#ANSWER9\#\#.
+
+Questionlist
+------------
+```{r}
+#| echo: false
+#| results: asis
+
+make_list(rep("", 6))
+make_list(opcoes)
+make_list(opcoes)
+make_list(opcoes)
+```
+
+Solution
+========
+* Primeiro momento: `r f(sol[1])`.
+* Segundo momento: `r f(sol[2])`.
+* Primeiro momento central: `r f(sol[3])`.
+* Segundo momento central: `r f(sol[4])`.
+* Primeiro momento fatorial: `r f(sol[5])`.
+* Segundo momento fatorial: `r f(sol[6])`.
+* Função característica: `r opcoes[13]`.
+* Função geradora de momento: `r opcoes[14]`.
+* Função geradora de momentos fatoriais: `r opcoes[15]`.
+
+Solutionlist
+------------
+```{r}
+#| echo: false
+#| results: asis
+
+make_list(rep("", 6))
+make_list(c(
+    opcoes[13], rep("", 14)
+))
+make_list(c(
+    opcoes[14], rep("", 14)
+))
+make_list(c(
+    opcoes[15], rep("", 14)
+))
+```
+
+Meta-information
+================
+exname: questao2
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste(collapse = "|")`|schoice|schoice|schoice
+exsolution: `r sol |> paste(collapse = "|")`|`r sol_caracteristica`|`r sol_fgm`|`r sol_fatorial`
+exshuffle: TRUE
+extol: 0.05
