@@ -34,11 +34,14 @@ make_list <- \(v) {
 # 2 * variância
 constante <- runif(1, 0.3, 0.8) |> round(2)
 
+# media
+media <- runif(1, 1, 5) |> round(2)
+
 # opcoes
 opcoes <- c(
-    "normal_momento" = glue("exp({f(constante)}t&#10038;&#10038;2)"),
-    "normal_caracteristica" = glue("exp(- {f(constante)} &#183;t&#10038;&#10038;2)"),
-    "normal_fatorial" = glue("exp({f(constante)}&#183;t&#10038;&#10038;2)"),
+    "normal_momento" = glue("exp(t&#183;{f(media)} + {f(constante)}t&#10038;&#10038;2)"),
+    "normal_caracteristica" = glue("exp(i&#183;t&#183;{f(media)}- {f(constante)} &#183;t&#10038;&#10038;2)"),
+    "normal_fatorial" = glue("t&#10038;&#10038;{f(media)}exp({f(constante)}&#183;t&#10038;&#10038;2)"),
     "binom_momento" = glue("({f(constante)}&#183;exp(t)+1-{f(constante)})&#10038;&#10038;{sample(1000:2000, 1)}"),
     "binom_caracteristica" = glue("({f(constante)}&#183;exp(i&#183;t)+1-{f(constante)})&#10038;&#10038;{sample(1000:2000, 1)}"),
     "binom_fatorial" = glue("({f(constante)}&#183;t+1-{f(constante)})&#10038;&#10038;{sample(1000:2000, 1)}"),
@@ -55,12 +58,12 @@ opcoes <- c(
 
 # solução
 sol <- c(
+    media,
+    2 * constante + media^2,
     0,
     2 * constante,
-    0,
-    2 * constante,
-    0,
-    2 * constante
+    media,
+    2 * constante + media^2 - media
 )
 
 # solução letra a)

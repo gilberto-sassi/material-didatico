@@ -16,30 +16,30 @@
 <questiontext format="html">
 <text><![CDATA[
 <p>
-<p>Seja X uma variável aleatória contínua com função característica dada por ϕ(t) = exp(- 0,58 ·t<sup>2</sup>). Determine:</p>
+<p>Seja X uma variável aleatória contínua com função característica dada por ϕ(t) = exp(- 0,6 ·t<sup>2</sup>). Determine:</p>
 <ul>
-<li>Primeiro momento:  {1:NUMERICAL:=0:0.05}.</li>
-<li>Segundo momento:  {1:NUMERICAL:=1.16:0.05}.</li>
+<li>Primeiro momento:  {1:NUMERICAL:=3.99:0.05}.</li>
+<li>Segundo momento:  {1:NUMERICAL:=17.1201:0.05}.</li>
 <li>Primeiro momento central:  {1:NUMERICAL:=0:0.05}.</li>
-<li>Segundo momento central:  {1:NUMERICAL:=1.16:0.05}.</li>
-<li>Primeiro momento fatorial:  {1:NUMERICAL:=0:0.05}.</li>
-<li>Segundo momento fatorial:  {1:NUMERICAL:=1.16:0.05}.</li>
-<li>Função geradora de momento: {1:MULTICHOICE:exp(0,58·exp(t)-0,58)~(0,58·exp(t)+1-0,58)✶✶1957~2·(2-exp(t))✶✶-1~(0,58·t+1-0,58)✶✶1180~=exp(0,58t✶✶2)~0,58·(0,58 - t)✶✶-1~exp(0,58·t-0,58)~(0,58·exp(i·t)+1-0,58)✶✶1854~2·(2-exp(i·t))✶✶-1~2·(2-t)✶✶-1~0,58·(0,58 - ln(t))✶✶-1~exp(0,58·t✶✶2)~exp(- 0,58 ·t✶✶2)~exp(0,58·exp(i·t)-0,58)~0,58·(0,58 -i·t)✶✶-1}.</li>
-<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:exp(0,58·t-0,58)~2·(2-t)✶✶-1~2·(2-exp(i·t))✶✶-1~0,58·(0,58 - ln(t))✶✶-1~exp(0,58·exp(i·t)-0,58)~exp(0,58·exp(t)-0,58)~=exp(0,58·t✶✶2)~exp(- 0,58 ·t✶✶2)~0,58·(0,58 - t)✶✶-1~0,58·(0,58 -i·t)✶✶-1~(0,58·exp(i·t)+1-0,58)✶✶1854~exp(0,58t✶✶2)~(0,58·t+1-0,58)✶✶1180~2·(2-exp(t))✶✶-1~(0,58·exp(t)+1-0,58)✶✶1957}.</li>
+<li>Segundo momento central:  {1:NUMERICAL:=1.2:0.05}.</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=3.99:0.05}.</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=13.1301:0.05}.</li>
+<li>Função geradora de momento: {1:MULTICHOICE:(0,6·exp(t)+1-0,6)✶✶1367~(0,6·t+1-0,6)✶✶1731~0,6·(0,6 -i·t)✶✶-1~(0,6·exp(i·t)+1-0,6)✶✶1420~0,6·(0,6 - t)✶✶-1~2·(2-exp(t))✶✶-1~exp(0,6·t-0,6)~t✶✶3,99exp(0,6·t✶✶2)~exp(0,6·exp(t)-0,6)~=exp(t·3,99 + 0,6t✶✶2)~exp(0,6·exp(i·t)-0,6)~2·(2-t)✶✶-1~2·(2-exp(i·t))✶✶-1~exp(i·t·3,99- 0,6 ·t✶✶2)~0,6·(0,6 - ln(t))✶✶-1}.</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:exp(t·3,99 + 0,6t✶✶2)~0,6·(0,6 - ln(t))✶✶-1~exp(0,6·exp(t)-0,6)~=t✶✶3,99exp(0,6·t✶✶2)~2·(2-t)✶✶-1~0,6·(0,6 -i·t)✶✶-1~exp(i·t·3,99- 0,6 ·t✶✶2)~(0,6·exp(t)+1-0,6)✶✶1367~2·(2-exp(i·t))✶✶-1~0,6·(0,6 - t)✶✶-1~(0,6·exp(i·t)+1-0,6)✶✶1420~exp(0,6·t-0,6)~(0,6·t+1-0,6)✶✶1731~2·(2-exp(t))✶✶-1~exp(0,6·exp(i·t)-0,6)}.</li>
 </ul>
 </p>]]></text>
 </questiontext>
 <generalfeedback format="html">
 <text><![CDATA[<p>
 <ul>
-<li>Primeiro momento: 0.</li>
-<li>Segundo momento: 1,16.</li>
+<li>Primeiro momento: 3,99.</li>
+<li>Segundo momento: 17,1201.</li>
 <li>Primeiro momento central: 0.</li>
-<li>Segundo momento central: 1,16.</li>
-<li>Primeiro momento fatorial: 0.</li>
-<li>Segundo momento fatorial: 1,16.</li>
-<li>Função geradora de momento: exp(0,58t✶✶2).</li>
-<li>Função geradora de momentos fatoriais: exp(0,58·t✶✶2).</li>
+<li>Segundo momento central: 1,2.</li>
+<li>Primeiro momento fatorial: 3,99.</li>
+<li>Segundo momento fatorial: 13,1301.</li>
+<li>Função geradora de momento: exp(t·3,99 + 0,6t✶✶2).</li>
+<li>Função geradora de momentos fatoriais: t✶✶3,99exp(0,6·t✶✶2).</li>
 </ul>
 <ol type = "a">
 <li>  </li>
@@ -48,8 +48,8 @@
 <li>  </li>
 <li>  </li>
 <li>  </li>
-<li>  /  /  /  / exp(0,58t✶✶2) /  /  /  /  /  /  /  /  /  /  </li>
-<li>  /  /  /  /  /  /  /  /  /  /  / exp(0,58·t✶✶2) /  /  /  </li>
+<li>  /  /  /  /  /  /  /  /  / exp(t·3,99 + 0,6t✶✶2) /  /  /  /  /  </li>
+<li> t✶✶3,99exp(0,6·t✶✶2) /  /  /  /  /  /  /  /  /  /  /  /  /  /  </li>
 </ol>
 </p>]]></text>
 </generalfeedback>
@@ -65,30 +65,30 @@
 <questiontext format="html">
 <text><![CDATA[
 <p>
-<p>Seja X uma variável aleatória contínua com função característica dada por ϕ(t) = exp(- 0,32 ·t<sup>2</sup>). Determine:</p>
+<p>Seja X uma variável aleatória contínua com função característica dada por ϕ(t) = exp(- 0,6 ·t<sup>2</sup>). Determine:</p>
 <ul>
-<li>Primeiro momento:  {1:NUMERICAL:=0:0.05}.</li>
-<li>Segundo momento:  {1:NUMERICAL:=0.64:0.05}.</li>
+<li>Primeiro momento:  {1:NUMERICAL:=4.48:0.05}.</li>
+<li>Segundo momento:  {1:NUMERICAL:=21.2704:0.05}.</li>
 <li>Primeiro momento central:  {1:NUMERICAL:=0:0.05}.</li>
-<li>Segundo momento central:  {1:NUMERICAL:=0.64:0.05}.</li>
-<li>Primeiro momento fatorial:  {1:NUMERICAL:=0:0.05}.</li>
-<li>Segundo momento fatorial:  {1:NUMERICAL:=0.64:0.05}.</li>
-<li>Função geradora de momento: {1:MULTICHOICE:2·(2-t)✶✶-1~(0,32·exp(i·t)+1-0,32)✶✶1999~exp(0,32·t✶✶2)~exp(- 0,32 ·t✶✶2)~exp(0,32·t-0,32)~=exp(0,32t✶✶2)~0,32·(0,32 -i·t)✶✶-1~2·(2-exp(t))✶✶-1~(0,32·t+1-0,32)✶✶1870~exp(0,32·exp(i·t)-0,32)~exp(0,32·exp(t)-0,32)~0,32·(0,32 - t)✶✶-1~0,32·(0,32 - ln(t))✶✶-1~(0,32·exp(t)+1-0,32)✶✶1140~2·(2-exp(i·t))✶✶-1}.</li>
-<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:exp(0,32·exp(t)-0,32)~2·(2-t)✶✶-1~2·(2-exp(t))✶✶-1~0,32·(0,32 - ln(t))✶✶-1~(0,32·exp(i·t)+1-0,32)✶✶1999~exp(- 0,32 ·t✶✶2)~exp(0,32·exp(i·t)-0,32)~exp(0,32t✶✶2)~(0,32·exp(t)+1-0,32)✶✶1140~0,32·(0,32 -i·t)✶✶-1~0,32·(0,32 - t)✶✶-1~(0,32·t+1-0,32)✶✶1870~exp(0,32·t-0,32)~=exp(0,32·t✶✶2)~2·(2-exp(i·t))✶✶-1}.</li>
+<li>Segundo momento central:  {1:NUMERICAL:=1.2:0.05}.</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=4.48:0.05}.</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=16.7904:0.05}.</li>
+<li>Função geradora de momento: {1:MULTICHOICE:0,6·(0,6 - t)✶✶-1~0,6·(0,6 -i·t)✶✶-1~t✶✶4,48exp(0,6·t✶✶2)~2·(2-exp(i·t))✶✶-1~exp(0,6·t-0,6)~exp(i·t·4,48- 0,6 ·t✶✶2)~exp(0,6·exp(i·t)-0,6)~0,6·(0,6 - ln(t))✶✶-1~2·(2-t)✶✶-1~(0,6·exp(i·t)+1-0,6)✶✶1320~=exp(t·4,48 + 0,6t✶✶2)~(0,6·exp(t)+1-0,6)✶✶1196~exp(0,6·exp(t)-0,6)~(0,6·t+1-0,6)✶✶1577~2·(2-exp(t))✶✶-1}.</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:=t✶✶4,48exp(0,6·t✶✶2)~exp(0,6·exp(i·t)-0,6)~exp(i·t·4,48- 0,6 ·t✶✶2)~0,6·(0,6 -i·t)✶✶-1~2·(2-exp(t))✶✶-1~2·(2-t)✶✶-1~(0,6·t+1-0,6)✶✶1577~exp(0,6·t-0,6)~(0,6·exp(i·t)+1-0,6)✶✶1320~(0,6·exp(t)+1-0,6)✶✶1196~0,6·(0,6 - ln(t))✶✶-1~exp(0,6·exp(t)-0,6)~2·(2-exp(i·t))✶✶-1~0,6·(0,6 - t)✶✶-1~exp(t·4,48 + 0,6t✶✶2)}.</li>
 </ul>
 </p>]]></text>
 </questiontext>
 <generalfeedback format="html">
 <text><![CDATA[<p>
 <ul>
-<li>Primeiro momento: 0.</li>
-<li>Segundo momento: 0,64.</li>
+<li>Primeiro momento: 4,48.</li>
+<li>Segundo momento: 21,2704.</li>
 <li>Primeiro momento central: 0.</li>
-<li>Segundo momento central: 0,64.</li>
-<li>Primeiro momento fatorial: 0.</li>
-<li>Segundo momento fatorial: 0,64.</li>
-<li>Função geradora de momento: exp(0,32t✶✶2).</li>
-<li>Função geradora de momentos fatoriais: exp(0,32·t✶✶2).</li>
+<li>Segundo momento central: 1,2.</li>
+<li>Primeiro momento fatorial: 4,48.</li>
+<li>Segundo momento fatorial: 16,7904.</li>
+<li>Função geradora de momento: exp(t·4,48 + 0,6t✶✶2).</li>
+<li>Função geradora de momentos fatoriais: t✶✶4,48exp(0,6·t✶✶2).</li>
 </ul>
 <ol type = "a">
 <li>  </li>
@@ -97,8 +97,8 @@
 <li>  </li>
 <li>  </li>
 <li>  </li>
-<li>  /  /  /  /  / exp(0,32t✶✶2) /  /  /  /  /  /  /  /  /  </li>
-<li>  /  /  /  /  /  /  / exp(0,32·t✶✶2) /  /  /  /  /  /  /  </li>
+<li>  /  /  /  /  /  /  /  /  /  / exp(t·4,48 + 0,6t✶✶2) /  /  /  /  </li>
+<li>  /  /  /  /  /  /  /  /  /  /  /  /  /  / t✶✶4,48exp(0,6·t✶✶2) </li>
 </ol>
 </p>]]></text>
 </generalfeedback>
@@ -114,30 +114,30 @@
 <questiontext format="html">
 <text><![CDATA[
 <p>
-<p>Seja X uma variável aleatória contínua com função característica dada por ϕ(t) = exp(- 0,3 ·t<sup>2</sup>). Determine:</p>
+<p>Seja X uma variável aleatória contínua com função característica dada por ϕ(t) = exp(- 0,7 ·t<sup>2</sup>). Determine:</p>
 <ul>
-<li>Primeiro momento:  {1:NUMERICAL:=0:0.05}.</li>
-<li>Segundo momento:  {1:NUMERICAL:=0.6:0.05}.</li>
+<li>Primeiro momento:  {1:NUMERICAL:=2.53:0.05}.</li>
+<li>Segundo momento:  {1:NUMERICAL:=7.8009:0.05}.</li>
 <li>Primeiro momento central:  {1:NUMERICAL:=0:0.05}.</li>
-<li>Segundo momento central:  {1:NUMERICAL:=0.6:0.05}.</li>
-<li>Primeiro momento fatorial:  {1:NUMERICAL:=0:0.05}.</li>
-<li>Segundo momento fatorial:  {1:NUMERICAL:=0.6:0.05}.</li>
-<li>Função geradora de momento: {1:MULTICHOICE:exp(0,3·exp(t)-0,3)~(0,3·exp(i·t)+1-0,3)✶✶1901~0,3·(0,3 - t)✶✶-1~2·(2-t)✶✶-1~=exp(0,3t✶✶2)~exp(0,3·t✶✶2)~(0,3·t+1-0,3)✶✶1571~(0,3·exp(t)+1-0,3)✶✶1816~2·(2-exp(t))✶✶-1~0,3·(0,3 - ln(t))✶✶-1~exp(0,3·t-0,3)~exp(- 0,3 ·t✶✶2)~0,3·(0,3 -i·t)✶✶-1~2·(2-exp(i·t))✶✶-1~exp(0,3·exp(i·t)-0,3)}.</li>
-<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:exp(0,3t✶✶2)~2·(2-exp(t))✶✶-1~exp(0,3·exp(i·t)-0,3)~(0,3·t+1-0,3)✶✶1571~(0,3·exp(t)+1-0,3)✶✶1816~(0,3·exp(i·t)+1-0,3)✶✶1901~=exp(0,3·t✶✶2)~exp(0,3·t-0,3)~exp(0,3·exp(t)-0,3)~exp(- 0,3 ·t✶✶2)~0,3·(0,3 - t)✶✶-1~0,3·(0,3 -i·t)✶✶-1~0,3·(0,3 - ln(t))✶✶-1~2·(2-exp(i·t))✶✶-1~2·(2-t)✶✶-1}.</li>
+<li>Segundo momento central:  {1:NUMERICAL:=1.4:0.05}.</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=2.53:0.05}.</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=5.2709:0.05}.</li>
+<li>Função geradora de momento: {1:MULTICHOICE:exp(i·t·2,53- 0,7 ·t✶✶2)~0,7·(0,7 - ln(t))✶✶-1~exp(0,7·exp(i·t)-0,7)~(0,7·exp(i·t)+1-0,7)✶✶1706~2·(2-exp(t))✶✶-1~=exp(t·2,53 + 0,7t✶✶2)~2·(2-t)✶✶-1~0,7·(0,7 -i·t)✶✶-1~(0,7·t+1-0,7)✶✶1887~0,7·(0,7 - t)✶✶-1~2·(2-exp(i·t))✶✶-1~(0,7·exp(t)+1-0,7)✶✶1237~t✶✶2,53exp(0,7·t✶✶2)~exp(0,7·t-0,7)~exp(0,7·exp(t)-0,7)}.</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:exp(0,7·t-0,7)~2·(2-t)✶✶-1~0,7·(0,7 - ln(t))✶✶-1~0,7·(0,7 -i·t)✶✶-1~exp(0,7·exp(i·t)-0,7)~exp(t·2,53 + 0,7t✶✶2)~2·(2-exp(t))✶✶-1~2·(2-exp(i·t))✶✶-1~(0,7·exp(t)+1-0,7)✶✶1237~0,7·(0,7 - t)✶✶-1~exp(i·t·2,53- 0,7 ·t✶✶2)~(0,7·exp(i·t)+1-0,7)✶✶1706~(0,7·t+1-0,7)✶✶1887~exp(0,7·exp(t)-0,7)~=t✶✶2,53exp(0,7·t✶✶2)}.</li>
 </ul>
 </p>]]></text>
 </questiontext>
 <generalfeedback format="html">
 <text><![CDATA[<p>
 <ul>
-<li>Primeiro momento: 0.</li>
-<li>Segundo momento: 0,6.</li>
+<li>Primeiro momento: 2,53.</li>
+<li>Segundo momento: 7,8009.</li>
 <li>Primeiro momento central: 0.</li>
-<li>Segundo momento central: 0,6.</li>
-<li>Primeiro momento fatorial: 0.</li>
-<li>Segundo momento fatorial: 0,6.</li>
-<li>Função geradora de momento: exp(0,3t✶✶2).</li>
-<li>Função geradora de momentos fatoriais: exp(0,3·t✶✶2).</li>
+<li>Segundo momento central: 1,4.</li>
+<li>Primeiro momento fatorial: 2,53.</li>
+<li>Segundo momento fatorial: 5,2709.</li>
+<li>Função geradora de momento: exp(t·2,53 + 0,7t✶✶2).</li>
+<li>Função geradora de momentos fatoriais: t✶✶2,53exp(0,7·t✶✶2).</li>
 </ul>
 <ol type = "a">
 <li>  </li>
@@ -146,8 +146,8 @@
 <li>  </li>
 <li>  </li>
 <li>  </li>
-<li>  /  /  /  / exp(0,3t✶✶2) /  /  /  /  /  /  /  /  /  /  </li>
-<li> exp(0,3·t✶✶2) /  /  /  /  /  /  /  /  /  /  /  /  /  /  </li>
+<li>  /  /  /  /  / exp(t·2,53 + 0,7t✶✶2) /  /  /  /  /  /  /  /  /  </li>
+<li>  /  /  /  /  / t✶✶2,53exp(0,7·t✶✶2) /  /  /  /  /  /  /  /  /  </li>
 </ol>
 </p>]]></text>
 </generalfeedback>
@@ -163,30 +163,30 @@
 <questiontext format="html">
 <text><![CDATA[
 <p>
-<p>Seja X uma variável aleatória contínua com função característica dada por ϕ(t) = exp(- 0,39 ·t<sup>2</sup>). Determine:</p>
+<p>Seja X uma variável aleatória contínua com função característica dada por ϕ(t) = exp(- 0,61 ·t<sup>2</sup>). Determine:</p>
 <ul>
-<li>Primeiro momento:  {1:NUMERICAL:=0:0.05}.</li>
-<li>Segundo momento:  {1:NUMERICAL:=0.78:0.05}.</li>
+<li>Primeiro momento:  {1:NUMERICAL:=4.35:0.05}.</li>
+<li>Segundo momento:  {1:NUMERICAL:=20.1425:0.05}.</li>
 <li>Primeiro momento central:  {1:NUMERICAL:=0:0.05}.</li>
-<li>Segundo momento central:  {1:NUMERICAL:=0.78:0.05}.</li>
-<li>Primeiro momento fatorial:  {1:NUMERICAL:=0:0.05}.</li>
-<li>Segundo momento fatorial:  {1:NUMERICAL:=0.78:0.05}.</li>
-<li>Função geradora de momento: {1:MULTICHOICE:2·(2-t)✶✶-1~exp(0,39·t✶✶2)~exp(0,39·t-0,39)~(0,39·exp(t)+1-0,39)✶✶1320~=exp(0,39t✶✶2)~exp(0,39·exp(t)-0,39)~exp(0,39·exp(i·t)-0,39)~0,39·(0,39 - t)✶✶-1~0,39·(0,39 -i·t)✶✶-1~(0,39·t+1-0,39)✶✶1100~2·(2-exp(i·t))✶✶-1~exp(- 0,39 ·t✶✶2)~(0,39·exp(i·t)+1-0,39)✶✶1732~0,39·(0,39 - ln(t))✶✶-1~2·(2-exp(t))✶✶-1}.</li>
-<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:2·(2-exp(t))✶✶-1~exp(0,39·exp(t)-0,39)~exp(0,39·exp(i·t)-0,39)~exp(0,39·t-0,39)~exp(- 0,39 ·t✶✶2)~0,39·(0,39 -i·t)✶✶-1~2·(2-t)✶✶-1~(0,39·exp(t)+1-0,39)✶✶1320~0,39·(0,39 - ln(t))✶✶-1~0,39·(0,39 - t)✶✶-1~(0,39·exp(i·t)+1-0,39)✶✶1732~exp(0,39t✶✶2)~2·(2-exp(i·t))✶✶-1~(0,39·t+1-0,39)✶✶1100~=exp(0,39·t✶✶2)}.</li>
+<li>Segundo momento central:  {1:NUMERICAL:=1.22:0.05}.</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=4.35:0.05}.</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=15.7925:0.05}.</li>
+<li>Função geradora de momento: {1:MULTICHOICE:0,61·(0,61 - ln(t))✶✶-1~=exp(t·4,35 + 0,61t✶✶2)~2·(2-t)✶✶-1~(0,61·exp(t)+1-0,61)✶✶1958~0,61·(0,61 - t)✶✶-1~exp(0,61·exp(t)-0,61)~exp(i·t·4,35- 0,61 ·t✶✶2)~(0,61·t+1-0,61)✶✶1772~2·(2-exp(t))✶✶-1~0,61·(0,61 -i·t)✶✶-1~(0,61·exp(i·t)+1-0,61)✶✶1490~t✶✶4,35exp(0,61·t✶✶2)~exp(0,61·t-0,61)~exp(0,61·exp(i·t)-0,61)~2·(2-exp(i·t))✶✶-1}.</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:exp(i·t·4,35- 0,61 ·t✶✶2)~(0,61·t+1-0,61)✶✶1772~exp(0,61·t-0,61)~0,61·(0,61 -i·t)✶✶-1~exp(0,61·exp(t)-0,61)~2·(2-exp(t))✶✶-1~(0,61·exp(i·t)+1-0,61)✶✶1490~exp(t·4,35 + 0,61t✶✶2)~0,61·(0,61 - t)✶✶-1~2·(2-t)✶✶-1~(0,61·exp(t)+1-0,61)✶✶1958~=t✶✶4,35exp(0,61·t✶✶2)~2·(2-exp(i·t))✶✶-1~exp(0,61·exp(i·t)-0,61)~0,61·(0,61 - ln(t))✶✶-1}.</li>
 </ul>
 </p>]]></text>
 </questiontext>
 <generalfeedback format="html">
 <text><![CDATA[<p>
 <ul>
-<li>Primeiro momento: 0.</li>
-<li>Segundo momento: 0,78.</li>
+<li>Primeiro momento: 4,35.</li>
+<li>Segundo momento: 20,1425.</li>
 <li>Primeiro momento central: 0.</li>
-<li>Segundo momento central: 0,78.</li>
-<li>Primeiro momento fatorial: 0.</li>
-<li>Segundo momento fatorial: 0,78.</li>
-<li>Função geradora de momento: exp(0,39t✶✶2).</li>
-<li>Função geradora de momentos fatoriais: exp(0,39·t✶✶2).</li>
+<li>Segundo momento central: 1,22.</li>
+<li>Primeiro momento fatorial: 4,35.</li>
+<li>Segundo momento fatorial: 15,7925.</li>
+<li>Função geradora de momento: exp(t·4,35 + 0,61t✶✶2).</li>
+<li>Função geradora de momentos fatoriais: t✶✶4,35exp(0,61·t✶✶2).</li>
 </ul>
 <ol type = "a">
 <li>  </li>
@@ -195,8 +195,8 @@
 <li>  </li>
 <li>  </li>
 <li>  </li>
-<li>  /  /  /  / exp(0,39t✶✶2) /  /  /  /  /  /  /  /  /  /  </li>
-<li>  /  /  /  /  /  /  /  /  /  /  / exp(0,39·t✶✶2) /  /  /  </li>
+<li>  / exp(t·4,35 + 0,61t✶✶2) /  /  /  /  /  /  /  /  /  /  /  /  /  </li>
+<li>  /  /  /  /  /  /  / t✶✶4,35exp(0,61·t✶✶2) /  /  /  /  /  /  /  </li>
 </ol>
 </p>]]></text>
 </generalfeedback>
@@ -212,30 +212,30 @@
 <questiontext format="html">
 <text><![CDATA[
 <p>
-<p>Seja X uma variável aleatória contínua com função característica dada por ϕ(t) = exp(- 0,66 ·t<sup>2</sup>). Determine:</p>
+<p>Seja X uma variável aleatória contínua com função característica dada por ϕ(t) = exp(- 0,6 ·t<sup>2</sup>). Determine:</p>
 <ul>
-<li>Primeiro momento:  {1:NUMERICAL:=0:0.05}.</li>
-<li>Segundo momento:  {1:NUMERICAL:=1.32:0.05}.</li>
+<li>Primeiro momento:  {1:NUMERICAL:=1.58:0.05}.</li>
+<li>Segundo momento:  {1:NUMERICAL:=3.6964:0.05}.</li>
 <li>Primeiro momento central:  {1:NUMERICAL:=0:0.05}.</li>
-<li>Segundo momento central:  {1:NUMERICAL:=1.32:0.05}.</li>
-<li>Primeiro momento fatorial:  {1:NUMERICAL:=0:0.05}.</li>
-<li>Segundo momento fatorial:  {1:NUMERICAL:=1.32:0.05}.</li>
-<li>Função geradora de momento: {1:MULTICHOICE:exp(0,66·t-0,66)~exp(0,66·t✶✶2)~exp(0,66·exp(i·t)-0,66)~(0,66·exp(t)+1-0,66)✶✶1993~2·(2-exp(t))✶✶-1~=exp(0,66t✶✶2)~0,66·(0,66 -i·t)✶✶-1~(0,66·exp(i·t)+1-0,66)✶✶1548~2·(2-exp(i·t))✶✶-1~2·(2-t)✶✶-1~0,66·(0,66 - ln(t))✶✶-1~exp(0,66·exp(t)-0,66)~0,66·(0,66 - t)✶✶-1~(0,66·t+1-0,66)✶✶1095~exp(- 0,66 ·t✶✶2)}.</li>
-<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:2·(2-exp(t))✶✶-1~(0,66·exp(i·t)+1-0,66)✶✶1548~0,66·(0,66 -i·t)✶✶-1~=exp(0,66·t✶✶2)~exp(0,66·exp(t)-0,66)~0,66·(0,66 - t)✶✶-1~(0,66·exp(t)+1-0,66)✶✶1993~0,66·(0,66 - ln(t))✶✶-1~(0,66·t+1-0,66)✶✶1095~exp(0,66·exp(i·t)-0,66)~2·(2-t)✶✶-1~exp(- 0,66 ·t✶✶2)~exp(0,66·t-0,66)~exp(0,66t✶✶2)~2·(2-exp(i·t))✶✶-1}.</li>
+<li>Segundo momento central:  {1:NUMERICAL:=1.2:0.05}.</li>
+<li>Primeiro momento fatorial:  {1:NUMERICAL:=1.58:0.05}.</li>
+<li>Segundo momento fatorial:  {1:NUMERICAL:=2.1164:0.05}.</li>
+<li>Função geradora de momento: {1:MULTICHOICE:(0,6·t+1-0,6)✶✶1745~exp(0,6·exp(i·t)-0,6)~2·(2-t)✶✶-1~=exp(t·1,58 + 0,6t✶✶2)~(0,6·exp(i·t)+1-0,6)✶✶1499~t✶✶1,58exp(0,6·t✶✶2)~(0,6·exp(t)+1-0,6)✶✶1900~exp(0,6·exp(t)-0,6)~0,6·(0,6 - t)✶✶-1~0,6·(0,6 -i·t)✶✶-1~0,6·(0,6 - ln(t))✶✶-1~2·(2-exp(t))✶✶-1~exp(i·t·1,58- 0,6 ·t✶✶2)~exp(0,6·t-0,6)~2·(2-exp(i·t))✶✶-1}.</li>
+<li>Função geradora de momentos fatoriais: {1:MULTICHOICE:exp(i·t·1,58- 0,6 ·t✶✶2)~(0,6·t+1-0,6)✶✶1745~exp(0,6·exp(i·t)-0,6)~=t✶✶1,58exp(0,6·t✶✶2)~2·(2-exp(t))✶✶-1~2·(2-t)✶✶-1~0,6·(0,6 -i·t)✶✶-1~(0,6·exp(t)+1-0,6)✶✶1900~exp(0,6·exp(t)-0,6)~2·(2-exp(i·t))✶✶-1~0,6·(0,6 - ln(t))✶✶-1~exp(0,6·t-0,6)~exp(t·1,58 + 0,6t✶✶2)~(0,6·exp(i·t)+1-0,6)✶✶1499~0,6·(0,6 - t)✶✶-1}.</li>
 </ul>
 </p>]]></text>
 </questiontext>
 <generalfeedback format="html">
 <text><![CDATA[<p>
 <ul>
-<li>Primeiro momento: 0.</li>
-<li>Segundo momento: 1,32.</li>
+<li>Primeiro momento: 1,58.</li>
+<li>Segundo momento: 3,6964.</li>
 <li>Primeiro momento central: 0.</li>
-<li>Segundo momento central: 1,32.</li>
-<li>Primeiro momento fatorial: 0.</li>
-<li>Segundo momento fatorial: 1,32.</li>
-<li>Função geradora de momento: exp(0,66t✶✶2).</li>
-<li>Função geradora de momentos fatoriais: exp(0,66·t✶✶2).</li>
+<li>Segundo momento central: 1,2.</li>
+<li>Primeiro momento fatorial: 1,58.</li>
+<li>Segundo momento fatorial: 2,1164.</li>
+<li>Função geradora de momento: exp(t·1,58 + 0,6t✶✶2).</li>
+<li>Função geradora de momentos fatoriais: t✶✶1,58exp(0,6·t✶✶2).</li>
 </ul>
 <ol type = "a">
 <li>  </li>
@@ -244,8 +244,8 @@
 <li>  </li>
 <li>  </li>
 <li>  </li>
-<li>  /  /  /  /  / exp(0,66t✶✶2) /  /  /  /  /  /  /  /  /  </li>
-<li>  /  /  /  /  /  /  /  /  /  /  /  /  / exp(0,66·t✶✶2) /  </li>
+<li>  /  /  / exp(t·1,58 + 0,6t✶✶2) /  /  /  /  /  /  /  /  /  /  /  </li>
+<li>  /  /  /  /  /  /  /  /  /  /  /  / t✶✶1,58exp(0,6·t✶✶2) /  /  </li>
 </ol>
 </p>]]></text>
 </generalfeedback>

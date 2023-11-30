@@ -1,0 +1,36 @@
+---
+title: "Resposta da questão 1"
+format: pdf
+---
+
+# questão 01
+
+Média:
+
+$$
+\mu = -c \cdot 0,5 + c \cdot 0,5 = 0.
+$$
+
+Variância:
+
+$$
+\sigma^2 = (-c-0)^2 \cdot 0,5 + (c - 0)^2 \cdot 0,5 = c^2.
+$$
+
+Note que
+
+$$
+P(\lvert X - \mu\rvert \leq 0,5) = P(\lvert X \rvert \leq 0,5) = P(\Omega) = 1.
+$$
+
+e
+
+$$
+\frac{\sigma^2}{c^2} = 1
+$$
+
+Logo,
+
+$$
+P(\lvert X - \mu\rvert \leq 0,5) = 1 = \frac{\sigma^2}{c^2}.
+$$

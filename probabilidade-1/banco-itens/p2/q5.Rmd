@@ -39,9 +39,9 @@ casos <- sample(1000:2000, 1)
 
 # opcoes
 opcoes <- c(
-    "normal_momento" = glue("exp({f(p_sucesso)}t&#10038;&#10038;2)"),
-    "normal_caracteristica" = glue("exp(- {f(p_sucesso)} &#183;t&#10038;&#10038;2)"),
-    "normal_fatorial" = glue("exp({f(p_sucesso)}&#183;t&#10038;&#10038;2)"),
+    "normal_momento" = glue("exp(t&#183;{f(p_sucesso)} + {f(p_sucesso)}t&#10038;&#10038;2)"),
+    "normal_caracteristica" = glue("exp(t&#183;{f(p_sucesso)}- {f(p_sucesso)} &#183;t&#10038;&#10038;2)"),
+    "normal_fatorial" = glue("t&#10038;&#10038;{f(p_sucesso)}exp({f(p_sucesso)}&#183;t&#10038;&#10038;2)"),
     "binom_momento" = glue("({f(p_sucesso)}&#183;exp(t)+1-{f(p_sucesso)})&#10038;&#10038;{casos}"),
     "binom_caracteristica" = glue("({f(p_sucesso)}&#183;exp(i&#183;t)+1-{f(p_sucesso)})&#10038;&#10038;{casos}"),
     "binom_fatorial" = glue("({f(p_sucesso)}&#183;t+1-{f(p_sucesso)})&#10038;&#10038;{casos}"),
@@ -59,11 +59,11 @@ opcoes <- c(
 # solução
 sol <- c(
     casos * p_sucesso,
-    casos * p_sucesso * (1 - p_sucesso + casos * p_sucesso),
+    caos * p_sucesso * (1 - p_sucesso) + (casos * p_sucesso)^2,
     0,
     casos * p_sucesso * (1 - p_sucesso),
     casos * p_sucesso,
-    casos * (casos - 1) * p_sucesso^2
+    caos * p_sucesso * (1 - p_sucesso) + (casos * p_sucesso)^2 - casos * p_sucesso
 )
 
 # solução letra a)

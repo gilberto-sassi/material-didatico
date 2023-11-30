@@ -36,7 +36,7 @@ lambda <- runif(1, 0.3, 0.8) |> round(2)
 
 # opcoes
 opcoes <- c(
-    "normal_momento" = glue("exp({f(lambda)}&#183;t + {f(lambda)}t&#10038;&#10038;2)"),
+    "normal_momento" = glue("exp(t&#183;{f(lambda)} + {f(lambda)}t&#10038;&#10038;2)"),
     "normal_caracteristica" = glue("exp(i&#183;t&#183;{f(lambda)} - {f(lambda)} &#183;t&#10038;&#10038;2)"),
     "normal_fatorial" = glue("exp({f(lambda)}&#183;t&#10038;&#10038;2)"),
     "binom_momento" = glue("({f(lambda)}&#183;exp(t)+1-{f(lambda)})&#10038;&#10038;{sample(1000:2000, 1)}"),

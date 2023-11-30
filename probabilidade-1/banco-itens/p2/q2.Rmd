@@ -41,19 +41,19 @@ opcoes <- c(
     "exp_momento" = "&lambda;&#183;(&lambda; - t)&#10038;&#10038;-1",
     "exp_caracteristica" = "&lambda;&#183;(&lambda; -i&#183;t)&#10038;&#10038;-1",
     "exp_fatorial" = "&lambda;&#183;(&lambda; - ln(t))&#10038;&#10038;-1",
-    "caracteristica" = "2&#183;(2-exp(i&#183;t))&#10038;&#10038;-1",
-    "fgm" = "2&#183;(2-exp(t))&#10038;&#10038;-1",
-    "fatorial" = "2&#183;(2-t)&#10038;&#10038;-1"
+    "caracteristica" = "(2-exp(i&#183;t))&#10038;&#10038;-1",
+    "fgm" = "(2-exp(t))&#10038;&#10038;-1",
+    "fatorial" = "(2-t)&#10038;&#10038;-1"
 )
 
 # solução
 sol <- c(
     "m1" = 0.5,
-    "m2" = 1,
+    "m2" = 1.5,
     "mc1" = 0,
-    "mc2" = 0.75,
+    "mc2" = 5 / 4,
     "mf1" = 0.5,
-    "mf2" = 0.5
+    "mf2" = 1
 )
 
 # solução letra a)
@@ -85,6 +85,10 @@ Seja X uma variável aleatória discreta com suporte &chi;= {0, 1, 2,...} e fun�
 * Função característica: \#\#ANSWER7\#\#.
 * Função geradora de momento: \#\#ANSWER8\#\#.
 * Função geradora de momentos fatoriais: \#\#ANSWER9\#\#.
+
+**Dica 1: encontre os momentos fatoriais usando a função geradora de momentos, e depois encontre os momentos e os momentos centrais usando propriedades dos momentos.**
+
+**Dica 2: use a seguinte igualdade: &sum;~j=0~^&#8734;^ x^j^ = (1-x)^-1^ , &forall;x &isin; (-1, 1).**
 
 Questionlist
 ------------

@@ -13,7 +13,7 @@ exams2moodle(glue("{path}/enunciado.Rmd"),
 
 # real
 exams2moodle(glue("{path}/enunciado.Rmd"),
-                    n = 1000,
+                    n = 500,
                     verbose = TRUE,
                     dir = glue("{path}"),
                     name = "goodman-kruskal-dados-esperada")
