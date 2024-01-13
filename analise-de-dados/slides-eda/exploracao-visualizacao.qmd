@@ -4393,7 +4393,7 @@ boxplot + violino + lv
 * Para o conjunto de dados `amostra_enem_salvador.xlsx`, compare a variável `nu_nota_cn` por raça (`tp_cor_raca`).
 * Coloque os dois gráficos acima lado a lado usando o pacote `patchwork`.
 
-# Números índices
+<!-- # Números índices -->
 
 # Customizando tabelas\newline\ usando o pacote `gt`
 

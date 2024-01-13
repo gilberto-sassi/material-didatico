@@ -15,7 +15,7 @@ format:
     theme: "Pittsburgh"
     colortheme: "spruce"
     logo: logo_menor.png
-    slide_level: 2
+    slide_level: 2K
     fonttheme: default
     highlight: "arrow"
     keep_tex: true
