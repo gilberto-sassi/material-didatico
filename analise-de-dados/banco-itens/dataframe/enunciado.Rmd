@@ -1,0 +1,75 @@
+```{r}
+#| label: gerandoDados
+#| echo: false
+#| message: false
+
+
+if (!require(pacman)) {
+  install.packages(pacman)
+  library(pacman)
+}
+p_load(readxl, writexl, readODS)
+p_load(ggthemes)
+p_load(glue)
+p_load(statBasics)
+p_load(tidyverse)
+
+# tamanho da amostra
+tamanho <- sample(1000:5000, 1)
+
+dados <- tibble(
+    primeira_coluna = sample(letters, size = tamanho, replace = TRUE),
+    segunda_coluna = rnorm(tamanho, mean = 10, sd = 2) |> round(2)
+)
+
+write_xlsx(dados, "dados.xlsx")
+
+solucao <- c(
+    paste0(tamanho),
+    paste0(2),
+    "character",
+    "numeric"
+)
+```
+
+Question
+========
+
+Suponha que você tenha o seguinte _dataset_ [`dados`](dados.xlsx). Como primeiro passo, você executou o seguinte código (você já criou e estruturou o diretório do seu projeto):
+
+```r
+library(pacman)
+
+p_load(readxl, writexl, tidyverse)
+
+dados <- read_excel("dados/brutos/dados.xlsx")
+
+glimpse(dados)
+```
+
+
+Responda corretamente os seguintes itens:
+  
+Questionlist
+------------
+* Quantas observações estão registrados na base de dados?
+* Quantas variáveis foram coletadas?
+* Qual o tipo de dados da primeira coluna?
+* Qual o tipo de dados da última coluna?
+
+Solution
+========
+Solutionlist
+------------
+* Quantas observações estão registrados na base de dados? R: `r solucao[1]`. 
+* Quantas variáveis foram coletadas? R: `r solucao[2]`. 
+* Qual o tipo de dados da primeira coluna? R: `r solucao[3]`. 
+* Qual o tipo de dados da última coluna? R: `r solucao[4]`. 
+
+Meta-information
+================
+exname: lista
+extype: cloze
+exclozetype: string|string|string|string
+exsolution: `r paste0(solucao, collapse = "|")`
+exshuffle: TRUE

@@ -7,9 +7,9 @@ library(statBasics)
 library(exams)
 library(tidyverse)
 
-path <- "banco-itens/grafico-barras-var-discreta"
-exams::exams2moodle(glue("{path}/enunciado.Rmd"),
-                    n = 1000,
+path <- "analise-de-dados/banco-itens/grafico-barras-var-discreta"
+exams2moodle(glue("{path}/enunciado.Rmd"),
+                    n = 250,
                     verbose = TRUE,
                     dir = glue("{path}"),
                     name = "grafico-barras-discreta-proporcao")

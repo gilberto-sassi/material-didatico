@@ -1,0 +1,44 @@
+
+Question
+========
+
+Quais das funções abaixo podem ser usadas para criar uma matriz do tipo numérico (`numeric`).
+
+
+Questionlist
+-------------
+
+* `c`
+* `vector`
+* operador `:`
+* `seq`
+* `seq_len`
+* `seq_along`
+* `cbind`
+* `rbind`
+* `matrix`
+
+Solution
+========
+
+Solutionlist
+------------
+
+* `c`. FALSA: essa função é usada para criar um vetor.
+* `vector`. FALSA: essa função é usada para criar um vetor.
+* operador `:`. FALSA: essa função é usada para criar um vetor.
+* `seq`. FALSA: essa função é usada para criar um vetor.
+* `seq_len`. FALSA: essa função é usada para criar um vetor.
+* `seq_along`. FALSA: essa função é usada para criar um vetor.
+* `cbind`. Correta.
+* `rbind`. Correta.
+* `matrix`. Correta.
+
+
+
+Meta-information
+================
+exname: vetor
+extype: mchoice
+exsolution: 000000111
+exshuffle: TRUE

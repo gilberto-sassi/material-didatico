@@ -1,0 +1,35 @@
+
+Question
+========
+
+Preencha os campos abaixo com as respostas corretas.
+
+
+Questionlist
+-------------
+
+* Função para instalar pacotes:
+* Função carregar pacotes:
+* Pacote que te auxilia na instação e carregamento de pacotes:
+* Função do pacote `pacman` que carrega pacotes, caso os pacotes não estejam instalados essa função instala e depois carrega os pacotes:
+
+Solution
+========
+
+Solutionlist
+------------
+
+* A função usada para instalar pacotes é `install.packages`.
+* A função usada para carregar pacotes é `library`.
+* O pacote que te auxilia na instação e carregamento de pacotes é `pacman`.
+* A função do pacote `pacman` que carrega pacotes, caso os pacotes não estejam instalados essa função instala e depois carrega os pacotes é `p_load`.
+
+
+
+Meta-information
+================
+exname: instalacaoPacotes
+extype: cloze
+exsolution: install.packages|library|pacman|p_load
+exclozetype: string|string|string|string
+exshuffle: TRUE

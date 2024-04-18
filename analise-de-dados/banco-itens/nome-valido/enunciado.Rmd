@@ -1,0 +1,36 @@
+
+Question
+========
+
+Quais das seguintes opções abaixo são nomes válidos seguindo o estilo de codificação do _framework_ `tidyverse`? 
+
+
+Answerlist
+------------
+
+* `nome_valido`.
+* `abcd`
+* `NomeValido`.
+* `nome.valido`.
+* `nome-valido`.
+
+Solution
+========
+
+Answerlist
+------------
+
+* Correta.
+* Errada. Nome não representa a natureza do objeto.
+* Errada. Nomes válidos não podem ter letras maiúsculas.
+* Errada. Nomes válidos não podem conter ponto.
+* Errada. Nomes válidos não podem conter carcteres especiais como `%`, `&` e `-`.
+
+
+
+Meta-information
+================
+exname: nomeValido
+extype: mchoice
+exsolution: 10000
+exshuffle: TRUE

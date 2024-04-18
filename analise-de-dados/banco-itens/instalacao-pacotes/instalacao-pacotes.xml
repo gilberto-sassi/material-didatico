@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/instalacao-pacotes/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> Q1 : banco-itens_instalacao-pacotes_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Preencha os campos abaixo com as respostas corretas.</p>
+<ol type = "a">
+<li> Função para instalar pacotes: {1:SHORTANSWER:%100%install.packages} </li>
+<li> Função carregar pacotes: {1:SHORTANSWER:%100%library} </li>
+<li> Pacote que te auxilia na instação e carregamento de pacotes: {1:SHORTANSWER:%100%pacman} </li>
+<li> Função do pacote <code>pacman</code> que carrega pacotes, caso os pacotes não estejam instalados essa função instala e depois carrega os pacotes: {1:SHORTANSWER:%100%p_load} </li>
+</ol>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> A função usada para instalar pacotes é <code>install.packages</code>. </li>
+<li> A função usada para carregar pacotes é <code>library</code>. </li>
+<li> O pacote que te auxilia na instação e carregamento de pacotes é <code>pacman</code>. </li>
+<li> A função do pacote <code>pacman</code> que carrega pacotes, caso os pacotes não estejam instalados essa função instala e depois carrega os pacotes é <code>p_load</code>. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>4</defaultgrade>
+</question>
+
+</quiz>

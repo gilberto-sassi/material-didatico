@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/matriz/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q1 : banco-itens_matriz_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Quais das funções abaixo podem ser usadas para criar uma matriz do tipo numérico (<code>numeric</code>).</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol type = "a">
+<li> <code>matrix</code>. Correta. </li>
+<li> <code>vector</code>. FALSA: essa função é usada para criar um vetor. </li>
+<li> <code>rbind</code>. Correta. </li>
+<li> <code>seq_along</code>. FALSA: essa função é usada para criar um vetor. </li>
+<li> <code>cbind</code>. Correta. </li>
+<li> <code>seq</code>. FALSA: essa função é usada para criar um vetor. </li>
+<li> operador <code>:</code>. FALSA: essa função é usada para criar um vetor. </li>
+<li> <code>seq_len</code>. FALSA: essa função é usada para criar um vetor. </li>
+<li> <code>c</code>. FALSA: essa função é usada para criar um vetor. </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>false</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+<code>matrix</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<code>matrix</code>. Correta.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-16.66667" format="html">
+<text><![CDATA[<p>
+<code>vector</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<code>vector</code>. FALSA: essa função é usada para criar um vetor.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+<code>rbind</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<code>rbind</code>. Correta.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-16.66667" format="html">
+<text><![CDATA[<p>
+<code>seq_along</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<code>seq_along</code>. FALSA: essa função é usada para criar um vetor.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+<code>cbind</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<code>cbind</code>. Correta.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-16.66667" format="html">
+<text><![CDATA[<p>
+<code>seq</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<code>seq</code>. FALSA: essa função é usada para criar um vetor.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-16.66667" format="html">
+<text><![CDATA[<p>
+operador <code>:</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+operador <code>:</code>. FALSA: essa função é usada para criar um vetor.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-16.66667" format="html">
+<text><![CDATA[<p>
+<code>seq_len</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<code>seq_len</code>. FALSA: essa função é usada para criar um vetor.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-16.66667" format="html">
+<text><![CDATA[<p>
+<code>c</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<code>c</code>. FALSA: essa função é usada para criar um vetor.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+</quiz>

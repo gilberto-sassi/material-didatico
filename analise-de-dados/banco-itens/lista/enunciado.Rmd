@@ -1,0 +1,192 @@
+```{r}
+#| label: gerandoDados
+#| echo: false
+#| message: false
+
+
+if (!require(pacman)){
+    install.packages(pacman)
+    library(pacman)
+} 
+p_load(readxl, writexl, readODS)
+p_load(ggthemes)
+p_load(glue)
+p_load(statBasics)
+p_load(tidyverse)
+
+nomes  <- c(
+    "Helena",
+    "Alice",
+    "Laura",
+    "Miguel",
+    "Arthur",
+    "Maria Alice",
+    "Valentina",
+    "Gael",
+    "Heloísa",
+    "Théo",
+    "Maria Clara",
+    "Sophia",
+    "Heitor",
+    "Davi",
+    "Manuela",
+    "Bernardo",
+    "Luiza",
+    "Noah",
+    "Isabella",
+    "Gabriel",
+    "Júlia",
+    "Enzo",
+    "Maria Eduarda",
+    "Matheus",
+    "Cecília",
+    "Lucas",
+    "Pedro",
+    "Rafael",
+    "João",
+    "Felipe",
+    "Henry",
+    "Maria Helena",
+    "Davi Lucca",
+    "Luiz Miguel",
+    "Arthur Gabriel",
+    "Heitor Gabriel",
+    "Bernardo Oliveira",
+    "Miguel Henrique",
+    "João Pedro",
+    "Gabriel Henrique",
+    "Arthur Davi",
+    "Bernardo Lucas",
+    "Heitor Eduardo",
+    "Davi Lucas",
+    "Pedro Henrique",
+    "Gabriel Arthur",
+    "João Miguel",
+    "Bernardo Arthur",
+    "Heitor Bernardo",
+    "Davi Matheus",
+    "Pedro Lucas",
+    "Gabriel Bernardo",
+    "João Gabriel",
+    "Bernardo Felipe",
+    "Heitor Davi",
+    "Davi Rafael",
+    "Pedro Bernardo",
+    "Gabriel Matheus",
+    "João Heitor",
+    "Bernardo João",
+    "Heitor Luiz",
+    "Davi Bernardo",
+    "Pedro Arthur"
+)
+
+idades <- sample(
+    18:60,
+    size = 50,
+    replace = TRUE
+)
+
+genero <- sample(c("Masculino", "Feminino", "Outro", "Prefiro não dizer"),
+                size = 50, replace = TRUE)
+
+
+cidades <- c("São Paulo",
+ "Rio de Janeiro",
+ "Brasília",
+ "Salvador",
+ "Fortaleza",
+ "Belo Horizonte",
+ "Manaus",
+ "Curitiba",
+ "Recife",
+ "Porto Alegre",
+ "Belém",
+ "Guarulhos",
+ "Goiânia",
+ "Campinas",
+ "São Gonçalo",
+ "Nova Iguaçu",
+ "São Bernardo do Campo",
+ "Contagem",
+ "Natal",
+ "Maceió",
+ "Teresina",
+ "São Luís",
+ "João Pessoa",
+ "Porto Velho",
+ "Cuiabá",
+ "Londrina",
+ "Duque de Caxias",
+ "Uberlândia",
+ "Sorocaba",
+ "Ribeirão Preto",
+ "Niterói",
+ "Jaboatão dos Guararapes",
+ "Campos dos Goytacazes",
+ "São José dos Campos",
+ "Maringá",
+ "Joinville",
+ "Santos",
+ "Anápolis",
+ "Vila Velha",
+ "Florianópolis",
+ "Diadema",
+ "Caruaru",
+ "Bauru",
+ "Juazeiro do Norte",
+ "Aracaju",
+ "Caxias do Sul",
+ "Serra",
+ "Vitória da Conquista",
+ "São José do Rio Preto",
+ "Montes Claros"
+)
+
+solucao <- list(
+    nome = sample(nomes, 1),
+    idade = sample(idades, 1),
+    genero = sample(genero, 1),
+    cidade = sample(cidades, 1)
+)
+```
+
+Question
+========
+Para o seguinte código com informações de um cliente de uma loja:
+
+```r
+informacoes_cliente <- list(
+    nome = "`r solucao$nome`",
+    idade = `r solucao$idade`,
+    genero = "`r solucao$genero`",
+    cidade = "`r solucao$cidade`"
+)
+```
+
+Responda corretamente os seguintes itens:
+  
+Questionlist
+------------
+* Qual o terceiro elemento da lista `informacoes_cliente`?
+* De acordo com `informacoes_cliente`, qual o nome do cliente?
+* De acordo com `informacoes_cliente`, qual a idade do cliente?
+* Qual valor é produzido pelo código `informacoes_cliente[[1]]`?
+* Qual valor é produzido pelo código `informacoes_cliente$cidade`?
+
+Solution
+========
+Solutionlist
+------------
+* Qual o terceiro elemento da lista `informacoes_cliente`? R: `r solucao[[3]]`.
+* De acordo com `informacoes_cliente`, qual o nome do cliente? R: `r solucao$nome`.
+* De acordo com `informacoes_cliente`, qual a idade do cliente? R: `r solucao$idade`.
+* Qual valor é produzido pelo código `informacoes_cliente[[1]]`? R: `r solucao[[1]]`
+* Qual valor é produzido pelo código `informacoes_cliente$cidade`? R: `r solucao$cidade`
+
+Meta-information
+================
+exname: lista
+extype: cloze
+exclozetype: string|string|string|string|string
+exsolution: `r solucao[[3]]`|`r solucao$nome`|`r solucao$idade`|`r solucao[[1]]`|`r solucao$cidade`
+exshuffle: TRUE
