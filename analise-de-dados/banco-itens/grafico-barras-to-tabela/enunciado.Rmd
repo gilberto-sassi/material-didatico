@@ -1,0 +1,299 @@
+```{r dados, include=FALSE, message=FALSE} 
+if (!require(pacman)) install.packages(pacman)
+library(pacman)
+p_load(readxl, writexl, readODS)
+p_load(ggthemes)
+p_load(glue)
+p_load(statBasics)
+p_load(exams)
+p_load(Boom, extraDistr)
+p_load(tidyverse)
+options(scipen = 999) # prevent scientific notation
+
+
+# parâmetro
+while (TRUE) {
+    a <- Boom::rdirichlet(1, round(runif(20, 0.75, 20))) |> as_vector()
+    amostra <- sample(1:20, size = 125, replace = TRUE, prob = a)
+    if (length((unique(amostra))) == 20) break
+}
+
+# random sample of integer values
+df <- tibble(x = amostra)
+contagem <- dplyr::count(df, x) |>
+    mutate(porcentagem = n * 100 / sum(n))
+
+# solução
+sol <- c(
+    contagem$x, contagem$n, contagem$porcentagem
+)
+
+f <- \(x) format(
+  x,
+  big.mark = ".",
+  decimal.mark = ","
+)
+```
+
+Question
+========
+Considere o seguinte gráfico de barras para a variável quantitativa discreta _número de vendas por dia_ de uma determinada companhia:
+
+```{r grafico, echo=FALSE, fig.cap=" "}
+df <- tibble(X = amostra)
+ggplot(df, aes(x = X)) +
+    geom_bar(fill = "blue") +
+    scale_y_continuous(breaks = seq(from = 1, to = max(as.vector(table(amostra))), by = 1)) +
+    scale_x_continuous(breaks = seq(from = min(amostra), to = max(amostra), by = 1)) +
+    theme_calc() +
+    labs(title = "Gráfico de Barras para número de vendas.", x = "Número de vendas", y = "Frequência Absoluta")
+```
+
+A partir do gráfico acima, preencha os espaços vazios na tabela de distribuição de frequência para a variável _número de venda por dia_:
+
+<table border="1">
+<thead>
+  <tr>
+    <th>Número de vendas<br></th>
+    <th>Frequência</th>
+    <th>Porcentagem</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>\#\#ANSWER1\#\#</td>
+    <td>\#\#ANSWER21\#\#</td>
+    <td>\#\#ANSWER41\#\#</td>
+  </tr>
+  <tr>
+    <td>\#\#ANSWER2\#\#</td>
+    <td>\#\#ANSWER22\#\#</td>
+    <td>\#\#ANSWER42\#\#</td>
+  </tr>
+  <tr>
+    <td>\#\#ANSWER3\#\#</td>
+    <td>\#\#ANSWER23\#\#</td>
+    <td>\#\#ANSWER43\#\#</td>
+  </tr>
+  <tr>
+    <td>\#\#ANSWER4\#\#</td>
+    <td>\#\#ANSWER24\#\#</td>
+    <td>\#\#ANSWER44\#\#</td>
+  </tr>
+  <tr>
+    <td>\#\#ANSWER5\#\#</td>
+    <td>\#\#ANSWER25\#\#</td>
+    <td>\#\#ANSWER45\#\#</td>
+  </tr>
+  <tr>
+    <td>\#\#ANSWER6\#\#</td>
+    <td>\#\#ANSWER26\#\#</td>
+    <td>\#\#ANSWER46\#\#</td>
+  </tr>
+  <tr>
+    <td>\#\#ANSWER7\#\#</td>
+    <td>\#\#ANSWER27\#\#</td>
+    <td>\#\#ANSWER47\#\#</td>
+  </tr>
+  <tr>
+    <td>\#\#ANSWER8\#\#</td>
+    <td>\#\#ANSWER28\#\#</td>
+    <td>\#\#ANSWER48\#\#</td>
+  </tr>
+  <tr>
+    <td>\#\#ANSWER9\#\#</td>
+    <td>\#\#ANSWER29\#\#</td>
+    <td>\#\#ANSWER49\#\#</td>
+  </tr>
+  <tr>
+    <td>\#\#ANSWER10\#\#</td>
+    <td>\#\#ANSWER30\#\#</td>
+    <td>\#\#ANSWER50\#\#</td>
+  </tr>
+  <tr>
+    <td>\#\#ANSWER11\#\#</td>
+    <td>\#\#ANSWER31\#\#</td>
+    <td>\#\#ANSWER51\#\#</td>
+  </tr>
+  <tr>
+    <td>\#\#ANSWER12\#\#</td>
+    <td>\#\#ANSWER32\#\#</td>
+    <td>\#\#ANSWER52\#\#</td>
+  </tr>
+  <tr>
+    <td>\#\#ANSWER13\#\#</td>
+    <td>\#\#ANSWER33\#\#</td>
+    <td>\#\#ANSWER53\#\#</td>
+  </tr>
+  <tr>
+    <td>\#\#ANSWER14\#\#</td>
+    <td>\#\#ANSWER34\#\#</td>
+    <td>\#\#ANSWER54\#\#</td>
+  </tr>
+  <tr>
+    <td>\#\#ANSWER15\#\#</td>
+    <td>\#\#ANSWER35\#\#</td>
+    <td>\#\#ANSWER55\#\#</td>
+  </tr>
+  <tr>
+    <td>\#\#ANSWER16\#\#</td>
+    <td>\#\#ANSWER36\#\#</td>
+    <td>\#\#ANSWER56\#\#</td>
+  </tr>
+  <tr>
+    <td>\#\#ANSWER17\#\#</td>
+    <td>\#\#ANSWER37\#\#</td>
+    <td>\#\#ANSWER57\#\#</td>
+  </tr>
+  <tr>
+    <td>\#\#ANSWER18\#\#</td>
+    <td>\#\#ANSWER38\#\#</td>
+    <td>\#\#ANSWER58\#\#</td>
+  </tr>
+  <tr>
+    <td>\#\#ANSWER19\#\#</td>
+    <td>\#\#ANSWER39\#\#</td>
+    <td>\#\#ANSWER59\#\#</td>
+  </tr>
+  <tr>
+    <td>\#\#ANSWER20\#\#</td>
+    <td>\#\#ANSWER40\#\#</td>
+    <td>\#\#ANSWER60\#\#</td>
+  </tr>
+</tbody>
+</table>
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+
+Solution
+========
+
+A tabela de distribuição de frequência para a variável _número de filhos_ é dada por:
+
+<table border="1">
+<thead>
+  <tr>
+    <th>Número de vendas<br></th>
+    <th>Frequência</th>
+    <th>Porcentagem</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>`r f(sol[1])`</td>
+    <td>`r f(sol[21])`</td>
+    <td>`r f(sol[41])`</td>
+  </tr>
+  <tr>
+    <td>`r f(sol[2])`</td>
+    <td>`r f(sol[22])`</td>
+    <td>`r f(sol[42])`</td>
+  </tr>
+  <tr>
+    <td>`r f(sol[3])`</td>
+    <td>`r f(sol[23])`</td>
+    <td>`r f(sol[43])`</td>
+  </tr>
+  <tr>
+    <td>`r f(sol[4])`</td>
+    <td>`r f(sol[24])`</td>
+    <td>`r f(sol[44])`</td>
+  </tr>
+  <tr>
+    <td>`r f(sol[5])`</td>
+    <td>`r f(sol[25])`</td>
+    <td>`r f(sol[45])`</td>
+  </tr>
+  <tr>
+    <td>`r f(sol[6])`</td>
+    <td>`r f(sol[26])`</td>
+    <td>`r f(sol[46])`</td>
+  </tr>
+  <tr>
+    <td>`r f(sol[7])`</td>
+    <td>`r f(sol[27])`</td>
+    <td>`r f(sol[47])`</td>
+  </tr>
+  <tr>
+    <td>`r f(sol[8])`</td>
+    <td>`r f(sol[28])`</td>
+    <td>`r f(sol[48])`</td>
+  </tr>
+  <tr>
+    <td>`r f(sol[9])`</td>
+    <td>`r f(sol[29])`</td>
+    <td>`r f(sol[49])`</td>
+  </tr>
+  <tr>
+    <td>`r f(sol[10])`</td>
+    <td>`r f(sol[30])`</td>
+    <td>`r f(sol[50])`</td>
+  </tr>
+  <tr>
+    <td>`r f(sol[11])`</td>
+    <td>`r f(sol[31])`</td>
+    <td>`r f(sol[51])`</td>
+  </tr>
+  <tr>
+    <td>`r f(sol[12])`</td>
+    <td>`r f(sol[32])`</td>
+    <td>`r f(sol[52])`</td>
+  </tr>
+  <tr>
+    <td>`r f(sol[13])`</td>
+    <td>`r f(sol[33])`</td>
+    <td>`r f(sol[53])`</td>
+  </tr>
+  <tr>
+    <td>`r f(sol[14])`</td>
+    <td>`r f(sol[34])`</td>
+    <td>`r f(sol[54])`</td>
+  </tr>
+  <tr>
+    <td>`r f(sol[15])`</td>
+    <td>`r f(sol[35])`</td>
+    <td>`r f(sol[55])`</td>
+  </tr>
+  <tr>
+    <td>`r f(sol[16])`</td>
+    <td>`r f(sol[36])`</td>
+    <td>`r f(sol[56])`</td>
+  </tr>
+  <tr>
+    <td>`r f(sol[17])`</td>
+    <td>`r f(sol[37])`</td>
+    <td>`r f(sol[57])`</td>
+  </tr>
+  <tr>
+    <td>`r f(sol[18])`</td>
+    <td>`r f(sol[38])`</td>
+    <td>`r f(sol[58])`</td>
+  </tr>
+  <tr>
+    <td>`r f(sol[19])`</td>
+    <td>`r f(sol[39])`</td>
+    <td>`r f(sol[59])`</td>
+  </tr>
+  <tr>
+    <td>`r f(sol[20])`</td>
+    <td>`r f(sol[40])`</td>
+    <td>`r f(sol[60])`</td>
+  </tr>
+</tbody>
+</table>
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+
+Meta-information
+================
+exname: graficoDiscretoTabela
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste0(collapse = "|")`
+exsolution: `r paste0(sol, collapse = "|")`
+extol: 0.05

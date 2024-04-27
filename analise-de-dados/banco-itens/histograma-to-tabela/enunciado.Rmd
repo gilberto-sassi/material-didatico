@@ -1,0 +1,233 @@
+```{r dados, include=FALSE, message=FALSE} 
+if (!require(pacman)) {
+  install.packages(pacman)
+  library(pacman)
+}
+p_load(readxl, writexl, readODS)
+p_load(ggthemes)
+p_load(glue)
+p_load(statBasics)
+p_load(exams)
+p_load(Boom, extraDistr)
+p_load(tidyverse)
+options(scipen = 999) # prevent scientific notation
+
+
+# sample
+while (TRUE) {
+
+  dp <- sample(c(100, 200, 300), 1)
+  amostra <- seq_len(1000) |>
+    map_dbl(\(x) {
+      while(TRUE) {
+        valor <- rnorm(1, 500, dp)
+        if (0 <= valor & valor <= 1000) return(valor)
+      }
+    })
+
+  # random sample of integer values
+  df <- tibble(x = amostra) |>
+    mutate(faixa = cut(x, breaks = seq(from = 0, to = 1000, by = 100),
+          include.lowest = T, right = F))
+  contagem <- dplyr::count(df, faixa) |>
+      mutate(porcentagem = n * 100 / sum(n))
+
+  freq <- sort(contagem$n)
+  dife <- 2:10 |> map_dbl(~ freq[.x] - freq[.x - 1])
+  if (length(unique(df$faixa)) == 10 && min(dife) >= 10) break
+}
+
+# solução
+sol <- c(
+  seq(from = 0, to = 900, by = 100),
+  seq(from = 100, to = 1000, by = 100),
+  contagem$n,
+  contagem$porcentagem
+)
+
+# formatação
+f <- \(x) format(x, decimal.mark = ",", big.mark = ".")
+```
+
+Question
+========
+Considere o seguinte gráfico de barras para a variável quantitativa contínua _x_ :
+
+```{r grafico, echo=FALSE, fig.cap=" "}
+ggplot(df, aes(x = x)) +
+  geom_histogram(breaks = seq(from = 0, to = 1000, by = 100), fill = "blue") +
+  scale_y_continuous(breaks = contagem$n) +
+  scale_x_continuous(breaks = seq(from = 0, to = 1000, by = 100)) +
+  theme_calc() +
+  labs(x = "X", y = "Frequência (absoluta)")
+```
+
+A partir do gráfico acima, preencha os espaços vazios na tabela de distribuição de frequência para a variável _x_:
+
+<table border="1">
+<thead>
+  <tr>
+    <th colspan="2">x</th>
+    <th>Frequência</th>
+    <th>Porcentagem</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>[\#\#ANSWER1\#\#,</td>
+    <td>\#\#ANSWER11\#\#)</td>
+    <td>\#\#ANSWER21\#\#</td>
+    <td>\#\#ANSWER31\#\#</td>
+  </tr>
+  <tr>
+    <td>[\#\#ANSWER2\#\#,</td>
+    <td>\#\#ANSWER12\#\#)</td>
+    <td>\#\#ANSWER22\#\#</td>
+    <td>\#\#ANSWER32\#\#</td>
+  </tr>
+  <tr>
+    <td>[\#\#ANSWER3\#\#,</td>
+    <td>\#\#ANSWER13\#\#)</td>
+    <td>\#\#ANSWER23\#\#</td>
+    <td>\#\#ANSWER33\#\#</td>
+  </tr>
+  <tr>
+    <td>[\#\#ANSWER4\#\#,</td>
+    <td>\#\#ANSWER14\#\#)</td>
+    <td>\#\#ANSWER24\#\#</td>
+    <td>\#\#ANSWER34\#\#</td>
+  </tr>
+  <tr>
+    <td>[\#\#ANSWER5\#\#,</td>
+    <td>\#\#ANSWER15\#\#)</td>
+    <td>\#\#ANSWER25\#\#</td>
+    <td>\#\#ANSWER35\#\#</td>
+  </tr>
+  <tr>
+    <td>[\#\#ANSWER6\#\#,</td>
+    <td>\#\#ANSWER16\#\#)</td>
+    <td>\#\#ANSWER26\#\#</td>
+    <td>\#\#ANSWER36\#\#</td>
+  </tr>
+  <tr>
+    <td>[\#\#ANSWER7\#\#,</td>
+    <td>\#\#ANSWER17\#\#)</td>
+    <td>\#\#ANSWER27\#\#</td>
+    <td>\#\#ANSWER37\#\#</td>
+  </tr>
+  <tr>
+    <td>[\#\#ANSWER8\#\#,</td>
+    <td>\#\#ANSWER18\#\#)</td>
+    <td>\#\#ANSWER28\#\#</td>
+    <td>\#\#ANSWER38\#\#</td>
+  </tr>
+  <tr>
+    <td>[\#\#ANSWER9\#\#,</td>
+    <td>\#\#ANSWER19\#\#)</td>
+    <td>\#\#ANSWER29\#\#</td>
+    <td>\#\#ANSWER39\#\#</td>
+  </tr>
+  <tr>
+    <td>[\#\#ANSWER10\#\#,</td>
+    <td>\#\#ANSWER20\#\#]</td>
+    <td>\#\#ANSWER30\#\#</td>
+    <td>\#\#ANSWER40\#\#</td>
+  </tr>
+</tbody>
+</table>
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+
+Solution
+========
+
+A tabela de distribuição de frequência para a variável _x_ é dada por:
+
+<table border="1">
+<thead>
+  <tr>
+    <th colspan="2">x</th>
+    <th>Frequência</th>
+    <th>Porcentagem</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>[0,</td>
+    <td>100)</td>
+    <td>`r sol[21]`</td>
+    <td>`r f(sol[31])`</td>
+  </tr>
+  <tr>
+    <td>[100,</td>
+    <td>200)</td>
+    <td>`r sol[22]`</td>
+    <td>`r f(sol[32])`</td>
+  </tr>
+  <tr>
+    <td>[200,</td>
+    <td>300)</td>
+    <td>`r sol[23]`</td>
+    <td>`r f(sol[33])`</td>
+  </tr>
+  <tr>
+    <td>[300,</td>
+    <td>400)</td>
+    <td>`r sol[24]`</td>
+    <td>`r f(sol[34])`</td>
+  </tr>
+  <tr>
+    <td>[400,</td>
+    <td>500)</td>
+    <td>`r sol[25]`</td>
+    <td>`r f(sol[35])`</td>
+  </tr>
+  <tr>
+    <td>[500,</td>
+    <td>600)</td>
+    <td>`r sol[26]`</td>
+    <td>`r f(sol[36])`</td>
+  </tr>
+  <tr>
+    <td>[600,</td>
+    <td>700)</td>
+    <td>`r sol[27]`</td>
+    <td>`r f(sol[37])`</td>
+  </tr>
+  <tr>
+    <td>[700,</td>
+    <td>800)</td>
+    <td>`r sol[28]`</td>
+    <td>`r f(sol[38])`</td>
+  </tr>
+  <tr>
+    <td>[800,</td>
+    <td>900)</td>
+    <td>`r sol[29]`</td>
+    <td>`r f(sol[39])`</td>
+  </tr>
+  <tr>
+    <td>[900,</td>
+    <td>1000]</td>
+    <td>`r sol[30]`</td>
+    <td>`r f(sol[40])`</td>
+  </tr>
+</tbody>
+</table>
+
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+
+Meta-information
+================
+exname: histogramaTabela
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste0(collapse = "|")`
+exsolution: `r paste0(sol, collapse = "|")`
+extol: 0.05
