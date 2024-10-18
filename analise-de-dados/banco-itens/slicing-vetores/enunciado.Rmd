@@ -1,0 +1,98 @@
+```{r}
+#| label: Gerando os dados da questão
+#| message: false
+#| warning: false
+#| echo: false
+
+library(pacman)
+
+p_load(
+    readxl, writexl, janitor, lettervalue, ggthemes,
+    glue, lvplot,
+    e1071, KbMvtSkew, exams, tidyverse
+)
+
+vetor <- sample(seq_along(letters), size = 20, replace = TRUE)
+
+indice <- sample(2:19, size = 5, replace = FALSE)
+
+# vetor solução
+sol <- c(
+    vetor[indice],
+    vetor[1:5],
+    vetor[16:20]
+)
+
+# formatação
+f <- \(x) format(
+    x,
+    decimal.mark = ",",
+    big.mark = "."
+)
+
+```
+
+Question
+========
+
+Considere a seguinte sequência de valores inteiros: `r paste0(vetor, collapse = ", ")`. Josué deseja criar um vetor com estes valores na linguagem <code>R</code>. Com base nisso, responda as seguintes questões abaixo.
+
+<hr>
+
+Josué pode usar a função \#\#ANSWER1\#\# para criar este vetor na linguagem <code>R</code>.
+
+<hr>
+
+O chefe de Josué solicitou os valores inteiros nas posições: `r paste0(indice, collapse = ", ")`. Esses valores são: \#\#ANSWER2\#\#, \#\#ANSWER3\#\#, \#\#ANSWER4\#\#, \#\#ANSWER5\#\#, \#\#ANSWER6\#\#.
+
+<hr>
+
+Em um outro momento, o chefe de Josué solicitou os primeiros cinco valores inteiros. Esses valores são: \#\#ANSWER7\#\#, \#\#ANSWER8\#\#, \#\#ANSWER9\#\#, \#\#ANSWER10\#\#, \#\#ANSWER11\#\#.
+
+<hr>
+
+No final o ia, o chefe de Josué solicitou os últimos cinco valores inteiros. Esses valores são: \#\#ANSWER12\#\#, \#\#ANSWER13\#\#, \#\#ANSWER14\#\#, \#\#ANSWER15\#\#, \#\#ANSWER16\#\#.
+
+
+```{r}
+#| echo: false
+#| results: asis
+
+
+exams::answerlist(rep("", length(sol) + 1), markup = "markdown")
+```
+
+
+Solution
+========
+
+Josué pode usar a função c para criar este vetor na linguagem <code>R</code>.
+
+<hr>
+
+O chefe de Josué solicitou os valores inteiros nas posições: `r paste0(indice, collapse = ",")`. Esses valores são: `r paste0(sol[1:5], collapse=", ")`.
+
+<hr>
+
+Em um outro momento, o chefe de Josué solicitou os primeiros cinco valores inteiros. Esses valores são: `r paste0(sol[6:10], collapse=", ")`.
+
+<hr>
+
+No final o ia, o chefe de Josué solicitou os últimos cinco valores inteiros. Esses valores são: `r paste0(sol[11:15], collapse=", ")`.
+
+```{r}
+#| echo: false
+#| results: asis
+
+exams::answerlist(rep("", length(sol) + 1), markup = "markdown")
+```
+
+
+
+Meta-information
+================
+exname: slicingVetor
+extype: cloze
+exclozetype: string|`r paste0(rep("num", length(sol)), collapse="|")`
+exsolution: c|`r paste(sol, collapse="|")`
+extol: 0.001

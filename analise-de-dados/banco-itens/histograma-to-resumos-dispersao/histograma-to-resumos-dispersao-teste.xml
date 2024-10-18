@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/histograma-to-resumos-dispersao-teste/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R1 Q1 : histograma-to-resumos-dispersao_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Considere o seguinte gráfico de barras para a variável quantitativa contínua <em>x</em> :</p>
+<p><img src="@@PLUGINFILE@@/grafico-1.png" /></p>
+<p>A partir do histograma acima, determine a média e a mediana para a variável <em>X</em>:</p>
+<p>Para calcular a variância, divida por <code>n-1</code> (tamanho da amostra menos 1).</p>
+A média de <em>X</em> é: {1:NUMERICAL:=487.5:1}
+<br>A mediana de <em>X</em> é: {1:NUMERICAL:=450:1}
+<br>A Variância de <em>X</em> é: {1:NUMERICAL:=36239.98998999:1}
+<br>O Desvio Padrão de <em>X</em> é: {1:NUMERICAL:=190.36803825745:1}
+</p>]]></text>
+<file name="grafico-1.png" encoding="base64">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</file>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>A partir do histograma acima, determine a média e a mediana para a variável <em>X</em>:</p>
+<p>Para calcular a variância, divida por <code>n-1</code> (tamanho da amostra menos 1).</p>
+<ul>
+<li> A média de <em>X</em> é: 487,5. </li>
+<li> A mediana de <em>X</em> é: 450. </li>
+<li> A variância de <em>X</em> é: 36.239,99. </li>
+<li> O Desvio Padrão de <em>X</em> é: 190,368. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>4</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R2 Q1 : histograma-to-resumos-dispersao_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Considere o seguinte gráfico de barras para a variável quantitativa contínua <em>x</em> :</p>
+<p><img src="@@PLUGINFILE@@/grafico-1.png" /></p>
+<p>A partir do histograma acima, determine a média e a mediana para a variável <em>X</em>:</p>
+<p>Para calcular a variância, divida por <code>n-1</code> (tamanho da amostra menos 1).</p>
+A média de <em>X</em> é: {1:NUMERICAL:=501.4:1}
+<br>A mediana de <em>X</em> é: {1:NUMERICAL:=550:1}
+<br>A Variância de <em>X</em> é: {1:NUMERICAL:=55113.1531531532:1}
+<br>O Desvio Padrão de <em>X</em> é: {1:NUMERICAL:=234.761907372455:1}
+</p>]]></text>
+<file name="grafico-1.png" encoding="base64">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</file>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>A partir do histograma acima, determine a média e a mediana para a variável <em>X</em>:</p>
+<p>Para calcular a variância, divida por <code>n-1</code> (tamanho da amostra menos 1).</p>
+<ul>
+<li> A média de <em>X</em> é: 501,4. </li>
+<li> A mediana de <em>X</em> é: 550. </li>
+<li> A variância de <em>X</em> é: 55.113,15. </li>
+<li> O Desvio Padrão de <em>X</em> é: 234,7619. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>4</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R3 Q1 : histograma-to-resumos-dispersao_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Considere o seguinte gráfico de barras para a variável quantitativa contínua <em>x</em> :</p>
+<p><img src="@@PLUGINFILE@@/grafico-1.png" /></p>
+<p>A partir do histograma acima, determine a média e a mediana para a variável <em>X</em>:</p>
+<p>Para calcular a variância, divida por <code>n-1</code> (tamanho da amostra menos 1).</p>
+A média de <em>X</em> é: {1:NUMERICAL:=506.7:1}
+<br>A mediana de <em>X</em> é: {1:NUMERICAL:=550:1}
+<br>A Variância de <em>X</em> é: {1:NUMERICAL:=35630.7407407407:1}
+<br>O Desvio Padrão de <em>X</em> é: {1:NUMERICAL:=188.761067862896:1}
+</p>]]></text>
+<file name="grafico-1.png" encoding="base64">iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQCAMAAAC3Ycb+AAAAdVBMVEUAAAAAADoAAGYAAP8AOjoAOpAAZrY6AAA6ADo6AGY6OpA6kNtmAABmADpmAGZmOpBmZjpmkJBmtrZmtv+QOgCQOjqQOmaQ2/+zs7O2ZgC2Zma2/7a2///bkDrbkJDb/9vb////tmb/25D/29v//7b//9v///+eFQI2AAAACXBIWXMAAA9hAAAPYQGoP6dpAAAM+klEQVR4nO2d7WKjthZFnbkNmY6TdnrtmZTbcBu7Nu//iEXgD2yQENKRtLH2+tGkxYeYvYoACcRqRcCoCRIUAgaFgEEhYFAIGLOF/EkC4Spk5ueJJRQCBoWAQSFgUAgYFAIGhYBBIWBQCBgUAgaFgEEhYFAIGFNCjtvVqmh+Hn77qOuq+71XR6SZElIVjZNNfXj98lHvv32q3/t1RBqbJqtaH3/+1ewh1fpctCz+M0Hq73fLtJC2tVL/KP94WWSTNSUk9fe7YVrI4e29Pgl5/qzLBTZZjyVk/1X56IRs6kuzRSGBmBKy//Wj/amE7Iqae0hopoSU6q7G9fW0d31btwgeSshE3SKgEDAoBAwKAYNCwKAQMCgEDAoBg0LAoBAwKAQMCgGDQsCgEDAoBAwKAYNCwKAQMCgEDAoBg0LAoBAwKAQMCgGDQsCgEDAoBAwKAYNCwKAQMCgEDAoBg0LAoBAwKAQMCgGDQsCgEDAoBAwKAYNCwKAQMCgEDAoBg0LAoBAwKAQMCgGDQsCgEDAoBAwKAYNCwKAQMCgEDAoB48GEqCmUq2465XK12tzWLYLHEtK+OaRu5xzfFd0E1726RfBQQro3h9TnSd87IalfsXHPVOITpP76t0wIOTvYf/us1eTvkE2Wp5DUX/8GWyHlaRZ+yLcjZCjkcuyAfH9IhkLaFgv2/SEZClEu2peJQL4/JC8hxjoMKIRCgkEhFCIPhVBIMCiEQuShEAoJBoUsTkj/1faXLi0KCYXdANXp1fbnwaqaQoJhN0DV9fFeBqtqCgmGXZN1frX9qcmKPormmfgE0TfHiJ2Q06vtUx1DwgqJuilTWAo5vdqeQoJjJ+Q8NEUhwbE/7V3XFBKBZVwYUohtXSQoxLYuEhRiWxeJrIUct+rO6tXzp01dJDIWsn95em9/2a1OvxjrIpGvkMPv1x3j+LM9x21PdcvV6suH2neK27pI5CtkSNvDe/yh9paqqFWfb78uEhRyoevh3f96viBs+32jd7iFFTJB5G0dCNm1x/TVZeSj7Tr5pevtTfXATlIhUbd0uIcct+umXTq8nm/i7Rz881lXqi/r7f22LhI5C1GZl+t6dzntPe8UTWO1//p+VxeJ3IU0R+/rUePc21ttrv+NQoIxPIaUhdo9qts9pDw9hHt5HoFCAjEUcnjdNNEbrwprCgkG+7LQhZxOpPrHC0NdJCik3n2hEAQhp6vC1bXTylwXiXyF9K/9bOoikbOQeXWRyFnI4fWuL8tYF4mchXR0/e3TdZGgkF5flrEuEhTC6xA0ISX3EBAhp4M6+7JQhMyriwSF2NZFIl8h56sQXoeACJlbFwkKsa2LRN5Cqt5I7VRdJLIWUqmjR+82IGNdJHIWoobUaw5QUYiRnIWwyUITwoM6mpA5dZGgENu6SGQtZP/1/fDK3l4YIcftWg2GcMQQRcjh7f24LThiCCPkuN3sXzZ1xT0EREi9V0+vlRPXhRQSCp5lUYgDeQtpb7jejH/8vi4SWQthXxaWEPb2YgrhdQiKkHOTNXEQoZBA8DYgbCFz6yJBIbZ1kchayP1sQMa6SOQsZDAbkLEuEjkLGcwGZKyLRO5CKo6H4AgZzAZkrItE1kI4GxCYkFl1kaAQ27pI5CtkZCJlY10k8hWS5VTj0EJynIwfXMisukhQiG1dJCjEti4SFGJbFwkKsa2LBIXY1kUiayEcoMISwgEqMCEcoAIUwgEqICEcoEITwgEqMCGz6iJBIbZ1kchXyOH1v5xqHEnI3LpIUIhtXSSyFqIu0o/bibNeCgnF6NQaNacaxxHCl4KBCen2DTXdiU1dJLIW0r3Qs7j9WKmeXO9PNUchgbA7y9o9f3bv3Lm0ZBQSCDsh6rX27avty/bh3MivfE/8gvsJpLd1IGT/MrxSV3uIOvvafzufe2W0h0wgvKkjp73FyMfK1dP3Rkh5GUekkDPCm6o77R3StFbnd93XFHJFeFPHZpQbfmrXDSFeWywKuSC8qSNTa4xdo7envcrLXV0kUoduQnhTRyafYff7LIQ3lb29vghvKoX4Iryp90L+96F6SDZTt2VRyAXhTb0VosZCyue/mxOtsrCqi0Tq0E0Ib+qdkN8/25mtN+x+t0Z4U2+FNJfpJyGcc9EW4U29P4b8/6NSTdb9zdaV6pDPtPt9AuFN1c3be+ujuUTvruBz7H6fQHhT7U57lZB2PCRQ93vqUH2QzsJKyHk+gVDd76lD9UE0CNuuk3Y8ZBOu+z11qD6IBqFtsroG6oIaLdwV4brfU4fqg2gQ+mPI7aW6+rdm7wjW/Z46VB9Eg9ALubswLNv7UIJ1v6cO1QfRIPRC4t65mDpUH0SD0B/U4z5BlTpUH0SDQOl+Tx2qD6JBUIg/okEYrkMmRnEp5IxoEKNTayR45VHqUH0QDWJ0D0nwhp3UofogGoT+Rrm44yGpQ/VBNIjR+7LYZM1CNIjRs6wq/nsMU4fqg2gQPO31RzQICvFHNAhdkxX7vqzUofogGsT4Q5/x78tKHaoPokGMn/bGvy8rdag+iAahF8LrEFtEgxh/PmTkvixdnRCpQ/VBNAjb+7K0dUKkDtUH0SB42uuPaBC2zxhq64RIHaoPokHMeQp3tE6I1KH6IBrE6EG9mFEnROpQfRANAuWhz9Sh+iAaBA/q/ogGQSH+iAYxnCbW7pBOIVdEgxgVcpp10apOiNSh+iAaBIX4IxoEhfgjGgSF+CMaBIX4IxrEyGT8NveR1hRyRTQIXof4IxoEhfgjGgSF+CMaBIX4IxoEhfgjGgSF+CMaBIX4IxoEhfgjGgSF+CMaBIX4IxoEhfgjGgSF+CMaBIX4IxoEhfgjGgSF+CMaBIX4IxoEhfgjGgSF+CMaBIX4IxrEDCHVOuBU46lD9UE0CHsh+5fWRKCpxlOH6oNoENZCjj++d2/1dpxqPHVqAUkz1Xi1bt+86jzVeOrUAjIviEmsJ+PvXoXrOtV46tQCMjfxCeyEnA7n7lONp04tILMjNzPnLMtjqvHUqQVkXhCTzBLiPtV46tQCMi+ISSJdGKZOLSAzg7MMlkKcmRmcZbCWTdZ1LkYKOTMz8CnmXKkf3t5dr9RTpxaQ2ZGbmXOlfnk1WE0hV+ZnbmTOlbo6yWr7Tth1MoMgXSfdlfpFSM09xJ55Qc26UmeT5UIQIXV7lsWDugsBhfC014VQQsbrbEmdSkLcgqWQYLgFSyHBcAuWQoLhFiyFBMMtWAoJhluwFBIMt2ApJBhuwVJIMNyCpZBguAVLIcFwC5ZCguEWLIUEwy1YCgmGW7AUEgy3YCkkGG7BUkgw3IKlkGC4BUshwXALlkKC4RYshQTDLVgKCYZbsBNCjtvVquBtQE4EEVIV6oWTvFHOhSBCWinXW0l5s7UcbjdbNxx+++DN1gG4T8pWiHrTC4UEwFHI/ut7zQd2QuAmpDuW86AeADchZTeTA0975XETMoRChKAQMCgEDAoBg0LAoBAwKAQMCgGDQsCgEDAoBAwfIR5TjafebFx8hNTuU42n3mxcPIWU7O0Vxk/IaeJeDprL4Tym3qKfajz1di0Wrz3EMNV46u1aLF5CDFONp96uxeIlxDDVeOrtWixeQoZ1FOILhYBBIWBQCBgUAkYoIUQICgGDQsCgEDAoBAwKAYNCwKAQMCgEDAoBg0LAoBAwKAQMCgGDQsCgEDCchZBAOArRiA2zOMO1UwjY2r2FEFkoBAwKAYNCwKAQMDyF9GY2u6N9pKRbPPzQzXTAY+soe0tG/8b1peIji5vqLx+G6sr416v+pG0j5ebqie8+iOX+E35C+nP/3S15bSLpFo98qD8d8Ng6doX65vrl9f5lrV97Nz+kvlpNIWn66+0jrtrFU9W7ZzVBpWb5IJbBJ/yE9GfHvOH486/mf4VuseZD5+mANYsbIfrlxx/f1/q1d1uor67WtXF5+4irfu29Bbq167ZtGMtgDX5C+vPH3qH2zW7x+Icu0wGPL66aHVm/vFo3m61dvPvlpWlU9NXlH+bl7QNj+sX7l6d3w2K1h2zXuuX3sQw+kUrIdTpg3Tq0X7kNzCSk/uezrvTVdfn8aVp794irXrcK3Fi9evqeSoi2yer+sn6/7k0HrFuHoUnrDrvODaIKwLS8PfDq/3hry/zdy41u+X0swk2W/qDe/mX9gbE3HbDmoN5slOmwWxkO6qq6Mp8yGNfePuKqX7vav9bGtRvOCe5jET6ou572lhNnluoDpvPa6dNeY3VlXt494mpae4F62kvEoRAwKAQMCgGDQsCgEDAoBIyHFbJ7elfd/OvpT2LxsELqsuiuqhfG4wo5vKlBidTfYjaPK6TeFdXiGqyHFnLcLq/Bemghh9en5bVYjyykXC/wmP7AQrqRvdTfYjYPK+TwqgYbvoyPngHzqEKO20L9KBfXaD2qkMVCIWBQCBgUAgaFgEEhYFAIGBQCxopg8S8fdeaNZ/k4jwAAAABJRU5ErkJggg==</file>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>A partir do histograma acima, determine a média e a mediana para a variável <em>X</em>:</p>
+<p>Para calcular a variância, divida por <code>n-1</code> (tamanho da amostra menos 1).</p>
+<ul>
+<li> A média de <em>X</em> é: 506,7. </li>
+<li> A mediana de <em>X</em> é: 550. </li>
+<li> A variância de <em>X</em> é: 35.630,74. </li>
+<li> O Desvio Padrão de <em>X</em> é: 188,7611. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>4</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R4 Q1 : histograma-to-resumos-dispersao_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Considere o seguinte gráfico de barras para a variável quantitativa contínua <em>x</em> :</p>
+<p><img src="@@PLUGINFILE@@/grafico-1.png" /></p>
+<p>A partir do histograma acima, determine a média e a mediana para a variável <em>X</em>:</p>
+<p>Para calcular a variância, divida por <code>n-1</code> (tamanho da amostra menos 1).</p>
+A média de <em>X</em> é: {1:NUMERICAL:=513.3:1}
+<br>A mediana de <em>X</em> é: {1:NUMERICAL:=550:1}
+<br>A Variância de <em>X</em> é: {1:NUMERICAL:=36659.7697697698:1}
+<br>O Desvio Padrão de <em>X</em> é: {1:NUMERICAL:=191.467411769653:1}
+</p>]]></text>
+<file name="grafico-1.png" encoding="base64">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</file>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>A partir do histograma acima, determine a média e a mediana para a variável <em>X</em>:</p>
+<p>Para calcular a variância, divida por <code>n-1</code> (tamanho da amostra menos 1).</p>
+<ul>
+<li> A média de <em>X</em> é: 513,3. </li>
+<li> A mediana de <em>X</em> é: 550. </li>
+<li> A variância de <em>X</em> é: 36.659,77. </li>
+<li> O Desvio Padrão de <em>X</em> é: 191,4674. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>4</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R5 Q1 : histograma-to-resumos-dispersao_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Considere o seguinte gráfico de barras para a variável quantitativa contínua <em>x</em> :</p>
+<p><img src="@@PLUGINFILE@@/grafico-1.png" /></p>
+<p>A partir do histograma acima, determine a média e a mediana para a variável <em>X</em>:</p>
+<p>Para calcular a variância, divida por <code>n-1</code> (tamanho da amostra menos 1).</p>
+A média de <em>X</em> é: {1:NUMERICAL:=506.9:1}
+<br>A mediana de <em>X</em> é: {1:NUMERICAL:=550:1}
+<br>A Variância de <em>X</em> é: {1:NUMERICAL:=38190.5805805806:1}
+<br>O Desvio Padrão de <em>X</em> é: {1:NUMERICAL:=195.424104400098:1}
+</p>]]></text>
+<file name="grafico-1.png" encoding="base64">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</file>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>A partir do histograma acima, determine a média e a mediana para a variável <em>X</em>:</p>
+<p>Para calcular a variância, divida por <code>n-1</code> (tamanho da amostra menos 1).</p>
+<ul>
+<li> A média de <em>X</em> é: 506,9. </li>
+<li> A mediana de <em>X</em> é: 550. </li>
+<li> A variância de <em>X</em> é: 38.190,58. </li>
+<li> O Desvio Padrão de <em>X</em> é: 195,4241. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>4</defaultgrade>
+</question>
+
+</quiz>

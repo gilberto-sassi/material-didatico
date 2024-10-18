@@ -1,0 +1,38 @@
+Question
+========
+Marque todas as alternativas corretas.
+  
+Answerlist
+----------
+* <code>ENEM</code> é um nome válido na linguagem <code>R</code>.
+* <code>install.packages</code> instala pacotes na linguagem <code>R</code>.
+* <code>install.packages</code> carrega pacotes na linguagem <code>R</code>.
+* <code>library</code> carrega pacotes na linguagem <code>R</code>.
+* <code>library</code> instala pacotes na linguagem <code>R</code>.
+* <code>p_load</code> carrega pacotes na linguagem <code>R</code>.
+* <code>p_load</code> apenas instala pacotes na linguagem <code>R</code>.
+* <code>tp_sexo</code> é um nome válido para um vetor que armazena gêneros de algumas pessoas.
+* <code>tp_sexo</code> é um nome inválido para um vetor que armazena gêneros de algumas pessoas.
+
+Solution
+========
+Answerlist
+----------
+
+* Falso. <code>ENEM</code> **não** é um nome válido na linguagem <code>R</code>.
+* Correto.
+* Falso. <code>install.packages</code> **não** carrega pacotes na linguagem <code>R</code>.
+* Correto.
+* Falso. <code>library</code> não instala pacotes na linguagem <code>R</code>.
+* Correto.
+* Falso. <code>p_load</code> carrega um pacote. Para um pacote não instalado, instala e depois carrega na linguagem <code>R</code>.
+* Correto.
+* Falso. <code>tp_sexo</code> **não** é um nome inválido para um vetor que armazena gêneros de algumas pessoas.
+
+
+Meta-information
+================
+exname: VF
+extype: mchoice
+exsolution: 010101010
+exshuffle: 4

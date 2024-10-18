@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+      <text>$course$/top/Padrão para MAT020-020200-242</text>
+    </category>
+    <info format="moodle_auto_format">
+      <text>A categoria padrão para as questões compartilhadas no contexto 'MAT020-020200-242'.</text>
+    </info>
+    <idnumber></idnumber>
+  </question>
+
+<!-- question: 34492189  -->
+  <question type="matching">
+    <name>
+      <text>funcoes-fator</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Associe cada função a sua descrição.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está correta.</p>]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está parcialmente correta.</p>]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está incorreta.</p>]]></text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <subquestion format="html">
+      <text><![CDATA[<p><code>read_xlsx</code></p>]]></text>
+      <answer>
+        <text>função para carregar planilhas</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p><code>fct</code></p>]]></text>
+      <answer>
+        <text>função para criar fator</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p><code>dados &lt;- read_xlsx("dados/brutos/arquivo.xlsx", sheet=2)<!-----></code></p>]]></text>
+      <answer>
+        <text><![CDATA[carrega a segunda aba da planilha "arquivos" salva em "dados/brutos" no objeto "dados"]]></text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p><code>dados &lt;- mutate(dados, nome = fct(nome, niveis))</code></p>]]></text>
+      <answer>
+        <text><![CDATA[transforma a variável "nome" em fator no objeto "dados"]]></text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text></text>
+      <answer>
+        <text>Nenhuma das respostas anteriores.</text>
+      </answer>
+    </subquestion>
+  </question>
+
+</quiz>

@@ -1,0 +1,73 @@
+```{r}
+#| label: dados
+#| echo: false
+#| message: false
+#| warning: false
+
+if (!require(pacman)) {
+  install.packages('pacman')
+  library(pacman)
+}
+p_load(readxl, writexl, readODS)
+p_load(ggthemes)
+p_load(glue)
+p_load(statBasics)
+p_load(janitor)
+p_load(exams)
+p_load(tidyverse)
+
+# dados simulados
+matriz_a <- matrix(rbeta(25, shape1 = 2, shape2 = 10) * 10, nrow = 5) |>
+    round(2)
+while(abs(det(matriz_a)) <= 0 || abs(det(matriz_a)) >= 5) {
+    matriz_a <- matrix(rbeta(25, shape1 = 2, shape2 = 10) * 10, nrow = 5) |>
+        round(2)
+}
+matriz_b <- sample(1:50, size = 5, replace = T)
+
+## SOLUTION
+sol <- solve(matriz_a, matriz_b)
+
+# formato
+f <- \(x) format(x, decimal.mark = ",", big.mark = ".")
+```
+
+Question
+========
+Quais os valores de x, y, z, w, t que satisfazem, simultaneamente, as seguintes equações:
+
+* `r f(matriz_a[1, 1])` &sdot; x + `r f(matriz_a[1, 2])` &sdot; y + `r f(matriz_a[1, 3])` &sdot; z + `r f(matriz_a[1, 4])` &sdot; w + `r f(matriz_a[1,5])` &sdot; t = `r matriz_b[1]`.
+* `r f(matriz_a[2, 1])` &sdot; x + `r f(matriz_a[2, 2])` &sdot; y + `r f(matriz_a[2, 3])` &sdot; z + `r f(matriz_a[2, 4])` &sdot; w + `r f(matriz_a[2,5])` &sdot; t = `r matriz_b[2]`.
+* `r f(matriz_a[3, 1])` &sdot; x + `r f(matriz_a[3, 2])` &sdot; y + `r f(matriz_a[3, 3])` &sdot; z + `r f(matriz_a[3, 4])` &sdot; w + `r f(matriz_a[3,5])` &sdot; t = `r matriz_b[3]`.
+* `r f(matriz_a[4, 1])` &sdot; x + `r f(matriz_a[4, 2])` &sdot; y + `r f(matriz_a[4, 3])` &sdot; z + `r f(matriz_a[4, 4])` &sdot; w + `r f(matriz_a[4,5])` &sdot; t = `r matriz_b[4]`.
+* `r f(matriz_a[5, 1])` &sdot; x + `r f(matriz_a[5, 2])` &sdot; y + `r f(matriz_a[5, 3])` &sdot; z + `r f(matriz_a[5, 4])` &sdot; w + `r f(matriz_a[5,5])` &sdot; t = `r matriz_b[5]`.
+
+Solução: (\#\#ANSWER1\#\#; \#\#ANSWER2\#\#; \#\#ANSWER3\#\#; \#\#ANSWER4\#\#; \#\#ANSWER5\#\#).
+
+Questionlist
+------------
+* 
+* 
+* 
+*
+*
+
+Solution
+========
+Solução: (`r f(sol[1])`; `r f(sol[2])`; `r f(sol[3])`; `r f(sol[4])`; `r f(sol[5])`).
+
+Solutionlist
+------------
+*
+*
+*
+*
+*
+
+Meta-information
+================
+exname: sistemasEquacoes
+extype: cloze
+exsolution: `r paste0(sol, collapse="|")`
+exclozetype: `r paste0(rep("num", length(sol)), collapse="|")`
+extol: 0.01

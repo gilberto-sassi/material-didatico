@@ -1,0 +1,111 @@
+```{r}
+#| echo: false
+#| label: gerando-resultados
+
+library(pacman)
+
+p_load(
+    readxl, writexl, janitor, 
+    glue,
+    mvtnorm,
+    DescTools,
+    knitr,
+    tidyverse
+)
+
+options(scipen = 9999) #prevent scientific notation
+
+# formatação
+f <- \(x) format(
+    x,
+    decimal.mark = ",",
+    big.mark = "."
+)
+
+
+# tamanho da amostra
+tam <- sample(2500:5000, 1)
+
+# correlacao
+vrho <- c(
+    "positiva" = runif(1, 0.85, 0.95),
+    "negativa" = runif(1, -0.95, -0.85),
+    "nula" = 0
+)
+rho <- sample(vrho, 1)
+mcor <- rbind(
+    c(1, rho),
+    c(rho, 1)
+)
+matriz <- rmvnorm(tam, c(0, 0), mcor)
+trans <- \(x) ifelse(x < 0, "A", "B")
+x1 <- matriz[, 1] |>
+    map_chr(~ trans(.x)) |>
+    fct(c("A", "B"))
+x2 <- matriz[, 2] |>
+    map_chr(~ trans(.x)) |>
+    fct(c("A", "B"))
+
+# solucao
+ajuste <- janitor::chisq.test(x1, x2)
+tab_obs <- ajuste$observed
+coef <- GoodmanKruskalGamma(x1, x2, conf.level = 0.95)
+sol_num <- c(
+    "nc" = tab_obs[1, 1] * tab_obs[2, 2],
+    "nd" = tab_obs[1, 2] * tab_obs[2, 1],
+    "gamma" = coef[1]
+)
+
+sol_str <- c(
+    "pacote" = "DescTools",
+    "funcao" = "GoodmanKruskalGamma"
+)
+```
+
+Question
+========
+Seja X1 e X2 duas variáveis qualitativas com valores A e B onde A < B. Suponha que a tabela de contingência para estas duas variáveis seja dada por:
+
+```{r}
+#| echo: false
+#| results: asis
+
+kable(
+    tab_obs,
+    format = "html",
+    scientific = FALSE,
+    table.attr = "border=\"1\"",
+)
+```
+
+Determine:
+
+Questionlist
+------------
+
+* <br>Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal:
+* <br>Função que podemos usar para calcular o coeficiente de Goodman-Kruskal:
+* <br>Número de pares concordantes:
+* <br>Número de pares discordantes:
+* <br>Coeficiente de Goodman-Kruskal:
+
+
+Solution
+========
+Solutionlist
+------------
+
+* Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal: DescTools.
+* Função que podemos usar para calcular o coeficiente de Goodman-Kruskal: GoodmanKruskalGamma.
+* Número de pares concordantes: `r f(sol_num[1])`.
+* Número de pares discordantes: `r f(sol_num[2])`.
+* Coeficiente de Goodman-Kruskal: `r f(sol_num[3])`.
+
+
+Meta-information
+================
+exname: GoodmanKruskalGammaTabela
+extype: cloze
+exclozetype: `r rep("string", length(sol_str)) |> paste(collapse="|")`|`r rep("num", length(sol_num)) |> paste(collapse="|")`
+exsolution: `r sol_str |> paste(collapse="|")`|`r sol_num |> paste(collapse="|")`
+extol: 0.05

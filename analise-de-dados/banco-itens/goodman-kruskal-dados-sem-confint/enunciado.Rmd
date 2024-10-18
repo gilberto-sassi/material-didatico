@@ -1,0 +1,95 @@
+```{r}
+#| echo: false
+#| label: gerando-resultados
+
+library(pacman)
+
+p_load(
+    readxl, writexl, janitor, 
+    glue,
+    mvtnorm,
+    DescTools,
+    knitr,
+    tidyverse
+)
+
+options(scipen = 9999) #prevent scientific notation
+
+# formatação
+f <- \(x) format(
+    x,
+    decimal.mark = ",",
+    big.mark = "."
+)
+
+
+# tamanho da amostra
+tam <- sample(2500:5000, 1)
+
+# número de linhas
+linhas <- sample(3:6, 1)
+colunas <- sample(3:6, 1)
+
+# correlacao
+vrho <- c(
+    "positiva" = runif(1, 0.85, 0.95),
+    "negativa" = runif(1, -0.95, -0.85),
+    "nula" = 0
+)
+rho <- sample(vrho, 1)
+mcor <- rbind(
+    c(1, rho),
+    c(rho, 1)
+)
+matriz <- rmvnorm(tam, c(0, 0), mcor)
+trans <- \(x, n) {
+    x |>
+        map_chr(\(u) {
+            for (k in seq_len(n - 1)) {
+                if (u <= qnorm(k / n)) {
+                    return(LETTERS[k])
+                }
+            }
+            return(LETTERS[n])
+        })
+}
+x1 <- matriz[, 1] |>
+    map_chr(~ trans(.x, linhas)) |>
+    fct(LETTERS[1:linhas])
+x2 <- matriz[, 2] |>
+    map_chr(~ trans(.x, colunas)) |>
+    fct(LETTERS[1:colunas])
+dados <- tibble(x1, x2)
+write_xlsx(dados, "dados.xlsx")
+
+# solucao
+ajuste <- janitor::chisq.test(x1, x2)
+tab_obs <- ajuste$observed
+coef <- GoodmanKruskalGamma(x1, x2, conf.level = 0.95)
+sol_num <- c(
+    "gamma" = coef[1]
+)
+
+```
+
+Question
+========
+Seja X~1~ e X~2~ duas variáveis qualitativas ordinais onde:
+
+* X~1~: `r LETTERS[1:linhas] |> paste(collapse=", ")` onde `r LETTERS[1:linhas] |> paste(collapse=" < ")`.
+* X~2~: `r LETTERS[1:colunas] |> paste(collapse=", ")` onde `r LETTERS[1:colunas] |> paste(collapse=" < ")`.
+
+Uma amostra com essas duas variáveis estão disponíveis em [**`dados.xlsx`**](dados.xlsx). Determine o Coeficiente de Goodman-Kruskal.
+
+
+Solution
+========
+
+Coeficiente de Goodman-Kruskal: `r f(sol_num)`.
+
+Meta-information
+================
+exname: GoodmanKruskalGamma
+extype: num
+exsolution: `r sol_num`
+extol: 0.05

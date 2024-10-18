@@ -1,0 +1,133 @@
+```{r}
+#| label: Gerando os dados da questão
+#| echo: false
+#| message: false
+
+library(pacman)
+
+p_load(
+    readxl, writexl, janitor, lettervalue, ggthemes, tidyverse
+)
+
+# tamanho da amostra
+tam  <- 1000
+
+# amostra
+escolha <- sample(c(1, 2, 3), 1)
+amostra <- (case_when(
+    escolha == 1 ~ rbeta(tam, 1, 15),
+    escolha == 2 ~ rbeta(tam, 15, 1),
+    escolha == 3 ~ rbeta(tam, 12, 12)
+) * 100) |> round(2)
+
+# solução
+q1  <-  quantile(amostra, probs = 1 / 4)
+q3  <-  quantile(amostra, probs = 3 / 4)
+mediana  <-  quantile(amostra, probs = 2 / 4)
+B <- round((q3 - 2 * mediana + q1) / (q3 - q1), 2)
+LI <- q1 - 1.5 * (q3 - q1)
+LS <- q3 + 1.5 * (q3 - q1)
+sol <- list(
+    pontos_exteriores = ifelse(
+        min(amostra) < LI | max(amostra) > LS,
+        "10", "01"
+    ),
+    mediana = mediana,
+    q1 = q1,
+    q3 = q3,
+    B = round((q3 - 2 * mediana + q1) / (q3 - q1), 2),
+    assimetria = case_when(
+        -0.07 <= B & B <= 0.07 ~ "100",
+        B > 0.07 ~ "010",
+        B < -0.07 ~ "001"
+    ),
+    sigma = (q3 - q1) / 1.349,
+    var = ((q3 - q1) / 1.349)^2,
+    trimedia = 0.25 * q1 + 0.5 * mediana + 0.25 * q3,
+    LI = q1 - 1.5 * (q3 - q1),
+    LS = q3 + 1.5 * (q3 - q1)
+)
+
+opcao <- list(
+    pontos_exteriores = case_when(
+        sol[["pontos_exteriores"]] == "01" ~ "A amostra de X não tem pontos exteriores.",
+        sol[["pontos_exteriores"]] == "10" ~ "A amostra de X tem pontos exteriores."
+    ),
+    assimetria = case_when(
+        sol[["assimetria"]] == "100" ~ "A amostra de X tem simetria.",
+        sol[["assimetria"]] == "010" ~ "A amostra de X tem assimetria à direita ou positiva.",
+        sol[["assimetria"]] == "001" ~ "A amostra de X tem assimetria à esquerda ou negativa."
+    )
+)
+
+# formatação
+f <- \(x) format(
+    x,
+    decimal.mark = ",",
+    big.mark = "."
+)
+
+```
+
+Question
+========
+Considere X uma variável aleatória contínua. Para esta variável aleatória, temos o seguinte diagrama de caixa:
+
+```{r}
+#| echo: false
+#| fig.cap: ""
+ggplot(tibble(x = amostra)) +
+    geom_boxplot(aes(x = "", y = x)) +
+    scale_y_continuous("X", breaks = c(min(amostra), q1, mediana, q3, max(amostra)), labels = f) +
+    labs(x = "") +
+    theme_minimal()
+```
+
+* \#\#ANSWER1\#\#
+* \#\#ANSWER2\#\#
+* \#\#ANSWER3\#\#
+* \#\#ANSWER4\#\#
+* \#\#ANSWER5\#\#
+* \#\#ANSWER6\#\#
+
+
+Questionlist
+------------
+
+* A amostra de X tem pontos exteriores.
+* A amostra de X não tem pontos exteriores.
+* Mediana: 
+* Primeiro quartil:
+* Terceiro quartil:
+* Coeficiente de Bowley:
+* A amostra de X tem simetria.
+* A amostra de X tem assimetria à direita ou positiva.
+* A amostra de X tem assimetria à esquerda ou negativa.
+
+
+
+Solution
+========
+Solutionlist
+------------
+
+* `r opcao$pontos_exteriores`
+* 
+* Mediana: `r sol[["mediana"]]`.
+* Primeiro quartil: `r sol[["q1"]]`.
+* Terceiro quartil: `r sol[["q3"]]`.
+* Coeficiente de Bowley: `r sol[["B"]]`.
+* `r opcao$assimetria`
+* 
+* 
+
+
+
+
+Meta-information
+================
+exname: boxplot
+extype: cloze
+exclozetype: schoice|num|num|num|num|schoice
+exsolution: `r sol[["pontos_exteriores"]]`|`r sol[["mediana"]]`|`r sol[["q1"]]`|`r sol[["q3"]]`|`r sol[["B"]]`|`r sol[["assimetria"]]`
+extol: 0.2

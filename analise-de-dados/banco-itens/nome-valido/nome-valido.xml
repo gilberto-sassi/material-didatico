@@ -11,23 +11,44 @@
 
 <question type="multichoice">
 <name>
-<text> Q1 : banco-itens_nome-valido_enunciado </text>
+<text> Q1 : nome-valido_enunciado </text>
 </name>
 <questiontext format="html">
 <text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
 <p>
-<p>Quais das seguintes opções abaixo são nomes válidos seguindo o estilo de codificação do <em>framework</em> <code>tidyverse</code>?</p>
+<p>Suponha que uma colaboradora de uma estatal da área do petróleo e gás precisa criar uma pasta para armazenar os dados gerados pelo negócio. Quais das seguintes opções abaixo são nomes válidos seguindo o estilo de codificação do <em>framework</em> <code>tidyverse</code>?</p>
 </p>]]></text>
 </questiontext>
 <generalfeedback format="html">
 <text><![CDATA[<p>
-<ol type = "a">
-<li> Errada. Nomes válidos não podem conter carcteres especiais como <code>%</code>, <code>&amp;</code> e <code>-</code>. </li>
-<li> Errada. Nomes válidos não podem conter ponto. </li>
-<li> Errada. Nome não representa a natureza do objeto. </li>
-<li> Errada. Nomes válidos não podem ter letras maiúsculas. </li>
+<ul>
+<li> Errada. Nomes não podem começar com número. </li>
 <li> Correta. </li>
-</ol>
+<li> Errada. Nomes não podem conter hífen e outros caracteres especiais. </li>
+<li> Errada. Apenas letras minúsculas são permitidas. </li>
+</ul>
 </p>]]></text>
 </generalfeedback>
 <penalty>0</penalty>
@@ -35,53 +56,43 @@
 <shuffleanswers>false</shuffleanswers>
 <single>false</single>
 <answernumbering>abc</answernumbering>
-<answer fraction="-25" format="html">
+<answer fraction="-33.33333" format="html">
 <text><![CDATA[<p>
-<code>nome-valido</code>.
+<code>1_bases</code>
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
-Errada. Nomes válidos não podem conter carcteres especiais como <code>%</code>, <code>&amp;</code> e <code>-</code>.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="-25" format="html">
-<text><![CDATA[<p>
-<code>nome.valido</code>.
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Errada. Nomes válidos não podem conter ponto.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="-25" format="html">
-<text><![CDATA[<p>
-<code>abcd</code>
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Errada. Nome não representa a natureza do objeto.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="-25" format="html">
-<text><![CDATA[<p>
-<code>NomeValido</code>.
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Errada. Nomes válidos não podem ter letras maiúsculas.
+Errada. Nomes não podem começar com número.
 </p>]]></text>
 </feedback>
 </answer>
 <answer fraction="100" format="html">
 <text><![CDATA[<p>
-<code>nome_valido</code>.
+<code>dados</code>
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
 Correta.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-33.33333" format="html">
+<text><![CDATA[<p>
+<code>bases-dados</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Errada. Nomes não podem conter hífen e outros caracteres especiais.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-33.33333" format="html">
+<text><![CDATA[<p>
+<code>DADOS</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Errada. Apenas letras minúsculas são permitidas.
 </p>]]></text>
 </feedback>
 </answer>

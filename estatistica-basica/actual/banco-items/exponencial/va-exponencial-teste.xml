@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/va-exponencial-teste/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R1 Q1 : banco-items_exponencial_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Seja X uma variável aleatória contínua com distribuição expoencial com média populacional igual a 7134. Responda cada uma das perguntas abaixo:</p>
+<br>P(2000 &lt; X &lt; 7134): {1:NUMERICAL:=0.39:0.05}
+<br>P(X ⩽ 7134): {1:NUMERICAL:=0.63:0.05}
+<br>P(X &gt; 7134): {1:NUMERICAL:=0.37:0.05}
+<br>Quantil de ordem 0,29: {1:NUMERICAL:=2443.33:0.05}
+<br>Média: {1:NUMERICAL:=7134:0.05}
+<br>Variância: {1:NUMERICAL:=7134:0.05}
+<br>Desvio padrão: {1:NUMERICAL:=84.46:0.05}
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> P(2000 &lt; X &lt; 7134): 0.39. </li>
+<li> P(X ⩽ 7134): 0.63. </li>
+<li> P(X &gt; 7134): 0.37. </li>
+<li> Quantil de ordem 0,29: 2443.33. </li>
+<li> Média: 7134. </li>
+<li> Variância: 7134. </li>
+<li> Desvio padrão: 84.46. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>7</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R2 Q1 : banco-items_exponencial_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Seja X uma variável aleatória contínua com distribuição expoencial com média populacional igual a 5490. Responda cada uma das perguntas abaixo:</p>
+<br>P(2000 &lt; X &lt; 5490): {1:NUMERICAL:=0.33:0.05}
+<br>P(X ⩽ 5490): {1:NUMERICAL:=0.63:0.05}
+<br>P(X &gt; 5490): {1:NUMERICAL:=0.37:0.05}
+<br>Quantil de ordem 0,36: {1:NUMERICAL:=2450.12:0.05}
+<br>Média: {1:NUMERICAL:=5490:0.05}
+<br>Variância: {1:NUMERICAL:=5490:0.05}
+<br>Desvio padrão: {1:NUMERICAL:=74.09:0.05}
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> P(2000 &lt; X &lt; 5490): 0.33. </li>
+<li> P(X ⩽ 5490): 0.63. </li>
+<li> P(X &gt; 5490): 0.37. </li>
+<li> Quantil de ordem 0,36: 2450.12. </li>
+<li> Média: 5490. </li>
+<li> Variância: 5490. </li>
+<li> Desvio padrão: 74.09. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>7</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R3 Q1 : banco-items_exponencial_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Seja X uma variável aleatória contínua com distribuição expoencial com média populacional igual a 5610. Responda cada uma das perguntas abaixo:</p>
+<br>P(2000 &lt; X &lt; 5610): {1:NUMERICAL:=0.33:0.05}
+<br>P(X ⩽ 5610): {1:NUMERICAL:=0.63:0.05}
+<br>P(X &gt; 5610): {1:NUMERICAL:=0.37:0.05}
+<br>Quantil de ordem 0,68: {1:NUMERICAL:=6392.23:0.05}
+<br>Média: {1:NUMERICAL:=5610:0.05}
+<br>Variância: {1:NUMERICAL:=5610:0.05}
+<br>Desvio padrão: {1:NUMERICAL:=74.9:0.05}
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> P(2000 &lt; X &lt; 5610): 0.33. </li>
+<li> P(X ⩽ 5610): 0.63. </li>
+<li> P(X &gt; 5610): 0.37. </li>
+<li> Quantil de ordem 0,68: 6392.23. </li>
+<li> Média: 5610. </li>
+<li> Variância: 5610. </li>
+<li> Desvio padrão: 74.9. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>7</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R4 Q1 : banco-items_exponencial_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Seja X uma variável aleatória contínua com distribuição expoencial com média populacional igual a 5781. Responda cada uma das perguntas abaixo:</p>
+<br>P(2000 &lt; X &lt; 5781): {1:NUMERICAL:=0.34:0.05}
+<br>P(X ⩽ 5781): {1:NUMERICAL:=0.63:0.05}
+<br>P(X &gt; 5781): {1:NUMERICAL:=0.37:0.05}
+<br>Quantil de ordem 0,36: {1:NUMERICAL:=2579.99:0.05}
+<br>Média: {1:NUMERICAL:=5781:0.05}
+<br>Variância: {1:NUMERICAL:=5781:0.05}
+<br>Desvio padrão: {1:NUMERICAL:=76.03:0.05}
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> P(2000 &lt; X &lt; 5781): 0.34. </li>
+<li> P(X ⩽ 5781): 0.63. </li>
+<li> P(X &gt; 5781): 0.37. </li>
+<li> Quantil de ordem 0,36: 2579.99. </li>
+<li> Média: 5781. </li>
+<li> Variância: 5781. </li>
+<li> Desvio padrão: 76.03. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>7</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R5 Q1 : banco-items_exponencial_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Seja X uma variável aleatória contínua com distribuição expoencial com média populacional igual a 6408. Responda cada uma das perguntas abaixo:</p>
+<br>P(2000 &lt; X &lt; 6408): {1:NUMERICAL:=0.36:0.05}
+<br>P(X ⩽ 6408): {1:NUMERICAL:=0.63:0.05}
+<br>P(X &gt; 6408): {1:NUMERICAL:=0.37:0.05}
+<br>Quantil de ordem 0,4: {1:NUMERICAL:=3273.37:0.05}
+<br>Média: {1:NUMERICAL:=6408:0.05}
+<br>Variância: {1:NUMERICAL:=6408:0.05}
+<br>Desvio padrão: {1:NUMERICAL:=80.05:0.05}
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> P(2000 &lt; X &lt; 6408): 0.36. </li>
+<li> P(X ⩽ 6408): 0.63. </li>
+<li> P(X &gt; 6408): 0.37. </li>
+<li> Quantil de ordem 0,4: 3273.37. </li>
+<li> Média: 6408. </li>
+<li> Variância: 6408. </li>
+<li> Desvio padrão: 80.05. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>7</defaultgrade>
+</question>
+
+</quiz>

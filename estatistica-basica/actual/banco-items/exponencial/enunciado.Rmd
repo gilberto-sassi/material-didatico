@@ -1,11 +1,12 @@
 ```{r, label="Simulação de dados", include=F}
-library(exams)
-library(magrittr)
-library(readxl)
-library(writexl)
-library(knitr)
-library(truncnorm)
-library(tidyverse)
+library(pacman)
+p_load(exams)
+p_load(magrittr)
+p_load(readxl)
+p_load(writexl)
+p_load(knitr)
+p_load(truncnorm)
+p_load(tidyverse)
 options(scipen = 999) #prevent scientific notation
 
 # média populacional
@@ -17,7 +18,10 @@ sol <- c(
     pexp(media_pop, 1 / media_pop) - pexp(2000, 1 / media_pop),
     pexp(media_pop, 1 / media_pop),
     1 - pexp(media_pop, 1 / media_pop),
-    qexp(prob, rate = 1  / media_pop)
+    qexp(prob, rate = 1  / media_pop),
+    media_pop,
+    media_pop,
+    sqrt(media_pop)
 ) |> round(2)
 f <- \(x) format(x, decimal.mark = ",")
 ```
@@ -30,24 +34,32 @@ Seja X uma variável aleatória contínua com distribuição expoencial com méd
 
 Questionlist
 ------------
-* P(`r 2000` < X < `r media_pop`): 
-* P(X  &#10877; `r media_pop`): 
-* P(X > `r media_pop`): 
-* Quantil de ordem `r f(prob)`: 
+
+* <br>P(`r 2000` < X < `r media_pop`): 
+* <br>P(X  &#10877; `r media_pop`): 
+* <br>P(X > `r media_pop`): 
+* <br>Quantil de ordem `r f(prob)`: 
+* <br>Média:
+* <br>Variância:
+* <br>Desvio padrão:
 
 Solution
 ========
 Solutionlist
 ------------
+
 * P(`r 2000` < X < `r media_pop`): `r sol[1]`.
 * P(X  &#10877; `r media_pop`): `r sol[2]`.
 * P(X > `r media_pop`): `r sol[3]`.
 * Quantil de ordem `r f(prob)`: `r sol[4]`.
+* Média: `r sol[5]`.
+* Variância: `r sol[6]`.
+* Desvio padrão: `r sol[7]`.
 
 Meta-information
 ================
 exname: exponencial
 extype: cloze
-exclozetype: num|num|num|num
+exclozetype: `r rep('num', length(sol)) |> paste0(collapse = "|")`
 exsolution: `r paste0(sol, collapse = "|")`
-extol: 0.02
+extol: 0.05

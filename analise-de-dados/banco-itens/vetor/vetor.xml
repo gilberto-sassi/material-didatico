@@ -11,27 +11,49 @@
 
 <question type="multichoice">
 <name>
-<text> Q1 : banco-itens_vetor_enunciado </text>
+<text> Q1 : analise-de-dados_banco-itens_vetor_enunciado </text>
 </name>
 <questiontext format="html">
 <text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
 <p>
 <p>Quais das funções abaixo podem ser usadas para criar um vetor do tipo numérico (<code>numeric</code>).</p>
 </p>]]></text>
 </questiontext>
 <generalfeedback format="html">
 <text><![CDATA[<p>
-<ol type = "a">
-<li> <code>rbind</code>. FALSA: essa função é usada para criar um matriz. </li>
+<ul>
+<li> <code>matrix</code>. FALSA: essa função é usada para criar um matriz. </li>
 <li> <code>c</code>. CORRETA. </li>
 <li> <code>seq_len</code>. CORRETA. </li>
-<li> <code>matrix</code>. FALSA: essa função é usada para criar um matriz. </li>
 <li> <code>cbind</code>. FALSA: essa função é usada para criar uma matriz. </li>
+<li> <code>rbind</code>. FALSA: essa função é usada para criar um matriz. </li>
+<li> operador <code>:</code>. CORRETA. </li>
 <li> <code>seq</code>. CORRETA. </li>
 <li> <code>seq_along</code>. CORRETA. </li>
 <li> <code>vector</code>. CORRETA. </li>
-<li> operador <code>:</code>. CORRETA. </li>
-</ol>
+</ul>
 </p>]]></text>
 </generalfeedback>
 <penalty>0</penalty>
@@ -41,11 +63,11 @@
 <answernumbering>abc</answernumbering>
 <answer fraction="-33.33333" format="html">
 <text><![CDATA[<p>
-<code>rbind</code>
+<code>matrix</code>
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
-<code>rbind</code>. FALSA: essa função é usada para criar um matriz.
+<code>matrix</code>. FALSA: essa função é usada para criar um matriz.
 </p>]]></text>
 </feedback>
 </answer>
@@ -71,21 +93,31 @@
 </answer>
 <answer fraction="-33.33333" format="html">
 <text><![CDATA[<p>
-<code>matrix</code>
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-<code>matrix</code>. FALSA: essa função é usada para criar um matriz.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="-33.33333" format="html">
-<text><![CDATA[<p>
 <code>cbind</code>
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
 <code>cbind</code>. FALSA: essa função é usada para criar uma matriz.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-33.33333" format="html">
+<text><![CDATA[<p>
+<code>rbind</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+<code>rbind</code>. FALSA: essa função é usada para criar um matriz.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="16.66667" format="html">
+<text><![CDATA[<p>
+operador <code>:</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+operador <code>:</code>. CORRETA.
 </p>]]></text>
 </feedback>
 </answer>
@@ -116,16 +148,6 @@
 <feedback format="html">
 <text><![CDATA[<p>
 <code>vector</code>. CORRETA.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="16.66667" format="html">
-<text><![CDATA[<p>
-operador <code>:</code>
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-operador <code>:</code>. CORRETA.
 </p>]]></text>
 </feedback>
 </answer>

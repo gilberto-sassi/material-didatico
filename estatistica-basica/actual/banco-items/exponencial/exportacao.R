@@ -1,14 +1,24 @@
-library(readxl)
-library(readODS)
-library(writexl)
-library(ggthemes)
-library(glue)
-library(statBasics)
-library(exams)
-library(tidyverse)
+library(pacman)
+p_load(readxl)
+p_load(readODS)
+p_load(writexl)
+p_load(ggthemes)
+p_load(glue)
+p_load(statBasics)
+p_load(exams)
+p_load(tidyverse)
 
-exams::exams2moodle("banco-items/exponencial/enunciado.Rmd",
-                    n = 1000,
+path <- 'banco-items/exponencial'
+exams2moodle(glue("{path}/enunciado.Rmd"),
+                    n = 5,
                     verbose = TRUE,
-                    dir = "banco-items/exponencial",
+                    dir = glue("{path}"),
+                    name = "va-exponencial-teste")
+
+
+exams2moodle(glue("{path}/enunciado.Rmd"),
+                    n = 500,
+                    verbose = TRUE,
+                    dir = glue("{path}"),
                     name = "va-exponencial")
+

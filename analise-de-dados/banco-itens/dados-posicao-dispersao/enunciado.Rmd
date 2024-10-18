@@ -1,0 +1,71 @@
+```{r dados, include=FALSE, message=FALSE} 
+if (!require(pacman)) {
+  install.packages("pacman")
+  library(pacman)
+}
+p_load(readxl, writexl, readODS)
+p_load(ggthemes)
+p_load(glue)
+p_load(statBasics)
+p_load(exams)
+p_load(Boom, extraDistr)
+p_load(tidyverse)
+options(scipen = 999) # prevent scientific notation
+
+dp_pop <- runif(1, 5, 10)
+media_pop <- runif(1, 10, 15)
+tam <- sample(1000:10000, 1)
+
+amostra <- rnorm(tam, media_pop, dp_pop) |> round(2)
+
+dados <- tibble(x = amostra)
+
+write_xlsx(dados, "dados.xlsx")
+
+# solução
+sol <- c(
+#   'q0_01' = quantile(amostra, probs = 0.01),
+#   'q1' = quantile(amostra, probs = 0.25),
+#   'q2' = quantile(amostra, probs = 0.5),
+#   'q3' = quantile(amostra, probs = 0.75),
+#   'q0_09' = quantile(amostra, probs = 0.09),
+  'media' = mean(amostra),
+  'mediana' = median(amostra),
+  'var' = var(amostra),
+  'dp' = sd(amostra)
+)
+
+# formatação
+f <- \(x) format(x, decimal.mark = ",", big.mark = ".")
+```
+
+Question
+========
+Seja _X_ uma variável quantitativa contínua com valores observados salvos no arquivos [dados](dados.xlsx). Calcule as seguintes medidas de resumo:
+
+Questionlist
+------------
+
+* A média de _X_ é: 
+* <br>A mediana de _X_ é: 
+* <br>A Variância de _X_ é:
+* <br>O Desvio Padrão de _X_ é:
+
+Solution
+========
+Solutionlist
+------------
+
+* A média de _X_ é `r f(sol['media'])`.
+* A mediana de _X_ é `r f(sol['mediana'])`. 
+* A Variância de _X_ é `r f(sol['var'])`.
+* O Desvio Padrão de _X_ é `r f(sol['dp'])`
+
+Meta-information
+================
+exname: dadosPosicaoDispersao
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste0(collapse = "|")`
+exsolution: `r paste0(sol, collapse = "|")`
+extol: 1
+exshuffle: TRUE

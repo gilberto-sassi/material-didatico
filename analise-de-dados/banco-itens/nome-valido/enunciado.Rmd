@@ -2,17 +2,21 @@
 Question
 ========
 
-Quais das seguintes opções abaixo são nomes válidos seguindo o estilo de codificação do _framework_ `tidyverse`? 
-
+Suponha que uma colaboradora de uma estatal da área do petróleo e gás precisa criar uma pasta para armazenar os dados gerados pelo negócio. Quais das seguintes opções abaixo são nomes válidos seguindo o estilo de codificação do _framework_ `tidyverse`? 
 
 Answerlist
 ------------
 
-* `nome_valido`.
+* `dados`
+* `base_dados`
+* `base_de_dados`
+* `DADOS`
+* `base de dados`
+* `1 base de dados`
 * `abcd`
-* `NomeValido`.
-* `nome.valido`.
-* `nome-valido`.
+* `1_bases`
+* `bases.de.dados`
+* `bases-dados`
 
 Solution
 ========
@@ -21,16 +25,19 @@ Answerlist
 ------------
 
 * Correta.
-* Errada. Nome não representa a natureza do objeto.
-* Errada. Nomes válidos não podem ter letras maiúsculas.
-* Errada. Nomes válidos não podem conter ponto.
-* Errada. Nomes válidos não podem conter carcteres especiais como `%`, `&` e `-`.
-
-
+* Correta.
+* Correta.
+* Errada. Apenas letras minúsculas são permitidas.
+* Errada. Espaço e outros caracteres especiais não são permitidos.
+* Errada. Nomes não podem começar com número e não podem ter espaço e outros caracteres especiais.
+* Errada. Nomes precisam representar sua natureza.
+* Errada. Nomes não podem começar com número.
+* Errada. Nomes não podem conter pontos e outros caracteres especiais.
+* Errada. Nomes não podem conter hífen e outros caracteres especiais.
 
 Meta-information
 ================
 exname: nomeValido
 extype: mchoice
-exsolution: 10000
-exshuffle: TRUE
+exsolution: 1110000000
+exshuffle: 4

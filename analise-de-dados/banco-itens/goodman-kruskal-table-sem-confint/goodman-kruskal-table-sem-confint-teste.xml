@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/goodman-kruskal-table-sem-confint-teste/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R1 Q1 : goodman-kruskal-table-sem-confint_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Seja X1 e X2 duas variáveis qualitativas com valores A e B onde A &lt; B. Suponha que a tabela de contingência para estas duas variáveis seja dada por:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+A
+</th>
+<th style="text-align:right;">
+B
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+293
+</td>
+<td style="text-align:right;">
+1430
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+1427
+</td>
+<td style="text-align:right;">
+272
+</td>
+</tr>
+</tbody>
+</table>
+<p>Determine:</p>
+<br>Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal: {1:SHORTANSWER:%100%DescTools}
+<br>Função que podemos usar para calcular o coeficiente de Goodman-Kruskal: {1:SHORTANSWER:%100%GoodmanKruskalGamma}
+<br>Número de pares concordantes: {1:NUMERICAL:=79696:0.05}
+<br>Número de pares discordantes: {1:NUMERICAL:=2040610:0.05}
+<br>Coeficiente de Goodman-Kruskal: {1:NUMERICAL:=-0.924825944934363:0.05}
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal: DescTools. </li>
+<li> Função que podemos usar para calcular o coeficiente de Goodman-Kruskal: GoodmanKruskalGamma. </li>
+<li> Número de pares concordantes: 79.696. </li>
+<li> Número de pares discordantes: 2.040.610. </li>
+<li> Coeficiente de Goodman-Kruskal: -0,9248259. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>5</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R2 Q1 : goodman-kruskal-table-sem-confint_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Seja X1 e X2 duas variáveis qualitativas com valores A e B onde A &lt; B. Suponha que a tabela de contingência para estas duas variáveis seja dada por:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+A
+</th>
+<th style="text-align:right;">
+B
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+756
+</td>
+<td style="text-align:right;">
+739
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+716
+</td>
+<td style="text-align:right;">
+758
+</td>
+</tr>
+</tbody>
+</table>
+<p>Determine:</p>
+<br>Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal: {1:SHORTANSWER:%100%DescTools}
+<br>Função que podemos usar para calcular o coeficiente de Goodman-Kruskal: {1:SHORTANSWER:%100%GoodmanKruskalGamma}
+<br>Número de pares concordantes: {1:NUMERICAL:=573048:0.05}
+<br>Número de pares discordantes: {1:NUMERICAL:=529124:0.05}
+<br>Coeficiente de Goodman-Kruskal: {1:NUMERICAL:=0.0398522190728852:0.05}
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal: DescTools. </li>
+<li> Função que podemos usar para calcular o coeficiente de Goodman-Kruskal: GoodmanKruskalGamma. </li>
+<li> Número de pares concordantes: 573.048. </li>
+<li> Número de pares discordantes: 529.124. </li>
+<li> Coeficiente de Goodman-Kruskal: 0,03985222. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>5</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R3 Q1 : goodman-kruskal-table-sem-confint_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Seja X1 e X2 duas variáveis qualitativas com valores A e B onde A &lt; B. Suponha que a tabela de contingência para estas duas variáveis seja dada por:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+A
+</th>
+<th style="text-align:right;">
+B
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1718
+</td>
+<td style="text-align:right;">
+352
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+303
+</td>
+<td style="text-align:right;">
+1768
+</td>
+</tr>
+</tbody>
+</table>
+<p>Determine:</p>
+<br>Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal: {1:SHORTANSWER:%100%DescTools}
+<br>Função que podemos usar para calcular o coeficiente de Goodman-Kruskal: {1:SHORTANSWER:%100%GoodmanKruskalGamma}
+<br>Número de pares concordantes: {1:NUMERICAL:=3037424:0.05}
+<br>Número de pares discordantes: {1:NUMERICAL:=106656:0.05}
+<br>Coeficiente de Goodman-Kruskal: {1:NUMERICAL:=0.932154398106918:0.05}
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal: DescTools. </li>
+<li> Função que podemos usar para calcular o coeficiente de Goodman-Kruskal: GoodmanKruskalGamma. </li>
+<li> Número de pares concordantes: 3.037.424. </li>
+<li> Número de pares discordantes: 106.656. </li>
+<li> Coeficiente de Goodman-Kruskal: 0,9321544. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>5</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R4 Q1 : goodman-kruskal-table-sem-confint_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Seja X1 e X2 duas variáveis qualitativas com valores A e B onde A &lt; B. Suponha que a tabela de contingência para estas duas variáveis seja dada por:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+A
+</th>
+<th style="text-align:right;">
+B
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+171
+</td>
+<td style="text-align:right;">
+1312
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+1327
+</td>
+<td style="text-align:right;">
+182
+</td>
+</tr>
+</tbody>
+</table>
+<p>Determine:</p>
+<br>Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal: {1:SHORTANSWER:%100%DescTools}
+<br>Função que podemos usar para calcular o coeficiente de Goodman-Kruskal: {1:SHORTANSWER:%100%GoodmanKruskalGamma}
+<br>Número de pares concordantes: {1:NUMERICAL:=31122:0.05}
+<br>Número de pares discordantes: {1:NUMERICAL:=1741024:0.05}
+<br>Coeficiente de Goodman-Kruskal: {1:NUMERICAL:=-0.964876483088865:0.05}
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal: DescTools. </li>
+<li> Função que podemos usar para calcular o coeficiente de Goodman-Kruskal: GoodmanKruskalGamma. </li>
+<li> Número de pares concordantes: 31.122. </li>
+<li> Número de pares discordantes: 1.741.024. </li>
+<li> Coeficiente de Goodman-Kruskal: -0,9648765. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>5</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R5 Q1 : goodman-kruskal-table-sem-confint_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Seja X1 e X2 duas variáveis qualitativas com valores A e B onde A &lt; B. Suponha que a tabela de contingência para estas duas variáveis seja dada por:</p>
+<table border="1">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+A
+</th>
+<th style="text-align:right;">
+B
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1103
+</td>
+<td style="text-align:right;">
+1097
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+1168
+</td>
+<td style="text-align:right;">
+1151
+</td>
+</tr>
+</tbody>
+</table>
+<p>Determine:</p>
+<br>Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal: {1:SHORTANSWER:%100%DescTools}
+<br>Função que podemos usar para calcular o coeficiente de Goodman-Kruskal: {1:SHORTANSWER:%100%GoodmanKruskalGamma}
+<br>Número de pares concordantes: {1:NUMERICAL:=1269553:0.05}
+<br>Número de pares discordantes: {1:NUMERICAL:=1281296:0.05}
+<br>Coeficiente de Goodman-Kruskal: {1:NUMERICAL:=-0.00460356532276117:0.05}
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> Pacote que podemos usar para calcular o coeficiente de Goodman-Kruskal: DescTools. </li>
+<li> Função que podemos usar para calcular o coeficiente de Goodman-Kruskal: GoodmanKruskalGamma. </li>
+<li> Número de pares concordantes: 1.269.553. </li>
+<li> Número de pares discordantes: 1.281.296. </li>
+<li> Coeficiente de Goodman-Kruskal: -0,004603565. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>5</defaultgrade>
+</question>
+
+</quiz>
