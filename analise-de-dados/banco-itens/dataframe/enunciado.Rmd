@@ -15,47 +15,78 @@ p_load(statBasics)
 p_load(tidyverse)
 
 # tamanho da amostra
-tamanho <- sample(1000:5000, 1)
+n_obs <- sample(1000:5000, 1)
+n_vars <- sample(3:25, 1)
 
-dados <- tibble(
-    primeira_coluna = sample(letters, size = tamanho, replace = TRUE),
-    segunda_coluna = rnorm(tamanho, mean = 10, sd = 2) |> round(2)
+tipo_dados <- c(
+  "texto nominal",
+  "texto ordinal",
+  "número inteiro",
+  "número real",
+  "número complexo",
+  "valor lógico"
 )
+
+tipo_cols <- sample(c("texto nominal", "número inteiro", "número real"),
+           n_vars, replace = TRUE)
+
+dados <- tibble(identificacao = paste0("id_", seq(n_obs)))
+
+for (j in seq_along(tipo_cols)) {
+  if (tipo_cols[j] == "texto nominal") {
+    dados[[glue("coluna_{j}")]] <- sample(letters, size = n_obs, replace = TRUE)
+  } else if (tipo_cols[j] == "número inteiro") {
+    dados[[glue("coluna_{j}")]] <- sample(10:100, size = n_obs, replace = TRUE)
+  } else if (tipo_cols[j] == "número real") {
+    dados[[glue("coluna_{j}")]] <- round(rbeta(n = n_obs, 2, 10) * 1000, 2)
+  }
+}
+
+i <- sample(n_obs, 1)
+j <- sample(n_vars, 1)
 
 write_xlsx(dados, "dados.xlsx")
 
 solucao <- c(
-    paste0(tamanho),
-    paste0(2),
-    "character",
-    "numeric"
+    n_obs,
+    n_vars,
+    paste0(dados[[j + 1]][i]),
+    ifelse(tipo_dados == first(tipo_cols), 1, 0) |> paste0(collapse = ""),
+    ifelse(tipo_dados == last(tipo_cols), 1, 0) |> paste0(collapse = "")
 )
+
 ```
 
 Question
 ========
 
-Suponha que você tenha o seguinte _dataset_ [`dados`](dados.xlsx). Como primeiro passo, você executou o seguinte código (você já criou e estruturou o diretório do seu projeto):
+Suponha que um/a colaborador/a tenha o seguinte _dataset_ [`dados`](dados.xlsx) com informações importantes sobre o negócio da empresa. Como primeiro passo, essa pessoa carregou essa base de dados usando a linguagem e descobriu algumas características dessa base.
 
-```r
-library(pacman)
+Neste contexto, responda corretamente os seguintes itens:
 
-p_load(readxl, writexl, tidyverse)
+* Quantas observações estão registradas na base de dados? \#\#ANSWER1\#\#
+* Quantas variáveis foram coletadas? \#\#ANSWER2\#\#
+* Qual o valor da observação `r dados$identificacao[i]` para a variável `r glue("coluna_{j}")`? (Se for preciso, use ponto para separar a parte inteira e parte fracionária). \#\#ANSWER3\#\#
+* \#\#ANSWER4\#\#
+* \#\#ANSWER5\#\#
 
-dados <- read_excel("dados/brutos/dados.xlsx")
-
-glimpse(dados)
-```
-
-
-Responda corretamente os seguintes itens:
-  
 Questionlist
 ------------
-* Quantas observações estão registrados na base de dados?
-* Quantas variáveis foram coletadas?
-* Qual o tipo de dados da primeira coluna?
-* Qual o tipo de dados da última coluna?
+* 
+* 
+* 
+* Qual o tipo de dados da primeira coluna? R: "texto nominal".
+* Qual o tipo de dados da primeira coluna? R: "texto ordinal".
+* Qual o tipo de dados da primeira coluna? R: "número inteiro".
+* Qual o tipo de dados da primeira coluna? R: "número real".
+* Qual o tipo de dados da primeira coluna? R: "número complexo".
+* Qual o tipo de dados da primeira coluna? R: "valor lógico".
+* Qual o tipo de dados da última coluna? R: "texto nominal".
+* Qual o tipo de dados da última coluna? R: "texto ordinal".
+* Qual o tipo de dados da última coluna? R: "número inteiro".
+* Qual o tipo de dados da última coluna? R: "número real".
+* Qual o tipo de dados da última coluna? R: "número complexo".
+* Qual o tipo de dados da última coluna? R: "valor lógico".
 
 Solution
 ========
@@ -64,12 +95,24 @@ Solutionlist
 * Quantas observações estão registrados na base de dados? R: `r solucao[1]`. 
 * Quantas variáveis foram coletadas? R: `r solucao[2]`. 
 * Qual o tipo de dados da primeira coluna? R: `r solucao[3]`. 
-* Qual o tipo de dados da última coluna? R: `r solucao[4]`. 
+* Qual o tipo de dados da primeira coluna? R: `r first(tipo_cols)`. 
+*
+*
+*
+*
+*
+* Qual o tipo de dados da última coluna? R: `r last(tipo_cols)`. 
+*
+*
+*
+*
+*
 
 Meta-information
 ================
 exname: lista
 extype: cloze
-exclozetype: string|string|string|string
+exclozetype: num|num|string|schoice|schoice
 exsolution: `r paste0(solucao, collapse = "|")`
 exshuffle: TRUE
+extol: 0.0001

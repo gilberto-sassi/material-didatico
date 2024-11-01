@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 34589052  -->
+  <question type="matching">
+    <name>
+      <text>Importação de dados</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Um/a colaborador/a tem vários arquivos em formatos .xlsx, .xls, .ods, .csv  que precisam ser analisados usando a linguagem R. Associe corretamente as funções e os tipos de arquivos.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <shuffleanswers>true</shuffleanswers>
+    <correctfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está correta.</p>]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está parcialmente correta.</p>]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[<p>Sua resposta está incorreta.</p>]]></text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <subquestion format="html">
+      <text><![CDATA[<p><code>read_xlsx</code> do pacote <code>readxl</code></p>]]></text>
+      <answer>
+        <text>.xlsx</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p><code>read_csv2</code> (colunas separadas por ;) do pacote <code>readr</code></p>]]></text>
+      <answer>
+        <text>.csv (colunas separadas por ;)</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p><code>read_csv</code> (colunas separadas por ,) do pacote <code>readr</code></p>]]></text>
+      <answer>
+        <text>.csv (colunas separadas por ,)</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p><code>read_ods</code> do pacote <code>readODS</code></p>]]></text>
+      <answer>
+        <text>.ods</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p><code>read_xls</code> do pacote <code>readxl</code></p>]]></text>
+      <answer>
+        <text>.xls</text>
+      </answer>
+    </subquestion>
+  </question>
+
+</quiz>

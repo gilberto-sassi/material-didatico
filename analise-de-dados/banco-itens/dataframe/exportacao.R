@@ -1,8 +1,6 @@
-pacman::p_load(
-    glue, exams, tidyverse
-)
+pacman::p_load(glue, exams, tidyverse)
 
-path <- "banco-itens/dataframe"
+path <- "analise-de-dados/banco-itens/dataframe"
 
 # teste
 exams2moodle(glue("{path}/enunciado.Rmd"),
