@@ -1,0 +1,91 @@
+```{r dados, include=FALSE, message=FALSE} 
+if (!require(pacman)) install.packages(pacman)
+library(pacman)
+p_load(readxl, writexl, readODS)
+p_load(ggthemes)
+p_load(glue)
+p_load(statBasics)
+p_load(exams)
+p_load(Boom)
+p_load(tidyverse)
+options(scipen = 999) # prevent scientific notation
+
+
+# número de categorias
+n_cat <- 5
+
+# tamanho da amostra
+tam <- sample(1000:5000, 1)
+
+# hiperparâmetro da dirichlet
+hiper <- rexp(n_cat, 0.5)
+
+# probabilidades
+prob <- rdirichlet(1, hiper)
+
+# categorias
+categorias <- sample(1:100, n_cat, replace = FALSE) |>
+    sort()
+
+# amostra
+amostra <- sample(categorias, tam, replace = TRUE, prob)
+
+# data.frame
+tab <- tibble(x = amostra)
+
+write_xlsx(tab, "dados.xlsx")
+
+# solução
+sol <- c(
+    categorias,
+    categorias |> map_dbl(~ sum(.x == amostra)),
+    categorias |> map_dbl(~ round(mean(.x == amostra) * 100, 2))
+)
+names(sol) <- NULL
+
+#formatação
+f <- \(x) format(x, decimal.mark = ",")
+```
+
+Question
+========
+
+Construa a tabela de distribuição de frequências (com duas casas decimais) para variável quantitativa discreta **X** com valores seguintes: `r categorias |> paste(collapse = ", ")`. A amostra para este exercícios está salva em [`dados.xlsx`](dados.xlsx).
+
+|X|Frequência (absoluta)|Porcentagem|
+|:---|:---|:----|
+|\#\#ANSWER1\#\#|\#\#ANSWER6\#\#|\#\#ANSWER11\#\#|
+|\#\#ANSWER2\#\#|\#\#ANSWER7\#\#|\#\#ANSWER12\#\#|
+|\#\#ANSWER3\#\#|\#\#ANSWER8\#\#|\#\#ANSWER13\#\#|
+|\#\#ANSWER4\#\#|\#\#ANSWER9\#\#|\#\#ANSWER14\#\#|
+|\#\#ANSWER5\#\#|\#\#ANSWER10\#\#|\#\#ANSWER15\#\#|
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+
+Solution
+========
+
+|X|Frequência (absoluta)|Porcentagem|
+|:---|:---|:----|
+|`r f(sol[1])`|`r f(sol[6])`|`r f(sol[11])`|
+|`r f(sol[2])`|`r f(sol[7])`|`r f(sol[12])`|
+|`r f(sol[3])`|`r f(sol[8])`|`r f(sol[13])`|
+|`r f(sol[4])`|`r f(sol[9])`|`r f(sol[14])`|
+|`r f(sol[5])`|`r f(sol[10])`|`r f(sol[15])`|
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+exams::answerlist(rep("", length(sol)), markup = "markdown")
+```
+
+
+Meta-information
+================
+exname: tabelaVarQuali
+extype: cloze
+exclozetype: `r rep("num", length(sol)) |> paste0(collapse = "|")`
+exsolution: `r paste0(sol, collapse = "|")`
+extol: 0.05
