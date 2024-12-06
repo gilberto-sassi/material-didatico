@@ -27,11 +27,15 @@ Question
 ========
 Considere os valores observados de uma variável quantitativa contínua X dados por: `r paste0(amostra_sorted, collapse="; ") |> str_replace_all("\\.", ",")`. Calcule (usando os algoritmos que ensinei na sala de aula):
 
+* O primeiro quartil: \#\#ANSWER1\#\#
+* O segundo quartil: \#\#ANSWER2\#\#
+* O terceiro quartil: \#\#ANSWER3\#\#
+
 Questionlist
 ------------
-* O primeiro quartil
-* O segundo quartil
-* O terceiro quartil
+* 
+* 
+* 
 
 Solution
 ========

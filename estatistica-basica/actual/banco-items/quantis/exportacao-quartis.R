@@ -1,14 +1,23 @@
-library(readxl)
-library(readODS)
-library(writexl)
-library(ggthemes)
-library(glue)
-library(statBasics)
-library(exams)
-library(tidyverse)
+library(pacman)
+p_load(readxl)
+p_load(readODS)
+p_load(writexl)
+p_load(ggthemes)
+p_load(glue)
+p_load(statBasics)
+p_load(exams)
+p_load(tidyverse)
 
-exams::exams2moodle("quantis/enunciado-quartis.Rmd",
-                    n = 1000,
+path <- "estatistica-basica/actual/banco-items/quantis"
+exams2moodle(glue("{path}/enunciado-quartis.Rmd"),
+                    n = 5,
                     verbose = TRUE,
-                    dir = "quantis",
+                    dir = path,
+                    name = "quartis-teste")
+
+exams2moodle(glue("{path}/enunciado-quartis.Rmd"),
+                    n = 250,
+                    verbose = TRUE,
+                    dir = path,
                     name = "quartis")
+

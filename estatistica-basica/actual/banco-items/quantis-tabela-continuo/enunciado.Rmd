@@ -1,11 +1,12 @@
 ```{r, label="Simulação de dados", include=F}
-library(exams)
-library(magrittr)
-library(readxl)
-library(writexl)
-library(knitr)
-library(truncnorm)
-library(tidyverse)
+library(pacman)
+p_load(exams)
+p_load(magrittr)
+p_load(readxl)
+p_load(writexl)
+p_load(knitr)
+p_load(truncnorm, gt)
+p_load(tidyverse)
 options(scipen = 999) #prevent scientific notation 
 
 # tamanho da amostra
@@ -50,19 +51,25 @@ Question
 Considere a seguinte tabela de distribuição de frequência para a variância X.
 
 ```{r, echo=F}
-tab |>
-    select(X, `Frequência Absoluta`) |>
-    add_case(X = "Total", `Frequência Absoluta` = tam) |>
-    kable(format = "html", digits = 2, format.args = list(dec.mark = ","))
+# tab |>
+#     select(X, `Frequência Absoluta`) |>
+#     add_case(X = "Total", `Frequência Absoluta` = tam) |>
+#     kable(format = "html", digits = 2, format.args = list(dec.mark = ","))
+tab |> select(X, `Frequência Absoluta`) |> gt()
 ```
 
 Calcule:
 
+* O primeiro quartil (com duas casas decimais): \#\#ANSWER1\#\#
+* O segundo quartil (com duas casas decimais): \#\#ANSWER2\#\#
+* O terceiro quartil (com duas casas decimais): \#\#ANSWER3\#\#
+
 Questionlist
 ------------
-* O primeiro quartil (com duas casas decimais)
-* O segundo quartil ou mediana (com duas casas decimais)
-* O terceiro quartil (com duas casas decimais)
+
+* 
+* 
+* 
 
 Solution
 ========

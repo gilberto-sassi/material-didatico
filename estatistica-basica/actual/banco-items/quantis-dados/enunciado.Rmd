@@ -1,0 +1,57 @@
+```{r dgp, include = FALSE}
+library(pacman)
+p_load(exams)
+p_load(magrittr)
+p_load(readxl)
+p_load(writexl)
+p_load(knitr)
+p_load(tidyverse)
+options(scipen = 999) #prevent scientific notation 
+
+# tamanho da amostra
+tam <- sample(5000:10000, 1)
+
+# amostra aleatória simples
+m <- 10:20 |> sample(1)
+s <- runif(1, min = 1.5, max = 2)
+amostra <- rnorm(tam, mean = m, sd = s) |> round(2)
+
+write_xlsx(tibble(X = amostra), "dados.xlsx")
+
+# solucao
+q1 <- quantile(amostra, 1/4)
+q2 <- quantile(amostra, 2/4)
+q3 <- quantile(amostra, 3/4)
+```
+
+Question
+========
+Considere os valores observados de uma variável quantitativa contínua X armazenados em [**`dados.xlsx`**](dados.xlsx). Calcule (use planilhas google ou `R`):
+
+* O primeiro quartil: \#\#ANSWER1\#\#
+* O segundo quartil: \#\#ANSWER2\#\#
+* O terceiro quartil: \#\#ANSWER3\#\#
+
+
+Questionlist
+------------
+
+* 
+* 
+* 
+
+Solution
+========
+Solutionlist
+------------
+* O primeiro quartil é `r q1`.
+* O segundo quartil é `r q2`.
+* O terceiro quartil é `r q3`.
+
+Meta-information
+================
+exname: quartis
+extype: cloze
+exclozetype: num|num|num
+exsolution: `r q1`|`r q2`|`r q3`
+extol: 0.02
