@@ -113,4 +113,4 @@ exname: diagramaCaixaBowley
 extype: cloze
 exclozetype: num|num|num|num|num|num
 exsolution: `r dq_a`|`r bowley_a`|`r dq_b`|`r bowley_b`|`r dq_c`|`r bowley_c`
-extol: 0.02
+extol: 0.05
