@@ -86,15 +86,22 @@ g3 <- ggplot(data = df_c) +
 g1 + g2 + g3
 ```
 
+* O intervalo interquartílico para a variável X é: \#\#ANSWER1\#\#.
+* O coeficiente de bowley para a variável X é: \#\#ANSWER2\#\#.
+* O intervalo interquartílico para a variável Y é: \#\#ANSWER3\#\#.
+* O coeficiente de bowley para a variável Y é: \#\#ANSWER4\#\#.
+* O intervalo interquartílico para a variável Z é: \#\#ANSWER5\#\#.
+* O coeficiente de bowley para a variável Z é: \#\#ANSWER6\#\#.
+
 Questionlist
 ------------
 
-* O intervalo interquartílico para a variável X é: 
-* O coeficiente de bowley para a variável X é: 
-* O intervalo interquartílico para a variável Y é: 
-* O coeficiente de bowley para a variável Y é: 
-* O intervalo interquartílico para a variável Z é: 
-* O coeficiente de bowley para a variável Z é: 
+* 
+* 
+* 
+* 
+* 
+* 
 
 Solution
 ========
