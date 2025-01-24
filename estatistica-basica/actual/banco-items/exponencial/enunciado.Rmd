@@ -20,8 +20,8 @@ sol <- c(
     1 - pexp(media_pop, 1 / media_pop),
     qexp(prob, rate = 1  / media_pop),
     media_pop,
-    media_pop,
-    sqrt(media_pop)
+    media_pop**2,
+    media_pop
 ) |> round(2)
 f <- \(x) format(x, decimal.mark = ",")
 ```

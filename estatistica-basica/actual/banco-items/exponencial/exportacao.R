@@ -8,7 +8,7 @@ p_load(statBasics)
 p_load(exams)
 p_load(tidyverse)
 
-path <- 'banco-items/exponencial'
+path <- 'estatistica-basica/actual/banco-items/exponencial'
 exams2moodle(glue("{path}/enunciado.Rmd"),
                     n = 5,
                     verbose = TRUE,
