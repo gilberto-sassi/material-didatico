@@ -73,9 +73,11 @@ ggplot(df, aes(x = x, y = after_stat(density))) +
   labs(x = "X", y = "Densidade de frequência")
 ```
 
-A partir do histograma acima, determine a média e a mediana para a variável _X_:
+A partir do histograma acima, determine a média, a mediana, a variância e o desvio padrão para a variável _X_:
 
 Para calcular a variância, divida por `n-1` (tamanho da amostra menos 1).
+
+Este histograma foi construído com uma base de dados com `r nrow(df)` observações.
 
 Questionlist
 ------------
