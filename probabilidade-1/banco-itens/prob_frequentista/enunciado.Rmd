@@ -9,7 +9,7 @@ p_load(exams)
 p_load(Boom)
 p_load(gt)
 p_load(tidyverse)
-options(scipen = 999) # prevent scientific notation
+options(scipen = 9999) # prevent scientific notation
 
 
 # número de categorias
@@ -28,12 +28,11 @@ categorias <- LETTERS[1:n_cat]
 amostra <- sample(categorias, tam, replace = TRUE, prob)
 
 # evento
-evento <- sample(categorias, 2, replace = FALSE)
+evento_tam <- sample(2:4, 1)
+evento <- sample(categorias, evento_tam, replace = FALSE)
 
 # solução
-sol <- evento |>
-    sum() |>
-    round(2)
+sol <- sum(amostra %in% evento) / tam
 
 #formatação
 f <- \(x) format(x, decimal.mark = ",")
@@ -42,7 +41,7 @@ f <- \(x) format(x, decimal.mark = ",")
 Question
 ========
 
-Considere o experimento aleatório com espaço amostral dados por {`r paste(categorias, collapse = ", ")`}. Uma estudante muito paciente realizou este experimento aleatório `r tam` vezes, e anotou quantas vezes cada ponto amostral foi resultado do experimento aleatório como mostrado na tabela abaixo. Usando a abordagem frequentista de calcular probabilidade, qual a probabilidade do evento {`r paste(evento, collapse = ", ")`}
+Considere o experimento aleatório com espaço amostral dados por {`r paste(categorias, collapse = ", ")`}. Uma estudante muito paciente realizou este experimento aleatório `r tam` vezes, e anotou quantas vezes cada ponto amostral foi resultado do experimento aleatório como mostrado na tabela abaixo. Usando a abordagem frequentista de calcular probabilidade, qual a probabilidade do evento {`r paste(evento, collapse = ", ")`}? Use duas casas decimais.
 
 ```{r}
 #| echo: false
@@ -51,15 +50,13 @@ df <- tibble(
     `Frequência` = categorias |>
         map_dbl(~ sum(.x == amostra))
 )
-knitr::kable(
-    df,
-    caption = "Quantidade de vezes que cada ponto amostral foi resultado do experimento aleatório"
-)
+gt(df) |>
+    tab_header(title = 'Quantidade de vezes que cada ponto amostral foi resultado do experimento aleatório.')
 ```
 
 Solution
 ========
-A probabilidade do evento {`r paste(evento, collapse = ", ")`} é aproximadamente `r f(sol)`.
+A probabilidade do evento {`r paste(evento, collapse = ", ")`} é aproximadamente `r f(round(sol, 2))`.
 
 
 Meta-information

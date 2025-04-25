@@ -1,0 +1,2860 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/prob_frequentista_teste/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="numerical">
+<name>
+<text> R1 Q1 : probabilidade-1_banco-itens_prob_frequentista_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Considere o experimento aleatório com espaço amostral dados por {A, B, C, D, E, F, G}. Uma estudante muito paciente realizou este experimento aleatório 4642 vezes, e anotou quantas vezes cada ponto amostral foi resultado do experimento aleatório como mostrado na tabela abaixo. Usando a abordagem frequentista de calcular probabilidade, qual a probabilidade do evento {E, G, D}? Use duas casas decimais.</p>
+<!--html_preserve-->
+<div id="dmlzmjqqqy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dmlzmjqqqy table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#dmlzmjqqqy thead, #dmlzmjqqqy tbody, #dmlzmjqqqy tfoot, #dmlzmjqqqy tr, #dmlzmjqqqy td, #dmlzmjqqqy th {
+  border-style: none;
+}
+
+#dmlzmjqqqy p {
+  margin: 0;
+  padding: 0;
+}
+
+#dmlzmjqqqy .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#dmlzmjqqqy .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#dmlzmjqqqy .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#dmlzmjqqqy .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#dmlzmjqqqy .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dmlzmjqqqy .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dmlzmjqqqy .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dmlzmjqqqy .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#dmlzmjqqqy .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#dmlzmjqqqy .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#dmlzmjqqqy .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#dmlzmjqqqy .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#dmlzmjqqqy .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#dmlzmjqqqy .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#dmlzmjqqqy .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dmlzmjqqqy .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#dmlzmjqqqy .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#dmlzmjqqqy .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#dmlzmjqqqy .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dmlzmjqqqy .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#dmlzmjqqqy .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#dmlzmjqqqy .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#dmlzmjqqqy .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dmlzmjqqqy .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#dmlzmjqqqy .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#dmlzmjqqqy .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dmlzmjqqqy .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dmlzmjqqqy .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#dmlzmjqqqy .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dmlzmjqqqy .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#dmlzmjqqqy .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dmlzmjqqqy .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dmlzmjqqqy .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dmlzmjqqqy .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dmlzmjqqqy .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dmlzmjqqqy .gt_left {
+  text-align: left;
+}
+
+#dmlzmjqqqy .gt_center {
+  text-align: center;
+}
+
+#dmlzmjqqqy .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#dmlzmjqqqy .gt_font_normal {
+  font-weight: normal;
+}
+
+#dmlzmjqqqy .gt_font_bold {
+  font-weight: bold;
+}
+
+#dmlzmjqqqy .gt_font_italic {
+  font-style: italic;
+}
+
+#dmlzmjqqqy .gt_super {
+  font-size: 65%;
+}
+
+#dmlzmjqqqy .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#dmlzmjqqqy .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#dmlzmjqqqy .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#dmlzmjqqqy .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#dmlzmjqqqy .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#dmlzmjqqqy .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#dmlzmjqqqy .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#dmlzmjqqqy .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#dmlzmjqqqy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading">
+<td colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>
+Quantidade de vezes que cada ponto amostral foi resultado do experimento aleatório.
+</td>
+</tr>
+<tr class="gt_col_headings">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Categorias">
+Categorias
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Frequência">
+Frequência
+</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+A
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+968
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+B
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+296
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+C
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+1276
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+D
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+779
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+E
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+844
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+F
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+140
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+G
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+339
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--/html_preserve-->
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>A probabilidade do evento {E, G, D} é aproximadamente 0,42.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<answer fraction="100" format="moodle_auto_format">
+<text>0.4226626</text>
+<tolerance>0.05</tolerance>
+</answer>
+</question>
+
+
+<question type="numerical">
+<name>
+<text> R2 Q1 : probabilidade-1_banco-itens_prob_frequentista_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Considere o experimento aleatório com espaço amostral dados por {A, B, C, D, E, F, G, H}. Uma estudante muito paciente realizou este experimento aleatório 4222 vezes, e anotou quantas vezes cada ponto amostral foi resultado do experimento aleatório como mostrado na tabela abaixo. Usando a abordagem frequentista de calcular probabilidade, qual a probabilidade do evento {D, G, B, A}? Use duas casas decimais.</p>
+<!--html_preserve-->
+<div id="xgydjzwjwo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xgydjzwjwo table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#xgydjzwjwo thead, #xgydjzwjwo tbody, #xgydjzwjwo tfoot, #xgydjzwjwo tr, #xgydjzwjwo td, #xgydjzwjwo th {
+  border-style: none;
+}
+
+#xgydjzwjwo p {
+  margin: 0;
+  padding: 0;
+}
+
+#xgydjzwjwo .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#xgydjzwjwo .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#xgydjzwjwo .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#xgydjzwjwo .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#xgydjzwjwo .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xgydjzwjwo .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xgydjzwjwo .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xgydjzwjwo .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#xgydjzwjwo .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#xgydjzwjwo .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#xgydjzwjwo .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#xgydjzwjwo .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#xgydjzwjwo .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#xgydjzwjwo .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#xgydjzwjwo .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#xgydjzwjwo .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#xgydjzwjwo .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#xgydjzwjwo .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#xgydjzwjwo .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xgydjzwjwo .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#xgydjzwjwo .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#xgydjzwjwo .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#xgydjzwjwo .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xgydjzwjwo .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#xgydjzwjwo .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#xgydjzwjwo .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xgydjzwjwo .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xgydjzwjwo .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#xgydjzwjwo .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xgydjzwjwo .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#xgydjzwjwo .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xgydjzwjwo .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xgydjzwjwo .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xgydjzwjwo .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xgydjzwjwo .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xgydjzwjwo .gt_left {
+  text-align: left;
+}
+
+#xgydjzwjwo .gt_center {
+  text-align: center;
+}
+
+#xgydjzwjwo .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#xgydjzwjwo .gt_font_normal {
+  font-weight: normal;
+}
+
+#xgydjzwjwo .gt_font_bold {
+  font-weight: bold;
+}
+
+#xgydjzwjwo .gt_font_italic {
+  font-style: italic;
+}
+
+#xgydjzwjwo .gt_super {
+  font-size: 65%;
+}
+
+#xgydjzwjwo .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#xgydjzwjwo .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#xgydjzwjwo .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#xgydjzwjwo .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#xgydjzwjwo .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#xgydjzwjwo .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#xgydjzwjwo .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#xgydjzwjwo .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#xgydjzwjwo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading">
+<td colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>
+Quantidade de vezes que cada ponto amostral foi resultado do experimento aleatório.
+</td>
+</tr>
+<tr class="gt_col_headings">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Categorias">
+Categorias
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Frequência">
+Frequência
+</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+A
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+307
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+B
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+2
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+C
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+47
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+D
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+804
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+E
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+1405
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+F
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+811
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+G
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+287
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+H
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+559
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--/html_preserve-->
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>A probabilidade do evento {D, G, B, A} é aproximadamente 0,33.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<answer fraction="100" format="moodle_auto_format">
+<text>0.3315964</text>
+<tolerance>0.05</tolerance>
+</answer>
+</question>
+
+
+<question type="numerical">
+<name>
+<text> R3 Q1 : probabilidade-1_banco-itens_prob_frequentista_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Considere o experimento aleatório com espaço amostral dados por {A, B, C, D, E}. Uma estudante muito paciente realizou este experimento aleatório 2618 vezes, e anotou quantas vezes cada ponto amostral foi resultado do experimento aleatório como mostrado na tabela abaixo. Usando a abordagem frequentista de calcular probabilidade, qual a probabilidade do evento {C, B}? Use duas casas decimais.</p>
+<!--html_preserve-->
+<div id="aoqtvrzqqx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#aoqtvrzqqx table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#aoqtvrzqqx thead, #aoqtvrzqqx tbody, #aoqtvrzqqx tfoot, #aoqtvrzqqx tr, #aoqtvrzqqx td, #aoqtvrzqqx th {
+  border-style: none;
+}
+
+#aoqtvrzqqx p {
+  margin: 0;
+  padding: 0;
+}
+
+#aoqtvrzqqx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#aoqtvrzqqx .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#aoqtvrzqqx .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#aoqtvrzqqx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#aoqtvrzqqx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#aoqtvrzqqx .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aoqtvrzqqx .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#aoqtvrzqqx .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#aoqtvrzqqx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#aoqtvrzqqx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#aoqtvrzqqx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#aoqtvrzqqx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#aoqtvrzqqx .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#aoqtvrzqqx .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#aoqtvrzqqx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#aoqtvrzqqx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#aoqtvrzqqx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#aoqtvrzqqx .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#aoqtvrzqqx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aoqtvrzqqx .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#aoqtvrzqqx .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#aoqtvrzqqx .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#aoqtvrzqqx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aoqtvrzqqx .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#aoqtvrzqqx .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#aoqtvrzqqx .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aoqtvrzqqx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aoqtvrzqqx .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#aoqtvrzqqx .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aoqtvrzqqx .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#aoqtvrzqqx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aoqtvrzqqx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#aoqtvrzqqx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aoqtvrzqqx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#aoqtvrzqqx .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aoqtvrzqqx .gt_left {
+  text-align: left;
+}
+
+#aoqtvrzqqx .gt_center {
+  text-align: center;
+}
+
+#aoqtvrzqqx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#aoqtvrzqqx .gt_font_normal {
+  font-weight: normal;
+}
+
+#aoqtvrzqqx .gt_font_bold {
+  font-weight: bold;
+}
+
+#aoqtvrzqqx .gt_font_italic {
+  font-style: italic;
+}
+
+#aoqtvrzqqx .gt_super {
+  font-size: 65%;
+}
+
+#aoqtvrzqqx .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#aoqtvrzqqx .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#aoqtvrzqqx .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#aoqtvrzqqx .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#aoqtvrzqqx .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#aoqtvrzqqx .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#aoqtvrzqqx .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#aoqtvrzqqx .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#aoqtvrzqqx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading">
+<td colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>
+Quantidade de vezes que cada ponto amostral foi resultado do experimento aleatório.
+</td>
+</tr>
+<tr class="gt_col_headings">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Categorias">
+Categorias
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Frequência">
+Frequência
+</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+A
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+69
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+B
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+1044
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+C
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+442
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+D
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+413
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+E
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+650
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--/html_preserve-->
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>A probabilidade do evento {C, B} é aproximadamente 0,57.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<answer fraction="100" format="moodle_auto_format">
+<text>0.5676089</text>
+<tolerance>0.05</tolerance>
+</answer>
+</question>
+
+
+<question type="numerical">
+<name>
+<text> R4 Q1 : probabilidade-1_banco-itens_prob_frequentista_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Considere o experimento aleatório com espaço amostral dados por {A, B, C, D, E, F, G}. Uma estudante muito paciente realizou este experimento aleatório 4923 vezes, e anotou quantas vezes cada ponto amostral foi resultado do experimento aleatório como mostrado na tabela abaixo. Usando a abordagem frequentista de calcular probabilidade, qual a probabilidade do evento {G, E, B}? Use duas casas decimais.</p>
+<!--html_preserve-->
+<div id="cukmssnmfz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cukmssnmfz table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#cukmssnmfz thead, #cukmssnmfz tbody, #cukmssnmfz tfoot, #cukmssnmfz tr, #cukmssnmfz td, #cukmssnmfz th {
+  border-style: none;
+}
+
+#cukmssnmfz p {
+  margin: 0;
+  padding: 0;
+}
+
+#cukmssnmfz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#cukmssnmfz .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#cukmssnmfz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#cukmssnmfz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#cukmssnmfz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cukmssnmfz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cukmssnmfz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cukmssnmfz .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#cukmssnmfz .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#cukmssnmfz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#cukmssnmfz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#cukmssnmfz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#cukmssnmfz .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#cukmssnmfz .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#cukmssnmfz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cukmssnmfz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#cukmssnmfz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#cukmssnmfz .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#cukmssnmfz .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cukmssnmfz .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#cukmssnmfz .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#cukmssnmfz .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#cukmssnmfz .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cukmssnmfz .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#cukmssnmfz .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#cukmssnmfz .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cukmssnmfz .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cukmssnmfz .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#cukmssnmfz .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cukmssnmfz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#cukmssnmfz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cukmssnmfz .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cukmssnmfz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cukmssnmfz .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cukmssnmfz .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cukmssnmfz .gt_left {
+  text-align: left;
+}
+
+#cukmssnmfz .gt_center {
+  text-align: center;
+}
+
+#cukmssnmfz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#cukmssnmfz .gt_font_normal {
+  font-weight: normal;
+}
+
+#cukmssnmfz .gt_font_bold {
+  font-weight: bold;
+}
+
+#cukmssnmfz .gt_font_italic {
+  font-style: italic;
+}
+
+#cukmssnmfz .gt_super {
+  font-size: 65%;
+}
+
+#cukmssnmfz .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#cukmssnmfz .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#cukmssnmfz .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#cukmssnmfz .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#cukmssnmfz .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#cukmssnmfz .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#cukmssnmfz .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#cukmssnmfz .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#cukmssnmfz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading">
+<td colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>
+Quantidade de vezes que cada ponto amostral foi resultado do experimento aleatório.
+</td>
+</tr>
+<tr class="gt_col_headings">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Categorias">
+Categorias
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Frequência">
+Frequência
+</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+A
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+212
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+B
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+702
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+C
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+695
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+D
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+396
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+E
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+2677
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+F
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+189
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+G
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+52
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--/html_preserve-->
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>A probabilidade do evento {G, E, B} é aproximadamente 0,7.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<answer fraction="100" format="moodle_auto_format">
+<text>0.6969328</text>
+<tolerance>0.05</tolerance>
+</answer>
+</question>
+
+
+<question type="numerical">
+<name>
+<text> R5 Q1 : probabilidade-1_banco-itens_prob_frequentista_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Considere o experimento aleatório com espaço amostral dados por {A, B, C, D, E, F}. Uma estudante muito paciente realizou este experimento aleatório 4128 vezes, e anotou quantas vezes cada ponto amostral foi resultado do experimento aleatório como mostrado na tabela abaixo. Usando a abordagem frequentista de calcular probabilidade, qual a probabilidade do evento {E, B, D}? Use duas casas decimais.</p>
+<!--html_preserve-->
+<div id="kbjweojexc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kbjweojexc table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#kbjweojexc thead, #kbjweojexc tbody, #kbjweojexc tfoot, #kbjweojexc tr, #kbjweojexc td, #kbjweojexc th {
+  border-style: none;
+}
+
+#kbjweojexc p {
+  margin: 0;
+  padding: 0;
+}
+
+#kbjweojexc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#kbjweojexc .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#kbjweojexc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#kbjweojexc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#kbjweojexc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kbjweojexc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kbjweojexc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kbjweojexc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#kbjweojexc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#kbjweojexc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#kbjweojexc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#kbjweojexc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#kbjweojexc .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#kbjweojexc .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#kbjweojexc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#kbjweojexc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#kbjweojexc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#kbjweojexc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#kbjweojexc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kbjweojexc .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#kbjweojexc .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#kbjweojexc .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#kbjweojexc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kbjweojexc .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#kbjweojexc .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#kbjweojexc .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kbjweojexc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kbjweojexc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#kbjweojexc .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kbjweojexc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#kbjweojexc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kbjweojexc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kbjweojexc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kbjweojexc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kbjweojexc .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kbjweojexc .gt_left {
+  text-align: left;
+}
+
+#kbjweojexc .gt_center {
+  text-align: center;
+}
+
+#kbjweojexc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#kbjweojexc .gt_font_normal {
+  font-weight: normal;
+}
+
+#kbjweojexc .gt_font_bold {
+  font-weight: bold;
+}
+
+#kbjweojexc .gt_font_italic {
+  font-style: italic;
+}
+
+#kbjweojexc .gt_super {
+  font-size: 65%;
+}
+
+#kbjweojexc .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#kbjweojexc .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#kbjweojexc .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#kbjweojexc .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#kbjweojexc .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#kbjweojexc .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#kbjweojexc .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#kbjweojexc .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#kbjweojexc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading">
+<td colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>
+Quantidade de vezes que cada ponto amostral foi resultado do experimento aleatório.
+</td>
+</tr>
+<tr class="gt_col_headings">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Categorias">
+Categorias
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Frequência">
+Frequência
+</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+A
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+802
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+B
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+1067
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+C
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+461
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+D
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+349
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+E
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+1086
+</td>
+</tr>
+<tr>
+<td headers="Categorias" class="gt_row gt_left">
+F
+</td>
+<td headers="Frequência" class="gt_row gt_right">
+363
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--/html_preserve-->
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>A probabilidade do evento {E, B, D} é aproximadamente 0,61.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<answer fraction="100" format="moodle_auto_format">
+<text>0.6061047</text>
+<tolerance>0.05</tolerance>
+</answer>
+</question>
+
+</quiz>
