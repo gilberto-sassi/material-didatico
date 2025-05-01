@@ -319,16 +319,16 @@ Pela definição de probabilidade condicional, temos que
 
 %slide 10
 \begin{frame}{Exemplo - continuação}
-	Sabendo que o calouro de engenharia é do sexo feminino, qual a probabilidade dele ser da turma $A$?
+	Sabendo que a pessoa é da turma $A$, qual a probabilidade dela se identificar com o gênero feminino?
 	\vfill
 	
 	\textbf{Resposta:} 
 	\begin{itemize}
 		\item \textbf{Eventos}: $F = \{\mbox{Calouro do sexo feminino}\}$ e $A=\{\mbox{Calouro da turma A}\}$.
-		\item Usando o princípio da equiprobabilidade, temos que $P(A \cap F) = \dfrac{21}{50}$ e $P(F) = \dfrac{37}{50}$.
+		\item Usando o princípio da equiprobabilidade, temos que $P(A \cap F) = \dfrac{21}{50}$ e $P(A) = \dfrac{26}{50}$.
 		\item Usando probabilidade condicional, temos que 
 		\begin{align*}
-		P(A \mid F) = \dfrac{P(A \cap F)}{P(F)} = \dfrac{\frac{21}{50}}{\frac{37}{50}} = \dfrac{21}{37} = 0,57.
+		P(F \mid A) = \dfrac{P(F \cap A)}{P(A)} = \dfrac{\frac{21}{50}}{\frac{26}{50}} = \dfrac{21}{26} = 0,81.
 		\end{align*}
 	\end{itemize}
 \end{frame}
@@ -408,20 +408,20 @@ Suponha que as duas não sofrem interferência uma da outra. Qual a probabilidad
 %slide 15
 \begin{frame}{Exemplo - solução}
 	\begin{itemize}
-		\item \textbf{Eventos}: $O_1=\{\mbox{Máquina I está desajustada}\}$ e $O_2=\{\mbox{Máquina II está desajustada}\}$;
-		\item \textbf{Probabilidade}: $P(O_1) = 0,05$ e $P(O_2) = 0,1$;
-		\item O evento pelo menos uma máquina funciona é descrito por $O_1^c \cup O_2^c$, isto é,
+		\item \textbf{Eventos}: $M_1=\{\mbox{Máquina I está desajustada}\}$ e $M_2=\{\mbox{Máquina II está desajustada}\}$;
+		\item \textbf{Probabilidade}: $P(M_1) = 0,05$ e $P(M_2) = 0,1$;
+		\item O evento pelo menos uma máquina funciona é descrito por $M_1^c \cup M_2^c$, isto é,
 		\begin{align*}
-		P[O_1^c \cup O_2^c)] &= P(O_1^c ) + P (O_2^c) - P (O_1^2 \cap O_2^c) \\
-		&= (1-P(O_1))  + (1-P( O_2)) - P(O_1^c) P(O_2^c) \\
+		P[M_1^c \cup M_2^c)] &= P(M_1^c ) + P (M_2^c) - P (M_1^2 \cap M_2^c) \\
+		&= (1-P(M_1))  + (1-P(M_2)) - P(M_1^c) P(M_2^c) \\
 		&=(1-0,05)  + (1-0,1) - (1-0,05) \cdot (1-0,1) = 0,995.
 		\end{align*}
 		\item Note que
 		\begin{align*}
-		P(\Omega) &= 1 =  P\left(\left( O_1^c \cup O_2^c \right)\bigcup \left(O_1^c \cup O_2^c\right)^c\right)\\
-		&= P\left(\left( O_1^c \cup O_2^c \right)\right) + P\left(\left( O_1 \cap O_2 \right)\right)\\
+		P(\Omega) &= 1 =  P\left(\left( M_1^c \cup M_2^c \right)\bigcup \left(M_1^c \cup M_2^c\right)^c\right)\\
+		&= P\left(\left( M_1^c \cup M_2^c \right)\right) + P\left(\left( M_1 \cap M_2 \right)\right)\\
 		\end{align*}
-		e, então, $P(O_1 \cap O_2) = 1 - 0,995 = 0,005$.
+		e, então, $P(M_1 \cap M_2) = 1 - 0,995 = 0,005$.
 	\end{itemize}	
 \end{frame}
 

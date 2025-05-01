@@ -295,119 +295,119 @@ Note que o suporte da variável aleatória $X$ é $\chi=\{0,1,2\}$.
 
 
 %slide 5
-\begin{frame}{Exemplo}
-Uma população de 1000 crianças foram analisadas num estudo para determinar a efetividade de uma vacina contra um tipo de alergia. No estudo, as crianças recebiam uma dose de vacina e, após um mês, passavam por um novo teste. Caso ainda tivessem tido alguma reação alérgica, recebiam uma outra dose de vacina. Ao fim de 5 doses, todas as crianças foram consideradas imunizadas. Os resultados completos estão na tabela abaixo:
-% latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Mon Jan 08 20:41:22 2018
-\begin{table}[ht]
-	\centering
-	\begin{tabular}{l|c|c|c|c|c}
-		\toprule[0.05cm]
-		Doses & 1 & 2 & 3 & 4 & 5 \\ 
-		\midrule[0.05cm]
-		Frequência & 245 & 288 & 256 & 145 & 66 \\ 
-		\bottomrule[0.05cm]
-	\end{tabular}
-\end{table}
-Supondo que uma criança dessa população sorteada ao acaso, qual será a probabilidade dela receber no máximo duas doses? Considere a variável aleatória discreta $X$ descrita por
-\begin{align*}
-X(\omega) = \mbox{Número de doses que a criança } \omega \mbox{ recebeu.}
-\end{align*}
-Encontre a função de probabilidade e da função de distribuição acumulada.
-\end{frame}
+%\begin{frame}{Exemplo}
+%Uma população de 1000 crianças foram analisadas num estudo para determinar a efetividade de uma vacina contra um tipo de alergia. No estudo, as crianças recebiam uma dose de vacina e, após um mês, passavam por um novo teste. Caso ainda tivessem tido alguma reação alérgica, recebiam uma outra dose de vacina. Ao fim de 5 doses, todas as crianças foram consideradas imunizadas. Os resultados completos estão na tabela abaixo:
+%% latex table generated in R 3.4.3 by xtable 1.8-2 package
+%% Mon Jan 08 20:41:22 2018
+%\begin{table}[ht]
+%	\centering
+%	\begin{tabular}{l|c|c|c|c|c}
+%		\toprule[0.05cm]
+%		Doses & 1 & 2 & 3 & 4 & 5 \\ 
+%		\midrule[0.05cm]
+%		Frequência & 245 & 288 & 256 & 145 & 66 \\ 
+%		\bottomrule[0.05cm]
+%	\end{tabular}
+%\end{table}
+%Supondo que uma criança dessa população sorteada ao acaso, qual será a probabilidade dela receber no máximo duas doses? Considere a variável aleatória discreta $X$ descrita por
+%\begin{align*}
+%X(\omega) = \mbox{Número de doses que a criança } \omega \mbox{ recebeu.}
+%\end{align*}
+%Encontre a função de probabilidade e da função de distribuição acumulada.
+%\end{frame}
+%
+%\begin{frame}{Exemplo -- solução}
+% Note que o espaço amostral é $\Omega = \{1,2,3,4,5\}$, e usando o princípio da equiprobabilidade, temos que
+% \begin{table}
+%  \centering
+%  \begin{tabular}{ccc}
+%  \toprule[0.05cm]
+%    $\omega$ & $P(\{\omega\})$ & $X(\omega)$\\ \midrule[0.05cm]
+%    $1$ & $\nicefrac{245}{1000}=0,245$ & $1$\\
+%    $2$ & $\nicefrac{288}{1000}=0,288$ & $2$\\
+%    $3$ & $\nicefrac{256}{1000}=0,256$ & $3$\\
+%    $4$ & $\nicefrac{145}{1000}=0,145$ & $4$\\
+%    $5$ & $\nicefrac{66}{1000}=0,066$ & $5$\\ \bottomrule[0.05cm]
+%  \end{tabular}
+% \end{table}
+%Então, a função de probabilidade é dada por
+%\begin{align*}
+% f(1) &= P(X=1) = P(\{1\}) = 0,245\\
+% f(2) &= P(X=2) = P(\{2\}) = 0,288\\
+% f(3) &= P(X=3) = P(\{3\}) = 0,256\\
+% f(4) &= P(X=4) = P(\{4\}) = 0,145\\
+% f(5) &= P(X=5) = P(\{5\}) = 0,066\\
+%\end{align*}
+%
+%\end{frame}
+%
+%\begin{frame}{Exemplo -- continuação}
+%Para encontrar a função de distribuição acumulada, precisamos dividir em casos:
+%
+%{\scriptsize
+%  \begin{itemize}
+%   \item Para $x <1$, temos que 
+%   \begin{align*}
+%    F(x) = P(X \leq x) = P\left( \{\omega \in \Omega \mid X(\omega) \leq x <1 \} \right) = P(\emptyset) = 0; 
+%   \end{align*}
+%   \item Para $1 \leq x < 2$, temos que
+%   \begin{align*}
+%    F(x) = P(X \leq x) = f(1) = 0,245;
+%   \end{align*}
+%   \item Para $2 \leq x < 3$, temos que
+%   \begin{align*}
+%    F(x) = P(X \leq x) = f(1)+f(2) = 0,245+0,288 = 0,533;
+%   \end{align*}
+%   \item Para $3 \leq x < 4$, temos que
+%   \begin{align*}
+%    F(x) = P(X \leq x) = f(1)+f(2)+f(3) = 0,245+0,288+0,256 = 0,789;
+%   \end{align*}
+%   \item Para $4 \leq x < 5$, temos que
+%   \begin{align*}
+%    F(x) = P(X \leq x) = f(1)+f(2)+f(3)+f(4) = 0,245+0,288+0,256+0,145 = 0,934;
+%   \end{align*}
+%   \item Para $x \geq 5$, temos que
+%   \begin{align*}
+%    F(x) = P(X \leq x) = f(1)+f(2)+f(3)+f(4)+f(5) = 1.
+%   \end{align*}
+%  \end{itemize}
+%} 
+%
+%\def \array{{0.245, 0.533, 0.789, 0.934,1}}
+%  \begin{figure}
+%   \centering
+%   \begin{tikzpicture}[scale=0.8]
+%    \draw[->] (-1.2,0) -- (7,0);
+%    \node[right] at (7,0) {$x$};
+%    \draw[->] (0,-0.5) -- (0,1.5);
+%    \node[above] at (0,1.5) {$F(x)$};
+%    \foreach \i in {1,2,3,4,5,6} \node[below] at (\i,0) {\tiny \i};
+%    \foreach \i in {2,3,4,5,6} \filldraw[black] (\i, 0) circle (0.025cm);
+%    \draw[blue] (-1.2,0) -- (1,0);
+%    \node[below right] at (0,0) {\tiny 0};
+%    \draw[blue] (1,0) circle (0.04cm);
+%    \draw[blue] (5,1) -- (7,1);
+%    \filldraw[blue] (5,1) circle (0.04cm);
+%    \foreach \i in {1,2,3,4} \filldraw[blue] (\i,\array[\i-1]) circle (0.04cm);
+%    \foreach \i in {1,2,3,4} \draw[blue] (\i+1,\array[\i-1]) circle (0.04cm);
+%    \foreach \i in {1,2,3,4} \draw[blue] (\i,\array[\i-1]) -- (\i+1,\array[\i-1]);
+%    \foreach \i in {1,2,3,4,5} \node[left] at (0,\array[\i-1]) {\scalebox{0.3}{ \pgfmathparse{\array[\i-1]}\pgfmathresult}};
+%    \foreach \i in {1,2,3,4,5} \filldraw[black] (0,\array[\i-1]) circle (0.025cm);
+%   \end{tikzpicture}
+%  \end{figure}
+%
+%\end{frame}
 
-\begin{frame}{Exemplo -- solução}
- Note que o espaço amostral é $\Omega = \{1,2,3,4,5\}$, e usando o princípio da equiprobabilidade, temos que
- \begin{table}
-  \centering
-  \begin{tabular}{ccc}
-  \toprule[0.05cm]
-    $\omega$ & $P(\{\omega\})$ & $X(\omega)$\\ \midrule[0.05cm]
-    $1$ & $\nicefrac{245}{1000}=0,245$ & $1$\\
-    $2$ & $\nicefrac{288}{1000}=0,288$ & $2$\\
-    $3$ & $\nicefrac{256}{1000}=0,256$ & $3$\\
-    $4$ & $\nicefrac{145}{1000}=0,145$ & $4$\\
-    $5$ & $\nicefrac{66}{1000}=0,066$ & $5$\\ \bottomrule[0.05cm]
-  \end{tabular}
- \end{table}
-Então, a função de probabilidade é dada por
-\begin{align*}
- f(1) &= P(X=1) = P(\{1\}) = 0,245\\
- f(2) &= P(X=2) = P(\{2\}) = 0,288\\
- f(3) &= P(X=3) = P(\{3\}) = 0,256\\
- f(4) &= P(X=4) = P(\{4\}) = 0,145\\
- f(5) &= P(X=5) = P(\{5\}) = 0,066\\
-\end{align*}
 
-\end{frame}
-
-\begin{frame}{Exemplo -- continuação}
-Para encontrar a função de distribuição acumulada, precisamos dividir em casos:
-
-{\scriptsize
-  \begin{itemize}
-   \item Para $x <1$, temos que 
-   \begin{align*}
-    F(x) = P(X \leq x) = P\left( \{\omega \in \Omega \mid X(\omega) \leq x <1 \} \right) = P(\emptyset) = 0; 
-   \end{align*}
-   \item Para $1 \leq x < 2$, temos que
-   \begin{align*}
-    F(x) = P(X \leq x) = f(1) = 0,245;
-   \end{align*}
-   \item Para $2 \leq x < 3$, temos que
-   \begin{align*}
-    F(x) = P(X \leq x) = f(1)+f(2) = 0,245+0,288 = 0,533;
-   \end{align*}
-   \item Para $3 \leq x < 4$, temos que
-   \begin{align*}
-    F(x) = P(X \leq x) = f(1)+f(2)+f(3) = 0,245+0,288+0,256 = 0,789;
-   \end{align*}
-   \item Para $4 \leq x < 5$, temos que
-   \begin{align*}
-    F(x) = P(X \leq x) = f(1)+f(2)+f(3)+f(4) = 0,245+0,288+0,256+0,145 = 0,934;
-   \end{align*}
-   \item Para $x \geq 5$, temos que
-   \begin{align*}
-    F(x) = P(X \leq x) = f(1)+f(2)+f(3)+f(4)+f(5) = 1.
-   \end{align*}
-  \end{itemize}
-} 
-
-\def \array{{0.245, 0.533, 0.789, 0.934,1}}
-  \begin{figure}
-   \centering
-   \begin{tikzpicture}[scale=0.8]
-    \draw[->] (-1.2,0) -- (7,0);
-    \node[right] at (7,0) {$x$};
-    \draw[->] (0,-0.5) -- (0,1.5);
-    \node[above] at (0,1.5) {$F(x)$};
-    \foreach \i in {1,2,3,4,5,6} \node[below] at (\i,0) {\tiny \i};
-    \foreach \i in {2,3,4,5,6} \filldraw[black] (\i, 0) circle (0.025cm);
-    \draw[blue] (-1.2,0) -- (1,0);
-    \node[below right] at (0,0) {\tiny 0};
-    \draw[blue] (1,0) circle (0.04cm);
-    \draw[blue] (5,1) -- (7,1);
-    \filldraw[blue] (5,1) circle (0.04cm);
-    \foreach \i in {1,2,3,4} \filldraw[blue] (\i,\array[\i-1]) circle (0.04cm);
-    \foreach \i in {1,2,3,4} \draw[blue] (\i+1,\array[\i-1]) circle (0.04cm);
-    \foreach \i in {1,2,3,4} \draw[blue] (\i,\array[\i-1]) -- (\i+1,\array[\i-1]);
-    \foreach \i in {1,2,3,4,5} \node[left] at (0,\array[\i-1]) {\scalebox{0.3}{ \pgfmathparse{\array[\i-1]}\pgfmathresult}};
-    \foreach \i in {1,2,3,4,5} \filldraw[black] (0,\array[\i-1]) circle (0.025cm);
-   \end{tikzpicture}
-  \end{figure}
-
-\end{frame}
-
-
-\section{Modelos discretos}
+\section{Distribuições discretas}
 
 %slide 6
-\begin{frame}{Modelos uniforme discreto}
+\begin{frame}{Distribuição uniforme discreta}
 \begin{block}{Motivação}
 	Algumas variáveis e quantidades aparecem com frequência e a literatura estatística já estabeleceu funções de probabilidade e funções de distribuição acumulada.
 \end{block}
 
-\begin{block}{Modelo uniforme discreto}
+\begin{block}{Distribuição uniforme discreta}
 	Seja $X$ uma variável aleatória discreta assumindo valores $j, \dots, k$. Dizemos que $X$ segue o modelo uniforme discreto se cada um dos valores $j, \dots, k$ tem função de probabilidade $\dfrac{1}{k-j+1}$. Ou seja, a função de probabilidade de $X$ é dada por
 	\begin{align*}
 	f(i) = \dfrac{1}{k - j + 1}, \quad i=j, \dots, k.
@@ -442,8 +442,8 @@ Uma rifa tem 100 bilhetes numerados de 1 a 100. Tenho 5 bilhetes consecutivos nu
 \end{frame}
 
 %slide 8
-\begin{frame}{Modelo Bernoulli}
-Ensaios de Bernoulli são fenômenos aleatórios com 2 resultados possíveis, chamados de sucesso e fracasso. A variável $X$ que atribui 1 ao sucesso e zero ao fracasso é chamado de modelo Bernoulli.
+\begin{frame}{Distribuição Bernoulli}
+Ensaios de Bernoulli são fenômenos aleatórios com 2 resultados possíveis, chamados de sucesso e fracasso. A variável $X$ que atribui 1 ao sucesso e zero ao fracasso é chamado de distribuição Bernoulli.
 Mais precisamente, seja $p$ a probabilidade de sucesso, então a função de probabilidade de $X$ é dada por
 \begin{align*}
 f(1) &= p;\\
@@ -498,8 +498,8 @@ A função de distribuição acumulada para
 \end{frame}
 
 %slide 10
-\begin{frame}{Modelos binomial}
-Considere o fenômeno aleatório que consiste da repetição de $n$ ensaios de Bernoulli independentes e todos com a mesma probabilidade de sucesso $p$. A variável aleatória que conta o número total de sucessos é denominada de modelo binomial com parâmetros $n$ e $p$ e sua função de probabilidade é dada por
+\begin{frame}{Distribuição binomial}
+Considere o fenômeno aleatório que consiste da repetição de $n$ ensaios de Bernoulli independentes e todos com a mesma probabilidade de sucesso $p$. A variável aleatória que conta o número total de sucessos é denominada de distribuição binomial com parâmetros $n$ e $p$ e sua função de probabilidade é dada por
 \begin{align*}
 f(k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k=0,1,2, \dots, n,
 \end{align*}
@@ -515,7 +515,7 @@ em que $n! = n \cdot (n-1) \cdot (n-2) \dots   1$.
 %slide 11
 \begin{frame}{Exemplo}
 Sabe-se que a eficiência de uma vacina é de 80\%. Um grupo de três indivíduos é sorteado dentre a população vacinada e submetido a testes para averiguar se a imunização foi efetivada. 
-Qual o modelo adequado para este fenômeno aleatório? Encontre a função de probabilidade e a fução de distribuição acumulada.
+Qual o distribuição de probabilidade adequada para este caso? Encontre a função de probabilidade e a função de distribuição acumulada.
 \vfill
 
 \textbf{Solução:} Considere sucesso a imunização do indivíduo, então temos três repetições de um ensaio de Bernoulli com probabilidade de sucesso $0,8$. Ou seja, a variável $X$, número de indivíduos imunizados, tem distribuição binomial com parâmetros $n=3$ e $p=0,8$. 
@@ -621,8 +621,8 @@ Para encontrar a função de distribuição acumulada, precisamos dividir em cas
 % \end{frame}
 
 %slide 15
-\begin{frame}{Modelo Poison}
-Modelo utilizado em fenômenos aleatórios que consistem contar o número de ocorrências de um evento em um intervalo de tempo. Neste modelo, $\lambda$ é a frequência média ou esperada de ocorrências do evento no  intervalo de tempo. A variável aleatória discreta $X$, número de ocorrências no intervalo de tempo, tem distribuição de Poison com parâmetro $\lambda > 0$, e sua função de probabilidade é dada por
+\begin{frame}{Distribuição Poisson}
+Distribuição de probabilidade utilizada em fenômenos aleatórios que consistem contar o número de ocorrências de um evento em um intervalo de tempo. Neste modelo, $\lambda$ é a frequência média ou esperada de ocorrências do evento no  intervalo de tempo. A variável aleatória discreta $X$, número de ocorrências no intervalo de tempo, tem distribuição de Poison com parâmetro $\lambda > 0$, e sua função de probabilidade é dada por
 \begin{align*}
 f(k) = \dfrac{e^{-\lambda}\lambda^k}{k!}, \quad k =0,1,2,3, \dots
 \end{align*}
