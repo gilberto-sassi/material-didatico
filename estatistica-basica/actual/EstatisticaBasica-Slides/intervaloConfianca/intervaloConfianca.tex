@@ -636,13 +636,13 @@ Na Tabela~\ref{fig:confianca}, o intervalo de confiança com coeficiente de conf
 		\begin{tikzpicture}
 			\draw[->] (-4,0) -- (4,0);
 			\filldraw[blue] (-2,0) circle (1.5pt);
-			\node[below] at (-2, 0) {\tiny $l=\bar{x} - \frac{z_{1-\frac{\alpha}{2}} \sigma}{\sqrt{n}}$};
+			\node[below] at (-2, 0) {\tiny $\bar{x} - \frac{z_{1-\frac{\alpha}{2}} \sigma}{\sqrt{n}}$};
 			\filldraw[blue] (-1, 0) circle (1.5pt);
 			\node[below] at (-1,0) {\tiny $\mu$};
 			\filldraw[blue] (0,0) circle (1.5pt);
 			\node[below] at (0,0) {\tiny $\bar{x}$};
 			\filldraw[blue] (2, 0) circle (1.5pt);
-			\node[below] at (2,0) {\tiny $u=\bar{x} + \frac{z_{1-\frac{\alpha}{2}} \sigma}{\sqrt{n}}$};
+			\node[below] at (2,0) {\tiny $\bar{x} + \frac{z_{1-\frac{\alpha}{2}} \sigma}{\sqrt{n}}$};
 			\draw[red] (-1, 0.2) -- (-1, 0.4);
 			\draw[red] (0, 0.2) -- (0, 0.4);
 			\draw[red] (-1, 0.3) -- (0, 0.3);
@@ -783,7 +783,7 @@ Seja $x_1, \dots, x_n$ uma amostra aleatória de uma variável aleatória contí
 		\begin{align*}
 			IC(\mu, 99\%) &= \left( \bar{x} - t_{0,995;11} \dfrac{s}{\sqrt{n}}; \bar{x} + t_{0,995;11} \dfrac{s}{\sqrt{n}}  \right)\\
 			&= \left( 2259,917 - 3,106 \cdot \dfrac{35,56929}{\sqrt{12}}; 2259,917 + 3,106 \cdot \dfrac{35,56929}{\sqrt{12}} \right)\\
-			&= (2228,024; 2291,809)
+			&= (2228,02; 2291,81)
 		\end{align*}
 		Ou seja, com coeficiente de confiança $\gamma=99\%$, a média populacional da força compressiva está entre $2228,024psi$ e $2291,809psi$.
 	\end{block}
@@ -1020,7 +1020,7 @@ em que $P\left( \chi^2_{2n} \leq \chi^2_{\frac{\alpha}{2}; 2n} \right) = \frac{\
 
 \subsection{Intervalo unilateral de confiança para $\mu$}
 
-\begin{frame}{Intervalo unilateral de confiança para $\mu$\\ Distribuição exponencial com média $\mu$ e taxa de decaimento $\lambda=\frac{1}{\mu}$}
+\begin{frame}{Intervalo unilateral de confiança para $\mu$\\ Distribuição exponencial com média $\mu$ e taxa de decaimento $\alpha=\frac{1}{\mu}$}
 
 \small
 
@@ -1047,7 +1047,7 @@ Seja $x_1, \dots, x_n$ uma amostra aleatória de uma variável aleatória contí
 
 \end{frame}
 
-\begin{frame}{Intervalo unilateral de confiança para $\mu$\\ Distribuição exponencial com média $\mu$ e taxa de decaimento $\lambda=\frac{1}{\mu}$}
+\begin{frame}{Intervalo unilateral de confiança para $\mu$\\ Distribuição exponencial com média $\mu$ e taxa de decaimento $\alpha=\frac{1}{\mu}$}
 
 \small
 
@@ -1138,13 +1138,13 @@ Seja $x_1, \dots, x_n$ uma amostra aleatória de uma variável aleatória contí
 		\begin{tikzpicture}
 		\draw[->] (-4,0) -- (4,0);
 		\filldraw[blue] (-2,0) circle (1.5pt);
-		\node[below] at (-2, 0) {\tiny $l=\hat{p} - z_{1-\frac{\alpha}{2}}\frac{1}{2 \sqrt{n}}$};
+		\node[below] at (-2, 0) {\tiny $\hat{p} - z_{1-\frac{\alpha}{2}}\frac{1}{2 \sqrt{n}}$};
 		\filldraw[blue] (-1, 0) circle (1.5pt);
 		\node[below] at (-1,0) {\tiny $p$};
 		\filldraw[blue] (0,0) circle (1.5pt);
 		\node[below] at (0,0) {\tiny $\hat{p}$};
 		\filldraw[blue] (2, 0) circle (1.5pt);
-		\node[below] at (2,0) {\tiny $u=\hat{p} + z_{1-\frac{\alpha}{2}}\frac{1}{2 \sqrt{n}}$};
+		\node[below] at (2,0) {\tiny $\hat{p} + z_{1-\frac{\alpha}{2}}\frac{1}{2 \sqrt{n}}$};
 		\draw[red] (-1, 0.2) -- (-1, 0.4);
 		\draw[red] (0, 0.2) -- (0, 0.4);
 		\draw[red] (-1, 0.3) -- (0, 0.3);

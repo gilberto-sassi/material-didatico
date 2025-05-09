@@ -227,10 +227,10 @@ Para uma variável quantitativa contínua $X$, podemos construir o histograma qu
 \begin{frame}{Definição}
 
 {\scriptsize
-\begin{block}{Modelo de probabilidade}
-	Um modelo probabilidade para uma variável quantitativa contínua $X$ é estabelecido quando definimos:
+\begin{block}{Distribuição de probabilidade}
+	Uma distribuição de probabilidade para uma variável quantitativa contínua $X$ é estabelecido quando definimos:
 	\begin{enumerate}[i.]
-		\item os valores possíveis para a variável quantitativa contínua;
+		\item os valores possíveis para a variável;
 		\item a função densidade de probabilidade. 
 	\end{enumerate}
 	Quando temos uma função densidade de probabilidade associada a uma variável $X$, dizemos que $X$ é uma \textcolor{blue}{variável aleatória contínua} para deixar claro que temos um modelo de probabilidade para $X$.
@@ -298,8 +298,8 @@ $P(9 < X \leq 12)$ é  área delimitada pelo gráfico conforme figura~\ref{fig:e
      \draw [->] (0,0) -- (0,1);
      \draw [thick] (5, 0.75) -- (7.5, 0.75);
      \draw [fill] (7.5, 0.75) circle (0.05cm);
-     \node [left] at (0, 0.5) {$0.1$};
-     \node [left] at (0, 0.75) {$0.15$};
+     \node [left] at (0, 0.5) {0,1};
+     \node [left] at (0, 0.75) {0,15};
      \draw [fill] (0, 0.5) circle (0.02cm);
      \draw [fill] (0, 0.75) circle (0.02cm);
      \draw [fill = gray!40, dotted] (4.5, 0) --  (5, 0) -- (5, 0.75) -- (4.5, 0.625) -- (4.5, 0);
@@ -317,8 +317,7 @@ $P(9 < X \leq 12)$ é  área delimitada pelo gráfico conforme figura~\ref{fig:e
 }
 
 \begin{align*}
- P(9 < X \leq 12) &= 1 \cdot \dfrac{\frac{5}{40}+\frac{3}{20}}{2} + 2 \cdot \dfrac{3}{20}\\
- &= \dfrac{7}{16} \\
+ P(9 < X \leq 12) &= 1 \cdot \dfrac{0,15+0,1}{2} + 2 \cdot 0,15\\
  &= 0,4375.
 \end{align*}
 \end{frame}
@@ -329,10 +328,13 @@ $P(9 < X \leq 12)$ é  área delimitada pelo gráfico conforme figura~\ref{fig:e
   \item Média: $\espe (X) = \mu = \int_{-\infty}^{\infty} x f(x) dx$;
   \vfill
   
-  \item Mediana: valor $Md$ com a propriedade $P(X  \geq Md) \geq 0.5$ e $P(X \leq Md) \geq 0.5$;
+  \item Mediana: valor $Md$ com a propriedade $P(X  \geq Md) \geq 0,5$ e $P(X \leq Md) \geq 0,5$;
   \vfill
   
-  \item Moda: valor $Mo$ tal que $f(x) \leq f(Mo), \forall x$;
+  \item Quantil de ordem $p$: valor $Q(p)$ com a propriedade $P(X  \geq Q(p)) \geq p$ e $P(X \leq Q(p)) \geq 1-p$;
+  \vfill
+  
+  \item Moda: ponto de máximo de $f(x)$, ou seja, valor $Mo$ tal que $f(x) \leq f(Mo), \forall x$;
   \vfill
   
   \item Variância: $\vari (X) =  \sigma^2 = \int_{-\infty}^{\infty} (x-\mu)^2 f(x) dx$.
@@ -392,7 +394,17 @@ $P(9 < X \leq 12)$ é  área delimitada pelo gráfico conforme figura~\ref{fig:e
  \item \textbf{Mediana:} $Md = \dfrac{b+a}{2}$;
  \vfill
  
- \item \textbf{Moda} $Mo:$ é qualquer número em $[a,b]$.
+ \item \textbf{Quantil:} $Q(p) = p\cdot (b-a) + a$;
+ \vfill
+ 
+ \item \textbf{Moda:} $Mo:$ é qualquer número em $[a,b]$;
+ \vfill
+ 
+ \item \textbf{FDA:} $F(x) = \begin{cases}
+ 	0, & \text{se }x <a,\\
+ 	\frac{x-a}{b-a},&  \text{se } a \leq x \leq b\\
+ 	1, & \text{se } x \geq b
+ \end{cases}$
 \end{enumerate}
 
 \end{frame}
@@ -518,7 +530,16 @@ Uma variável aleatória contínua $X$ segue o modelo exponencial com parâmetro
  \item \textbf{Mediana:} $Md(X) = \dfrac{\log 2}{\alpha}$;
  \vfill
  
- \item \textbf{Moda} $Mo = 0$.
+ \item \textbf{Quantil:} $Q(p) = \dfrac{-\ln(1-p)}{\alpha}$;
+ \vfill
+ 
+ \item \textbf{Moda:} $Mo = 0$;
+ \vfill
+ 
+ \item \textbf{FDA:} $F(x) = \begin{cases}
+ 	0, & \text{se } x < 0,\\
+ 	1 - \exp(-\alpha \cdot x), & \text{se } X \geq 0.
+ \end{cases}$
 \end{enumerate}
 
 \end{frame}
@@ -631,56 +652,56 @@ Dizemos que uma variável aleatória contínua $X$ tem distribuição normal com
  \end{itemize}
 \end{frame}
 
-\section{Aproximação Normal para o Modelo Binomial}
-
-\begin{frame}{Aproximando a Função de Distribuição Acumada de $X \sim b(n; p)$.}
-
-{\scriptsize
- Se $X \sim b(n; p)$, então $\espe [X] =np$ e $\vari [X] = n p (1-p)$. Neste contexto, podemos aproximar a distribuição normal usando a distribuição binomial conforme ilustrado na Figura. Mais especificamente,
- \begin{align*}
-  F(x) = P(X \leq x) \approx P( Y \leq x) 
- \end{align*}
- em que $Y \sim N(n p; n  p (1-p))$.
-} 
- 
- \begin{figure}
-  \centering
-  \caption{\scriptsize Aprroximação da Função de Distribuição Acumulada de $X \sim b(50; 0.3)$ pela Função de Distribuição Acumulada de $Y \sim N(50\cdot 0.3; 50\cdot 0.3 \cdot 0.7)$}
-  \includegraphics[width = 4.5cm]{figure/aproximacao.pdf}
- \end{figure}
-
-\begin{block}{Correção da continuidade}
- {\scriptsize
-  Consiste em alterar em $0,5$ unidade o valor que se deseja aproximar a função de distribuição acumulada. Mais especificamente, para $X \sim b(n; p)$
-  \begin{align*}
-   F(x) = P(X \leq x) \approx P( Y \leq x + 0,5) \qquad \mbox{ e } \qquad
-   f(x) = P(X = x) \approx P(x - 0,5 \leq Y \leq x +0,5)
-  \end{align*}
-
- }
-\end{block}
-
-\end{frame}
-
-\begin{frame} {Exemplo}
- Estudo do Sindicato dos Bancários indica que cerca de 30\% dos funcionários do banco têm problemas de estresse, provenientes das condições de trabalho. Numa amostra de 200 bancários, qual seria a probabilidade de pelo menos 50 com essa doença?
- \vfill
- 
- \textbf{Solução:}
- 
- Note que $X \sim b(200; 0.3)$ com $\espe[X] = 200\cdot 0.3 = 60$ e $\vari(X) = 200\cdot 0.3 \cdot 0.7 = 42$, então
- \begin{align*}
-  P(X \geq 50) &= 1 - P(X < 50) \\
-  &= 1 - P(X \leq 49)\\
-  &\approx 1 - P(Y \leq 49,5)\\
-  &= 1 - \Phi\left( \dfrac{49,5 - 60}{\sqrt{42}} \right)\\
-  &= 1 - \Phi(-1,62)\\
-  &= 0,9474
- \end{align*}
-
- Observe que $P(X \geq 50) = 1 - P(X \leq 49) = 0,9494$.
-\end{frame}
-
+%\section{Aproximação Normal para o Modelo Binomial}
+%
+%\begin{frame}{Aproximando a Função de Distribuição Acumada de $X \sim b(n; p)$.}
+%
+%{\scriptsize
+% Se $X \sim b(n; p)$, então $\espe [X] =np$ e $\vari [X] = n p (1-p)$. Neste contexto, podemos aproximar a distribuição normal usando a distribuição binomial conforme ilustrado na Figura. Mais especificamente,
+% \begin{align*}
+%  F(x) = P(X \leq x) \approx P( Y \leq x) 
+% \end{align*}
+% em que $Y \sim N(n p; n  p (1-p))$.
+%} 
+% 
+% \begin{figure}
+%  \centering
+%  \caption{\scriptsize Aprroximação da Função de Distribuição Acumulada de $X \sim b(50; 0.3)$ pela Função de Distribuição Acumulada de $Y \sim N(50\cdot 0.3; 50\cdot 0.3 \cdot 0.7)$}
+%  \includegraphics[width = 4.5cm]{figure/aproximacao.pdf}
+% \end{figure}
+%
+%\begin{block}{Correção da continuidade}
+% {\scriptsize
+%  Consiste em alterar em $0,5$ unidade o valor que se deseja aproximar a função de distribuição acumulada. Mais especificamente, para $X \sim b(n; p)$
+%  \begin{align*}
+%   F(x) = P(X \leq x) \approx P( Y \leq x + 0,5) \qquad \mbox{ e } \qquad
+%   f(x) = P(X = x) \approx P(x - 0,5 \leq Y \leq x +0,5)
+%  \end{align*}
+%
+% }
+%\end{block}
+%
+%\end{frame}
+%
+%\begin{frame} {Exemplo}
+% Estudo do Sindicato dos Bancários indica que cerca de 30\% dos funcionários do banco têm problemas de estresse, provenientes das condições de trabalho. Numa amostra de 200 bancários, qual seria a probabilidade de pelo menos 50 com essa doença?
+% \vfill
+% 
+% \textbf{Solução:}
+% 
+% Note que $X \sim b(200; 0.3)$ com $\espe[X] = 200\cdot 0.3 = 60$ e $\vari(X) = 200\cdot 0.3 \cdot 0.7 = 42$, então
+% \begin{align*}
+%  P(X \geq 50) &= 1 - P(X < 50) \\
+%  &= 1 - P(X \leq 49)\\
+%  &\approx 1 - P(Y \leq 49,5)\\
+%  &= 1 - \Phi\left( \dfrac{49,5 - 60}{\sqrt{42}} \right)\\
+%  &= 1 - \Phi(-1,62)\\
+%  &= 0,9474
+% \end{align*}
+%
+% Observe que $P(X \geq 50) = 1 - P(X \leq 49) = 0,9494$.
+%\end{frame}
+%
 
 
 \section{Distribuição amostral}
