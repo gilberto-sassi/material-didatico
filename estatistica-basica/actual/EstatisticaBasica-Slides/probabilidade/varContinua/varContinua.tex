@@ -331,7 +331,7 @@ $P(9 < X \leq 12)$ é  área delimitada pelo gráfico conforme figura~\ref{fig:e
   \item Mediana: valor $Md$ com a propriedade $P(X  \geq Md) \geq 0,5$ e $P(X \leq Md) \geq 0,5$;
   \vfill
   
-  \item Quantil de ordem $p$: valor $Q(p)$ com a propriedade $P(X  \geq Q(p)) \geq p$ e $P(X \leq Q(p)) \geq 1-p$;
+  \item Quantil de ordem $p$: valor $Q(p)$ com a propriedade $P(X  \leq Q(p)) \geq p$ e $P(X \geq Q(p)) \geq 1-p$;
   \vfill
   
   \item Moda: ponto de máximo de $f(x)$, ou seja, valor $Mo$ tal que $f(x) \leq f(Mo), \forall x$;
@@ -342,11 +342,11 @@ $P(9 < X \leq 12)$ é  área delimitada pelo gráfico conforme figura~\ref{fig:e
 
 \end{frame}
 
-\section{Principais modelos para variáveis aleatórias contínuas}
+\section{Principais distribuições de probabilidade para variáveis aleatórias contínuas}
 
-\subsection{Modelo uniforme contínuo}
+\subsection{Distribuição uniforme contínua}
 
-\begin{frame}{Modelo uniforme contínuo}
+\begin{frame}{Distribuição uniforme contínua}
  Uma variável aleatória contínua $X$ tem distribuição uniforme contínua no intervalo $[a,b]$ se sua função densidade de probabilidade é dada por:
  \begin{align*}
   f(x) = \begin{cases}
@@ -383,7 +383,7 @@ $P(9 < X \leq 12)$ é  área delimitada pelo gráfico conforme figura~\ref{fig:e
 % \end{block}
 \end{frame}
 
-\begin{frame}{Propriedades -- modelo uniforme contínuo}
+\begin{frame}{Propriedades -- distribuição uniforme contínua}
 \begin{enumerate}[i.]
  \item \textbf{Média} $\mu = \espe (x) = \dfrac{b+a}{2}$;
  \vfill
@@ -497,9 +497,9 @@ Ou seja, temos uma tabela de distância, custo e probabilidade dada por
   Ou seja, o custo médio de reparo para esta rede elétrica é de $R\$460,00$.
 \end{frame}
 
-\subsection{Modelo exponencial}
+\subsection{Distribuição exponencial}
 
-\begin{frame}{Modelo exponencial}
+\begin{frame}{Distribuição exponencial}
 Uma variável aleatória contínua $X$ segue o modelo exponencial com parâmetro $\alpha$  se sua densidade é dada por
  $
   f(x) = \alpha e^{-\alpha \cdot x}
@@ -519,7 +519,7 @@ Uma variável aleatória contínua $X$ segue o modelo exponencial com parâmetro
 %  \end{block}
 \end{frame}
 
-\begin{frame}{Propriedades -- modelo exponencial}
+\begin{frame}{Propriedades -- distribuição exponencial}
 \begin{enumerate}[i.]
  \item \textbf{Média} $\espe(X) = \mu = \dfrac{1}{\alpha}$;
  \vfill
@@ -545,7 +545,7 @@ Uma variável aleatória contínua $X$ segue o modelo exponencial com parâmetro
 \end{frame}
 
 
-\begin{frame}{Modelo exponencial}
+\begin{frame}{Distribuição exponencial}
  \begin{block}{Uso}
   Modelagem de tempo até ocorrer um exemplo. Por exemplo: tempo até o óbito, tempo até uma falha de um equipamento, tempo até solicitação ou ligação, etc.
  \end{block} 
@@ -577,9 +577,9 @@ Uma variável aleatória contínua $X$ segue o modelo exponencial com parâmetro
   ou seja,  probabilidade do paciente morrer antes de 90 dias é 53\%.
 \end{frame}
 
-\subsection{Modelo normal}
+\subsection{Distribuição normal}
 
-\begin{frame}{Modelo normal}
+\begin{frame}{Distribuição normal}
 Dizemos que uma variável aleatória contínua $X$ tem distribuição normal com parâmetro $\mu$ e $\sigma^2$ se sua função densidade de probabilidade é dada por:
 \begin{align*}
  f(x) = \dfrac{1}{\sqrt{2 \pi \sigma^2}} \exp \left\{ -\dfrac{(x-\mu)^2}{2\sigma^2}  \right\}, \quad x \in \mathbb{R}.
@@ -596,7 +596,7 @@ Dizemos que uma variável aleatória contínua $X$ tem distribuição normal com
 
 \end{frame}
 
-\begin{frame}{Propriedade: modelo normal}
+\begin{frame}{Propriedade: distribuição normal}
  \begin{enumerate}[i)]
  \item $f(x)$ é simétrica em relação a $\mu$;
  \vfill
@@ -610,7 +610,7 @@ Dizemos que uma variável aleatória contínua $X$ tem distribuição normal com
  \item $\vari(X) =\sigma^2$;
  \vfill
  
- \item A moda e a medianda de $X$ é $\mu$;
+ \item A moda e a mediana de $X$ é $\mu$;
  \vfill
  
  \item \textcolor{red}{ $P(a < X \leq b) = P(a < X < b) = P(a \leq X < b) = P(a \leq X \leq b)$;}
