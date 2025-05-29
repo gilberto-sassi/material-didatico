@@ -1,0 +1,2726 @@
+---
+title: "Exploração e Visualização de Dados usando Python"
+author: Gilberto Pereira Sassi
+institute: Instituto de Matemática e Estatística - IME
+execute: 
+  echo: true
+  enabled: true
+format:
+    revealjs:
+        lang: pt-br
+        auto-stretch: false
+        footer: Instituto de Matemática e Estatística - IME
+        scrollable: true
+        number-sections: false
+        number-depth: 1
+        theme: [moon, ../assets/custom.scss]
+        embed-resources: true
+        slide-number: c/t
+        slide-tone: false
+        multiplex: true
+        smaller: true
+jupyter: python3
+editor_options: 
+  chunk_output_type: console
+---
+
+```{python}
+#| echo: false
+#| label: setup
+
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from pandas import DataFrame, Series
+import scipy.stats as stats
+```
+
+
+## Preparando o ambiente {.smaller}
+
+### Durante o curso
+
+**Usaremos nas aulas: [colab.research.google.com](https://colab.research.google.com/){target="_blank"}.**
+
+Recomendamos instalar e usar `Python` com a versão pelo menos `3.10`.
+  + conda: [anaconda.com/download](https://www.anaconda.com/download){target="_blank"}
+
+<hr>
+
+### Na sua casa
+
+* **IDE** recomendadas: [_Jupyter Notebook_](https://jupyter.org/){target="_blank"}, [_VSCode_](https://code.visualstudio.com/){target="_blank"} e [_Spyder_](https://www.spyder-ide.org/){target="_blank"}
+  + Usamos `ipython` no terminal
+* Outras linguagens interessantes: `R` ([cran.r-project.org](https://cran.r-project.org/){target="_blank"}) e `julia` ([julialang.org/downloads](https://julialang.org/downloads/){target="_blank"})
+
+# A linguagem `python`
+
+## Sobre a linguagem `python`
+
+* linguagem interpretadada
+* lançada em 1991 por Guido von Rossum (pesquisador _Centrum Wiskunde & Informatica_ (Instituto de Pesquisa Nacional para Matemática e Ciência da Computação))
+* propõe um sintaxe simples e clara usando indentação (espaço em branco) para organização
+* paradigmas: funcional e programação orientada a objetos
+* nome inspirado no grupo humorístico britânico _Monty Python_
+* linguagem de programação mais popular do planeta segundo [IEEE](https://spectrum.ieee.org/top-programming-languages-2024)
+
+## Motivos para adoção de `python`
+
+* Constante melhoramento e atualização.
+* Portabilidade (executável em praticamente todos os sistemas
+operacionais).
+* Grande comunidade de usuários e desenvolvedores.
+* Gráficos de maneira relativamente simples.
+* Interatividade.
+* Um grande comunidade de usuários (especialmente útil
+para resolução de problemas).
+
+## Onde estudar sozinho?
+
+### Tutoriais on-line
+
+* [Python for Data Analysis](https://wesmckinney.com/book/){target="_blank"}
+* [learnpython.org](https://learnpython.org/){target="_blank"}
+* [docs.python.org/3/tutorial/](https://docs.python.org/3/tutorial/){target="_blank"}
+
+### Livros
+
+* [Python Data Science Handbook](https://drive.google.com/file/d/1OPZ3C-3M535Yx6IaRvZBsA92mrSZ0-42/view?usp=sharing){target="_blank"}
+* [The Quick Python book](https://drive.google.com/file/d/1FCzbkNixUDjNNxH7d3Uvve3GchzeR5RJ/view?usp=sharing){target="_blank"}
+* [An Introduction to Python and Computer Programming](https://drive.google.com/file/d/1fllUzxM_8m46Y_SAaBCwox8aBf324730/view?usp=sharing){target="_blank"}
+
+--- 
+
+### No youtube
+
+* [Data Analysis with Python Course - Numpy, Pandas, Data Visualization](https://youtu.be/GPVsHOlRBBI?si=pCgnMYIWhrHzcDNQ){target="_blank"}
+* [Python for Data Science - Course for Beginners (Learn Python, Pandas, NumPy, Matplotlib)](https://youtu.be/LHBE6Q9XlzI?si=vrtFbahzeWtckZnn){target="_blank"}
+* [Data Analysis with Python - Full Course for Beginners (Numpy, Pandas, Matplotlib, Seaborn)](https://youtu.be/r-uOLxNrNk8?si=EbGlX3boSckjDvMe){target="_blank"}
+
+### Plataformas de ensino on-line
+
+* [datacamp.com](https://www.datacamp.com/){target="_blank"}
+* [dataquest.io](https://www.dataquest.io/){target="_blank"}
+* [alura.com.br](https://www.alura.com.br/){target="_blank"}
+
+
+## O Google Colab
+
+1. Crie uma pasta para o seu projeto em seu Google Drive.
+1. Crie as seguintes pastas dentro da pasta do projeto:
+    a. dados
+        i. brutos
+        i. processados
+    a. documentos
+    a. codigos 
+    a. figuras
+    a. tabelas
+    a. legado
+    a. notas
+    a. relatorio
+  
+---
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+Crie um arquivo _google colab_ como ilustrado na @fig-google-colab.
+
+![Criando arquivo _google colab_.](figuras/criacao-google-colab.png){#fig-google-colab fig-align="left" width=85%}
+
+
+:::
+
+::: {.column width="40%"}
+
+_Monte_ google drive como ilustrado na @fig-mount-google-drive.
+
+![_Montando_ o google drive.](figuras/mount-google-drive.png){#fig-mount-google-drive width=90% fig-align="left"}
+:::
+
+::::
+
+## Usando Google Colab
+
+* Google Colab é um _notebook_ (IDE _Jupyter Notebook_).
+* _notebook_ é dividida em células.
+* Cada célula pode ser texto (_markdown_) ou código `python`.
+* Alguns atalhos úteis:
+    + `Ctrl+M depois B` cria uma célula de código abaixo.
+    + `Ctrl+M depois A` cria uma célula de código acima.
+    <!-- + `Ctrl+T depois B` cria uma célula de texto abaixo. -->
+    <!-- + `Ctrl+T depois A` cria uma célula de texto acima. -->
+    + `Shift+Enter`: executa célula ativa e cria uma nova célula abaixo.
+    + `Ctrl+Enter`: executa célula ativa.
+
+
+## E se der ruim?
+
+### Peça ajudar no `ipython`
+
+```{python}
+#| echo: true
+
+?sum
+help(sum)
+```
+
+### Outras opções
+
+* Peça ajuda a pessoas com mais experiência.
+* Consulte o [stackoverflow.com](https://stackoverflow.com/){target="_blank"}.
+* Realize uma busca em alguma ferramento de busca como [google.com](https://www.google.com/){target="_blank"} e [duckduckgo.com](https://duckduckgo.com/){target="_blank"}.
+
+## Operações básicas
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Soma**
+
+```{python}
+#| echo: true
+1 + 1
+```
+
+**Substração**
+
+```{python}
+1 - 2
+```
+
+**Multiplicação**
+
+```{python}
+2 * 3
+```
+
+
+:::
+
+::: {.column width="50%"}
+
+**Divisão**
+
+```{python}
+1 / 3
+```
+
+**Potenciação**
+
+```{python}
+2**3
+```
+
+**Resto da divisão**
+
+```{python}
+3 % 2
+```
+
+**Divisão inteiro (quociente da divisão)**
+
+```{python}
+3 // 2
+```
+
+
+:::
+
+::::
+
+## Operações básicas</br>Exercício
+
+Qual o resultado das seguintes operações?
+
+1. $5,32 + 7,99$
+1. $5,55 - 10$
+1. $3,33 \cdot 5,12$
+1. $1 / 4,55$
+1. $5ˆ{1,23}$
+
+## Comparadores e operadores lógicos
+
+Valores lógicos em python: `True` e `False`.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+|Operador|Descrição|
+|:-----|:----|
+|`<`|menor|
+|`>`|maior|
+|`<=`|menor ou igual que|
+|`>=`|maior ou igual que|
+|`==`|igual|
+|`!=`|diferente|
+
+: Comparadores lógicos.
+
+:::
+
+::: {.column width="50%"}
+
+|Operador|Descrição|
+|:-----|:----|
+|`and`|e|
+|`or`|ou|
+|`not`|negação|
+
+: Operadores lógicos - permite concatenar resultados lógicos.
+
+:::
+
+::::
+
+## Comparadores e operadores lógicos</br>Exemplo
+
+**`and`**
+
+```{python}
+nome = "gilberto"
+idade = 39
+nome == "gilberto" and idade > 30
+```
+
+</hr>
+
+**`or`**
+
+```{python}
+nome == "gilberto" or idade > 40
+```
+
+
+</hr>
+
+**`not`**
+
+```{python}
+not (nome == "gilberto" or idade > 40)
+```
+
+
+## Pacotes em `python`
+
+### instalação 
+
+```python
+!pip install scipy 
+!conda install scipy
+```
+
+### carregamento
+
+```python
+import scipy
+```
+
+carregamento com rótulo
+
+```python
+import pandas as pd
+```
+
+carregamento de apenas parte do pacote (chamado de módulo)
+
+```python
+import scipy.stats as st
+```
+
+## Funções
+
+**Função** é uma ação e tem os seguinte componentes na ordem:
+
+* nome da função
+* parênteses
+* argumentos posicionais
+* argumentos nomeados
+
+<div style="font-size: 0.8em;">
+
+$$
+\overbrace{nome\_funcao}^{\text{nome da função}} \overbrace{(}^{\text{parênteses}} \overbrace{\texttt{valor1},\quad \texttt{valor2}}^{\text{argumentos posicionais}},\quad \overbrace{\texttt{nome1 = valor3},\quad \texttt{nome2 = valor4}}^{\text{argumentos nomeados}} \overbrace{)}^{\text{parênteses}}
+$$
+</div>
+
+### exemplo
+
+```{python}
+round(1.431144, ndigits=2)
+```
+
+## Como criar funções
+
+* O espaço em branco é crucial na liguagem `python`.
+* O espaço determina onde e termina um bloco de código.
+* `python` não usa `{}` ou comandos `begin/end`.
+
+```python
+def nome_funcao(valor1, valor2, nome1 = valor3, nome2 = valor4):
+    linha1
+    linha2
+    linha3
+    return valor
+```
+
+### exemplo
+
+```{python}
+def media_5(v1, v2, v3, v4, v5, tam = 5):
+  resultado = (v1 + v2 + v3 + v4 + v5) / tam
+  return resultado
+
+print(media_5(1, 2, 1, 2, 0))
+print(media_5(1, 2, 1, 2, 0, tam = 6))
+```
+
+
+## Objetos em `python`
+
+**Objeto** é uma unidade que combina dados, chamados de atributos, e comportamentos, chamados de métodos.
+
+* **atributos**: informações associadas ao objeto
+    + `.atributo` (sem parênteses)
+* **métodos**: funções que podem usar atributos
+    + `.metodo(arg1, nome1 = valor)` (com parênteses e argumentos)
+
+> **_tudo_ na linguagem `python` é um objeto.**
+
+`dir(objeto)` mostra todos atributos e métodos do objeto.
+
+### exemplo
+
+```{python}
+nome = "gilberto"
+nome.upper()
+```
+
+## Objetos em `python`<br>Exercício
+
+* Capitalize a primeira letra de palavra na frase: "nasci, cresci e moro no brasil.". Use o método `title`.
+* Arredonde o número $10000,5643$ para uma casa decimal usando a função `round`.
+* Crie uma função que calcule a média de 3 valores.
+
+# Estrutura de dados
+
+## Os dados em `python`
+
+### `built-in` - já vem instalado
+
+* **valores escalares**: números e strings - `None`, `str`, `float`, `int` e `bool`.
+* **estrutura de dados**: `list`, `tuple`, `set` e `dict`.
+
+### Pacote `numpy`
+
+`array` (vetores e matrizes para matemática computacional);
+
+### Pacote `pandas`
+
+`Series` (equivalente a vetor em `R`) e `DataFrame` (equivalente a `data.frame` em `R`).
+
+
+
+# Valores escalares
+
+## Valores escalares
+ 
+:::: {.columns}
+
+::: {.column width="40%"}
+
+|Tipo|Descrição|
+|:-----|:-----------|
+|`None`|valor _null_ (ausência de informação)|
+|`str`|texto|
+|`float`|número real|
+|`int`|número inteiro|
+|`bool`|Valor lógico: `True` e `False`|
+
+: Valores escalares _built-in_ em `python`.
+
+:::
+
+::: {.column width="60%"}
+
+* Usamos a função `type` para terminar o _tipo_ de um objeto.
+* Podemos usar `str`, `float`, `int` e `bool` para mudar o tipo de um objeto.
+  + `bool(objeto)` será `False`, se `objeto` for  `None`, `""` or `0`.
+* strings pode ser encapsulado por: `'`, `"` e `"""`. 
+  + `"""` permite que diversas linhas.
+
+:::
+
+::::
+
+
+## Valores escales</br>Exemplo
+
+### Número real
+
+```{python}
+salario = 1518.55
+type(salario)
+```
+
+```{python}
+# não é número real
+salario = "1518.55"
+type(salario)
+```
+
+Podemos converter um texto com número real para número real.
+```{python}
+float(salario)
+```
+
+Podemos converter número real para um texto com número real.
+```{python}
+salario = str(1518.55)
+type(salario)
+```
+
+## Valores escales</br>Exemplo
+
+### Número inteiro
+
+```{python}
+idade = 39
+type(idade)
+```
+
+```{python}
+# não é número real
+idade = "39"
+type(idade)
+```
+
+Podemos converter um texto com número inteiro para número inteiro.
+```{python}
+int(idade)
+```
+
+Podemos converter número inteiro para um texto com número inteiro.
+```{python}
+idade = str(39)
+type(idade)
+```
+
+## Valores escales</br>Exemplo
+
+### Valor lógico
+
+```{python}
+logico = True
+type(logico)
+```
+
+```{python}
+# não é número real
+logico = "True"
+type(logico)
+```
+
+Podemos converter um texto com valor lógico para valor lógico.
+```{python}
+bool(logico)
+```
+
+Podemos converter valor lógico para um texto com valor lógico.
+```{python}
+logico = str(False)
+type(logico)
+```
+
+## Valores escalares</br>Exercício
+
+* Crie três objetos chamados salario, idade e nome com seu salario, idade e nome de tipo `float`, `int` e `str`, respectivamente.
+* Crie uma função que calcule o aumento do seu salário com argumentos: `salario` e `aumento` em porcentagem. Lembre que o aumento é calculado por `salario * (1 + aumento / 100)`.
+
+
+## `f-string` e soma de strings
+
+### `f-string`
+
+Permite incluir objetos dentro de texto de uma forma simples.
+
+```python
+f"texto {variavel1} texto texto {variavel2} texto {variavel3}."
+```
+
+**Exemplo**
+
+```{python}
+nome = "Gilberto"
+idade = 39
+print(f"Meu nome é {nome} e tenho {idade} anos.")
+```
+
+### soma de strings
+
+`+` concatena strings.
+
+**Exemplo**
+
+```{python}
+parte1 = "Meu nome é Gilberto"
+parte2 = "tenho 39 anos."
+print(parte1 + " e " + parte2)
+```
+
+# Controle de fluxo
+
+## `if`, `if-elif-else`
+
+Checa se declaração é verdadeira (`True`).
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+**`if`**
+
+```{python}
+x = -10
+if x < 0:
+  print(f"{x} é um valor negativo.")
+```
+
+**`if-else`**
+
+```{python}
+x = 0
+if x < 0:
+  print(f"{x} é um valor negativo.")
+else:
+  print(f"{x} é um valor não negativo.")
+
+```
+
+
+:::
+
+::: {.column width="50%"}
+
+**`if-elif-else`**
+
+```{python}
+x = 0
+if x < 0:
+  print(f"{x} é um valor negativo.")
+elif x == 0:
+  print(f"{x} é zero.")
+else:
+  print(f"{x} é um valor positivo.")
+
+```
+
+:::
+
+::::
+
+# Laço de repetição
+
+## `for`, `while`, `pass`, `break`, `continue` e `range`
+
+* `range(inicio, fim, passo)`: produz uma coleção de valores inteiros incluindo `inicio`, excluindo `fim` e incremento `passo`.
+* `for`: permite percorrer uma coleção e realizar um cálculo para cada item da coleção.
+* `while`: realiza uma tarefa enquando uma declaração continuar verdadeiro.
+* `pass`: _faça nada_ para permitir `for` e `while` _vazios_.
+* `break`: interrompe `for` e `while`.
+* `continue`: passe imediatamente para o próximo item da coleção.
+
+## `for`, `while`, `pass`, `break`, `continue` e `range`</br>Exemplo
+
+<div style="font-size: 0.8em;">
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+
+```{python}
+for i in range(1, 50, 5):
+  print(i**2 + 1)
+```
+
+
+Pulando os valores pares.
+```{python}
+for i in range(1, 11, 1):
+  if i % 2 == 0:
+    continue
+  print(i)
+```
+
+
+:::
+
+::: {.column width="50%"}
+
+```{python}
+nome = 39
+while type(nome) != str:
+  print(nome)
+  nome = "gilberto"
+```
+
+```{python}
+x = 256
+total = 0
+while x > 0:
+  if total > 500:
+    print("passamos de 500")
+    break
+  total += x
+  x /= 2
+print(total)
+```
+
+Laço de repetição `for` vazio.
+
+```{python}
+for i in range(1, 20, 4):
+  pass
+```
+:::
+
+::::
+
+</div>
+
+## `for`, `while`, `pass`, `break`, `continue` e `range`</br>Exercício
+
+* Resolve e imprima a equação `i**3 % 2` para `i` indo de 1 até 20 de um 1 em 1. Use `for`.
+* Imprima apenas os valores ímpares entre 1 e 20. Use `while`.
+
+# Estrutura de dados `built-in`
+
+## Lista
+
+* Sequência de objetos (que não precisa ser escalar) armazenados em sequência na memória.
+* Objetos individuais podem ser atualizados e usamos `[]` para criar uma lista
+
+```{python}
+equipe = ['Carolina', 'Gilberto', 'Ana Carolina', 'Miguel', 'Fernanda', 'Keila', 'Mayara']
+print(equipe)
+```
+
+### Slicing
+
+<div style="font-size: 0.8em;">
+
+Criando uma sublista: `[inicio:fim:passo]`. **A contagem começa em 0 na linguagem `python`.**
+
+* Podemos omitir `inicio` e `fim`, se forem o primeiro e o último objeto da lista. 
+* Caso `passo` seja 1, podemos omitir `passo`.
+* Um objeto da lista pode ser uma lista.
+
+```{python}
+print(equipe[:2]) # dois primeiros elementos
+print(equipe[2:]) # todos elementos a partir do terceiro elemento
+print(equipe[2:4]) # segundo e terceiro elemento
+```
+
+</div>
+
+## Lista - métodos
+
+<div style="font-size: 0.8em;">
+
+|Método|Descrição|
+|:----|:----|
+|`append(`_`elemento`_`)`|Adiciona um objeto ao final da lista.|
+|`clear()`|Remove todos os objetos da lista.|
+|`copy()`|Cria uma cópia da lista.|
+|`count(`_`elemento`_`)`|Retorne a frequência de um objeto da lista.|
+|`extend(`_`lista`_`)`|Inclui uma lista ao final de outra lista.|
+|`index(`_`elemento`_`)`|Retorne a posição da primeira ocorrência de um objeto.|
+|`insert(`_`posicao`_`, `_`elemento`_`)`|Insire um objeto em uma posição.|
+|`pop()`|Remove o último elemento da lista.|
+|`remove(`_`elemento`_`)`|Remove a primeira ocorrência de um objeto.|
+|`reverse()`|Inverte a apresentação dos objetos.|
+|`sort(reverse=True|False)`|Ordena os objetos de uma lista. Se `reverse=True`, os objetos são ordenados em ordem descrescente.|
+
+: Métodos para objetos do tipo `list`.
+
+</div>
+
+## Lista - métodos
+
+```{python}
+equipe_copia = equipe.copy()
+equipe_copia.append("Fulano")
+print(equipe_copia)
+```
+
+```{python}
+equipe_copia.pop()
+print(equipe_copia)
+```
+
+```{python}
+equipe_copia.sort(reverse=True)
+print(equipe_copia)
+```
+
+```{python}
+pos = equipe_copia.index("Carolina")
+pos
+```
+
+```{python}
+equipe_copia[pos] = 'Profa. Carolina'
+print(equipe_copia)
+```
+
+
+## Lista - Métodos</br>Exercício
+
+1. Crie um lista com os nomes dos seguinte autores: _Karl Marx_, _Engels_, _Lênin_, _Fidel Castro_, _Che Guevara_.
+1. Ordene os nomes em ordem descrecente.
+1. Determine a posição de _Fidel Castro_ na lista.
+1. Inclua _Mao Zedong_ na lista.
+1. Substitua _Fidel Castro_ por _Ho Chi Min_.
+
+## tupla
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+* Semelhante a lista, mas não permite atualização de objetos da lista.
+* Usamos `()` para criar tuplas.
+
+```{python}
+coordenacao = ('Carolina', 'Gilberto')
+print(coordenacao)
+```
+
+* Podemos converter lista para tupla usando `tuple`.
+* Podemos convert tuple para lista usando `list`.
+
+
+:::
+
+::: {.column width="50%"}
+
+|Método|Descrição|
+|:----|:----|
+|`count(`_`elemento`_`)`|Retorne a frequência de um elemento da lista.|
+|`index(`_`elemento`_`)`|Retorne a posição da primeira ocorrência de um elemento.|
+
+: Métodos para objetos do tipo `tuple`.
+
+
+:::
+
+::::
+
+## tupla</br>Exemplo
+
+```{python}
+participantes = ('Josefina', 'José', 'Josué', 'Josuel', 'Joelson', 'Jorel', 'Joaquina', 'José')
+print(participantes)
+```
+
+```{python}
+participantes.count('José')
+```
+
+```{python}
+participantes.index('Jorel')
+```
+
+## tuple</br>Exercício
+
+* Crie uma tupla com os nomes das participantes do curso de extensão _Python para Ciência de Dados_: Julia, Juliana, Jessica, Jennifer, Julia, Juliana , Joana, Joyce, Jessica e Jennifer.
+* Conte quantas _Julia_ tem no curso.
+
+## `set`
+
+* Coleção de objetos sem ordem e sem repetição de elementos.
+* Usamos `{}` para criar um `set`.
+* Podemos usar a função `set` para convert listas e tuplas para `set`.
+* Permite realizar operações semelhantes a teoria de conjuntos.
+
+```{python}
+nomes = {'José', 'José', 'Josué', 'Josué', 'Josefina', 'Josefina', 'Joaquina', 'Joaquina'}
+print(nomes)
+```
+
+## `set` - métodos 
+
+<div style="font-size: 0.6em">
+
+|Método|Atalho|Descrição|
+|:----|:----|:----|
+|`add()`||Adiciona um novo objeto a um conjunto|
+|`clear()`||Remove todos os objetos de um conjunto|
+|`copy()`||Cria uma cópia de um conjunto|
+|`difference()`|`-`|Equivalente a $A-B$ em teoria de conjuntos|
+|`difference_update()`|`-=`|Realiza a operação $A-B$, e atribui o resultado em $A$|
+|`discard()`||Remove um objeto específico de um conjunto|
+|`intersection()`|`&`|Equivalente a $A\cap B$ em teoria de conjuntos|
+|`intersection_update()`|`&=`|Equivalente a $A\cap B$ em teoria de conjuntos, e atribui o resultado em $A$|
+|`isdisjoint()`||Retorna `True` se os `set` não têm intersecção|
+|`issubset()`|`<=`|Retorna `True` se $A\subseteq B$|
+||`<`|Retorna `True` se $A\subset B$|
+
+: Métodos para `set`.
+
+</div>
+
+---
+
+<div style="font-size: 0.65em">
+
+|Método|Atalho|Descrição|
+|:----|:----|:----|
+|`issuperset()`|`>=`|Retorna `True` se $A\supseteq B$|
+||`>`|Retorna `True` se $A\supset B$|
+|`pop()`||Remove o primeiro objeto listado na impressão de um conjunto|
+|`remove()`||Remove um objeto específico de um conjunto|
+|`symmetric_difference()`|`^`|Equivalente a $A\Delta B$ (diferença simétrica)|
+|`symmetric_difference_update()`|`^=`|Salva o resultado de $A\Delta B$ em $A$|
+|`union()`|`|`|Equivalente a $A\cup B$|
+|`update()`|`|=`|Salva o resultado de $A\cup B$ em $A$|
+
+: Métodos para `set` (continuação).
+
+</div>
+
+## `set` - métodos
+
+Considere estudantes de duas turmas: `economia` e `portugues`.
+
+```{python}
+economia = {"Ana", "Bruno", "Carlos", "Diana", "Eduardo", "Fernanda", "Gabriel", "Helena", "Igor", "Juliana"}
+portugues = {"Carlos", "Diana", "Lucas", "Mariana", "Natália", "Otávio", "Paula", "Rafael", "Sofia", "Gabriel"}
+
+print(economia)
+print(portugues)
+```
+
+Estudantes em ambas turmas simultaneamente (intersecção):
+
+```{python}
+print(economia & portugues)
+print(economia.intersection(portugues))
+```
+
+Estudantes em apenas uma das turmas (diferença simétrica):
+
+```{python}
+print(economia ^ portugues)
+print(economia.symmetric_difference(portugues))
+```
+
+---
+
+Todos/as os/as estudantes (união):
+
+```{python}
+print(economia | portugues)
+print(economia.union(portugues))
+```
+
+## `set`</br>Exercícios
+
+Suponhas que as/os estudantes de `economia` e `portugues` tenham as seguintes matrículas:
+
+* `economia`: 101, 102, 103, 104, 105, 106, 107, 108, 109, 110.
+* `portugues`: 105, 106, 111, 112, 113, 104, 115, 116, 117, 118.
+
+<hr>
+
+* Crie dois `set`: uma para os matrículas de `economia`, e outra para os matrículas de `portugues`.
+* Verifique se existe intersecção entre os dois `set`.
+* Obtenha as matrículas de estudantes em apenas uma turma.
+
+## dicionário (`dict`)
+
+* Coleção de pares de objetos no padrão `chave: valor`. Semelhante a estrutura `JSON`.
+* Cada `chave` está associada com um único `valor`.
+* Um `valor` pode ser recuperado, deletado ou atualizado usando `chave`.
+* Usamos `{}` para criar um dicionário.
+* Podemos a função `dict` para converter:
+    + lista de listas com dois objetos em dicionário (primeiro objeto será a chave, e o segundo objeto será a chave)
+    + tupla de tuplas com dois objetos em dicionário (primeiro objeto será a chave, e o segundo objeto será a chave)
+    
+## Dicionário (`dict`) - métodos
+
+<div style="font-size: 0.70em">
+
+|Método|Descrição|
+|:----|:------|
+|`clear()`|Apaga todos os pares de um dicionário|
+|`copy()`|Produz uma cópia de um dicionário|
+|`fromkeys()`|Cria um dicionário usando vários chaves e um único valor.|
+|`get()`|Recupera um valor a partir da chave.|
+|`items()`|Retorna uma lista de tuplas em que o primeiro objeto é chave e o segundo objeto é o valor|
+|`keys()`|Retorna a lista com todas as chaves|
+|`pop()`|Remove um par `chave: valor` usando uma chave|
+|`popitem()`|Remove o último par `chave: valor` inserido no dicionário|
+|`setdefault(key, valor_padrao)`|Se `key`$\in$`dict.keys()`, então o valor da chave `key` é retornado. Caso contrário, `key: valor_padrao` é adicionado ao dicionário e `valor_padrao` é retornado.|
+|`update()`|Atualiza (e acrescenta) o(s) par(es) `chave: valor`|
+|`values()`|Retorna a lista com todos os valores|
+
+: Métodos para um objeto `dict`.
+
+</div>
+
+## Dicionário (`dict`)</br>Exemplo
+
+Transformando tupla de tuplas em dicionário.
+
+```{python}
+equipe_lista = (
+  ('coordenação', ['Profa. Carolina', 'Prof. Gilberto']),
+  ('bolsista_voluntaria', ['Miguel', 'Mayara', 'Carol', 'Fernanda', 'Keila'])
+)
+equipe_dicionario = dict(equipe_lista)
+print(equipe_dicionario)
+```
+
+Criando um dicionário usando `{}`.
+
+```{python}
+equipe_dicionario = {
+  'coordenação': ['Profa. Carolina', 'Prof. Gilberto'],
+  'bolsista_voluntaria': ['Miguel', 'Mayara', 'Carol', 'Fernanda', 'Keila']
+}
+print(equipe_dicionario)
+```
+
+## Dicionário (`dict`)</br>Exemplo
+
+
+Produzindo uma lista de tuplas (com dois objetos) a partir de um dicionário.
+
+```{python}
+equipe_dicionario.items()
+```
+
+Pegando apenas as chaves.
+
+```{python}
+equipe_dicionario.keys()
+```
+
+Pegando apenas os valores.
+
+```{python}
+equipe_dicionario.values()
+```
+
+---
+
+Recuperando apenas um valor usando `.get`.
+
+Se a chave existem entre as chaves, imprimi valor correspondente.
+
+```{python}
+# 
+print(equipe_dicionario.get('coordenação', 'Sem informação'))
+```
+
+Se a chave não existe entre as chaves, imprimi valor padrão.
+
+```{python}
+print(equipe_dicionario.get('Paz entre nós', 'Guerra aos senhores'))
+```
+
+## Dicionário (`dict`)</br>Exercício
+
+Crie um dicionário quatro chaves: `matricula_economia`, `nome_economia`, `matricula_portugues` e `nome_portugues`. Cada chave terá uma lista de valores correspondente que está listada abaixo:
+
+* Matrícula de estudantes de economia: 101, 102, 103, 104, 105, 106, 107, 108, 109, 110.
+* Matrícula de estudantes de português: 105, 106, 111, 112, 113, 104, 115, 116, 117, 118.
+* Nome de estudantes de economia: Ana, Bruno, Carlos, Diana, Eduardo, Fernanda, Gabriel, Helena, Igor, Juliana.
+* Nome de estudantes de português: Carlos, Diana, Lucas, Mariana, Natália, Otávio, Paula, Rafael, Sofia, Gabriel.
+
+# Estrutura de dados</br>`numpy`
+
+## `NumPy`
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+* `numpy`: fundamental e crucial para análise de dados usando `python`.
+* Permite operações de álgebra linear: matrizes e vetores.
+* Extremamente rápido e eficiente que as estruturas de dados `built-in`
+* Todos pacotes para ciência de dados usam o `numpy`, incluindo `pandas`, `scipy`, `scikit-learn` e outros.
+* `numpy` armazena os dados de forma contígua na memória.
+* `numpy` permite a _vetorização_.
+
+:::
+
+::: {.column width="40%"}
+
+![](figuras/pacotes.jpeg){width=100%}
+
+:::
+
+::::
+
+## Array
+
+* Armazém rápido e eficiente para valores escalares de mesmo tipo (**apenas um tipo**).
+* Permite operações de álgebra linear (semelhantes a operações com valores escalares).
+
+<hr>
+
+<div style="font-size: 0.9em;">
+
+Podemos criar um array usando:
+
+* função `np.array`: converte lista e tupla em arrays.
+* funções especiais:
+  + `np.zeros(tupla ou lista de inteiros)`: crie matriz com zeros.
+  + `np.diag(tupla ou lista)`: cria um matriz diagonal.
+  + `np.eye`: matriz identidade.
+  + `np.ones(tupla ou lista de inteiros)`: cria matriz com uns.
+  + `np.arange(inicio, fim, passo)`: cria valores em sequência. Valores criados estão no intervalo $[inicio, fim)$.
+
+</div>
+
+## Tipo de dados em NumPy
+
+* Fonte de flexibilidade e do poder do NumPy.
+* Gerenciamento eficiente de memória.
+* Podemos mudar o tipo de dados de um array usando o método `astype`.
+
+|Tipo|Código|Descrição|
+|:---|:---|:---|
+|`int64`|`i8`|Números inteiros|
+|`float64`|`f8` ou `d`|Números reais|
+|`bool`||Valor lógico: `True` ou `False`|
+|`string_`|`S`|Texto em ASCII - tamanho fixo|
+|`unicode_`|`U`|Texto em unicode - tamanho fixo|
+
+: Principais tipo de dados para arrays.
+
+---
+
+Carregando o pacote `NumPy`:
+
+```{python}
+import numpy as np
+```
+
+
+## Array - exemplo
+
+```{python}
+array_1 = np.array([[1, 20], [23, 22]])
+array_2 = 10 * np.ones((2, 2))
+print(f'array_1:\n {array_1}')
+print(f'array_2:\n {array_2}')
+```
+
+<hr>
+
+<div style="font-size: 0.75em;">
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+Soma:
+
+```{python}
+array_1 + array_2
+```
+
+Subtração:
+
+```{python}
+array_1 - array_2
+```
+
+
+Multiplicação:
+
+```{python}
+array_1 * array_2
+```
+
+
+:::
+
+::: {.column width="50%"}
+
+Divisão:
+
+```{python}
+array_1 / array_2
+```
+
+Potenciação:
+
+```{python}
+array_1**2
+```
+
+Desigualdade:
+
+```{python}
+array_1 > array_2
+```
+
+:::
+
+::::
+
+</div>
+
+## Array - exemplo
+
+Checando tipo de dados de um array:
+
+```{python}
+array_1.dtype
+```
+
+Convertendo o tipo de dados:
+
+```{python}
+array_real = array_1.astype(np.float64)
+print(f'array_real: {array_real.dtype}')
+print((f'array_1: {array_1.dtype}'))
+```
+
+De ASCII para Unicode:
+
+```{python}
+nomes = np.array(['Juliana', 'Josefina', 'Joana'], dtype = "S")
+nomes_u = nomes.astype(np.unicode_)
+print(f'nomes: {nomes.dtype}')
+print(f'nomes_u: {nomes_u.dtype}')
+```
+
+
+## Array - slicing e índices
+
+
+* Usamos `[]` para selecionar elementos de um array.
+    + Vetores: `array[inicio:fim:passo]` ou `array[posicao]`.
+    + Matrizes: `array[inicio:fim:passo, inicio:fim:passo]`, `array[linha, coluna]` ou `array[linha][coluna]`.
+    + Matriz é uma coleção de _linhas_ (vetores).
+* Podemos substituir `inicio:fim` por uma lista, tupla ou array de números inteiros.
+
+
+---
+
+* Podemos omitir `inicio` e `fim`.
+    + `linha` e `coluna` podem ser números inteiros ou valores lógicos.
+    + se forem fornecidas `linha` e `coluna`, `linha` e `coluna` precisam ter o mesmo tamanho.
+    + Exemplo: se `linha = [0, 3, 1]` e `coluna = [2, 1, 3]`, então os valores `(0, 2)`, `(3, 1)` e `(1, 3)`.
+
+> Slicing cria uma _view_!<br>Use o método `copy()` para criar um cópia.
+
+## Array - slicing e índices</br>Exemplo
+
+**Exemplo:**
+
+```{python}
+array = np.array([[ 9.03, 10.53,  7.9 ],
+       [10.93,  9.38,  9.52],
+       [12.05, 11.82, 10.7 ]])
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![Ilustração, _slicing_ e dimensão.](figuras/slicing_1.png)
+
+:::
+
+::: {.column width="50%"}
+
+![Ilustração, _slicing_ e dimensão.](figuras/slicing_2.png)
+
+:::
+
+::::
+
+## Array - slicing e índices
+
+* **Indexação booleana:** seleção de linhas/colunas usando operadores lógicos.
+* **Indexação booleana:** uso de lista (ou array) do tipo `np.bool` para selecionar linha/colunas.
+    + Precisam ter o mesmo tamanho da linha/coluna.
+
+```{python}
+array = np.array([[24.2, 25.3, 25.9, 23.4, 23.1],
+                 [27.2, 24.1, 24. , 23.4, 26.4],
+                 [27. , 24.4, 26.7, 24.1, 25.9],
+                 [24.4, 24.9, 26.2, 25.1, 26.7],
+                 [24.9, 26.9, 26. , 23.1, 25. ]])
+array.shape
+```
+
+<hr>
+
+Selecionando valores das duas primeiras linhas:
+
+```{python}
+array[[True, True, False, False, False]]
+```
+
+## Array - slicing e índices
+
+Podemos usar operadores lógicos com indexação booleana:
+
+* $>$ (menor), $<$ (maior), $\le$ (menor ou igual), $\ge$ (maior ou igual), $==$ (igual) e $!=$ (diferente);
+* $\sim$ (negação - `True` vira `False` e `False` vira `True`), $\&$ (and) e $|$ (ou).
+
+---
+
+**Exemplo:**
+
+* Cada linha é um/uma estudante;
+* Cada coluna é nota de uma disciplina.
+
+```{python}
+dados = np.array([[9.18, 8.56, 8.96, 7.72, 6.68, 8.48, 8.93],
+               [6.85, 7.76, 9.99, 8.21, 9.13, 7.67, 9.42],
+               [9.78, 9.65, 9.39, 6.91, 8.07, 6.77, 9.69],
+               [8.07, 9.19, 6.96, 6.49, 8.79, 8.23, 7.98],
+               [7.95, 7.11, 9.59, 9.86, 9.66, 6.18, 7.65]])
+
+estudantes = np.array(["Ana", "Bruno", "Carla", "Diego", "Elisa"])
+
+
+# Notas dos homens
+dados[(estudantes == "Bruno") | (estudantes == "Diego")]
+```
+
+## Array - funcções universais
+
+* `ufunc`: realiza operações matemáticas sem usar laços de repetição.
+* Implementação rápida e eficiente de operações em arrays.
+
+<hr>
+
+<div style="font-size: 0.55em">
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+|Função|Descrição|
+|:---|:---|
+|`abs`|Valor absoluto de cada elemento de um array|
+|`ceil`|Arrendonda para cima|
+|`floor`|Arrendonda para baixo|
+|`isnan`|Retorna `True` se o valor é missing|
+|`isfinite`, `isinf`|Retorna `True` se o valor é finito ou infinito|
+|`max`|Valor máximo de um array|
+|`min`|Valor mínimo de um array|
+
+: `ufunc` com apenas um argumento.
+
+:::
+
+::: {.column width="50%"}
+
+|Função|Descrição|
+|:----|:----|
+|`add`|Adição elemento a elemento de dois arrays|
+|`multiply`|Multiplicação elemento a elemento de dois arrays|
+|`maximum`, `fmax`|`maximum` - máximo elememento a elemento de duas matrizes; `fmax` máximo elememento a elemento de duas matrizes ignora valores `np.nan`|
+|`minimum`, `fmin`|`minimum` - mínimo elememento a elemento de duas matrizes; `fmin` mínimo elememento a elemento de duas matrizes ignora valores `np.nan`|
+
+: `ufunc` com dois argumentos.
+
+:::
+
+::::
+
+</div>
+
+## Array - Exercício
+
+As calouras Ana, Bruna, Carla, Helena, e Elisa cursaram os componentes currículares _estatística_ e _português_, e obtiveram as seguintes notas:
+
+<div style="font-size: 0.8em;">
+
+:::: {.columns}
+
+::: {.column width="50%"}
+$$
+\text{estatística} = \begin{pmatrix}
+8,0 & 9,3 & 5,7 & 6,4 & 7,8
+\end{pmatrix}^\top
+$$
+:::
+
+::: {.column width="50%"}
+
+$$
+\text{português} = \begin{pmatrix}
+8,5 & 7,2 & 9,0 & 6,8 & 7,5
+\end{pmatrix}^\top
+$$
+
+:::
+
+::::
+
+</div>
+
+<hr>
+
+* Qual a nota de estatística Helena em português e estatística?
+* Obtenha a maior nota de cada estudante?
+* Obtenha a menor nota de cada estudante?
+* Qual a maior nota de português?
+* Qual a menor nota de estatística?
+
+#  `pandas`
+
+## Sobre `pandas`
+
+* Estrututura de dados para análise de dados em `python`.
+* Construído em cima de `NumPy` em 2008.
+* `Series` (estrutura unidimensional homogênero) e `DataFrame` (estrutura bidimensional heterogêneo).
+* Usado por todos pacotes de Estatística e Ciência de Dados em `python`.
+* Valores faltantes: `np.nan`, `pd.NA` e `None`.
+* Outros valores especiais: `np.inf` e `-np.inf`.
+
+<hr>
+
+```{python}
+import pandas as pd
+from pandas import Series, DataFrame
+```
+
+# `Series`
+
+
+## `Series`
+
+<div style="font-size: 0.8em;">
+
+* Estrutura unidimensional e homogênea no estilo `array-like`.
+* Composto por:
+    + `array`: dados organizados em array. Pode ter nome.
+    + `index`: índice para acesso rápido e eficiente. Pode ter nome.
+* `to_dict()`: converte `Serie` para dicionário.
+
+```{python}
+nomes = Series(data = ["Ana", "Bruna", "Carla", "Helena", "Elisa"],
+              index = [20231578, 40321789, 50284613, 30897541, 71239064])
+nomes.name = "nomes"
+nomes.index.name = "matrícula"
+print(nomes)
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+Podemos acessar os dados com atributo `array`:
+
+```{python}
+nomes.array
+```
+
+
+:::
+
+::: {.column width="50%"}
+
+Podemos acessar o índice com atributo `index`:
+
+```{python}
+nomes.index
+```
+
+
+:::
+
+::::
+
+
+</div>
+
+---
+
+De uma `Series` para dicionário:
+
+```{python}
+nomes.to_dict()
+```
+
+
+## `Series` - slicing
+
+* `[---]`:
+    + `---` pode ser valores ou lista/tupla de valores do índice.
+    + `---` pode ser valores lógicos.
+* Operações básicas e funções universais funcionam para `Series`.
+
+<hr>
+
+```{python}
+nomes = Series(data = [7.4 , 7.84, 9.64, 9.32, 8.64],
+              index = [20231578, 40321789, 50284613, 30897541, 71239064])
+nomes.name = "CR"
+nomes.index.name = "matrícula"
+```
+
+Operações básicas e funções universais:
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+```{python}
+# nota média
+print(np.mean(nomes))
+```
+
+
+:::
+
+::: {.column width="60%"}
+
+```{python}
+# apenas as maiores notas
+print(nomes[nomes > 9])
+```
+
+:::
+
+::::
+
+## Series</br>Exercício
+
+Considere cinco candidatas/os do no ENEM 2023 com matrícula : 210058437213, 210059138190, 210058459503, 210061875001, 210059087534. As notas em Matemática dessas/es estudantes foram 410,6; 615,8; 460,9; 509; 516,3; e as notas em Ciências Naturais dessas/es estudantes foram 506,1; 483,3; 520,4; 492,3; 593,3.
+
+* Crie uma `Serie` para as notas de Matemática.
+* Crie uma `Serie` para as notas de Ciências Naturais.
+* Calcule a média de Matemática (use `np.mean`).
+* Calcule a média de Ciências Naturais (use `np.mean`)
+
+# `DataFrame`
+
+## Alguns conceitos básicos de estatística
+
+* **População:** todos os elementos ou indivíduos alvo do estudo.
+* **Amostra:** parte da população.
+* **Parâmetro:** característica numérica da população. Usamos letras
+gregas para denotar parâmetros populacionais.
+* **Estatística:** agregação.
+* **Estimativa:** característica numérica da amostra, obtida da estatística
+computada na amostra. Em geral, usamos uma estimativa para
+estimar o parâmetro populacional.
+* **Variável:** característica mensurável comum a todos os elementos da população.
+
+## Alguns conceitos básicos de estatística
+
+![Classificação de variáveis.](figuras/classificacao-variaveis.png){fig-align="center" width="125%" }
+
+## Alguns conceitos básicos de estatística<br>Exemplo
+
+* **População:** todos os eleitores nas eleições gerais de 2023.
+* **Amostra:** 3.500 pessoas abordadas pelo datafolha.
+* **Variável:** candidato a presidente de cada pessoa.
+* **Parâmetro:** porcentagem de pessoas que escolhem Lula como presidente entre todos os eleitores.
+* **Estatística:** porcentagem de pessoas que escolhem o lula.
+* **Estimativa:** porcentagem de pessoas que escolhem Lula como presidente entre todos os eleitores da amostra de 3.500 pessoas entrevistas pelo datafolha.
+
+## `DataFrame`
+
+<div style="font-size: 0.8em;">
+
+* Dados em estrutura tabular:
+    + Cada linha tem uma única observação.
+    + Cada coluna tem uma única variável.
+    + Cada coluna é um objeto `Serie`.
+    + Existe um índice para as colunas e um índice para as linhas.
+        - `index`: índice para linhas.
+        - `columns`: índice para colunas.
+
+|Tipo|Notas|
+|:----|:----|
+|2D ndarray|Array bidimensional|
+|Dicionário of arrays, lists, or tuples|Cada sequência é uma coluna|
+|Dicionário de `Serie`|Cada `Serie`	será uma coluna; índices de cada `Serie` são unidos se nenhum índice é explicitamente fornecido|
+|Lista de listas ou tuplas|Semelhante 2D ndarray|
+
+: Como criar um `DataFrame` _na mão_.
+
+</div>
+
+## `DataFrame`
+
+```{python}
+estudantes = DataFrame({
+  'nu_nota_mt': [581.5, 466.1, 753.4, 389.2, 611.5],
+  'nu_nota_cn': [489.1, 532.7, 545.5, 489.6, 487.5]
+}, index  = [2, 4, 6, 8, 10])
+estudantes.index.name = 'num_inscricao'
+
+estudantes
+```
+
+## Índice - `Serie` e `DataFrame`
+
+* armazena índice das linhas/colunas.
+* `.loc[]`: acessar um valor da linha/coluna pelo _texto_ do índice.
+* `iloc[]`: acessar um elemento da linha/coluna pela sequência.
+* Podemos usar a síntaxe de _slicing_ e _indexing_ de arrays.
+    + A contagem começa no zero.
+
+<hr>
+
+<div style="font-size: 0.9em;">
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+Usando `.loc`:
+
+```{python}
+print(estudantes.loc[2])
+```
+
+
+```{python}
+print(estudantes.loc[2, :])
+```
+
+```{python}
+print(estudantes.loc[2, 'nu_nota_mt'])
+```
+
+
+:::
+
+::: {.column width="50%"}
+
+Usando `iloc`:
+
+```{python}
+print(estudantes.iloc[2])
+```
+
+
+```{python}
+print(estudantes.iloc[2, :])
+```
+
+```{python}
+print(estudantes.iloc[2, 1])
+```
+
+:::
+
+::::
+
+</div>
+
+
+## Sobre `[]` - `DataFrame`
+
+<div style="font-size: 0.75em;">
+
+|Tipo||Descrição|
+|:-----|:-----|
+|`df[column]`|Seleciona uma coluna ou uma sequência de colunas. **Caso `column` seja uma sequência de valores lógicos, linhas são selecionadas (de forma parecida array)**|
+|`df.loc[rows]`|Seleciona uma única linha ou um conjunto de linhas|
+|`df.loc[:, cols]`|Seleciona uma ou mais colunas pelo rótulo|
+|`df.loc[rows, cols]`|Seleciona linhas e/ou colunas pelo rótulo|
+|`df.iloc[rows]`|Seleciona uma ou mais linhas de um `DataFrame` pela posição|
+|`df.iloc[:, cols]`|Seleciona uma ou mais colunas pela posição|
+|`df.iloc[rows, cols]`|Seleciona linhas e/ou colunhas pela posição|
+|`df.at[row, col]`|Seleciona um único valor escalar pelo rótulo da linha e da coluna|
+|`df.iat[row, col]`|Seleciona um único valor escalar pela posição da linha e da coluna|
+
+: Seleção de linhas e/ou coluns, e um único valor.</br>`df` é um objeto `DataFrame`.
+
+</div>
+
+## Sobre `[]` - `Serie`
+
+<div style="font-size: 0.75em;">
+
+|Tipo||Descrição|
+|:-----|:-----|
+|`sr[rows]`|Seleciona objeto(s) usando um  ou mais rótulos. **Caso `rows` seja uma sequência de valores lógicos, valores são selecionadas (de forma parecida array)**|
+|`sr.loc[rows]`|Seleciona objeto(s) usando um  ou mais rótulos.|
+|`sr.iloc[rows]`|Seleciona objeto(s) usando um  ou mais rótulos pela posição.|
+|`sr.at[row]`|Seleciona um único valor escalar pelo rótulo|
+|`sr.iat[row]`|Seleciona um único valor escalar pela posição|
+
+: Seleção de objetos de `Serie`, e um único valor.</br>`sr` é um objeto `Serie`.
+
+</div>
+
+## Sobre `[]` - Exemplo
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+`[]` - `DataFrame`.
+
+```{python}
+estudantes.loc[[2, 4], 'nu_nota_mt']
+```
+
+```{python}
+estudantes.iloc[[0, 1], 0]
+```
+
+```{python}
+estudantes.at[2, 'nu_nota_mt']
+```
+
+
+```{python}
+estudantes.iat[0, 0]
+```
+
+
+:::
+
+::: {.column width="50%"}
+
+`[]` - `Serie`.
+
+```{python}
+nu_nota_mt = estudantes.nu_nota_mt
+nu_nota_mt.loc[[2, 4]]
+```
+
+```{python}
+nu_nota_mt.iloc[[0, 1]]
+```
+
+```{python}
+nu_nota_mt.at[2]
+```
+
+```{python}
+nu_nota_mt.iat[0]
+```
+
+
+:::
+
+::::
+
+## Sobre `[]`</br>Exercício
+
+Considere cinco estudantes com matrículas 210058894852, 210060690421, 210061408626, 210058862425 e 210059157480.
+
+* Crie um objeto `Serie` com as notas em português (`nu_nota_lc`): 461,9; 528,5; 413,9; 516,2; 679,3.
+* Crie um objeto `Serie` com as notas em ciências humanas (`nu_nota_ch`): 344,6; 612,2; 359,2; 496,9; 681,7.
+* Crie um `DataFrame` com as duas `Serie`.
+
+
+# Importação e exportação</br>arquivos `csv` e `xlsx`
+
+## `csv`: _comma separated values_
+
+|Função|No Brasil|No EUA|
+|---|---|---|
+|Casa decimal|1000,53|1000.53|
+|Agrupador de milhar|1.000,53|1,000.53|
+|Separador de colunas|`;`|`,`|
+
+: Diferenças entre o sistema métrico e o sistema imperial.
+
+**Função para leitura:**
+
+* No Brasil: `pd.read_csv(filename.csv, sep = ";", decimal = ",", thousands = ".")`
+* No EUA: `pd.read_csv(filename.csv)`
+
+
+## Importação e exportação - arquivos `csv` e `xlsx`
+
+**Exemplo - `csv`**
+
+```{python}
+amostra_51 = pd.read_csv("dados/brutos/amostra_51.csv")
+print(amostra_51.shape)
+print(amostra_51.columns)
+```
+
+## Importação e exportação - arquivos `csv` e `xlsx`
+
+**Exemplo - `xlsx`**
+
+```{python}
+amostra_51 = pd.read_excel("dados/brutos/amostra_51.xlsx")
+amostra_51.info()
+```
+
+## Importação e exportação - arquivos `csv` e `xlsx`
+
+* Leia uma amostra de pessoas do Enem 2023 no formato `.csv`.
+* Leia uma amostra de pessoas do Enem 2023 no formato `.xlsx`.
+
+Cada pessoa tem o seu próprio conjunto de dados no website.
+
+# Estatística descritiva
+
+## Tabela de distribuição de frequências</br>Variável qualitativa
+
+A primeira coisa que podemos fazer é contar!
+
+|X|frequência|frequência relativa|porcentagem|
+|:---:|:---:|:---:|:---:|
+|B~1~|n~1~|f~1~|p~1~|
+|B~2~|n~2~|f~2~|p~2~|
+|$\vdots$|$\vdots$|$\vdots$|$\vdots$|
+|B~k~|n~k~|f~k~|p~k~|
+
+: Tabela de distribuição de frequência para a variável qualitativa $X$.
+
+em que n~i~, $i=1, \dots, k$: frequência da categoria B~i~; $f_i = \frac{n_i}{n}$ é a frequência relativa da categoria B~i~ em que $n$ é o tamanho da amostra; e $p_i=f_i \cdot 100$ é a porcentagem da categoria B~i~.
+
+## Tabela de distribuição de frequências</br>Variável qualitativa
+
+Tabela de distribuição de frequência para `in_treineiro`.
+
+Vamos usar o método `value_counts()`.
+
+```{python}
+frequencia = amostra_51['in_treineiro'].value_counts()
+freq_rel = amostra_51['in_treineiro'].value_counts(normalize=True)
+porcentagem = amostra_51['in_treineiro'].value_counts(normalize=True) * 100
+tabela = DataFrame({
+  'frequência': frequencia,
+  'frequência relativa': freq_rel,
+  'porcentagem': porcentagem
+  }).sort_index()
+tabela.to_excel('tabelas/tabela_distribuicao_frequencia.xlsx')
+print(tabela)
+```
+
+---
+
+Podemos criar uma função para construir uma tabela de distribuição de frequências:
+
+```{python}
+def tab_freq(data, coluna):
+  frequencia = data[coluna].value_counts()
+  freq_rel = data[coluna].value_counts(normalize=True)
+  porcentagem = data[coluna].value_counts(normalize=True) * 100
+  tabela = DataFrame({
+    'frequência': frequencia,
+    'frequência relativa': freq_rel,
+    'porcentagem': porcentagem
+    }).sort_index()
+  return tabela
+
+print(tab_freq(amostra_51, 'in_treineiro'))
+```
+
+
+## Tabela de distribuição de frequências</br>Variável qualitativa</br>Exercício
+
+Calcule a tabela de distribuição de frequência para as variáveis:
+
+* `tp_sexo`
+* `tp_cor_raca`
+
+para uma amostra de candidatas/os do Enem 2023. Cada pessoa tem sua amostra Enem 2023.
+
+## Tabela de distribuição de frequências</br>Variável quantitativa discreta
+
+É possível construir tabela de distribuição de frequência para variável quantitativa discreta.
+
+```{python}
+carros = pd.read_csv("dados/brutos/mtcarros.csv")
+tab_freq(carros, 'marchas')
+```
+
+
+## Tabela de distribuição de frequências</br>Variável quantitativa discreta</br>Exercício
+
+Construa uma tabela de distribuição de frequências para a variável `q005` (número de pessoas que moram com a/o candidata/o incluindo a/o candidata/o) para uma amostra Enem 2023.
+
+Cada pessoa tem sua própria amostra.
+
+## Tabela de distribuição de frequências</br>Variável quantitativa contínua
+
+* Tabelas não **podem** tem muitas linhas.
+    * Se tiver, agrupe os valores em faixas.
+
+```{python}
+print(tab_freq(amostra_51, 'nu_nota_cn'))
+```
+
+## Tabela de distribuição de frequências</br>Variável quantitativa contínua
+
+|X|frequência|frequência relativa|porcentagem|
+|:---:|:---:|:---:|:---:|
+|[l~0~, l~1~)|n~1~|f~1~|p~1~|
+|[l~1~, l~2~)|n~2~|f~2~|p~2~|
+|[l~2~, l~3~)|n~3~|f~3~|p~3~|
+|$\vdots$|$\vdots$|$\vdots$|$\vdots$|
+|[l~k-1~, l~k~]|n~k~|f~k~|p~k~|
+
+: Tabela de distribuição de frequências para uma variável quantitativa contínua X.
+
+* `[]`: valor que acompanha entra na contagem;
+* `()`: valor que acompanha não entra na contagem.
+
+---
+
+* menor valor de X = $l_0 \leq l_1 \leq l_2 \leq \cdots \leq l_{k−1} \leq l_k$ = maior valor de X;
+* $n_i$ é número de valores de X entre $l_{i−1}$ e $l_i$;
+* $l_0, l_1, \cdots , l_k$ quebram o suporte da variável X (breakpoints);
+* $l_0, l_1, \cdots , l_k$ são escolhidos pelo analista.
+
+<hr>
+
+**Recomendações:**
+
+* use $l_0, l_1, \cdots , l_k$ igualmente espaçados;
+* e use a regra de Sturges para determinar o valor de k:
+* $k = \lceil 1 + \log2(n)\rceil$ onde n é tamanho da amostra.
+
+## Tabela de distribuição de frequências</br>Variável quantitativa contínua
+
+* `pd.cut`: agrega valores numéricos em faixa de valores. Argumentos:
+    + `bins`: critério para construção das faixas
+        - `bins = k`: cria `k` intervalos de mesmo tamanho. `k` precisa ser um valor inteiro.
+        - `bins = lista`: usa os valores de lista como _breakpoints_
+    + `right`: `False` para não incluir o valor da direita na contagem
+    + `include_lowest`: `True` para incluir o valor da esquerda na contagem
+    + `labels`: rótulos customizados para as faixas de valores
+
+## Tabela de distribuição de frequências</br>Variável quantitativa contínua
+
+Definindo _breakpoints_: 0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000.
+
+```{python}
+amostra_51['faixa_nu_nota_cn'] = pd.cut(
+  amostra_51['nu_nota_cn'],
+  bins = np.arange(0, 1001, 100),
+  right = False, 
+  include_lowest = True,
+  labels = [
+    "de 0 a 99,99", "de 100 a 199,99", "de 200 a 299,99",
+    "de 300 a 399,99", "de 400 a 499,99", "de 500 a 599,99",
+    "de 600 a 699,99", "de 700 a 799,99", "de 800 a 899,99", "de 900 a 1000"
+  ]
+)
+amostra_51[['nu_nota_cn', 'faixa_nu_nota_cn']].head(n=3)
+```
+
+## Tabela de distribuição de frequências</br>Variável quantitativa contínua
+
+Usando a regra de Sturge.
+
+```{python}
+k = np.ceil(1 + np.log2(amostra_51.shape[0]))
+k = k.astype(np.int64)
+amostra_51['faixa_nu_nota_ch'] = pd.cut(
+  amostra_51['nu_nota_ch'],
+  bins = k,
+  right = False, 
+  include_lowest = True
+)
+amostra_51[['nu_nota_ch', 'faixa_nu_nota_ch']].head(n=3)
+```
+
+## Tabela de distribuição de frequências</br>Variável quantitativa contínua
+
+Calcule a tabela de distribuição de frequência para as variáveis:
+
+* `nu_nota_mt` (nota de matemática) usando a regra de Sturge;
+* `nu_nota_lc` (nota de português) usando os _breakpoints_ `{python} ", ".join([str(value) for value in np.arange(0, 1001, 50)])`;
+
+para uma amostra de candidatas/os do Enem 2023. Cada pessoa tem sua amostra Enem 2023.
+
+# Gráficos
+
+## `matplotlib`
+
+### Gráficos
+
+* Transformar tabelas em figuras geométricas.
+    + Seres humanos interpretam velozmente figuras geométricas.
+
+<hr>
+
+### `matplotlib`
+
+* Ideia era copiar gráficos do MATLAB, e surgiu em 2002.
+* Projeto enorme com diversas opções para produzir a mesma figura geométrica.
+* Existem vários pacotes que usam `matplotlib`.
++ `seaborn`: simplifica a sintaxe do `matplotlib` (criado em 2012).
+
+```python
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
+
+
+## Estrutura básica
+
+```python
+fig, ax = plt.subplots(nrows, ncols, figsize=(12, 10))
+sns.<figura geométrica>(data=<objeto DataFrame>, x = "variável", y = "variável", ax=ax)
+ax.set_xlabel("texto no eixo x")
+ax.set_ylabel("texto no eixo y")
+ax.set_xticks(<lista de valores>)
+ax.set_xtickslabels(<lista de textos>, rotation=90, fontsize=8)
+ax.set_yticks(<lista de valores>)
+ax.set_ytickslabels(<lista de textos>, rotation=90, fontsize=8)
+ax.set_title(<texto>)
+ax.set_xlim([1, 100])
+ax.set_ylim([1, 100])
+ax.legend() # adiciona legenda
+fig.savefig("nome da figura.png")
+```
+
+* `fig`: local onde reside a figura geométrica produzida;
+* `ax`: local onde controlamos os elementos da figura geométrica.
+
+## Gráfico de barras
+
+### `sns.countplot`
+
+* Adequado para:
+    + Variável qualitativa
+    + Variável quantitativa discreta (com poucos valores)
+* Cada categoria (ou valor) é representada por uma barra.
+* Largura da barra não importa.
+* Existe espaço entre as barras.
+* **Altura da barra é a frequência, frequência relativa ou porcentagem:**
+    + `stat = 'count'`: altura da barra é a frequência.
+    + `stat = 'proportion'`: altura da barra é a frequência relativa.
+    + `stat = 'percent'`: altura da barra é a porcentagem.
+    
+## Gráfico de barras
+
+`in_treineiro` da amostra de Enem 2023.
+
+```{python}
+amostra_51 = pd.read_csv("dados/brutos/amostra_51.csv")
+fig, ax = plt.subplots(figsize=(5, 3))
+sns.countplot(data=amostra_51, x='in_treineiro', stat='percent', color="#212335", ax=ax)
+ax.set_xlabel("Candidata/o treineira/o?")
+ax.set_ylabel("Porcentagem")
+plt.show()
+fig.savefig("figuras/grafico_treineiro.png")
+fig.savefig("figuras/grafico_treineiro.pdf")
+```
+
+## Gráfico de barras</br>Exercício
+
+Construa os seguintes gráficos de barras para a amostra Enem 2023:
+
+1. Variável `tp_sexo` (gênero da pessoa) e a altura da barra é a frequência.
+1. Variável `tp_cor_raca` (cor/raça da pessoa) e a altura da barra é a frequência relativa.
+1. Variável `q005` (número de pessoas que moram com o candidata/o) e a altura da barra é a porcentagem.
+
+Salve todas as figuras no formato `png`.
+
+Cada pessoa tem sua própria amostra.
+
+## Histograma
+
+* Adequado para:
+    + variável quantitativa contínua.
+    + variável quantitativa discreta com muitos valores distintos.
+* **Não existe espaço entre as barras.**
+* A largura da barra da faixa $[l_{i-1}, l_i)$ precisa ser proporcional a $l_i - l_{i-1}$.
+* Existem duas formas de construir histograma:
+
+---
+
+
+### Informação está na altura da barra.
+
+<span style="color: black; font-weight: bold;font-size: 1.1em;">Padrão adotado por alguns cientistas da computação.</span>
+
+* `stat='count'`: <span style="color: red; font-weight: bold;font-size: 1.1em;">altura</span> da barra é frequência.
+* `stat='proportion'`: <span style="color: red; font-weight: bold;font-size: 1.1em;">altura</span> da barra é frequência relativa.
+
+<hr>
+
+### Informação está na **área da barra**.
+
+<span style="color: green; font-weight: bold;font-size: 1.1em;">Padrão adotado pela Estatística.</span>
+
+:::: {.columns}
+
+::: {.column width="57%"}
+
+* `stat='frequency'`: <span style="color: red; font-weight: bold;font-size: 1.1em;">área</span> da barra é frequência.
+* `stat='density'`: <span style="color: red; font-weight: bold;font-size: 1.1em;">área</span> da barra é frequência relativa.
+
+
+:::
+
+::: {.column width="43%"}
+
+![Ilustração do caso `stat='density'`: **área** da barra $[l_{i-1}, l_i)$ é a frequência relativa $f_i$.](figuras/densidade.png)
+
+
+:::
+
+::::
+
+---
+
+### Histograma e intervalos
+
+`sns.histplot`
+
+Formas de especificar os intervalos:
+
+1. Número de intervalos (regra de Sturge): `bins = k`
+    * `k` é um número inteiro
+    * todos intervalos têm mesmo tamanho
+1. _Breakpoints_ dos intervalos: `bins = lista`
+    * `lista` é uma lista com _breakpoints_
+1. Tamanho de cada intervalos: `binwidth = tam`
+    * `tam` é um número real que representa o tamanho dos intervalos
+    * todos intervalos têm mesmo tamanho
+
+## Histograma</br>`stat='count'` e `bins='lista'`
+
+* `nu_nota_cn` da amostra Enem 2023
+* a frequência é a **altura** da barra
+* intervalos: 0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000
+
+
+```{python}
+#| fig-cap: "Histograma em que a altura da barra é a frequência."
+#| fig-cap-location: top
+#| eval: false
+breakpoints = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
+amostra_51 = pd.read_csv("dados/brutos/amostra_51.csv")
+fig, ax = plt.subplots(figsize = (5, 3))
+sns.histplot(data=amostra_51, x='nu_nota_cn', stat='count', bins=breakpoints, color='blue', ax=ax)
+ax.set_xlabel('Nota de ciências naturais')
+ax.set_ylabel('Frequência')
+ax.set_xticks(breakpoints)
+plt.show()
+```
+
+---
+
+```{python}
+#| echo: false
+#| fig-cap: "Histograma em que a altura da barra é a frequência."
+#| fig-cap-location: top
+#| eval: true
+breakpoints = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
+amostra_51 = pd.read_csv("dados/brutos/amostra_51.csv")
+fig, ax = plt.subplots(figsize = (10, 6))
+sns.histplot(data=amostra_51, x='nu_nota_cn', stat='count', bins=breakpoints, color='blue', ax=ax)
+ax.set_xlabel('Nota de ciências naturais')
+ax.set_ylabel('Frequência')
+ax.set_xticks(breakpoints)
+plt.show()
+```
+
+## Histograma</br>`stat='density'` e `bins=k`
+
+* `nu_nota_ch` da amostra Enem 2023
+* a frequência relativa é a **área** da barra
+* número de intervalos: regra de Sturge
+
+```{python}
+#| fig-cap: "Histograma em que a área da barra é a frequência relativa."
+#| fig-cap-location: top
+#| eval: false
+
+amostra_51 = pd.read_csv("dados/brutos/amostra_51.csv")
+# regra de sturge
+k = np.ceil(1 + np.log2(amostra_51.shape[0]))
+k = k.astype(np.int64)
+
+fig, ax = plt.subplots(figsize = (5, 3))
+sns.histplot(data=amostra_51, x='nu_nota_ch', stat='density', bins=k, color='blue', ax=ax)
+ax.set_xlabel('Nota de ciências naturais')
+ax.set_ylabel('Densidade de frequência')
+plt.show()
+```
+
+---
+
+```{python}
+#| fig-cap: "Histograma em que a área da barra é a frequência relativa."
+#| fig-cap-location: top
+#| eval: true
+#| echo: false
+
+amostra_51 = pd.read_csv("dados/brutos/amostra_51.csv")
+k = np.ceil(1 + np.log2(amostra_51.shape[0]))
+k = k.astype(np.int64)
+fig, ax = plt.subplots(figsize = (10, 6))
+sns.histplot(data=amostra_51, x='nu_nota_ch', stat='density', bins=k, color='blue', ax=ax)
+ax.set_xlabel('Nota de ciências naturais')
+ax.set_ylabel('Densidade de frequência')
+plt.show()
+```
+
+## Histograma</br>Exercício
+
+Crie os seguintes histogramas para a amostra Enem 2023:
+
+* variável quantitativa contínua `nu_nota_mt` (nota de matemática) com densidade de frequência no eixo y (`stat='density'`) e use a regra de Sturge (`bins='k'`);
+* variável quantitativa contínua `nu_nota_mt` (nota de matemática) com densidade de frequência no eixo y (`stat='density'`) e use intervalos de tamanho 50 pontos (`binwidth=50`);
+* variável quantitativa contínua `nu_nota_lc` (nota de português) com frequência no eixo y (`stat='count'`) e use intervalos de tamanho 50 pontos (`binwidth=50`);
+* variável quantitativa contínua `nu_nota_lc` (nota de português) com porcentagem no eixo y (`stat='percent'`) e use intervalos de tamanho 50 pontos (`binwidth=50`).
+
+# Medidas resumo
+
+## Medidas de resumo
+
+A ideia é encontrar um ou alguns valores que sintetizem todos os valores.
+
+<hr>
+
+### Medidas de posição
+
+Um número que representa bem todos os números.
+
+Principais medidas de posição: média, mediana, e moda.
+
+## Média
+
+Média é a soma dos valores dividido pela quantidade de valores que foram somados.
+
+![Ilustração da ideia de média: média é o centro de massa.](figuras/media.png){width=45%}
+
+## Mediana
+
+1. Ordene os valores do menor ao maior valor
+1. Pega o meio da fila
+
+![Ilustração da ideia de mediana: _meio_ da fila.](figuras/mediana.png){width=40%}
+
+## Moda 
+
+Valor mais frequente.
+
+![Ilustração da ideia de moda: valor com a maior frequência.](figuras/moda.png){width=35%}
+
+## Medidas de resumo - exemplo
+
+`marchas` -- `mtcarros.xlsx`
+
+```{python}
+carros = pd.read_csv("dados/brutos/mtcarros.csv")
+```
+
+
+
+```{python}
+tab_freq(carros, 'marchas')
+```
+
+A moda é 3: o mais comum é um carro ter 3 marchas.
+
+---
+
+Medidas de resumo são calculadas em duas etapas:
+
+* divida os dados em grupos (ou em um único grupo)
+    + `.groupby`: divide um objeto data frame em _partes_
+* aplique alguma estatística com `.agg`
+    + `.agg`: método para resumo de variáveis no formato:
+
+```
+{'nome da variável': <função ou nome da função ou lista>,  ..., 'nome da variável': <função ou nome da função ou lista>}
+```
+
+`função` precisa retornar um valor escalar.
+
+---
+
+```{python}
+def media(x):
+  return sum(x) / len(x)
+def zero(x):
+  return 0
+resumos = carros.groupby(zero).agg({
+  'marchas': [('média', 'mean'), ('mediana', 'median')], 
+  'carburadores': [media, 'max'],
+  'milhas_por_galao': media
+})
+resumos
+```
+
+## Agrupamento com `groupby`
+
+A etapa de agrupamento pode ser feita de três formas:
+
+a. uma string ou lista de string de nomes das colunas
+a. uma lista do tamanho da amostra
+a. uma função que será aplicada a cada elemento do índice do data frame
+
+```{python}
+df_equipe = pd.DataFrame({
+  "pesos": [70.5, 82.1, 65.3, 90.0, 75.8, 68.7, 78.2],
+  "alturas": [1.75, 1.82, 1.68, 1.90, 1.72, 1.65, 1.80],
+  "vinculo": ["Docente", "Docente", "estudante", "estudante", "estudante", "estudante", "estudante"],
+}, index = ["Profa Carolina", "Prof Gilberto", "Carol", "Miguel", "Keila", "Fernanda", "Mayara"])
+df_equipe.index.name = "nome"
+
+```
+
+## Agrupamento com `groupby`
+
+### Usando uma lista de colunas 
+
+```{python}
+df_equipe.groupby(['vinculo']).agg({
+  "alturas": [("Média", 'mean'), ("Mediana", 'median')]
+})
+
+```
+
+## Agrupamento com `groupby`
+
+### Usando uma lista com o mesmo tamanho da amostra
+
+```{python}
+genero = ['F', 'M', 'F', 'M', 'F', 'F', 'F']
+df_equipe.groupby(genero).agg({
+  'alturas': ['mean', 'median']
+})
+
+```
+
+
+## Agrupamento com `groupby`
+
+### Usando uma função
+
+Agrupamento pelo número de caracteres dos nomes.
+
+```{python}
+df_equipe.groupby(len).agg({
+  'alturas': ['mean', 'median', 'count']
+})
+
+```
+
+
+## Estatísticas em `pandas`
+
+<div style="font-size: 0.8em;">
+
+|Nome da função|Descrição|
+|:----|:-----|
+|`count`|Números de observações não faltantes|
+|`first`, `last`|Primeiro e último valor não faltantes|
+|`mean`|média de valores não faltantes|
+|`median`|Mediana de valores não faltantes|
+|`min`, `max`|Mínimo e máximo de valores não faltantes|
+|`prod`|Produto de valores não faltantes|
+|`sum`|Soma de valores não faltantes|
+|`std`, `var`|Desvio padrão e variância amostral dos valores não faltantes|
+
+: Algumas estatísticas de resumo implementadas no pacote `pandas`.
+
+</div>
+
+## Medidas de resumo</br>Exercício
+
+Para uma amostra de Enem 2023 calcule:
+
+* Média e mediana de nota de matemática (`nu_nota_mt`) por raça/cor (`tp_cor_raca`);
+* Média e mediana de nota de português (`nu_nota_lc`) por raça/cor (`tp_cor_raca`).
+
+Cada pessoa tem sua própria amostra.
+
+# Quantis
+
+## Quantil
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+**Ideia:**
+
+$q(p)$ é um valor que satisfaz:
+
+* $100·p\%$ das observações são iguais ou abaixo de $q(p)$;
+* $100·(1−p)\%$ das observações são iguais ou acima de $q(p)$.
+
+
+**Alguns casos especiais:**
+
+* Primeiro quartil: $q\left(\frac{1}{4}\right)$;
+* Segundo quartil: $q\left(\frac{2}{4}\right)$;
+* Terceiro quartil: $q\left(\frac{3}{4}\right)$.
+
+
+:::
+
+::: {.column width="40%"}
+
+![Ilustração: primeiro, segundo e terceiro quartil.](figuras/quantis.png){width=75%}
+
+:::
+
+::::
+
+## Quantil
+
+* `lambda`: função anônima usada apenas uma vez:
+    + `lambda x: <conta que retorna um único valor>`
+
+```{python}
+carros = pd.read_csv("dados/brutos/mtcarros.csv")
+def q1(x): 
+  return np.quantile(x, 0.25)
+tab = carros.groupby(lambda _: 0).agg({
+  'marchas': [('min', 'min'),('q1', q1), ('mediana', lambda x: np.quantile(x, 0.5)), 
+  ('q3', lambda x: np.quantile(x, 0.75)), ('max', 'max')]
+})
+tab
+```
+
+## Quantil</br>Exercício
+
+Para uma amostra de Enem 2023 calcule:
+
+* $q(0,1)$, primeiro quartil, mediana, terceiro quartil, $q(0,9)$ de nota de matemática (`nu_nota_mt`);
+* $q(0,1)$, primeiro quartil, mediana, terceiro quartil, $q(0,9)$ de nota de matemática (`nu_nota_mt`) por gênero (`tp_sexo`);
+* $q(0,1)$, primeiro quartil, mediana, terceiro quartil, $q(0,9)$ de nota de matemática (`nu_nota_lc`);
+* $q(0,1)$, primeiro quartil, mediana, terceiro quartil, $q(0,9)$ de nota de matemática (`nu_nota_lc`) por gênero (`tp_cor_raca`).
+
+
+Cada pessoa tem sua própria amostra.
+
+# Diagrama de Caixa
+
+## Diferença de quartis
+
+**Medida de dispersão:** distância entre o primeiro e o terceiros quartis.
+
+$$
+dq = q_3 - q_1.
+$$
+
+```{python}
+#| echo: false
+#| fig-cap: Ilustração da diferença de quartis como medida de dispersão.
+#| label: fig-dq
+np.random.seed(20250217)
+dados = pd.DataFrame({
+    'variável 1': stats.norm.rvs(size=1000, loc=0, scale=5),
+    'variável 2': stats.norm.rvs(size=1000, loc=0, scale=50)
+})
+q1_1 = dados['variável 1'].quantile(0.25)
+q1_2 = dados['variável 2'].quantile(0.25)
+
+q3_1 = dados['variável 1'].quantile(0.75)
+q3_2 = dados['variável 2'].quantile(0.75)
+
+k = int(1 + np.log2(dados.shape[0]))
+fig, ax = plt.subplots(figsize=(10, 4))
+sns.histplot(data=dados, x='variável 1', stat='density',  color='red', alpha=0.15, ax=ax, bins=k, element="step")
+ax.text(x=q1_1-10, y = 0.07, s='q1', color='red')
+ax.text(x=q3_1+2, y = 0.07, s='q3', color='red')
+sns.histplot(data=dados, x='variável 2', stat='density',  color='blue', alpha=0.15, ax=ax, bins=k, element="step")
+ax.text(x=q1_2-10, y = 0.07, s='q1', color='blue')
+ax.text(x=q3_2+2, y = 0.07, s='q3', color='blue')
+plt.axvline(x=q1_1, color='red', linestyle=':', label="q1 variável 1", lw=4)
+plt.axvline(x=q3_1, color='red', linestyle=':', label="q3 variável 1", lw=4)
+plt.axvline(x=q1_2, color='blue', linestyle=':', label="q1 variável 2", lw=4)
+plt.axvline(x=q3_2, color='blue', linestyle=':', label="q3 variável 2", lw=4)
+ax.set_xlabel("")
+ax.set_ylabel("Densidade de frequência")
+# plt.legend()
+plt.show()
+```
+
+## Diagrama de Caixa
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+* LS (Limite Superior): $LS = q_3 + 1,5 \cdot dq$.
+* LS (Limite Superior): $LI = q_1 - 1,5 \cdot dq$.
+* Ponto exterior ou valor atípico: $x_i < LI$ ou $x_i > LS$.
+
+:::
+
+::: {.column width="60%"}
+
+![](figuras/boxplot.png){width=40% fig-align="right"}
+
+:::
+
+::::
+
+## Diagrma de Caixa</br>Assimetria
+
+```{python}
+#| echo: false
+n=1000
+np.random.seed(20250217)
+df_assimetria = pd.DataFrame({
+    'positiva': stats.beta.rvs(a=0.75, b=10, size=n),
+    'negativa': stats.beta.rvs(a=10,b=0.75,size=n),
+    'simetria': stats.beta.rvs(a=5,b=5,size=n)
+})
+sns.set_theme(style="darkgrid")
+k = int(1 + np.log2(df_assimetria.shape[0]))
+fig, ax = plt.subplots(figsize=(15, 5), nrows=3, ncols=2)
+# histogramas
+sns.histplot(data=df_assimetria, x='positiva', stat='density', ax=ax[0, 0], bins=k, element='step')
+ax[0, 0].set(yticklabels=[])  # remove the tick labels
+ax[0, 0].set(xticklabels=[])  # remove the tick labels
+ax[0, 0].set_ylabel("")
+ax[0, 0].set_xlabel("")
+ax[0, 0].set_title("Assimetria positiva")
+sns.histplot(data=df_assimetria, x='negativa', stat='density', ax=ax[1, 0], bins=k, element='step')
+ax[1, 0].set(yticklabels=[])  # remove the tick labels
+ax[1, 0].set(xticklabels=[])  # remove the tick labels
+ax[1, 0].set_ylabel("Densidade de Frequência")
+ax[1, 0].set_xlabel("")
+ax[1, 0].set_title("Assimetria negativa")
+sns.histplot(data=df_assimetria, x='simetria', stat='density', ax=ax[2, 0], bins=k, element='step')
+ax[2, 0].set(yticklabels=[])  # remove the tick labels
+ax[2, 0].set(xticklabels=[])  # remove the tick labels
+ax[2, 0].set_ylabel("")
+ax[2, 0].set_xlabel("X")
+ax[2, 0].set_title("Simetria")
+
+# diagrama de caixa
+sns.boxplot(data=df_assimetria, ax=ax[0, 1], x='positiva', whis=(0, 100))
+ax[0, 1].set(yticklabels=[])  # remove the tick labels
+ax[0, 1].set(xticklabels=[])  # remove the tick labels
+ax[0, 1].set_ylabel("")
+ax[0, 1].set_xlabel("")
+ax[0, 1].set_title("Assimetria positiva")
+
+sns.boxplot(data=df_assimetria, ax=ax[1, 1], x='negativa', whis=(0, 100))
+ax[1, 1].set(yticklabels=[])  # remove the tick labels
+ax[1, 1].set(xticklabels=[])  # remove the tick labels
+ax[1, 1].set_ylabel("")
+ax[1, 1].set_xlabel("")
+ax[1, 1].set_title("Assimetria negativa")
+
+sns.boxplot(data=df_assimetria, ax=ax[2, 1], x='simetria', whis=(0, 100))
+ax[2, 1].set(yticklabels=[])  # remove the tick labels
+ax[2, 1].set(xticklabels=[])  # remove the tick labels
+ax[2, 1].set_ylabel("")
+ax[2, 1].set_xlabel("X")
+ax[2, 1].set_title("Simetria")
+plt.show()
+sns.set_theme(style="ticks")
+```
+
+## Diagrama de Caixa
+
+```{python}
+amostra_51 = pd.read_csv("dados/brutos/amostra_51.csv")
+fig, ax = plt.subplots(figsize = (10, 5))
+sns.boxplot(data=amostra_51, y='nu_nota_mt', ax=ax)
+ax.set_ylabel('Nota de matemática')
+plt.show()
+```
+
+---
+
+```{python}
+amostra_51 = pd.read_csv("dados/brutos/amostra_51.csv")
+fig, ax = plt.subplots(figsize = (10, 5))
+sns.boxplot(data=amostra_51, x='in_treineiro', y='nu_nota_mt', ax=ax)
+ax.set_ylabel('Nota de matemática')
+plt.show()
+```
+
+## Diagrama de Caixa
+
+1. Construa um diagrama para a variável _nota de matemática_ (`nu_nota_mt`) por _raça/cor_ (`tp_cor_raca`).
+1. Construa um diagrama para a variável _nota de português_ (`nu_nota_lc`) por _raça/cor_ (`tp_cor_raca`).
+1. Construa um diagrama para a variável _nota de matemática_ (`nu_nota_mt`) por _gênero_ (`tp_sexo`).
+1. Construa um diagrama para a variável _nota de português_ (`nu_nota_lc`) por _gênero_ (`tp_sexo`).
+
+# Associação entre Duas Variáveis
+
+## Associação entre variáveis quantitativas
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+### Ideia
+
+* Cada observação é um ponto do plano catersiano: $(x_i, y_i)$.
+* Olhar tendência **linear** da _nuvem_ de pontos.
+
+
+:::
+
+::: {.column width="50%"}
+
+### Gráfico de dispersão
+
+```{python}
+#| fig-cap: Associação entre duas variáveis quantitativas.
+#| fig-align: center
+#| label: fig-associacao-quant
+#| echo: false
+
+np.random.seed(20250218)
+
+n = 1000
+
+# positiva
+media = np.array([0, 0])
+mcov = np.array(
+    [[1, 0.9],
+    [0.9, 1]]
+)
+np.random.seed(20250218)
+df_positiva = stats.multivariate_normal.rvs(mean=media, cov=mcov, size=n)
+df_positiva = pd.DataFrame(df_positiva, columns=['x', 'y'])
+
+# negativa
+media = np.array([0, 0])
+mcov = np.array(
+    [[1, -0.9],
+    [-0.9, 1]]
+)
+np.random.seed(20250218)
+df_negativa = stats.multivariate_normal.rvs(mean=media, cov=mcov, size=n)
+df_negativa = pd.DataFrame(df_negativa, columns=['x', 'y'])
+
+# nula
+media = np.array([0, 0])
+mcov = np.array(
+    [[1, 0],
+    [0, 1]]
+)
+np.random.seed(20250218)
+df_nula = stats.multivariate_normal.rvs(mean=media, cov=mcov, size=n)
+df_nula = pd.DataFrame(df_nula, columns=['x', 'y'])
+
+fig, ax = plt.subplots(figsize = (10, 5), ncols=3, nrows=1)
+# positiva
+sns.scatterplot(data  = df_positiva, x='x', y='y', ax=ax[0])
+ax[0].set(yticklabels=[])  # remove the tick labels
+ax[0].set(xticklabels=[])  # remove the tick labels
+ax[0].set_ylabel("Y")
+ax[0].set_xlabel("X")
+ax[0].set_title("Associação positiva")
+
+# negativa
+sns.scatterplot(data  = df_negativa, x='x', y='y', ax=ax[1])
+ax[1].set(yticklabels=[])  # remove the tick labels
+ax[1].set(xticklabels=[])  # remove the tick labels
+ax[1].set_ylabel("Y")
+ax[1].set_xlabel("X")
+ax[1].set_title("Associação negativa")
+
+# nula
+sns.scatterplot(data  = df_nula, x='x', y='y', ax=ax[2])
+ax[2].set(yticklabels=[])  # remove the tick labels
+ax[2].set(xticklabels=[])  # remove the tick labels
+ax[2].set_ylabel("Y")
+ax[2].set_xlabel("X")
+ax[2].set_title("Sem associação")
+
+plt.show()
+```
+
+
+:::
+
+::::
+
+## Gráfico de dispersão
+
+
+* Dados de flores de iris: `iris.xlsx`.
+* Existe associação entre o comprimento de pétala e o comprimento de sépala?
+
+<hr>
+
+```{python}
+#| code-line-numbers: "3"
+#| eval: false
+df_iris = pd.read_excel("dados/brutos/iris.xlsx")
+fig, ax = plt.subplots()
+sns.scatterplot(data=df_iris, x='comprimento_sepala', y='comprimento_petala', hue='especies', alpha=0.5, ax=ax)
+ax.set_xlabel('Comprimento de Sépala')
+ax.set_ylabel('Comprimento de Pétala')
+plt.legend(title='Espécies')
+plt.show()
+```
+
+---
+
+```{python}
+#| code-line-numbers: "3"
+#| echo: false
+#| fig-align: center
+#| fig-cap: Gráfico de dispersão entre as variáveis quantitativas `comprimento_sepala` e `comprimento_petala`.
+#| label: fig-associacao-quant-iris
+df_iris = pd.read_excel("dados/brutos/iris.xlsx")
+fig, ax = plt.subplots()
+sns.scatterplot(data=df_iris, x='comprimento_sepala', y='comprimento_petala', hue='especies', alpha=0.5, ax=ax)
+ax.set_xlabel('Comprimento de Sépala')
+ax.set_ylabel('Comprimento de Pétala')
+plt.legend(title='Espécies')
+plt.show()
+
+```
+
+## Gráfico de dispersão</br>Exercício
+
+Para uma amostra ENEM 2023 (cada pessoa tem sua cidade), construa o gráfico de dispersão entre as variáveis quantitativas `nu_nota_mt` e `nu_nota_cn`.
+
+Inclua `alpha = 0.1` incluir opacidade no gráfico de dispersão. Isso ajuda quando temos amostra de tamanho médio e grande.
+
+## Coeficiente de correlação linear de Pearson
+
+`.corr`: calcula coeficiente de correlação linear de Pearson ($r$) entre duas variáveis.
+
+* $-1 \leq r \leq 1$
+* Associação positiva $\iff r > 0$
+* Associação negativa $\iff r < 0$
+* Associação nula $\iff r \approx 0$
+
+```{python}
+#| code-line-numbers: "2"
+df_iris = pd.read_excel("dados/brutos/iris.xlsx")
+correlacao = df_iris.corr(numeric_only=True)
+correlacao
+```
+
+## Coeficiente de correlação linear de Pearson
+
+```{python}
+#| fig-cap: Mapa de calor para o coeficiente de correlação linear de Pearson.
+#| label: fig-heatmap
+#| fig-align: center
+sns.heatmap(correlacao, annot=True, cmap='bwr', vmin=-1, vmax=1, fmt='.1f')
+plt.show()
+```
+
+## Coeficiente de correlação linear de Pearson</br>Exercício
+
+1. Calcule o coeficiente de correlação linear de Pearson dois-a-dois para as variáveis nota de matemática (`nu_nota_mt`), nota de português (`nu_nota_lc`), nota de ciências naturais (`nu_nota_cn`) e nota de ciências humanas (`nu_nota_ch`).
+1. Construa um mapa de calor com o resultado.

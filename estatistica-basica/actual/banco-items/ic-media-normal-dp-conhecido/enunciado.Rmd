@@ -30,7 +30,7 @@ ic <- ci_1pop_norm(amostra, sd_pop = s, conf_level = g) |> round(2)
 Question
 ========
 
-Considere X uma variável aleatória contínua com desvio padrão igual a `r s`. [conjunto-dados](conjunto-dados.xlsx) é uma amostra aleatória de X. Qual o intervalo de confiança para a média da população com coeficiente de confiança `r format(g * 100, decimal.mark = ",")`%?
+Considere X uma variável aleatória contínua com distribuição normal com desvio padrão igual a `r s`. [conjunto-dados](conjunto-dados.xlsx) é uma amostra aleatória de X. Qual o intervalo de confiança para a média da população com coeficiente de confiança `r format(g * 100, decimal.mark = ",")`%?
 
 **Resposta:** IC(&mu;, `r format(g * 100, decimal.mark = ",")`%) = (\#\#ANSWER1\#\#; \#\#ANSWER2\#\#).
 

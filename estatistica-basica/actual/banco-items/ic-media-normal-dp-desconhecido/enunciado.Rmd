@@ -37,7 +37,7 @@ f <- \(x) format(x, decimal.mark = ",")
 Question
 ========
 
-Considere X uma variável aleatória contínua e assuma que [conjunto-dados](conjunto-dados.xlsx) é uma amostra aleatória de X. Qual o intervalo de confiança para a média da população com coeficiente de confiança `r f(g * 100)`%?
+Considere X uma variável aleatória contínua com distribuição normal e assuma que [conjunto-dados](conjunto-dados.xlsx) é uma amostra aleatória de X. Qual o intervalo de confiança para a média da população com coeficiente de confiança `r f(g * 100)`%?
 
 **Resposta:** IC(&mu;, `r f(g * 100)`%) = (\#\#ANSWER1\#\#; \#\#ANSWER2\#\#).
 

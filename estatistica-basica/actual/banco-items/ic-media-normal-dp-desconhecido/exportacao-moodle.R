@@ -7,9 +7,9 @@ library(statBasics)
 library(exams)
 library(tidyverse)
 
-exams::exams2moodle("ic-media-normal-dp-desconhecido/enunciado.Rmd",
+path <- "estatistica-basica/actual/banco-items/ic-media-normal-dp-desconhecido/"
+exams::exams2moodle(glue("{path}enunciado.Rmd"),
                     n = 1000,
                     verbose = TRUE,
-                    dir = "ic-media-normal-dp-desconhecido",
-                    name = "ic-media-normal-dp-desconhecido",
-                    converter = NULL)
+                    dir = path,
+                    name = "ic-media-normal-dp-desconhecido.xml")

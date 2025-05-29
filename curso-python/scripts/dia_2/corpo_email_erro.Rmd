@@ -1,0 +1,18 @@
+---
+title: "Divulgação de curso"
+output: blastula::blastula_email
+params:
+    nome: "Nome da pessoa"
+---
+
+Olá `r params$nome`, 
+
+Houve um erro na mensagem anterior, e pedimos que a desconsidere.
+
+Pedimos desculpa pelo erro e pelo incomodo.
+
+Atenciosamente,
+
+---
+Equipe Organizadora.<br>
+[Programa de Extensão Universitária Ciência de Dados](https://ufba.netlify.app/)

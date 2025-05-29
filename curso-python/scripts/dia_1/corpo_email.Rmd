@@ -1,0 +1,26 @@
+---
+title: "Divulgação de curso"
+output: blastula::blastula_email
+params:
+    nome: "Nome da pessoa"
+---
+
+Olá `r params$nome`, espero que você esteja bem e com saúde.
+
+Envio este e-mail para te lembrar que segunda-feira, dia 24 de março, teremos a nossa primeira aula do curso _`python` para Ciência de Dados: Exploração e Visualização de Dados_. A aula começa pontualmente às 13h no laboratório 143 (primeiro andar) do Instituto de Matemática e Estatística da Universidade Federal da Bahia, que está localizado na Avenida Milton Santos, s/n - Ondina, Salvador, Bahia.
+
+Algumas recomendações para amanhã:
+
+* Sugerimos que você traga uma garrafinha de água com tampa para se hidratar durante a aula.
+* **Gostaríamos de avisar que não é permitido se alimentar dentro do laboratório.** 
+*  A/o participante tem direito ao certificado da UFBA se comparecer em ambas aulas nos dias 24 e 31 de março.
+* Caso ainda não tenha, crie uma conta na plataforma Google Drive [drive.google.com](https://drive.google.com).
+* Traga o seu celular para logar em sua conta Google.
+
+**Não traga seu computador pessoal para a aula, pois todas as tomadas estão ocupadas com os equipamentos do laboratório e não existem tomadas sobressalantes para recarregar o seu equipamento.**
+
+Nos vemos segunda-feira!
+
+---
+Equipe Organizadora.<br>
+[Programa de Extensão Universitária Ciência de Dados](https://ufba.netlify.app/)

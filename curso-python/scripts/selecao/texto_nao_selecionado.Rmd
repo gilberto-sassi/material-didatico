@@ -1,0 +1,18 @@
+---
+title: "Dashboards Interativos com Looker Studio"
+output: blastula::blastula_email
+params:
+    nome: "Nome da pessoa"
+---
+
+Olá `r params$nome`,
+
+gostaríamos de agradecer pelo seu interesse no curso *`python` para Ciência de Dados: Exploração e Visualização de Dados*. Conforme informamos durante a divulgação, nosso curso tem apenas 25 vagas e recebemos mais de 350 inscrições. Por esta razão, lamentamos informar que você não foi selecionada(o) para participar desta edição. Não obstante, informamos a nossa intenção de oferecer este e outros cursos de Ciência de Dados e Estatística Aplicada no futuro e esperamos receber novamente a sua inscrição. Para saber mais sobre cursos e outras atividades promovidas pela UFBA, você pode visitar o site da Pró-reitoria de Extensão [proext.ufba.br](https://proext.ufba.br/) e acompanhar a nossa conta no Instagram [@cienciadeddos.ime](https://www.instagram.com/cienciadedados.ime).
+
+Cordialmente,
+
+---
+Equipe Organizadora<br>
+Programa Extensão Universitária - Ciência de Dados<br>
+[@cienciadedados.ime](https://www.instagram.com/cienciadedados.ime){target="_blank"}<br>
+[cienciadedados.ime.ufba.br](https://ufba.netlify.app){target="_blank"}

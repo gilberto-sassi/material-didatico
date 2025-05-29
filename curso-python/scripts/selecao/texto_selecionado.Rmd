@@ -1,0 +1,20 @@
+---
+title: "Dashboards Interativos com Looker Studio"
+output: blastula::blastula_email
+params:
+    nome: "nome da pessoa"
+---
+
+Olá `r params$nome`,
+
+informamos que você foi selecionada(o) para participar do curso *`python` para Ciência de Dados: Exploração e Visualização de Dados*. O curso será realizado **presencialmente no Laboratório 143 do Instituto de Matemática e Estatística (IME) da UFBA nos dias 24/03/2025 e 31/03/2025, das 13h às 18h**. O curso é gratuito com emissão de certificado pela UFBA. O certificado é concedido apenas para quem tiver 100% de presença.
+
+Devido ao número reduzido de vagas (apenas 25) e ao grande número de inscritos (mais de 350) pedimos, mui gentilmente, que **confirme o seu interesse e presença até as 18h do dia 05/03/2025** respondendo a este e-mail. **Uma não resposta será considerada como desistência e a vaga será oferecida a outra(o) inscrita(o)**.
+
+Cordialmente,
+
+---
+Equipe Organizadora<br>
+Programa Extensão Universitária - Ciência de Dados<br>
+[@cienciadedados.ime](https://www.instagram.com/cienciadedados.ime){target="_blank"}<br>
+[cienciadedados.ime.ufba.br](https://ufba.netlify.app){target="_blank"}

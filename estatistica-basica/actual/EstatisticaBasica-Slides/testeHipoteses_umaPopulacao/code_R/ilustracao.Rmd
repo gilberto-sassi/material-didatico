@@ -8,12 +8,14 @@ editor_options:
 # Pacotes usados
 
 ```{r}
-library(openxlsx)
-library(readxl)
-library(writexl)
-library(latex2exp)
-library(xtable)
-library(tidyverse)
+if (!require(pacman)) install.packages("pacman")
+library(pacman)
+p_load(openxlsx)
+p_load(readxl)
+p_load(writexl)
+p_load(latex2exp)
+p_load(xtable)
+p_load(tidyverse)
 ```
 
 # Ilustração: tamanho da amostra, erro $\alpha$ e erro $\beta$
@@ -308,7 +310,7 @@ ggplot(dados)+
            size = 10, color = "red", parse = T) +
   annotate("text", x = 0.5, y = 0.175, label = "H[0]", 
            size = 10, color = "blue", parse = T) +
-  annotate("text", x = 3, y = 0.05, label = "1-alpha", parse = T,
+  annotate("text", x = 3, y = 0.05, label = "alpha", parse = T,
            color = "gray", size = 10)
 ggsave("../figures/unilateral-h0-lower.png")
 ggsave("../figures/unilateral-h0-lower.pdf")
@@ -683,7 +685,7 @@ ggplot(dados)+
            size = 10, color = "blue", parse = T)+
   annotate("text", x = t_upper + 5, y = 0.165, label = "H[1]", 
            size = 10, color = "red", parse = T) +
-  annotate("text", x = t_upper + 5, y = 0.025, label = "1-alpha", parse = T,
+  annotate("text", x = t_upper + 5, y = 0.025, label = "alpha", parse = T,
            color = "gray", size = 10) 
 ggsave("../figures/unilateral-normal-sd-test-h0-lower.png")
 ggsave("../figures/unilateral-normal-sd-test-h0-lower.pdf")

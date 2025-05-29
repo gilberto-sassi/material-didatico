@@ -1,0 +1,21 @@
+---
+title: "Dashboard"
+output: blastula::blastula_email
+params:
+    nome: "nome da pessoa"
+---
+
+Olá `r params$nome`,
+
+Uma das participantes inscritas no curso “R para Ciência de Dados: Produção de Texto usando Rmarkdown e Quarto” não poderá mais participar do curso, e gostaríamos de te convidar para participar no lugar dela. O curso será realizado **presencialmente no Laboratório 143 do Instituto de Matemática e Estatística (IME) da UFBA nos dias 02/08 e 09/08, das 12h às 18h**. O curso é gratuito com emissão de certificado pela UFBA. O certificado é concedido apenas para quem tiver 100% de presença.
+
+Devido ao número reduzido de vagas (apenas 20) e ao grande número de inscritos (mais de 40) pedimos, mui gentilmente, que **confirme o seu interesse e presença até as 18h00 do dia 18/08/2024** respondendo a este e-mail. **Se não recebermos uma resposta até esse prazo, vamos assumir que você não tem interesse em participar do curso e convocaremos outra pessoa para essa vaga.**
+
+Ficamos no aguardo do seu e-mail.
+
+Cordialmente,
+
+---
+Equipe Organizadora.<br>
+Programa Extensão Universitária - Ciência de Dados<br>
+[ufba.netlify.app](https://ufba.netlify.app)

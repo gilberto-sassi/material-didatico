@@ -170,10 +170,10 @@ minimum height=2em]
   \scalebox{0.7}{
   \begin{tabular}{|l|l|c|c|}
   \toprule[0.05cm]
-  \multicolumn{2}{|c}{}& \multicolumn{2}{c|}{Situação na população}\\ \cmidrule{3-4}
+  \multicolumn{2}{|c}{}& \multicolumn{2}{c|}{Decisão}\\ \cmidrule{3-4}
   \multicolumn{2}{|c}{} & $H_0$ & $H_1$ (Negação de $H_0$)\\ \cmidrule{3-4}
-  \multirow{2}{*}{Decisão} &$H_0$ & Sem erro (verdadeiro negativo) & Erro tipo II (Falso negativo) \\
-  &$H_1$ (Negação de $H_0$) & Erro tipo I (Falso positivo) & Sem erro (Verdadeiro positivo)\\
+  \multirow{2}{*}{Situação na população} &$H_0$ & Sem erro (verdadeiro negativo) & Erro tipo I (Falso positivo) \\
+  &$H_1$ (Negação de $H_0$) & Erro tipo II (Falso negativo) & Sem erro (Verdadeiro positivo)\\
   \bottomrule[0.05cm]
   \end{tabular}
 	}
@@ -277,7 +277,7 @@ Imagine três amostras distintas:
 \end{block}
 
 \begin{block}{Solução}
-	Usamos estatística para determinar quão longe a média da amostra precisa estar de $5$ para rejeitar $H_0: \mu = 5$.
+	Usamos \textit{métrica}, chamada de \textbf{estatística de teste}, para determinar quão longe a média da amostra precisa estar de $5$ para rejeitar $H_0: \mu = 5$.
 \end{block}
  
 \end{frame}
@@ -517,7 +517,7 @@ Nesse curso, vamos determinar a regra de decisão, chamada de ``Teste de Hipóte
 
 \subsection{Passos para testar $H_0$ e $H_1$.}
 
-\begin{frame}{Etapas para construir um teste.}
+\begin{frame}{Etapas para construir em um Teste de Hipóteses.}
 
 \normalsize
 
@@ -530,7 +530,7 @@ Nesse curso, vamos determinar a regra de decisão, chamada de ``Teste de Hipóte
   \item Estabelecer o nível de significância $\alpha$;
   \vfill
   
-  \item Identificar a ``ideia'' da decisão (estatística do teste);
+  \item Identificar a \textit{ideia} da decisão (estatística do teste);
   \vfill
   
   \item Encontrar o(s) valor(es) crítico(s);
@@ -600,7 +600,7 @@ Queremos testar as seguintes hipóteses:
 \normalsize
 \end{frame}
 
-\begin{frame}{Distribuição normal com $\sigma^2$ conhecido (Teste t).}
+\begin{frame}{Distribuição normal com $\sigma^2$ conhecido (Teste Z).}
 
 
 \begin{figure}[htbp]
@@ -613,7 +613,7 @@ Queremos testar as seguintes hipóteses:
 
 \end{frame}
 
-\begin{frame}{Distribuição normal com $\sigma^2$ conhecido (Teste t).}
+\begin{frame}{Distribuição normal com $\sigma^2$ conhecido (Teste Z).}
 
 \large
 
@@ -703,8 +703,8 @@ Ou seja, ao nível de significância $\alpha=5\%$, a substância não altera o t
 \begin{block}{Exemplo}
 	Devido ao surgimento de um novo vírus, uma empresa começou a fabricar em gel anti-séptico para as mãos. Uma máquina  controla a quantidade do produto nos frascos com desvio padrão $10ml$.
 	Um órgão de defesa do consumidor desconfia que os frascos tem menos de $60ml$.
-	Para checar as hipóteses, coletou-se $16$ frascos com os seguintes valores: $57,31$; $78,97$; $75,27$; $56,21$; $68,74$; $65,30$; $53,50$; $66,87$; $67,35$; $54,05$; $70,82$; $71,00$;
-	$48,52$; $62,22$; $70,32$; $68,67$. Ao nível de significância $5\%$, o órgão de defesa do consumidor está correto?
+	Para checar as hipóteses, coletou-se $16$ frascos com os seguintes valores: 57,31; 78,97; 75,27; 56,21; 68,74; 65,30; 53,50; 66,87; 67,35; 54,05; 70,82; 71,00;
+	48,52; 62,22; 70,32; 68,67. Ao nível de significância $5\%$, o órgão de defesa do consumidor está correto?
 \end{block}
 \normalsize
 
@@ -1365,7 +1365,7 @@ Chamamos $t_{\alpha, n-1}$; $t_{1-\alpha, n-1}$; $t_{\frac{\alpha}{2}, n-1}$ e $
 	
 	\textbf{Passo 4)} Vamos encontrar o valor crítico da região crítica:
 	\begin{itemize}
-		\item $P\left(t_{n-1} \leq t_{\alpha, n-1}\right) = P\left(t_{9} \leq t_{0,01, 9}\right)= \alpha = 0,01$, então $t_{0,01, 9} = -2,764$.
+		\item $P\left(t_{n-1} \leq t_{\alpha, n-1}\right) = P\left(t_{9} \leq t_{0,01, 9}\right)= \alpha = 0,01$, então $t_{0,01, 9} = -2,821$.
 	\end{itemize}
 
 	\textbf{Passo 5)} Note que $\bar{x}= 4,958$, $s=0,05$, $n-10$ e $t_0 = \frac{(\bar{x}- \mu_0)\sqrt{n}}{s} = -2,70$. Como $t_0 \not\in RC$, não rejeitamos $H_0$ ao nível de significância $\alpha=1\%$.
@@ -1385,10 +1385,10 @@ Chamamos $t_{\alpha, n-1}$; $t_{1-\alpha, n-1}$; $t_{\frac{\alpha}{2}, n-1}$ e $
 	O p-valor é calculado através da equação
 	$$p = P\left( \frac{(\bar{X} - \mu_0)\sqrt{n}}{s} < \frac{(\bar{x} - \mu_0)\sqrt{n}}{s} \mid H_0 \right) = P\left( t_{n-1} < t_0 \right).$$
 	
-	Como $\bar{x} = 4,958$, $s-0,05$, $n=10$ e $t_0 = \frac{(\bar{x} - \mu_0)\sqrt{n}}{s} = -2,70$, temos que
+	Como $\bar{x} = 4,958$, $s=0,05$, $n=10$ e $t_0 = \frac{(\bar{x} - \mu_0)\sqrt{n}}{s} = -2,70$, temos que
 	\begin{align*}
 		p &= P \left( t_{n-1} \leq t_0\right)\\
-		&= P \left( t_9 \leq -2,70\right)\\
+		&= P \left( t_9 \leq -2,70\right) \mbox{\textcolor{important}{Aqui precisamos usar o R ou python.}}\\
 		&= 0,01.
 	\end{align*}
 	
@@ -1457,7 +1457,7 @@ Chamamos $t_{\alpha, n-1}$; $t_{1-\alpha, n-1}$; $t_{\frac{\alpha}{2}, n-1}$ e $
 	Como $\bar{x}=20,69$, $s=2,10$, $n=25$ e $t_0=13,55$, temos que
 	\begin{align*}
 		p &=1- P\left( t_{n-1} \leq t_0  \right)\\
-		&=1- P \left( t_{24} \leq 13,55 \right)\qquad \mbox{\textcolor{important}{Aqui precisamos usar o R ou MATLAB.}}\\
+		&=1- P \left( t_{24} \leq 13,55 \right)\qquad \mbox{\textcolor{important}{Aqui precisamos usar o R ou python.}}\\
 		&=1 - 1\\
 		&= 0.
 	\end{align*}
