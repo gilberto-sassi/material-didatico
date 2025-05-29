@@ -11,7 +11,7 @@
     <idnumber></idnumber>
   </question>
 
-<!-- question: 10763727  -->
+<!-- question: 37078950  -->
   <question type="matching">
     <name>
       <text>Introdução a teste de hipóteses</text>
@@ -38,31 +38,32 @@
     </incorrectfeedback>
     <shownumcorrect/>
     <subquestion format="html">
-      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Calpha" alt="\alpha" /></p>]]></text>
+      <text><![CDATA[<p></p>
+<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Calpha" alt="\alpha" /></p>]]></text>
       <answer>
         <text>Probabilidade do falso positivo, que é o erro mais grave que podemos cometer, é denominada de nível de significância.</text>
       </answer>
     </subquestion>
     <subquestion format="html">
-      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=1-%5Cbeta" alt="1-\beta" /></p>]]></text>
+      <text><![CDATA[<p>α</p>]]></text>
       <answer>
         <text>Poder do teste é a probabilidade do verdadeiro positivo, e queremos tomar uma decisão que maximiza esta probabilidade a um nível de significância.</text>
       </answer>
     </subquestion>
     <subquestion format="html">
-      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=%5Cbeta" alt="\beta" /></p>]]></text>
+      <text><![CDATA[<p>β</p>]]></text>
       <answer>
         <text>Probabilidade do falso negativo, que é o erro de decidir pela hipótese nula quando hipótese alternativa é verdadeira.</text>
       </answer>
     </subquestion>
     <subquestion format="html">
-      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=H_0" alt="H_0" /></p>]]></text>
+      <text><![CDATA[<p>H<sub>0</sub></p>]]></text>
       <answer>
         <text>Hipótese nula, que geralmente é composta por especificação ou valor padrão, e decidimos por ela na ausência de evidências pra refutá-la. Sempre começamos assumindo que a hipótese nula é verdade, e a abandonamos se encontrarmos evidências contra ela.</text>
       </answer>
     </subquestion>
     <subquestion format="html">
-      <text><![CDATA[<p><img class="latex" src="https://chart.googleapis.com/chart?cht=tx&amp;chf=a,s,000000|bg,s,FFFFFF00&amp;chl=H_1" alt="H_1" /></p>]]></text>
+      <text><![CDATA[<p>H<sub>1</sub></p>]]></text>
       <answer>
         <text>Hipótese alternativa, que geralmente é composta pela pergunta ou hipótese do pesquisador, e decidimos por esta hipóteses se tivermos evidências irrefutáveis e extremamente fortes em favor desta hipótese.</text>
       </answer>
@@ -82,24 +83,18 @@
     <subquestion format="html">
       <text></text>
       <answer>
-        <text>Fora Bolsonaro genocida!</text>
-      </answer>
-    </subquestion>
-    <subquestion format="html">
-      <text></text>
-      <answer>
-        <text>Não a reforma administrativa que destrói o ensino público do Brasil.</text>
+        <text>A terra é redonda.</text>
       </answer>
     </subquestion>
   </question>
 
-<!-- question: 6646899  -->
+<!-- question: 37078953  -->
   <question type="multichoice">
     <name>
       <text>sobre falso positivo e falso negativo</text>
     </name>
     <questiontext format="html">
-      <text><![CDATA[<p>Imagine que você precisa decidir entre duas hipóteses complementares: a hipótese nula e a hipótese alternativa. Você, como estudante do curso <strong>Métodos Estatísticos</strong>, decidiu coletar uma amostra e decidir usando as <em>evidências</em> desta amostra. No procedimento de teste de hipóteses que vimos em sala de aula, qual das seguintes opções abaixo é verdadeira?</p>]]></text>
+      <text><![CDATA[<p>Imagine que você precisa decidir entre duas hipóteses complementares: a hipótese nula e a hipótese alternativa. Você decidiu coletar uma amostra e decidir usando as <em>evidências</em> desta amostra. No procedimento de teste de hipóteses que vimos em sala de aula, qual das seguintes opções abaixo é verdadeira?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text></text>
