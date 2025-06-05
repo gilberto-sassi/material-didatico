@@ -1315,7 +1315,7 @@ Chamamos $t_{\alpha, n-1}$; $t_{1-\alpha, n-1}$; $t_{\frac{\alpha}{2}, n-1}$ e $
 		\item $P\left( t_{n-1} \leq t_{1-\frac{\alpha}{2}, n-1} \right) = P\left( t_{4} \leq t_{0,995, 4} \right) = 1-\frac{\alpha}{2} = 0,995$, então $t_{0,995; 4} = 4,604$.
 	\end{itemize}
 
-	\textbf{Passo 5)} Note que $\bar{x} = 13,9$, $s = 0,82$ e $t_0 = \frac{(13,9 - 12)\sqrt{5}}{0,82} = 5,18$, então $t_0 \in RC$ e rejeitamos $H_0$. Ou seja, ao nível de significância $\alpha=1\%$, a moléstia altera o consumo de oxigênio.
+	\textbf{Passo 5)} Note que $\bar{x} = 13,9$, $s = 0,8155$ e $t_0 = \frac{(13,9 - 12)\sqrt{5}}{0,8155} = 5,21$, então $t_0 \in RC$ e rejeitamos $H_0$. Ou seja, ao nível de significância $\alpha=1\%$, a moléstia altera o consumo de oxigênio.
 \end{block}
 
 \end{frame}
@@ -1326,12 +1326,12 @@ Chamamos $t_{\alpha, n-1}$; $t_{1-\alpha, n-1}$; $t_{\frac{\alpha}{2}, n-1}$ e $
 	O p-valor é calculado através da equação
 	$$p=P\left( \left\lvert \frac{(\bar{X} - \mu_0)\sqrt{n}}{s} \right\rvert >  \left\lvert \frac{(\bar{x} - \mu_0)\sqrt{n}}{s}  \right\rvert \mid H_0 \right) = 2 \left[ 1 - P\left( t_{n-1} \leq \lvert t_0 \rvert \right) \right].$$
 	
-	Como $\bar{x} = 13,9$, $s=0,82$, $n=5$ e $t_0 = \frac{(\bar{x} -\mu_0)\sqrt{n}}{s} = 5,18$, então
+	Como $\bar{x} = 13,9$, $s=0,8155$, $n=5$ e $t_0 = \frac{(\bar{x} -\mu_0)\sqrt{n}}{s} = 5,21$, então
 	\begin{align*}
 		p &= 2 \left[ 1 - P\left( t_{n-1} \leq \lvert t_0 \rvert \right) \right]\\
-		&= 2 \left[ 1 - P\left( t_{4} \leq \lvert 5,18 \rvert \right) \right], \quad \mbox{\textcolor{important}{Aqui precisamos usar o R, Python, excel ou MATLAB.}} \\
-		&= 2 \left[ 1- 0.9967 \right]\\
-		&= 0,0066.
+		&= 2 \left[ 1 - P\left( t_{4} \leq \lvert 5,21 \rvert \right) \right], \quad \mbox{\textcolor{important}{Aqui precisamos usar o R, Python, excel ou MATLAB.}} \\
+		&= 2 \left[ 1- 0.9968 \right]\\
+		&= 0,0065.
 	\end{align*}
 	
 	Como $p=0,0066 < 0,01 = \alpha$, ao nível de significância $1\%$, não rejeitamos $H_0$. Ou seja, ao nível de significância $1\%$, podemos afirmar que a moléstia altera o consumo de oxigênio pelo rim.
@@ -2738,7 +2738,7 @@ Chamamos $z_\alpha$, $z_{1-\alpha}$, $z_\frac{\alpha}{2}$ e $z_{1-\frac{\alpha}{
 		\item $\Phi\left(z_{1-\alpha}\right) = \Phi\left(z_{0,95}\right) = 1-\alpha=0,95$, então $z_{0,95} = 1,65$.
 	\end{itemize}
 	
-	\textbf{Passo 5)} Como $p_0=0,1$, $n=16$, $\hat{p} = \frac{16}{200} = 0,08$ e $z_0 = \frac{(0,08 - 0,1)\sqrt{16}}{\sqrt{0,1 \cdot 0,9}} = -0,27 \not\in RC$, então, ao nível de significância $5\%$, não rejeitamos $H_0$.
+	\textbf{Passo 5)} Como $p_0=0,1$, $n=200$, $\hat{p} = \frac{16}{200} = 0,08$ e $z_0 = \frac{(0,08 - 0,1)\sqrt{200}}{\sqrt{0,1 \cdot 0,9}} = -0,94 \not\in RC$, então, ao nível de significância $5\%$, não rejeitamos $H_0$.
 	
 	Ao nível de significância $5\%$, o pesquisador não tem evidência estatística para afirmar que pelo menos $10\%$ tem defeitos de fabricação.
 \end{block}
@@ -2753,12 +2753,12 @@ Chamamos $z_\alpha$, $z_{1-\alpha}$, $z_\frac{\alpha}{2}$ e $z_{1-\frac{\alpha}{
 	$$p=P\left( Z > z_0  \mid H_0 \right) = 1 - \Phi\left(z_0\right),$$
 	em que $Z\sim N(0,1)$.
 	
-	Como $p_0=0,1$, $\hat{p} = 0,08$, $n=1000$ e $z_0=\frac{(-\hat{p} - p_0)\sqrt{n}}{\sqrt{p_0(1-p_0)}} = -0,27$, então
+	Como $p_0=0,1$, $\hat{p} = 0,08$, $n=200$ e $z_0=\frac{(-\hat{p} - p_0)\sqrt{n}}{\sqrt{p_0(1-p_0)}} = -0,94$, então
 	\begin{align*}
-		p &= 1 - \Phi\left( -0,27 \right) = 1 - 0,3936 = 0,6064.
+		p &= 1 - \Phi\left( -0,94 \right) = 1 - 0,1729 = 0,82.
 	\end{align*}
 	
-	Como $p=0,6064 > \alpha=0,05$, não rejeitamos $H_0$ e não temos evidência estatística para afirmar que pelo menos $10\%$ dos capacetes usados pelos jogadores de futebol têm sérios problemas de fabricação.
+	Como $p=0,82 > \alpha=0,05$, não rejeitamos $H_0$ e não temos evidência estatística para afirmar que pelo menos $10\%$ dos capacetes usados pelos jogadores de futebol têm sérios problemas de fabricação.
 \end{block}
 \normalsize
 
@@ -2817,7 +2817,7 @@ Chamamos $z_\alpha$, $z_{1-\alpha}$, $z_\frac{\alpha}{2}$ e $z_{1-\frac{\alpha}{
 	
 	\textbf{Passo 4)} O valor crítico é dado por
 	\begin{itemize}
-		\item $\Phi\left( z_\alpha \right) = \Phi\left( z_{0,05} \right) = \alpha = 0,05$, então $z_{0,05} = -1,96$;
+		\item $\Phi\left( z_\alpha \right) = \Phi\left( z_{0,05} \right) = \alpha = 0,05$, então $z_{0,05} = -1,64$;
 	\end{itemize}
 
 	\textbf{Passo 5)} Como $\hat{p} = 0,56$, $n=200$, $p_0=0,4$ e $z_0= \frac{(\hat{p} - p_0)\sqrt{n}}{\sqrt{p_0(1-p_0)}}=\frac{(0,56-0,4)\sqrt{200}}{\sqrt{0,4 \cdot 0,6}} = 4,62$, então $z_0 \not\in RC$ e não rejeitamos $H_0$ ao nível de significância $\alpha = 5\%$.

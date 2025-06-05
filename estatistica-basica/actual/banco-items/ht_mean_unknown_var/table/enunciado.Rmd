@@ -1,14 +1,15 @@
 ```{r, label="Simulação de dados", include=F}
+if (!require(pacman)) install.packages("pacman")
 library(exams)
-library(glue)
-library(magrittr)
-library(readxl)
-library(writexl)
-library(knitr)
-library(truncnorm)
-library(statBasics)
-library(gt)
-library(tidyverse)
+p_load(glue)
+p_load(magrittr)
+p_load(readxl)
+p_load(writexl)
+p_load(knitr)
+p_load(truncnorm)
+p_load(statBasics)
+p_load(gt)
+p_load(tidyverse)
 options(scipen = 999) #prevent scientific notation
 
 # tamanho da amostra

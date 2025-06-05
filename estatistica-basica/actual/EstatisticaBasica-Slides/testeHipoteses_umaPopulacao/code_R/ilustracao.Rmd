@@ -372,25 +372,25 @@ ggplot(dados)+
               aes(x = t, y = f, ymin = 0, ymax = f), 
               fill = "gray") +
   theme_classic() +
-  theme(axis.title = element_text(size = 25),
-        axis.text = element_text(size = 25),
-        title = element_text(size = 25)) +
-  geom_vline(xintercept = 0, color = "black", size = 1) +
+  theme(axis.title = element_text(size = 20),
+        axis.text = element_text(size = 20),
+        title = element_text(size = 20)) +
+  geom_vline(xintercept = 0, color = "black", linewidth = 1) +
   geom_segment(x = -5, xend = t_lower, y = 0.15, yend =0.15, size = 1, color = "red") +
   geom_segment(x = t_upper, xend = 5, y = 0.15, yend =0.15, size = 1, color = "red") +
   geom_segment(x = t_lower, xend = t_upper, y = 0.15, yend =0.15, size = 1, color = "blue") +
   geom_segment(x = t_lower, xend = t_lower, y = 0, yend = 0.15, 
-               linetype = "dashed", color = "gray", size = 1) +
+               linetype = "dashed", color = "gray", linewidth = 1) +
   geom_segment(x = t_upper, xend = t_upper, y = 0, yend = 0.15, 
-               linetype = "dashed", color = "gray", size = 1) +
+               linetype = "dashed", color = "gray", linewidth = 1) +
   geom_point(data = tibble(x = c(t_lower, t_upper), y = c(0.15, 0.15)),
              aes(x = x, y = y), size = 5,color  = "gray") +
   annotate("text", x = -4, y = 0.175, label = "H[1]", 
-           size = 10, color = "red", parse = T) +
+           size = 5, color = "red", parse = T) +
   annotate("text", x = 4, y = 0.175, label = "H[1]", 
-           size = 10, color = "red", parse = T) +
+           size = 5, color = "red", parse = T) +
   annotate("text", x = 0.5, y = 0.175, label = "H[0]", 
-           size = 10, color = "blue", parse = T) +
+           size = 5, color = "blue", parse = T) +
   annotate("text", x = -4, y = 0.05, label = "frac(alpha, 2)", parse = T,
            color = "gray", size = 10) +
   annotate("text", x = 4, y = 0.05, label = "frac(alpha, 2)", parse = T,
@@ -424,20 +424,20 @@ ggplot(dados)+
               aes(x = t, y = f, ymin = 0, ymax = f), 
               fill = "gray") +
   theme_classic() +
-  theme(axis.title = element_text(size = 30),
-        axis.text = element_text(size = 30),
-        title = element_text(size = 30)) +
+  theme(axis.title = element_text(size = 20),
+        axis.text = element_text(size = 20),
+        title = element_text(size = 20)) +
   geom_vline(xintercept = 0, color = "black", size = 1) +
-  geom_segment(x = -5, xend = t_upper, y = 0.15, yend =0.15, size = 1, color = "blue") +
-  geom_segment(x = t_upper, xend = 5, y = 0.15, yend =0.15, size = 1, color = "red") +
+  geom_segment(x = -5, xend = t_upper, y = 0.15, yend =0.15, linewidth = 1, color = "blue") +
+  geom_segment(x = t_upper, xend = 5, y = 0.15, yend =0.15, linewidth = 1, color = "red") +
   geom_segment(x = t_upper, xend = t_upper, y = 0, yend = 0.15, 
-               linetype = "dashed", color = "gray", size = 1) +
+               linetype = "dashed", color = "gray", linewidth = 1) +
   geom_point(data = tibble(x = c(t_upper), y = c(0.15)),
              aes(x = x, y = y), size = 5,color  = "gray") +
   annotate("text", x = 4, y = 0.175, label = "H[1]", 
-           size = 10, color = "red", parse = T) +
+           size = 5, color = "red", parse = T) +
   annotate("text", x = 0.5, y = 0.175, label = "H[0]", 
-           size = 10, color = "blue", parse = T) +
+           size = 5, color = "blue", parse = T) +
   annotate("text", x = 4, y = 0.05, label = "alpha", parse = T,
            color = "gray", size = 10) 
 ggsave("../figures/unilateral-h0-upper-normal-s2-unknown.png")
@@ -469,20 +469,20 @@ ggplot(dados)+
               aes(x = t, y = f, ymin = 0, ymax = f), 
               fill = "gray") +
   theme_classic() +
-  theme(axis.title = element_text(size = 30),
-        axis.text = element_text(size = 30),
-        title = element_text(size = 30)) +
+  theme(axis.title = element_text(size = 20),
+        axis.text = element_text(size = 20),
+        title = element_text(size = 20)) +
   geom_vline(xintercept = 0, color = "black", size = 1) +
-  geom_segment(x = -5, xend = t_lower, y = 0.15, yend =0.15, size = 1, color = "red") +
-  geom_segment(x = t_lower, xend = 5, y = 0.15, yend =0.15, size = 1, color = "blue") +
+  geom_segment(x = -5, xend = t_lower, y = 0.15, yend =0.15, linewidth = 1, color = "red") +
+  geom_segment(x = t_lower, xend = 5, y = 0.15, yend =0.15, linewidth = 1, color = "blue") +
   geom_segment(x = t_lower, xend = t_lower, y = 0, yend = 0.15, 
-               linetype = "dashed", color = "gray", size = 1) +
+               linetype = "dashed", color = "gray", linewidth = 1) +
   geom_point(data = tibble(x = c(t_lower), y = c(0.15)),
              aes(x = x, y = y), size = 5,color  = "gray") +
   annotate("text", x = -4, y = 0.175, label = "H[1]", 
-           size = 10, color = "red", parse = T) +
+           size = 5, color = "red", parse = T) +
   annotate("text", x = 0.5, y = 0.175, label = "H[0]", 
-           size = 10, color = "blue", parse = T) +
+           size = 5, color = "blue", parse = T) +
   annotate("text", x = -4, y = 0.05, label = "alpha", parse = T,
            color = "gray", size = 10) 
 ggsave("../figures/unilateral-h0-lower-normal-s2-unknown.png")
