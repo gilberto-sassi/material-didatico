@@ -197,17 +197,17 @@ Sejam
 
 Queremos testar as seguintes hipóteses:
 \begin{itemize}
-	\item Teste bilateral: $H_0: \mu_1 - \mu_2 = 0$ e $H_1: \mu_1 - \mu_2 \neq 0$;
-	\item Teste unilateral: $H_0: \mu_1 - \mu_2 \leq 0$ e $H_1: \mu_1 - \mu_2 > 0$;
-	\item Teste unilateral: $H_0: \mu_1 - \mu_2 \geq 0$ e $H_1: \mu_1 - \mu_2 < 0$.
+	\item Teste bilateral: $H_0: \mu_1 - \mu_2 = 0$ e $H_1: \mu_1 - \mu_2 \neq \Delta_0$;
+	\item Teste unilateral: $H_0: \mu_1 - \mu_2 \leq 0$ e $H_1: \mu_1 - \mu_2 > \Delta_0$;
+	\item Teste unilateral: $H_0: \mu_1 - \mu_2 \geq 0$ e $H_1: \mu_1 - \mu_2 < \Delta_0$.
 \end{itemize}
 \vfill
 
 \textbf{Ideia:} Primeiro calculamos a distância padronizada de $\bar{x}_1 - \bar{x}_2$ e $\Delta_0=\mu_1 - \mu_2$ : $Z_0 = \frac{(\bar{X}_1 - \bar{X}_2 - \Delta_0)}{\sqrt{ \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2} }}$. Então, 
 \begin{itemize}
-	\item Teste bilateral: Rejeitamos $H_0: \mu_1 - \mu_2 =0$ se $\lvert Z_0 \rvert$ for grande;
-	\item Teste unilateral: Rejeitamos $H_0: \mu_1 - \mu_2 \leq 0$ se $Z_0 $ for grande;
-	\item Teste unilateral: Rejeitamos $H_0: \mu_1 - \mu_2 \geq 0$ se $Z_0 $ for pequeno.
+	\item Teste bilateral: Rejeitamos $H_0: \mu_1 - \mu_2 =\Delta_0$ se $\lvert Z_0 \rvert$ for grande;
+	\item Teste unilateral: Rejeitamos $H_0: \mu_1 - \mu_2 \leq \Delta_0$ se $Z_0 $ for grande;
+	\item Teste unilateral: Rejeitamos $H_0: \mu_1 - \mu_2 \geq \Delta_0$ se $Z_0 $ for pequeno.
 \end{itemize}
 
 \end{frame}
@@ -217,8 +217,8 @@ Queremos testar as seguintes hipóteses:
 \begin{figure}[htbp]
 	\centering
 	\subfloat[][Teste bilateral.]{\includegraphics[width=0.32\linewidth]{figures/2-pop-normal-s2-known-bilateral.png} \label{fig:2-pop-normal-s2-known-bilateral}} \hfill
-	\subfloat[][Teste bilateral.]{\includegraphics[width=0.32\linewidth]{figures/2-pop-normal-s2-known-h1-lower.png} \label{fig:2-pop-normal-s2-known-h1-lower}} \hfill
-	\subfloat[][Teste bilateral.]{\includegraphics[width=0.32\linewidth]{figures/2-pop-normal-s2-known-h1-upper.png} \label{fig:2-pop-normal-s2-known-h1-upper}} 
+	\subfloat[][Teste unilateral.]{\includegraphics[width=0.32\linewidth]{figures/2-pop-normal-s2-known-h1-lower.png} \label{fig:2-pop-normal-s2-known-h1-lower}} \hfill
+	\subfloat[][Teste unilateral.]{\includegraphics[width=0.32\linewidth]{figures/2-pop-normal-s2-known-h1-upper.png} \label{fig:2-pop-normal-s2-known-h1-upper}} 
 	\caption{Região crítica para comparar médias de populações normais com variâncias conhecidas.}
 \end{figure}
 \end{frame}
@@ -226,13 +226,13 @@ Queremos testar as seguintes hipóteses:
 \begin{frame}{Comparação de médias $\mu_1$ e $\mu_2$ de duas populações}
 
 \begin{itemize}
-	\item Na Figura~\ref{fig:2-pop-normal-s2-known-bilateral}, testamos $H_0: \mu_1 - \mu_2 = \Delta_0$ versus $H_1: \mu_1 - \mu_2 \neq 0$. Rejeitamos $H_0$ se $z_0 = \frac{\bar{x}_1 - \bar{x}_1 - \Delta_0}{ \sqrt{ \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2} } } \in \allowbreak RC=\{z_0 \mid z_0 < z_\frac{\alpha}{2} \mbox{ ou } z_0 > z_{1-\frac{\alpha}{2}} \}$, em que $\Phi\left( z_\frac{\alpha}{2} \right) = \frac{\alpha}{2}$ e $\Phi\left( z_{1-\frac{\alpha}{2}} \right) = 1- \frac{\alpha}{2}$;
+	\item Na Figura~\ref{fig:2-pop-normal-s2-known-bilateral}, testamos $H_0: \mu_1 - \mu_2 = \Delta_0$ versus $H_1: \mu_1 - \mu_2 \neq \Delta_0$. Rejeitamos $H_0$ se $z_0 = \frac{\bar{x}_1 - \bar{x}_1 - \Delta_0}{ \sqrt{ \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2} } } \in \allowbreak RC=\{z_0 \mid z_0 < z_\frac{\alpha}{2} \mbox{ ou } z_0 > z_{1-\frac{\alpha}{2}} \}$, em que $\Phi\left( z_\frac{\alpha}{2} \right) = \frac{\alpha}{2}$ e $\Phi\left( z_{1-\frac{\alpha}{2}} \right) = 1- \frac{\alpha}{2}$;
 	\vfill
 	
-	\item Na Figura~\ref{fig:2-pop-normal-s2-known-h1-lower}, testamos $H_0: \mu_1 - \mu_2 \leq \Delta_0 $ versus $H_1: \mu_1 - \mu_2 > 0$. Rejeitamos $H_0$ se $z_0 = \frac{\bar{x}_1-\bar{x}_1  - \Delta_0}{\sqrt{ \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2} }} \in \allowbreak RC=\{z_0 \mid z_0 > z_{1-\alpha}  \}$, em que $\Phi\left( z_{1-\alpha} \right) =1- \alpha$;
+	\item Na Figura~\ref{fig:2-pop-normal-s2-known-h1-lower}, testamos $H_0: \mu_1 - \mu_2 \leq \Delta_0 $ versus $H_1: \mu_1 - \mu_2 > \Delta_0$. Rejeitamos $H_0$ se $z_0 = \frac{\bar{x}_1-\bar{x}_1  - \Delta_0}{\sqrt{ \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2} }} \in \allowbreak RC=\{z_0 \mid z_0 > z_{1-\alpha}  \}$, em que $\Phi\left( z_{1-\alpha} \right) =1- \alpha$;
 	\vfill
 	
-	\item Na Figura~\ref{fig:2-pop-normal-s2-known-h1-upper}, testamos $H_0: \mu_1 - \mu_2 \geq \Delta_0$ versus $H_1: \mu_1 - \mu_2  < 0$. Rejeitamos $H_0$ se $z_0 = \frac{\bar{x}_1-\bar{x}_1  - \Delta_0}{\sqrt{ \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2} }} \in \allowbreak RC=\{z_0 \mid z_0 < z_{\alpha}  \}$, em que $\Phi\left( z_{\alpha} \right) = \alpha$.
+	\item Na Figura~\ref{fig:2-pop-normal-s2-known-h1-upper}, testamos $H_0: \mu_1 - \mu_2 \geq \Delta_0$ versus $H_1: \mu_1 - \mu_2  < \Delta_0$. Rejeitamos $H_0$ se $z_0 = \frac{\bar{x}_1-\bar{x}_1  - \Delta_0}{\sqrt{ \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2} }} \in \allowbreak RC=\{z_0 \mid z_0 < z_{\alpha}  \}$, em que $\Phi\left( z_{\alpha} \right) = \alpha$.
 \end{itemize}
 Chamamos $z_\alpha$, $z_{1-\alpha}$, $z_\frac{\alpha}{2}$ e $z_{1-\frac{\alpha}{2}}$ são chamados de valores críticos.
 
@@ -809,7 +809,7 @@ $$IC(\Delta, \gamma) = \left( z_{\frac{\alpha}{2}} \sqrt{\frac{\sigma_1^2}{n_1} 
 
 \begin{frame}{Intervalo de confiança para $\Delta = \mu_1-\mu_2$.}
 
-\footnotesize
+\tiny
 
 \begin{block}{Exemplo}
 	Testes na resistência à tração (quilogramas por milímetros quadrados) em dois tipos distintos de barras de ligas de alumínio usadas na fabricação de asas de um avião comercial foram realizados. De experiência passada na produção de ligas de alumínio, conhecemos os desvios padrões da resistência à tração. Os dados obtidos destes são $n_1=10$, $\bar{x}_1=87,6$, $\sigma_1=1$, $n_2=12$, $\bar{x}_2=74,5$ e $\sigma_2=1,5$. Construa um intervalo de confiança para $\Delta=\mu_1-\mu_2$ com coeficiente de confiança $\gamma=95\%$ e interprete o resultado.
@@ -824,9 +824,10 @@ $$IC(\Delta, \gamma) = \left( z_{\frac{\alpha}{2}} \sqrt{\frac{\sigma_1^2}{n_1} 
 	Então
 	\begin{align*}
 		IC(\Delta, 95\%) &= \left( z_{\frac{\alpha}{2}} \sqrt{ \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}  + \bar{x}_1 - \bar{x}_2; z_{1-\frac{\alpha}{2}} \sqrt{ \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}  + \bar{x}_1 - \bar{x}_2  \right)\\
-		&= \left( -1,96 \sqrt{ \frac{1^2}{10} + \frac{1,5^2}{12}} + 87 - 74; 1,96 \sqrt{ \frac{1^2}{10} + \frac{1,5^2}{12}} + 87 - 74 \right)= \left(11,95; 14,05\right)
+		&= \left( -1,96 \sqrt{ \frac{1^2}{10} + \frac{1,5^2}{12}} + 87,6 - 74,5; 1,96 \sqrt{ \frac{1^2}{10} + \frac{1,5^2}{12}} + 87,6 - 74,5 \right)\\
+		&= \left(12,05; 14,15\right)
 	\end{align*}
-	Com coeficiente $\gamma=95\%$, a diferença da resistência à tração satisfaz a desigualdade $11,95 \leq \mu_1 - \mu_2 \leq 14,05$, ou seja, a liga 1 de alumínio é mais resistência que a liga 2.
+	Com coeficiente $\gamma=95\%$, a diferença da resistência à tração satisfaz a desigualdade $12,05 \leq \mu_1 - \mu_2 \leq 14,15$, ou seja, a liga 1 de alumínio é mais resistência que a liga 2.
 \end{block}
 
 \normalsize
@@ -922,8 +923,8 @@ Queremos testar as seguintes hipóteses:
 \begin{figure}[htbp]
 	\centering
 	\subfloat[][Teste bilateral.]{\includegraphics[width=0.32\linewidth]{figures/test-variance-bilateral.png} \label{fig:test-variance-bilateral}} \hfill
-	\subfloat[][Teste bilateral.]{\includegraphics[width=0.32\linewidth]{figures/test-variance-unilateral-h1-upper.png} \label{fig:test-variance-unilateral-h1-upper}} \hfill
-	\subfloat[][Teste bilateral.]{\includegraphics[width=0.32\linewidth]{figures/test-variance-unilateral-h1-lower.png} \label{fig:test-variance-unilateral-h1-lower}} 
+	\subfloat[][Teste unilateral.]{\includegraphics[width=0.32\linewidth]{figures/test-variance-unilateral-h1-upper.png} \label{fig:test-variance-unilateral-h1-upper}} \hfill
+	\subfloat[][Teste unilateral.]{\includegraphics[width=0.32\linewidth]{figures/test-variance-unilateral-h1-lower.png} \label{fig:test-variance-unilateral-h1-lower}} 
 	\caption{Região crítica para comparar variâncias de populações normais.}
 \end{figure}
 \end{frame}
@@ -968,7 +969,7 @@ Chamamos $f_{\alpha; n_1-1, n_2-1}$, $f_{1-\alpha;n_1, n_2}$, $f_{\frac{\alpha}{
 	 
 	 \textbf{Passo 4)} Vamos encontrar os valores críticos:
 	 \begin{itemize}
-	 	\item $P(F_{n_1-1, n_2-1} \leq f_{1-\frac{\alpha}{2}; n_1-1, n_2-1}) = P(F_{n_1-1, n_2-1} \leq f_{0,975; 24, 20}) = 1- \frac{\alpha}{2}= 0,975$, então $f_{0,975; 24, 20} = 2,756$;
+	 	\item $P(F_{n_1-1, n_2-1} \leq f_{1-\frac{\alpha}{2}; n_1-1, n_2-1}) = P(F_{n_1-1, n_2-1} \leq f_{0,975; 24, 20}) = 1- \frac{\alpha}{2}= 0,975$, então $f_{0,975; 24, 20} = 2,408$;
 	 	\item $P(F_{n_2-1, n_1-1} \leq f_{1-\frac{\alpha}{2}; n_2-1, n_1-1}) = P(F_{n_2-1, n_1-1} \leq f_{0,975; 20, 24}) = 1- \frac{\alpha}{2}= 0,975$, então $f_{0,975; 20, 24} = 2,327$;
 	 	\item $f_{\frac{\alpha}{2}; n_1-1, n_2-1} = f_{0,025; 24, 20} = \frac{1}{f_{1-\frac{\alpha}{2}; n_2-1, n_1-1}} = \frac{1}{2,237} = 0,4297$.
 	 \end{itemize}
@@ -986,8 +987,7 @@ Chamamos $f_{\alpha; n_1-1, n_2-1}$, $f_{1-\alpha;n_1, n_2}$, $f_{\frac{\alpha}{
 
 \begin{block}{Solução (valor-p)}
 
-O valor-p é calculado através de 
-$$p = 2\cdot \min \left( P(F_{v_1, v_2} \leq f_0), P(F_{v_1, v_2} \geq f_0)  \right).$$
+O valor-p é calculado através de: $p = 2\cdot \min \left( P(F_{v_1, v_2} \leq f_0), P(F_{v_1, v_2} \geq f_0)  \right).$
 
 
 \begin{figure}[htbp]
@@ -1047,7 +1047,7 @@ $$p = 2\cdot \min \left( P(F_{v_1, v_2} \leq f_0), P(F_{v_1, v_2} \geq f_0)  \ri
 	
 	\textbf{Passo 4)} Vamos encontrar o valor crítico:
 	\begin{itemize}
-		\item $P\left( F_{n_1-1, n_2-1} \leq f_{1-\alpha; n_1-1, n_2-1} \right) = P\left( F_{20, 20} \leq f_{0,95; 20, 20} \right) = 1-\alpha=0,95$, então $f_{0,95; 20, 20} = 1,7938$.
+		\item $P\left( F_{n_1-1, n_2-1} \leq f_{1-\alpha; n_1-1, n_2-1} \right) = P\left( F_{20, 20} \leq f_{0,95; 20, 20} \right) = 1-\alpha=0,95$, então $f_{0,95; 20, 20} = 2,1242$.
 	\end{itemize}
 
 	\textbf{Passo 5)} Como $s_1 = 4$, $s_2=3$ e $f_0 = \frac{s_1^2}{s_2^2} = 1,78 \not\in RC$, e não rejeitamos $H_0$, ou seja, não existe evidência de que o ponto de fusão da segunda liga é menor de que o ponto de fusão da primeira liga.
@@ -1592,7 +1592,7 @@ $$IC\left(\frac{\sigma_1^2}{\sigma_2^2}; \gamma\right) = \left( f_{\frac{\alpha}
 \begin{block}{Solução}
 	Primeiro encontramos os quantis da distribuição F-Snedecor:
 	\begin{itemize}
-		\item $P\left(F_{n_2-1, n_1-1} \leq f_{1-\frac{\alpha}{2};n_2-1, n_1-1} \right) = P\left(F_{15, 10} \leq f_{0,975;15, 10} \right) = 1-\frac{\alpha}{2} = 0,975$, então $f_{0,975;15, 10} = 3,552$;
+		\item $P\left(F_{n_2-1, n_1-1} \leq f_{1-\frac{\alpha}{2};n_2-1, n_1-1} \right) = P\left(F_{15, 10} \leq f_{0,975;15, 10} \right) = 1-\frac{\alpha}{2} = 0,975$, então $f_{0,975;15, 10} = 3,5217$;
 		\item $P\left(F_{n_1-1, n_2-1} \leq f_{1-\frac{\alpha}{2};n_1-1, n_2-1} \right) = P\left(F_{10, 15} \leq f_{0,975;10, 15} \right) =1- \frac{\alpha}{2} = 0,975$, então $f_{0,975;10, 15} = 3,060$;
 		\item $f_{\frac{\alpha}{2}; n_2-1, n_1-1}  = f_{0,025; 15, 10} = \frac{1}{f_{1-\frac{\alpha}{2}; n_1-1, n_2-1}} = \frac{1}{f_{0,975; 10, 15}} = \frac{1}{3,060} = 0,3268$.
 	\end{itemize}
@@ -1600,7 +1600,7 @@ $$IC\left(\frac{\sigma_1^2}{\sigma_2^2}; \gamma\right) = \left( f_{\frac{\alpha}
 Então o intervalo de confiança com coeficiente de confiança $\gamma = 1-\alpha=0,95$ é dado por
 \begin{align*}
 	IC\left(\frac{\sigma_1^2}{\sigma_2^2}; \gamma\right) &= \left( f_{\frac{\alpha}{2}; n_2-1, n_1-1} \frac{s_1^2}{s_2^2}; f_{\frac{1-\alpha}{2}; n_2-1, n_1-1} \frac{s_1^2}{s_2^2}  \right)\\
-	&= \left( 0,3268 \frac{0,00012954^2}{0,00011938^2}; 3,552 \frac{0,00012954^2}{0,00011938^2} \right) = (0,385; 1,147)
+	&= \left( 0,3268 \frac{0,00012954^2}{0,00011938^2}; 3,5217 \frac{0,00012954^2}{0,00011938^2} \right) = (0,385; 4,147)
 \end{align*}
 \end{block}
 
@@ -1650,8 +1650,8 @@ Queremos testar as seguintes hipóteses:
 \begin{figure}[htbp]
 	\centering
 	\subfloat[][Teste bilateral.]{\includegraphics[width=0.32\linewidth]{figures/2-pop-normal-s2-unknown-equal-bilateral.png} \label{fig:2-pop-normal-s2-unknown-equal-bilateral}} \hfill
-	\subfloat[][Teste bilateral.]{\includegraphics[width=0.32\linewidth]{figures/2-pop-normal-s2-unknown-equal-h1-lower.png} \label{fig:2-pop-normal-s2-unknown-equal-h1-lower}} \hfill
-	\subfloat[][Teste bilateral.]{\includegraphics[width=0.32\linewidth]{figures/2-pop-normal-s2-unknown-equal-h1-upper.png} \label{fig:2-pop-normal-s2-unknown-equal-h1-upper}} 
+	\subfloat[][Teste unilateral.]{\includegraphics[width=0.32\linewidth]{figures/2-pop-normal-s2-unknown-equal-h1-lower.png} \label{fig:2-pop-normal-s2-unknown-equal-h1-lower}} \hfill
+	\subfloat[][Teste unilateral.]{\includegraphics[width=0.32\linewidth]{figures/2-pop-normal-s2-unknown-equal-h1-upper.png} \label{fig:2-pop-normal-s2-unknown-equal-h1-upper}} 
 	\caption{Região crítica para comparar médias de populações normais com variâncias desconhecidas e iguais.}
 \end{figure}
 \end{frame}
@@ -1662,10 +1662,10 @@ Queremos testar as seguintes hipóteses:
 	\item Na Figura~\ref{fig:2-pop-normal-s2-unknown-equal-bilateral}, testamos $H_0: \mu_1 - \mu_2 = \Delta_0$ versus $H_1: \mu_1 - \mu_2 \neq \Delta_0$. Rejeitamos $H_0$ se $t_0 = \frac{\bar{x}_1 - \bar{x}_1 - \Delta_0}{ s_d\sqrt{ \frac{1}{n_1} + \frac{1}{n_2} } } \in  RC=\{t_0 \mid t_0 < t_{\frac{\alpha}{2};n_1+n_2-2} \allowbreak \mbox{ ou } t_0 > t_{1-\frac{\alpha}{2};n_1+n_2-2} \}$, em que $P\left(t_{n_1+n_2-2} \leq t_{\frac{\alpha}{2}; n_1+n_2-2} \right) = \frac{\alpha}{2}$ e $P\left(t_{n_1+n_2-2} \leq t_{1-\frac{\alpha}{2}; n_1+n_2-2} \right) = 1 - \frac{\alpha}{2}$;
 	\vfill
 	
-	\item Na Figura~\ref{fig:2-pop-normal-s2-unknown-equal-h1-lower}, testamos $H_0: \mu_1 - \mu_2 \leq \Delta_0 $ versus $H_1: \mu_1 - \mu_2 > 0$. Rejeitamos $H_0$ se $t_0 = \frac{\bar{x}_1 - \bar{x}_1 - \Delta_0}{ s_d\sqrt{ \frac{1}{n_1} + \frac{1}{n_2} } } \in \allowbreak RC=\{t_0 \mid t_0 > t_{1-\alpha; n_1+n_2-2}  \}$, em que $P\left(t_{n_1+n_2-2} \leq  t_{1-\alpha;n_1+n_2-2} \right) =1- \alpha$;
+	\item Na Figura~\ref{fig:2-pop-normal-s2-unknown-equal-h1-lower}, testamos $H_0: \mu_1 - \mu_2 \leq \Delta_0 $ versus $H_1: \mu_1 - \mu_2 > \Delta_0$. Rejeitamos $H_0$ se $t_0 = \frac{\bar{x}_1 - \bar{x}_1 - \Delta_0}{ s_d\sqrt{ \frac{1}{n_1} + \frac{1}{n_2} } } \in \allowbreak RC=\{t_0 \mid t_0 > t_{1-\alpha; n_1+n_2-2}  \}$, em que $P\left(t_{n_1+n_2-2} \leq  t_{1-\alpha;n_1+n_2-2} \right) =1- \alpha$;
 	\vfill
 	
-	\item Na Figura~\ref{fig:2-pop-normal-s2-unknown-equal-h1-upper}, testamos $H_0: \mu_1 - \mu_2 \geq \Delta_0$ versus $H_1: \mu_1 - \mu_2  < 0$. Rejeitamos $H_0$ se $t_0 = \frac{\bar{x}_1 - \bar{x}_1 - \Delta_0}{ s_d\sqrt{ \frac{1}{n_1} + \frac{1}{n_2} } } \in \allowbreak RC=\{t_0 \mid t_0 < t_{\alpha;n_1+n_2-2}  \}$, em que $P\left(t_{n_1+n_2-2} \leq t_{\alpha;n_1+n_2-2} \right) = \alpha$.
+	\item Na Figura~\ref{fig:2-pop-normal-s2-unknown-equal-h1-upper}, testamos $H_0: \mu_1 - \mu_2 \geq \Delta_0$ versus $H_1: \mu_1 - \mu_2  < \Delta_0$. Rejeitamos $H_0$ se $t_0 = \frac{\bar{x}_1 - \bar{x}_1 - \Delta_0}{ s_d\sqrt{ \frac{1}{n_1} + \frac{1}{n_2} } } \in \allowbreak RC=\{t_0 \mid t_0 < t_{\alpha;n_1+n_2-2}  \}$, em que $P\left(t_{n_1+n_2-2} \leq t_{\alpha;n_1+n_2-2} \right) = \alpha$.
 \end{itemize}
 Note que $s_d^2 = \frac{(n_1-1) s_1^2 + (n_2-1) s_2^2}{n_1+n_2-2}$ e chamamos $t_{\alpha;n_1+n_2-2}$, $t_{1-\alpha;n_1+n_2-2}$, $t_{\frac{\alpha}{2};n_1+n_2-2}$ e $t_{1-\frac{\alpha}{2};n_1+n_2-2}$ são chamados de valores críticos.
 \end{frame}
@@ -2052,7 +2052,7 @@ Então o intervalo de confiança para $\Delta$ com coeficiente de confiança $\g
 		\item $f_{\frac{\alpha}{2}; n_1-1, n_2-1} = \frac{1}{f_{\frac{1-\alpha}{2}; n_2-1, n_1-1}} = \frac{1}{f_{0,975; 16, 14}} = \frac{1}{2,923} = 0,3421$;
 	\end{itemize}
 
-	\textbf{Passo 5)} Queremos $n_1=15$, $n_2=17$, $\bar{s}_1^2=0,35$, $\bar{s}_2^2 = 0,40$ e $f_0 = \frac{s_1^2}{s_2^2} = \frac{0,35^2}{0,40^2} = 0,77 \not\in RC$, e não rejeitamos $H_0$ e podemos assumir que as variâncias são iguais.
+	\textbf{Passo 5)} Queremos $n_1=15$, $n_2=17$, $\bar{s}_1^2=0,35$, $\bar{s}_2^2 = 0,40$ e $f_0 = \frac{s_1^2}{s_2^2} = \frac{0,35}{0,40} = 0,875 \not\in RC$, e não rejeitamos $H_0$ e podemos assumir que as variâncias são iguais.
 \end{block}
 
 \end{frame}
@@ -2068,16 +2068,16 @@ Então o intervalo de confiança para $\Delta$ com coeficiente de confiança $\g
 		\item $P(t_{n_1+n_2-2} \leq t_{\frac{\alpha}{2}; n_1+n_2-2}) = P(t_{30} \leq t_{0,975; 30}) =1- \frac{\alpha}{2} = 0,975$, então $t_{0,975} =2,042$.
 	\end{itemize}	
 
-	Note que $S_d =\sqrt{ \frac{(n_1 - 1) s_1^2 + (n_2 -1)s_2^2}{n_1+n_2-2}} = 0,38$. Então, o intervalo de confiança $\gamma=1-\alpha = 0,95$ é dado por
+	Note que $S_d =\sqrt{ \frac{(n_1 - 1) s_1^2 + (n_2 -1)s_2^2}{n_1+n_2-2}} = 0,61$. Então, o intervalo de confiança $\gamma=1-\alpha = 0,95$ é dado por
 	{\scriptsize
 	\begin{align*}
 		IC(\mu_1 - \mu_2, \gamma) &= \left( t_{\frac{\alpha}{2};n_1+n_2-2} S_d \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}   + \bar{x}_1- \bar{x}_2; + \bar{x}_1- \bar{x}_2; t_{1-\frac{\alpha}{2};n_1+n_2-2} S_d \sqrt{\frac{1}{n_1} + \frac{1}{n_2}} + \bar{x}_1- \bar{x}_2  \right)\\
-		&= \left( -2,042\cdot 0,38\cdot \sqrt{\frac{1}{15} + \frac{1}{17}} + 8,743 - 8,68; 2,042\cdot 0,38\cdot \sqrt{\frac{1}{15} + \frac{1}{17}} + 8,743 - 8,68  \right)\\
-		&= \left( -0,22; 0,32 \right)
+		&= \left( -2,042\cdot 0,61\cdot \sqrt{\frac{1}{15} + \frac{1}{17}} + 8,743 - 8,68; 2,042\cdot 0,61\cdot \sqrt{\frac{1}{15} + \frac{1}{17}} + 8,743 - 8,68  \right)\\
+		&= \left( -0,39; 0,49 \right)
 	\end{align*}
 	}
 
-	Com coeficiente de confiança $95\%$, a diferença das médias de dos diâmetros está entre $-0,22$ e $0,32$ centímetros e as duas máquinas produzem hastes com diâmetros semelhantes em média \sout{pois zero está dentro do intervalo de confiança}.
+	Com coeficiente de confiança $95\%$, a diferença das médias de dos diâmetros está entre $-0,39$ e $0,49$ centímetros e as duas máquinas produzem hastes com diâmetros semelhantes em média \sout{pois zero está dentro do intervalo de confiança}.
 \end{block}
 \normalsize
 
@@ -2102,9 +2102,9 @@ Sejam
 
 Queremos testar as seguintes hipóteses:
 \begin{itemize}
-	\item Teste bilateral: $H_0: \mu_1 - \mu_2 = 0$ e $H_1: \mu_1 - \mu_2 \neq 0$;
-	\item Teste unilateral: $H_0: \mu_1 - \mu_2 \leq 0$ e $H_1: \mu_1 - \mu_2 > 0$;
-	\item Teste unilateral: $H_0: \mu_1 - \mu_2 \geq 0$ e $H_1: \mu_1 - \mu_2 < 0$.
+	\item Teste bilateral: $H_0: \mu_1 - \mu_2 = \Delta_0$ e $H_1: \mu_1 - \mu_2 \neq \Delta_0$;
+	\item Teste unilateral: $H_0: \mu_1 - \mu_2 \leq \Delta_0$ e $H_1: \mu_1 - \mu_2 > \Delta_0$;
+	\item Teste unilateral: $H_0: \mu_1 - \mu_2 \geq \Delta_0$ e $H_1: \mu_1 - \mu_2 < \Delta_0$.
 \end{itemize}
 \vfill
 
@@ -2122,8 +2122,8 @@ Queremos testar as seguintes hipóteses:
 \begin{figure}[htbp]
 	\centering
 	\subfloat[][Teste bilateral.]{\includegraphics[width=0.32\linewidth]{figures/2-pop-normal-s2-unknown-different-bilateral.png} \label{fig:2-pop-normal-s2-unknown-different-bilateral}} \hfill
-	\subfloat[][Teste bilateral.]{\includegraphics[width=0.32\linewidth]{figures/2-pop-normal-s2-unknown-different-h1-lower.png} \label{fig:2-pop-normal-s2-unknown-different-h1-lower}} \hfill
-	\subfloat[][Teste bilateral.]{\includegraphics[width=0.32\linewidth]{figures/2-pop-normal-s2-unknown-different-h1-upper.png} \label{fig:2-pop-normal-s2-unknown-different-h1-upper}} 
+	\subfloat[][Teste unilateral.]{\includegraphics[width=0.32\linewidth]{figures/2-pop-normal-s2-unknown-different-h1-lower.png} \label{fig:2-pop-normal-s2-unknown-different-h1-lower}} \hfill
+	\subfloat[][Teste unilateral.]{\includegraphics[width=0.32\linewidth]{figures/2-pop-normal-s2-unknown-different-h1-upper.png} \label{fig:2-pop-normal-s2-unknown-different-h1-upper}} 
 	\caption{Região crítica para comparar médias de populações normais com variâncias desconhecidas e diferentes.}
 \end{figure}
 
@@ -2141,10 +2141,10 @@ $\nu = \frac{\left( \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} \right)^2}{ \frac{\lef
 	\item Na Figura~\ref{fig:2-pop-normal-s2-unknown-different-bilateral}, testamos $H_0: \mu_1 - \mu_2 = \Delta_0$ versus $H_1: \mu_1 - \mu_2 \neq \Delta_0$. Rejeitamos $H_0$ se $t_0 = \frac{\bar{x}_1 - \bar{x}_1 - \Delta_0}{ \sqrt{ \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} } } \in  RC=\{t_0 \mid t_0 < t_{\frac{\alpha}{2};\nu} \allowbreak \mbox{ ou } t_0 > t_{1-\frac{\alpha}{2};\nu} \}$, em que $P\left(t_{\nu} \leq t_{\frac{\alpha}{2}; \nu} \right) = \frac{\alpha}{2}$ e $P\left(t_{\nu} \leq t_{1-\frac{\alpha}{2}; \nu} \right) = 1 - \frac{\alpha}{2}$;
 	\vfill
 	
-	\item Na Figura~\ref{fig:2-pop-normal-s2-unknown-different-h1-lower}, testamos $H_0: \mu_1 - \mu_2 \leq \Delta_0 $ versus $H_1: \mu_1 - \mu_2 > 0$. Rejeitamos $H_0$ se $t_0 = \frac{\bar{x}_1 - \bar{x}_1 - \Delta_0}{ \sqrt{ \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} } } \in \allowbreak RC=\{t_0 \mid t_0 > t_{1-\alpha; \nu}  \}$, em que $P\left(t_{\nu} \leq  t_{1-\alpha;\nu} \right) =1- \alpha$;
+	\item Na Figura~\ref{fig:2-pop-normal-s2-unknown-different-h1-lower}, testamos $H_0: \mu_1 - \mu_2 \leq \Delta_0 $ versus $H_1: \mu_1 - \mu_2 > \Delta_0$. Rejeitamos $H_0$ se $t_0 = \frac{\bar{x}_1 - \bar{x}_1 - \Delta_0}{ \sqrt{ \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} } } \in \allowbreak RC=\{t_0 \mid t_0 > t_{1-\alpha; \nu}  \}$, em que $P\left(t_{\nu} \leq  t_{1-\alpha;\nu} \right) =1- \alpha$;
 	\vfill
 	
-	\item Na Figura~\ref{fig:2-pop-normal-s2-unknown-different-h1-upper}, testamos $H_0: \mu_1 - \mu_2 \geq \Delta_0$ versus $H_1: \mu_1 - \mu_2  < 0$. Rejeitamos $H_0$ se $t_0 = \frac{\bar{x}_1 - \bar{x}_1 - \Delta_0}{ \sqrt{ \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} } } \in \allowbreak RC=\{t_0 \mid t_0 < t_{\alpha;\nu}  \}$, em que $P\left(t_{\nu} \leq t_{\alpha;\nu} \right) = \alpha$.
+	\item Na Figura~\ref{fig:2-pop-normal-s2-unknown-different-h1-upper}, testamos $H_0: \mu_1 - \mu_2 \geq \Delta_0$ versus $H_1: \mu_1 - \mu_2  < \Delta_0$. Rejeitamos $H_0$ se $t_0 = \frac{\bar{x}_1 - \bar{x}_1 - \Delta_0}{ \sqrt{ \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} } } \in \allowbreak RC=\{t_0 \mid t_0 < t_{\alpha;\nu}  \}$, em que $P\left(t_{\nu} \leq t_{\alpha;\nu} \right) = \alpha$.
 \end{itemize}
 Note que $\nu = \frac{\left( \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} \right)^2}{ \frac{\left( \frac{s_1^2}{n_1} \right)^2}{n_1-1} + \frac{\left( \frac{s_2^2}{n_2} \right)^2}{n_2-1} }$ (equação de Welch–Satterthwaite) e $t_{\alpha;\nu}$, $t_{1-\alpha;\nu}$, $t_{\frac{\alpha}{2};\nu}$ e $t_{1-\frac{\alpha}{2};\nu}$ são chamados de valores críticos. Se $\nu$ não é um número inteiro, arrendonde $\nu$ para o número inteiro mais próximo.
 
@@ -2166,17 +2166,7 @@ Alguns livros, chamam essa comparação de médias quando as variâncias populac
 	\begin{tabular}{l|l}
 		\toprule[0.05cm]
 		Região urbana & Região rural \\ 
-		$\bar{x}_1=12,5; s_1 = 7,63$ & $\bar{x}_2=27,5, s_2=15,3$\\ \midrule[0,025cm]
-		Phoenix, 3 & Rimrock, 48 \\ 
-		Chandler, 7 & Goodyear, 44 \\ 
-		Gilbert, 25 & New River, 40 \\ 
-		Glendale, 10 & Apache Junction, 38 \\ 
-		Mesa, 15 & Buckeye, 33 \\ 
-		Paradise Valley, 6 & Nogales, 21 \\ 
-		Peoria, 12 & Black Canyon City, 20 \\ 
-		Scottsdale, 25 & Sedona, 12 \\ 
-		Tempe, 15 & Payson, 1 \\ 
-		Sun City, 7 & Casa Grande, 18 \\ \bottomrule[0.05cm]
+		$\bar{x}_1=12,5; s_1 = 6$ & $\bar{x}_2=27,5, s_2=15,3$\\  \bottomrule[0.05cm]
 	\end{tabular}
 	}
 	\caption{Concentração de arsênico para 20 comunidades na região metropolitana de Phoenix.}
@@ -2202,7 +2192,7 @@ Alguns livros, chamam essa comparação de médias quando as variâncias populac
 		\item $f_{\frac{\alpha}{2}; n_1-1, n_2-1} = \frac{1}{f_{1-\frac{\alpha}{2}; n_2-1, n_1-1}}=\frac{1}{4,026}=0,2483$.
 	\end{itemize}
 
-	\textbf{Passo 5)} Note que $s_1 = 7,63$, $s_2=15,3$ e $f_0= \frac{s_1^2}{s_2^2} = 0,2487$, então $f_0 \not\in RC$ e não rejeitamos $H_0$. Ou seja, ao nível de significância de $\alpha=5\%$, as variâncias da concentração de arsênico nas regiões urbana e rual são iguais.
+	\textbf{Passo 5)} Note que $s_1 = 6$, $s_2=15,3$ e $f_0= \frac{s_1^2}{s_2^2} = 0,15$, então $f_0 \in RC$ e rejeitamos $H_0$. Ou seja, ao nível de significância de $\alpha=5\%$, as variâncias da concentração de arsênico nas regiões urbana e rual são iguais.
 	
 \end{block}
 \normalsize
@@ -2220,12 +2210,12 @@ Alguns livros, chamam essa comparação de médias quando as variâncias populac
 	
 	\textbf{Passo 4)} Vamos encontrar os valores críticos:
 	\begin{itemize}
-		\item $\nu = \frac{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} \right)^2}{\frac{\left(\nicefrac{s_1^2}{n_1}\right)^2}{n_1-1} + \frac{\left(\nicefrac{s_2^2}{n_2}\right)^2}{n_2-1}} = 13,22$, usamos $\nu=13$;
-		\item $P(t_{\nu} \leq t_{\frac{\alpha}{2}; \nu}) = P(t_{13} \leq t_{0,025; 13}) = \frac{\alpha}{2} = 0,025$, então $t_{0,025; 13} = -2,160$;
-		\item $P(t_{\nu} \leq t_{\frac{\alpha}{2}; \nu}) = P(t_{13} \leq t_{0,975; 13}) =1- \frac{\alpha}{2} = 0,975$, então $t_{0,975; 13} = 2,160$;
+		\item $\nu = \frac{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} \right)^2}{\frac{\left(\nicefrac{s_1^2}{n_1}\right)^2}{n_1-1} + \frac{\left(\nicefrac{s_2^2}{n_2}\right)^2}{n_2-1}} = 11,70$, usamos $\nu=12$;
+		\item $P(t_{\nu} \leq t_{\frac{\alpha}{2}; \nu}) = \frac{\alpha}{2} = 0,025$, então $t_{0,025; \nu} = -2,20$;
+		\item $P(t_{\nu} \leq t_{\frac{\alpha}{2}; \nu}) =1- \frac{\alpha}{2} = 0,975$, então $t_{0,975; \nu} = 2,20$;
 	\end{itemize}
 
-	\textbf{Passo 5)} Note que $x_1=12,5$, $x_2=27,5$, $s_1=7,63$, $s_2=15,3$, $\Delta_0=0$, $t_0 = \frac{\bar{x}_1 - \bar{x}_2 - \Delta_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} = \frac{7,63 - 15,3}{\sqrt{\frac{7,63^2}{10} + \frac{15,3^2}{10}}}=-2,77 \in RC$, então Rejeitamos $H_0$ ao nível de significância $\alpha=5\%$. Ou seja, a concentração de arsênico presente no serviço de fornecimento de água é diferente nas regiões urbanas e rurais.
+	\textbf{Passo 5)} Note que $x_1=12,5$, $x_2=27,5$, $s_1=7,63$, $s_2=15,3$, $\Delta_0=0$, $t_0 = \frac{\bar{x}_1 - \bar{x}_2 - \Delta_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} = \frac{7,63 - 15,3}{\sqrt{\frac{6^2}{10} + \frac{15,3^2}{10}}}=-2,89 \in RC$, então rejeitamos $H_0$ ao nível de significância $\alpha=5\%$. Ou seja, a concentração de arsênico presente no serviço de fornecimento de água é diferente nas regiões urbanas e rurais.
 \end{block}
 \normalsize
 
@@ -2237,15 +2227,14 @@ Alguns livros, chamam essa comparação de médias quando as variâncias populac
 	O valor-p é dado por
 	$$p = P(\lvert T_0 \rvert > \lvert t_0 \rvert  \mid H_0) = 2 \cdot \left[1 - P(T_\nu \leq \lvert t_0 \rvert)\right].$$
 	
-	Note que $x_1=12,5$, $x_2=27,5$, $s_1=7,63$, $s_2=15,3$, $\Delta_0=0$, $t_0 = \frac{\bar{x}_1 - \bar{x}_2 - \Delta_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} = \frac{7,63 - 15,3}{\sqrt{\frac{7,63^2}{10} + \frac{15,3^2}{10}}}=-2,77$ e $\nu = \frac{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} \right)^2}{\frac{\left(\nicefrac{s_1^2}{n_1}\right)^2}{n_1-1} + \frac{\left(\nicefrac{s_2^2}{n_2}\right)^2}{n_2-1}} = 13,22$, então o valor é dado por
+	Note que $x_1=12,5$, $x_2=27,5$, $s_1=7,63$, $s_2=15,3$, $\Delta_0=0$, $t_0 = \frac{\bar{x}_1 - \bar{x}_2 - \Delta_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} = \frac{7,63 - 15,3}{\sqrt{\frac{7,63^2}{10} + \frac{15,3^2}{10}}}=-2,89$ e $\nu = \frac{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} \right)^2}{\frac{\left(\nicefrac{s_1^2}{n_1}\right)^2}{n_1-1} + \frac{\left(\nicefrac{s_2^2}{n_2}\right)^2}{n_2-1}} = 11,70$, então o valor é dado por
 	\begin{align*}
 	p &=2\cdot \left[1- P(t_\nu \leq \lvert  t_0\rvert)\right]\\
-	&=2\cdot \left[ P(t_{13,22} \leq \lvert -2,77 \rvert)\right]\\
-	&= 2 \cdot \left[ 1 - 0,9921 \right]\\
-	&= 0,0158.
+	&=2\cdot \left[1- P(t_{11,70} \leq \lvert -2,89 \rvert)\right]\\
+	&= 0,01.
 	\end{align*}
 	
-	Como $p = 0,0158 < \alpha=0,05$, rejeitamos $H_0$. Ou seja a concentração de arsênico presente no serviço de fornecimento de água é diferente nas comunidades urbanas e rurais.
+	Como $p = 0,01 < \alpha=0,05$, rejeitamos $H_0$. Ou seja a concentração de arsênico presente no serviço de fornecimento de água é diferente nas comunidades urbanas e rurais.
 \end{block}
 
 \end{frame}
@@ -2308,7 +2297,7 @@ Alguns livros, chamam essa comparação de médias quando as variâncias populac
 		\item $P(t_\nu \leq t_{1-\alpha;\nu}) = P(t_{27} \leq t_{0,95; 27})= 1-\alpha = 0,95$, então $t_{0,95; 27} = 1,703$.
 	\end{itemize}
 
-	\textbf{Passo 5)} Como $n_1=15$, $\bar{x}_1=30,5$, $s_1 = 2,51$, $n_2=25$, $\bar{x}_2 = 52,6$, $s_2 = 13,3$ e $\Delta_0=0$, então $t_0 = \frac{\bar{x}_2 - \bar{x}_1 - \Delta_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}= \frac{52,6 - 30,5}{\sqrt{\frac{2,51^2}{15} + \frac{13,3^2}{25}}} = 2,87 \in RC$, então rejeitamos $H_0$.
+	\textbf{Passo 5)} Como $n_1=15$, $\bar{x}_1=30,5$, $s_1 = 2,51$, $n_2=25$, $\bar{x}_2 = 52,6$, $s_2 = 13,3$ e $\Delta_0=0$, então $t_0 = \frac{\bar{x}_2 - \bar{x}_1 - \Delta_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}= \frac{52,6 - 30,5}{\sqrt{\frac{2,51^2}{15} + \frac{13,3^2}{25}}} = 8,07 \in RC$, então rejeitamos $H_0$.
 \end{block}
 \end{frame}
 
@@ -2319,21 +2308,21 @@ Alguns livros, chamam essa comparação de médias quando as variâncias populac
 	$$p=P(T_0 > t_0 \mid H_0) = 1 - P(t_\nu \leq t_0),$$
 	em que $\nu = \frac{\left( \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} \right)^2}{\frac{\left(\nicefrac{s_1^2}{n_1}\right)^2}{n_1-1} + \frac{\left(\nicefrac{s_2^2}{n_2}\right)^2}{n_2-1}}$.
 	
-	Como $n_1 = 15$, $\bar{x}_1 = 30,5$, $s_1=2,51$, $n_2 = 25$, $\bar{x}_2 = 52,6$, $s_2 = 13,3$, $t_0 = 2,87$, $\nu = 26,77$, então o valor-p é dado por
+	Como $n_1 = 15$, $\bar{x}_1 = 30,5$, $s_1=2,51$, $n_2 = 25$, $\bar{x}_2 = 52,6$, $s_2 = 13,3$, $t_0 = 8,07$, $\nu = 26,77$, então o valor-p é dado por
 	\begin{align*}
 		p &= 1 - P(t_\nu \leq t_0)\\
-		&= 1 - P(t_{26,77} \leq 2,87)\\
-		&= 0,004.
+		&= 1 - P(t_{26,77} \leq 8,07)\\
+		&= 0,00.
 	\end{align*}
 	
-	Como $p=0,004 < 0,05 = \alpha$, rejeitamos $H_0$ ao nível de significância $\alpha=5\%$.
+	Como $p=0,00 < 0,05 = \alpha$, rejeitamos $H_0$ ao nível de significância $\alpha=5\%$.
 \end{block}
 \end{frame}
 
 \begin{frame}{Comparação de médias $\mu_1$ e $\mu_2$ de duas populações.}
 
 \begin{block}{Exemplo}
-	Dois fornecedores fabricam um material de borracha usados em aplicações automotivas. Esta parte de borracha sofrerá um desgaste abrasivo no uso, e o engenheiro decide comparar as partes. Vinte e cinco partes de cada fornecedor foram coletadas, e o desgaste foi medido depois de 1000 ciclos. Para a companhia 1 a média e o desvio padrão são $x_1 = 20$ e $s_1 = 2$ miligramas  por $1000$ ciclos , e para a companhia 2 a média e o desvio padrão são $\bar{x}_2=15$ e $s_2=8$ miligramas por $1000$ ciclos. Os dados suportam a hipótese do engenheiro que o desgaste da companhia 2 é menor? Use $\alpha=5\%$. Calcule o valor-p.
+	Dois fornecedores fabricam um material de borracha usados em aplicações automotivas. Esta parte de borracha sofrerá um desgaste abrasivo no uso, e o engenheiro decide comparar as partes. Vinte e cinco partes de cada fornecedor foram coletadas, e o desgaste foi medido depois de 1000 ciclos. Para a companhia 1 a média e o desvio padrão são $\bar{x}_1 = 20$ e $s_1 = 2$ miligramas  por $1000$ ciclos , e para a companhia 2 a média e o desvio padrão são $\bar{x}_2=15$ e $s_2=8$ miligramas por $1000$ ciclos. Os dados suportam a hipótese do engenheiro que o desgaste da companhia 2 é menor? Use $\alpha=5\%$. Calcule o valor-p.
 \end{block}
  
 \end{frame}
@@ -2356,7 +2345,7 @@ Alguns livros, chamam essa comparação de médias quando as variâncias populac
 		\item $f_{\frac{\alpha}{2};n_1-1, n_2-1} = f_{0,025; 24, 24} = \frac{1}{f_{1-\frac{\alpha}{2}; n_2-1, n_2-1}} = \frac{1}{f_{0,975; 24, 24}} = \frac{1}{2,269} =0,4407$.
 	\end{itemize}
 	
-	\textbf{Passo 5)} Como $s_1=2,51$, $s_2 = 13,3$, $f_0 = \frac{s_1^2}{s_2^2} = 0,04 \in RC$, então rejeitamos $H_0$. Ou seja, ao nível de significância $\alpha=5\%$, as duas variâncias populacionais são distintas.
+	\textbf{Passo 5)} Como $s_1=2$, $s_2 = 8$, $f_0 = \frac{s_1^2}{s_2^2} = 0,0625 \in RC$, então rejeitamos $H_0$. Ou seja, ao nível de significância $\alpha=5\%$, as duas variâncias populacionais são distintas.
 \end{block}
 \end{frame}
 
@@ -2376,7 +2365,7 @@ Alguns livros, chamam essa comparação de médias quando as variâncias populac
 		\item $P(t_\nu \leq t_{\alpha, \nu}) = P(t_{27} \leq t_{0,05; 27})$, então $t_{0,05; 27} = -1,703$.
 	\end{itemize}
 
-	\textbf{Passo 5)} Como $n_1=n_2=25$, $\bar{x}_1=20$, $\bar{x}_2=15$, $s_1=2$, $s_2=8$ e $t_0 = \frac{\bar{x}_2 - \bar{x}_1- \Delta_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} = \frac{15 - 20  - 0}{\sqrt{\frac{2^2}{25} + \frac{8^2}{25}}}=-2,38 \in RC$, e rejeitamos $H_0$. 
+	\textbf{Passo 5)} Como $n_1=n_2=25$, $\bar{x}_1=20$, $\bar{x}_2=15$, $s_1=2$, $s_2=8$ e $t_0 = \frac{\bar{x}_2 - \bar{x}_1- \Delta_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} = \frac{15 - 20  - 0}{\sqrt{\frac{2^2}{25} + \frac{8^2}{25}}}=-3,03 \in RC$, e rejeitamos $H_0$. 
 	
 	Ou seja, ao nível de significância $\alpha=5\%$, o desgaste da parte de borracha fornecida pela companhia 2 é menor.
 \end{block}
@@ -2390,14 +2379,14 @@ Alguns livros, chamam essa comparação de médias quando as variâncias populac
 	O valor-p é dado por
 	$$p = P (T_0 < t_0 \mid H_0) = P(t_\nu < t_0).$$
 	
-	Note que $n_1=n_2=25$, $\bar{x}_1=20$, $\bar{x}_2=15$, $s_1=2$, $s_2=8$ e $t_0 = \frac{\bar{x}_2 - \bar{x}_1- \Delta_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} = \frac{15 - 20  - 0}{\sqrt{\frac{2^2}{25} + \frac{8^2}{25}}}=-2,38$ e $\nu = \frac{\left( \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} \right)^2}{\frac{\left(\nicefrac{s_1^2}{n_1}\right)^2}{n_1-1} + \frac{\left(\nicefrac{s_2^2}{n_2}\right)^2}{n_2-1}} = \frac{\left( \frac{2^2}{25} + \frac{8^2}{25} \right)^2}{\frac{\left(\nicefrac{2^2}{25}\right)^2}{25-1} + \frac{\left(\nicefrac{8^2}{25}\right)^2}{25-1}} = 26,99$, então o valor-p é dado por
+	Note que $n_1=n_2=25$, $\bar{x}_1=20$, $\bar{x}_2=15$, $s_1=2$, $s_2=8$ e $t_0 = \frac{\bar{x}_2 - \bar{x}_1- \Delta_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} = \frac{15 - 20  - 0}{\sqrt{\frac{2^2}{25} + \frac{8^2}{25}}}=-3,03$ e $\nu = \frac{\left( \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} \right)^2}{\frac{\left(\nicefrac{s_1^2}{n_1}\right)^2}{n_1-1} + \frac{\left(\nicefrac{s_2^2}{n_2}\right)^2}{n_2-1}} = \frac{\left( \frac{2^2}{25} + \frac{8^2}{25} \right)^2}{\frac{\left(\nicefrac{2^2}{25}\right)^2}{25-1} + \frac{\left(\nicefrac{8^2}{25}\right)^2}{25-1}} = 26,99$, então o valor-p é dado por
 	\begin{align*}
 		p &= P(t_\nu \leq t_0)\\
-		&= (P_{26,99} \leq -2,38)\\
-		&= 0,012.
+		&= (P_{26,99} \leq -3,03)\\
+		&= 0,00.
 	\end{align*}
 	
-	Como $p=0,013 < \alpha=0,05$, rejeitamos $H_0$, ou seja, o desgaste da parte de borracha pela companhia 2 é menor.
+	Como $p=0,00 < \alpha=0,05$, rejeitamos $H_0$, ou seja, o desgaste da parte de borracha pela companhia 2 é menor.
 \end{block}
 
 \end{frame}
@@ -2725,17 +2714,7 @@ A concentração de arsênico no sistema de abastecimento de água é um sério 
 	\begin{tabular}{l|l}
 		\toprule[0.05cm]
 		Região urbana & Região rural \\ 
-		$\bar{x}_1=12,5; s_1 = 7,63$ & $\bar{x}_2=27,5, s_2=15,3$\\ \midrule[0,025cm]
-		Phoenix, 3 & Rimrock, 48 \\ 
-		Chandler, 7 & Goodyear, 44 \\ 
-		Gilbert, 25 & New River, 40 \\ 
-		Glendale, 10 & Apache Junction, 38 \\ 
-		Mesa, 15 & Buckeye, 33 \\ 
-		Paradise Valley, 6 & Nogales, 21 \\ 
-		Peoria, 12 & Black Canyon City, 20 \\ 
-		Scottsdale, 25 & Sedona, 12 \\ 
-		Tempe, 15 & Payson, 1 \\ 
-		Sun City, 7 & Casa Grande, 18 \\ \bottomrule[0.05cm]
+		$\bar{x}_1=12,5; s_1 = 6$ & $\bar{x}_2=27,5, s_2=15,3$\\ \bottomrule[0.05cm]
 	\end{tabular}
 }
 \caption{Concentração de arsênico para 20 comunidades na região metropolitana de Phoenix.}
@@ -2749,28 +2728,25 @@ A concentração de arsênico no sistema de abastecimento de água é um sério 
 \begin{block}{Solução}
 Primeiro encontramos os quantis da distribuição t-Student:
 \begin{itemize}
-\item $\nu = \frac{\left( \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} \right)^2}{\frac{\left(\nicefrac{s_1^2}{n_1}\right)^2}{n_1-1} + \frac{\left(\nicefrac{s_2^2}{n_2}\right)^2}{n_2-1}} = 13,22$, então vamos usar $\nu=13$;
-\item $P(t_{\nu} \leq t_{1-\frac{\alpha}{2}; \nu}) = P(t_{13} \leq t_{0,025; 13}) = \frac{\alpha}{2} = 0,025$, então $t_{0,025} =-2,160$;
-\item $P(t_{\nu} \leq t_{\frac{\alpha}{2}; \nu}) = P(t_{13} \leq t_{0,975; 13}) =1- \frac{\alpha}{2} = 0,975$, então $t_{0,975} =2,160$.
+\item $\nu = \frac{\left( \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} \right)^2}{\frac{\left(\nicefrac{s_1^2}{n_1}\right)^2}{n_1-1} + \frac{\left(\nicefrac{s_2^2}{n_2}\right)^2}{n_2-1}} = 11,70$, então vamos usar $\nu=12$;
+\item $P(t_{\nu} \leq t_{1-\frac{\alpha}{2}; \nu}) = \frac{\alpha}{2} = 0,025$, então $t_{0,025} =-2,20$;
+\item $P(t_{\nu} \leq t_{\frac{\alpha}{2}; \nu})  =1- \frac{\alpha}{2} = 0,975$, então $t_{0,975} =2,20$.
 \end{itemize}	
 
-Note que $\bar{x}_1-\bar{x}_2 = 12,5 - 27,5 = -15$, $s_1 = 7,63$, $s_2 = 15,3$ e $n=n_1=n_2=10$. Então, o intervalo de confiança $\gamma=1-\alpha = 0,95$ é dado por
+Note que $\bar{x}_1-\bar{x}_2 = 12,5 - 27,5 = -15$, $s_1 =6$, $s_2 = 15,3$ e $n=n_1=n_2=10$. Então, o intervalo de confiança $\gamma=1-\alpha = 0,95$ é dado por
 {\scriptsize
 \begin{align*}
 IC(\mu_1 - \mu_2, \gamma) &= \left( t_{\frac{\alpha}{2};\nu} \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}   + \bar{x}_1- \bar{x}_2; + \bar{x}_1- \bar{x}_2; t_{1-\frac{\alpha}{2};\nu}  \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}} + \bar{x}_1- \bar{x}_2  \right)\\
-&= \left( -2,160\cdot \sqrt{\frac{7,63^2}{10} + \frac{15,3^2}{10}} + 12,5 - 27,5; 2,160\cdot \sqrt{\frac{7,63^2}{10} + \frac{15,3^2}{10}} + 12,5 - 27,5  \right)\\
-&= \left( -26,68; -3,32 \right).
+&= \left( -2,20\cdot \sqrt{\frac{6^2}{10} + \frac{15,3^2}{10}} + 12,5 - 27,5; 2,20\cdot \sqrt{\frac{6^2}{10} + \frac{15,3^2}{10}} + 12,5 - 27,5  \right)\\
+&= \left( -26,44; -3,56 \right).
 \end{align*}
 }
 
-Com coeficiente de confiança $95\%$, a diferença das médias das concentrações de arsênico está entre $-26,68$ e $-3,32$ e  a média de concentração de arsênico é menor nas comunidades urbanas.
+Com coeficiente de confiança $95\%$, a diferença das médias das concentrações de arsênico está entre $-26,44$ e $-3,56$ e  a média de concentração de arsênico é menor nas comunidades urbanas.
 \end{block}
 \normalsize
 
 \end{frame}
-
-
-
 
 \section{Teste t pareado}
 

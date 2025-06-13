@@ -300,7 +300,7 @@ ggplot(dados)+
   geom_line(aes(x = z, y = f), color = "black", size = 1) +
   labs(x = TeX("$F_0$"), y = "F-Snedecor", 
        title = "Valor-p",
-       subtitle = TeX("$F_0$ pequeno: $p=P(F_{v_1, v_2} \\geq f_0) < 0,5$")) +
+       subtitle = TeX("$F_0$ grande: $p=P(F_{v_1, v_2} \\geq f_0) < 0,5$")) +
   scale_x_continuous(breaks = c(upper),
                      labels = c(TeX("$F_0$"))) +
   scale_y_continuous(breaks = NULL) +
@@ -380,7 +380,7 @@ ggplot(dados)+
            size = 10, color = "blue", parse = T) +
   annotate("text", x = upper + 1, y = 0.65, label = "H[1]",
            size = 10, color = "red", parse = T) +
-  annotate("text", x = upper + 1, y = 0.10, label = "1-alpha", parse = T,
+  annotate("text", x = upper + 1, y = 0.10, label = "alpha", parse = T,
            color = "gray", size = 10)
 ggsave("../figures/test-variance-unilateral-h1-upper.png")
 ggsave("../figures/test-variance-unilateral-h1-upper.pdf")
