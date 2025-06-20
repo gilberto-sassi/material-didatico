@@ -1,14 +1,16 @@
 ```{r, label="Simulação de dados", include=F}
-library(exams)
-library(glue)
-library(magrittr)
-library(readxl)
-library(writexl)
-library(knitr)
-library(truncnorm)
-library(statBasics)
-library(gt)
-library(tidyverse)
+if (!require(pacman)) install.packages("pacman")
+library(pacman)
+p_load(exams)
+p_load(glue)
+p_load(magrittr)
+p_load(readxl)
+p_load(writexl)
+p_load(knitr)
+p_load(truncnorm)
+p_load(statBasics)
+p_load(gt)
+p_load(tidyverse)
 options(scipen = 999) #prevent scientific notation
 
 # tamanho da amostra
@@ -61,7 +63,7 @@ decisao <- ifelse(
     "não rejeitamos a hipótese nula."
 )
 
-f <- \(x) format(x, decimal.mark = ",")
+f <- \(x) round(x, 3)  |> format(big.mark = ".", decimal.mark = ",")
 ```
 
 Question
@@ -102,29 +104,35 @@ gt(tab) |>
         regiao_critica = "Região crítica",
         decisao = "Decisão"
     )
+
 ```
+
+* A estatística de teste (F~0~) é: \#\#ANSWER1\#\#
+* \#\#ANSWER2\#\#
+* \#\#ANSWER3\#\#
+
 
 Questionlist
 ------------
 
-* A estatística de teste (X^2^~0~) é:
+* A estatística de teste (F~0~) é:
 * A região crítica é dada por: (0;`r f(fit_correto$critical_vale[1] |> round(3))`)&#8746;(`r f(fit_correto$critical_vale[2] |> round(3))`; &#8734;).
 * A região crítica é dada por: (0;`r f(fit_less$critical_vale[1] |> round(3))`).
 * A região crítica é dada por: (`r f(fit_greater$critical_vale[1] |> round(3))`;&#8734;).
-* Ao nível de significância &alpha; = `r g`, não rejeitamos a hipótese nula.
-* Ao nível de significância &alpha; = `r g`, rejeitamos a hipótese nula.
+* Ao nível de significância &alpha; = `r f(g)`, não rejeitamos a hipótese nula.
+* Ao nível de significância &alpha; = `r f(g)`, rejeitamos a hipótese nula.
 
 Solution
 ========
 Solutionlist
 ------------
 
-* A estatística de teste (X^2^~0~) é: `r f(sol[1])`.
+* A estatística de teste (F~0~) é: `r f(sol[1])`.
 * A região crítica é dada por: (0;`r f(fit_correto$critical_vale[1] |> round(3))`)&#8746;(`r f(fit_correto$critical_vale[2] |> round(3))`; &#8734;).
 * 
 * 
-* `r ifelse(fit_correto$statistic[1] < fit_correto$critical_vale[1] | fit_correto$statistic[2] > fit_correto$critical_vale[2], glue("Falso, pois ao nível de significância &gamma; = {g}, rejeitamos a hipótese nula."), "Verdadeiro.")`
-* `r ifelse(fit_correto$statistic[1] < fit_correto$critical_vale[1] | fit_correto$statistic[2] > fit_correto$critical_vale[2], "Verdadeiro.", glue("Falso, pois ao nível de significância &gamma; = {g}, não rejeitamos a hipótese nula."))` 
+* `r ifelse(fit_correto$statistic[1] < fit_correto$critical_vale[1] | fit_correto$statistic[2] > fit_correto$critical_vale[2], glue("Falso, pois ao nível de significância &alpha; = {f(g)}, rejeitamos a hipótese nula."), "Verdadeiro.")`
+* `r ifelse(fit_correto$statistic[1] < fit_correto$critical_vale[1] | fit_correto$statistic[2] > fit_correto$critical_vale[2], "Verdadeiro.", glue("Falso, pois ao nível de significância &alpha; = {f(g)}, não rejeitamos a hipótese nula."))` 
 
 Meta-information
 ================

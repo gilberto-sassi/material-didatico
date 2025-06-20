@@ -1,16 +1,17 @@
 ```{r, label="Simulação de dados", include=F}
-library(exams)
-library(glue)
-library(magrittr)
-library(readxl)
-library(writexl)
-library(knitr)
-library(truncnorm)
-library(statBasics)
-library(gt)
-library(tidyverse)
+if (!require(pacman)) install.packages("pacman")
+library(pacman)
+p_load(exams)
+p_load(glue)
+p_load(magrittr)
+p_load(readxl)
+p_load(writexl)
+p_load(knitr)
+p_load(truncnorm)
+p_load(statBasics)
+p_load(gt)
+p_load(tidyverse)
 options(scipen = 999) #prevent scientific notation
-
 
 # tamanho da amostra
 tam <- sample(100:500, 1)
@@ -103,6 +104,11 @@ gt(tab) |>
     )
 ```
 
+* A estatística de teste (z~0~) é: \#\#ANSWER1\#\#
+* * O valor-p é: \#\#ANSWER2\#\#
+* \#\#ANSWER3\#\#
+* \#\#ANSWER4\#\#
+
 Questionlist
 ------------
 
@@ -111,21 +117,21 @@ Questionlist
 * A região crítica é dada por: `r fit_correto$critical_region[1]`.
 * A região crítica é dada por: `r fit_less$critical_region`.
 * A região crítica é dada por: `r fit_greater$critical_region`.
-* Ao nível de significância &alpha; = `r g`, não rejeitamos a hipótese nula.
-* Ao nível de significância &alpha; = `r g`, rejeitamos a hipótese nula.
+* Ao nível de significância &alpha; = `r f(g)`, não rejeitamos a hipótese nula.
+* Ao nível de significância &alpha; = `r f(g)`, rejeitamos a hipótese nula.
 
 Solution
 ========
 Solutionlist
 ------------
 
-* A estatística de teste (z~0~) é: `r sol[1]`.
-* O valor-p é: `r sol[2]`.
+* A estatística de teste (z~0~) é: `r f(sol[1])`.
+* O valor-p é: `r f(sol[2])`.
 * A região crítica é dada por: `r fit_correto$critical_region[1]`.
 * 
 * 
-* `r ifelse(fit_correto$p_value < g, glue("Falso, pois ao nível de significância &gamma; = {g}, rejeitamos a hipótese nula."), "Verdadeiro.")`
-* `r ifelse(fit_correto$p_value < g, "Verdadeiro.", glue("Falso, pois ao nível de significância &gamma; = {g}, rejeitamos a hipótese nula."))` 
+* `r ifelse(fit_correto$p_value < g, glue("Falso, pois ao nível de significância &gamma; = {f(g)}, rejeitamos a hipótese nula."), "Verdadeiro.")`
+* `r ifelse(fit_correto$p_value < g, "Verdadeiro.", glue("Falso, pois ao nível de significância &gamma; = {f(g)}, rejeitamos a hipótese nula."))` 
 
 Meta-information
 ================

@@ -197,9 +197,9 @@ Sejam
 
 Queremos testar as seguintes hipóteses:
 \begin{itemize}
-	\item Teste bilateral: $H_0: \mu_1 - \mu_2 = 0$ e $H_1: \mu_1 - \mu_2 \neq \Delta_0$;
-	\item Teste unilateral: $H_0: \mu_1 - \mu_2 \leq 0$ e $H_1: \mu_1 - \mu_2 > \Delta_0$;
-	\item Teste unilateral: $H_0: \mu_1 - \mu_2 \geq 0$ e $H_1: \mu_1 - \mu_2 < \Delta_0$.
+	\item Teste bilateral: $H_0: \mu_1 - \mu_2 = \Delta_0$ e $H_1: \mu_1 - \mu_2 \neq \Delta_0$;
+	\item Teste unilateral: $H_0: \mu_1 - \mu_2 \leq \Delta_0$ e $H_1: \mu_1 - \mu_2 > \Delta_0$;
+	\item Teste unilateral: $H_0: \mu_1 - \mu_2 \geq \Delta_0$ e $H_1: \mu_1 - \mu_2 < \Delta_0$.
 \end{itemize}
 \vfill
 
@@ -2786,8 +2786,8 @@ Com coeficiente de confiança $95\%$, a diferença das médias das concentraçõ
 \begin{figure}[htbp]
 	\centering
 	\subfloat[][Teste bilateral.]{\includegraphics[width=0.32\linewidth]{figures/paired-t-test-bilateral.png} \label{fig:paired-t-test-bilateral}} \hfill
-	\subfloat[][Teste bilateral.]{\includegraphics[width=0.32\linewidth]{figures/paired-t-test-h1-lower.png} \label{fig:paired-t-test-h1-lower}} \hfill
-	\subfloat[][Teste bilateral.]{\includegraphics[width=0.32\linewidth]{figures/paired-t-test-h1-upper.png} \label{fig:paired-t-test-h1-upper}} 
+	\subfloat[][Teste unilateral.]{\includegraphics[width=0.32\linewidth]{figures/paired-t-test-h1-lower.png} \label{fig:paired-t-test-h1-lower}} \hfill
+	\subfloat[][Teste unilateral.]{\includegraphics[width=0.32\linewidth]{figures/paired-t-test-h1-upper.png} \label{fig:paired-t-test-h1-upper}} 
 	\caption{Região crítica para o teste-t pareado.}
 \end{figure}
 \end{frame}
@@ -2800,10 +2800,10 @@ Com coeficiente de confiança $95\%$, a diferença das médias das concentraçõ
 	\item Na Figura~\ref{fig:paired-t-test-bilateral}, testamos $H_0: \mu_D = \Delta_0$ versus $H_1: \mu_D \neq \Delta_0$. Rejeitamos $H_0$ se $t_0 = \frac{(\bar{D} - \Delta_0)\sqrt{n}}{ s_D } \in  RC=\{t_0 \mid t_0 < t_{\frac{\alpha}{2};n-1} \allowbreak \mbox{ ou } t_0 > t_{1-\frac{\alpha}{2};n-1} \}$, em que $P\left(t_{n-1} \leq t_{\frac{\alpha}{2}; n-1} \right) = \frac{\alpha}{2}$, $P\left(t_{n-1} \leq t_{1-\frac{\alpha}{2}; n-1} \right) = 1 - \frac{\alpha}{2}$, $S_D = \frac{\sum_{k=1}^{n}(d_j - \bar{D})^2}{n-1}$, $d_j = x_{1j} - x_{2j}, j=1, \dots, n$ e $\bar{D} = \bar{X}_1 - \bar{X}_2$;
 	\vfill
 	
-	\item Na Figura~\ref{fig:paired-t-test-h1-lower}, testamos $H_0: \mu_D \leq \Delta_0 $ versus $H_1: \mu_D > 0$. Rejeitamos $H_0$ se $t_0 = \frac{(\bar{D} - \Delta_0)\sqrt{n}}{ s_D } \in \allowbreak RC=\{t_0 \mid t_0 > t_{1-\alpha; n-1}  \}$, em que $P\left(t_{n-1} \leq  t_{1-\alpha;n-1} \right) =1- \alpha$, $S_D = \frac{\sum_{k=1}^{n}(d_j - \bar{D})^2}{n-1}$, $d_j = x_{1j} - x_{2j}, j=1, \dots, n$ e $\bar{D} = \bar{X}_1 - \bar{X}_2$;
+	\item Na Figura~\ref{fig:paired-t-test-h1-lower}, testamos $H_0: \mu_D \leq \Delta_0 $ versus $H_1: \mu_D > \Delta_0$. Rejeitamos $H_0$ se $t_0 = \frac{(\bar{D} - \Delta_0)\sqrt{n}}{ s_D } \in \allowbreak RC=\{t_0 \mid t_0 > t_{1-\alpha; n-1}  \}$, em que $P\left(t_{n-1} \leq  t_{1-\alpha;n-1} \right) =1- \alpha$, $S_D = \frac{\sum_{k=1}^{n}(d_j - \bar{D})^2}{n-1}$, $d_j = x_{1j} - x_{2j}, j=1, \dots, n$ e $\bar{D} = \bar{X}_1 - \bar{X}_2$;
 	\vfill
 	
-	\item Na Figura~\ref{fig:paired-t-test-h1-upper}, testamos $H_0: \mu_D \geq \Delta_0$ versus $H_1: \mu_D  < 0$. Rejeitamos $H_0$ se $t_0 = \frac{(\bar{D} - \Delta_0)\sqrt{n}}{ s_D } \in \allowbreak RC=\{t_0 \mid t_0 < t_{\alpha;n-1}  \}$, em que $P\left(t_{n-1} \leq  t_{1-\alpha;n-1} \right) =1- \alpha$, $S_D = \frac{\sum_{k=1}^{n}(d_j - \bar{D})^2}{n-1}$, $d_j = x_{1j} - x_{2j}, j=1, \dots, n$ e $\bar{D} = \bar{X}_1 - \bar{X}_2$.
+	\item Na Figura~\ref{fig:paired-t-test-h1-upper}, testamos $H_0: \mu_D \geq \Delta_0$ versus $H_1: \mu_D  < \Delta_0$. Rejeitamos $H_0$ se $t_0 = \frac{(\bar{D} - \Delta_0)\sqrt{n}}{ s_D } \in \allowbreak RC=\{t_0 \mid t_0 < t_{\alpha;n-1}  \}$, em que $P\left(t_{n-1} \leq  t_{1-\alpha;n-1} \right) =1- \alpha$, $S_D = \frac{\sum_{k=1}^{n}(d_j - \bar{D})^2}{n-1}$, $d_j = x_{1j} - x_{2j}, j=1, \dots, n$ e $\bar{D} = \bar{X}_1 - \bar{X}_2$.
 \end{itemize}
 $t_{\alpha;n-1}$, $t_{1-\alpha;n-1}$, $t_{\frac{\alpha}{2};n-1}$ e $t_{1-\frac{\alpha}{2};n-1}$ são chamados de valores críticos. 
 
@@ -2825,13 +2825,13 @@ $t_{\alpha;n-1}$, $t_{1-\alpha;n-1}$, $t_{\frac{\alpha}{2};n-1}$ e $t_{1-\frac{\
 		\toprule[0.05cm]
 		Vigas & Método Karlsruhe & Método Lehigh & Diferença $d$ \\ 
 		\midrule[0.025cm]
-			Vigas 1 & 1,19 & 1,06 & 0,12 \\ 
+			Vigas 1 & 1,19 & 1,06 & 0,13 \\ 
 			Vigas 2 & 1,15 & 0,99 & 0,16 \\ 
 			Vigas 3 & 1,32 & 1,06 & 0,26 \\ 
 			Vigas 4 & 1,34 & 1,06 & 0,28 \\ 
 			Vigas 5 & 1,20 & 1,06 & 0,14 \\ 
 			Vigas 6 & 1,40 & 1,18 & 0,22 \\ 
-			Vigas 7 & 1,36 & 1,04 & 0,33 \\ 
+			Vigas 7 & 1,36 & 1,04 & 0,32 \\ 
 			Vigas 8 & 1,54 & 1,09 & 0,45 \\ 
 			Vigas 9 & 1,56 & 1,05 & 0,51 \\ 
 		\bottomrule[0.05cm]
@@ -2860,7 +2860,7 @@ $t_{\alpha;n-1}$, $t_{1-\alpha;n-1}$, $t_{\frac{\alpha}{2};n-1}$ e $t_{1-\frac{\
 		\item $P(t_{n-1} \leq t_{\frac{\alpha}{2}; n-1}) = P(t_{8} \leq t_{0,025; 8}) = 0,025$, então $t_{0,025; 8} = -2,306$.
 	\end{itemize}
 
-	\textbf{Passo 5)} Note que $\bar{d} = 0,274$, $n=8$, $s_D = 0,135$, $\Delta_0=0$ e $t_0 = \frac{(\bar{d} - \Delta_0)\sqrt{n}}{s_D} = \frac{(0,274 - 0)\sqrt{8}}{0,135} = 6,08$. Como $t_0 \in RC$ e rejeitamos $H_0$, e as previsões dos dois métodos são distintos.
+	\textbf{Passo 5)} Note que $\bar{d} = 0,274$, $n=9$, $s_D = 0,134$, $\Delta_0=0$ e $t_0 = \frac{(\bar{d} - \Delta_0)\sqrt{n}}{s_D} = \frac{(0,274 - 0)\sqrt{9}}{0,134} = 6,14$. Como $t_0 \in RC$ e rejeitamos $H_0$, e as previsões dos dois métodos são distintos.
 \end{block}
 
 \end{frame}
@@ -2873,10 +2873,10 @@ $t_{\alpha;n-1}$, $t_{1-\alpha;n-1}$, $t_{\frac{\alpha}{2};n-1}$ e $t_{1-\frac{\
 		p = P \left( \lvert T_0 \rvert > \lvert t_0 \rvert \mid H_0 \right) = 2 \cdot \left[1 - P \left( t_{n-1}  \leq \lvert t_0 \rvert  \right)\right].
 	\end{align*}
 	
-	Como $n=8$, $s_D = 0,135$, $\Delta_0 = 0$, $\bar{d} = 0,274$ e $t_0 = 6,08$, então
+	Como $n=9$, $s_D = 0,134$, $\Delta_0 = 0$, $\bar{d} = 0,274$ e $t_0 = 6,14$, então
 	\begin{align*}
 		p &=2 \cdot \left[1 - P \left(t_{n-1} \leq  \lvert t_0 \rvert \right)\right]\\
-		&= 2 \cdot \left[1 - P \left(t_{8} \leq   6,08  \right)\right]\\
+		&= 2 \cdot \left[1 - P \left(t_{8} \leq   6,14  \right)\right]\\
 		&= 0,0003.
 	\end{align*}
 	
@@ -3476,13 +3476,13 @@ Um pesquisador deseja comparar dois métodos para predizer a resistência ao cis
 		\toprule[0.05cm]
 		Vigas & Método Karlsruhe & Método Lehigh & Diferença $d$ \\ 
 		\midrule[0.025cm]
-		Vigas 1 & 1,19 & 1,06 & 0,12 \\ 
+		Vigas 1 & 1,19 & 1,06 & 0,13 \\ 
 		Vigas 2 & 1,15 & 0,99 & 0,16 \\ 
 		Vigas 3 & 1,32 & 1,06 & 0,26 \\ 
 		Vigas 4 & 1,34 & 1,06 & 0,28 \\ 
 		Vigas 5 & 1,20 & 1,06 & 0,14 \\ 
 		Vigas 6 & 1,40 & 1,18 & 0,22 \\ 
-		Vigas 7 & 1,36 & 1,04 & 0,33 \\ 
+		Vigas 7 & 1,36 & 1,04 & 0,32 \\ 
 		Vigas 8 & 1,54 & 1,09 & 0,45 \\ 
 		Vigas 9 & 1,56 & 1,05 & 0,51 \\ 
 		\bottomrule[0.05cm]
@@ -3498,7 +3498,7 @@ Um pesquisador deseja comparar dois métodos para predizer a resistência ao cis
 
 \small
 \begin{block}{Solução}
-Note que $\bar{d} = \bar{x}_1-\bar{x}_2 = 0,274$, $s_D = 0,135$ e $n=n_1=n_2=9$. Primeiro encontramos os quantis da distribuição t-Student:
+Note que $\bar{d} = \bar{x}_1-\bar{x}_2 = 0,274$, $s_D = 0,134$ e $n=n_1=n_2=9$. Primeiro encontramos os quantis da distribuição t-Student:
 \begin{itemize}
 \item $P(t_{n-1} \leq t_{\frac{\alpha}{2}; n-1}) = P(t_{8} \leq t_{0,025; 8}) = \frac{\alpha}{2} = 0,025$, então $t_{0,025} =-2,306$;
 \item $P(t_{n-1} \leq t_{\frac{\alpha}{2}; n-1}) = P(t_{8} \leq t_{0,975; 8}) =1- \frac{\alpha}{2} = 0,975$, então $t_{0,975} =2,306$.
@@ -3544,8 +3544,8 @@ Queremos testar as seguintes hipóteses:
 \textbf{Ideia:} Primeiro calculamos a distância padronizada de $\hat{p}_1 - \hat{p}_2$ e $\Delta_0=\mu_1 - \mu_2$ : $Z_0 = \frac{(\hat{p}_1 - \hat{p}_2 - \Delta_0)}{\sqrt{\hat{p}(1 - \hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}$, em que $\hat{p} = \frac{\hat{p}_1 \cdot n_1 + \hat{p}_2 \cdot n_2}{n_1 + n_2}$. Então, 
 \begin{itemize}
 	\item Teste bilateral: Rejeitamos $H_0: p_1 - p_2 =\Delta_0$ se $\lvert Z_0 \rvert$ for grande;
-	\item Teste unilateral: Rejeitamos $H_0: p_1 - p_2 \leq 0$ se $Z_0 $ for grande;
-	\item Teste unilateral: Rejeitamos $H_0: p_1 - p_2 \geq 0$ se $Z_0 $ for pequeno.
+	\item Teste unilateral: Rejeitamos $H_0: p_1 - p_2 \leq \Delta_00$ se $Z_0 $ for grande;
+	\item Teste unilateral: Rejeitamos $H_0: p_1 - p_2 \geq \Delta_0$ se $Z_0 $ for pequeno.
 \end{itemize}
 \normalsize
 \end{frame}
@@ -3605,9 +3605,9 @@ Chamamos $z_\alpha$, $z_{1-\alpha}$, $z_\frac{\alpha}{2}$ e $z_{1-\frac{\alpha}{
 		\item $\Phi\left( z_{1-\frac{\alpha}{2}} \right) = \Phi\left( z_{0,975} \right) = 1-\frac{\alpha}{2} = 0,975$, então $z_{0,975} = 1,96$;
 	\end{itemize}
 
-	\textbf{Passo 5)} Como $\hat{p}_1 = \frac{27}{100} = 0,27$, $\hat{p_2} = \frac{19}{100}=0,19$, $n_1=n_2=100$, $\Delta_0=0$, $\hat{p} = \frac{n_1 \hat{p}_1 + n_2 \hat{p}_2}{n_1 + n_2} = \frac{100\cdot 0,27 + 100\cdot 0,19}{100 + 100} = 0,23$ e $z_0 = \frac{(\hat{p}_1 - \hat{p}_2 - \Delta_0)}{\sqrt{\hat{p}(1 - \hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} = \frac{(0,27 - 0,19 - 0)}{\sqrt{0,23(1 - 0,23)}\sqrt{\frac{1}{100} + \frac{1}{100}}} = 3,19 \in RC$, então rejeitamos $H_0$. 
+	\textbf{Passo 5)} Como $\hat{p}_1 = \frac{27}{100} = 0,27$, $\hat{p_2} = \frac{19}{100}=0,19$, $n_1=n_2=100$, $\Delta_0=0$, $\hat{p} = \frac{n_1 \hat{p}_1 + n_2 \hat{p}_2}{n_1 + n_2} = \frac{100\cdot 0,27 + 100\cdot 0,19}{100 + 100} = 0,23$ e $z_0 = \frac{(\hat{p}_1 - \hat{p}_2 - \Delta_0)}{\sqrt{\hat{p}(1 - \hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} = \frac{(0,27 - 0,19 - 0)}{\sqrt{0,23(1 - 0,23)}\sqrt{\frac{1}{100} + \frac{1}{100}}} = 1,34 \not\in RC$, então não rejeitamos $H_0$. 
 	
-	Ou seja, ao nível de significância $\alpha=5\%$, a proporção de pacientes recuperados com erva-de-são-joão e placebo são diferentes.
+	Ou seja, ao nível de significância $\alpha=5\%$, a proporção de pacientes recuperados com erva-de-são-joão e placebo não são diferentes.
 \end{block}
 \normalsize
 \end{frame}
@@ -3621,15 +3621,14 @@ Chamamos $z_\alpha$, $z_{1-\alpha}$, $z_\frac{\alpha}{2}$ e $z_{1-\frac{\alpha}{
 		p = P\left( \lvert Z_0 \rvert > \lvert z_0 \rvert \mid H_0 \right) = 2 \cdot \left[ 1 - \Phi(\lvert z_0 \rvert) \right].
 	\end{align*}
 	
-	Como $\hat{p}_1 = \frac{27}{100} = 0,27$, $\hat{p_2} = \frac{19}{100}=0,19$, $n_1=n_2=100$, $\Delta_0=0$, $\hat{p} = \frac{n_1 \hat{p}_1 + n_2 \hat{p}_2}{n_1 + n_2} = \frac{100\cdot 0,27 + 100\cdot 0,19}{100 + 100} = 0,23$ e $z_0 = \frac{(\hat{p}_1 - \hat{p}_2 - \Delta_0)}{\sqrt{\hat{p}(1 - \hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} = \frac{(0,27 - 0,19 - 0)}{\sqrt{0,23(1 - 0,23)}\sqrt{\frac{1}{100} + \frac{1}{100}}} = 3,19$, o valor-p é dado por
+	Como $\hat{p}_1 = \frac{27}{100} = 0,27$, $\hat{p_2} = \frac{19}{100}=0,19$, $n_1=n_2=100$, $\Delta_0=0$, $\hat{p} = \frac{n_1 \hat{p}_1 + n_2 \hat{p}_2}{n_1 + n_2} = \frac{100\cdot 0,27 + 100\cdot 0,19}{100 + 100} = 0,23$ e $z_0 = \frac{(\hat{p}_1 - \hat{p}_2 - \Delta_0)}{\sqrt{\hat{p}(1 - \hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} = \frac{(0,27 - 0,19 - 0)}{\sqrt{0,23(1 - 0,23)}\sqrt{\frac{1}{100} + \frac{1}{100}}} = 1,34$, o valor-p é dado por
 	\begin{align*}
 		p &= 2 \left[ 1 - \Phi \left( \lvert z_0 \rvert \right)\right]\\
-		&= 2 \left[ 1 - \Phi \left( 3,19 \right)  \right]\\
-		&= 2 \left[1 - 0,9993 \right]\\
-		&= 0,0014.
+		&= 2 \left[ 1 - \Phi \left( 1,34 \right)  \right]\\
+		&= 0,18.
 	\end{align*}
 	
-	Como $p=0,0014 < \alpha = 0,05$, rejeitamos $H_0$, e a proporção de pacientes recuperados com placebo e erva-de-são-joão são diferentes.
+	Como $p=0,18 \geq \alpha = 0,05$, rejeitamos $H_0$, e a proporção de pacientes recuperados com placebo e erva-de-são-joão não são diferentes.
 \end{block}
 
 \end{frame}
@@ -3662,7 +3661,7 @@ Chamamos $z_\alpha$, $z_{1-\alpha}$, $z_\frac{\alpha}{2}$ e $z_{1-\frac{\alpha}{
 			\item $\Phi\left(z_\alpha\right) = \Phi\left(z_{0,05}\right) = \alpha = 0,05$, então $z_{0,05} = -1,65$;
 		\end{itemize}
 	
-		\textbf{Passo 5)} Como $n_1=347$, $n_2 = 298$, $\hat{p}_1 = \frac{18}{347} = 0,05$, $\hat{p}_2 = \frac{31}{298} = 0,10$, $\Delta_0=0$, $\hat{p} = \frac{n_1 \hat{p}_1 + n_2 \hat{p}_2}{n_1 + n_2}=0,08$ e $z_0 = \frac{0,05 - 0,10 -0}{\sqrt{0,08(1-0,08) \left( \frac{1}{347} + \frac{1}{298} \right)}} = -2,33 \in RC$, então rejeitamos $H_0$. 
+		\textbf{Passo 5)} Como $n_1=347$, $n_2 = 298$, $\hat{p}_1 = \frac{18}{347} = 0,05$, $\hat{p}_2 = \frac{31}{298} = 0,10$, $\Delta_0=0$, $\hat{p} = \frac{n_1 \hat{p}_1 + n_2 \hat{p}_2}{n_1 + n_2}=0,08$ e $z_0 = \frac{0,05 - 0,10 -0}{\sqrt{0,08(1-0,08) \left( \frac{1}{347} + \frac{1}{298} \right)}} = -2,49 \in RC$, então rejeitamos $H_0$. 
 		
 		Ou seja, ao nível de significância $\alpha=5\%$, a cirurgia diminui a taxa de mortalidade de homens com câncer de próstata.
 	\end{block}
@@ -3676,12 +3675,12 @@ Chamamos $z_\alpha$, $z_{1-\alpha}$, $z_\frac{\alpha}{2}$ e $z_{1-\frac{\alpha}{
 	O valor-p é calculado por
 	$$p = P(Z_0 < z_0 \mid H_0) = \Phi\left( z_0 \right).$$
 	
-	Como $n_1=347$, $n_2 = 298$, $\hat{p}_1 = \frac{18}{347} = 0,05$, $\hat{p}_2 = \frac{31}{298} = 0,10$, $\Delta_0=0$, $\hat{p} = \frac{n_1 \hat{p}_1 + n_2 \hat{p}_2}{n_1 + n_2}=0,08$ e $z_0 = \frac{0,05 - 0,10 -0}{\sqrt{0,08(1-0,08) \left( \frac{1}{347} + \frac{1}{298} \right)}} = -2,33$, então o valor-p é dado por
+	Como $n_1=347$, $n_2 = 298$, $\hat{p}_1 = \frac{18}{347} = 0,05$, $\hat{p}_2 = \frac{31}{298} = 0,10$, $\Delta_0=0$, $\hat{p} = \frac{n_1 \hat{p}_1 + n_2 \hat{p}_2}{n_1 + n_2}=0,08$ e $z_0 = \frac{0,05 - 0,10 -0}{\sqrt{0,08(1-0,08) \left( \frac{1}{347} + \frac{1}{298} \right)}} = -2,49$, então o valor-p é dado por
 	\begin{align*}
-		p &= \Phi\left( -2,33 \right) = 0,0099.
+		p &= \Phi\left( -2,49 \right) = 0,006.
 	\end{align*}
 	
-	Como $p=0,009 < \alpha = 0,05$, então rejeitamos $H_0$. Ou seja, ao nível de significância $\alpha=5\%$, a cirurgia diminui a taxa de mortalidade entre homens com câncer de próstata.
+	Como $p=0,006 < \alpha = 0,05$, então rejeitamos $H_0$. Ou seja, ao nível de significância $\alpha=5\%$, a cirurgia diminui a taxa de mortalidade entre homens com câncer de próstata.
 \end{block}
 
 \end{frame}
@@ -4265,7 +4264,7 @@ Note que a probabilidade de um indivíduo ter câncer é {\color{red} $33,33\%$}
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width = 0.75\linewidth]{figures/associacao.png}
+	\includegraphics[width = 0.6\linewidth]{figures/associacao.png}
 	\caption{Representação da Tabela~\ref{tab:associacao_rel} usando gráfico de barras.}
 	\label{tab:graph-associacao}
 \end{figure}
@@ -4405,7 +4404,7 @@ Primeiro, vamos construir a tabela de contingência com frequência relativa em 
 \begin{figure}[htbp]
 	\centering
 	\caption{Associação entre Recuperação Funcional e Hospital.}
-	\includegraphics[width = 0.6\linewidth]{figures/associacao_moderada.png}
+	\includegraphics[width = 0.5\linewidth]{figures/associacao_moderada.png}
 \end{figure}
 
 Como as barras do gráfico de barras são diferentes, podemos afirmar que existe associação entre Recuperação Funcional e o tipo de Hospital.

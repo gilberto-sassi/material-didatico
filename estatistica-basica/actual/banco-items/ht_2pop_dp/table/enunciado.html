@@ -104,8 +104,8 @@ pre code {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -113,16 +113,9 @@ pre code {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -173,15 +166,27 @@ pre code {
 
 <div id="question" class="section level1">
 <h1>Question</h1>
-<p>Suponha que um pesquisador precisa decidir entre as hipóteses H<sub>0</sub>: σ<sub>1</sub> = σ<sub>2</sub> contra H<sub>1</sub>: μ<sub>1</sub> ≠ σ<sub>2</sub>. Algumas informações sobre este teste de hipóteses está na tabela abaixo. Complete e assinale corretamente as informações.</p>
-<div id="vnzmwyzjoq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+<p>Suponha que um pesquisador precisa decidir entre as hipóteses H<sub>0</sub>: σ<sub>1</sub> = σ<sub>2</sub> contra H<sub>1</sub>: σ<sub>1</sub> ≠ σ<sub>2</sub>. Algumas informações sobre este teste de hipóteses está na tabela abaixo. Complete e assinale corretamente as informações.</p>
+<div id="hcnuwuwtbi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hcnuwuwtbi table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#vnzmwyzjoq .gt_table {
+#hcnuwuwtbi thead, #hcnuwuwtbi tbody, #hcnuwuwtbi tfoot, #hcnuwuwtbi tr, #hcnuwuwtbi td, #hcnuwuwtbi th {
+  border-style: none;
+}
+
+#hcnuwuwtbi p {
+  margin: 0;
+  padding: 0;
+}
+
+#hcnuwuwtbi .gt_table {
   display: table;
   border-collapse: collapse;
+  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -204,19 +209,12 @@ pre code {
   border-left-color: #D3D3D3;
 }
 
-#vnzmwyzjoq .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
+#hcnuwuwtbi .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
-#vnzmwyzjoq .gt_title {
+#hcnuwuwtbi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -228,25 +226,37 @@ pre code {
   border-bottom-width: 0;
 }
 
-#vnzmwyzjoq .gt_subtitle {
+#hcnuwuwtbi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#vnzmwyzjoq .gt_bottom_border {
+#hcnuwuwtbi .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hcnuwuwtbi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vnzmwyzjoq .gt_col_headings {
+#hcnuwuwtbi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -261,7 +271,7 @@ pre code {
   border-right-color: #D3D3D3;
 }
 
-#vnzmwyzjoq .gt_col_heading {
+#hcnuwuwtbi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -281,7 +291,7 @@ pre code {
   overflow-x: hidden;
 }
 
-#vnzmwyzjoq .gt_column_spanner_outer {
+#hcnuwuwtbi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -293,15 +303,15 @@ pre code {
   padding-right: 4px;
 }
 
-#vnzmwyzjoq .gt_column_spanner_outer:first-child {
+#hcnuwuwtbi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vnzmwyzjoq .gt_column_spanner_outer:last-child {
+#hcnuwuwtbi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vnzmwyzjoq .gt_column_spanner {
+#hcnuwuwtbi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -313,7 +323,11 @@ pre code {
   width: 100%;
 }
 
-#vnzmwyzjoq .gt_group_heading {
+#hcnuwuwtbi .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#hcnuwuwtbi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -336,9 +350,10 @@ pre code {
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
-#vnzmwyzjoq .gt_empty_group_heading {
+#hcnuwuwtbi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -353,15 +368,15 @@ pre code {
   vertical-align: middle;
 }
 
-#vnzmwyzjoq .gt_from_md > :first-child {
+#hcnuwuwtbi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vnzmwyzjoq .gt_from_md > :last-child {
+#hcnuwuwtbi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vnzmwyzjoq .gt_row {
+#hcnuwuwtbi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -380,7 +395,7 @@ pre code {
   overflow-x: hidden;
 }
 
-#vnzmwyzjoq .gt_stub {
+#hcnuwuwtbi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -393,7 +408,7 @@ pre code {
   padding-right: 5px;
 }
 
-#vnzmwyzjoq .gt_stub_row_group {
+#hcnuwuwtbi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -407,11 +422,15 @@ pre code {
   vertical-align: top;
 }
 
-#vnzmwyzjoq .gt_row_group_first td {
+#hcnuwuwtbi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vnzmwyzjoq .gt_summary_row {
+#hcnuwuwtbi .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#hcnuwuwtbi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -421,16 +440,16 @@ pre code {
   padding-right: 5px;
 }
 
-#vnzmwyzjoq .gt_first_summary_row {
+#hcnuwuwtbi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vnzmwyzjoq .gt_first_summary_row.thick {
+#hcnuwuwtbi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vnzmwyzjoq .gt_last_summary_row {
+#hcnuwuwtbi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -440,7 +459,7 @@ pre code {
   border-bottom-color: #D3D3D3;
 }
 
-#vnzmwyzjoq .gt_grand_summary_row {
+#hcnuwuwtbi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -450,7 +469,7 @@ pre code {
   padding-right: 5px;
 }
 
-#vnzmwyzjoq .gt_first_grand_summary_row {
+#hcnuwuwtbi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -460,11 +479,21 @@ pre code {
   border-top-color: #D3D3D3;
 }
 
-#vnzmwyzjoq .gt_striped {
+#hcnuwuwtbi .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hcnuwuwtbi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vnzmwyzjoq .gt_table_body {
+#hcnuwuwtbi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -473,7 +502,7 @@ pre code {
   border-bottom-color: #D3D3D3;
 }
 
-#vnzmwyzjoq .gt_footnotes {
+#hcnuwuwtbi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -487,30 +516,8 @@ pre code {
   border-right-color: #D3D3D3;
 }
 
-#vnzmwyzjoq .gt_footnote {
+#hcnuwuwtbi .gt_footnote {
   margin: 0px;
-  font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vnzmwyzjoq .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#vnzmwyzjoq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -518,100 +525,121 @@ pre code {
   padding-right: 5px;
 }
 
-#vnzmwyzjoq .gt_left {
+#hcnuwuwtbi .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hcnuwuwtbi .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hcnuwuwtbi .gt_left {
   text-align: left;
 }
 
-#vnzmwyzjoq .gt_center {
+#hcnuwuwtbi .gt_center {
   text-align: center;
 }
 
-#vnzmwyzjoq .gt_right {
+#hcnuwuwtbi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vnzmwyzjoq .gt_font_normal {
+#hcnuwuwtbi .gt_font_normal {
   font-weight: normal;
 }
 
-#vnzmwyzjoq .gt_font_bold {
+#hcnuwuwtbi .gt_font_bold {
   font-weight: bold;
 }
 
-#vnzmwyzjoq .gt_font_italic {
+#hcnuwuwtbi .gt_font_italic {
   font-style: italic;
 }
 
-#vnzmwyzjoq .gt_super {
+#hcnuwuwtbi .gt_super {
   font-size: 65%;
 }
 
-#vnzmwyzjoq .gt_two_val_uncert {
-  display: inline-block;
-  line-height: 1em;
-  text-align: right;
-  font-size: 60%;
-  vertical-align: -0.25em;
-  margin-left: 0.1em;
-}
-
-#vnzmwyzjoq .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
+#hcnuwuwtbi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
+  position: initial;
 }
 
-#vnzmwyzjoq .gt_asterisk {
+#hcnuwuwtbi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vnzmwyzjoq .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+#hcnuwuwtbi .gt_indent_1 {
+  text-indent: 5px;
 }
 
-#vnzmwyzjoq .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+#hcnuwuwtbi .gt_indent_2 {
+  text-indent: 10px;
 }
 
-#vnzmwyzjoq .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+#hcnuwuwtbi .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#hcnuwuwtbi .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#hcnuwuwtbi .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#hcnuwuwtbi .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#hcnuwuwtbi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
 }
 </style>
-<table class="gt_table">
-  <thead class="gt_header">
-    <tr>
-      <th colspan="7" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Algumas informações sobre teste de hipóteses.</th>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="7" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Algumas informações sobre teste de hipóteses.</td>
     </tr>
     
-  </thead>
-  <thead class="gt_col_headings">
-    <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Nível de significância</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Tamanho das amostras</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Desvio padrão da amostra da população 1</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Desvio padrão da amostra da população 2</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Estatística de teste</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Região crítica</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Decisão</th>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="sig">Nível de significância</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="tam">Tamanho das amostras</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="s1">Desvio padrão da amostra da população 1</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="s2">Desvio padrão da amostra da população 2</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="estatistica">Estatística de teste</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="regiao_critica">Região crítica</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="decisao">Decisão</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_right">0,03</td>
-<td class="gt_row gt_right">269</td>
-<td class="gt_row gt_right">2,159045</td>
-<td class="gt_row gt_right">2,026498</td>
-<td class="gt_row gt_left">?</td>
-<td class="gt_row gt_left">?</td>
-<td class="gt_row gt_left">?</td></tr>
+    <tr><td headers="sig" class="gt_row gt_right">0,06</td>
+<td headers="tam" class="gt_row gt_right">459</td>
+<td headers="s1" class="gt_row gt_right">2,544194</td>
+<td headers="s2" class="gt_row gt_right">4,275331</td>
+<td headers="estatistica" class="gt_row gt_left">?</td>
+<td headers="regiao_critica" class="gt_row gt_left">?</td>
+<td headers="decisao" class="gt_row gt_left">?</td></tr>
   </tbody>
   
   
@@ -620,12 +648,12 @@ pre code {
 <div id="questionlist" class="section level2">
 <h2>Questionlist</h2>
 <ul>
-<li>A estatística de teste (X<sup>2</sup><sub>0</sub>) é:</li>
-<li>A região crítica é dada por: (0;0,767)∪(1,304; ∞).</li>
-<li>A região crítica é dada por: (0;0,794).</li>
-<li>A região crítica é dada por: (1,259;∞).</li>
-<li>Ao nível de significância α = 0.03, não rejeitamos a hipótese nula.</li>
-<li>Ao nível de significância α = 0.03, rejeitamos a hipótese nula.</li>
+<li>A estatística de teste (F<sub>0</sub>) é:</li>
+<li>A região crítica é dada por: (0;0,839)∪(1,192; ∞).</li>
+<li>A região crítica é dada por: (0;0,865).</li>
+<li>A região crítica é dada por: (1,157;∞).</li>
+<li>Ao nível de significância α = 0.06, não rejeitamos a hipótese nula.</li>
+<li>Ao nível de significância α = 0.06, rejeitamos a hipótese nula.</li>
 </ul>
 </div>
 </div>
@@ -634,18 +662,18 @@ pre code {
 <div id="solutionlist" class="section level2">
 <h2>Solutionlist</h2>
 <ul>
-<li>A estatística de teste (X<sup>2</sup><sub>0</sub>) é: 1,14.</li>
-<li>A região crítica é dada por: (0;0,767)∪(1,304; ∞).</li>
+<li>A estatística de teste (F<sub>0</sub>) é: 0,35.</li>
+<li>A região crítica é dada por: (0;0,839)∪(1,192; ∞).</li>
 <li></li>
 <li></li>
+<li>Falso, pois ao nível de significância γ = 0.06, rejeitamos a hipótese nula.</li>
 <li>Verdadeiro.</li>
-<li>Falso, pois ao nível de significância γ = 0.03, não rejeitamos a hipótese nula.</li>
 </ul>
 </div>
 </div>
 <div id="meta-information" class="section level1">
 <h1>Meta-information</h1>
-<p>exname: ht_2pop_mean_dp_desconhecido extype: cloze exsolution: 1.14|100|10 exclozetype: num|schoice|mchoice extol: 0.02</p>
+<p>exname: ht_2pop_mean_dp_desconhecido extype: cloze exsolution: 0.35|100|01 exclozetype: num|schoice|mchoice extol: 0.02</p>
 </div>
 
 
