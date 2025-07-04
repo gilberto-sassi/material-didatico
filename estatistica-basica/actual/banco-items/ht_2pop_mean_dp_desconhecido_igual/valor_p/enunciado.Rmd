@@ -26,7 +26,7 @@ write_xlsx(df, "dados.xlsx")
 
 f <- \(x) format(x, decimal.mark = ",")
 
-ajuste <- ht_2pop_mean(amostra1, amostra2, var_equal = T, sig_level = g)
+ajuste <- ht_2pop_mean(amostra1, amostra2, var_equal = TRUE, sig_level = g)
 sol <- c(
     ajuste$statistic,
     ajuste$p_value
@@ -37,6 +37,10 @@ Question
 ========
 
 Suponha que uma pesquisadora precisa decidir entre as hipóteses H~0~: &mu;~1~ - &mu;~2~ = 0  contra H~1~: &mu;~1~ - &mu;~2~ &#8800; 0, e para isso ela coletou uma amostra que está armazenada no arquivo [dados.xlsx](dados.xlsx). Assuma que as variâncias das duas populações são iguais.  Ao nível de significância &alpha; = `r f(g)`, temos que:
+
+* A estatística de teste é: \#\#ANSWER1\#\#
+* O valor-p: \#\#ANSWER2\#\#
+* \#\#ANSWER3\#\#
 
 Questionlist
 ------------

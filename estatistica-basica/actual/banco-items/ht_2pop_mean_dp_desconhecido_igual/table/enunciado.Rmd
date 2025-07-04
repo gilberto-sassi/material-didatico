@@ -30,9 +30,9 @@ amostra2 <- rnorm(tam, media_pop_2, dp_pop)
 g <- runif(1, 0.01, 0.1) |> round(2)
 
 # ajuste
-fit_correto <- ht_2pop_mean(amostra1, amostra2, var_equal = T, sig_level = g)
-fit_less <- ht_2pop_mean(amostra1, amostra2, var_equal = T, sig_level = g, alternative = "less")
-fit_greater <- ht_2pop_mean(amostra1, amostra2, var_equal = T, sig_level = g, alternative = "greater")
+fit_correto <- ht_2pop_mean(amostra1, amostra2, var_equal = TRUE, sig_level = g)
+fit_less <- ht_2pop_mean(amostra1, amostra2, var_equal = TRUE, sig_level = g, alternative = "less")
+fit_greater <- ht_2pop_mean(amostra1, amostra2, var_equal = TRUE, sig_level = g, alternative = "greater")
 
 sol <- c(
     fit_correto$statistic[1],
@@ -51,7 +51,7 @@ f <- \(x) format(x, decimal.mark = ",")
 Question
 ========
 
-Suponha que um pesquisador precisa decidir entre as hipóteses H~0~: &mu;~1~ - &mu;~2~ = 0 contra H~1~: &mu;~1~ - &mu;~2~ &#8800; 0. Assuma que as variâncias das populações são iguais. Algumas informações sobre este teste de hipóteses está na tabela abaixo. Complete e assinale corretamente as informações.
+Suponha que um pesquisador precisa decidir entre as hipóteses H~0~: &mu;~1~ - &mu;~2~ = 0 contra H~1~: &mu;~1~ - &mu;~2~ &#8800; 0, ao nível de significância `r f(g)`. Assuma que as variâncias das populações são iguais. Algumas informações sobre este teste de hipóteses está na tabela abaixo. Complete e assinale corretamente as informações.
 
 ```{r, label="tabela hipóteses", echo=F}
 tab <- tibble(
@@ -95,6 +95,11 @@ gt(tab) |>
         decisao = "Decisão"
     )
 ```
+
+* A estatística de teste (t~0~) é: \#\#ANSWER1\#\#
+* O valor-p é: \#\#ANSWER2\#\#
+* \#\#ANSWER3\#\#
+* \#\#ANSWER4\#\#
 
 Questionlist
 ------------

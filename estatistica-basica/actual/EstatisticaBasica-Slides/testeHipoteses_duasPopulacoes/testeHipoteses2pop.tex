@@ -3720,10 +3720,10 @@ Chamamos $z_\alpha$, $z_{1-\alpha}$, $z_\frac{\alpha}{2}$ e $z_{1-\frac{\alpha}{
 	
 	\textbf{Passo 4)} Vamos encontrar o valor crítico:
 	\begin{itemize}
-		\item $\Phi\left( z_{1-\alpha} \right) = \Phi\left( z_{0,95} \right) = 1-\alpha = 0,95$, então $z_{0,95} = 1,65$;
+		\item $\Phi\left( z_{1-\alpha} \right) = \Phi\left( z_{0,95} \right) = 1-\alpha = 0,95$, então $z_{0,95} = 1,64$;
 	\end{itemize}
 
-	\textbf{Passo 5)} Como $n_1=250$, $n_2=300$, $\hat{p}_1 = \frac{147}{250} = 0,59$, $\hat{p}_2 = \frac{52}{300} = 0,17$, $p = 0,36$ e $z_0 = \frac{0,59 - 0,17}{\sqrt{0,36(1 - 0,36) \left( \nicefrac{1}{250} + \nicefrac{1}{300} \right)}} = 10,22 \in RC$, então rejeitamos  $H_0$.
+	\textbf{Passo 5)} Como $n_1=250$, $n_2=300$, $\hat{p}_1 = \frac{147}{250} = 0,59$, $\hat{p}_2 = \frac{52}{300} = 0,17$, $p = 0,36$ e $z_0 = \frac{0,59 - 0,17}{\sqrt{0,36(1 - 0,36) \left( \nicefrac{1}{250} + \nicefrac{1}{300} \right)}} = 10,08 \in RC$, então rejeitamos  $H_0$.
 \end{block}
 \normalsize
 \end{frame}
@@ -3735,10 +3735,10 @@ Chamamos $z_\alpha$, $z_{1-\alpha}$, $z_\frac{\alpha}{2}$ e $z_{1-\frac{\alpha}{
 	O valor-p é calculado através de 
 	$$p = P \left( Z_0 > z_0 \mid H_0 \right) = 1 - \Phi \left( z_0 \right).$$
 	
-	Como $n_1=250$, $n_2=300$, $\hat{p}_1 = \frac{147}{250} = 0,59$, $\hat{p}_2 = \frac{52}{300} = 0,17$, $p = 0,36$ e $z_0 = \frac{0,59 - 0,17}{\sqrt{0,36(1 - 0,36) \left( \nicefrac{1}{250} + \nicefrac{1}{300} \right)}} = 10,22$, então o valor-p é dado por
+	Como $n_1=250$, $n_2=300$, $\hat{p}_1 = \frac{147}{250} = 0,59$, $\hat{p}_2 = \frac{52}{300} = 0,17$, $p = 0,36$ e $z_0 = \frac{0,59 - 0,17}{\sqrt{0,36(1 - 0,36) \left( \nicefrac{1}{250} + \nicefrac{1}{300} \right)}} = 10,08$, então o valor-p é dado por
 	\begin{align*}
 		p &= 1 - \Phi\left(z_0\right)\\
-		&= 1 - \Phi\left(10,22\right)\\
+		&= 1 - \Phi\left(10,08\right)\\
 		& = 1 -1\\
 		&= 0.
 	\end{align*}
@@ -4180,13 +4180,18 @@ Primeiro encontramos os quantis da distribuição normal padrão:
 \item $\Phi\left(z_{1-\frac{\alpha}{2}}\right) = \Phi\left(z_{0,975}\right) =1- \frac{\alpha}{2} = 0,975$, então $z_{0,975} =1,96$.
 \end{itemize}	
 
+
 Note que $n_1=n_2=85$, $\hat{p}_1 = \frac{10}{85} = 0,12$, $\hat{p}_2 = \frac{8}{85} = 0,09$. Então, o intervalo de confiança $\gamma=1-\alpha = 0,95$ é dado por
+
+\small
 \begin{align*}
 IC(p_1 - p_2, \gamma) &= \left( \frac{z_\frac{\alpha}{2}}{2} \sqrt{\frac{1}{n_1} + \frac{1}{n_2}} + \hat{p}_1 - \hat{p}_2; \frac{z_{1-\frac{\alpha}{2}}}{2} \sqrt{\frac{1}{n_1} + \frac{1}{n_2}} + \hat{p}_1 - \hat{p}_2  \right)\\
 &= \left( \frac{-1,96}{2} \sqrt{\frac{1}{85} + \frac{1}{85}} + 0,12 - 0,09; \frac{1,96}{2} \sqrt{\frac{1}{85} + \frac{1}{85}} + 0,12 - 0,09 \right)\\
-&= \left( -0,12; 0,18 \right).
+&= \left( -0,13; 0,17 \right).
 \end{align*}
-Como $0 \in 	IC(p_1 - p_2; 95\%)=(-0,12; 0,18)$, então concluímos que a modificação proposta pelo engenheiro não diminuiu a proporção de rolamentos de virabrequim defeituosos.
+\normalsize
+
+Como $0 \in 	IC(p_1 - p_2; 95\%)=(-0,13; 0,17)$, então concluímos que a modificação proposta pelo engenheiro não diminuiu a proporção de rolamentos de virabrequim defeituosos.
 \end{block}
 
 \end{frame}
@@ -4558,7 +4563,7 @@ Considere um estudo exploratório que estuda a recuperação funcional de pacien
 	\end{itemize}
 	\vfill
 	
-	{\bf Passo 2)} Nível de significância $\alpha = 0,01.$
+	{\bf Passo 2)} Nível de significância $\alpha = 0,05.$
 	\vfill
 	
 	{\bf Passo 3)} Rejeitamos $H_0$ se $\chi^2$ for grande. Ou seja,
@@ -4567,7 +4572,7 @@ Considere um estudo exploratório que estuda a recuperação funcional de pacien
 	
 	{\bf Passo 4)} Vamos encontrar o valor crítico:
 	\begin{itemize}
-		\item $P\left( \chi_{(r-1)\cdot (s-1)}^2 \leq \chi^2_{1-\alpha;(r-1)\cdot (s-1)} \right) =  P\left( \chi_{(2-1)\cdot (3-1)}^2 \leq \chi^2_{1-\alpha;(r-1)\cdot (s-1)} \right) = \allowbreak 1 -\alpha = 0,99$, então $\chi^2_{0,99;2} = 9,2103404 $
+		\item $P\left( \chi_{(r-1)\cdot (s-1)}^2 \leq \chi^2_{1-\alpha;(r-1)\cdot (s-1)} \right) =  P\left( \chi_{(2-1)\cdot (3-1)}^2 \leq \chi^2_{1-\alpha;(r-1)\cdot (s-1)} \right) = \allowbreak 1 -\alpha = 0,95$, então $\chi^2_{0,95;2} = 5,99$
 	\end{itemize}
 
 \end{block}
@@ -4599,10 +4604,10 @@ Considere um estudo exploratório que estuda a recuperação funcional de pacien
 	&+ \dfrac{(20,11-43)^2}{20,11} + \dfrac{(29-33,29)^2}{33,29} + \dfrac{(28,60-10)^2}{28,60} = 49,84.
 	\end{align*}
 	
-	Como $\chi^2 = 49,84 > \chi^2_{0,99;2} = 9,2103404$, então $\chi^2 \in RC$ e rejeitamos $H_0$.
+	Como $\chi^2 = 49,84 > \chi^2_{0,95;2} = 5,99$, então $\chi^2 \in RC$ e rejeitamos $H_0$.
 	\vfill
 	
-	Então, ao nível de significância $1\%$, o tipo de hospital e a recuperação estão associadas.
+	Então, ao nível de significância $5\%$, o tipo de hospital e a recuperação estão associadas.
 	
 \normalsize
 \end{frame}
@@ -4624,7 +4629,7 @@ Considere um estudo exploratório que estuda a recuperação funcional de pacien
 		&= 0.
 	\end{align*}
 	
-	Como $p = 0 < \alpha = 0,01$, e rejeitamos $H_0$. Ou seja, ao nível de significância $\alpha=0,01$, as duas variáveis qualitativas estão associadas. 
+	Como $p = 0 < \alpha = 0,05$, e rejeitamos $H_0$. Ou seja, ao nível de significância $\alpha=0,05$, as duas variáveis qualitativas estão associadas. 
 \end{block}
 
 \end{frame}
@@ -5125,7 +5130,7 @@ Considere um estudo exploratório que estuda a recuperação funcional de pacien
 		\begin{flushleft}
 			Note que $\bar{x} = \dfrac{S_x}{n}=\frac{76,4}{10}= 7,64$ e $\bar{y}=\frac{S_y}{n} = \frac{29,3}{10} = 2,93$, então
 			\begin{align*}
-			r &= \dfrac{S_{xy} - n \bar{x} \bar{y}}{\sqrt{(S_{x^2} - n \bar{x})(S_{y^2} - n \bar{y})}}\\
+			r &= \dfrac{S_{xy} - n \bar{x} \bar{y}}{\sqrt{(S_{x^2} - n \bar{x}^2)(S_{y^2} - n \bar{y}^2)}}\\
 			&= \dfrac{227,85 - 10 \cdot 7,64 \cdot 2,93}{\sqrt{(593,86 - 10 \cdot 7,64^2) (87,71 - 10 \cdot 2,93^2)}}\\
 			&= 0,92.
 			\end{align*}
@@ -5175,8 +5180,8 @@ Queremos testar as seguintes hipóteses:
 \begin{figure}[htbp]
 	\centering
 	\subfloat[][Teste bilateral.]{\includegraphics[width=0.32\linewidth]{figures/z-fisher-cor-bilateral.png} \label{fig:z-fisher-cor-bilateral}} \hfill
-	\subfloat[][Teste bilateral.]{\includegraphics[width=0.32\linewidth]{figures/z-fisher-cor-h1-lower.png} \label{fig:z-fisher-cor-h1-lower}} \hfill
-	\subfloat[][Teste bilateral.]{\includegraphics[width=0.32\linewidth]{figures/z-fisher-cor-h1-upper.png} \label{fig:z-fisher-cor-h1-upper}} 
+	\subfloat[][Teste unilateral.]{\includegraphics[width=0.32\linewidth]{figures/z-fisher-cor-h1-lower.png} \label{fig:z-fisher-cor-h1-lower}} \hfill
+	\subfloat[][Teste unilateral.]{\includegraphics[width=0.32\linewidth]{figures/z-fisher-cor-h1-upper.png} \label{fig:z-fisher-cor-h1-upper}} 
 	\caption{Região crítica para o teste de correlação linear de Pearson.}
 \end{figure}
 \end{frame}
@@ -5234,7 +5239,7 @@ $z_{\alpha}$, $z_{1-\alpha}$, $z_{\frac{\alpha}{2}}$ e $z_{1-\frac{\alpha}{2}}$ 
 		\item $\Phi\left(z_{1-\frac{\alpha}{2}}\right) = \Phi\left(z_{0,975}\right) =1- \frac{\alpha}{2} = 0,975$, então $z_{0,975} = 1,96$.
 	\end{itemize}
 
-	\textbf{Passo 5)} Como $r = 0,92$, $\rho_0=0$, $n = 10$ e $Z_0 = \frac{\frac{1}{2} \ln\left( \frac{1+r}{1-r} \right) - \frac{1}{2} \ln\left( \frac{1 + \rho_0}{1 - \rho_0} \right) }{\sqrt{\nicefrac{1}{n - 3}}} =\allowbreak \frac{\frac{1}{2} \ln\left( \frac{1 + 0,92}{1 - 0,92} \right) - \frac{1}{2} \ln\left( \frac{1 + 0}{1 - 0} \right) }{\sqrt{\nicefrac{1}{10 - 3}}} = 4,20 \in RC$, então rejeitamos $H_0$. 
+	\textbf{Passo 5)} Como $r = 0,92$, $\rho_0=0$, $n = 10$ e $Z_0 = \frac{\frac{1}{2} \ln\left( \frac{1+r}{1-r} \right) - \frac{1}{2} \ln\left( \frac{1 + \rho_0}{1 - \rho_0} \right) }{\sqrt{\nicefrac{1}{(n - 3)}}} =\allowbreak \frac{\frac{1}{2} \ln\left( \frac{1 + 0,92}{1 - 0,92} \right) - \frac{1}{2} \ln\left( \frac{1 + 0}{1 - 0} \right) }{\sqrt{\nicefrac{1}{(10 - 3)}}} = 4,19 \in RC$, então rejeitamos $H_0$. 
 	
 	Ou seja, ao nível de significância $\alpha=5\%$, as duas variáveis estão associadas.
 \end{block}
@@ -5248,10 +5253,10 @@ $z_{\alpha}$, $z_{1-\alpha}$, $z_{\frac{\alpha}{2}}$ e $z_{1-\frac{\alpha}{2}}$ 
 	$$p = P \left( \lvert Z_0 \rvert > \lvert z_0 \rvert \right) = 2 \cdot\left[ 1 - \Phi \left( \lvert z_0 \rvert \right) \right] .$$
 \end{block}
 
-Como $r = 0,92$, $\rho_0=0$, $n = 10$ e $Z_0 = \frac{\frac{1}{2} \ln\left( \frac{1+r}{1-r} \right) - \frac{1}{2} \ln\left( \frac{1 + \rho_0}{1 - \rho_0} \right) }{\sqrt{\nicefrac{1}{n - 3}}} =\allowbreak \frac{\frac{1}{2} \ln\left( \frac{1 + 0,92}{1 - 0,92} \right) - \frac{1}{2} \ln\left( \frac{1 + 0}{1 - 0} \right) }{\sqrt{\nicefrac{1}{10 - 3}}} = 4,20$, o valor-p é dado por
+Como $r = 0,92$, $\rho_0=0$, $n = 10$ e $Z_0 = \frac{\frac{1}{2} \ln\left( \frac{1+r}{1-r} \right) - \frac{1}{2} \ln\left( \frac{1 + \rho_0}{1 - \rho_0} \right) }{\sqrt{\nicefrac{1}{(n - 3)}}} =\allowbreak \frac{\frac{1}{2} \ln\left( \frac{1 + 0,92}{1 - 0,92} \right) - \frac{1}{2} \ln\left( \frac{1 + 0}{1 - 0} \right) }{\sqrt{\nicefrac{1}{(10 - 3)}}} = 4,19$, o valor-p é dado por
 \begin{align*}
 	p &= 2 \cdot \left[ 1 - \Phi\left( \lvert z_0 \rvert\right) \right]\\
-	&= 2 \cdot \left[ 1 - \Phi(4,20) \right]\\
+	&= 2 \cdot \left[ 1 - \Phi(4,19) \right]\\
 	&= 2 \cdot \left[1 - 1\right]\\
 	&= 0.
 \end{align*}
@@ -5311,7 +5316,7 @@ Como $p = 0 < \alpha = 0,05$, rejeitamos $H_0$. Ou seja, ao nível de significâ
 		\item $\Phi\left( z_{1-\alpha} \right) = \Phi\left( z_{0,95} \right) = 1-\alpha = 0,95$, então $z_{0,95} = 1,65$;
 	\end{itemize}
 
-	\textbf{Passo 5)} Como $r = 0,88$, $\rho_0 = 0,5$, $n = 10$ e $Z_0 =  \frac{\frac{1}{2} \ln\left( \frac{1+r}{1-r} \right) - \frac{1}{2} \ln\left( \frac{1 + \rho_0}{1 - \rho_0} \right) }{\sqrt{\nicefrac{1}{n - 3}}}\allowbreak \frac{\frac{1}{2} \ln\left( \frac{1 + 0,88}{1 - 0,88} \right) - \frac{1}{2} \ln\left( \frac{1 + 0,5}{1 - 0,5} \right) }{\sqrt{\nicefrac{1}{10 - 3}}} = 2, 19 \in RC$, então rejeitamos $H_0$.
+	\textbf{Passo 5)} Como $r = 0,88$, $\rho_0 = 0,5$, $n = 10$ e $Z_0 =  \frac{\frac{1}{2} \ln\left( \frac{1+r}{1-r} \right) - \frac{1}{2} \ln\left( \frac{1 + \rho_0}{1 - \rho_0} \right) }{\sqrt{\nicefrac{1}{(n - 3)}}}\allowbreak \frac{\frac{1}{2} \ln\left( \frac{1 + 0,88}{1 - 0,88} \right) - \frac{1}{2} \ln\left( \frac{1 + 0,5}{1 - 0,5} \right) }{\sqrt{\nicefrac{1}{(10 - 3)}}} = 2, 15 \in RC$, então rejeitamos $H_0$.
 	
 	Ou seja, o nível de significância $\alpha=5\%$, a coeficiente de correlação linear de Pearson é maior que $0,5$.
 \end{block}
@@ -5324,15 +5329,14 @@ Como $p = 0 < \alpha = 0,05$, rejeitamos $H_0$. Ou seja, ao nível de significâ
 	O valor-p é dado por
 	$$p = P(Z_0 > z_0 \mid H_0) = 1 - \Phi(z_0).$$
 	
-	 Como $r = 0,88$, $\rho_0 = 0,5$, $n = 10$ e $Z_0 =  \frac{\frac{1}{2} \ln\left( \frac{1+r}{1-r} \right) - \frac{1}{2} \ln\left( \frac{1 + \rho_0}{1 - \rho_0} \right) }{\sqrt{\nicefrac{1}{n - 3}}}\allowbreak \frac{\frac{1}{2} \ln\left( \frac{1 + 0,88}{1 - 0,88} \right) - \frac{1}{2} \ln\left( \frac{1 + 0,5}{1 - 0,5} \right) }{\sqrt{\nicefrac{1}{10 - 3}}} = 2, 19$, então o valor-p é dado por
+	 Como $r = 0,88$, $\rho_0 = 0,5$, $n = 10$ e $Z_0 =  \frac{\frac{1}{2} \ln\left( \frac{1+r}{1-r} \right) - \frac{1}{2} \ln\left( \frac{1 + \rho_0}{1 - \rho_0} \right) }{\sqrt{\nicefrac{1}{(n - 3)}}}\allowbreak \frac{\frac{1}{2} \ln\left( \frac{1 + 0,88}{1 - 0,88} \right) - \frac{1}{2} \ln\left( \frac{1 + 0,5}{1 - 0,5} \right) }{\sqrt{\nicefrac{1}{(10 - 3)}}} = 2, 15$, então o valor-p é dado por
 	 \begin{align*}
 		 p &= 1 - \Phi(z_0)\\
 		 &= 1 - \Phi(2,19)\\
-		 &= 1 - 0,9857\\
-		 &= 0,0143.
+		 &= 0,02.
 	 \end{align*}
 	 
-	 Como $p = 0,0143 < \alpha = 0,05$, rejeitamos $H_0$. Ou seja, a correlação linear de Pearson é maior que $0,5$ ao nível de significância $\alpha=5\%$.
+	 Como $p = 0,02 < \alpha = 0,05$, rejeitamos $H_0$. Ou seja, a correlação linear de Pearson é maior que $0,5$ ao nível de significância $\alpha=5\%$.
 \end{block}
 
 \end{frame}
@@ -5348,9 +5352,9 @@ Como $p = 0 < \alpha = 0,05$, rejeitamos $H_0$. Ou seja, ao nível de significâ
 			\toprule[0.05cm]
 			$s_x$ & $s_y$ & $s_x^2$ & $s_y^2$ & $s_{xy}$\\
 			\midrule
-			-0,49 & 2004,01 & 942,57 & 4960,45 & -934,66  \\ \midrule[0.05cm]
+			989,0872 & 5.011,441 & 9.894,593 & 251.257,2 & 49.466,12  \\ \midrule[0.05cm]
 			  $n$ & $\alpha$ & Decisão & valor-p & $Z_0$ \\ \midrule
-			  1000 & 0,05 &  &  &  \\ \bottomrule[0.05cm]
+			  100 & 0,05 &  &  &  \\ \bottomrule[0.05cm]
 		\end{tabular}
 		\caption{Algumas informações do experimento} 
 		\label{tab:experimento-test-rho}
@@ -5373,7 +5377,7 @@ Como $p = 0 < \alpha = 0,05$, rejeitamos $H_0$. Ou seja, ao nível de significâ
 		\item $\Phi\left(z_\alpha\right) = \Phi\left(z_{0,05}\right) = \alpha = 0,05$, então $z_{0,05} = -1,65$.
 	\end{itemize}
 
-	Como, $\bar{x} = -0,049$ $\bar{y} = 200,401$, $r = \frac{s_{xy} - n \cdot \bar{x}\bar{y}}{\sqrt{ (s_{x^2} - n \cdot \bar{x}^2) (s_{y^2} - n \cdot \bar{y}^2) }} =\allowbreak \frac{-934,66 - 10 \cdot (-0,049) \cdot (200,401) }{\sqrt{ (942,57 - 10 \cdot (-0,049)^2) (4960,45 - 10 \cdot (200,401)^2) }} = -0,9896$, $\rho_0 = -0,8$, $n = 10$ e $Z_0 =  \frac{\frac{1}{2} \ln\left( \frac{1+r}{1-r} \right) - \frac{1}{2} \ln\left( \frac{1 + \rho_0}{1 - \rho_0} \right) }{\sqrt{\nicefrac{1}{n - 3}}}=\allowbreak \frac{\frac{1}{2} \ln\left( \frac{1 - 0,9896}{1 + 0,9896} \right) - \frac{1}{2} \ln\left( \frac{1 - 0,8}{1 + 0,8} \right) }{\sqrt{\nicefrac{1}{10 - 3}}}= -4,04 \in RC$, então rejeitamos $H_0$.
+	Como, $\bar{x} = -0,049$ $\bar{y} = 200,401$, $r = \frac{s_{xy} - n \cdot \bar{x}\bar{y}}{\sqrt{ (s_{x^2} - n \cdot \bar{x}^2) (s_{y^2} - n \cdot \bar{y}^2) }} = -0,9076$, $\rho_0 = -0,8$, $n = 10$ e $Z_0 =  \frac{\frac{1}{2} \ln\left( \frac{1+r}{1-r} \right) - \frac{1}{2} \ln\left( \frac{1 + \rho_0}{1 - \rho_0} \right) }{\sqrt{\nicefrac{1}{(n - 3)}}}=\allowbreak \frac{\frac{1}{2} \ln\left( \frac{1 -0,9076}{1 +0,9076} \right) - \frac{1}{2} \ln\left( \frac{1 - 0,8}{1 + 0,8} \right) }{\sqrt{\nicefrac{1}{(10 - 3)}}}= -4,09 \in RC$, então rejeitamos $H_0$.
 	
 	Ou seja, ao nível de significância $\alpha=5\%$, as duas variáveis estão fortemente e negativamente associadas.
 \end{block}
@@ -5386,10 +5390,10 @@ Como $p = 0 < \alpha = 0,05$, rejeitamos $H_0$. Ou seja, ao nível de significâ
 	O valor-p é dado por
 	$$p = P\left( Z_0 < z_0 \mid H_0 \right) = \Phi(z_0).$$
 	
-	Como, $\bar{x} = -0,049$ $\bar{y} = 200,401$, $r = \frac{s_{xy} - n \cdot \bar{x}\bar{y}}{\sqrt{ (s_{x^2} - n \cdot \bar{x}^2) (s_{y^2} - n \cdot \bar{y}^2) }} =\allowbreak \frac{-934,66 - 10 \cdot (-0,049) \cdot (200,401) }{\sqrt{ (942,57 - 10 \cdot (-0,049)^2) (4960,45 - 10 \cdot (200,401)^2) }} = -0,9896$, $\rho_0 = -0,8$, $n = 10$ e $Z_0 =  \frac{\frac{1}{2} \ln\left( \frac{1+r}{1-r} \right) - \frac{1}{2} \ln\left( \frac{1 + \rho_0}{1 - \rho_0} \right) }{\sqrt{\nicefrac{1}{n - 3}}}=\allowbreak \frac{\frac{1}{2} \ln\left( \frac{1 - 0,9896}{1 + 0,9896} \right) - \frac{1}{2} \ln\left( \frac{1 - 0,8}{1 + 0,8} \right) }{\sqrt{\nicefrac{1}{10 - 3}}}= -4,04$, então o valor-p é dado por
+	Como, $\bar{x} = -0,049$ $\bar{y} = 200,401$, $r = \frac{s_{xy} - n \cdot \bar{x}\bar{y}}{\sqrt{ (s_{x^2} - n \cdot \bar{x}^2) (s_{y^2} - n \cdot \bar{y}^2) }} =\allowbreak \frac{-934,66 - 10 \cdot (-0,049) \cdot (200,401) }{\sqrt{ (942,57 - 10 \cdot (-0,049)^2) (4960,45 - 10 \cdot (200,401)^2) }} = -0,9896$, $\rho_0 = -0,8$, $n = 10$ e $Z_0 =  \frac{\frac{1}{2} \ln\left( \frac{1+r}{1-r} \right) - \frac{1}{2} \ln\left( \frac{1 + \rho_0}{1 - \rho_0} \right) }{\sqrt{\nicefrac{1}{n - 3}}}=\allowbreak \frac{\frac{1}{2} \ln\left( \frac{1 - 0,9896}{1 + 0,9896} \right) - \frac{1}{2} \ln\left( \frac{1 - 0,8}{1 + 0,8} \right) }{\sqrt{\nicefrac{1}{10 - 3}}}= -4,09$, então o valor-p é dado por
 	\begin{align*}
 		p &= \Phi(z_0)\\
-		&= \Phi(-4,04)\\
+		&= \Phi(-4,09)\\
 		&= 0.
 	\end{align*}
 	

@@ -1,14 +1,25 @@
-library(readxl)
-library(readODS)
-library(writexl)
-library(ggthemes)
-library(glue)
-library(statBasics)
-library(exams)
-library(tidyverse)
+if (!require(pacman)) {
+    install.packages("pacman")
+    library(pacman)
+}
+p_load(readxl)
+p_load(readODS)
+p_load(writexl)
+p_load(ggthemes)
+p_load(glue)
+p_load(statBasics)
+p_load(exams)
+p_load(tidyverse)
 
-exams::exams2moodle("estatistica-basica/actual/banco-items/ht_2pop_mean_dp_desconhecido_igual/table/enunciado.Rmd",
-                    n = 1000,
+path <- "estatistica-basica/actual/banco-items/ht_2pop_mean_dp_desconhecido_igual/table"
+exams2moodle(glue("{path}/enunciado.Rmd"),
+                    n = 5,
                     verbose = TRUE,
-                    dir = "estatistica-basica/actual/banco-items/ht_2pop_mean_dp_desconhecido_igual/table",
+                    dir = path,
+                    name = "teste-t-2pop-var-igual-tabela-teste")
+
+exams2moodle(glue("{path}/enunciado.Rmd"),
+                    n = 500,
+                    verbose = TRUE,
+                    dir = path,
                     name = "teste-t-2pop-var-igual-tabela")
