@@ -1,14 +1,25 @@
-library(readxl)
-library(readODS)
-library(writexl)
-library(ggthemes)
-library(glue)
-library(statBasics)
-library(exams)
-library(tidyverse)
+if (!require(pacman)) {
+    install.packages("pacman")
+    library(pacman)
+}
+p_load(readxl)
+p_load(readODS)
+p_load(writexl)
+p_load(ggthemes)
+p_load(glue)
+p_load(statBasics)
+p_load(exams)
+p_load(tidyverse)
 
-exams::exams2moodle("banco-items/ht_2pop_mean_dp_desconhecido_diferente/table/enunciado.Rmd",
-                    n = 1000,
+path <- "estatistica-basica/actual/banco-items/test_t_pareado/table"
+exams2moodle(glue("{path}/enunciado.Rmd"),
+                    n = 5,
                     verbose = TRUE,
-                    dir = "banco-items/ht_2pop_mean_dp_desconhecido_diferente/table",
-                    name = "ht_2pop_mean_dp_desconhecido_welch")
+                    dir = path,
+                    name = "teste_t_pareado_welch_teste")
+
+exams2moodle(glue("{path}/enunciado.Rmd"),
+                    n = 500,
+                    verbose = TRUE,
+                    dir = path,
+                    name = "teste_t_pareado_welch")
