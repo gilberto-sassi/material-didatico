@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/resumos-va-binomial-poisson-teste/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R1 Q1 : probabilidade-1_banco-itens_resumos-binomial-poisson_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Seja X ∼ b(365; 0,48) e Y ∼ Poisson(11,32). Encontre:</p>
+<p>Calcule:</p>
+<br>moda (maior valor se tiver mais de uma) de X: {1:NUMERICAL:=175:0.05}
+<br>média de X: {1:NUMERICAL:=175.2:0.05}
+<br>desvio padrão de X: {1:NUMERICAL:=9.54484153875799:0.05}
+<br>primeiro quartil de X: {1:NUMERICAL:=169:0.05}
+<br>mediana de X: {1:NUMERICAL:=175:0.05}
+<br>terceiro quartil de X: {1:NUMERICAL:=182:0.05}
+<br>o quantil de ordem 10% de X: {1:NUMERICAL:=163:0.05}
+<br>valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=187:0.05}
+<br>moda (maior valor se tiver mais de uma) de Y: {1:NUMERICAL:=11:0.05}
+<br>média de Y: {1:NUMERICAL:=11.32:0.05}
+<br>desvio padrão de Y: {1:NUMERICAL:=3.36452076825214:0.05}
+<br>primeiro quartil de Y: {1:NUMERICAL:=9:0.05}
+<br>mediana de Y: {1:NUMERICAL:=11:0.05}
+<br>terceiro quartil de Y: {1:NUMERICAL:=13:0.05}
+<br>o quantil de ordem 10% de Y: {1:NUMERICAL:=7:0.05}
+<br>valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: {1:NUMERICAL:=16:0.05}
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> moda (maior valor se tiver mais de uma) de X: 175. </li>
+<li> média de X: 175.2. </li>
+<li> desvio padrão de X: 9.5448415. </li>
+<li> primeiro quartil de X: 169. </li>
+<li> mediana de X: 175. </li>
+<li> terceiro quartil de X: 182. </li>
+<li> o quantil de ordem 10% de X: 163. </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 187. </li>
+<li> moda (maior valor se tiver mais de uma) de Y: 11. </li>
+<li> média de X: 11.32. </li>
+<li> desvio padrão de X: 3.3645208. </li>
+<li> primeiro quartil de Y: 9. </li>
+<li> mediana de Y: 11. </li>
+<li> terceiro quartil de Y: 13. </li>
+<li> o quantil de ordem 10% de Y: 7. </li>
+<li> valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: 16. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>16</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R2 Q1 : probabilidade-1_banco-itens_resumos-binomial-poisson_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Seja X ∼ b(464; 0,25) e Y ∼ Poisson(15,34). Encontre:</p>
+<p>Calcule:</p>
+<br>moda (maior valor se tiver mais de uma) de X: {1:NUMERICAL:=116:0.05}
+<br>média de X: {1:NUMERICAL:=116:0.05}
+<br>desvio padrão de X: {1:NUMERICAL:=9.32737905308882:0.05}
+<br>primeiro quartil de X: {1:NUMERICAL:=110:0.05}
+<br>mediana de X: {1:NUMERICAL:=116:0.05}
+<br>terceiro quartil de X: {1:NUMERICAL:=122:0.05}
+<br>o quantil de ordem 10% de X: {1:NUMERICAL:=104:0.05}
+<br>valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=128:0.05}
+<br>moda (maior valor se tiver mais de uma) de Y: {1:NUMERICAL:=15:0.05}
+<br>média de Y: {1:NUMERICAL:=15.34:0.05}
+<br>desvio padrão de Y: {1:NUMERICAL:=3.91663120551323:0.05}
+<br>primeiro quartil de Y: {1:NUMERICAL:=13:0.05}
+<br>mediana de Y: {1:NUMERICAL:=15:0.05}
+<br>terceiro quartil de Y: {1:NUMERICAL:=18:0.05}
+<br>o quantil de ordem 10% de Y: {1:NUMERICAL:=10:0.05}
+<br>valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: {1:NUMERICAL:=20:0.05}
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> moda (maior valor se tiver mais de uma) de X: 116. </li>
+<li> média de X: 116. </li>
+<li> desvio padrão de X: 9.3273791. </li>
+<li> primeiro quartil de X: 110. </li>
+<li> mediana de X: 116. </li>
+<li> terceiro quartil de X: 122. </li>
+<li> o quantil de ordem 10% de X: 104. </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 128. </li>
+<li> moda (maior valor se tiver mais de uma) de Y: 15. </li>
+<li> média de X: 15.34. </li>
+<li> desvio padrão de X: 3.9166312. </li>
+<li> primeiro quartil de Y: 13. </li>
+<li> mediana de Y: 15. </li>
+<li> terceiro quartil de Y: 18. </li>
+<li> o quantil de ordem 10% de Y: 10. </li>
+<li> valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: 20. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>16</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R3 Q1 : probabilidade-1_banco-itens_resumos-binomial-poisson_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Seja X ∼ b(458; 0,28) e Y ∼ Poisson(19,94). Encontre:</p>
+<p>Calcule:</p>
+<br>moda (maior valor se tiver mais de uma) de X: {1:NUMERICAL:=128:0.05}
+<br>média de X: {1:NUMERICAL:=128.24:0.05}
+<br>desvio padrão de X: {1:NUMERICAL:=9.60899578520045:0.05}
+<br>primeiro quartil de X: {1:NUMERICAL:=122:0.05}
+<br>mediana de X: {1:NUMERICAL:=128:0.05}
+<br>terceiro quartil de X: {1:NUMERICAL:=135:0.05}
+<br>o quantil de ordem 10% de X: {1:NUMERICAL:=116:0.05}
+<br>valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=141:0.05}
+<br>moda (maior valor se tiver mais de uma) de Y: {1:NUMERICAL:=19:0.05}
+<br>média de Y: {1:NUMERICAL:=19.94:0.05}
+<br>desvio padrão de Y: {1:NUMERICAL:=4.46542271235322:0.05}
+<br>primeiro quartil de Y: {1:NUMERICAL:=17:0.05}
+<br>mediana de Y: {1:NUMERICAL:=20:0.05}
+<br>terceiro quartil de Y: {1:NUMERICAL:=23:0.05}
+<br>o quantil de ordem 10% de Y: {1:NUMERICAL:=14:0.05}
+<br>valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: {1:NUMERICAL:=26:0.05}
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> moda (maior valor se tiver mais de uma) de X: 128. </li>
+<li> média de X: 128.24. </li>
+<li> desvio padrão de X: 9.6089958. </li>
+<li> primeiro quartil de X: 122. </li>
+<li> mediana de X: 128. </li>
+<li> terceiro quartil de X: 135. </li>
+<li> o quantil de ordem 10% de X: 116. </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 141. </li>
+<li> moda (maior valor se tiver mais de uma) de Y: 19. </li>
+<li> média de X: 19.94. </li>
+<li> desvio padrão de X: 4.4654227. </li>
+<li> primeiro quartil de Y: 17. </li>
+<li> mediana de Y: 20. </li>
+<li> terceiro quartil de Y: 23. </li>
+<li> o quantil de ordem 10% de Y: 14. </li>
+<li> valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: 26. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>16</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R4 Q1 : probabilidade-1_banco-itens_resumos-binomial-poisson_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Seja X ∼ b(216; 0,29) e Y ∼ Poisson(19,45). Encontre:</p>
+<p>Calcule:</p>
+<br>moda (maior valor se tiver mais de uma) de X: {1:NUMERICAL:=62:0.05}
+<br>média de X: {1:NUMERICAL:=62.64:0.05}
+<br>desvio padrão de X: {1:NUMERICAL:=6.66891295489752:0.05}
+<br>primeiro quartil de X: {1:NUMERICAL:=58:0.05}
+<br>mediana de X: {1:NUMERICAL:=63:0.05}
+<br>terceiro quartil de X: {1:NUMERICAL:=67:0.05}
+<br>o quantil de ordem 10% de X: {1:NUMERICAL:=54:0.05}
+<br>valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=71:0.05}
+<br>moda (maior valor se tiver mais de uma) de Y: {1:NUMERICAL:=19:0.05}
+<br>média de Y: {1:NUMERICAL:=19.45:0.05}
+<br>desvio padrão de Y: {1:NUMERICAL:=4.41021541423999:0.05}
+<br>primeiro quartil de Y: {1:NUMERICAL:=16:0.05}
+<br>mediana de Y: {1:NUMERICAL:=19:0.05}
+<br>terceiro quartil de Y: {1:NUMERICAL:=22:0.05}
+<br>o quantil de ordem 10% de Y: {1:NUMERICAL:=14:0.05}
+<br>valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: {1:NUMERICAL:=25:0.05}
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> moda (maior valor se tiver mais de uma) de X: 62. </li>
+<li> média de X: 62.64. </li>
+<li> desvio padrão de X: 6.668913. </li>
+<li> primeiro quartil de X: 58. </li>
+<li> mediana de X: 63. </li>
+<li> terceiro quartil de X: 67. </li>
+<li> o quantil de ordem 10% de X: 54. </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 71. </li>
+<li> moda (maior valor se tiver mais de uma) de Y: 19. </li>
+<li> média de X: 19.45. </li>
+<li> desvio padrão de X: 4.4102154. </li>
+<li> primeiro quartil de Y: 16. </li>
+<li> mediana de Y: 19. </li>
+<li> terceiro quartil de Y: 22. </li>
+<li> o quantil de ordem 10% de Y: 14. </li>
+<li> valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: 25. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>16</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R5 Q1 : probabilidade-1_banco-itens_resumos-binomial-poisson_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Seja X ∼ b(237; 0,55) e Y ∼ Poisson(17,5). Encontre:</p>
+<p>Calcule:</p>
+<br>moda (maior valor se tiver mais de uma) de X: {1:NUMERICAL:=130:0.05}
+<br>média de X: {1:NUMERICAL:=130.35:0.05}
+<br>desvio padrão de X: {1:NUMERICAL:=7.65881844673185:0.05}
+<br>primeiro quartil de X: {1:NUMERICAL:=125:0.05}
+<br>mediana de X: {1:NUMERICAL:=130:0.05}
+<br>terceiro quartil de X: {1:NUMERICAL:=136:0.05}
+<br>o quantil de ordem 10% de X: {1:NUMERICAL:=121:0.05}
+<br>valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: {1:NUMERICAL:=140:0.05}
+<br>moda (maior valor se tiver mais de uma) de Y: {1:NUMERICAL:=17:0.05}
+<br>média de Y: {1:NUMERICAL:=17.5:0.05}
+<br>desvio padrão de Y: {1:NUMERICAL:=4.18330013267038:0.05}
+<br>primeiro quartil de Y: {1:NUMERICAL:=15:0.05}
+<br>mediana de Y: {1:NUMERICAL:=17:0.05}
+<br>terceiro quartil de Y: {1:NUMERICAL:=20:0.05}
+<br>o quantil de ordem 10% de Y: {1:NUMERICAL:=12:0.05}
+<br>valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: {1:NUMERICAL:=23:0.05}
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> moda (maior valor se tiver mais de uma) de X: 130. </li>
+<li> média de X: 130.35. </li>
+<li> desvio padrão de X: 7.6588184. </li>
+<li> primeiro quartil de X: 125. </li>
+<li> mediana de X: 130. </li>
+<li> terceiro quartil de X: 136. </li>
+<li> o quantil de ordem 10% de X: 121. </li>
+<li> valor de corte que classifica uma observação de X como entre as 10% maiores observações possíveis de X: 140. </li>
+<li> moda (maior valor se tiver mais de uma) de Y: 17. </li>
+<li> média de X: 17.5. </li>
+<li> desvio padrão de X: 4.1833001. </li>
+<li> primeiro quartil de Y: 15. </li>
+<li> mediana de Y: 17. </li>
+<li> terceiro quartil de Y: 20. </li>
+<li> o quantil de ordem 10% de Y: 12. </li>
+<li> valor de corte que classifica uma observação de Y como entre as 10% maiores observações possíveis de Y: 23. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>16</defaultgrade>
+</question>
+
+</quiz>
