@@ -1,4 +1,6 @@
-```{r, label="Simulação de dados", include=F}
+```{r}
+#| echo: false
+#| message: false
 library(exams)
 library(magrittr)
 library(readxl)
@@ -13,15 +15,19 @@ media_pop <- sample(10:20, 1)
 # n2
 dp_pop <- sample(8:12, 1)
 # probabilidade
-quantil <- runif(1, 0.25, 0.75)
+quantil <- runif(1, 0.25, 0.75) |> round(2)
 
 sol <- c(
      pnorm(media_pop + dp_pop, media_pop, dp_pop) -
         pnorm(media_pop - 2 * dp_pop, media_pop, dp_pop),
     pnorm(media_pop + dp_pop, media_pop, dp_pop),
     1 - pnorm(media_pop - 1.5 * dp_pop, media_pop, dp_pop),
-    qnorm(0.35, media_pop, dp_pop)
+    qnorm(quantil, media_pop, dp_pop), 
+    media_pop, 
+    dp_pop,
+    dp_pop**2
 ) |> round(2)
+f <- \(x)  format(x, big.mark = ".", decimal.mark = ",")
 ```
 
 Question
@@ -32,10 +38,13 @@ Seja X uma variável aleatória contínua com distribuição normal com média p
 
 Questionlist
 ------------
-* P(`r media_pop - 2 * dp_pop` < X < `r media_pop + dp_pop`): 
-* P(X  &#10877; `r media_pop + dp_pop`): 
-* P(X > `r media_pop - 1.5 * dp_pop`): 
-* Quantil de ordem 0,35: 
+* <br/>P(`r media_pop - 2 * dp_pop` < X < `r media_pop + dp_pop`): 
+* <br/>P(X  &#10877; `r media_pop + dp_pop`): 
+* <br/>P(X > `r media_pop - 1.5 * dp_pop`): 
+* <br/>Quantil de ordem `r f(quantil)`: 
+* <br/>Média populacional:
+* <br/>Desvio padrão populacional:
+* <br/>Variância populacional:
 
 Solution
 ========
@@ -44,12 +53,16 @@ Solutionlist
 * P(`r media_pop - 2 * dp_pop` < X < `r media_pop + dp_pop`): `r sol[1]`.
 * P(X  &#10877; `r media_pop + dp_pop`): `r sol[2]`.
 * P(X > `r media_pop - 1.5 * dp_pop`): `r sol[3]`.
-* Quantil de ordem 0,35: `r sol[4]`.
+* Quantil de ordem `r f(quantil)`: `r sol[4]`.
+* Média populacional: `r sol[5]`.
+* Desvio padrão populacional: `r sol[6]`.
+* Variância populacional: `r sol[7]`.
+
 
 Meta-information
 ================
 exname: normal
 extype: cloze
-exclozetype: num|num|num|num
+exclozetype: `r rep("num", length(sol)) |> paste0(collapse="|")`
 exsolution: `r paste0(sol, collapse = "|")`
 extol: 0.02

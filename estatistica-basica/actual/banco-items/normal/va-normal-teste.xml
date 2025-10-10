@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/va-normal-teste/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R1 Q1 : estatistica-basica_actual_banco-items_normal_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Seja X uma variável aleatória contínua com distribuição normal com média populacional igual a 14 e desvio padrão igual a 8. Responda cada uma das perguntas abaixo:</p>
+<br/>P(-2 &lt; X &lt; 22): {1:NUMERICAL:=0.82:0.02}
+<br/>P(X ⩽ 22): {1:NUMERICAL:=0.84:0.02}
+<br/>P(X &gt; 2): {1:NUMERICAL:=0.93:0.02}
+<br/>Quantil de ordem 0,54: {1:NUMERICAL:=14.8:0.02}
+<br/>Média populacional: {1:NUMERICAL:=14:0.02}
+<br/>Desvio padrão populacional: {1:NUMERICAL:=8:0.02}
+<br/>Variância populacional: {1:NUMERICAL:=64:0.02}
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> P(-2 &lt; X &lt; 22): 0.82. </li>
+<li> P(X ⩽ 22): 0.84. </li>
+<li> P(X &gt; 2): 0.93. </li>
+<li> Quantil de ordem 0,54: 14.8. </li>
+<li> Média populacional: 14. </li>
+<li> Desvio padrão populacional: 8. </li>
+<li> Variância populacional: 64. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>7</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R2 Q1 : estatistica-basica_actual_banco-items_normal_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Seja X uma variável aleatória contínua com distribuição normal com média populacional igual a 20 e desvio padrão igual a 11. Responda cada uma das perguntas abaixo:</p>
+<br/>P(-2 &lt; X &lt; 31): {1:NUMERICAL:=0.82:0.02}
+<br/>P(X ⩽ 31): {1:NUMERICAL:=0.84:0.02}
+<br/>P(X &gt; 3.5): {1:NUMERICAL:=0.93:0.02}
+<br/>Quantil de ordem 0,35: {1:NUMERICAL:=15.76:0.02}
+<br/>Média populacional: {1:NUMERICAL:=20:0.02}
+<br/>Desvio padrão populacional: {1:NUMERICAL:=11:0.02}
+<br/>Variância populacional: {1:NUMERICAL:=121:0.02}
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> P(-2 &lt; X &lt; 31): 0.82. </li>
+<li> P(X ⩽ 31): 0.84. </li>
+<li> P(X &gt; 3.5): 0.93. </li>
+<li> Quantil de ordem 0,35: 15.76. </li>
+<li> Média populacional: 20. </li>
+<li> Desvio padrão populacional: 11. </li>
+<li> Variância populacional: 121. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>7</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R3 Q1 : estatistica-basica_actual_banco-items_normal_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Seja X uma variável aleatória contínua com distribuição normal com média populacional igual a 20 e desvio padrão igual a 9. Responda cada uma das perguntas abaixo:</p>
+<br/>P(2 &lt; X &lt; 29): {1:NUMERICAL:=0.82:0.02}
+<br/>P(X ⩽ 29): {1:NUMERICAL:=0.84:0.02}
+<br/>P(X &gt; 6.5): {1:NUMERICAL:=0.93:0.02}
+<br/>Quantil de ordem 0,41: {1:NUMERICAL:=17.95:0.02}
+<br/>Média populacional: {1:NUMERICAL:=20:0.02}
+<br/>Desvio padrão populacional: {1:NUMERICAL:=9:0.02}
+<br/>Variância populacional: {1:NUMERICAL:=81:0.02}
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> P(2 &lt; X &lt; 29): 0.82. </li>
+<li> P(X ⩽ 29): 0.84. </li>
+<li> P(X &gt; 6.5): 0.93. </li>
+<li> Quantil de ordem 0,41: 17.95. </li>
+<li> Média populacional: 20. </li>
+<li> Desvio padrão populacional: 9. </li>
+<li> Variância populacional: 81. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>7</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R4 Q1 : estatistica-basica_actual_banco-items_normal_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Seja X uma variável aleatória contínua com distribuição normal com média populacional igual a 13 e desvio padrão igual a 9. Responda cada uma das perguntas abaixo:</p>
+<br/>P(-5 &lt; X &lt; 22): {1:NUMERICAL:=0.82:0.02}
+<br/>P(X ⩽ 22): {1:NUMERICAL:=0.84:0.02}
+<br/>P(X &gt; -0.5): {1:NUMERICAL:=0.93:0.02}
+<br/>Quantil de ordem 0,65: {1:NUMERICAL:=16.47:0.02}
+<br/>Média populacional: {1:NUMERICAL:=13:0.02}
+<br/>Desvio padrão populacional: {1:NUMERICAL:=9:0.02}
+<br/>Variância populacional: {1:NUMERICAL:=81:0.02}
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> P(-5 &lt; X &lt; 22): 0.82. </li>
+<li> P(X ⩽ 22): 0.84. </li>
+<li> P(X &gt; -0.5): 0.93. </li>
+<li> Quantil de ordem 0,65: 16.47. </li>
+<li> Média populacional: 13. </li>
+<li> Desvio padrão populacional: 9. </li>
+<li> Variância populacional: 81. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>7</defaultgrade>
+</question>
+
+
+<question type="cloze">
+<name>
+<text> R5 Q1 : estatistica-basica_actual_banco-items_normal_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Seja X uma variável aleatória contínua com distribuição normal com média populacional igual a 18 e desvio padrão igual a 11. Responda cada uma das perguntas abaixo:</p>
+<br/>P(-4 &lt; X &lt; 29): {1:NUMERICAL:=0.82:0.02}
+<br/>P(X ⩽ 29): {1:NUMERICAL:=0.84:0.02}
+<br/>P(X &gt; 1.5): {1:NUMERICAL:=0.93:0.02}
+<br/>Quantil de ordem 0,28: {1:NUMERICAL:=11.59:0.02}
+<br/>Média populacional: {1:NUMERICAL:=18:0.02}
+<br/>Desvio padrão populacional: {1:NUMERICAL:=11:0.02}
+<br/>Variância populacional: {1:NUMERICAL:=121:0.02}
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> P(-4 &lt; X &lt; 29): 0.82. </li>
+<li> P(X ⩽ 29): 0.84. </li>
+<li> P(X &gt; 1.5): 0.93. </li>
+<li> Quantil de ordem 0,28: 11.59. </li>
+<li> Média populacional: 18. </li>
+<li> Desvio padrão populacional: 11. </li>
+<li> Variância populacional: 121. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>7</defaultgrade>
+</question>
+
+</quiz>

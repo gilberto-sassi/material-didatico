@@ -7,8 +7,16 @@ library(statBasics)
 library(exams)
 library(tidyverse)
 
-exams::exams2moodle("banco-items/normal/enunciado.Rmd",
+path <- "estatistica-basica/actual/banco-items/normal"
+exams2moodle(glue("{path}/enunciado.Rmd"),
+                    n = 5,
+                    verbose = TRUE,
+                    dir = path,
+                    name = "va-normal-teste")
+
+path <- "estatistica-basica/actual/banco-items/normal"
+exams2moodle(glue("{path}/enunciado.Rmd"),
                     n = 1000,
                     verbose = TRUE,
-                    dir = "banco-items/normal",
+                    dir = path,
                     name = "va-normal")
