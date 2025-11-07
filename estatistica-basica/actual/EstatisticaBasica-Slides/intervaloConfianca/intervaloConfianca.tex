@@ -810,7 +810,7 @@ Seja $x_1, \dots, x_n$ uma amostra aleatória de uma variável aleatória contí
 \begin{block}{Limite inferior de confiança}
 	Ao nível de significância $\gamma=(1-\alpha)100\%$, o limite inferior de confiança para média é dada por
 	\begin{align*}
-	\bar{x} - t_{\alpha;n-1} \frac{s}{\sqrt{n}} \leq \mu,
+	\bar{x} + t_{\alpha;n-1} \frac{s}{\sqrt{n}} \leq \mu,
 	\end{align*}
 	em que $P\left( t_{n-1} \leq t_{\alpha;n-1} \right) = \alpha$, em que $t_{n-1}$ é uma variável aleatória com distribuição $t$-Student com $n-1$ graus de liberdade.
 \end{block}
@@ -1171,7 +1171,7 @@ Seja $x_1, \dots, x_n$ uma amostra aleatória de uma variável aleatória contí
 \normalsize
 	
 	\begin{block}{Exemplo}
-		Um revendedor afirma que, em um pacote de sementes de alface, $95\%$ das sementes germinarão. Com coeficiente de confiança 99\%, qual o número mínimo de sementes que um órgão regulador precisa plantar para checar essa afirmação com erro máximo $E=1\%$?
+		Um revendedor afirma que, em um pacote de sementes de alface, $95\%$ das sementes germinarão. Com coeficiente de confiança 99\%, qual o número mínimo de sementes que um órgão regulador precisa plantar para checar essa afirmação com erro máximo $E=5\%$?
 		
 	\end{block}
 
@@ -1179,10 +1179,10 @@ Seja $x_1, \dots, x_n$ uma amostra aleatória de uma variável aleatória contí
 		Primeiro calculamos o quantil da distribuição normal padrão $\Phi\left( z_{1-\frac{\alpha}{2}} \right) = \Phi\left( z_{0,995} \right) = 1 - \frac{\alpha}{2} = 0,995$ 	e $z_{0,995} = 2,58$. Então, o tamanho mínimo da amostra é dada por:
 		\begin{align*}
 			n &= \left\lceil \left( \frac{z_{1-\frac{\alpha}{2}}}{2 E} \right)^2 \right\rceil\\
-			&= \left\lceil \left( \frac{2,58}{2 \cdot 0,01} \right)^2 \right\rceil\\
-			&= \left\lceil 16,641 \right\rceil = 17.
+			&= \left\lceil \left( \frac{2,58}{2 \cdot 0,05} \right)^2 \right\rceil\\
+			&= \left\lceil 665,64 \right\rceil = 666.
 		\end{align*}	
-		Com coeficiente de confiança $95\%$ e erro máximo $E=0,01$, o tamanho mínimo de amostra é $\max(17, 40) = 40$ sementes.
+		Com coeficiente de confiança $95\%$ e erro máximo (margem de erro) $E=0,05$, o tamanho mínimo de amostra é $666$ sementes.
 	\end{block}
 
 \normalsize
@@ -1381,8 +1381,8 @@ Seja $x_1, \dots, x_n$ uma amostra aleatória de uma variável aleatória $X$, e
 			$n \geq 40$ &  & $IC(p, 1-\alpha) = \left( z_{\alpha} \dfrac{1}{2 \sqrt{n}} + \hat{p}; 1 \right)$  & $\Phi\left( z_\alpha \right) = \alpha$ \\ 
 			&  & $IC(p, 1-\alpha) = \left( 0; z_{1-\alpha} \dfrac{1}{2 \sqrt{n}} + \hat{p} \right)$  & $\Phi\left( z_{1-\alpha} \right) = 1 - \alpha$ \\ \midrule
 			Outras distribuições & $\mu$ & $IC(\mu; 1-\alpha) = \left( -t_{\frac{\alpha}{2}; n-1} \dfrac{s}{\sqrt{n}} + \bar{x}; t_{\frac{\alpha}{2}; n-1} \dfrac{s}{\sqrt{n}} + \bar{x} \right)$  & $P\left( t_{n-1} \leq t_{\frac{\alpha}{2}; n-1} \right) = 1- \frac{\alpha}{2}$  \\ 
-			$n \geq 40$ &  & $IC(\mu; \gamma) = \left(t_{\alpha; n-1} \dfrac{s}{\sqrt{n}} + \bar{x}; \infty  \right)$  & $P\left( t_{n-1} \leq t_{\alpha; n-1} \right) = \alpha$ \\ 
-			&  & $IC(\sigma^2; \gamma) = \left(-\infty; t_{1-\alpha; n-1} \dfrac{s}{\sqrt{n}} + \bar{x} \right)$  & $P\left( t_{n-1} \leq t_{1-\alpha; n-1} \right) = 1 - \alpha$ \\ \bottomrule[0.05cm]
+			$n \geq 40$ &  & $IC(\mu; 1-\alpha) = \left(t_{\alpha; n-1} \dfrac{s}{\sqrt{n}} + \bar{x}; \infty  \right)$  & $P\left( t_{n-1} \leq t_{\alpha; n-1} \right) = \alpha$ \\ 
+			&  & $IC(\sigma^2; 1-\alpha) = \left(-\infty; t_{1-\alpha; n-1} \dfrac{s}{\sqrt{n}} + \bar{x} \right)$  & $P\left( t_{n-1} \leq t_{1-\alpha; n-1} \right) = 1 - \alpha$ \\ \bottomrule[0.05cm]
 		\end{tabular}
 	\end{table}
 	\begin{enumerate}[i.]

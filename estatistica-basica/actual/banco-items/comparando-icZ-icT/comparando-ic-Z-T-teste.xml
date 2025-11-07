@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/comparando-ic-Z-T-teste/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R1 Q1 : estatistica-basica_actual_banco-items_comparando-icZ-icT_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Conforme vimos em sala, quando não conhecemos a variância (ou o desvio padrão) populacional de uma variável aleatória contínua com distribuição normal, usamos um quantil da distribuição t-Student com n-1 graus de liberdade e o desvio padrão da amostra para construir o intervalo de confiança para a média da população (intervalo de confiança T). Além disso, este intervalo será <em>maior</em> que o intervalo de confiança quando conhecemos a variância (ou o desvio padrão) populacional.</p>
+<p>Considere X uma variável aleatória contínua com distribuição normal com desvio padrão 26 e suponha que coletamos uma amostra com 27 observações. Um pesquisador construiu dois intervalos de confiança com coeficiente de confiança γ = 99%: um intervalo de confiança Z (usando o desvio padrão da população) e outro intervalo de confiança T (não usamos o desvio padrão da população). Neste contexto, marque apenas as alternativas <strong>CORRETAS</strong>.</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> CORRETA. </li>
+<li> FALSA. O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>67</mn><mo>,</mo><mn>86</mn><mo>;</mo><mn>95</mn><mo>,</mo><mn>27</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(67,86; 95,27)</annotation></semantics></math> é intervalo de confiança T (não usamos o desvio padrão da população). </li>
+<li> CORRETA. </li>
+<li> FALSA. O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>68</mn><mo>,</mo><mn>68</mn><mo>;</mo><mn>94</mn><mo>,</mo><mn>46</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(68,68; 94,46)</annotation></semantics></math> é intervalo de confiança Z (usamos o desvio padrão da população). </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>false</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="50" format="html">
+<text><![CDATA[<p>
+O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>67</mn><mo>,</mo><mn>86</mn><mo>;</mo><mn>95</mn><mo>,</mo><mn>27</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(67,86; 95,27)</annotation></semantics></math> é intervalo de confiança T (não usamos o desvio padrão da população).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+CORRETA.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>68</mn><mo>,</mo><mn>68</mn><mo>;</mo><mn>94</mn><mo>,</mo><mn>46</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(68,68; 94,46)</annotation></semantics></math> é intervalo de confiança T (não usamos o desvio padrão da população).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+FALSA. O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>67</mn><mo>,</mo><mn>86</mn><mo>;</mo><mn>95</mn><mo>,</mo><mn>27</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(67,86; 95,27)</annotation></semantics></math> é intervalo de confiança T (não usamos o desvio padrão da população).
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="50" format="html">
+<text><![CDATA[<p>
+O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>68</mn><mo>,</mo><mn>68</mn><mo>;</mo><mn>94</mn><mo>,</mo><mn>46</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(68,68; 94,46)</annotation></semantics></math> é intervalo de confiança Z (usamos o desvio padrão da população).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+CORRETA.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>67</mn><mo>,</mo><mn>86</mn><mo>;</mo><mn>95</mn><mo>,</mo><mn>27</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(67,86; 95,27)</annotation></semantics></math> é intervalo de confiança Z (usamos o desvio padrão da população).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+FALSA. O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>68</mn><mo>,</mo><mn>68</mn><mo>;</mo><mn>94</mn><mo>,</mo><mn>46</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(68,68; 94,46)</annotation></semantics></math> é intervalo de confiança Z (usamos o desvio padrão da população).
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R2 Q1 : estatistica-basica_actual_banco-items_comparando-icZ-icT_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Conforme vimos em sala, quando não conhecemos a variância (ou o desvio padrão) populacional de uma variável aleatória contínua com distribuição normal, usamos um quantil da distribuição t-Student com n-1 graus de liberdade e o desvio padrão da amostra para construir o intervalo de confiança para a média da população (intervalo de confiança T). Além disso, este intervalo será <em>maior</em> que o intervalo de confiança quando conhecemos a variância (ou o desvio padrão) populacional.</p>
+<p>Considere X uma variável aleatória contínua com distribuição normal com desvio padrão 23 e suponha que coletamos uma amostra com 20 observações. Um pesquisador construiu dois intervalos de confiança com coeficiente de confiança γ = 99%: um intervalo de confiança Z (usando o desvio padrão da população) e outro intervalo de confiança T (não usamos o desvio padrão da população). Neste contexto, marque apenas as alternativas <strong>CORRETAS</strong>.</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> CORRETA. </li>
+<li> FALSA. O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>38</mn><mo>,</mo><mn>56</mn><mo>;</mo><mn>72</mn><mo>,</mo><mn>83</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(38,56; 72,83)</annotation></semantics></math> é intervalo de confiança T (não usamos o desvio padrão da população). </li>
+<li> FALSA. O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>42</mn><mo>,</mo><mn>45</mn><mo>;</mo><mn>68</mn><mo>,</mo><mn>94</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(42,45; 68,94)</annotation></semantics></math> é intervalo de confiança Z (usamos o desvio padrão da população). </li>
+<li> CORRETA. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>false</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="50" format="html">
+<text><![CDATA[<p>
+O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>42</mn><mo>,</mo><mn>45</mn><mo>;</mo><mn>68</mn><mo>,</mo><mn>94</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(42,45; 68,94)</annotation></semantics></math> é intervalo de confiança Z (usamos o desvio padrão da população).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+CORRETA.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>42</mn><mo>,</mo><mn>45</mn><mo>;</mo><mn>68</mn><mo>,</mo><mn>94</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(42,45; 68,94)</annotation></semantics></math> é intervalo de confiança T (não usamos o desvio padrão da população).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+FALSA. O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>38</mn><mo>,</mo><mn>56</mn><mo>;</mo><mn>72</mn><mo>,</mo><mn>83</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(38,56; 72,83)</annotation></semantics></math> é intervalo de confiança T (não usamos o desvio padrão da população).
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>38</mn><mo>,</mo><mn>56</mn><mo>;</mo><mn>72</mn><mo>,</mo><mn>83</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(38,56; 72,83)</annotation></semantics></math> é intervalo de confiança Z (usamos o desvio padrão da população).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+FALSA. O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>42</mn><mo>,</mo><mn>45</mn><mo>;</mo><mn>68</mn><mo>,</mo><mn>94</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(42,45; 68,94)</annotation></semantics></math> é intervalo de confiança Z (usamos o desvio padrão da população).
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="50" format="html">
+<text><![CDATA[<p>
+O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>38</mn><mo>,</mo><mn>56</mn><mo>;</mo><mn>72</mn><mo>,</mo><mn>83</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(38,56; 72,83)</annotation></semantics></math> é intervalo de confiança T (não usamos o desvio padrão da população).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+CORRETA.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R3 Q1 : estatistica-basica_actual_banco-items_comparando-icZ-icT_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Conforme vimos em sala, quando não conhecemos a variância (ou o desvio padrão) populacional de uma variável aleatória contínua com distribuição normal, usamos um quantil da distribuição t-Student com n-1 graus de liberdade e o desvio padrão da amostra para construir o intervalo de confiança para a média da população (intervalo de confiança T). Além disso, este intervalo será <em>maior</em> que o intervalo de confiança quando conhecemos a variância (ou o desvio padrão) populacional.</p>
+<p>Considere X uma variável aleatória contínua com distribuição normal com desvio padrão 25 e suponha que coletamos uma amostra com 25 observações. Um pesquisador construiu dois intervalos de confiança com coeficiente de confiança γ = 99%: um intervalo de confiança Z (usando o desvio padrão da população) e outro intervalo de confiança T (não usamos o desvio padrão da população). Neste contexto, marque apenas as alternativas <strong>CORRETAS</strong>.</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> CORRETA. </li>
+<li> CORRETA. </li>
+<li> FALSA. O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>62</mn><mo>,</mo><mn>92</mn><mo>;</mo><mn>89</mn><mo>,</mo><mn>59</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(62,92; 89,59)</annotation></semantics></math> é intervalo de confiança T (não usamos o desvio padrão da população). </li>
+<li> FALSA. O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>63</mn><mo>,</mo><mn>37</mn><mo>;</mo><mn>89</mn><mo>,</mo><mn>13</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(63,37; 89,13)</annotation></semantics></math> é intervalo de confiança Z (usamos o desvio padrão da população). </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>false</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="50" format="html">
+<text><![CDATA[<p>
+O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>62</mn><mo>,</mo><mn>92</mn><mo>;</mo><mn>89</mn><mo>,</mo><mn>59</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(62,92; 89,59)</annotation></semantics></math> é intervalo de confiança T (não usamos o desvio padrão da população).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+CORRETA.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="50" format="html">
+<text><![CDATA[<p>
+O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>63</mn><mo>,</mo><mn>37</mn><mo>;</mo><mn>89</mn><mo>,</mo><mn>13</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(63,37; 89,13)</annotation></semantics></math> é intervalo de confiança Z (usamos o desvio padrão da população).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+CORRETA.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>63</mn><mo>,</mo><mn>37</mn><mo>;</mo><mn>89</mn><mo>,</mo><mn>13</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(63,37; 89,13)</annotation></semantics></math> é intervalo de confiança T (não usamos o desvio padrão da população).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+FALSA. O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>62</mn><mo>,</mo><mn>92</mn><mo>;</mo><mn>89</mn><mo>,</mo><mn>59</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(62,92; 89,59)</annotation></semantics></math> é intervalo de confiança T (não usamos o desvio padrão da população).
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>62</mn><mo>,</mo><mn>92</mn><mo>;</mo><mn>89</mn><mo>,</mo><mn>59</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(62,92; 89,59)</annotation></semantics></math> é intervalo de confiança Z (usamos o desvio padrão da população).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+FALSA. O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>63</mn><mo>,</mo><mn>37</mn><mo>;</mo><mn>89</mn><mo>,</mo><mn>13</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(63,37; 89,13)</annotation></semantics></math> é intervalo de confiança Z (usamos o desvio padrão da população).
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R4 Q1 : estatistica-basica_actual_banco-items_comparando-icZ-icT_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Conforme vimos em sala, quando não conhecemos a variância (ou o desvio padrão) populacional de uma variável aleatória contínua com distribuição normal, usamos um quantil da distribuição t-Student com n-1 graus de liberdade e o desvio padrão da amostra para construir o intervalo de confiança para a média da população (intervalo de confiança T). Além disso, este intervalo será <em>maior</em> que o intervalo de confiança quando conhecemos a variância (ou o desvio padrão) populacional.</p>
+<p>Considere X uma variável aleatória contínua com distribuição normal com desvio padrão 28 e suponha que coletamos uma amostra com 22 observações. Um pesquisador construiu dois intervalos de confiança com coeficiente de confiança γ = 99%: um intervalo de confiança Z (usando o desvio padrão da população) e outro intervalo de confiança T (não usamos o desvio padrão da população). Neste contexto, marque apenas as alternativas <strong>CORRETAS</strong>.</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> CORRETA. </li>
+<li> FALSA. O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>48</mn><mo>,</mo><mn>07</mn><mo>;</mo><mn>83</mn><mo>,</mo><mn>58</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(48,07; 83,58)</annotation></semantics></math> é intervalo de confiança T (não usamos o desvio padrão da população). </li>
+<li> FALSA. O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>50</mn><mo>,</mo><mn>44</mn><mo>;</mo><mn>81</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(50,44; 81,2)</annotation></semantics></math> é intervalo de confiança Z (usamos o desvio padrão da população). </li>
+<li> CORRETA. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>false</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="50" format="html">
+<text><![CDATA[<p>
+O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>50</mn><mo>,</mo><mn>44</mn><mo>;</mo><mn>81</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(50,44; 81,2)</annotation></semantics></math> é intervalo de confiança Z (usamos o desvio padrão da população).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+CORRETA.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>50</mn><mo>,</mo><mn>44</mn><mo>;</mo><mn>81</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(50,44; 81,2)</annotation></semantics></math> é intervalo de confiança T (não usamos o desvio padrão da população).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+FALSA. O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>48</mn><mo>,</mo><mn>07</mn><mo>;</mo><mn>83</mn><mo>,</mo><mn>58</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(48,07; 83,58)</annotation></semantics></math> é intervalo de confiança T (não usamos o desvio padrão da população).
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>48</mn><mo>,</mo><mn>07</mn><mo>;</mo><mn>83</mn><mo>,</mo><mn>58</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(48,07; 83,58)</annotation></semantics></math> é intervalo de confiança Z (usamos o desvio padrão da população).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+FALSA. O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>50</mn><mo>,</mo><mn>44</mn><mo>;</mo><mn>81</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(50,44; 81,2)</annotation></semantics></math> é intervalo de confiança Z (usamos o desvio padrão da população).
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="50" format="html">
+<text><![CDATA[<p>
+O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>48</mn><mo>,</mo><mn>07</mn><mo>;</mo><mn>83</mn><mo>,</mo><mn>58</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(48,07; 83,58)</annotation></semantics></math> é intervalo de confiança T (não usamos o desvio padrão da população).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+CORRETA.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R5 Q1 : estatistica-basica_actual_banco-items_comparando-icZ-icT_enunciado </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Conforme vimos em sala, quando não conhecemos a variância (ou o desvio padrão) populacional de uma variável aleatória contínua com distribuição normal, usamos um quantil da distribuição t-Student com n-1 graus de liberdade e o desvio padrão da amostra para construir o intervalo de confiança para a média da população (intervalo de confiança T). Além disso, este intervalo será <em>maior</em> que o intervalo de confiança quando conhecemos a variância (ou o desvio padrão) populacional.</p>
+<p>Considere X uma variável aleatória contínua com distribuição normal com desvio padrão 30 e suponha que coletamos uma amostra com 26 observações. Um pesquisador construiu dois intervalos de confiança com coeficiente de confiança γ = 99%: um intervalo de confiança Z (usando o desvio padrão da população) e outro intervalo de confiança T (não usamos o desvio padrão da população). Neste contexto, marque apenas as alternativas <strong>CORRETAS</strong>.</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li> FALSA. O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>72</mn><mo>,</mo><mn>79</mn><mo>;</mo><mn>103</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(72,79; 103,1)</annotation></semantics></math> é intervalo de confiança Z (usamos o desvio padrão da população). </li>
+<li> FALSA. O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>73</mn><mo>,</mo><mn>64</mn><mo>;</mo><mn>102</mn><mo>,</mo><mn>26</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(73,64; 102,26)</annotation></semantics></math> é intervalo de confiança T (não usamos o desvio padrão da população). </li>
+<li> CORRETA. </li>
+<li> CORRETA. </li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>false</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>73</mn><mo>,</mo><mn>64</mn><mo>;</mo><mn>102</mn><mo>,</mo><mn>26</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(73,64; 102,26)</annotation></semantics></math> é intervalo de confiança Z (usamos o desvio padrão da população).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+FALSA. O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>72</mn><mo>,</mo><mn>79</mn><mo>;</mo><mn>103</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(72,79; 103,1)</annotation></semantics></math> é intervalo de confiança Z (usamos o desvio padrão da população).
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>72</mn><mo>,</mo><mn>79</mn><mo>;</mo><mn>103</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(72,79; 103,1)</annotation></semantics></math> é intervalo de confiança T (não usamos o desvio padrão da população).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+FALSA. O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>73</mn><mo>,</mo><mn>64</mn><mo>;</mo><mn>102</mn><mo>,</mo><mn>26</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(73,64; 102,26)</annotation></semantics></math> é intervalo de confiança T (não usamos o desvio padrão da população).
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="50" format="html">
+<text><![CDATA[<p>
+O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>72</mn><mo>,</mo><mn>79</mn><mo>;</mo><mn>103</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(72,79; 103,1)</annotation></semantics></math> é intervalo de confiança Z (usamos o desvio padrão da população).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+CORRETA.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="50" format="html">
+<text><![CDATA[<p>
+O Intervalo de confiança <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>73</mn><mo>,</mo><mn>64</mn><mo>;</mo><mn>102</mn><mo>,</mo><mn>26</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(73,64; 102,26)</annotation></semantics></math> é intervalo de confiança T (não usamos o desvio padrão da população).
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+CORRETA.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+</quiz>

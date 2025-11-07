@@ -7,9 +7,17 @@ library(statBasics)
 library(exams)
 library(tidyverse)
 
-exams::exams2moodle("banco-items/comparando-icZ-icT/enunciado.Rmd",
-                    n = 1000,
+path <- "estatistica-basica/actual/banco-items/comparando-icZ-icT"
+exams::exams2moodle(glue("{path}/enunciado.Rmd"),
+                    n = 5,
                     verbose = TRUE,
-                    dir = "banco-items/comparando-icZ-icT",
+                    dir = path,
+                    name = "comparando-ic-Z-T-teste",
+                    converter = NULL)
+
+exams::exams2moodle(glue("{path}/enunciado.Rmd"),
+                    n = 1e+3,
+                    verbose = TRUE,
+                    dir = path,
                     name = "comparando-ic-Z-T",
                     converter = NULL)

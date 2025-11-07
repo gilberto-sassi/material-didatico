@@ -1,4 +1,8 @@
-```{r dgp, include = FALSE}
+```{r}
+#| warning: false
+#| echo: false
+#| message: false
+
 library(exams)
 library(magrittr)
 library(readxl)
@@ -23,6 +27,12 @@ ic_small <- ci_1pop_norm(amostra, sd_pop = s, conf_level = 0.99) |>
     round(2)
 ic_large <- ci_1pop_norm(amostra, conf_level = 0.99) |>
     round(2)
+
+f <- \(x) format(
+    x,
+    big.mark = ".",
+    decimal.mark = ","
+)
 ```
 
 Question
@@ -33,19 +43,19 @@ Considere X uma variável aleatória contínua com distribuição normal com des
   
 Answerlist
 ----------
-* O Intervalo de confiança $(`r ic_small$lower_ci`, `r ic_small$upper_ci`)$ é intervalo de confiança Z (usamos o desvio padrão da população).
-* O Intervalo de confiança $(`r ic_large$lower_ci`, `r ic_large$upper_ci`)$ é intervalo de confiança Z (usamos o desvio padrão da população).
-* O Intervalo de confiança $(`r ic_large$lower_ci`, `r ic_large$upper_ci`)$ é intervalo de confiança T (não usamos o desvio padrão da população).
-* O Intervalo de confiança $(`r ic_small$lower_ci`, `r ic_small$upper_ci`)$ é intervalo de confiança T (não usamos o desvio padrão da população).
+* O Intervalo de confiança $(`r f(ic_small$lower_ci)`; `r f(ic_small$upper_ci)`)$ é intervalo de confiança Z (usamos o desvio padrão da população).
+* O Intervalo de confiança $(`r f(ic_large$lower_ci)`; `r f(ic_large$upper_ci)`)$ é intervalo de confiança Z (usamos o desvio padrão da população).
+* O Intervalo de confiança $(`r f(ic_large$lower_ci)`; `r f(ic_large$upper_ci)`)$ é intervalo de confiança T (não usamos o desvio padrão da população).
+* O Intervalo de confiança $(`r f(ic_small$lower_ci)`; `r f(ic_small$upper_ci)`)$ é intervalo de confiança T (não usamos o desvio padrão da população).
 
 Solution
 ========
 Answerlist
 ----------
 * CORRETA.
-* FALSA. O Intervalo de confiança $(`r ic_small$lower_ci`, `r ic_small$upper_ci`)$ é intervalo de confiança Z (usamos o desvio padrão da população).
+* FALSA. O Intervalo de confiança $(`r f(ic_small$lower_ci)`; `r f(ic_small$upper_ci)`)$ é intervalo de confiança Z (usamos o desvio padrão da população).
 * CORRETA.
-* FALSA. O Intervalo de confiança $(`r ic_large$lower_ci`, `r ic_large$upper_ci`)$ é intervalo de confiança T (não usamos o desvio padrão da população).
+* FALSA. O Intervalo de confiança $(`r f(ic_large$lower_ci)`; `r f(ic_large$upper_ci)`)$ é intervalo de confiança T (não usamos o desvio padrão da população).
 
 Meta-information
 ================
