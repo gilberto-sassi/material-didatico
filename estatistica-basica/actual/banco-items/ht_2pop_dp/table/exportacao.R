@@ -11,7 +11,7 @@ p_load(tidyverse)
 
 path <- "estatistica-basica/actual/banco-items/ht_2pop_dp/table/"
 exams2moodle(glue("{path}enunciado.Rmd"), n = 5, verbose = TRUE,
-                    dir = path, name = "teste-f-2pop-teste")
+                    dir = path, name = "teste-f-2pop-table-teste")
 
 exams2moodle(glue("{path}enunciado.Rmd"), n = 1000, verbose = TRUE,
-                    dir = path, name = "teste-f-2pop")
+                    dir = path, name = "teste-f-2pop-table")

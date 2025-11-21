@@ -41,6 +41,10 @@ Question
 
 Suponha que uma pesquisadora precisa decidir entre as hipóteses H~0~: &mu;~1~ - &mu;~2~ = 0  contra H~1~: &mu;~1~ - &mu;~2~ &#8800; 0, e para isso ela coletou uma amostra que está armazenada no arquivo [dados.xlsx](dados.xlsx). Além disso, assuma que o desvio padrão da população 1 seja &sigma; = `r f(dp_pop_1)` e o desvio padrão da população 2 seja &sigma; = `r f(dp_pop_2)`. Ao nível de significância &alpha; = `r f(g)`, temos que:
 
+* A estatística de teste é: \#\#ANSWER1\#\#.
+* O valor-p: \#\#ANSWER2\#\#.
+* \#\#ANSWER3\#\#
+
 Questionlist
 ------------
 

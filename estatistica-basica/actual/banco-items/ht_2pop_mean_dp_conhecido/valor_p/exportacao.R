@@ -7,8 +7,16 @@ library(statBasics)
 library(exams)
 library(tidyverse)
 
-exams::exams2moodle("estatistica-basica/actual/banco-items/ht_2pop_mean_dp_conhecido/valor_p/enunciado.Rmd",
+path <- "estatistica-basica/actual/banco-items/ht_2pop_mean_dp_conhecido/valor_p"
+exams2moodle(glue("{path}/enunciado.Rmd"),
+                    n = 10,
+                    verbose = TRUE,
+                    dir = path,
+                    name = "teste-z-2pop-valor-p-teste")
+
+path <- "estatistica-basica/actual/banco-items/ht_2pop_mean_dp_conhecido/valor_p"
+exams2moodle(glue("{path}/enunciado.Rmd"),
                     n = 1000,
                     verbose = TRUE,
-                    dir = "estatistica-basica/actual/banco-items/ht_2pop_mean_dp_conhecido/valor_p",
+                    dir = path,
                     name = "teste-z-2pop-valor-p")
