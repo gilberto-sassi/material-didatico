@@ -50,6 +50,10 @@ Nesta questão, decida usando o valor-p.
 
 Suponha que um pesquisador precisa decidir entre as hipóteses H~0~: &mu; &#10877; `r f(m_0)` contra H~1~: &mu; > `r f(m_0)`, e para isso ela coletou uma amostra que está armazenada no arquivo [dados.xlsx](dados.xlsx). Além disso, suponha que X seja uma variável aleatória contínua com distribuição normal. Ao nível de significância &alpha; = `r f(g)`, temos que:
 
+* A estatística de teste é: \#\#ANSWER1\#\#
+* O valor-p é: \#\#ANSWER2\#\#
+* \#\#ANSWER3\#\#
+
 Questionlist
 ------------
 

@@ -7,8 +7,15 @@ library(statBasics)
 library(exams)
 library(tidyverse)
 
-exams::exams2moodle("estatistica-basica/actual/banco-items/ht_mean_unknown_var/valor_p/enunciado.Rmd",
+path <- "estatistica-basica/actual/banco-items/ht_mean_unknown_var/valor_p"
+exams2moodle(glue("{path}/enunciado.Rmd"),
+                    n = 10,
+                    verbose = TRUE,
+                    dir = path,
+                    name = "teste-t-valor-p-teste")
+
+exams2moodle(glue("{path}/enunciado.Rmd"),
                     n = 1000,
                     verbose = TRUE,
-                    dir = "estatistica-basica/actual/banco-items/ht_mean_unknown_var/valor_p",
-                    name = "teste-dados-normal-dp-desconhecido-mean")
+                    dir = path,
+                    name = "teste-t-valor-p")
