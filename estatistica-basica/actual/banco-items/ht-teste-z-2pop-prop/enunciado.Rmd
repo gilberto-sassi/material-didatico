@@ -59,12 +59,12 @@ _PS: os dados deste exercícios foram simulados._
 
 **Solução:** 
 
-A porcentagem de pessoas favoráveis ao aumento é:
+A porcentagem (números entre 0 e 100) de pessoas favoráveis ao aumento é:
 
 * \#\#ANSWER1\#\#% na cidade A.
 * \#\#ANSWER2\#\#% na cidade B.
 
-A estatística de teste é * \#\#ANSWER3\#\#.
+A estatística de teste é \#\#ANSWER3\#\#.
 
 No procedimento de Neyman-Pearson, o valor crítico (quantil) é \#\#ANSWER5\#\# e a região crítica é \#\#ANSWER8\#\#.
 
