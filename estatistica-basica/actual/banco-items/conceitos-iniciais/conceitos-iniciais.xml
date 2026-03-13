@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <quiz>
-<!-- question: 0  -->
-  <question type="category">
-    <category>
-      <text>$course$/top/Padrão para MAT236-040000-222</text>
-    </category>
-    <info format="moodle_auto_format">
-      <text>A categoria padrão para as questões compartilhadas no contexto 'MAT236-040000-222'.</text>
-    </info>
-    <idnumber></idnumber>
-  </question>
-
-<!-- question: 0  -->
-  <question type="category">
-    <category>
-      <text>$course$/top/Padrão para MAT236-040000-222/Conceitual</text>
-    </category>
-    <info format="html">
-      <text><![CDATA[<p>Exercícios sobre definições básicas e importantes.</p>]]></text>
-    </info>
-    <idnumber></idnumber>
-  </question>
-
-<!-- question: 11353449  -->
+<!-- question: 41490659  -->
   <question type="matching">
     <name>
       <text>Conceitos iniciais</text>
@@ -33,7 +11,7 @@
     <generalfeedback format="html">
       <text></text>
     </generalfeedback>
-    <defaultgrade>1.0000000</defaultgrade>
+    <defaultgrade>1</defaultgrade>
     <penalty>0.3333333</penalty>
     <hidden>0</hidden>
     <idnumber></idnumber>
@@ -94,6 +72,12 @@
       <text><![CDATA[<p>Característica não-numérica onde os valores tem ordem ou hierarquia entre si apesar de não serem números.</p>]]></text>
       <answer>
         <text>Variável qualitativa ordinal</text>
+      </answer>
+    </subquestion>
+    <subquestion format="html">
+      <text><![CDATA[<p>Agregação ou <em>cáculo </em>envolvendo observações e uma ou mais variáveis.</p>]]></text>
+      <answer>
+        <text>Estatística</text>
       </answer>
     </subquestion>
   </question>
