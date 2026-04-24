@@ -595,7 +595,7 @@ Na Tabela~\ref{fig:confianca}, o intervalo de confiança com coeficiente de conf
 \begin{frame}{Exemplo}
 
 {\small
- Suponha que os comprimentos de jacarés de um certa raça tenham variância $\sigma^2=0,01m^2$. Uma amostra de dez animais foi coletada e forneceu uma média de $1,69m$. Construa um intervalo de confiança
+ Suponha que uma máquina preencha frascos com desvio padrão $\sigma=10ml$. Uma amostra de dez garrafas foi coletada e forneceu uma média de $603,78ml$. Construa um intervalo de confiança
  com coeficiente de confiança $\gamma = 0,95$. Construa um intervalo de confiança para a média da população de jacarés com coeficiente de confiança $\gamma = 99\%$.
  \vfill
 
@@ -605,15 +605,15 @@ Na Tabela~\ref{fig:confianca}, o intervalo de confiança com coeficiente de conf
   
   Logo $z_{1-\frac{\alpha}{2}} = 1,96$. Então, o intervalo de confiança para a altura média do jacaré é 
  \begin{align*}
-  IC(\mu,95\%) = \left( -1,96 \cdot \sqrt{\dfrac{0,01}{10}} + 1,69;1,96 \cdot \sqrt{\dfrac{0,01}{10}} + 1,69 \right) = (1,63;1,75).
+  IC(\mu,95\%) = \left( -1,96 \cdot \sqrt{\dfrac{10^2}{10}} + 603,78;1,96 \cdot \sqrt{\dfrac{10^2}{10}} + 603,78 \right) = (597,85; 609,98).
  \end{align*}
- Ou seja, com coeficiente de confiança $95\%$, a altura média do jacaré está entre $1,63m$ e $1,75m$.
+ Ou seja, com coeficiente de confiança $95\%$, as garrafas têm entre $597,85ml$ e $609,98ml$.
 
  \item Para $\gamma = 99\%$. Primeiramente precisamos encontrar $z_{1-\frac{\alpha}{2}}$, ou seja,  $ \Phi(z_{1-\frac{\alpha}{2}}) = \dfrac{1+\gamma}{2} = 0,995$ e  $z_{1-\frac{\alpha}{2}} = 2,58$. Então, o intervalo de confiança para a altura média do jacaré é 
  \begin{align*}
-  IC(\mu,95\%) = \left( -2,58 \cdot \sqrt{\dfrac{0,01}{10}} + 1,69;2,58 \cdot \sqrt{\dfrac{0,01}{10}} + 1,69 \right) = (1,60;1,77).
+  IC(\mu,95\%) = \left( -2,58 \cdot \sqrt{\dfrac{10^2}{10}} + 603,78;2,58 \cdot \sqrt{\dfrac{10^2}{10}} + 603,78 \right) = (595,62;611,94).
  \end{align*}
- Ou seja, com coeficiente de confiança $99\%$, a altura média do jacaré está entre $1,60m$ e $1,77m$.
+ Ou seja, com coeficiente de confiança $99\%$, a altura média do jacaré está entre $595,62ml$ e $611,94ml$.
  \end{itemize}
 }
 \end{frame}
@@ -973,101 +973,101 @@ Seja $x_1, \dots, x_n$ uma amostra aleatória de uma variável aleatória contí
 
 \end{frame}
 
-\section{Estimação intervalar para $\mu$ para distribuição exponencial}
-
-\begin{frame}{Estimação intervalar para $\mu$}
-	
-\LARGE
-
-Suponha que você sabe que a variável contínua $X$ com distribuição exponencial e não conhecemos a média $\mu$ e taxa de decaimento $\lambda = \frac{1}{\mu}$. Seja $x_1, \dots, x_n$ uma amostra de tamanho $n$ da variável $X$ com média $\bar{x} = \frac{x_1 + \dots + x_n}{n}$, é possível provar que a distribuição da quantidade $2 \frac{1}{\mu} n \bar{x}$ tem distribuição qui-quadrado com $2n$ graus de liberdade. Então, o intervalo de confiança para $\mu$ com coeficiente de confiança $\gamma = (1-\alpha)100$, é dado por
-\begin{align*}
-	IC(\mu; \gamma) = \left( \frac{2 n \bar{x}}{\chi^2_{1-\frac{\alpha}{2}; 2n}}; \frac{2 n \bar{x}}{\chi^2_{\frac{\alpha}{2}; 2n}} \right),
-\end{align*}
-em que $P\left( \chi^2_{2n} \leq \chi^2_{\frac{\alpha}{2}; 2n} \right) = \frac{\alpha}{2}$ e $P\left( \chi^2_{2n} \leq \chi^2_{\frac{1-\alpha}{2}; 2n} \right) = 1- \frac{\alpha}{2}$, em que $\chi^2_{2n}$ tem distribuição qui-quadrado com $2n$ graus de liberdade.
-
-\normalsize
-
-\end{frame}
-
-\begin{frame}{Estimação intervalar para $\mu$}
-
-\footnotesize
-
-\begin{block}{Exemplo}
-	Um fabricante de lâmpadas afirma que a duração média, pelo menos, $20000$  horas. Um consumidor cético comprou 10 lâmpadas e verificou o tempo de vida de cada lâmpada. Os dados obtidos foram: 4272,61;  1464,02;  9765,54;  3308,58;  3237,83;   987,60;  4094,58; 17491,86;  4908,06 e  9403,13. Com coeficiente de confiança $\gamma=99\%$, este consumidor deve acreditar no fabricante de lâmpadas?
-\end{block}
-
-\begin{block}{Solução}
-	Primeiro calculamos a média $\bar{x} = 5893,381$.
-	
-	Em seguida, calculamos os quantis da distribuição qui-quadrado:
-	\begin{itemize}
-		\item $P\left(\chi^2_{2n} \leq \chi^2_{\frac{\alpha}{2};2n}\right) = P\left(\chi^2_{20} \leq \chi^2_{\frac{0,01}{2};20}\right) = \frac{0,01}{2}$ e $\chi^2_{0,005;20} = 7,434$;
-		\item $P\left(\chi^2_{2n} \leq \chi^2_{1-\frac{\alpha}{2};2n}\right) = P\left(\chi^2_{20} \leq \chi^2_{1-\frac{0,01}{2};20}\right) =1- \frac{0,01}{2}=0,995$ e $\chi^2_{0,995;20} = 39,997$.
-	\end{itemize}
-	Então, o intervalo de confiança para $\mu$ com coeficiente de confiança $\gamma=99\%$ é dada por
-	\begin{align*}
-		IC(\mu, \gamma) &= \left( \frac{2n \bar{x}}{\chi^2_{0,995;20}}; \frac{2n \bar{x}}{\chi^2_{0,005;20}}  \right)\\
-		&= \left( \frac{2\cdot 10 \cdot 5893,381}{39,997}; \frac{2\cdot 10 \cdot 5893,381}{7,434}  \right)\\
-		&= \left( 2.946,91; 15855,21 \right)
-	\end{align*}
-	Ou seja, com  coeficiente de confiança $\gamma=99\%$, o tempo médio de duração da lâmpada está entre $2.946,91$ e $15855,21$ horas.
-\end{block}
-
-\normalsize
-
-\end{frame}
-
-\subsection{Intervalo unilateral de confiança para $\mu$}
-
-\begin{frame}{Intervalo unilateral de confiança para $\mu$\\ Distribuição exponencial com média $\mu$ e taxa de decaimento $\alpha=\frac{1}{\mu}$}
-
-\small
-
-Seja $x_1, \dots, x_n$ uma amostra aleatória de uma variável aleatória contínua com distribuição exponencial com média $\mu$ e e taxa de decaimento $\lambda=\frac{1}{\mu}$ e variância amostral $\bar{x} = \frac{x_1 + \dots + x_n}{n}$. 
-
-\begin{block}{Limite superior de confiança}
-	Ao nível de significância $\gamma=(1-\alpha)100\%$, o limite superior de confiança para média é dada por
-	\begin{align*}
-	\mu \leq \frac{2n \bar{x}}{\chi^2_{\alpha; 2n}},
-	\end{align*}
-	em que $P\left( \chi^2_{2n} \leq \chi^2_{\alpha; 2n} \right) = \alpha$, em que $\chi^2_{2n}$ é uma variável aleatória com distribuição qui-quadrado com $2n$ graus de liberdade.
-	
-\end{block}
-
-\begin{block}{Limite inferior de confiança}
-	Ao nível de significância $\gamma=(1-\alpha)100\%$, o limite inferior de confiança para média é dada por
-	\begin{align*}
-	\frac{2 n \bar{x}}{\chi^{2}_{1-\alpha;2n}} \leq \mu,
-	\end{align*}
-	em que $P\left( \chi^2_{2n} \leq \chi^{2}_{1-\alpha;2n} \right) = 1-\alpha$, em que $\chi^2_{2n}$ é uma variável aleatória com distribuição qui-quadrado com $2n$ graus de liberdade.
-\end{block}
-
-\normalsize
-
-\end{frame}
-
-\begin{frame}{Intervalo unilateral de confiança para $\mu$\\ Distribuição exponencial com média $\mu$ e taxa de decaimento $\alpha=\frac{1}{\mu}$}
-
-\small
-
-\begin{block}{Exemplo}
-	Um fabricante afirma que o tempo de vida de um ventilador usado na montagem de computadores \textit{desktop} duram, em média, no mínimo 10.000 horas (conforme especificações de um órgão regulador). Este órgão regulador coletou 50 computadores do mercado e verificou quando tempo cada um dos ventiladores aguentaram e obteve uma média de 1953,063 horas. Ao nível de significância $\gamma=90\%$, o fabricante está cumprindo as especificações do regulador?
-\end{block}
-
-\begin{block}{Solução}
-	Primeiro calculamos o quantil da distribuição qui-quadrado, ou seja, $P(\chi^2_{2n} \leq \chi_{\alpha;2n}^{2}) = P(\chi^2_{100} \leq \chi_{0,1;100}^{2}) = 0,9$ e $\chi_{0,1;100}^{2} = 82,358$. Então, temos que
-	\begin{align*}
-		IC(\mu, \gamma) &= \left( 0; \frac{2 n \bar{x}}{\chi_{0,1;100}^{2}} \right)\\
-		&= \left( 0; \frac{2 \cdot 50\cdot 1953,063}{82,358} \right)\\
-		&= \left( 0; 2380,536 \right).
-	\end{align*}
-	Ou seja, com coeficiente de confiança com $\gamma=90\%$, a média populacional de tempo de duração dos ventiladores não segue as especificações do regulador.
-\end{block}
-
-\normalsize
-
-\end{frame}
+%\section{Estimação intervalar para $\mu$ para distribuição exponencial}
+%
+%\begin{frame}{Estimação intervalar para $\mu$}
+%	
+%\LARGE
+%
+%Suponha que você sabe que a variável contínua $X$ com distribuição exponencial e não conhecemos a média $\mu$ e taxa de decaimento $\lambda = \frac{1}{\mu}$. Seja $x_1, \dots, x_n$ uma amostra de tamanho $n$ da variável $X$ com média $\bar{x} = \frac{x_1 + \dots + x_n}{n}$, é possível provar que a distribuição da quantidade $2 \frac{1}{\mu} n \bar{x}$ tem distribuição qui-quadrado com $2n$ graus de liberdade. Então, o intervalo de confiança para $\mu$ com coeficiente de confiança $\gamma = (1-\alpha)100$, é dado por
+%\begin{align*}
+%	IC(\mu; \gamma) = \left( \frac{2 n \bar{x}}{\chi^2_{1-\frac{\alpha}{2}; 2n}}; \frac{2 n \bar{x}}{\chi^2_{\frac{\alpha}{2}; 2n}} \right),
+%\end{align*}
+%em que $P\left( \chi^2_{2n} \leq \chi^2_{\frac{\alpha}{2}; 2n} \right) = \frac{\alpha}{2}$ e $P\left( \chi^2_{2n} \leq \chi^2_{\frac{1-\alpha}{2}; 2n} \right) = 1- \frac{\alpha}{2}$, em que $\chi^2_{2n}$ tem distribuição qui-quadrado com $2n$ graus de liberdade.
+%
+%\normalsize
+%
+%\end{frame}
+%
+%\begin{frame}{Estimação intervalar para $\mu$}
+%
+%\footnotesize
+%
+%\begin{block}{Exemplo}
+%	Um fabricante de lâmpadas afirma que a duração média, pelo menos, $20000$  horas. Um consumidor cético comprou 10 lâmpadas e verificou o tempo de vida de cada lâmpada. Os dados obtidos foram: 4272,61;  1464,02;  9765,54;  3308,58;  3237,83;   987,60;  4094,58; 17491,86;  4908,06 e  9403,13. Com coeficiente de confiança $\gamma=99\%$, este consumidor deve acreditar no fabricante de lâmpadas?
+%\end{block}
+%
+%\begin{block}{Solução}
+%	Primeiro calculamos a média $\bar{x} = 5893,381$.
+%	
+%	Em seguida, calculamos os quantis da distribuição qui-quadrado:
+%	\begin{itemize}
+%		\item $P\left(\chi^2_{2n} \leq \chi^2_{\frac{\alpha}{2};2n}\right) = P\left(\chi^2_{20} \leq \chi^2_{\frac{0,01}{2};20}\right) = \frac{0,01}{2}$ e $\chi^2_{0,005;20} = 7,434$;
+%		\item $P\left(\chi^2_{2n} \leq \chi^2_{1-\frac{\alpha}{2};2n}\right) = P\left(\chi^2_{20} \leq \chi^2_{1-\frac{0,01}{2};20}\right) =1- \frac{0,01}{2}=0,995$ e $\chi^2_{0,995;20} = 39,997$.
+%	\end{itemize}
+%	Então, o intervalo de confiança para $\mu$ com coeficiente de confiança $\gamma=99\%$ é dada por
+%	\begin{align*}
+%		IC(\mu, \gamma) &= \left( \frac{2n \bar{x}}{\chi^2_{0,995;20}}; \frac{2n \bar{x}}{\chi^2_{0,005;20}}  \right)\\
+%		&= \left( \frac{2\cdot 10 \cdot 5893,381}{39,997}; \frac{2\cdot 10 \cdot 5893,381}{7,434}  \right)\\
+%		&= \left( 2.946,91; 15855,21 \right)
+%	\end{align*}
+%	Ou seja, com  coeficiente de confiança $\gamma=99\%$, o tempo médio de duração da lâmpada está entre $2.946,91$ e $15855,21$ horas.
+%\end{block}
+%
+%\normalsize
+%
+%\end{frame}
+%
+%\subsection{Intervalo unilateral de confiança para $\mu$}
+%
+%\begin{frame}{Intervalo unilateral de confiança para $\mu$\\ Distribuição exponencial com média $\mu$ e taxa de decaimento $\alpha=\frac{1}{\mu}$}
+%
+%\small
+%
+%Seja $x_1, \dots, x_n$ uma amostra aleatória de uma variável aleatória contínua com distribuição exponencial com média $\mu$ e e taxa de decaimento $\lambda=\frac{1}{\mu}$ e variância amostral $\bar{x} = \frac{x_1 + \dots + x_n}{n}$. 
+%
+%\begin{block}{Limite superior de confiança}
+%	Ao nível de significância $\gamma=(1-\alpha)100\%$, o limite superior de confiança para média é dada por
+%	\begin{align*}
+%	\mu \leq \frac{2n \bar{x}}{\chi^2_{\alpha; 2n}},
+%	\end{align*}
+%	em que $P\left( \chi^2_{2n} \leq \chi^2_{\alpha; 2n} \right) = \alpha$, em que $\chi^2_{2n}$ é uma variável aleatória com distribuição qui-quadrado com $2n$ graus de liberdade.
+%	
+%\end{block}
+%
+%\begin{block}{Limite inferior de confiança}
+%	Ao nível de significância $\gamma=(1-\alpha)100\%$, o limite inferior de confiança para média é dada por
+%	\begin{align*}
+%	\frac{2 n \bar{x}}{\chi^{2}_{1-\alpha;2n}} \leq \mu,
+%	\end{align*}
+%	em que $P\left( \chi^2_{2n} \leq \chi^{2}_{1-\alpha;2n} \right) = 1-\alpha$, em que $\chi^2_{2n}$ é uma variável aleatória com distribuição qui-quadrado com $2n$ graus de liberdade.
+%\end{block}
+%
+%\normalsize
+%
+%\end{frame}
+%
+%\begin{frame}{Intervalo unilateral de confiança para $\mu$\\ Distribuição exponencial com média $\mu$ e taxa de decaimento $\alpha=\frac{1}{\mu}$}
+%
+%\small
+%
+%\begin{block}{Exemplo}
+%	Um fabricante afirma que o tempo de vida de um ventilador usado na montagem de computadores \textit{desktop} duram, em média, no mínimo 10.000 horas (conforme especificações de um órgão regulador). Este órgão regulador coletou 50 computadores do mercado e verificou quando tempo cada um dos ventiladores aguentaram e obteve uma média de 1953,063 horas. Ao nível de significância $\gamma=90\%$, o fabricante está cumprindo as especificações do regulador?
+%\end{block}
+%
+%\begin{block}{Solução}
+%	Primeiro calculamos o quantil da distribuição qui-quadrado, ou seja, $P(\chi^2_{2n} \leq \chi_{\alpha;2n}^{2}) = P(\chi^2_{100} \leq \chi_{0,1;100}^{2}) = 0,9$ e $\chi_{0,1;100}^{2} = 82,358$. Então, temos que
+%	\begin{align*}
+%		IC(\mu, \gamma) &= \left( 0; \frac{2 n \bar{x}}{\chi_{0,1;100}^{2}} \right)\\
+%		&= \left( 0; \frac{2 \cdot 50\cdot 1953,063}{82,358} \right)\\
+%		&= \left( 0; 2380,536 \right).
+%	\end{align*}
+%	Ou seja, com coeficiente de confiança com $\gamma=90\%$, a média populacional de tempo de duração dos ventiladores não segue as especificações do regulador.
+%\end{block}
+%
+%\normalsize
+%
+%\end{frame}
 
 \section{Intervalos de confiança para amostras grandes $n \geq 40$}
 
@@ -1374,9 +1374,9 @@ Seja $x_1, \dots, x_n$ uma amostra aleatória de uma variável aleatória $X$, e
 		\begin{tabular}{l|c|c|c}
 			\toprule[0.05cm]
 			Distribuição & Parâmetro & Intervalo  & Quantil \\ \midrule[0.05cm]
-			Exponencial  & $\mu$ & $  IC(\mu, 1-\alpha) = \left( \chi^2_{1-\frac{\alpha}{2};2n} \cdot  \dfrac{1}{2n\bar{x}}; \chi^2_{\frac{\alpha}{2};2n} \cdot \dfrac{1}{2n\bar{x}} \right)$  & Vide ii. \\ 
-			 &  & $IC(\mu, 1-\alpha) = \left( \chi^2_{1-\alpha;2n} \cdot  \dfrac{1}{2n\bar{x}} ;\infty \right)$  & $P\left( \chi^2_{2n} \leq \chi^2_{1-\alpha;2n}  \right)=1-\alpha$ \\ 
-			&  & $IC(\mu, 1-\alpha) = \left(0; \chi^2_{\alpha;2n} \cdot  \dfrac{1}{2n\bar{x}} \right)$  & $P\left( \chi^2_{2n} \leq \chi^2_{\alpha;2n}  \right)=\alpha$ \\ \midrule
+%			Exponencial  & $\mu$ & $  IC(\mu, 1-\alpha) = \left( \chi^2_{1-\frac{\alpha}{2};2n} \cdot  \dfrac{1}{2n\bar{x}}; \chi^2_{\frac{\alpha}{2};2n} \cdot \dfrac{1}{2n\bar{x}} \right)$  & Vide ii. \\ 
+%			 &  & $IC(\mu, 1-\alpha) = \left( \chi^2_{1-\alpha;2n} \cdot  \dfrac{1}{2n\bar{x}} ;\infty \right)$  & $P\left( \chi^2_{2n} \leq \chi^2_{1-\alpha;2n}  \right)=1-\alpha$ \\ 
+%			&  & $IC(\mu, 1-\alpha) = \left(0; \chi^2_{\alpha;2n} \cdot  \dfrac{1}{2n\bar{x}} \right)$  & $P\left( \chi^2_{2n} \leq \chi^2_{\alpha;2n}  \right)=\alpha$ \\ \midrule
 			Bernoulli  & $p$ & $IC(p, 1-\alpha) = \left( -z_{1-\frac{\alpha}{2}}\dfrac{1}{2\sqrt{n}} + \hat{p}; z_{1-\frac{\alpha}{2}}\dfrac{1}{2\sqrt{n}} + \hat{p} \right)$  & $\Phi\left( z_{1-\frac{\alpha}{2}} \right) = 1 - \frac{\alpha}{2}$ \\ 
 			$n \geq 40$ &  & $IC(p, 1-\alpha) = \left( z_{\alpha} \dfrac{1}{2 \sqrt{n}} + \hat{p}; 1 \right)$  & $\Phi\left( z_\alpha \right) = \alpha$ \\ 
 			&  & $IC(p, 1-\alpha) = \left( 0; z_{1-\alpha} \dfrac{1}{2 \sqrt{n}} + \hat{p} \right)$  & $\Phi\left( z_{1-\alpha} \right) = 1 - \alpha$ \\ \midrule
